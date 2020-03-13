@@ -14,6 +14,10 @@ namespace WarhammerProfessionApp.Dtos
 
         public int MaximumValue { get; set; }
 
-        public bool IsBasicValue { get; set; }
+        public bool IsFreeToChangeValue { get; set; }
+
+        public bool IsReadOnly { get; set; }
+
+        public string MaximumDescription { get; set; }
     }
 }

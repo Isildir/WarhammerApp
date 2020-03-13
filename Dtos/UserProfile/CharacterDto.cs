@@ -7,40 +7,39 @@ namespace WarhammerProfessionApp.Dtos
         public CharacterDto()
         {
             Professions = new List<ShortProfessionDto>();
-            CharacterStatistics = new List<CharacterStatisticDto>();
-            AdditionalExcerienceCostValues = new List<AdditionalCharacterDto>();
-            AdditionalValues = new List<AdditionalCharacterDto>();
-            CharacterSkills = new List<SkillDto>();
-            CharacterAbilities = new List<AbilityDto>();
-            CharacterItems = new List<ItemDto>();
+            BasicStatistics = new List<CharacterStatisticDto>();
+            AdvancedStatistics = new List<CharacterStatisticDto>();
+            AdditionalExcerienceCostValues = new List<AdditionalCharacterValueDto>();
+            AdditionalValues = new List<AdditionalCharacterValueDto>();
+            Skills = new List<SkillDto>();
+            Abilities = new List<AbilityDto>();
+            Items = new List<CharacterItemDto>();
         }
 
         public string Name { get; set; }
 
-        public int ExperienceUsed { get; set; }
+        public int ExperienceLeft { get; set; }
 
-        public int ExperienceSummary { get; set; }
+        public int ExperienceSum { get; set; }
 
         public string ActualProfessionName { get; set; }
 
         public List<ShortProfessionDto> Professions { get; set; }
 
-        public int Gold { get; set; }
+        public MoneyDto Money { get; set; }
 
-        public int Silver { get; set; }
+        public List<CharacterStatisticDto> BasicStatistics { get; set; }
 
-        public int Bronze { get; set; }
+        public List<CharacterStatisticDto> AdvancedStatistics { get; set; }
 
-        public List<CharacterStatisticDto> CharacterStatistics { get; set; }
+        public List<AdditionalCharacterValueDto> AdditionalExcerienceCostValues { get; set; }
 
-        public List<AdditionalCharacterDto> AdditionalExcerienceCostValues { get; set; }
+        public List<AdditionalCharacterValueDto> AdditionalValues { get; set; }
 
-        public List<AdditionalCharacterDto> AdditionalValues { get; set; }
+        public List<SkillDto> Skills { get; set; }
 
-        public List<SkillDto> CharacterSkills { get; set; }
+        public List<AbilityDto> Abilities { get; set; }
 
-        public List<AbilityDto> CharacterAbilities { get; set; }
-
-        public List<ItemDto> CharacterItems { get; set; }
+        public List<CharacterItemDto> Items { get; set; }
     }
 }

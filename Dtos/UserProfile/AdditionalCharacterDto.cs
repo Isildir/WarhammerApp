@@ -1,6 +1,6 @@
 ﻿namespace WarhammerProfessionApp.Dtos
 {
-    public class AdditionalCharacterDto
+    public class AdditionalCharacterValueDto
     {
         public long Id { get; set; }
 

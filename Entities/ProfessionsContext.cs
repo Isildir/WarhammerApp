@@ -5797,7 +5797,6 @@ namespace WarhammerProfessionApp.Entities
             modelBuilder.Entity<ProfessionAbilities>().HasData(professionAbilitiesDataSet);
             modelBuilder.Entity<ProfessionAbility>().HasData(professionAbilityDataSet);
             modelBuilder.Entity<Statistic>().HasData(statisticsDataSet);
-
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

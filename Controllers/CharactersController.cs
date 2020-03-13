@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -52,6 +53,7 @@ namespace WarhammerProfessionApp.Controllers
             if (character == null)
                 return NotFound();
 
+            /*
             return Ok(new CharacterDto
             {
                 Gold = character.Gold,
@@ -64,25 +66,106 @@ namespace WarhammerProfessionApp.Controllers
                 Professions = character.Professions.Select(a => new ShortProfessionDto { Id = a.ProfessionId, Name = a.Profession.Name }).ToList(),
                 AdditionalValues = character.AdditionalValues.Select(a => new AdditionalCharacterDto { Id = a.Id, Value = a.Value }).ToList(),
                 AdditionalExcerienceCostValues = character.AdditionalExcerienceCostValues.Select(a => new AdditionalCharacterDto { Id = a.Id, Value = a.Value }).ToList(),
-                CharacterStatistics = character.Statistics.Select(a => new CharacterStatisticDto
+                BasicStatistics = character.Statistics.Where(a => a.Statistic.IsBasicValue).Select(a => new CharacterStatisticDto
                 {
                     Name = EnumTranslator.TranslateStaticticValue(a.Statistic.Type),
                     Type = a.Statistic.Type,
-                    IsBasicValue = a.Statistic.IsBasicValue,
+                    IsReadOnly = a.Statistic.ValueIsCalculated,
+                    IsFreeToChangeValue = a.Statistic.IsChangeFree,
                     BaseValue = a.BaseValue,
                     CurrentValue = a.CurrentValue,
                     MaximumValue = a.MaximumValue
                 }).ToList(),
-                CharacterSkills = character.Skills.Select(a => new SkillDto { Id = a.SkillId, Name = a.Skill.Name }).ToList(),
-                CharacterAbilities = character.Abilities.Take(5).Select(a => new AbilityDto { Id = a.AbilityId, Name = a.Ability.Name }).ToList(),
-                CharacterItems = character.Items.Select(a => new ItemDto { Id = a.ItemId, Name = a.Item.Name }).ToList()
+                AdvancedStatistics = character.Statistics.Where(a => !a.Statistic.IsBasicValue).Select(a => new CharacterStatisticDto
+                {
+                    Name = EnumTranslator.TranslateStaticticValue(a.Statistic.Type),
+                    Type = a.Statistic.Type,
+                    IsReadOnly = a.Statistic.ValueIsCalculated,
+                    IsFreeToChangeValue = a.Statistic.IsChangeFree,
+                    BaseValue = a.BaseValue,
+                    CurrentValue = a.CurrentValue,
+                    MaximumValue = a.MaximumValue
+                }).ToList(),
+                Skills = character.Skills.Select(a => new SkillDto { Id = a.SkillId, Name = a.Skill.Name }).ToList(),
+                Abilities = character.Abilities.Select(a => new AbilityDto { Id = a.AbilityId, Name = a.Ability.Name }).ToList(),
+                Items = character.Items.Select(a => new CharacterItemDto { Item = new ItemDto { Id = a.ItemId, Name = a.Item.Name }, Quantity = a.Quantity }).ToList()
+            });*/
+
+            return Ok(new CharacterDto
+            {
+                Money = new MoneyDto
+                {
+                    Gold = character.Gold,
+                    Silver = character.Silver,
+                    Bronze = character.Bronze
+                },
+                Name = character.Name,
+                ActualProfessionName = "Akolita",
+                ExperienceLeft = character.ExperienceSummary - character.ExperienceUsed,
+                ExperienceSum = character.ExperienceSummary,
+                Professions = context.Professions.Take(3).Select(a => new ShortProfessionDto { Id = a.Id, Name = a.Name }).ToList(),
+                AdditionalValues = new List<AdditionalCharacterValueDto>
+                {
+                    new AdditionalCharacterValueDto { Id = 1, Value = "Ajtem namber łan" },
+                    new AdditionalCharacterValueDto { Id = 2, Value = "Ajtem tu" },
+                    new AdditionalCharacterValueDto { Id = 3, Value = "Ajtem trii" }
+                },
+                AdditionalExcerienceCostValues = new List<AdditionalCharacterValueDto>
+                {
+                    new AdditionalCharacterValueDto { Id = 1, Value = "Item za expa 1" },
+                    new AdditionalCharacterValueDto { Id = 2, Value = "Item za expa 2" },
+                    new AdditionalCharacterValueDto { Id = 3, Value = "Item za expa 3" }
+                },
+                BasicStatistics = character.Statistics.Where(a => a.Statistic.IsBasicValue).Select(a => new CharacterStatisticDto
+                {
+                    Name = EnumTranslator.TranslateStaticticValue(a.Statistic.Type),
+                    Type = a.Statistic.Type,
+                    IsReadOnly = a.Statistic.ValueIsCalculated,
+                    IsFreeToChangeValue = a.Statistic.IsChangeFree,
+                    BaseValue = a.BaseValue,
+                    CurrentValue = a.CurrentValue,
+                    MaximumValue = a.MaximumValue,
+                    MaximumDescription = $"Bazowe {a.BaseValue} + 0 z rozwoju + 0 z dodatków"
+                }).ToList(),
+                AdvancedStatistics = character.Statistics.Where(a => !a.Statistic.IsBasicValue).Select(a => new CharacterStatisticDto
+                {
+                    Name = EnumTranslator.TranslateStaticticValue(a.Statistic.Type),
+                    Type = a.Statistic.Type,
+                    IsReadOnly = a.Statistic.ValueIsCalculated,
+                    IsFreeToChangeValue = a.Statistic.IsChangeFree,
+                    BaseValue = a.BaseValue,
+                    CurrentValue = a.CurrentValue,
+                    MaximumValue = a.MaximumValue,
+                    MaximumDescription = $"Bazowe {a.BaseValue} + 0 z rozwoju + 0 z dodatków"
+                }).ToList(),
+                Skills = character.Skills.Select(a => new SkillDto
+                {
+                    Id = a.SkillId,
+                    Name = a.Skill.Name,
+                    Trait = EnumTranslator.TranslateStaticticValue(a.Skill.Trait),
+                    Description = a.Skill.Description
+                }).ToList(),
+                Abilities = character.Abilities.Select(a => new AbilityDto
+                {
+                    Id = a.AbilityId,
+                    Name = a.Ability.Name,
+                    Description = a.Ability.Description
+                }).ToList(),
+                Items = context.Items.Take(10).Select(a => new CharacterItemDto
+                {
+                    Id = a.Id,
+                    Name = a.Name,
+                    Weigth = a.Weigth,
+                    Description = a.Description,
+                    Quantity = 4
+                }).ToList()
             });
         }
 
         private bool CheckCharacterExperienceLimit(Character character, int value) => character.ExperienceSummary - character.ExperienceUsed > value;
 
         [HttpPost(nameof(AddCharacterExcerienceCostValue))]
-        public ActionResult<int> AddCharacterExcerienceCostValue([FromBody] AdditionalCharacterDto value)
+        public ActionResult<CharacterChangeResponseDto> AddCharacterExcerienceCostValue([FromBody] AdditionalCharacterValueDto value)
         {
             var userId = GetUserId();
 
@@ -102,7 +185,7 @@ namespace WarhammerProfessionApp.Controllers
         }
 
         [HttpPost(nameof(ModifyCharacterExcerienceCostValue))]
-        public ActionResult<int> ModifyCharacterExcerienceCostValue([FromBody] AdditionalCharacterDto value)
+        public ActionResult<CharacterChangeResponseDto> ModifyCharacterExcerienceCostValue([FromBody] AdditionalCharacterValueDto value)
         {
             var userId = GetUserId();
 
@@ -122,7 +205,7 @@ namespace WarhammerProfessionApp.Controllers
         }
 
         [HttpPost(nameof(RemoveCharacterExcerienceCostValue))]
-        public ActionResult<int> RemoveCharacterExcerienceCostValue([FromBody] int id)
+        public ActionResult<CharacterChangeResponseDto> RemoveCharacterExcerienceCostValue([FromBody] int id)
         {
             var userId = GetUserId();
 
@@ -149,7 +232,7 @@ namespace WarhammerProfessionApp.Controllers
         }
 
         [HttpPost(nameof(ChangeCharacterMoney))]
-        public ActionResult<bool> ChangeCharacterMoney([FromBody] MoneyChangeDto value)
+        public ActionResult<CharacterChangeResponseDto> ChangeCharacterMoney([FromBody] MoneyDto value)
         {
             var character = GetUserCharacter();
 
@@ -166,14 +249,14 @@ namespace WarhammerProfessionApp.Controllers
         }
 
         [HttpPost(nameof(ChangeCharacterMaximumExperience))]
-        public ActionResult<bool> ChangeCharacterMaximumExperience([FromBody] int value)
+        public ActionResult<CharacterChangeResponseDto> ChangeCharacterMaximumExperience([FromBody] int value)
         {
             var character = GetUserCharacter();
 
             if (character == null)
                 return NotFound();
 
-            character.ExperienceSummary= value;
+            character.ExperienceSummary = value;
 
             context.SaveChanges();
 
@@ -181,7 +264,7 @@ namespace WarhammerProfessionApp.Controllers
         }
 
         [HttpPost(nameof(ChangeCharacterName))]
-        public ActionResult<bool> ChangeCharacterName([FromBody] string name)
+        public ActionResult<CharacterChangeResponseDto> ChangeCharacterName([FromBody] string name)
         {
             var character = GetUserCharacter();
 
@@ -196,7 +279,7 @@ namespace WarhammerProfessionApp.Controllers
         }
 
         [HttpPost(nameof(SetCharacterProfession))]
-        public ActionResult<bool> SetCharacterProfession([FromBody] int id)
+        public ActionResult<CharacterChangeResponseDto> SetCharacterProfession([FromBody] int id)
         {
             var userId = GetUserId();
 
@@ -216,7 +299,7 @@ namespace WarhammerProfessionApp.Controllers
         }
 
         [HttpPost(nameof(AddCharacterProfession))]
-        public ActionResult<bool> AddCharacterProfession([FromBody] int id)
+        public ActionResult<CharacterChangeResponseDto> AddCharacterProfession([FromBody] int id)
         {
             var userId = GetUserId();
 
@@ -236,7 +319,7 @@ namespace WarhammerProfessionApp.Controllers
         }
 
         [HttpPost(nameof(RemoveCharacterProfession))]
-        public ActionResult<bool> RemoveCharacterProfession([FromBody] int id)
+        public ActionResult<CharacterChangeResponseDto> RemoveCharacterProfession([FromBody] int id)
         {
             var userId = GetUserId();
 
@@ -258,7 +341,7 @@ namespace WarhammerProfessionApp.Controllers
         }
 
         [HttpPost(nameof(AddCharacterAdditionalValue))]
-        public ActionResult<int> AddCharacterAdditionalValue([FromBody] AdditionalCharacterDto value)
+        public ActionResult<CharacterChangeResponseDto> AddCharacterAdditionalValue([FromBody] AdditionalCharacterValueDto value)
         {
             var userId = GetUserId();
 
@@ -275,7 +358,7 @@ namespace WarhammerProfessionApp.Controllers
         }
 
         [HttpPost(nameof(ModifyCharacterAdditionalValue))]
-        public ActionResult<int> ModifyCharacterAdditionalValue([FromBody] AdditionalCharacterDto value)
+        public ActionResult<CharacterChangeResponseDto> ModifyCharacterAdditionalValue([FromBody] AdditionalCharacterValueDto value)
         {
             var userId = GetUserId();
 
@@ -297,7 +380,7 @@ namespace WarhammerProfessionApp.Controllers
         }
 
         [HttpPost(nameof(RemoveCharacterAdditionalValue))]
-        public ActionResult<int> RemoveCharacterAdditionalValue([FromBody] int id)
+        public ActionResult<CharacterChangeResponseDto> RemoveCharacterAdditionalValue([FromBody] int id)
         {
             var userId = GetUserId();
 
@@ -319,17 +402,17 @@ namespace WarhammerProfessionApp.Controllers
         }
 
         /*
-        
+
         [HttpPost(nameof(AddCharacterItem))]
         public ActionResult<int> AddCharacterItem(int id)
         {
         }
-        
+
         [HttpPost(nameof(RemoveCharacterItem))]
         public ActionResult<int> RemoveCharacterItem(int id)
         {
         }
-        
+
         [HttpPost(nameof(ModifyCharacterItem))]
         public ActionResult<int> ModifyCharacterItem(ItemDto value)
         {
@@ -338,7 +421,7 @@ namespace WarhammerProfessionApp.Controllers
         */
 
         [HttpPost(nameof(ChangeCharacterStatisticValue))]
-        public ActionResult<int> ChangeCharacterStatisticValue([FromBody] CharacterStatisticDto value)
+        public ActionResult<CharacterChangeResponseDto> ChangeCharacterStatisticValue([FromBody] CharacterStatisticDto value)
         {
             var userId = GetUserId();
 
@@ -365,7 +448,7 @@ namespace WarhammerProfessionApp.Controllers
         }
 
         [HttpPost(nameof(AddCharacterSkill))]
-        public ActionResult<int> AddCharacterSkill([FromBody] int id)
+        public ActionResult<CharacterChangeResponseDto> AddCharacterSkill([FromBody] int id)
         {
             var userId = GetUserId();
 
@@ -388,7 +471,7 @@ namespace WarhammerProfessionApp.Controllers
         }
 
         [HttpPost(nameof(AddCharacterAbility))]
-        public ActionResult<int> AddCharacterAbility([FromBody] int id)
+        public ActionResult<CharacterChangeResponseDto> AddCharacterAbility([FromBody] int id)
         {
             var userId = GetUserId();
 
@@ -420,8 +503,8 @@ namespace WarhammerProfessionApp.Controllers
             return Ok(ability.HasImpactOnStatictics);
         }
 
-        [HttpPost(nameof(RemoveCharacterSkill))]
-        public ActionResult<int> RemoveCharacterSkill([FromBody] int id)
+        [HttpDelete(nameof(RemoveCharacterSkill))]
+        public ActionResult<CharacterChangeResponseDto> RemoveCharacterSkill(int id)
         {
             var userId = GetUserId();
 
@@ -442,8 +525,8 @@ namespace WarhammerProfessionApp.Controllers
             return Ok(false);
         }
 
-        [HttpPost(nameof(RemoveCharacterAbility))]
-        public ActionResult<int> RemoveCharacterAbility([FromBody] int id)
+        [HttpDelete(nameof(RemoveCharacterAbility))]
+        public ActionResult<CharacterChangeResponseDto> RemoveCharacterAbility(int id)
         {
             var userId = GetUserId();
 

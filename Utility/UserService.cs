@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using WarhammerProfessionApp.Entities;
@@ -46,9 +45,9 @@ namespace WarhammerProfessionApp.Utility
             user.PasswordSalt = passwordSalt;
 
             var character = new Character
-            { 
-                User = user, 
-                Statistics = context.Statistics.Select(a => new CharacterStatistic { StatisticId = a.Id }).ToList() 
+            {
+                User = user,
+                Statistics = context.Statistics.Select(a => new CharacterStatistic { StatisticId = a.Id }).ToList()
             };
 
             context.Users.Add(user);

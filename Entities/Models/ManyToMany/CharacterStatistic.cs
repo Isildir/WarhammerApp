@@ -1,6 +1,5 @@
 ﻿namespace WarhammerProfessionApp.Entities.Models
 {
-
     public class CharacterStatistic
     {
         public int BaseValue { get; set; }
