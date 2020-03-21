@@ -62,12 +62,12 @@ namespace WarhammerProfessionApp.Entities.Models.Utility
             return this;
         }
 
-        public ProfessionBuilder SetBasicValues(string name, ProfessionLevel professionLevel, ProfessionRaceAllowed professionRaceForbidden = 0,
+        public ProfessionBuilder SetBasicValues(string name, ProfessionLevel professionLevel, Race professionRaceForbidden = 0,
             string description = null, string additionalInformations = null)
         {
-            ProfessionRaceAllowed allProfessionRaces = 0;
+            Race allProfessionRaces = 0;
 
-            foreach (ProfessionRaceAllowed race in Enum.GetValues(typeof(ProfessionRaceAllowed)))
+            foreach (Race race in Enum.GetValues(typeof(Race)))
                 allProfessionRaces |= race;
 
             profession.Name = name;

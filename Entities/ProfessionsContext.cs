@@ -2654,7 +2654,7 @@ namespace WarhammerProfessionApp.Entities
                 .SetBasicValues("Rybak", ProfessionLevel.Basic)
                 .SetStatistics(0, 5, 10, 5, 10, 5, 0, 0, 0, 2, 0, 0);
             var rzecznik = new ProfessionBuilder()
-                .SetBasicValues("Rzecznik rodu", ProfessionLevel.Basic, ProfessionRaceAllowed.Human | ProfessionRaceAllowed.Dwarf | ProfessionRaceAllowed.Halfing)
+                .SetBasicValues("Rzecznik rodu", ProfessionLevel.Basic, Race.Human | Race.Dwarf | Race.Halfing)
                 .SetStatistics(5, 5, 0, 0, 5, 10, 5, 10, 0, 2, 0, 0);
             var rzemieslnik = new ProfessionBuilder()
                 .SetBasicValues("Rzemieślnik", ProfessionLevel.Basic)
@@ -2675,7 +2675,7 @@ namespace WarhammerProfessionApp.Entities
                 .SetBasicValues("Strażnik dróg", ProfessionLevel.Basic)
                 .SetStatistics(10, 10, 5, 0, 10, 5, 5, 0, 0, 2, 0, 0);
             var straznikPol = new ProfessionBuilder()
-                .SetBasicValues("Strażnik pól", ProfessionLevel.Basic, ProfessionRaceAllowed.Human | ProfessionRaceAllowed.Dwarf | ProfessionRaceAllowed.Elf)
+                .SetBasicValues("Strażnik pól", ProfessionLevel.Basic, Race.Human | Race.Dwarf | Race.Elf)
                 .SetStatistics(5, 10, 0, 5, 10, 0, 10, 0, 0, 2, 0, 0);
             var straznikWiezienny = new ProfessionBuilder()
                 .SetBasicValues("Strażnik więzienny", ProfessionLevel.Basic)
@@ -2693,10 +2693,10 @@ namespace WarhammerProfessionApp.Entities
                 .SetBasicValues("Śmieciarz", ProfessionLevel.Basic)
                 .SetStatistics(5, 0, 5, 10, 5, 0, 5, 5, 0, 2, 0, 0);
             var tarczownik = new ProfessionBuilder()
-                .SetBasicValues("Tarczownik", ProfessionLevel.Basic, ProfessionRaceAllowed.Human | ProfessionRaceAllowed.Halfing | ProfessionRaceAllowed.Elf)
+                .SetBasicValues("Tarczownik", ProfessionLevel.Basic, Race.Human | Race.Halfing | Race.Elf)
                 .SetStatistics(10, 0, 5, 5, 10, 0, 5, 0, 1, 2, 0, 0);
             var uczen = new ProfessionBuilder()
-                .SetBasicValues("Uczeń czarodzieja", ProfessionLevel.Basic, ProfessionRaceAllowed.Dwarf | ProfessionRaceAllowed.Halfing)
+                .SetBasicValues("Uczeń czarodzieja", ProfessionLevel.Basic, Race.Dwarf | Race.Halfing)
                 .SetStatistics(0, 0, 0, 0, 5, 10, 15, 5, 0, 2, 1, 0);
             var weglarz = new ProfessionBuilder()
                 .SetBasicValues("Węglarz", ProfessionLevel.Basic)
@@ -2705,13 +2705,13 @@ namespace WarhammerProfessionApp.Entities
                 .SetBasicValues("Włóczykij", ProfessionLevel.Basic)
                 .SetStatistics(5, 10, 0, 0, 10, 5, 0, 5, 0, 2, 0, 0);
             var wojownik = new ProfessionBuilder()
-                .SetBasicValues("Wojownik klanowy", ProfessionLevel.Basic, ProfessionRaceAllowed.Human | ProfessionRaceAllowed.Halfing | ProfessionRaceAllowed.Dwarf)
+                .SetBasicValues("Wojownik klanowy", ProfessionLevel.Basic, Race.Human | Race.Halfing | Race.Dwarf)
                 .SetStatistics(5, 5, 0, 0, 10, 10, 5, 0, 0, 2, 0, 0);
             var woznica = new ProfessionBuilder()
                 .SetBasicValues("Woźnica", ProfessionLevel.Basic)
                 .SetStatistics(5, 10, 0, 0, 10, 0, 5, 5, 0, 2, 0, 0);
             var zabojcaTroli = new ProfessionBuilder()
-                .SetBasicValues("Zabójca trolli", ProfessionLevel.Basic, ProfessionRaceAllowed.Human | ProfessionRaceAllowed.Halfing | ProfessionRaceAllowed.Elf)
+                .SetBasicValues("Zabójca trolli", ProfessionLevel.Basic, Race.Human | Race.Halfing | Race.Elf)
                 .SetStatistics(10, 0, 5, 5, 5, 0, 10, 0, 1, 3, 0, 0);
             var zarzadca = new ProfessionBuilder()
                 .SetBasicValues("Zarządca", ProfessionLevel.Basic)
@@ -2783,7 +2783,7 @@ namespace WarhammerProfessionApp.Entities
                 .SetBasicValues("Kupiec", ProfessionLevel.Advanced)
                 .SetStatistics(10, 10, 5, 5, 10, 25, 20, 20, 0, 4, 0, 0);
             var lesnyDuch = new ProfessionBuilder()
-                .SetBasicValues("Leśny duch", ProfessionLevel.Advanced, ProfessionRaceAllowed.Human | ProfessionRaceAllowed.Halfing | ProfessionRaceAllowed.Dwarf)
+                .SetBasicValues("Leśny duch", ProfessionLevel.Advanced, Race.Human | Race.Halfing | Race.Dwarf)
                 .SetStatistics(20, 30, 15, 15, 25, 20, 20, 0, 2, 6, 0, 0);
             var lowcaCzarownic = new ProfessionBuilder()
                 .SetBasicValues("Łowca czarownic", ProfessionLevel.Advanced)
@@ -2876,10 +2876,10 @@ namespace WarhammerProfessionApp.Entities
                 .SetBasicValues("Wybraniec boży", ProfessionLevel.Advanced)
                 .SetStatistics(15, 15, 10, 10, 10, 15, 25, 20, 1, 5, 2, 0);
             var zabojcaDemonow = new ProfessionBuilder()
-                .SetBasicValues("Zabójca demonów", ProfessionLevel.Advanced, ProfessionRaceAllowed.Elf | ProfessionRaceAllowed.Halfing | ProfessionRaceAllowed.Human)
+                .SetBasicValues("Zabójca demonów", ProfessionLevel.Advanced, Race.Elf | Race.Halfing | Race.Human)
                 .SetStatistics(40, 0, 30, 30, 20, 0, 30, 0, 2, 8, 0, 0);
             var zabojcaOlbrzymow = new ProfessionBuilder()
-                .SetBasicValues("Zabójca olbrzymów", ProfessionLevel.Advanced, ProfessionRaceAllowed.Elf | ProfessionRaceAllowed.Halfing | ProfessionRaceAllowed.Human, null,
+                .SetBasicValues("Zabójca olbrzymów", ProfessionLevel.Advanced, Race.Elf | Race.Halfing | Race.Human, null,
                 "Bohater musi wcześniej zabić olbrzyma")
                 .SetStatistics(25, 0, 15, 15, 10, 0, 20, 0, 1, 6, 0, 0);
             var zakonnik = new ProfessionBuilder()

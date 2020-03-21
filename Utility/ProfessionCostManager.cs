@@ -22,7 +22,7 @@ namespace WarhammerProfessionApp.Utility
 
         private bool FindProfessionPath(int startProfessionId, int targetProfessionId, byte race, byte mappingLevels, out IList<Queue<int>> result)
         {
-            var data = context.Set<Profession>().Include(a => a.OutputProfessions).Where(a => a.ProfessionRaceAllowed.HasFlag((ProfessionRaceAllowed)race))
+            var data = context.Set<Profession>().Include(a => a.OutputProfessions).Where(a => a.ProfessionRaceAllowed.HasFlag((Race)race))
                 .ToDictionary(a => a.Id, a => a.OutputProfessions.Select(b => b.OutputProfessionId).ToList());
 
             var startRecord = context.Set<Profession>().FirstOrDefault(a => a.Id == startProfessionId);

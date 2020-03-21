@@ -11,7 +11,7 @@ namespace WarhammerProfessionApp.Dtos
 
         public ProfessionLevel ProfessionLevel { get; set; }
 
-        public ProfessionRaceAllowed ProfessionRaceAllowed { get; set; }
+        public Race ProfessionRaceAllowed { get; set; }
 
         public List<SkillWrapperDto> Skills { get; set; }
     }

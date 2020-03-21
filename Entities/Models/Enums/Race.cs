@@ -3,7 +3,7 @@
 namespace WarhammerProfessionApp.Entities.Models.Enums
 {
     [Flags]
-    public enum ProfessionRaceAllowed : byte
+    public enum Race : byte
     {
         Human = 1,
         Elf = 2,

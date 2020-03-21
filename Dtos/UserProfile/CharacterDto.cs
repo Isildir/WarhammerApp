@@ -16,13 +16,7 @@ namespace WarhammerProfessionApp.Dtos
             Items = new List<CharacterItemDto>();
         }
 
-        public string Name { get; set; }
-
-        public int ExperienceLeft { get; set; }
-
-        public int ExperienceSum { get; set; }
-
-        public string ActualProfessionName { get; set; }
+        public CharacterBasicValuesDto BasicValues { get; set; }
 
         public List<ShortProfessionDto> Professions { get; set; }
 

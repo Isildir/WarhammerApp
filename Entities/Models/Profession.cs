@@ -58,7 +58,7 @@ namespace WarhammerProfessionApp.Entities.Models
 
         public ProfessionLevel ProfessionLevel { get; set; }
 
-        public ProfessionRaceAllowed ProfessionRaceAllowed { get; set; }
+        public Race ProfessionRaceAllowed { get; set; }
 
         public byte Resistance { get; set; }
 
