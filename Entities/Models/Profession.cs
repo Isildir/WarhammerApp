@@ -17,7 +17,6 @@ namespace WarhammerProfessionApp.Entities.Models
             Characters = new List<CharacterProfession>();
         }
 
-        public List<CharacterProfession> Characters { get; set; }
         public virtual List<ProfessionAbilities> Abilities { get; set; }
 
         [StringLength(150)]
@@ -26,6 +25,8 @@ namespace WarhammerProfessionApp.Entities.Models
         public byte Agility { get; set; }
 
         public byte Attacks { get; set; }
+
+        public List<CharacterProfession> Characters { get; set; }
 
         public byte CloseCombat { get; set; }
 

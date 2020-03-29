@@ -4,6 +4,12 @@ namespace WarhammerProfessionApp.Migrations
 {
     public partial class AddingUsers : Migration
     {
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropTable(
+                name: "Users");
+        }
+
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
@@ -21,12 +27,6 @@ namespace WarhammerProfessionApp.Migrations
                 {
                     table.PrimaryKey("PK_Users", x => x.Id);
                 });
-        }
-
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.DropTable(
-                name: "Users");
         }
     }
 }

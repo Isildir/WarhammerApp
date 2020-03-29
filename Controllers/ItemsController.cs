@@ -14,8 +14,6 @@ namespace WarhammerProfessionApp.Controllers
     [ApiController, Authorize]
     public class ItemsController : ControllerBase
     {
-        private readonly ProfessionsContext context;
-
         public ItemsController(ProfessionsContext context)
         {
             this.context = context;
@@ -107,5 +105,7 @@ namespace WarhammerProfessionApp.Controllers
 
             return NoContent();
         }
+
+        private readonly ProfessionsContext context;
     }
 }

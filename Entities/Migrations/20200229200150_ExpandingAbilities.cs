@@ -4,6 +4,21 @@ namespace WarhammerProfessionApp.Migrations
 {
     public partial class ExpandingAbilities : Migration
     {
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropColumn(
+                name: "HasImpactOnStatictics",
+                table: "Abilities");
+
+            migrationBuilder.DropColumn(
+                name: "ImpactValue",
+                table: "Abilities");
+
+            migrationBuilder.DropColumn(
+                name: "ValueToAlter",
+                table: "Abilities");
+        }
+
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<bool>(
@@ -91,21 +106,6 @@ namespace WarhammerProfessionApp.Migrations
                 keyValue: 75,
                 columns: new[] { "HasImpactOnStatictics", "ImpactValue", "ValueToAlter" },
                 values: new object[] { true, 5, (byte)1 });
-        }
-
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.DropColumn(
-                name: "HasImpactOnStatictics",
-                table: "Abilities");
-
-            migrationBuilder.DropColumn(
-                name: "ImpactValue",
-                table: "Abilities");
-
-            migrationBuilder.DropColumn(
-                name: "ValueToAlter",
-                table: "Abilities");
         }
     }
 }

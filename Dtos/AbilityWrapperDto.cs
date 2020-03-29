@@ -4,8 +4,8 @@ namespace WarhammerProfessionApp.Dtos
 {
     public class AbilityWrapperDto
     {
-        public byte Quantity { get; set; }
-
         public List<AbilityDto> Abilities { get; set; }
+
+        public byte Quantity { get; set; }
     }
 }

@@ -9,8 +9,6 @@ namespace WarhammerProfessionApp.Utility
 {
     public class UserService : IUserService
     {
-        private readonly ProfessionsContext context;
-
         public UserService(ProfessionsContext context)
         {
             this.context = context;
@@ -28,8 +26,6 @@ namespace WarhammerProfessionApp.Utility
 
             return user;
         }
-
-        public User GetById(int id) => context.Users.Find(id);
 
         public User Create(User user, string password)
         {
@@ -66,6 +62,10 @@ namespace WarhammerProfessionApp.Utility
                 context.SaveChanges();
             }
         }
+
+        public User GetById(int id) => context.Users.Find(id);
+
+        private readonly ProfessionsContext context;
 
         private static void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
         {

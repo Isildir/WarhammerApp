@@ -4,6 +4,61 @@ namespace WarhammerProfessionApp.Migrations
 {
     public partial class AddingCharacters : Migration
     {
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropTable(
+                name: "AdditionalCharacterValue");
+
+            migrationBuilder.DropTable(
+                name: "CharacterAbility");
+
+            migrationBuilder.DropTable(
+                name: "CharacterItem");
+
+            migrationBuilder.DropTable(
+                name: "CharacterProfession");
+
+            migrationBuilder.DropTable(
+                name: "CharacterSkill");
+
+            migrationBuilder.DropTable(
+                name: "CharacterStatistic");
+
+            migrationBuilder.DropTable(
+                name: "ExperienceAdditionalCharacterValue");
+
+            migrationBuilder.DropTable(
+                name: "Characters");
+
+            migrationBuilder.DropColumn(
+                name: "Description",
+                table: "Skills");
+
+            migrationBuilder.DropColumn(
+                name: "Description",
+                table: "Items");
+
+            migrationBuilder.DropColumn(
+                name: "Description",
+                table: "Abilities");
+
+            migrationBuilder.AlterColumn<string>(
+                name: "Login",
+                table: "Users",
+                type: "nvarchar(max)",
+                nullable: true,
+                oldClrType: typeof(string),
+                oldMaxLength: 50);
+
+            migrationBuilder.AddColumn<string>(
+                name: "Name",
+                table: "Users",
+                type: "nvarchar(50)",
+                maxLength: 50,
+                nullable: false,
+                defaultValue: "");
+        }
+
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
@@ -272,61 +327,6 @@ namespace WarhammerProfessionApp.Migrations
                 name: "IX_ExperienceAdditionalCharacterValue_CharacterId",
                 table: "ExperienceAdditionalCharacterValue",
                 column: "CharacterId");
-        }
-
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.DropTable(
-                name: "AdditionalCharacterValue");
-
-            migrationBuilder.DropTable(
-                name: "CharacterAbility");
-
-            migrationBuilder.DropTable(
-                name: "CharacterItem");
-
-            migrationBuilder.DropTable(
-                name: "CharacterProfession");
-
-            migrationBuilder.DropTable(
-                name: "CharacterSkill");
-
-            migrationBuilder.DropTable(
-                name: "CharacterStatistic");
-
-            migrationBuilder.DropTable(
-                name: "ExperienceAdditionalCharacterValue");
-
-            migrationBuilder.DropTable(
-                name: "Characters");
-
-            migrationBuilder.DropColumn(
-                name: "Description",
-                table: "Skills");
-
-            migrationBuilder.DropColumn(
-                name: "Description",
-                table: "Items");
-
-            migrationBuilder.DropColumn(
-                name: "Description",
-                table: "Abilities");
-
-            migrationBuilder.AlterColumn<string>(
-                name: "Login",
-                table: "Users",
-                type: "nvarchar(max)",
-                nullable: true,
-                oldClrType: typeof(string),
-                oldMaxLength: 50);
-
-            migrationBuilder.AddColumn<string>(
-                name: "Name",
-                table: "Users",
-                type: "nvarchar(50)",
-                maxLength: 50,
-                nullable: false,
-                defaultValue: "");
         }
     }
 }

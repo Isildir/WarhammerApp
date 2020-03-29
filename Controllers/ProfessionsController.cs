@@ -17,8 +17,6 @@ namespace WarhammerProfessionApp.Controllers
     [ApiController, Authorize]
     public class ProfessionsController : ControllerBase
     {
-        private readonly ProfessionsContext context;
-
         public ProfessionsController(ProfessionsContext context)
         {
             this.context = context;
@@ -38,12 +36,6 @@ namespace WarhammerProfessionApp.Controllers
 
             return NoContent();
         }
-
-        //TODO remove when descriptions will be added in database
-        private const string tempDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque libero sem, maximus eu rhoncus ac, semper a lectus. " +
-                "Etiam rutrum nisl a faucibus feugiat. Aenean quis posuere nisl, volutpat mattis sapien. Maecenas non condimentum nulla. " +
-                "Etiam viverra justo sit amet erat lobortis, non viverra nisi molestie. Etiam sagittis vel mauris vel tincidunt. " +
-                "Pellentesque vitae arcu gravida, tristique purus sit amet, semper justo. Aliquam ac nunc sed orci rutrum fringilla quis eu diam. ";
 
         [HttpGet("{id}"), AllowAnonymous]
         public async Task<ActionResult<ProfessionShortenedDetailsDto>> GetProfession(int id)
@@ -95,24 +87,6 @@ namespace WarhammerProfessionApp.Controllers
             };
 
             return profession;
-        }
-
-        private string GetFormattedElement(int quantity, IEnumerable<Tuple<string, int, ItemQuality>> values)
-        {
-            var convertedValues = values.Select(a => a.Item2 > 1 ? $"{a.Item2} x {a.Item1} {a.Item3}" : $"{a.Item1} {a.Item3}");
-
-            if (quantity < 2)
-                return string.Join(" albo ", convertedValues);
-            else
-                return $"Wybierz {quantity} z {string.Join(", ", convertedValues)}";
-        }
-
-        private string GetFormattedElement(int quantity, IEnumerable<string> values)
-        {
-            if (quantity < 2)
-                return string.Join(" albo ", values);
-            else
-                return $"Wybierz {quantity} z {string.Join(", ", values)}";
         }
 
         [HttpGet, AllowAnonymous]
@@ -176,6 +150,32 @@ namespace WarhammerProfessionApp.Controllers
             await context.SaveChangesAsync();
 
             return NoContent();
+        }
+
+        //TODO remove when descriptions will be added in database
+        private const string tempDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque libero sem, maximus eu rhoncus ac, semper a lectus. " +
+                "Etiam rutrum nisl a faucibus feugiat. Aenean quis posuere nisl, volutpat mattis sapien. Maecenas non condimentum nulla. " +
+                "Etiam viverra justo sit amet erat lobortis, non viverra nisi molestie. Etiam sagittis vel mauris vel tincidunt. " +
+                "Pellentesque vitae arcu gravida, tristique purus sit amet, semper justo. Aliquam ac nunc sed orci rutrum fringilla quis eu diam. ";
+
+        private readonly ProfessionsContext context;
+
+        private string GetFormattedElement(int quantity, IEnumerable<Tuple<string, int, ItemQuality>> values)
+        {
+            var convertedValues = values.Select(a => a.Item2 > 1 ? $"{a.Item2} x {a.Item1} {a.Item3}" : $"{a.Item1} {a.Item3}");
+
+            if (quantity < 2)
+                return string.Join(" albo ", convertedValues);
+            else
+                return $"Wybierz {quantity} z {string.Join(", ", convertedValues)}";
+        }
+
+        private string GetFormattedElement(int quantity, IEnumerable<string> values)
+        {
+            if (quantity < 2)
+                return string.Join(" albo ", values);
+            else
+                return $"Wybierz {quantity} z {string.Join(", ", values)}";
         }
     }
 }

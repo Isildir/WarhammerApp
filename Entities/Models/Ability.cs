@@ -7,21 +7,21 @@ namespace WarhammerProfessionApp.Entities.Models
 {
     public class Ability
     {
+        public List<CharacterAbility> Characters { get; set; }
+
+        public string Description { get; set; }
+
+        public bool HasImpactOnStatictics { get; set; }
+
         [Key]
         public int Id { get; set; }
+
+        public int? ImpactValue { get; set; }
 
         [Required, StringLength(50)]
         public string Name { get; set; }
 
         public List<ProfessionAbility> Professions { get; set; }
-
-        public string Description { get; set; }
-
-        public List<CharacterAbility> Characters { get; set; }
-
-        public bool HasImpactOnStatictics { get; set; }
-
-        public int? ImpactValue { get; set; }
 
         public StatisticType? ValueToAlter { get; set; }
     }

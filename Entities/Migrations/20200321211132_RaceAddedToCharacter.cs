@@ -4,6 +4,17 @@ namespace WarhammerProfessionApp.Migrations
 {
     public partial class RaceAddedToCharacter : Migration
     {
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropColumn(
+                name: "Race",
+                table: "Characters");
+
+            migrationBuilder.DropColumn(
+                name: "Order",
+                table: "CharacterProfession");
+        }
+
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<byte>(
@@ -17,17 +28,6 @@ namespace WarhammerProfessionApp.Migrations
                 table: "CharacterProfession",
                 nullable: false,
                 defaultValue: (byte)0);
-        }
-
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.DropColumn(
-                name: "Race",
-                table: "Characters");
-
-            migrationBuilder.DropColumn(
-                name: "Order",
-                table: "CharacterProfession");
         }
     }
 }

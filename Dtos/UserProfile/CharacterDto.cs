@@ -16,24 +16,24 @@ namespace WarhammerProfessionApp.Dtos
             Items = new List<CharacterItemDto>();
         }
 
-        public CharacterBasicValuesDto BasicValues { get; set; }
-
-        public List<ShortProfessionDto> Professions { get; set; }
-
-        public MoneyDto Money { get; set; }
-
-        public List<CharacterStatisticDto> BasicStatistics { get; set; }
-
-        public List<CharacterStatisticDto> AdvancedStatistics { get; set; }
+        public List<AbilityDto> Abilities { get; set; }
 
         public List<AdditionalCharacterValueDto> AdditionalExcerienceCostValues { get; set; }
 
         public List<AdditionalCharacterValueDto> AdditionalValues { get; set; }
 
-        public List<SkillDto> Skills { get; set; }
-
-        public List<AbilityDto> Abilities { get; set; }
+        public CharacterBasicValuesDto BasicValues { get; set; }
 
         public List<CharacterItemDto> Items { get; set; }
+
+        public MoneyDto Money { get; set; }
+
+        public List<ShortProfessionDto> Professions { get; set; }
+
+        public List<SkillDto> Skills { get; set; }
+
+        public List<CharacterStatisticDto> BasicStatistics { get; set; }
+
+        public List<CharacterStatisticDto> AdvancedStatistics { get; set; }
     }
 }

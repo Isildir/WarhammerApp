@@ -4,6 +4,395 @@ namespace WarhammerProfessionApp.Migrations
 {
     public partial class StaticticsRework : Migration
     {
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropForeignKey(
+                name: "FK_CharacterStatistic_Statistics_StatisticId",
+                table: "CharacterStatistic");
+
+            migrationBuilder.DropTable(
+                name: "Statistics");
+
+            migrationBuilder.DropPrimaryKey(
+                name: "PK_CharacterStatistic",
+                table: "CharacterStatistic");
+
+            migrationBuilder.DropIndex(
+                name: "IX_CharacterStatistic_StatisticId",
+                table: "CharacterStatistic");
+
+            migrationBuilder.DropColumn(
+                name: "StatisticId",
+                table: "CharacterStatistic");
+
+            migrationBuilder.AddColumn<long>(
+                name: "Id",
+                table: "CharacterStatistic",
+                type: "bigint",
+                nullable: false,
+                defaultValue: 0L)
+                .Annotation("SqlServer:Identity", "1, 1");
+
+            migrationBuilder.AddColumn<bool>(
+                name: "IsBasicValue",
+                table: "CharacterStatistic",
+                type: "bit",
+                nullable: false,
+                defaultValue: false);
+
+            migrationBuilder.AddColumn<string>(
+                name: "Name",
+                table: "CharacterStatistic",
+                type: "nvarchar(max)",
+                nullable: true);
+
+            migrationBuilder.AddColumn<byte>(
+                name: "Type",
+                table: "CharacterStatistic",
+                type: "tinyint",
+                nullable: false,
+                defaultValue: (byte)0);
+
+            migrationBuilder.AddPrimaryKey(
+                name: "PK_CharacterStatistic",
+                table: "CharacterStatistic",
+                column: "Id");
+
+            migrationBuilder.UpdateData(
+                table: "Skills",
+                keyColumn: "Id",
+                keyValue: 1,
+                column: "Trait",
+                value: (byte)4);
+
+            migrationBuilder.UpdateData(
+                table: "Skills",
+                keyColumn: "Id",
+                keyValue: 2,
+                column: "Trait",
+                value: (byte)4);
+
+            migrationBuilder.UpdateData(
+                table: "Skills",
+                keyColumn: "Id",
+                keyValue: 3,
+                column: "Trait",
+                value: (byte)1);
+
+            migrationBuilder.UpdateData(
+                table: "Skills",
+                keyColumn: "Id",
+                keyValue: 4,
+                column: "Trait",
+                value: (byte)2);
+
+            migrationBuilder.UpdateData(
+                table: "Skills",
+                keyColumn: "Id",
+                keyValue: 5,
+                column: "Trait",
+                value: (byte)3);
+
+            migrationBuilder.UpdateData(
+                table: "Skills",
+                keyColumn: "Id",
+                keyValue: 6,
+                column: "Trait",
+                value: (byte)1);
+
+            migrationBuilder.UpdateData(
+                table: "Skills",
+                keyColumn: "Id",
+                keyValue: 7,
+                column: "Trait",
+                value: (byte)4);
+
+            migrationBuilder.UpdateData(
+                table: "Skills",
+                keyColumn: "Id",
+                keyValue: 8,
+                column: "Trait",
+                value: (byte)5);
+
+            migrationBuilder.UpdateData(
+                table: "Skills",
+                keyColumn: "Id",
+                keyValue: 9,
+                column: "Trait",
+                value: (byte)5);
+
+            migrationBuilder.UpdateData(
+                table: "Skills",
+                keyColumn: "Id",
+                keyValue: 10,
+                column: "Trait",
+                value: (byte)4);
+
+            migrationBuilder.UpdateData(
+                table: "Skills",
+                keyColumn: "Id",
+                keyValue: 11,
+                column: "Trait",
+                value: (byte)1);
+
+            migrationBuilder.UpdateData(
+                table: "Skills",
+                keyColumn: "Id",
+                keyValue: 12,
+                column: "Trait",
+                value: (byte)2);
+
+            migrationBuilder.UpdateData(
+                table: "Skills",
+                keyColumn: "Id",
+                keyValue: 13,
+                column: "Trait",
+                value: (byte)1);
+
+            migrationBuilder.UpdateData(
+                table: "Skills",
+                keyColumn: "Id",
+                keyValue: 14,
+                column: "Trait",
+                value: (byte)1);
+
+            migrationBuilder.UpdateData(
+                table: "Skills",
+                keyColumn: "Id",
+                keyValue: 15,
+                column: "Trait",
+                value: (byte)4);
+
+            migrationBuilder.UpdateData(
+                table: "Skills",
+                keyColumn: "Id",
+                keyValue: 16,
+                column: "Trait",
+                value: (byte)2);
+
+            migrationBuilder.UpdateData(
+                table: "Skills",
+                keyColumn: "Id",
+                keyValue: 17,
+                column: "Trait",
+                value: (byte)5);
+
+            migrationBuilder.UpdateData(
+                table: "Skills",
+                keyColumn: "Id",
+                keyValue: 18,
+                column: "Trait",
+                value: (byte)5);
+
+            migrationBuilder.UpdateData(
+                table: "Skills",
+                keyColumn: "Id",
+                keyValue: 19,
+                column: "Trait",
+                value: (byte)1);
+
+            migrationBuilder.UpdateData(
+                table: "Skills",
+                keyColumn: "Id",
+                keyValue: 20,
+                column: "Trait",
+                value: (byte)5);
+
+            migrationBuilder.UpdateData(
+                table: "Skills",
+                keyColumn: "Id",
+                keyValue: 21,
+                column: "Trait",
+                value: (byte)4);
+
+            migrationBuilder.UpdateData(
+                table: "Skills",
+                keyColumn: "Id",
+                keyValue: 22,
+                column: "Trait",
+                value: (byte)1);
+
+            migrationBuilder.UpdateData(
+                table: "Skills",
+                keyColumn: "Id",
+                keyValue: 23,
+                column: "Trait",
+                value: (byte)1);
+
+            migrationBuilder.UpdateData(
+                table: "Skills",
+                keyColumn: "Id",
+                keyValue: 24,
+                column: "Trait",
+                value: (byte)4);
+
+            migrationBuilder.UpdateData(
+                table: "Skills",
+                keyColumn: "Id",
+                keyValue: 25,
+                column: "Trait",
+                value: (byte)6);
+
+            migrationBuilder.UpdateData(
+                table: "Skills",
+                keyColumn: "Id",
+                keyValue: 26,
+                column: "Trait",
+                value: (byte)1);
+
+            migrationBuilder.UpdateData(
+                table: "Skills",
+                keyColumn: "Id",
+                keyValue: 27,
+                column: "Trait",
+                value: (byte)4);
+
+            migrationBuilder.UpdateData(
+                table: "Skills",
+                keyColumn: "Id",
+                keyValue: 28,
+                column: "Trait",
+                value: (byte)1);
+
+            migrationBuilder.UpdateData(
+                table: "Skills",
+                keyColumn: "Id",
+                keyValue: 29,
+                column: "Trait",
+                value: (byte)1);
+
+            migrationBuilder.UpdateData(
+                table: "Skills",
+                keyColumn: "Id",
+                keyValue: 30,
+                column: "Trait",
+                value: (byte)1);
+
+            migrationBuilder.UpdateData(
+                table: "Skills",
+                keyColumn: "Id",
+                keyValue: 31,
+                column: "Trait",
+                value: (byte)4);
+
+            migrationBuilder.UpdateData(
+                table: "Skills",
+                keyColumn: "Id",
+                keyValue: 32,
+                column: "Trait",
+                value: (byte)2);
+
+            migrationBuilder.UpdateData(
+                table: "Skills",
+                keyColumn: "Id",
+                keyValue: 34,
+                column: "Trait",
+                value: (byte)1);
+
+            migrationBuilder.UpdateData(
+                table: "Skills",
+                keyColumn: "Id",
+                keyValue: 35,
+                column: "Trait",
+                value: (byte)1);
+
+            migrationBuilder.UpdateData(
+                table: "Skills",
+                keyColumn: "Id",
+                keyValue: 36,
+                column: "Trait",
+                value: (byte)5);
+
+            migrationBuilder.UpdateData(
+                table: "Skills",
+                keyColumn: "Id",
+                keyValue: 37,
+                column: "Trait",
+                value: (byte)2);
+
+            migrationBuilder.UpdateData(
+                table: "Skills",
+                keyColumn: "Id",
+                keyValue: 38,
+                column: "Trait",
+                value: (byte)4);
+
+            migrationBuilder.UpdateData(
+                table: "Skills",
+                keyColumn: "Id",
+                keyValue: 39,
+                column: "Trait",
+                value: (byte)4);
+
+            migrationBuilder.UpdateData(
+                table: "Skills",
+                keyColumn: "Id",
+                keyValue: 40,
+                column: "Trait",
+                value: (byte)1);
+
+            migrationBuilder.UpdateData(
+                table: "Skills",
+                keyColumn: "Id",
+                keyValue: 41,
+                column: "Trait",
+                value: (byte)2);
+
+            migrationBuilder.UpdateData(
+                table: "Skills",
+                keyColumn: "Id",
+                keyValue: 42,
+                column: "Trait",
+                value: (byte)1);
+
+            migrationBuilder.UpdateData(
+                table: "Skills",
+                keyColumn: "Id",
+                keyValue: 43,
+                column: "Trait",
+                value: (byte)1);
+
+            migrationBuilder.UpdateData(
+                table: "Skills",
+                keyColumn: "Id",
+                keyValue: 44,
+                column: "Trait",
+                value: (byte)6);
+
+            migrationBuilder.UpdateData(
+                table: "Skills",
+                keyColumn: "Id",
+                keyValue: 45,
+                column: "Trait",
+                value: (byte)2);
+
+            migrationBuilder.UpdateData(
+                table: "Skills",
+                keyColumn: "Id",
+                keyValue: 46,
+                column: "Trait",
+                value: (byte)1);
+
+            migrationBuilder.UpdateData(
+                table: "Skills",
+                keyColumn: "Id",
+                keyValue: 47,
+                column: "Trait",
+                value: (byte)2);
+
+            migrationBuilder.UpdateData(
+                table: "Skills",
+                keyColumn: "Id",
+                keyValue: 48,
+                column: "Trait",
+                value: (byte)2);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CharacterStatistic_CharacterId",
+                table: "CharacterStatistic",
+                column: "CharacterId");
+        }
+
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropPrimaryKey(
@@ -426,395 +815,6 @@ namespace WarhammerProfessionApp.Migrations
                 principalTable: "Statistics",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Cascade);
-        }
-
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.DropForeignKey(
-                name: "FK_CharacterStatistic_Statistics_StatisticId",
-                table: "CharacterStatistic");
-
-            migrationBuilder.DropTable(
-                name: "Statistics");
-
-            migrationBuilder.DropPrimaryKey(
-                name: "PK_CharacterStatistic",
-                table: "CharacterStatistic");
-
-            migrationBuilder.DropIndex(
-                name: "IX_CharacterStatistic_StatisticId",
-                table: "CharacterStatistic");
-
-            migrationBuilder.DropColumn(
-                name: "StatisticId",
-                table: "CharacterStatistic");
-
-            migrationBuilder.AddColumn<long>(
-                name: "Id",
-                table: "CharacterStatistic",
-                type: "bigint",
-                nullable: false,
-                defaultValue: 0L)
-                .Annotation("SqlServer:Identity", "1, 1");
-
-            migrationBuilder.AddColumn<bool>(
-                name: "IsBasicValue",
-                table: "CharacterStatistic",
-                type: "bit",
-                nullable: false,
-                defaultValue: false);
-
-            migrationBuilder.AddColumn<string>(
-                name: "Name",
-                table: "CharacterStatistic",
-                type: "nvarchar(max)",
-                nullable: true);
-
-            migrationBuilder.AddColumn<byte>(
-                name: "Type",
-                table: "CharacterStatistic",
-                type: "tinyint",
-                nullable: false,
-                defaultValue: (byte)0);
-
-            migrationBuilder.AddPrimaryKey(
-                name: "PK_CharacterStatistic",
-                table: "CharacterStatistic",
-                column: "Id");
-
-            migrationBuilder.UpdateData(
-                table: "Skills",
-                keyColumn: "Id",
-                keyValue: 1,
-                column: "Trait",
-                value: (byte)4);
-
-            migrationBuilder.UpdateData(
-                table: "Skills",
-                keyColumn: "Id",
-                keyValue: 2,
-                column: "Trait",
-                value: (byte)4);
-
-            migrationBuilder.UpdateData(
-                table: "Skills",
-                keyColumn: "Id",
-                keyValue: 3,
-                column: "Trait",
-                value: (byte)1);
-
-            migrationBuilder.UpdateData(
-                table: "Skills",
-                keyColumn: "Id",
-                keyValue: 4,
-                column: "Trait",
-                value: (byte)2);
-
-            migrationBuilder.UpdateData(
-                table: "Skills",
-                keyColumn: "Id",
-                keyValue: 5,
-                column: "Trait",
-                value: (byte)3);
-
-            migrationBuilder.UpdateData(
-                table: "Skills",
-                keyColumn: "Id",
-                keyValue: 6,
-                column: "Trait",
-                value: (byte)1);
-
-            migrationBuilder.UpdateData(
-                table: "Skills",
-                keyColumn: "Id",
-                keyValue: 7,
-                column: "Trait",
-                value: (byte)4);
-
-            migrationBuilder.UpdateData(
-                table: "Skills",
-                keyColumn: "Id",
-                keyValue: 8,
-                column: "Trait",
-                value: (byte)5);
-
-            migrationBuilder.UpdateData(
-                table: "Skills",
-                keyColumn: "Id",
-                keyValue: 9,
-                column: "Trait",
-                value: (byte)5);
-
-            migrationBuilder.UpdateData(
-                table: "Skills",
-                keyColumn: "Id",
-                keyValue: 10,
-                column: "Trait",
-                value: (byte)4);
-
-            migrationBuilder.UpdateData(
-                table: "Skills",
-                keyColumn: "Id",
-                keyValue: 11,
-                column: "Trait",
-                value: (byte)1);
-
-            migrationBuilder.UpdateData(
-                table: "Skills",
-                keyColumn: "Id",
-                keyValue: 12,
-                column: "Trait",
-                value: (byte)2);
-
-            migrationBuilder.UpdateData(
-                table: "Skills",
-                keyColumn: "Id",
-                keyValue: 13,
-                column: "Trait",
-                value: (byte)1);
-
-            migrationBuilder.UpdateData(
-                table: "Skills",
-                keyColumn: "Id",
-                keyValue: 14,
-                column: "Trait",
-                value: (byte)1);
-
-            migrationBuilder.UpdateData(
-                table: "Skills",
-                keyColumn: "Id",
-                keyValue: 15,
-                column: "Trait",
-                value: (byte)4);
-
-            migrationBuilder.UpdateData(
-                table: "Skills",
-                keyColumn: "Id",
-                keyValue: 16,
-                column: "Trait",
-                value: (byte)2);
-
-            migrationBuilder.UpdateData(
-                table: "Skills",
-                keyColumn: "Id",
-                keyValue: 17,
-                column: "Trait",
-                value: (byte)5);
-
-            migrationBuilder.UpdateData(
-                table: "Skills",
-                keyColumn: "Id",
-                keyValue: 18,
-                column: "Trait",
-                value: (byte)5);
-
-            migrationBuilder.UpdateData(
-                table: "Skills",
-                keyColumn: "Id",
-                keyValue: 19,
-                column: "Trait",
-                value: (byte)1);
-
-            migrationBuilder.UpdateData(
-                table: "Skills",
-                keyColumn: "Id",
-                keyValue: 20,
-                column: "Trait",
-                value: (byte)5);
-
-            migrationBuilder.UpdateData(
-                table: "Skills",
-                keyColumn: "Id",
-                keyValue: 21,
-                column: "Trait",
-                value: (byte)4);
-
-            migrationBuilder.UpdateData(
-                table: "Skills",
-                keyColumn: "Id",
-                keyValue: 22,
-                column: "Trait",
-                value: (byte)1);
-
-            migrationBuilder.UpdateData(
-                table: "Skills",
-                keyColumn: "Id",
-                keyValue: 23,
-                column: "Trait",
-                value: (byte)1);
-
-            migrationBuilder.UpdateData(
-                table: "Skills",
-                keyColumn: "Id",
-                keyValue: 24,
-                column: "Trait",
-                value: (byte)4);
-
-            migrationBuilder.UpdateData(
-                table: "Skills",
-                keyColumn: "Id",
-                keyValue: 25,
-                column: "Trait",
-                value: (byte)6);
-
-            migrationBuilder.UpdateData(
-                table: "Skills",
-                keyColumn: "Id",
-                keyValue: 26,
-                column: "Trait",
-                value: (byte)1);
-
-            migrationBuilder.UpdateData(
-                table: "Skills",
-                keyColumn: "Id",
-                keyValue: 27,
-                column: "Trait",
-                value: (byte)4);
-
-            migrationBuilder.UpdateData(
-                table: "Skills",
-                keyColumn: "Id",
-                keyValue: 28,
-                column: "Trait",
-                value: (byte)1);
-
-            migrationBuilder.UpdateData(
-                table: "Skills",
-                keyColumn: "Id",
-                keyValue: 29,
-                column: "Trait",
-                value: (byte)1);
-
-            migrationBuilder.UpdateData(
-                table: "Skills",
-                keyColumn: "Id",
-                keyValue: 30,
-                column: "Trait",
-                value: (byte)1);
-
-            migrationBuilder.UpdateData(
-                table: "Skills",
-                keyColumn: "Id",
-                keyValue: 31,
-                column: "Trait",
-                value: (byte)4);
-
-            migrationBuilder.UpdateData(
-                table: "Skills",
-                keyColumn: "Id",
-                keyValue: 32,
-                column: "Trait",
-                value: (byte)2);
-
-            migrationBuilder.UpdateData(
-                table: "Skills",
-                keyColumn: "Id",
-                keyValue: 34,
-                column: "Trait",
-                value: (byte)1);
-
-            migrationBuilder.UpdateData(
-                table: "Skills",
-                keyColumn: "Id",
-                keyValue: 35,
-                column: "Trait",
-                value: (byte)1);
-
-            migrationBuilder.UpdateData(
-                table: "Skills",
-                keyColumn: "Id",
-                keyValue: 36,
-                column: "Trait",
-                value: (byte)5);
-
-            migrationBuilder.UpdateData(
-                table: "Skills",
-                keyColumn: "Id",
-                keyValue: 37,
-                column: "Trait",
-                value: (byte)2);
-
-            migrationBuilder.UpdateData(
-                table: "Skills",
-                keyColumn: "Id",
-                keyValue: 38,
-                column: "Trait",
-                value: (byte)4);
-
-            migrationBuilder.UpdateData(
-                table: "Skills",
-                keyColumn: "Id",
-                keyValue: 39,
-                column: "Trait",
-                value: (byte)4);
-
-            migrationBuilder.UpdateData(
-                table: "Skills",
-                keyColumn: "Id",
-                keyValue: 40,
-                column: "Trait",
-                value: (byte)1);
-
-            migrationBuilder.UpdateData(
-                table: "Skills",
-                keyColumn: "Id",
-                keyValue: 41,
-                column: "Trait",
-                value: (byte)2);
-
-            migrationBuilder.UpdateData(
-                table: "Skills",
-                keyColumn: "Id",
-                keyValue: 42,
-                column: "Trait",
-                value: (byte)1);
-
-            migrationBuilder.UpdateData(
-                table: "Skills",
-                keyColumn: "Id",
-                keyValue: 43,
-                column: "Trait",
-                value: (byte)1);
-
-            migrationBuilder.UpdateData(
-                table: "Skills",
-                keyColumn: "Id",
-                keyValue: 44,
-                column: "Trait",
-                value: (byte)6);
-
-            migrationBuilder.UpdateData(
-                table: "Skills",
-                keyColumn: "Id",
-                keyValue: 45,
-                column: "Trait",
-                value: (byte)2);
-
-            migrationBuilder.UpdateData(
-                table: "Skills",
-                keyColumn: "Id",
-                keyValue: 46,
-                column: "Trait",
-                value: (byte)1);
-
-            migrationBuilder.UpdateData(
-                table: "Skills",
-                keyColumn: "Id",
-                keyValue: 47,
-                column: "Trait",
-                value: (byte)2);
-
-            migrationBuilder.UpdateData(
-                table: "Skills",
-                keyColumn: "Id",
-                keyValue: 48,
-                column: "Trait",
-                value: (byte)2);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_CharacterStatistic_CharacterId",
-                table: "CharacterStatistic",
-                column: "CharacterId");
         }
     }
 }

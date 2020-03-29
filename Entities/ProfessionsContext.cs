@@ -17,19 +17,19 @@ namespace WarhammerProfessionApp.Entities
 
         public DbSet<Ability> Abilities { get; set; }
 
+        public DbSet<Character> Characters { get; set; }
+
         public DbSet<Image> Images { get; set; }
 
         public DbSet<Item> Items { get; set; }
-
-        public DbSet<User> Users { get; set; }
-
-        public DbSet<Character> Characters { get; set; }
 
         public DbSet<Profession> Professions { get; set; }
 
         public DbSet<Skill> Skills { get; set; }
 
         public DbSet<Statistic> Statistics { get; set; }
+
+        public DbSet<User> Users { get; set; }
 
         public static void SeedData(ModelBuilder modelBuilder)
         {

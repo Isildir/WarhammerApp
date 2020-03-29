@@ -4,6 +4,45 @@ namespace WarhammerProfessionApp.Migrations
 {
     public partial class SchemaInitialization : Migration
     {
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropTable(
+                name: "ProfessionAbility");
+
+            migrationBuilder.DropTable(
+                name: "ProfessionItem");
+
+            migrationBuilder.DropTable(
+                name: "ProfessionProfession");
+
+            migrationBuilder.DropTable(
+                name: "ProfessionSkill");
+
+            migrationBuilder.DropTable(
+                name: "Abilities");
+
+            migrationBuilder.DropTable(
+                name: "ProfessionAbilities");
+
+            migrationBuilder.DropTable(
+                name: "Items");
+
+            migrationBuilder.DropTable(
+                name: "ProfessionItems");
+
+            migrationBuilder.DropTable(
+                name: "ProfessionSkills");
+
+            migrationBuilder.DropTable(
+                name: "Skills");
+
+            migrationBuilder.DropTable(
+                name: "Professions");
+
+            migrationBuilder.DropTable(
+                name: "Images");
+        }
+
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
@@ -300,45 +339,6 @@ namespace WarhammerProfessionApp.Migrations
                 name: "IX_ProfessionSkills_ProfessionId",
                 table: "ProfessionSkills",
                 column: "ProfessionId");
-        }
-
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.DropTable(
-                name: "ProfessionAbility");
-
-            migrationBuilder.DropTable(
-                name: "ProfessionItem");
-
-            migrationBuilder.DropTable(
-                name: "ProfessionProfession");
-
-            migrationBuilder.DropTable(
-                name: "ProfessionSkill");
-
-            migrationBuilder.DropTable(
-                name: "Abilities");
-
-            migrationBuilder.DropTable(
-                name: "ProfessionAbilities");
-
-            migrationBuilder.DropTable(
-                name: "Items");
-
-            migrationBuilder.DropTable(
-                name: "ProfessionItems");
-
-            migrationBuilder.DropTable(
-                name: "ProfessionSkills");
-
-            migrationBuilder.DropTable(
-                name: "Skills");
-
-            migrationBuilder.DropTable(
-                name: "Professions");
-
-            migrationBuilder.DropTable(
-                name: "Images");
         }
     }
 }

@@ -13,81 +13,6 @@ namespace WarhammerProfessionApp.Utility
 {
     internal class ProfessionCostManager
     {
-        private readonly ProfessionsContext context;
-
-        internal ProfessionCostManager(ProfessionsContext context)
-        {
-            this.context = context;
-        }
-
-        private bool FindProfessionPath(int startProfessionId, int targetProfessionId, byte race, byte mappingLevels, out IList<Queue<int>> result)
-        {
-            var data = context.Set<Profession>().Include(a => a.OutputProfessions).Where(a => a.ProfessionRaceAllowed.HasFlag((Race)race))
-                .ToDictionary(a => a.Id, a => a.OutputProfessions.Select(b => b.OutputProfessionId).ToList());
-
-            var startRecord = context.Set<Profession>().FirstOrDefault(a => a.Id == startProfessionId);
-            var endRecord = context.Set<Profession>().FirstOrDefault(a => a.Id == targetProfessionId);
-
-            var finder = new GraphFinder(data, mappingLevels);
-
-            try
-            {
-                result = finder.FindAllPaths(startRecord.Id, endRecord.Id);
-            }
-            catch (Exception e)
-            {
-                result = null;
-
-                //Logowanie błędu
-            }
-
-            return result != null && result.Any();
-        }
-
-        private IDictionary<string, StatisticCompare> GetStartingStatistics(Profession profession) => new Dictionary<string, StatisticCompare>
-                {
-                    { nameof(Profession.CloseCombat), new StatisticCompare(profession?.CloseCombat ?? 0, profession?.CloseCombat ?? 0)},
-                    { nameof(Profession.Agility), new StatisticCompare(profession?.Agility ?? 0, profession?.Agility ?? 0) },
-                    { nameof(Profession.Attacks), new StatisticCompare(profession?.Attacks ?? 0, profession?.Attacks ?? 0)},
-                    { nameof(Profession.Hitpoints), new StatisticCompare(profession?.Hitpoints ?? 0, profession?.Hitpoints ?? 0)},
-                    { nameof(Profession.Inteligence), new StatisticCompare(profession?.Inteligence ?? 0, profession?.Inteligence ?? 0)},
-                    { nameof(Profession.Magic), new StatisticCompare(profession?.Magic ?? 0, profession?.Magic ?? 0)},
-                    { nameof(Profession.Polish), new StatisticCompare(profession?.Polish ?? 0, profession?.Polish ?? 0)},
-                    { nameof(Profession.Resistance), new StatisticCompare(profession?.Resistance ?? 0, profession?.Resistance ?? 0)},
-                    { nameof(Profession.Shooting), new StatisticCompare(profession?.Shooting ?? 0, profession?.Shooting ?? 0)},
-                    { nameof(Profession.Speed), new StatisticCompare(profession?.Speed ?? 0, profession?.Speed ?? 0)},
-                    { nameof(Profession.Stamina), new StatisticCompare(profession?.Stamina ?? 0, profession?.Stamina ?? 0)},
-                    { nameof(Profession.Willpower), new StatisticCompare(profession?.Willpower ?? 0, profession?.Willpower ?? 0)}
-                };
-
-        private void UpdateStatistics(IDictionary<string, StatisticCompare> values, Profession profession)
-        {
-            if (values.TryGetValue(nameof(Profession.CloseCombat), out StatisticCompare closeCombat) && closeCombat.NewValue < profession.CloseCombat)
-                values[nameof(Profession.CloseCombat)] = new StatisticCompare { OriginalValue = closeCombat.OriginalValue, NewValue = profession.CloseCombat };
-            if (values.TryGetValue(nameof(Profession.Agility), out StatisticCompare agility) && agility.NewValue < profession.Agility)
-                values[nameof(Profession.Agility)] = new StatisticCompare { OriginalValue = agility.OriginalValue, NewValue = profession.Agility };
-            if (values.TryGetValue(nameof(Profession.Attacks), out StatisticCompare attacks) && attacks.NewValue < profession.Attacks)
-                values[nameof(Profession.Attacks)] = new StatisticCompare { OriginalValue = attacks.OriginalValue, NewValue = profession.Attacks };
-            if (values.TryGetValue(nameof(Profession.Hitpoints), out StatisticCompare hitpoints) && hitpoints.NewValue < profession.Hitpoints)
-                values[nameof(Profession.Hitpoints)] = new StatisticCompare { OriginalValue = hitpoints.OriginalValue, NewValue = profession.Hitpoints };
-            if (values.TryGetValue(nameof(Profession.Inteligence), out StatisticCompare inteligence) && inteligence.NewValue < profession.Inteligence)
-                values[nameof(Profession.Inteligence)] = new StatisticCompare { OriginalValue = inteligence.OriginalValue, NewValue = profession.Inteligence };
-            if (values.TryGetValue(nameof(Profession.Magic), out StatisticCompare magic) && magic.NewValue < profession.Magic)
-                values[nameof(Profession.Magic)] = new StatisticCompare { OriginalValue = magic.OriginalValue, NewValue = profession.Magic };
-            if (values.TryGetValue(nameof(Profession.Polish), out StatisticCompare polish) && polish.NewValue < profession.Polish)
-                values[nameof(Profession.Polish)] = new StatisticCompare { OriginalValue = polish.OriginalValue, NewValue = profession.Polish };
-            if (values.TryGetValue(nameof(Profession.Resistance), out StatisticCompare resistance) && resistance.NewValue < profession.Resistance)
-                values[nameof(Profession.Resistance)] = new StatisticCompare { OriginalValue = resistance.OriginalValue, NewValue = profession.Resistance };
-            if (values.TryGetValue(nameof(Profession.Shooting), out StatisticCompare shooting) && shooting.NewValue < profession.Shooting)
-                values[nameof(Profession.Shooting)] = new StatisticCompare { OriginalValue = shooting.OriginalValue, NewValue = profession.Shooting };
-            if (values.TryGetValue(nameof(Profession.Speed), out StatisticCompare speed) && speed.NewValue < profession.Speed)
-                values[nameof(Profession.Speed)] = new StatisticCompare { OriginalValue = speed.OriginalValue, NewValue = profession.Speed };
-            if (values.TryGetValue(nameof(Profession.Stamina), out StatisticCompare stamina) && stamina.NewValue < profession.Stamina)
-                values[nameof(Profession.Stamina)] = new StatisticCompare { OriginalValue = stamina.OriginalValue, NewValue = profession.Stamina };
-            if (values.TryGetValue(nameof(Profession.Willpower), out StatisticCompare willpower) && willpower.NewValue < profession.Willpower)
-                values[nameof(Profession.Willpower)] = new StatisticCompare { OriginalValue = willpower.OriginalValue, NewValue = profession.Willpower };
-        }
-
         public async Task<ProfessionPathWrapperDto> GetProfessionsPaths(int startProfessionId, int targetProfessionId, byte mappingLevels,
             bool includeStartingProfession, bool includeEndingProfession, byte race)
         {
@@ -132,31 +57,12 @@ namespace WarhammerProfessionApp.Utility
             return result;
         }
 
-        /*
-        private IEnumerable<IEnumerable<IEnumerable<Profession>>> DivideList(List<IEnumerable<Profession>> values, int elementsPerList)
+        internal ProfessionCostManager(ProfessionsContext context)
         {
-            var result = new List<IEnumerable<IEnumerable<Profession>>>();
-
-            for (int i = 0; i < values.Count; i += elementsPerList)
-                result.Add(values.GetRange(i, Math.Min(elementsPerList, values.Count - i)));
-
-            return result;
+            this.context = context;
         }
-        */
 
-        private void CalculateProfessionResults(BlockingCollection<ProfessionPathDto> results, IEnumerable<IEnumerable<Profession>> values,
-            List<int> initialAbilitiesIds, List<int> initialSkillsIds, List<string> initialAbilitiesNames, List<string> initialSkillsNames,
-            IDictionary<string, StatisticCompare> initialStatistics, bool includeEndingProfession, int targetProfessionId, int startProfessionId)
-        {
-            var result = new List<ProfessionPathDto>();
-
-            foreach (var value in values)
-                result.Add(CalculateProfessionResult(value, initialAbilitiesIds, initialSkillsIds, initialAbilitiesNames, initialSkillsNames,
-                    initialStatistics, includeEndingProfession, targetProfessionId, startProfessionId));
-
-            foreach (var path in result)
-                results.Add(path);
-        }
+        private readonly ProfessionsContext context;
 
         private ProfessionPathDto CalculateProfessionResult(IEnumerable<Profession> value, List<int> initialAbilitiesIds, List<int> initialSkillsIds, List<string> initialAbilitiesNames,
             List<string> initialSkillsNames, IDictionary<string, StatisticCompare> initialStatistics, bool includeEndingProfession, int targetProfessionId, int startProfessionId)
@@ -276,23 +182,45 @@ namespace WarhammerProfessionApp.Utility
             return pathResult;
         }
 
+        private void CalculateProfessionResults(BlockingCollection<ProfessionPathDto> results, IEnumerable<IEnumerable<Profession>> values,
+            List<int> initialAbilitiesIds, List<int> initialSkillsIds, List<string> initialAbilitiesNames, List<string> initialSkillsNames,
+            IDictionary<string, StatisticCompare> initialStatistics, bool includeEndingProfession, int targetProfessionId, int startProfessionId)
+        {
+            var result = new List<ProfessionPathDto>();
+
+            foreach (var value in values)
+                result.Add(CalculateProfessionResult(value, initialAbilitiesIds, initialSkillsIds, initialAbilitiesNames, initialSkillsNames,
+                    initialStatistics, includeEndingProfession, targetProfessionId, startProfessionId));
+
+            foreach (var path in result)
+                results.Add(path);
+        }
+
         private Dictionary<string, byte> ConvertStatisticsToInt(IDictionary<string, StatisticCompare> initialStatistics)
             => initialStatistics.ToDictionary(a => a.Key, a => a.Value.NewValue > a.Value.OriginalValue ? a.Value.NewValue : a.Value.NewValue);
 
-        private void GetStartingSkills(Profession startingProfession, out List<int> ids, out List<string> names)
+        private bool FindProfessionPath(int startProfessionId, int targetProfessionId, byte race, byte mappingLevels, out IList<Queue<int>> result)
         {
-            if (startingProfession == null)
-            {
-                ids = new List<int>();
-                names = new List<string>();
-            }
-            else
-            {
-                var values = startingProfession.Skills.SelectMany(a => a.Skills.Select(b => new { b.SkillId, b.Skill.Name }));
+            var data = context.Set<Profession>().Include(a => a.OutputProfessions).Where(a => a.ProfessionRaceAllowed.HasFlag((Race)race))
+                .ToDictionary(a => a.Id, a => a.OutputProfessions.Select(b => b.OutputProfessionId).ToList());
 
-                ids = values.Select(a => a.SkillId).ToList();
-                names = values.Select(a => a.Name).ToList();
+            var startRecord = context.Set<Profession>().FirstOrDefault(a => a.Id == startProfessionId);
+            var endRecord = context.Set<Profession>().FirstOrDefault(a => a.Id == targetProfessionId);
+
+            var finder = new GraphFinder(data, mappingLevels);
+
+            try
+            {
+                result = finder.FindAllPaths(startRecord.Id, endRecord.Id);
             }
+            catch (Exception e)
+            {
+                result = null;
+
+                //Logowanie błędu
+            }
+
+            return result != null && result.Any();
         }
 
         private void GetStartingAbilities(Profession startingProfession, out List<int> ids, out List<string> names)
@@ -310,5 +238,77 @@ namespace WarhammerProfessionApp.Utility
                 names = values.Select(a => a.Name).ToList();
             }
         }
+
+        private void GetStartingSkills(Profession startingProfession, out List<int> ids, out List<string> names)
+        {
+            if (startingProfession == null)
+            {
+                ids = new List<int>();
+                names = new List<string>();
+            }
+            else
+            {
+                var values = startingProfession.Skills.SelectMany(a => a.Skills.Select(b => new { b.SkillId, b.Skill.Name }));
+
+                ids = values.Select(a => a.SkillId).ToList();
+                names = values.Select(a => a.Name).ToList();
+            }
+        }
+
+        private IDictionary<string, StatisticCompare> GetStartingStatistics(Profession profession) => new Dictionary<string, StatisticCompare>
+                {
+                    { nameof(Profession.CloseCombat), new StatisticCompare(profession?.CloseCombat ?? 0, profession?.CloseCombat ?? 0)},
+                    { nameof(Profession.Agility), new StatisticCompare(profession?.Agility ?? 0, profession?.Agility ?? 0) },
+                    { nameof(Profession.Attacks), new StatisticCompare(profession?.Attacks ?? 0, profession?.Attacks ?? 0)},
+                    { nameof(Profession.Hitpoints), new StatisticCompare(profession?.Hitpoints ?? 0, profession?.Hitpoints ?? 0)},
+                    { nameof(Profession.Inteligence), new StatisticCompare(profession?.Inteligence ?? 0, profession?.Inteligence ?? 0)},
+                    { nameof(Profession.Magic), new StatisticCompare(profession?.Magic ?? 0, profession?.Magic ?? 0)},
+                    { nameof(Profession.Polish), new StatisticCompare(profession?.Polish ?? 0, profession?.Polish ?? 0)},
+                    { nameof(Profession.Resistance), new StatisticCompare(profession?.Resistance ?? 0, profession?.Resistance ?? 0)},
+                    { nameof(Profession.Shooting), new StatisticCompare(profession?.Shooting ?? 0, profession?.Shooting ?? 0)},
+                    { nameof(Profession.Speed), new StatisticCompare(profession?.Speed ?? 0, profession?.Speed ?? 0)},
+                    { nameof(Profession.Stamina), new StatisticCompare(profession?.Stamina ?? 0, profession?.Stamina ?? 0)},
+                    { nameof(Profession.Willpower), new StatisticCompare(profession?.Willpower ?? 0, profession?.Willpower ?? 0)}
+                };
+
+        private void UpdateStatistics(IDictionary<string, StatisticCompare> values, Profession profession)
+        {
+            if (values.TryGetValue(nameof(Profession.CloseCombat), out StatisticCompare closeCombat) && closeCombat.NewValue < profession.CloseCombat)
+                values[nameof(Profession.CloseCombat)] = new StatisticCompare { OriginalValue = closeCombat.OriginalValue, NewValue = profession.CloseCombat };
+            if (values.TryGetValue(nameof(Profession.Agility), out StatisticCompare agility) && agility.NewValue < profession.Agility)
+                values[nameof(Profession.Agility)] = new StatisticCompare { OriginalValue = agility.OriginalValue, NewValue = profession.Agility };
+            if (values.TryGetValue(nameof(Profession.Attacks), out StatisticCompare attacks) && attacks.NewValue < profession.Attacks)
+                values[nameof(Profession.Attacks)] = new StatisticCompare { OriginalValue = attacks.OriginalValue, NewValue = profession.Attacks };
+            if (values.TryGetValue(nameof(Profession.Hitpoints), out StatisticCompare hitpoints) && hitpoints.NewValue < profession.Hitpoints)
+                values[nameof(Profession.Hitpoints)] = new StatisticCompare { OriginalValue = hitpoints.OriginalValue, NewValue = profession.Hitpoints };
+            if (values.TryGetValue(nameof(Profession.Inteligence), out StatisticCompare inteligence) && inteligence.NewValue < profession.Inteligence)
+                values[nameof(Profession.Inteligence)] = new StatisticCompare { OriginalValue = inteligence.OriginalValue, NewValue = profession.Inteligence };
+            if (values.TryGetValue(nameof(Profession.Magic), out StatisticCompare magic) && magic.NewValue < profession.Magic)
+                values[nameof(Profession.Magic)] = new StatisticCompare { OriginalValue = magic.OriginalValue, NewValue = profession.Magic };
+            if (values.TryGetValue(nameof(Profession.Polish), out StatisticCompare polish) && polish.NewValue < profession.Polish)
+                values[nameof(Profession.Polish)] = new StatisticCompare { OriginalValue = polish.OriginalValue, NewValue = profession.Polish };
+            if (values.TryGetValue(nameof(Profession.Resistance), out StatisticCompare resistance) && resistance.NewValue < profession.Resistance)
+                values[nameof(Profession.Resistance)] = new StatisticCompare { OriginalValue = resistance.OriginalValue, NewValue = profession.Resistance };
+            if (values.TryGetValue(nameof(Profession.Shooting), out StatisticCompare shooting) && shooting.NewValue < profession.Shooting)
+                values[nameof(Profession.Shooting)] = new StatisticCompare { OriginalValue = shooting.OriginalValue, NewValue = profession.Shooting };
+            if (values.TryGetValue(nameof(Profession.Speed), out StatisticCompare speed) && speed.NewValue < profession.Speed)
+                values[nameof(Profession.Speed)] = new StatisticCompare { OriginalValue = speed.OriginalValue, NewValue = profession.Speed };
+            if (values.TryGetValue(nameof(Profession.Stamina), out StatisticCompare stamina) && stamina.NewValue < profession.Stamina)
+                values[nameof(Profession.Stamina)] = new StatisticCompare { OriginalValue = stamina.OriginalValue, NewValue = profession.Stamina };
+            if (values.TryGetValue(nameof(Profession.Willpower), out StatisticCompare willpower) && willpower.NewValue < profession.Willpower)
+                values[nameof(Profession.Willpower)] = new StatisticCompare { OriginalValue = willpower.OriginalValue, NewValue = profession.Willpower };
+        }
+
+        /*
+        private IEnumerable<IEnumerable<IEnumerable<Profession>>> DivideList(List<IEnumerable<Profession>> values, int elementsPerList)
+        {
+            var result = new List<IEnumerable<IEnumerable<Profession>>>();
+
+            for (int i = 0; i < values.Count; i += elementsPerList)
+                result.Add(values.GetRange(i, Math.Min(elementsPerList, values.Count - i)));
+
+            return result;
+        }
+        */
     }
 }

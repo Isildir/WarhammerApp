@@ -4,6 +4,13 @@ namespace WarhammerProfessionApp.Migrations
 {
     public partial class QuantityForCharacterItemsTable : Migration
     {
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropColumn(
+                name: "Quantity",
+                table: "CharacterItem");
+        }
+
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<int>(
@@ -11,13 +18,6 @@ namespace WarhammerProfessionApp.Migrations
                 table: "CharacterItem",
                 nullable: false,
                 defaultValue: 0);
-        }
-
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.DropColumn(
-                name: "Quantity",
-                table: "CharacterItem");
         }
     }
 }

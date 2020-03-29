@@ -7,6 +7,10 @@ namespace WarhammerProfessionApp.Entities.Models
 {
     public class Item
     {
+        public List<CharacterItem> Characters { get; set; }
+
+        public string Description { get; set; }
+
         [Key]
         public int Id { get; set; }
 
@@ -24,9 +28,5 @@ namespace WarhammerProfessionApp.Entities.Models
         public ItemRarity Rarity { get; set; }
 
         public int Weigth { get; set; }
-
-        public string Description { get; set; }
-
-        public List<CharacterItem> Characters { get; set; }
     }
 }
