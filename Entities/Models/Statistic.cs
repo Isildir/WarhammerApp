@@ -13,10 +13,10 @@ namespace WarhammerProfessionApp.Entities.Models
 
         public bool IsBasicValue { get; set; }
 
-        public bool IsChangeFree { get; set; }
+        public bool IsCalculatedValue { get; set; }
+
+        public bool IsReadOnly { get; set; }
 
         public StatisticType Type { get; set; }
-
-        public bool ValueIsCalculated { get; set; }
     }
 }

@@ -160,7 +160,7 @@ namespace WarhammerProfessionApp.Controllers
         }
 
         [HttpPost(nameof(ChangeBaseStatisticValue))]
-        public ActionResult<CharacterChangeResponseDto> ChangeBaseStatisticValue([FromBody] StatiticValueChangeDto value)
+        public ActionResult<CharacterChangeResponseDto> ChangeBaseStatisticValue([FromBody] BaseStatiticValueChangeDto value)
         {
             var userId = GetUserId();
 
@@ -228,7 +228,7 @@ namespace WarhammerProfessionApp.Controllers
             return Ok(false);
         }
 
-        [HttpPost(nameof(ChangeStatisticValue))]
+        [HttpPost(nameof(ChangeCharacterNotes))]
         public ActionResult<bool> ChangeCharacterNotes([FromBody] string value)
         {
             var userId = GetUserId();
@@ -257,33 +257,25 @@ namespace WarhammerProfessionApp.Controllers
 
             var characterStatistic = character.Statistics.FirstOrDefault(a => a.Statistic.Type == value.Type);
 
-            if (characterStatistic.Statistic.ValueIsCalculated)
+            if (characterStatistic.Statistic.IsCalculatedValue)
                 return BadRequest();
 
-            if (value.Value == characterStatistic.CurrentValue)
-                return Ok();
+            var incrementValue = characterStatistic.Statistic.IsBasicValue ? 5 : 1;
 
-            if (characterStatistic.Statistic.IsChangeFree)
-                characterStatistic.CurrentValue = value.Value;
+            if (value.IncrementingValue)
+            {
+                var maximumValue = GetStatisticMaximumValue(characterStatistic.Statistic.Type, character, out int _, out Dictionary<string, int> _);
+
+                if (!CheckCharacterExperienceLimit(character, 100) || characterStatistic.CurrentValue + incrementValue > maximumValue)
+                    return BadRequest();
+
+                character.ExperienceUsed += 100;
+                characterStatistic.CurrentValue += incrementValue;
+            }
             else
             {
-                var incrementValue = characterStatistic.Statistic.IsBasicValue ? 5 : 1;
-
-                if (value.Value > characterStatistic.CurrentValue)
-                {
-                    var maximumValue = GetStatisticMaximumValue(characterStatistic.Statistic.Type, character, out int _, out Dictionary<string, int> _);
-
-                    if (!CheckCharacterExperienceLimit(character, 100) || characterStatistic.CurrentValue + incrementValue > maximumValue)
-                        return BadRequest();
-
-                    character.ExperienceUsed += 100;
-                    characterStatistic.CurrentValue += incrementValue;
-                }
-                else
-                {
-                    character.ExperienceUsed -= 100;
-                    characterStatistic.CurrentValue -= incrementValue;
-                }
+                character.ExperienceUsed -= 100;
+                characterStatistic.CurrentValue -= incrementValue;
             }
 
             context.SaveChanges();
@@ -323,6 +315,7 @@ namespace WarhammerProfessionApp.Controllers
                 ExperienceSum = character.ExperienceSummary,
                 Name = character.Name,
                 Notes = character.Notes,
+                CurrentLoad = 100,
                 Race = character.Race != null ? new RaceDto
                 {
                     Id = (int)character.Race,
@@ -381,15 +374,23 @@ namespace WarhammerProfessionApp.Controllers
                 {
                     Type = value.Statistic.Type,
                     Name = EnumTranslator.TranslateStaticticValue(value.Statistic.Type),
-                    IsReadOnly = value.Statistic.ValueIsCalculated,
-                    IsFreeToChangeValue = value.Statistic.IsChangeFree,
-                    CanBeDecreased = value.CurrentValue > value.BaseValue + staticValues,
-                    CanBeIncreased = value.CurrentValue < maximumValue,
+                    IsReadOnly = value.Statistic.IsReadOnly,
                     BaseValue = value.BaseValue,
                     CurrentValue = value.CurrentValue,
                     MaximumValue = maximumValue,
                     Details = $"Bazowe {value.BaseValue}",
                 };
+
+                if (value.Statistic.IsCalculatedValue)
+                {
+                    result.CanBeDecreased = false;
+                    result.CanBeIncreased = false;
+                }
+                else
+                {
+                    result.CanBeDecreased = value.CurrentValue > value.BaseValue + staticValues;
+                    result.CanBeIncreased = value.CurrentValue < maximumValue;
+                }
 
                 if (character.Professions.Any())
                     result.Details += $" + {professionValue} z rozwoju";
@@ -430,12 +431,12 @@ namespace WarhammerProfessionApp.Controllers
                 .FirstOrDefault(a => a.UserId == userId);
 
             var availableAbilities = character.Professions.SelectMany(a => a.Profession.Abilities.SelectMany(b => b.Abilities.Select(c => c.Ability))).ToList();
-            var availableAbilitiesIds = availableAbilities.Select(c => c.Id).ToList();
+            var availableAbilitiesIds = availableAbilities.Select(c => c.Id).Distinct().ToList();
             var takenAbilitiesIds = character.Abilities.Select(a => a.AbilityId).ToList();
 
             var filteredAbilitiesIds = availableAbilitiesIds.Where(a => !takenAbilitiesIds.Contains(a)).ToList();
 
-            var values = availableAbilities.Where(a => filteredAbilitiesIds.Contains(a.Id)).Select(a => new AbilityDto
+            var values = filteredAbilitiesIds.Select(a => availableAbilities.FirstOrDefault(b => b.Id == a)).Select(a => new AbilityDto
             {
                 Id = a.Id,
                 Name = a.Name
@@ -471,7 +472,13 @@ namespace WarhammerProfessionApp.Controllers
 
             var character = context.Characters
                 .Include(a => a.Professions)
+                .Include(a => a.Statistics).ThenInclude(a => a.Statistic)
+                .Include(a => a.Professions).ThenInclude(a => a.Profession).ThenInclude(a => a.Skills).ThenInclude(a => a.Skills)
+                .Include(a => a.Professions).ThenInclude(a => a.Profession).ThenInclude(a => a.Abilities).ThenInclude(a => a.Abilities)
                 .FirstOrDefault(a => a.UserId == userId);
+
+            if (!CheckIfProfessionsAreFinished(character))
+                return Ok();
 
             var characterProfessions = character.Professions.Select(a => a.ProfessionId).ToList();
 
@@ -479,6 +486,8 @@ namespace WarhammerProfessionApp.Controllers
 
             if (character.CurrentProfessionId.HasValue)
                 values = values.Where(a => a.EntranceProfessions.Any(b => b.EntranceProfessionId == character.CurrentProfessionId.Value));
+            else
+                values = values.Where(a => a.ProfessionLevel == ProfessionLevel.Basic);
 
             return Ok(values.Select(a => new ShortProfessionDto { Id = a.Id, Name = a.Name }).ToList());
         }
@@ -498,12 +507,12 @@ namespace WarhammerProfessionApp.Controllers
                 .FirstOrDefault(a => a.UserId == userId);
 
             var availableSkills = character.Professions.SelectMany(a => a.Profession.Skills.SelectMany(b => b.Skills.Select(c => c.Skill))).ToList();
-            var availableSkillsIds = availableSkills.Select(c => c.Id).ToList();
+            var availableSkillsIds = availableSkills.Select(c => c.Id).Distinct().ToList();
             var takenSkillsIds = character.Skills.Select(a => a.SkillId).ToList();
 
             var filteredSkillsIds = availableSkillsIds.Where(a => !takenSkillsIds.Contains(a)).ToList();
 
-            var values = availableSkills.Where(a => filteredSkillsIds.Contains(a.Id)).Select(a => new SkillDto
+            var values = filteredSkillsIds.Select(a => availableSkills.First(b => b.Id == a)).Select(a => new SkillDto
             {
                 Id = a.Id,
                 Name = a.Name
@@ -767,7 +776,15 @@ namespace WarhammerProfessionApp.Controllers
             character.Professions.Remove(professionToRemove);
 
             if (character.CurrentProfessionId.HasValue && character.CurrentProfessionId.Value == professionToRemove.ProfessionId)
+            {
+                var targetProfession = context.Professions
+                    .Include(a => a.Skills)
+                    .Include(a => a.Abilities)
+                    .FirstOrDefault(a => a.Id == professionToRemove.ProfessionId);
+
                 character.CurrentProfessionId = null;
+                character.ExperienceSummary -= targetProfession.Skills.Sum(a => a.Quantity * 100) + targetProfession.Abilities.Sum(a => a.Quantity * 100);
+            }
 
             if (maxProfessionOrder > 1)
                 character.ExperienceUsed -= 100;
@@ -809,7 +826,11 @@ namespace WarhammerProfessionApp.Controllers
             if (character == null)
                 return NotFound();
 
-            var targetProfession = context.Professions.Include(a => a.EntranceProfessions).FirstOrDefault(a => a.Id == id);
+            var targetProfession = context.Professions
+                .Include(a => a.EntranceProfessions)
+                .Include(a => a.Skills)
+                .Include(a => a.Abilities)
+                .FirstOrDefault(a => a.Id == id);
 
             if (targetProfession == null || character.Professions.Any(a => a.ProfessionId == id))
                 return BadRequest();
@@ -821,6 +842,8 @@ namespace WarhammerProfessionApp.Controllers
 
             if (character.CurrentProfessionId.HasValue)
                 character.ExperienceUsed += 100;
+            else
+                character.ExperienceSummary += targetProfession.Skills.Sum(a => a.Quantity * 100) + targetProfession.Abilities.Sum(a => a.Quantity * 100);
 
             character.CurrentProfessionId = id;
             character.Professions.Add(new CharacterProfession
@@ -841,6 +864,29 @@ namespace WarhammerProfessionApp.Controllers
         private readonly int silverValue = 12;
 
         private bool CheckCharacterExperienceLimit(Character character, int value) => character.ExperienceSummary - character.ExperienceUsed >= value;
+
+        private bool CheckIfProfessionsAreFinished(Character character)
+        {
+            var allCharacterSkillsIds = character.Skills.Select(a => a.SkillId).ToList();
+            var allCharacterAbilitiesIds = character.Abilities.Select(a => a.AbilityId).ToList();
+
+            var skillsCondition = character.Professions.SelectMany(a => a.Profession.Skills).All(a => a.Skills.Count(b => allCharacterSkillsIds.Contains(b.SkillId)) >= a.Quantity);
+            var abilityCondition = character.Professions.SelectMany(a => a.Profession.Abilities).All(a => a.Abilities.Count(b => allCharacterAbilitiesIds.Contains(b.AbilityId)) >= a.Quantity);
+            var statisticsCondition = true;
+
+            foreach (var value in character.Statistics)
+            {
+                var maximumValue = GetStatisticMaximumValue(value.Statistic.Type, character, out int professionValue, out Dictionary<string, int> abilitiesValues);
+
+                if (value.CurrentValue != maximumValue)
+                {
+                    statisticsCondition = false;
+                    break;
+                }
+            }
+
+            return skillsCondition && abilityCondition && statisticsCondition;
+        }
 
         private MoneyDto ConvertMoney(int value)
         {

@@ -2,10 +2,10 @@
 
 namespace WarhammerProfessionApp.Dtos
 {
-    public class StatiticValueChangeDto
+    public class BaseStatiticValueChangeDto
     {
-        public bool IncrementingValue { get; set; }
-
         public StatisticType Type { get; set; }
+
+        public int Value { get; set; }
     }
 }

@@ -4566,23 +4566,23 @@ namespace WarhammerProfessionApp.Entities
 
             var statisticsDataSet = new List<Statistic>
             {
-                new Statistic{ Type = StatisticType.CloseCombat, IsBasicValue = true, IsChangeFree = false, ValueIsCalculated = false },
-                new Statistic{ Type = StatisticType.Shooting, IsBasicValue = true, IsChangeFree = false, ValueIsCalculated = false },
-                new Statistic{ Type = StatisticType.Stamina, IsBasicValue = true, IsChangeFree = false, ValueIsCalculated = false },
-                new Statistic{ Type = StatisticType.Resistance, IsBasicValue = true, IsChangeFree = false, ValueIsCalculated = false },
-                new Statistic{ Type = StatisticType.Agility, IsBasicValue = true, IsChangeFree = false, ValueIsCalculated = false },
-                new Statistic{ Type = StatisticType.Inteligence, IsBasicValue = true, IsChangeFree = false, ValueIsCalculated = false },
-                new Statistic{ Type = StatisticType.Willpower, IsBasicValue = true, IsChangeFree = false, ValueIsCalculated = false },
-                new Statistic{ Type = StatisticType.Polish, IsBasicValue = true, IsChangeFree = false, ValueIsCalculated = false },
+                new Statistic{ Type = StatisticType.CloseCombat, IsBasicValue = true, IsReadOnly = false, IsCalculatedValue = false },
+                new Statistic{ Type = StatisticType.Shooting, IsBasicValue = true, IsReadOnly = false, IsCalculatedValue = false },
+                new Statistic{ Type = StatisticType.Stamina, IsBasicValue = true, IsReadOnly = false, IsCalculatedValue = false },
+                new Statistic{ Type = StatisticType.Resistance, IsBasicValue = true, IsReadOnly = false, IsCalculatedValue = false },
+                new Statistic{ Type = StatisticType.Agility, IsBasicValue = true, IsReadOnly = false, IsCalculatedValue = false },
+                new Statistic{ Type = StatisticType.Inteligence, IsBasicValue = true, IsReadOnly = false, IsCalculatedValue = false },
+                new Statistic{ Type = StatisticType.Willpower, IsBasicValue = true, IsReadOnly = false, IsCalculatedValue = false },
+                new Statistic{ Type = StatisticType.Polish, IsBasicValue = true, IsReadOnly = false, IsCalculatedValue = false },
 
-                new Statistic{ Type = StatisticType.Attacks, IsBasicValue = false, IsChangeFree = false, ValueIsCalculated = false },
-                new Statistic{ Type = StatisticType.Hitpoints, IsBasicValue = false, IsChangeFree = false, ValueIsCalculated = false },
-                new Statistic{ Type = StatisticType.Strength, IsBasicValue = false, IsChangeFree = false, ValueIsCalculated = true },
-                new Statistic{ Type = StatisticType.Hardness, IsBasicValue = false, IsChangeFree = false, ValueIsCalculated = true },
-                new Statistic{ Type = StatisticType.Speed, IsBasicValue = false, IsChangeFree = false, ValueIsCalculated = false },
-                new Statistic{ Type = StatisticType.Magic, IsBasicValue = false, IsChangeFree = false, ValueIsCalculated = false },
-                new Statistic{ Type = StatisticType.Insanity, IsBasicValue = false, IsChangeFree = true, ValueIsCalculated = false },
-                new Statistic{ Type = StatisticType.Destiny, IsBasicValue = false, IsChangeFree = true, ValueIsCalculated = false },
+                new Statistic{ Type = StatisticType.Attacks, IsBasicValue = false, IsReadOnly = false, IsCalculatedValue = false },
+                new Statistic{ Type = StatisticType.Hitpoints, IsBasicValue = false, IsReadOnly = false, IsCalculatedValue = false },
+                new Statistic{ Type = StatisticType.Strength, IsBasicValue = false, IsReadOnly = true, IsCalculatedValue = true },
+                new Statistic{ Type = StatisticType.Hardness, IsBasicValue = false, IsReadOnly = true, IsCalculatedValue = true },
+                new Statistic{ Type = StatisticType.Speed, IsBasicValue = false, IsReadOnly = true, IsCalculatedValue = false },
+                new Statistic{ Type = StatisticType.Magic, IsBasicValue = false, IsReadOnly = true, IsCalculatedValue = false },
+                new Statistic{ Type = StatisticType.Insanity, IsBasicValue = false, IsReadOnly = false, IsCalculatedValue = true },
+                new Statistic{ Type = StatisticType.Destiny, IsBasicValue = false, IsReadOnly = false, IsCalculatedValue = true },
             };
 
             var professionBuildersResult = new List<ProfessionBuilder>
