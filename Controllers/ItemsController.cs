@@ -2,11 +2,11 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using WarhammerProfessionApp.Dtos;
 using WarhammerProfessionApp.Entities;
 using WarhammerProfessionApp.Entities.Models;
+using WarhammerProfessionApp.Utility;
 
 namespace WarhammerProfessionApp.Controllers
 {
@@ -42,14 +42,17 @@ namespace WarhammerProfessionApp.Controllers
             if (item == null)
                 return NotFound();
 
+            var money = MoneyCalculator.ConvertMoney(item.Price);
+
             return new ItemDto
             {
                 Id = item.Id,
                 Name = item.Name,
                 Description = item.Description,
                 ItemType = item.ItemType.ToString(),
-                MoneyType = item.MoneyType.ToString(),
-                Price = item.Price,
+                Gold = money.Gold,
+                Silver = money.Silver,
+                Bronze = money.Bronze,
                 Rarity = item.Rarity.ToString(),
                 Weigth = item.Weigth
             };
@@ -60,17 +63,29 @@ namespace WarhammerProfessionApp.Controllers
         {
             var entities = await context.Set<Item>().ToListAsync();
 
-            return Ok(entities.Select(a => new ItemDto
+            var result = new List<ItemDto>();
+
+            foreach (var item in entities)
             {
-                Id = a.Id,
-                Name = a.Name,
-                Description = a.Description,
-                ItemType = a.ItemType.ToString(),
-                MoneyType = a.MoneyType.ToString(),
-                Price = a.Price,
-                Rarity = a.Rarity.ToString(),
-                Weigth = a.Weigth
-            }));
+                var money = MoneyCalculator.ConvertMoney(item.Price);
+
+                var record = new ItemDto
+                {
+                    Id = item.Id,
+                    Name = item.Name,
+                    Description = item.Description,
+                    ItemType = item.ItemType.ToString(),
+                    Gold = money.Gold,
+                    Silver = money.Silver,
+                    Bronze = money.Bronze,
+                    Rarity = item.Rarity.ToString(),
+                    Weigth = item.Weigth
+                };
+
+                result.Add(record);
+            }
+
+            return Ok(result);
         }
 
         [HttpPost]

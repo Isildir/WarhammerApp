@@ -6,13 +6,22 @@ namespace WarhammerProfessionApp.Entities.Models
 {
     public class Character
     {
+        public Character()
+        {
+            Abilities = new List<CharacterAbility>();
+            AdditionalExcerienceCostValues = new List<ExperienceAdditionalCharacterValue>();
+            AdditionalValues = new List<AdditionalCharacterValue>();
+            Professions = new List<CharacterProfession>();
+            Items = new List<CharacterItem>();
+            Skills = new List<CharacterSkill>();
+            Statistics = new List<CharacterStatistic>();
+        }
+
         public List<CharacterAbility> Abilities { get; set; }
 
         public List<ExperienceAdditionalCharacterValue> AdditionalExcerienceCostValues { get; set; }
 
         public List<AdditionalCharacterValue> AdditionalValues { get; set; }
-
-        public int Bronze { get; set; }
 
         public Profession CurrentProfession { get; set; }
 
@@ -22,12 +31,12 @@ namespace WarhammerProfessionApp.Entities.Models
 
         public int ExperienceUsed { get; set; }
 
-        public int Gold { get; set; }
-
         [Key]
         public int Id { get; set; }
 
         public List<CharacterItem> Items { get; set; }
+
+        public int Money { get; set; }
 
         public string Name { get; set; }
 
@@ -36,8 +45,6 @@ namespace WarhammerProfessionApp.Entities.Models
         public List<CharacterProfession> Professions { get; set; }
 
         public Race? Race { get; set; }
-
-        public int Silver { get; set; }
 
         public List<CharacterSkill> Skills { get; set; }
 

@@ -85,7 +85,6 @@ namespace WarhammerProfessionApp.Entities.Models.Utility
                 {
                     ProfessionItems = wrapper,
                     Item = item.Item,
-                    Quality = item.Quality,
                     Quantity = item.Quantity
                 });
 

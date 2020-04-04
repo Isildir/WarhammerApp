@@ -607,12 +607,6 @@ namespace WarhammerProfessionApp.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("Bronze")
-                        .HasColumnType("int");
-
-                    b.Property<int>("CurrentLoad")
-                        .HasColumnType("int");
-
                     b.Property<int?>("CurrentProfessionId")
                         .HasColumnType("int");
 
@@ -622,7 +616,7 @@ namespace WarhammerProfessionApp.Migrations
                     b.Property<int>("ExperienceUsed")
                         .HasColumnType("int");
 
-                    b.Property<int>("Gold")
+                    b.Property<int>("Money")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
@@ -633,9 +627,6 @@ namespace WarhammerProfessionApp.Migrations
 
                     b.Property<byte?>("Race")
                         .HasColumnType("tinyint");
-
-                    b.Property<int>("Silver")
-                        .HasColumnType("int");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
@@ -707,6 +698,9 @@ namespace WarhammerProfessionApp.Migrations
 
                     b.Property<int>("SkillId")
                         .HasColumnType("int");
+
+                    b.Property<byte>("Level")
+                        .HasColumnType("tinyint");
 
                     b.HasKey("CharacterId", "SkillId");
 
@@ -796,9 +790,6 @@ namespace WarhammerProfessionApp.Migrations
                     b.Property<byte>("ItemType")
                         .HasColumnType("tinyint");
 
-                    b.Property<byte>("MoneyType")
-                        .HasColumnType("tinyint");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(50)")
@@ -822,9 +813,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 1,
                             ItemType = (byte)1,
-                            MoneyType = (byte)1,
                             Name = "Halabarda",
-                            Price = 15,
+                            Price = 3600,
                             Rarity = (byte)5,
                             Weigth = 175
                         },
@@ -832,9 +822,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 2,
                             ItemType = (byte)1,
-                            MoneyType = (byte)2,
                             Name = "Kij",
-                            Price = 3,
+                            Price = 36,
                             Rarity = (byte)6,
                             Weigth = 50
                         },
@@ -842,9 +831,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 3,
                             ItemType = (byte)1,
-                            MoneyType = (byte)1,
                             Name = "Kopia",
-                            Price = 15,
+                            Price = 3600,
                             Rarity = (byte)2,
                             Weigth = 100
                         },
@@ -852,9 +840,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 4,
                             ItemType = (byte)1,
-                            MoneyType = (byte)1,
                             Name = "Korbacz",
-                            Price = 15,
+                            Price = 3600,
                             Rarity = (byte)3,
                             Weigth = 95
                         },
@@ -862,9 +849,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 5,
                             ItemType = (byte)1,
-                            MoneyType = (byte)1,
                             Name = "Lanca",
-                            Price = 20,
+                            Price = 4800,
                             Rarity = (byte)3,
                             Weigth = 75
                         },
@@ -872,9 +858,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 6,
                             ItemType = (byte)1,
-                            MoneyType = (byte)1,
                             Name = "Lewak",
-                            Price = 2,
+                            Price = 480,
                             Rarity = (byte)3,
                             Weigth = 10
                         },
@@ -882,9 +867,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 7,
                             ItemType = (byte)1,
-                            MoneyType = (byte)1,
                             Name = "Łamacz mieczy",
-                            Price = 5,
+                            Price = 1200,
                             Rarity = (byte)3,
                             Weigth = 40
                         },
@@ -892,9 +876,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 8,
                             ItemType = (byte)1,
-                            MoneyType = (byte)1,
                             Name = "Morgensztern",
-                            Price = 15,
+                            Price = 3600,
                             Rarity = (byte)3,
                             Weigth = 60
                         },
@@ -902,9 +885,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 9,
                             ItemType = (byte)1,
-                            MoneyType = (byte)1,
                             Name = "Puklerz",
-                            Price = 4,
+                            Price = 960,
                             Rarity = (byte)4,
                             Weigth = 15
                         },
@@ -912,9 +894,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 10,
                             ItemType = (byte)1,
-                            MoneyType = (byte)1,
                             Name = "Rapier",
-                            Price = 18,
+                            Price = 4320,
                             Rarity = (byte)3,
                             Weigth = 40
                         },
@@ -922,9 +903,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 11,
                             ItemType = (byte)1,
-                            MoneyType = (byte)1,
                             Name = "Rękawica/kastet",
-                            Price = 1,
+                            Price = 240,
                             Rarity = (byte)5,
                             Weigth = 1
                         },
@@ -932,9 +912,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 12,
                             ItemType = (byte)1,
-                            MoneyType = (byte)1,
                             Name = "Szpada",
-                            Price = 18,
+                            Price = 4320,
                             Rarity = (byte)2,
                             Weigth = 40
                         },
@@ -942,9 +921,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 13,
                             ItemType = (byte)1,
-                            MoneyType = (byte)1,
                             Name = "Sztylet",
-                            Price = 1,
+                            Price = 240,
                             Rarity = (byte)5,
                             Weigth = 10
                         },
@@ -952,9 +930,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 14,
                             ItemType = (byte)1,
-                            MoneyType = (byte)1,
                             Name = "Tarcza",
-                            Price = 10,
+                            Price = 2400,
                             Rarity = (byte)5,
                             Weigth = 50
                         },
@@ -962,9 +939,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 15,
                             ItemType = (byte)1,
-                            MoneyType = (byte)1,
                             Name = "Włócznia",
-                            Price = 10,
+                            Price = 2400,
                             Rarity = (byte)5,
                             Weigth = 50
                         },
@@ -972,7 +948,6 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 16,
                             ItemType = (byte)1,
-                            MoneyType = (byte)1,
                             Name = "Bron dwureczna",
                             Price = 0,
                             Rarity = (byte)7,
@@ -982,9 +957,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 17,
                             ItemType = (byte)2,
-                            MoneyType = (byte)1,
                             Name = "Arkan",
-                            Price = 1,
+                            Price = 240,
                             Rarity = (byte)6,
                             Weigth = 10
                         },
@@ -992,9 +966,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 18,
                             ItemType = (byte)2,
-                            MoneyType = (byte)1,
                             Name = "Bicz",
-                            Price = 2,
+                            Price = 480,
                             Rarity = (byte)4,
                             Weigth = 40
                         },
@@ -1002,9 +975,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 19,
                             ItemType = (byte)2,
-                            MoneyType = (byte)2,
                             Name = "Bolas",
-                            Price = 7,
+                            Price = 84,
                             Rarity = (byte)3,
                             Weigth = 20
                         },
@@ -1012,9 +984,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 20,
                             ItemType = (byte)2,
-                            MoneyType = (byte)1,
                             Name = "Długi łuk",
-                            Price = 15,
+                            Price = 3600,
                             Rarity = (byte)4,
                             Weigth = 90
                         },
@@ -1022,9 +993,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 21,
                             ItemType = (byte)2,
-                            MoneyType = (byte)1,
                             Name = "Elfi łuk",
-                            Price = 70,
+                            Price = 16800,
                             Rarity = (byte)1,
                             Weigth = 75
                         },
@@ -1032,9 +1002,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 22,
                             ItemType = (byte)2,
-                            MoneyType = (byte)1,
                             Name = "Garłacz",
-                            Price = 70,
+                            Price = 16800,
                             Rarity = (byte)1,
                             Weigth = 50
                         },
@@ -1042,9 +1011,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 23,
                             ItemType = (byte)2,
-                            MoneyType = (byte)1,
                             Name = "Krótki łuk",
-                            Price = 7,
+                            Price = 16800,
                             Rarity = (byte)5,
                             Weigth = 75
                         },
@@ -1052,9 +1020,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 24,
                             ItemType = (byte)2,
-                            MoneyType = (byte)1,
                             Name = "Kusza pistoletowa",
-                            Price = 35,
+                            Price = 8400,
                             Rarity = (byte)2,
                             Weigth = 25
                         },
@@ -1062,9 +1029,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 25,
                             ItemType = (byte)2,
-                            MoneyType = (byte)1,
                             Name = "Kusza samopowtarzalna",
-                            Price = 100,
+                            Price = 24000,
                             Rarity = (byte)1,
                             Weigth = 150
                         },
@@ -1072,9 +1038,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 26,
                             ItemType = (byte)2,
-                            MoneyType = (byte)1,
                             Name = "Kusza",
-                            Price = 25,
+                            Price = 6000,
                             Rarity = (byte)4,
                             Weigth = 120
                         },
@@ -1082,9 +1047,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 27,
                             ItemType = (byte)2,
-                            MoneyType = (byte)1,
                             Name = "Łuk",
-                            Price = 10,
+                            Price = 2400,
                             Rarity = (byte)5,
                             Weigth = 80
                         },
@@ -1092,9 +1056,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 28,
                             ItemType = (byte)2,
-                            MoneyType = (byte)1,
                             Name = "Muszkiet hochlandzki",
-                            Price = 450,
+                            Price = 108000,
                             Rarity = (byte)1,
                             Weigth = 70
                         },
@@ -1102,9 +1065,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 29,
                             ItemType = (byte)2,
-                            MoneyType = (byte)1,
                             Name = "Nóź/gwiazdka do rzucania",
-                            Price = 3,
+                            Price = 720,
                             Rarity = (byte)5,
                             Weigth = 10
                         },
@@ -1112,9 +1074,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 30,
                             ItemType = (byte)2,
-                            MoneyType = (byte)2,
                             Name = "Oszczep",
-                            Price = 25,
+                            Price = 300,
                             Rarity = (byte)4,
                             Weigth = 50
                         },
@@ -1122,9 +1083,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 31,
                             ItemType = (byte)2,
-                            MoneyType = (byte)1,
                             Name = "Pistolet",
-                            Price = 200,
+                            Price = 48000,
                             Rarity = (byte)1,
                             Weigth = 25
                         },
@@ -1132,9 +1092,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 32,
                             ItemType = (byte)2,
-                            MoneyType = (byte)1,
                             Name = "Pistolet wielostrzałowy",
-                            Price = 400,
+                            Price = 96000,
                             Rarity = (byte)1,
                             Weigth = 25
                         },
@@ -1142,9 +1101,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 33,
                             ItemType = (byte)2,
-                            MoneyType = (byte)1,
                             Name = "Proca",
-                            Price = 4,
+                            Price = 960,
                             Rarity = (byte)5,
                             Weigth = 10
                         },
@@ -1152,9 +1110,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 34,
                             ItemType = (byte)2,
-                            MoneyType = (byte)1,
                             Name = "Proca drzewcowa",
-                            Price = 6,
+                            Price = 1440,
                             Rarity = (byte)2,
                             Weigth = 50
                         },
@@ -1162,9 +1119,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 35,
                             ItemType = (byte)2,
-                            MoneyType = (byte)1,
                             Name = "Rusznica",
-                            Price = 300,
+                            Price = 72000,
                             Rarity = (byte)1,
                             Weigth = 30
                         },
@@ -1172,9 +1128,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 36,
                             ItemType = (byte)2,
-                            MoneyType = (byte)1,
                             Name = "Rusznica wielostrzałowa",
-                            Price = 600,
+                            Price = 144000,
                             Rarity = (byte)1,
                             Weigth = 30
                         },
@@ -1182,9 +1137,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 37,
                             ItemType = (byte)2,
-                            MoneyType = (byte)1,
                             Name = "Sieć",
-                            Price = 3,
+                            Price = 720,
                             Rarity = (byte)6,
                             Weigth = 60
                         },
@@ -1192,9 +1146,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 38,
                             ItemType = (byte)2,
-                            MoneyType = (byte)1,
                             Name = "Topór/młot do rzucania",
-                            Price = 5,
+                            Price = 1200,
                             Rarity = (byte)4,
                             Weigth = 40
                         },
@@ -1202,7 +1155,6 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 39,
                             ItemType = (byte)2,
-                            MoneyType = (byte)1,
                             Name = "Włócznia",
                             Price = 0,
                             Rarity = (byte)5,
@@ -1212,9 +1164,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 40,
                             ItemType = (byte)3,
-                            MoneyType = (byte)2,
-                            Name = "Strzały (5)",
-                            Price = 1,
+                            Name = "Strzała",
+                            Price = 2,
                             Rarity = (byte)5,
                             Weigth = 10
                         },
@@ -1222,9 +1173,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 41,
                             ItemType = (byte)3,
-                            MoneyType = (byte)2,
-                            Name = "Bełty (5)",
-                            Price = 2,
+                            Name = "Bełt",
+                            Price = 4,
                             Rarity = (byte)4,
                             Weigth = 10
                         },
@@ -1232,8 +1182,7 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 42,
                             ItemType = (byte)3,
-                            MoneyType = (byte)2,
-                            Name = "Kule do broni palnej (10)",
+                            Name = "Kula do broni palnej",
                             Price = 1,
                             Rarity = (byte)2,
                             Weigth = 10
@@ -1242,9 +1191,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 43,
                             ItemType = (byte)3,
-                            MoneyType = (byte)2,
                             Name = "Proch strzelniczy (strzał)",
-                            Price = 3,
+                            Price = 36,
                             Rarity = (byte)1,
                             Weigth = 1
                         },
@@ -1252,9 +1200,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 44,
                             ItemType = (byte)4,
-                            MoneyType = (byte)1,
-                            Name = "Hełm (Skórzana)",
-                            Price = 3,
+                            Name = "Hełm (Skórzany)",
+                            Price = 720,
                             Rarity = (byte)5,
                             Weigth = 10
                         },
@@ -1262,9 +1209,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 45,
                             ItemType = (byte)4,
-                            MoneyType = (byte)1,
-                            Name = "Kaftan (Skórzana)",
-                            Price = 5,
+                            Name = "Kaftan (Skórzany)",
+                            Price = 1200,
                             Rarity = (byte)5,
                             Weigth = 40
                         },
@@ -1272,9 +1218,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 46,
                             ItemType = (byte)4,
-                            MoneyType = (byte)1,
                             Name = "Kurta (Skórzana)",
-                            Price = 12,
+                            Price = 2880,
                             Rarity = (byte)5,
                             Weigth = 50
                         },
@@ -1282,9 +1227,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 47,
                             ItemType = (byte)4,
-                            MoneyType = (byte)1,
-                            Name = "Nogawice (Skórzana)",
-                            Price = 10,
+                            Name = "Nogawice (Skórzane)",
+                            Price = 2400,
                             Rarity = (byte)5,
                             Weigth = 20
                         },
@@ -1292,9 +1236,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 48,
                             ItemType = (byte)4,
-                            MoneyType = (byte)1,
-                            Name = "Skórznia (Skórzana)",
-                            Price = 25,
+                            Name = "Skórznia",
+                            Price = 6000,
                             Rarity = (byte)4,
                             Weigth = 80
                         },
@@ -1302,9 +1245,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 49,
                             ItemType = (byte)4,
-                            MoneyType = (byte)1,
-                            Name = "Czepiec (Kolcza)",
-                            Price = 20,
+                            Name = "Czepiec (Kolczy)",
+                            Price = 4800,
                             Rarity = (byte)4,
                             Weigth = 30
                         },
@@ -1312,9 +1254,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 50,
                             ItemType = (byte)4,
-                            MoneyType = (byte)1,
-                            Name = "Kaftan (Kolcza)",
-                            Price = 60,
+                            Name = "Kaftan (Kolczy)",
+                            Price = 14400,
                             Rarity = (byte)4,
                             Weigth = 60
                         },
@@ -1322,9 +1263,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 51,
                             ItemType = (byte)4,
-                            MoneyType = (byte)1,
                             Name = "Koszulka (Kolcza)",
-                            Price = 95,
+                            Price = 22800,
                             Rarity = (byte)4,
                             Weigth = 80
                         },
@@ -1332,9 +1272,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 52,
                             ItemType = (byte)4,
-                            MoneyType = (byte)1,
-                            Name = "Kolczuga (Kolcza)",
-                            Price = 75,
+                            Name = "Kolczuga",
+                            Price = 18000,
                             Rarity = (byte)4,
                             Weigth = 80
                         },
@@ -1342,9 +1281,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 53,
                             ItemType = (byte)4,
-                            MoneyType = (byte)1,
-                            Name = "Kolczuga z rękawami (Kolcza)",
-                            Price = 130,
+                            Name = "Kolczuga z rękawami",
+                            Price = 31200,
                             Rarity = (byte)4,
                             Weigth = 100
                         },
@@ -1352,9 +1290,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 54,
                             ItemType = (byte)4,
-                            MoneyType = (byte)1,
-                            Name = "Nogawice (Kolcza)",
-                            Price = 20,
+                            Name = "Nogawice (Kolcze)",
+                            Price = 4800,
                             Rarity = (byte)3,
                             Weigth = 40
                         },
@@ -1362,9 +1299,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 55,
                             ItemType = (byte)4,
-                            MoneyType = (byte)1,
-                            Name = "Zbroja kolcza (Kolcza)",
-                            Price = 170,
+                            Name = "Zbroja kolcza",
+                            Price = 40800,
                             Rarity = (byte)3,
                             Weigth = 210
                         },
@@ -1372,9 +1308,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 56,
                             ItemType = (byte)4,
-                            MoneyType = (byte)1,
-                            Name = "Hełm (płyta)",
-                            Price = 30,
+                            Name = "Hełm (płytowy)",
+                            Price = 7200,
                             Rarity = (byte)3,
                             Weigth = 40
                         },
@@ -1382,9 +1317,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 57,
                             ItemType = (byte)4,
-                            MoneyType = (byte)1,
-                            Name = "Naramienniki (płyta)",
-                            Price = 70,
+                            Name = "Naramienniki (płytowe)",
+                            Price = 16800,
                             Rarity = (byte)3,
                             Weigth = 75
                         },
@@ -1392,9 +1326,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 58,
                             ItemType = (byte)4,
-                            MoneyType = (byte)1,
-                            Name = "Nogawice (płyta)",
-                            Price = 60,
+                            Name = "Nogawice (płytowe)",
+                            Price = 14400,
                             Rarity = (byte)3,
                             Weigth = 30
                         },
@@ -1402,9 +1335,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 59,
                             ItemType = (byte)4,
-                            MoneyType = (byte)1,
-                            Name = "Napierśnik (płyta)",
-                            Price = 70,
+                            Name = "Napierśnik (płytowy)",
+                            Price = 16800,
                             Rarity = (byte)3,
                             Weigth = 40
                         },
@@ -1412,9 +1344,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 60,
                             ItemType = (byte)4,
-                            MoneyType = (byte)1,
-                            Name = "Zbroja płytowa (płyta)",
-                            Price = 400,
+                            Name = "Zbroja płytowa",
+                            Price = 96000,
                             Rarity = (byte)2,
                             Weigth = 395
                         },
@@ -1422,7 +1353,6 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 61,
                             ItemType = (byte)5,
-                            MoneyType = (byte)3,
                             Name = "Łachmany",
                             Price = 1,
                             Rarity = (byte)7,
@@ -1432,9 +1362,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 62,
                             ItemType = (byte)5,
-                            MoneyType = (byte)2,
                             Name = "Kiepskie odzienie",
-                            Price = 10,
+                            Price = 120,
                             Rarity = (byte)7,
                             Weigth = 10
                         },
@@ -1442,9 +1371,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 63,
                             ItemType = (byte)5,
-                            MoneyType = (byte)1,
                             Name = "Zwykłe ubranie",
-                            Price = 1,
+                            Price = 240,
                             Rarity = (byte)6,
                             Weigth = 15
                         },
@@ -1452,9 +1380,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 64,
                             ItemType = (byte)5,
-                            MoneyType = (byte)1,
                             Name = "Dobre ubranie",
-                            Price = 3,
+                            Price = 720,
                             Rarity = (byte)5,
                             Weigth = 15
                         },
@@ -1462,9 +1389,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 65,
                             ItemType = (byte)5,
-                            MoneyType = (byte)1,
                             Name = "Szykowne ubranie",
-                            Price = 10,
+                            Price = 2400,
                             Rarity = (byte)4,
                             Weigth = 20
                         },
@@ -1472,9 +1398,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 66,
                             ItemType = (byte)5,
-                            MoneyType = (byte)1,
                             Name = "Szaty",
-                            Price = 15,
+                            Price = 3600,
                             Rarity = (byte)4,
                             Weigth = 25
                         },
@@ -1482,9 +1407,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 67,
                             ItemType = (byte)5,
-                            MoneyType = (byte)1,
                             Name = "Kostium",
-                            Price = 5,
+                            Price = 1200,
                             Rarity = (byte)4,
                             Weigth = 10
                         },
@@ -1492,9 +1416,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 68,
                             ItemType = (byte)5,
-                            MoneyType = (byte)1,
                             Name = "Uniform",
-                            Price = 15,
+                            Price = 3600,
                             Rarity = (byte)3,
                             Weigth = 15
                         },
@@ -1502,9 +1425,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 69,
                             ItemType = (byte)5,
-                            MoneyType = (byte)1,
                             Name = "Strój szlachecki",
-                            Price = 50,
+                            Price = 12000,
                             Rarity = (byte)2,
                             Weigth = 30
                         },
@@ -1512,9 +1434,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 70,
                             ItemType = (byte)5,
-                            MoneyType = (byte)1,
                             Name = "Strój arystokraty",
-                            Price = 100,
+                            Price = 24000,
                             Rarity = (byte)1,
                             Weigth = 50
                         },
@@ -1522,9 +1443,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 71,
                             ItemType = (byte)5,
-                            MoneyType = (byte)1,
                             Name = "Peleryna",
-                            Price = 5,
+                            Price = 1200,
                             Rarity = (byte)6,
                             Weigth = 10
                         },
@@ -1532,9 +1452,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 72,
                             ItemType = (byte)5,
-                            MoneyType = (byte)1,
                             Name = "Płaszcz",
-                            Price = 10,
+                            Price = 2400,
                             Rarity = (byte)6,
                             Weigth = 15
                         },
@@ -1542,9 +1461,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 73,
                             ItemType = (byte)5,
-                            MoneyType = (byte)2,
                             Name = "Kapelusz zwykły",
-                            Price = 10,
+                            Price = 120,
                             Rarity = (byte)6,
                             Weigth = 15
                         },
@@ -1552,9 +1470,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 74,
                             ItemType = (byte)5,
-                            MoneyType = (byte)1,
                             Name = "Kapelusz z szerokim rondlem",
-                            Price = 1,
+                            Price = 240,
                             Rarity = (byte)6,
                             Weigth = 5
                         },
@@ -1562,9 +1479,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 75,
                             ItemType = (byte)5,
-                            MoneyType = (byte)2,
                             Name = "Kaptur lub maska",
-                            Price = 10,
+                            Price = 120,
                             Rarity = (byte)5,
                             Weigth = 2
                         },
@@ -1572,7 +1488,6 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 76,
                             ItemType = (byte)6,
-                            MoneyType = (byte)3,
                             Name = "Obrok (porcja na 1 dzień)",
                             Price = 5,
                             Rarity = (byte)6,
@@ -1582,7 +1497,6 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 77,
                             ItemType = (byte)6,
-                            MoneyType = (byte)3,
                             Name = "Bochenek chleba",
                             Price = 2,
                             Rarity = (byte)7,
@@ -1592,9 +1506,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 78,
                             ItemType = (byte)6,
-                            MoneyType = (byte)2,
                             Name = "Połeć mięsa",
-                            Price = 1,
+                            Price = 12,
                             Rarity = (byte)4,
                             Weigth = 10
                         },
@@ -1602,7 +1515,6 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 79,
                             ItemType = (byte)6,
-                            MoneyType = (byte)3,
                             Name = "Kiepskie jedzenie (porcja na 1 dzień)",
                             Price = 5,
                             Rarity = (byte)6,
@@ -1612,7 +1524,6 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 80,
                             ItemType = (byte)6,
-                            MoneyType = (byte)3,
                             Name = "Dobre jedzenie (porcja na 1 dzień)",
                             Price = 10,
                             Rarity = (byte)5,
@@ -1622,7 +1533,6 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 81,
                             ItemType = (byte)6,
-                            MoneyType = (byte)3,
                             Name = "Doskonałe jedzenie (porcja na 1 dzień)",
                             Price = 18,
                             Rarity = (byte)4,
@@ -1632,9 +1542,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 82,
                             ItemType = (byte)6,
-                            MoneyType = (byte)2,
                             Name = "Prowiant (porcja na 1 tydzień)",
-                            Price = 6,
+                            Price = 72,
                             Rarity = (byte)5,
                             Weigth = 50
                         },
@@ -1642,9 +1551,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 83,
                             ItemType = (byte)6,
-                            MoneyType = (byte)2,
                             Name = "Słodycze",
-                            Price = 1,
+                            Price = 12,
                             Rarity = (byte)5,
                             Weigth = 2
                         },
@@ -1652,9 +1560,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 84,
                             ItemType = (byte)6,
-                            MoneyType = (byte)2,
                             Name = "Smakołyki",
-                            Price = 3,
+                            Price = 36,
                             Rarity = (byte)3,
                             Weigth = 0
                         },
@@ -1662,7 +1569,6 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 85,
                             ItemType = (byte)6,
-                            MoneyType = (byte)3,
                             Name = "Ciemne piwo",
                             Price = 2,
                             Rarity = (byte)6,
@@ -1672,7 +1578,6 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 86,
                             ItemType = (byte)6,
-                            MoneyType = (byte)3,
                             Name = "Jasne piwo",
                             Price = 1,
                             Rarity = (byte)7,
@@ -1682,7 +1587,6 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 87,
                             ItemType = (byte)6,
-                            MoneyType = (byte)3,
                             Name = "Antałek piwa jasnego",
                             Price = 18,
                             Rarity = (byte)7,
@@ -1692,9 +1596,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 88,
                             ItemType = (byte)6,
-                            MoneyType = (byte)2,
                             Name = "Antałek piwa ciemnego",
-                            Price = 3,
+                            Price = 36,
                             Rarity = (byte)7,
                             Weigth = 30
                         },
@@ -1702,9 +1605,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 89,
                             ItemType = (byte)6,
-                            MoneyType = (byte)2,
                             Name = "Butelka gorzałki",
-                            Price = 1,
+                            Price = 12,
                             Rarity = (byte)4,
                             Weigth = 5
                         },
@@ -1712,199 +1614,179 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 90,
                             ItemType = (byte)6,
-                            MoneyType = (byte)2,
-                            Name = "Wino pospolite",
-                            Price = 1,
-                            Rarity = (byte)5,
+                            Name = "Butelka gorzałki dobrej jakości",
+                            Price = 36,
+                            Rarity = (byte)4,
                             Weigth = 5
                         },
                         new
                         {
                             Id = 91,
                             ItemType = (byte)6,
-                            MoneyType = (byte)2,
-                            Name = "Wino szlacheckie",
-                            Price = 10,
-                            Rarity = (byte)4,
+                            Name = "Wino pospolite",
+                            Price = 12,
+                            Rarity = (byte)5,
                             Weigth = 5
                         },
                         new
                         {
                             Id = 92,
-                            ItemType = (byte)7,
-                            MoneyType = (byte)2,
-                            Name = "Bukłak",
-                            Price = 8,
-                            Rarity = (byte)6,
-                            Weigth = 1
+                            ItemType = (byte)6,
+                            Name = "Wino szlacheckie",
+                            Price = 120,
+                            Rarity = (byte)4,
+                            Weigth = 5
                         },
                         new
                         {
                             Id = 93,
                             ItemType = (byte)7,
-                            MoneyType = (byte)2,
-                            Name = "Flaszka",
-                            Price = 4,
+                            Name = "Bukłak",
+                            Price = 96,
                             Rarity = (byte)6,
-                            Weigth = 10
+                            Weigth = 1
                         },
                         new
                         {
                             Id = 94,
                             ItemType = (byte)7,
-                            MoneyType = (byte)1,
-                            Name = "Juki",
-                            Price = 2,
-                            Rarity = (byte)4,
-                            Weigth = 5
+                            Name = "Flaszka",
+                            Price = 48,
+                            Rarity = (byte)6,
+                            Weigth = 10
                         },
                         new
                         {
                             Id = 95,
                             ItemType = (byte)7,
-                            MoneyType = (byte)1,
-                            Name = "Kuferek",
-                            Price = 5,
+                            Name = "Juki",
+                            Price = 480,
                             Rarity = (byte)4,
-                            Weigth = 40
+                            Weigth = 5
                         },
                         new
                         {
                             Id = 96,
                             ItemType = (byte)7,
-                            MoneyType = (byte)1,
-                            Name = "Manierka metalowa",
-                            Price = 2,
-                            Rarity = (byte)3,
-                            Weigth = 15
+                            Name = "Kuferek",
+                            Price = 1200,
+                            Rarity = (byte)4,
+                            Weigth = 40
                         },
                         new
                         {
                             Id = 97,
                             ItemType = (byte)7,
-                            MoneyType = (byte)2,
-                            Name = "Manierska skórzana",
-                            Price = 15,
-                            Rarity = (byte)4,
-                            Weigth = 5
+                            Name = "Manierka metalowa",
+                            Price = 480,
+                            Rarity = (byte)3,
+                            Weigth = 15
                         },
                         new
                         {
                             Id = 98,
                             ItemType = (byte)7,
-                            MoneyType = (byte)2,
-                            Name = "Mieszek",
-                            Price = 2,
-                            Rarity = (byte)6,
-                            Weigth = 1
+                            Name = "Manierska skórzana",
+                            Price = 180,
+                            Rarity = (byte)4,
+                            Weigth = 5
                         },
                         new
                         {
                             Id = 99,
                             ItemType = (byte)7,
-                            MoneyType = (byte)2,
-                            Name = "Plecak",
-                            Price = 30,
-                            Rarity = (byte)6,
-                            Weigth = 20
-                        },
-                        new
-                        {
-                            Id = 100,
-                            ItemType = (byte)7,
-                            MoneyType = (byte)2,
-                            Name = "Sakiewka",
-                            Price = 5,
+                            Name = "Mieszek",
+                            Price = 24,
                             Rarity = (byte)6,
                             Weigth = 1
                         },
                         new
                         {
-                            Id = 101,
+                            Id = 100,
                             ItemType = (byte)7,
-                            MoneyType = (byte)1,
-                            Name = "Tobołek",
-                            Price = 2,
-                            Rarity = (byte)4,
-                            Weigth = 5
-                        },
-                        new
-                        {
-                            Id = 102,
-                            ItemType = (byte)7,
-                            MoneyType = (byte)1,
-                            Name = "Tuba na mapy/pergaminy",
-                            Price = 1,
-                            Rarity = (byte)3,
-                            Weigth = 2
-                        },
-                        new
-                        {
-                            Id = 103,
-                            ItemType = (byte)7,
-                            MoneyType = (byte)2,
-                            Name = "Worek",
-                            Price = 5,
-                            Rarity = (byte)6,
-                            Weigth = 7
-                        },
-                        new
-                        {
-                            Id = 104,
-                            ItemType = (byte)8,
-                            MoneyType = (byte)2,
-                            Name = "Drewno na opał",
-                            Price = 2,
-                            Rarity = (byte)6,
-                            Weigth = 5
-                        },
-                        new
-                        {
-                            Id = 105,
-                            ItemType = (byte)8,
-                            MoneyType = (byte)2,
-                            Name = "Kaganek",
-                            Price = 5,
+                            Name = "Plecak",
+                            Price = 360,
                             Rarity = (byte)6,
                             Weigth = 20
                         },
                         new
                         {
+                            Id = 101,
+                            ItemType = (byte)7,
+                            Name = "Sakiewka",
+                            Price = 60,
+                            Rarity = (byte)6,
+                            Weigth = 1
+                        },
+                        new
+                        {
+                            Id = 102,
+                            ItemType = (byte)7,
+                            Name = "Tobołek",
+                            Price = 480,
+                            Rarity = (byte)4,
+                            Weigth = 5
+                        },
+                        new
+                        {
+                            Id = 103,
+                            ItemType = (byte)7,
+                            Name = "Tuba na mapy/pergaminy",
+                            Price = 240,
+                            Rarity = (byte)3,
+                            Weigth = 2
+                        },
+                        new
+                        {
+                            Id = 104,
+                            ItemType = (byte)7,
+                            Name = "Worek",
+                            Price = 60,
+                            Rarity = (byte)6,
+                            Weigth = 7
+                        },
+                        new
+                        {
+                            Id = 105,
+                            ItemType = (byte)8,
+                            Name = "Drewno na opał",
+                            Price = 24,
+                            Rarity = (byte)6,
+                            Weigth = 5
+                        },
+                        new
+                        {
                             Id = 106,
                             ItemType = (byte)8,
-                            MoneyType = (byte)1,
-                            Name = "Latarnia",
-                            Price = 5,
-                            Rarity = (byte)4,
+                            Name = "Kaganek",
+                            Price = 60,
+                            Rarity = (byte)6,
                             Weigth = 20
                         },
                         new
                         {
                             Id = 107,
                             ItemType = (byte)8,
-                            MoneyType = (byte)1,
-                            Name = "Latarnia sztormowa",
-                            Price = 12,
-                            Rarity = (byte)3,
-                            Weigth = 30
+                            Name = "Latarnia",
+                            Price = 240,
+                            Rarity = (byte)4,
+                            Weigth = 20
                         },
                         new
                         {
                             Id = 108,
                             ItemType = (byte)8,
-                            MoneyType = (byte)2,
-                            Name = "Olej do latarni",
-                            Price = 5,
-                            Rarity = (byte)6,
-                            Weigth = 5
+                            Name = "Latarnia sztormowa",
+                            Price = 2880,
+                            Rarity = (byte)3,
+                            Weigth = 30
                         },
                         new
                         {
                             Id = 109,
                             ItemType = (byte)8,
-                            MoneyType = (byte)3,
-                            Name = "Pochodnia",
-                            Price = 5,
+                            Name = "Olej do latarni",
+                            Price = 60,
                             Rarity = (byte)6,
                             Weigth = 5
                         },
@@ -1912,9 +1794,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 110,
                             ItemType = (byte)8,
-                            MoneyType = (byte)2,
-                            Name = "Świeczka łojowa",
-                            Price = 3,
+                            Name = "Pochodnia",
+                            Price = 5,
                             Rarity = (byte)6,
                             Weigth = 5
                         },
@@ -1922,17 +1803,24 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 111,
                             ItemType = (byte)8,
-                            MoneyType = (byte)2,
-                            Name = "Świeczka woskowa",
-                            Price = 6,
-                            Rarity = (byte)4,
+                            Name = "Świeczka łojowa",
+                            Price = 36,
+                            Rarity = (byte)6,
                             Weigth = 5
                         },
                         new
                         {
                             Id = 112,
                             ItemType = (byte)8,
-                            MoneyType = (byte)3,
+                            Name = "Świeczka woskowa",
+                            Price = 72,
+                            Rarity = (byte)4,
+                            Weigth = 5
+                        },
+                        new
+                        {
+                            Id = 113,
+                            ItemType = (byte)8,
                             Name = "Zapałka",
                             Price = 1,
                             Rarity = (byte)4,
@@ -1940,19 +1828,17 @@ namespace WarhammerProfessionApp.Migrations
                         },
                         new
                         {
-                            Id = 113,
+                            Id = 114,
                             ItemType = (byte)9,
-                            MoneyType = (byte)1,
                             Name = "Zlota korona",
-                            Price = 1,
+                            Price = 240,
                             Rarity = (byte)5,
                             Weigth = 0
                         },
                         new
                         {
-                            Id = 114,
+                            Id = 115,
                             ItemType = (byte)9,
-                            MoneyType = (byte)3,
                             Name = "Pens",
                             Price = 1,
                             Rarity = (byte)7,
@@ -1960,121 +1846,100 @@ namespace WarhammerProfessionApp.Migrations
                         },
                         new
                         {
-                            Id = 115,
+                            Id = 116,
                             ItemType = (byte)9,
-                            MoneyType = (byte)2,
                             Name = "Szyling",
-                            Price = 1,
+                            Price = 12,
                             Rarity = (byte)6,
                             Weigth = 0
                         },
                         new
                         {
-                            Id = 116,
+                            Id = 117,
                             ItemType = (byte)9,
-                            MoneyType = (byte)2,
                             Name = "Drabina",
-                            Price = 10,
+                            Price = 120,
                             Rarity = (byte)5,
                             Weigth = 50
                         },
                         new
                         {
-                            Id = 117,
-                            ItemType = (byte)9,
-                            MoneyType = (byte)2,
-                            Name = "Hubka i krzesiwo",
-                            Price = 30,
-                            Rarity = (byte)6,
-                            Weigth = 5
-                        },
-                        new
-                        {
                             Id = 118,
                             ItemType = (byte)9,
-                            MoneyType = (byte)2,
-                            Name = "Imbryk",
-                            Price = 30,
+                            Name = "Hubka i krzesiwo",
+                            Price = 360,
                             Rarity = (byte)6,
-                            Weigth = 10
+                            Weigth = 5
                         },
                         new
                         {
                             Id = 119,
                             ItemType = (byte)9,
-                            MoneyType = (byte)1,
-                            Name = "Instrument muzyczny",
-                            Price = 5,
-                            Rarity = (byte)5,
-                            Weigth = 5
+                            Name = "Imbryk",
+                            Price = 360,
+                            Rarity = (byte)6,
+                            Weigth = 10
                         },
                         new
                         {
                             Id = 120,
                             ItemType = (byte)9,
-                            MoneyType = (byte)1,
-                            Name = "Kłódka dobrej jakości",
-                            Price = 10,
-                            Rarity = (byte)1,
+                            Name = "Instrument muzyczny",
+                            Price = 1200,
+                            Rarity = (byte)5,
                             Weigth = 5
                         },
                         new
                         {
                             Id = 121,
                             ItemType = (byte)9,
-                            MoneyType = (byte)1,
-                            Name = "Kłódka zwykłej jakości",
-                            Price = 1,
-                            Rarity = (byte)5,
+                            Name = "Kłódka dobrej jakości",
+                            Price = 2400,
+                            Rarity = (byte)1,
                             Weigth = 5
                         },
                         new
                         {
                             Id = 122,
                             ItemType = (byte)9,
-                            MoneyType = (byte)2,
-                            Name = "Koc",
-                            Price = 25,
-                            Rarity = (byte)6,
-                            Weigth = 10
+                            Name = "Kłódka zwykłej jakości",
+                            Price = 240,
+                            Rarity = (byte)5,
+                            Weigth = 5
                         },
                         new
                         {
                             Id = 123,
                             ItemType = (byte)9,
-                            MoneyType = (byte)1,
-                            Name = "Kociołek",
-                            Price = 1,
+                            Name = "Koc",
+                            Price = 300,
                             Rarity = (byte)6,
-                            Weigth = 20
+                            Weigth = 10
                         },
                         new
                         {
                             Id = 124,
                             ItemType = (byte)9,
-                            MoneyType = (byte)2,
-                            Name = "Kości do gry",
-                            Price = 6,
+                            Name = "Kociołek",
+                            Price = 240,
                             Rarity = (byte)6,
-                            Weigth = 0
+                            Weigth = 20
                         },
                         new
                         {
                             Id = 125,
                             ItemType = (byte)9,
-                            MoneyType = (byte)2,
-                            Name = "Kufel drewniany",
-                            Price = 10,
+                            Name = "Kości do gry",
+                            Price = 72,
                             Rarity = (byte)6,
-                            Weigth = 5
+                            Weigth = 0
                         },
                         new
                         {
                             Id = 126,
                             ItemType = (byte)9,
-                            MoneyType = (byte)1,
-                            Name = "Kufel ze szkła barwionego",
-                            Price = 1,
+                            Name = "Kufel drewniany",
+                            Price = 120,
                             Rarity = (byte)6,
                             Weigth = 5
                         },
@@ -2082,29 +1947,26 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 127,
                             ItemType = (byte)9,
-                            MoneyType = (byte)1,
-                            Name = "Lina",
-                            Price = 1,
-                            Rarity = (byte)5,
-                            Weigth = 50
+                            Name = "Kufel ze szkła barwionego",
+                            Price = 240,
+                            Rarity = (byte)6,
+                            Weigth = 5
                         },
                         new
                         {
                             Id = 128,
                             ItemType = (byte)9,
-                            MoneyType = (byte)1,
-                            Name = "Luneta",
-                            Price = 100,
-                            Rarity = (byte)2,
-                            Weigth = 5
+                            Name = "Lina",
+                            Price = 240,
+                            Rarity = (byte)5,
+                            Weigth = 50
                         },
                         new
                         {
                             Id = 129,
                             ItemType = (byte)9,
-                            MoneyType = (byte)1,
-                            Name = "Lustro",
-                            Price = 10,
+                            Name = "Luneta",
+                            Price = 24000,
                             Rarity = (byte)2,
                             Weigth = 5
                         },
@@ -2112,107 +1974,105 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 130,
                             ItemType = (byte)9,
-                            MoneyType = (byte)2,
-                            Name = "Namiot",
-                            Price = 15,
-                            Rarity = (byte)5,
-                            Weigth = 20
+                            Name = "Lustro",
+                            Price = 2400,
+                            Rarity = (byte)2,
+                            Weigth = 5
                         },
                         new
                         {
                             Id = 131,
                             ItemType = (byte)9,
-                            MoneyType = (byte)2,
-                            Name = "Papier",
-                            Price = 1,
-                            Rarity = (byte)1,
-                            Weigth = 0
+                            Name = "Namiot",
+                            Price = 180,
+                            Rarity = (byte)5,
+                            Weigth = 20
                         },
                         new
                         {
                             Id = 132,
                             ItemType = (byte)9,
-                            MoneyType = (byte)1,
-                            Name = "Perfumy",
-                            Price = 1,
-                            Rarity = (byte)5,
+                            Name = "Papier",
+                            Price = 12,
+                            Rarity = (byte)1,
                             Weigth = 0
                         },
                         new
                         {
                             Id = 133,
                             ItemType = (byte)9,
-                            MoneyType = (byte)2,
-                            Name = "Pergamin",
-                            Price = 5,
-                            Rarity = (byte)2,
+                            Name = "Perfumy",
+                            Price = 240,
+                            Rarity = (byte)5,
                             Weigth = 0
                         },
                         new
                         {
                             Id = 134,
                             ItemType = (byte)9,
-                            MoneyType = (byte)1,
-                            Name = "Symbol religijny",
-                            Price = 1,
-                            Rarity = (byte)5,
-                            Weigth = 5
+                            Name = "Pergamin",
+                            Price = 60,
+                            Rarity = (byte)2,
+                            Weigth = 0
                         },
                         new
                         {
                             Id = 135,
                             ItemType = (byte)9,
-                            MoneyType = (byte)2,
-                            Name = "Sztućce drewniane",
-                            Price = 5,
-                            Rarity = (byte)6,
-                            Weigth = 2
+                            Name = "Symbol religijny",
+                            Price = 240,
+                            Rarity = (byte)5,
+                            Weigth = 5
                         },
                         new
                         {
                             Id = 136,
                             ItemType = (byte)9,
-                            MoneyType = (byte)1,
-                            Name = "Sztućce metalowe",
-                            Price = 3,
-                            Rarity = (byte)5,
-                            Weigth = 4
+                            Name = "Sztućce drewniane",
+                            Price = 60,
+                            Rarity = (byte)6,
+                            Weigth = 2
                         },
                         new
                         {
                             Id = 137,
                             ItemType = (byte)9,
-                            MoneyType = (byte)1,
-                            Name = "Sztućce srebrne",
-                            Price = 15,
-                            Rarity = (byte)3,
-                            Weigth = 3
+                            Name = "Sztućce metalowe",
+                            Price = 720,
+                            Rarity = (byte)5,
+                            Weigth = 4
                         },
                         new
                         {
                             Id = 138,
                             ItemType = (byte)9,
-                            MoneyType = (byte)1,
+                            Name = "Sztućce srebrne",
+                            Price = 3600,
+                            Rarity = (byte)3,
+                            Weigth = 3
+                        },
+                        new
+                        {
+                            Id = 139,
+                            ItemType = (byte)9,
                             Name = "Talia kart",
-                            Price = 1,
+                            Price = 240,
                             Rarity = (byte)6,
                             Weigth = 1
                         },
                         new
                         {
-                            Id = 139,
+                            Id = 140,
                             ItemType = (byte)10,
-                            MoneyType = (byte)2,
                             Name = "Drąg, cena za metr",
-                            Price = 1,
+                            Price = 12,
                             Rarity = (byte)6,
                             Weigth = 10
                         },
                         new
                         {
-                            Id = 140,
+                            Id = 141,
                             ItemType = (byte)10,
-                            MoneyType = (byte)3,
                             Name = "Drewniany klin",
                             Price = 8,
                             Rarity = (byte)6,
@@ -2220,31 +2080,19 @@ namespace WarhammerProfessionApp.Migrations
                         },
                         new
                         {
-                            Id = 141,
+                            Id = 142,
                             ItemType = (byte)10,
-                            MoneyType = (byte)2,
                             Name = "Haczyk na ryby i żyłka",
-                            Price = 3,
+                            Price = 36,
                             Rarity = (byte)5,
                             Weigth = 2
                         },
                         new
                         {
-                            Id = 142,
-                            ItemType = (byte)10,
-                            MoneyType = (byte)1,
-                            Name = "Kajdany",
-                            Price = 5,
-                            Rarity = (byte)4,
-                            Weigth = 20
-                        },
-                        new
-                        {
                             Id = 143,
                             ItemType = (byte)10,
-                            MoneyType = (byte)2,
-                            Name = "Kilof",
-                            Price = 25,
+                            Name = "Kajdany",
+                            Price = 1200,
                             Rarity = (byte)4,
                             Weigth = 20
                         },
@@ -2252,59 +2100,53 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 144,
                             ItemType = (byte)10,
-                            MoneyType = (byte)2,
-                            Name = "Kołki",
-                            Price = 5,
-                            Rarity = (byte)5,
-                            Weigth = 5
-                        },
-                        new
-                        {
-                            Id = 145,
-                            ItemType = (byte)10,
-                            MoneyType = (byte)1,
-                            Name = "Kotwiczka do wspinaczki",
-                            Price = 4,
+                            Name = "Kilof",
+                            Price = 300,
                             Rarity = (byte)4,
                             Weigth = 20
                         },
                         new
                         {
+                            Id = 145,
+                            ItemType = (byte)10,
+                            Name = "Kołki",
+                            Price = 60,
+                            Rarity = (byte)5,
+                            Weigth = 5
+                        },
+                        new
+                        {
                             Id = 146,
                             ItemType = (byte)10,
-                            MoneyType = (byte)1,
-                            Name = "Książka drukowana",
-                            Price = 100,
-                            Rarity = (byte)1,
-                            Weigth = 35
+                            Name = "Kotwiczka do wspinaczki",
+                            Price = 960,
+                            Rarity = (byte)4,
+                            Weigth = 20
                         },
                         new
                         {
                             Id = 147,
                             ItemType = (byte)10,
-                            MoneyType = (byte)1,
-                            Name = "Książka ilustrowana",
-                            Price = 350,
+                            Name = "Książka drukowana",
+                            Price = 24000,
                             Rarity = (byte)1,
-                            Weigth = 50
+                            Weigth = 35
                         },
                         new
                         {
                             Id = 148,
                             ItemType = (byte)10,
-                            MoneyType = (byte)1,
-                            Name = "Liczydło",
-                            Price = 10,
-                            Rarity = (byte)2,
-                            Weigth = 5
+                            Name = "Książka ilustrowana",
+                            Price = 84000,
+                            Rarity = (byte)1,
+                            Weigth = 50
                         },
                         new
                         {
                             Id = 149,
                             ItemType = (byte)10,
-                            MoneyType = (byte)2,
-                            Name = "Łańcuch, cena za metr",
-                            Price = 30,
+                            Name = "Liczydło",
+                            Price = 2400,
                             Rarity = (byte)2,
                             Weigth = 5
                         },
@@ -2312,119 +2154,107 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 150,
                             ItemType = (byte)10,
-                            MoneyType = (byte)2,
-                            Name = "Łom",
-                            Price = 10,
-                            Rarity = (byte)5,
-                            Weigth = 10
+                            Name = "Łańcuch, cena za metr",
+                            Price = 360,
+                            Rarity = (byte)2,
+                            Weigth = 5
                         },
                         new
                         {
                             Id = 151,
                             ItemType = (byte)10,
-                            MoneyType = (byte)2,
-                            Name = "Łopata",
-                            Price = 25,
+                            Name = "Łom",
+                            Price = 120,
                             Rarity = (byte)5,
-                            Weigth = 20
+                            Weigth = 10
                         },
                         new
                         {
                             Id = 152,
                             ItemType = (byte)10,
-                            MoneyType = (byte)2,
-                            Name = "Młot",
-                            Price = 20,
+                            Name = "Łopata",
+                            Price = 300,
                             Rarity = (byte)5,
-                            Weigth = 40
+                            Weigth = 20
                         },
                         new
                         {
                             Id = 153,
                             ItemType = (byte)10,
-                            MoneyType = (byte)1,
-                            Name = "Narzędzia",
-                            Price = 50,
-                            Rarity = (byte)4,
-                            Weigth = 50
+                            Name = "Młot",
+                            Price = 240,
+                            Rarity = (byte)5,
+                            Weigth = 40
                         },
                         new
                         {
                             Id = 154,
                             ItemType = (byte)10,
-                            MoneyType = (byte)2,
-                            Name = "Potrzask",
-                            Price = 1,
-                            Rarity = (byte)5,
-                            Weigth = 2
+                            Name = "Narzędzia",
+                            Price = 12000,
+                            Rarity = (byte)4,
+                            Weigth = 50
                         },
                         new
                         {
                             Id = 155,
                             ItemType = (byte)10,
-                            MoneyType = (byte)1,
-                            Name = "Przybory do pisania",
-                            Price = 10,
-                            Rarity = (byte)4,
-                            Weigth = 5
+                            Name = "Potrzask",
+                            Price = 12,
+                            Rarity = (byte)5,
+                            Weigth = 2
                         },
                         new
                         {
                             Id = 156,
                             ItemType = (byte)10,
-                            MoneyType = (byte)2,
-                            Name = "Sztabka metalu",
-                            Price = 25,
+                            Name = "Przybory do pisania",
+                            Price = 2400,
                             Rarity = (byte)4,
-                            Weigth = 20
+                            Weigth = 5
                         },
                         new
                         {
                             Id = 157,
                             ItemType = (byte)10,
-                            MoneyType = (byte)1,
-                            Name = "Wnyki",
-                            Price = 2,
-                            Rarity = (byte)5,
+                            Name = "Sztabka metalu",
+                            Price = 300,
+                            Rarity = (byte)4,
                             Weigth = 20
                         },
                         new
                         {
                             Id = 158,
                             ItemType = (byte)10,
-                            MoneyType = (byte)1,
-                            Name = "Wytrychy",
-                            Price = 10,
-                            Rarity = (byte)4,
+                            Name = "Wnyki",
+                            Price = 480,
+                            Rarity = (byte)5,
                             Weigth = 20
                         },
                         new
                         {
                             Id = 159,
                             ItemType = (byte)10,
-                            MoneyType = (byte)1,
+                            Name = "Wytrychy",
+                            Price = 2400,
+                            Rarity = (byte)4,
+                            Weigth = 20
+                        },
+                        new
+                        {
+                            Id = 160,
+                            ItemType = (byte)10,
                             Name = "Zestaw do charakteryzacji",
-                            Price = 5,
+                            Price = 1200,
                             Rarity = (byte)3,
                             Weigth = 10
                         },
                         new
                         {
-                            Id = 160,
-                            ItemType = (byte)11,
-                            MoneyType = (byte)1,
-                            Name = "Wózek",
-                            Price = 50,
-                            Rarity = (byte)5,
-                            Weigth = 0
-                        },
-                        new
-                        {
                             Id = 161,
                             ItemType = (byte)11,
-                            MoneyType = (byte)1,
-                            Name = "Wóz",
-                            Price = 90,
+                            Name = "Wózek",
+                            Price = 12000,
                             Rarity = (byte)5,
                             Weigth = 0
                         },
@@ -2432,19 +2262,17 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 162,
                             ItemType = (byte)11,
-                            MoneyType = (byte)1,
-                            Name = "Powóz",
-                            Price = 500,
-                            Rarity = (byte)2,
+                            Name = "Wóz",
+                            Price = 21600,
+                            Rarity = (byte)5,
                             Weigth = 0
                         },
                         new
                         {
                             Id = 163,
                             ItemType = (byte)11,
-                            MoneyType = (byte)1,
-                            Name = "Łódź rzeczna",
-                            Price = 600,
+                            Name = "Powóz",
+                            Price = 120000,
                             Rarity = (byte)2,
                             Weigth = 0
                         },
@@ -2452,29 +2280,26 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 164,
                             ItemType = (byte)11,
-                            MoneyType = (byte)1,
-                            Name = "Łódź wiosłowa",
-                            Price = 90,
-                            Rarity = (byte)4,
-                            Weigth = 900
+                            Name = "Łódź rzeczna",
+                            Price = 144000,
+                            Rarity = (byte)2,
+                            Weigth = 0
                         },
                         new
                         {
                             Id = 165,
                             ItemType = (byte)11,
-                            MoneyType = (byte)1,
-                            Name = "Statek",
-                            Price = 12000,
-                            Rarity = (byte)3,
-                            Weigth = 0
+                            Name = "Łódź wiosłowa",
+                            Price = 21600,
+                            Rarity = (byte)4,
+                            Weigth = 900
                         },
                         new
                         {
                             Id = 166,
                             ItemType = (byte)11,
-                            MoneyType = (byte)1,
-                            Name = "Rumak",
-                            Price = 500,
+                            Name = "Statek",
+                            Price = 2880000,
                             Rarity = (byte)3,
                             Weigth = 0
                         },
@@ -2482,19 +2307,17 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 167,
                             ItemType = (byte)11,
-                            MoneyType = (byte)1,
-                            Name = "Lekki koń bojowy",
-                            Price = 300,
-                            Rarity = (byte)5,
+                            Name = "Rumak",
+                            Price = 120000,
+                            Rarity = (byte)3,
                             Weigth = 0
                         },
                         new
                         {
                             Id = 168,
                             ItemType = (byte)11,
-                            MoneyType = (byte)1,
-                            Name = "Koń",
-                            Price = 80,
+                            Name = "Lekki koń bojowy",
+                            Price = 72000,
                             Rarity = (byte)5,
                             Weigth = 0
                         },
@@ -2502,9 +2325,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 169,
                             ItemType = (byte)11,
-                            MoneyType = (byte)1,
-                            Name = "Kuc",
-                            Price = 50,
+                            Name = "Koń",
+                            Price = 19200,
                             Rarity = (byte)5,
                             Weigth = 0
                         },
@@ -2512,59 +2334,53 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 170,
                             ItemType = (byte)11,
-                            MoneyType = (byte)1,
-                            Name = "Siodło",
-                            Price = 5,
+                            Name = "Kuc",
+                            Price = 12000,
                             Rarity = (byte)5,
-                            Weigth = 50
+                            Weigth = 0
                         },
                         new
                         {
                             Id = 171,
                             ItemType = (byte)11,
-                            MoneyType = (byte)1,
+                            Name = "Siodło",
+                            Price = 1200,
+                            Rarity = (byte)5,
+                            Weigth = 50
+                        },
+                        new
+                        {
+                            Id = 172,
+                            ItemType = (byte)11,
                             Name = "Uprząż",
-                            Price = 1,
+                            Price = 240,
                             Rarity = (byte)5,
                             Weigth = 20
                         },
                         new
                         {
-                            Id = 172,
-                            ItemType = (byte)12,
-                            MoneyType = (byte)1,
-                            Name = "Gołąb pocztowy",
-                            Price = 1,
-                            Rarity = (byte)4,
-                            Weigth = 0
-                        },
-                        new
-                        {
                             Id = 173,
                             ItemType = (byte)12,
-                            MoneyType = (byte)1,
-                            Name = "Jastrząb",
-                            Price = 80,
-                            Rarity = (byte)2,
+                            Name = "Gołąb pocztowy",
+                            Price = 240,
+                            Rarity = (byte)4,
                             Weigth = 0
                         },
                         new
                         {
                             Id = 174,
                             ItemType = (byte)12,
-                            MoneyType = (byte)1,
-                            Name = "Koń juczny",
-                            Price = 40,
-                            Rarity = (byte)6,
+                            Name = "Jastrząb",
+                            Price = 19200,
+                            Rarity = (byte)2,
                             Weigth = 0
                         },
                         new
                         {
                             Id = 175,
                             ItemType = (byte)12,
-                            MoneyType = (byte)1,
-                            Name = "Koń pociągowy lub muł",
-                            Price = 25,
+                            Name = "Koń juczny",
+                            Price = 9600,
                             Rarity = (byte)6,
                             Weigth = 0
                         },
@@ -2572,9 +2388,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 176,
                             ItemType = (byte)12,
-                            MoneyType = (byte)2,
-                            Name = "Kot",
-                            Price = 1,
+                            Name = "Koń pociągowy lub muł",
+                            Price = 6000,
                             Rarity = (byte)6,
                             Weigth = 0
                         },
@@ -2582,9 +2397,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 177,
                             ItemType = (byte)12,
-                            MoneyType = (byte)1,
-                            Name = "Koza",
-                            Price = 2,
+                            Name = "Kot",
+                            Price = 12,
                             Rarity = (byte)6,
                             Weigth = 0
                         },
@@ -2592,9 +2406,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 178,
                             ItemType = (byte)12,
-                            MoneyType = (byte)1,
-                            Name = "Krowa",
-                            Price = 10,
+                            Name = "Koza",
+                            Price = 480,
                             Rarity = (byte)6,
                             Weigth = 0
                         },
@@ -2602,9 +2415,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 179,
                             ItemType = (byte)12,
-                            MoneyType = (byte)3,
-                            Name = "Kurczak",
-                            Price = 5,
+                            Name = "Krowa",
+                            Price = 2400,
                             Rarity = (byte)6,
                             Weigth = 0
                         },
@@ -2612,9 +2424,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 180,
                             ItemType = (byte)12,
-                            MoneyType = (byte)1,
-                            Name = "Owca",
-                            Price = 2,
+                            Name = "Kurczak",
+                            Price = 5,
                             Rarity = (byte)6,
                             Weigth = 0
                         },
@@ -2622,9 +2433,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 181,
                             ItemType = (byte)12,
-                            MoneyType = (byte)1,
-                            Name = "Pies (rasowy)",
-                            Price = 3,
+                            Name = "Owca",
+                            Price = 480,
                             Rarity = (byte)6,
                             Weigth = 0
                         },
@@ -2632,79 +2442,71 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 182,
                             ItemType = (byte)12,
-                            MoneyType = (byte)1,
-                            Name = "Pies bojowy",
-                            Price = 30,
-                            Rarity = (byte)2,
+                            Name = "Pies (rasowy)",
+                            Price = 720,
+                            Rarity = (byte)6,
                             Weigth = 0
                         },
                         new
                         {
                             Id = 183,
                             ItemType = (byte)12,
-                            MoneyType = (byte)1,
-                            Name = "Świnia",
-                            Price = 3,
-                            Rarity = (byte)6,
+                            Name = "Pies bojowy",
+                            Price = 7200,
+                            Rarity = (byte)2,
                             Weigth = 0
                         },
                         new
                         {
                             Id = 184,
                             ItemType = (byte)12,
-                            MoneyType = (byte)1,
-                            Name = "Wół",
-                            Price = 30,
+                            Name = "Świnia",
+                            Price = 720,
                             Rarity = (byte)6,
                             Weigth = 0
                         },
                         new
                         {
                             Id = 185,
-                            ItemType = (byte)13,
-                            MoneyType = (byte)1,
-                            Name = "Dar Grety",
-                            Price = 30,
-                            Rarity = (byte)1,
+                            ItemType = (byte)12,
+                            Name = "Wół",
+                            Price = 7200,
+                            Rarity = (byte)6,
                             Weigth = 0
                         },
                         new
                         {
                             Id = 186,
                             ItemType = (byte)13,
-                            MoneyType = (byte)1,
-                            Name = "Mikstura lecznicza",
-                            Price = 5,
-                            Rarity = (byte)4,
+                            Name = "Dar Grety",
+                            Price = 7200,
+                            Rarity = (byte)1,
                             Weigth = 0
                         },
                         new
                         {
                             Id = 187,
                             ItemType = (byte)13,
-                            MoneyType = (byte)1,
-                            Name = "Piwo Bugmana",
-                            Price = 50,
-                            Rarity = (byte)1,
-                            Weigth = 5
+                            Name = "Mikstura lecznicza",
+                            Price = 1200,
+                            Rarity = (byte)4,
+                            Weigth = 0
                         },
                         new
                         {
                             Id = 188,
                             ItemType = (byte)13,
-                            MoneyType = (byte)1,
-                            Name = "Czarny Jad",
-                            Price = 30,
+                            Name = "Piwo Bugmana",
+                            Price = 12000,
                             Rarity = (byte)1,
-                            Weigth = 0
+                            Weigth = 5
                         },
                         new
                         {
                             Id = 189,
                             ItemType = (byte)13,
-                            MoneyType = (byte)1,
-                            Name = "Czarny lotos",
-                            Price = 20,
+                            Name = "Czarny Jad",
+                            Price = 7200,
                             Rarity = (byte)1,
                             Weigth = 0
                         },
@@ -2712,9 +2514,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 190,
                             ItemType = (byte)13,
-                            MoneyType = (byte)1,
-                            Name = "Grzybki Szalonego Kapelusznika",
-                            Price = 30,
+                            Name = "Czarny lotos",
+                            Price = 4800,
                             Rarity = (byte)1,
                             Weigth = 0
                         },
@@ -2722,9 +2523,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 191,
                             ItemType = (byte)13,
-                            MoneyType = (byte)1,
-                            Name = "Jad mantikory",
-                            Price = 65,
+                            Name = "Grzybki Szalonego Kapelusznika",
+                            Price = 7200,
                             Rarity = (byte)1,
                             Weigth = 0
                         },
@@ -2732,9 +2532,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 192,
                             ItemType = (byte)13,
-                            MoneyType = (byte)1,
-                            Name = "Korzeń mandragory",
-                            Price = 25,
+                            Name = "Jad mantikory",
+                            Price = 15600,
                             Rarity = (byte)1,
                             Weigth = 0
                         },
@@ -2742,9 +2541,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 193,
                             ItemType = (byte)13,
-                            MoneyType = (byte)1,
-                            Name = "Sercobój",
-                            Price = 800,
+                            Name = "Korzeń mandragory",
+                            Price = 6000,
                             Rarity = (byte)1,
                             Weigth = 0
                         },
@@ -2752,9 +2550,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 194,
                             ItemType = (byte)13,
-                            MoneyType = (byte)1,
-                            Name = "Szkarłatny Cień",
-                            Price = 35,
+                            Name = "Sercobój",
+                            Price = 192000,
                             Rarity = (byte)1,
                             Weigth = 0
                         },
@@ -2762,9 +2559,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 195,
                             ItemType = (byte)13,
-                            MoneyType = (byte)1,
-                            Name = "Ślina chimery",
-                            Price = 150,
+                            Name = "Szkarłatny Cień",
+                            Price = 8400,
                             Rarity = (byte)1,
                             Weigth = 0
                         },
@@ -2772,9 +2568,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 196,
                             ItemType = (byte)13,
-                            MoneyType = (byte)1,
-                            Name = "Księga wiedzy tajemnej",
-                            Price = 500,
+                            Name = "Ślina chimery",
+                            Price = 36000,
                             Rarity = (byte)1,
                             Weigth = 0
                         },
@@ -2782,29 +2577,26 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 197,
                             ItemType = (byte)13,
-                            MoneyType = (byte)3,
-                            Name = "Napar kojący",
-                            Price = 5,
-                            Rarity = (byte)5,
+                            Name = "Księga wiedzy tajemnej",
+                            Price = 120000,
+                            Rarity = (byte)1,
                             Weigth = 0
                         },
                         new
                         {
                             Id = 198,
                             ItemType = (byte)13,
-                            MoneyType = (byte)1,
-                            Name = "Odtrutki",
-                            Price = 3,
-                            Rarity = (byte)3,
+                            Name = "Napar kojący",
+                            Price = 1200,
+                            Rarity = (byte)5,
                             Weigth = 0
                         },
                         new
                         {
                             Id = 199,
                             ItemType = (byte)13,
-                            MoneyType = (byte)1,
-                            Name = "Relikwia",
-                            Price = 5,
+                            Name = "Odtrutki",
+                            Price = 720,
                             Rarity = (byte)3,
                             Weigth = 0
                         },
@@ -2812,59 +2604,53 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 200,
                             ItemType = (byte)13,
-                            MoneyType = (byte)1,
-                            Name = "Talizman szczęścia",
-                            Price = 15,
-                            Rarity = (byte)4,
+                            Name = "Relikwia",
+                            Price = 1200,
+                            Rarity = (byte)3,
                             Weigth = 0
                         },
                         new
                         {
                             Id = 201,
                             ItemType = (byte)13,
-                            MoneyType = (byte)1,
-                            Name = "Woda święcona",
-                            Price = 10,
-                            Rarity = (byte)3,
+                            Name = "Talizman szczęścia",
+                            Price = 3600,
+                            Rarity = (byte)4,
                             Weigth = 0
                         },
                         new
                         {
                             Id = 202,
                             ItemType = (byte)13,
-                            MoneyType = (byte)1,
-                            Name = "Dłoń weterana",
-                            Price = 60,
-                            Rarity = (byte)2,
+                            Name = "Woda święcona",
+                            Price = 2400,
+                            Rarity = (byte)3,
                             Weigth = 0
                         },
                         new
                         {
                             Id = 203,
                             ItemType = (byte)13,
-                            MoneyType = (byte)2,
-                            Name = "Drewniane zęby",
-                            Price = 3,
-                            Rarity = (byte)4,
+                            Name = "Dłoń weterana",
+                            Price = 14400,
+                            Rarity = (byte)2,
                             Weigth = 0
                         },
                         new
                         {
                             Id = 204,
                             ItemType = (byte)13,
-                            MoneyType = (byte)2,
-                            Name = "Kolczyk",
-                            Price = 1,
-                            Rarity = (byte)5,
+                            Name = "Drewniane zęby",
+                            Price = 36,
+                            Rarity = (byte)4,
                             Weigth = 0
                         },
                         new
                         {
                             Id = 205,
                             ItemType = (byte)13,
-                            MoneyType = (byte)3,
-                            Name = "Opaska na oko",
-                            Price = 6,
+                            Name = "Kolczyk",
+                            Price = 12,
                             Rarity = (byte)5,
                             Weigth = 0
                         },
@@ -2872,39 +2658,35 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 206,
                             ItemType = (byte)13,
-                            MoneyType = (byte)2,
-                            Name = "Płytka czaszkowa",
-                            Price = 1,
-                            Rarity = (byte)4,
+                            Name = "Opaska na oko",
+                            Price = 6,
+                            Rarity = (byte)5,
                             Weigth = 0
                         },
                         new
                         {
                             Id = 207,
                             ItemType = (byte)13,
-                            MoneyType = (byte)2,
-                            Name = "Pozłacany nos",
-                            Price = 6,
-                            Rarity = (byte)3,
+                            Name = "Płytka czaszkowa",
+                            Price = 12,
+                            Rarity = (byte)4,
                             Weigth = 0
                         },
                         new
                         {
                             Id = 208,
                             ItemType = (byte)13,
-                            MoneyType = (byte)2,
-                            Name = "Szklane oko",
-                            Price = 1,
-                            Rarity = (byte)4,
+                            Name = "Pozłacany nos",
+                            Price = 72,
+                            Rarity = (byte)3,
                             Weigth = 0
                         },
                         new
                         {
                             Id = 209,
                             ItemType = (byte)13,
-                            MoneyType = (byte)2,
-                            Name = "Sztuczna noga",
-                            Price = 6,
+                            Name = "Szklane oko",
+                            Price = 12,
                             Rarity = (byte)4,
                             Weigth = 0
                         },
@@ -2912,9 +2694,17 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 210,
                             ItemType = (byte)13,
-                            MoneyType = (byte)2,
+                            Name = "Sztuczna noga",
+                            Price = 72,
+                            Rarity = (byte)4,
+                            Weigth = 0
+                        },
+                        new
+                        {
+                            Id = 211,
+                            ItemType = (byte)13,
                             Name = "Tatuaż",
-                            Price = 3,
+                            Price = 36,
                             Rarity = (byte)4,
                             Weigth = 0
                         });
@@ -8343,9 +8133,6 @@ namespace WarhammerProfessionApp.Migrations
                     b.Property<int>("ItemId")
                         .HasColumnType("int");
 
-                    b.Property<byte>("Quality")
-                        .HasColumnType("tinyint");
-
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
@@ -8360,1302 +8147,1134 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             ProfessionsItemId = 1,
                             ItemId = 66,
-                            Quality = (byte)2,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 2,
-                            ItemId = 134,
-                            Quality = (byte)2,
+                            ItemId = 135,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 3,
                             ItemId = 45,
-                            Quality = (byte)2,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 4,
                             ItemId = 27,
-                            Quality = (byte)2,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 5,
                             ItemId = 14,
-                            Quality = (byte)2,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 6,
                             ItemId = 16,
-                            Quality = (byte)2,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 6,
                             ItemId = 14,
-                            Quality = (byte)2,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 7,
                             ItemId = 45,
-                            Quality = (byte)2,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 8,
                             ItemId = 89,
-                            Quality = (byte)2,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 9,
                             ItemId = 33,
-                            Quality = (byte)2,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 9,
                             ItemId = 2,
-                            Quality = (byte)2,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 10,
-                            ItemId = 92,
-                            Quality = (byte)2,
+                            ItemId = 93,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 11,
-                            ItemId = 200,
-                            Quality = (byte)2,
+                            ItemId = 201,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 11,
-                            ItemId = 153,
-                            Quality = (byte)2,
+                            ItemId = 154,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 12,
-                            ItemId = 100,
-                            Quality = (byte)2,
+                            ItemId = 101,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 13,
-                            ItemId = 130,
-                            Quality = (byte)2,
+                            ItemId = 131,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 14,
                             ItemId = 45,
-                            Quality = (byte)2,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 15,
                             ItemId = 29,
-                            Quality = (byte)2,
                             Quantity = 3
                         },
                         new
                         {
                             ProfessionsItemId = 15,
                             ItemId = 38,
-                            Quality = (byte)2,
                             Quantity = 2
                         },
                         new
                         {
                             ProfessionsItemId = 16,
-                            ItemId = 119,
-                            Quality = (byte)2,
+                            ItemId = 120,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 17,
-                            ItemId = 153,
-                            Quality = (byte)2,
+                            ItemId = 154,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 18,
                             ItemId = 67,
-                            Quality = (byte)2,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 18,
                             ItemId = 64,
-                            Quality = (byte)2,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 19,
-                            ItemId = 153,
-                            Quality = (byte)2,
+                            ItemId = 154,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 20,
                             ItemId = 4,
-                            Quality = (byte)2,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 20,
                             ItemId = 8,
-                            Quality = (byte)2,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 21,
-                            ItemId = 89,
-                            Quality = (byte)3,
+                            ItemId = 90,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 22,
                             ItemId = 46,
-                            Quality = (byte)2,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 23,
                             ItemId = 46,
-                            Quality = (byte)2,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 24,
-                            ItemId = 164,
-                            Quality = (byte)2,
+                            ItemId = 165,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 25,
                             ItemId = 5,
-                            Quality = (byte)2,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 26,
                             ItemId = 50,
-                            Quality = (byte)2,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 27,
                             ItemId = 49,
-                            Quality = (byte)2,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 28,
                             ItemId = 46,
-                            Quality = (byte)2,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 29,
-                            ItemId = 168,
-                            Quality = (byte)2,
+                            ItemId = 169,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 30,
-                            ItemId = 170,
-                            Quality = (byte)2,
+                            ItemId = 171,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 31,
-                            ItemId = 171,
-                            Quality = (byte)2,
+                            ItemId = 172,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 32,
                             ItemId = 4,
-                            Quality = (byte)2,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 32,
                             ItemId = 16,
-                            Quality = (byte)2,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 33,
                             ItemId = 11,
-                            Quality = (byte)2,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 34,
                             ItemId = 50,
-                            Quality = (byte)2,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 35,
                             ItemId = 46,
-                            Quality = (byte)2,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 36,
                             ItemId = 14,
-                            Quality = (byte)2,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 36,
                             ItemId = 9,
-                            Quality = (byte)2,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 37,
                             ItemId = 26,
-                            Quality = (byte)2,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 38,
                             ItemId = 46,
-                            Quality = (byte)2,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 39,
-                            ItemId = 186,
-                            Quality = (byte)2,
+                            ItemId = 187,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 40,
-                            ItemId = 200,
-                            Quality = (byte)2,
+                            ItemId = 201,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 41,
                             ItemId = 16,
-                            Quality = (byte)2,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 42,
-                            ItemId = 143,
-                            Quality = (byte)2,
+                            ItemId = 144,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 43,
                             ItemId = 46,
-                            Quality = (byte)2,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 44,
-                            ItemId = 151,
-                            Quality = (byte)2,
+                            ItemId = 152,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 45,
-                            ItemId = 107,
-                            Quality = (byte)2,
+                            ItemId = 108,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 46,
-                            ItemId = 108,
-                            Quality = (byte)2,
+                            ItemId = 109,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 47,
-                            ItemId = 186,
-                            Quality = (byte)2,
+                            ItemId = 187,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 48,
                             ItemId = 72,
-                            Quality = (byte)2,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 49,
                             ItemId = 75,
-                            Quality = (byte)2,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 50,
                             ItemId = 46,
-                            Quality = (byte)2,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 51,
-                            ItemId = 150,
-                            Quality = (byte)2,
+                            ItemId = 151,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 52,
-                            ItemId = 106,
-                            Quality = (byte)2,
+                            ItemId = 107,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 53,
-                            ItemId = 108,
-                            Quality = (byte)2,
+                            ItemId = 109,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 54,
-                            ItemId = 127,
-                            Quality = (byte)2,
+                            ItemId = 128,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 55,
-                            ItemId = 103,
-                            Quality = (byte)2,
+                            ItemId = 104,
                             Quantity = 2
                         },
                         new
                         {
                             ProfessionsItemId = 56,
                             ItemId = 65,
-                            Quality = (byte)2,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 56,
-                            ItemId = 138,
-                            Quality = (byte)2,
+                            ItemId = 139,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 57,
-                            ItemId = 113,
-                            Quality = (byte)2,
+                            ItemId = 114,
                             Quantity = 50
                         },
                         new
                         {
                             ProfessionsItemId = 58,
                             ItemId = 27,
-                            Quality = (byte)2,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 59,
                             ItemId = 16,
-                            Quality = (byte)2,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 60,
                             ItemId = 52,
-                            Quality = (byte)2,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 61,
                             ItemId = 46,
-                            Quality = (byte)2,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 62,
                             ItemId = 47,
-                            Quality = (byte)2,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 63,
                             ItemId = 16,
-                            Quality = (byte)2,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 64,
                             ItemId = 46,
-                            Quality = (byte)2,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 65,
-                            ItemId = 198,
-                            Quality = (byte)2,
+                            ItemId = 199,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 66,
+                            ItemId = 40,
+                            Quantity = 10
+                        },
+                        new
+                        {
+                            ProfessionsItemId = 67,
                             ItemId = 20,
-                            Quality = (byte)2,
-                            Quantity = 1
-                        },
-                        new
-                        {
-                            ProfessionsItemId = 67,
-                            ItemId = 154,
-                            Quality = (byte)2,
-                            Quantity = 2
-                        },
-                        new
-                        {
-                            ProfessionsItemId = 67,
-                            ItemId = 157,
-                            Quality = (byte)2,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 68,
-                            ItemId = 198,
-                            Quality = (byte)2,
-                            Quantity = 1
+                            ItemId = 40,
+                            Quantity = 10
                         },
                         new
                         {
                             ProfessionsItemId = 69,
-                            ItemId = 26,
-                            Quality = (byte)2,
+                            ItemId = 155,
+                            Quantity = 2
+                        },
+                        new
+                        {
+                            ProfessionsItemId = 69,
+                            ItemId = 158,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 70,
-                            ItemId = 45,
-                            Quality = (byte)2,
+                            ItemId = 199,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 71,
-                            ItemId = 44,
-                            Quality = (byte)2,
-                            Quantity = 1
+                            ItemId = 41,
+                            Quantity = 10
                         },
                         new
                         {
                             ProfessionsItemId = 72,
-                            ItemId = 142,
-                            Quality = (byte)2,
+                            ItemId = 26,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 73,
-                            ItemId = 127,
-                            Quality = (byte)2,
+                            ItemId = 45,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 74,
-                            ItemId = 142,
-                            Quality = (byte)2,
+                            ItemId = 44,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 75,
-                            ItemId = 64,
-                            Quality = (byte)2,
+                            ItemId = 143,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 76,
-                            ItemId = 148,
-                            Quality = (byte)2,
+                            ItemId = 128,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 77,
-                            ItemId = 106,
-                            Quality = (byte)2,
+                            ItemId = 143,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 78,
-                            ItemId = 26,
-                            Quality = (byte)2,
+                            ItemId = 64,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 79,
-                            ItemId = 50,
-                            Quality = (byte)2,
+                            ItemId = 149,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 80,
-                            ItemId = 45,
-                            Quality = (byte)2,
+                            ItemId = 107,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 81,
-                            ItemId = 14,
-                            Quality = (byte)2,
+                            ItemId = 26,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 82,
-                            ItemId = 113,
-                            Quality = (byte)2,
-                            Quantity = 50
+                            ItemId = 50,
+                            Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 83,
-                            ItemId = 26,
-                            Quality = (byte)2,
+                            ItemId = 45,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 84,
-                            ItemId = 50,
-                            Quality = (byte)2,
+                            ItemId = 14,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 85,
-                            ItemId = 46,
-                            Quality = (byte)2,
-                            Quantity = 1
+                            ItemId = 114,
+                            Quantity = 50
                         },
                         new
                         {
                             ProfessionsItemId = 86,
-                            ItemId = 14,
-                            Quality = (byte)2,
+                            ItemId = 26,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 87,
-                            ItemId = 186,
-                            Quality = (byte)2,
+                            ItemId = 50,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 88,
-                            ItemId = 1,
-                            Quality = (byte)2,
-                            Quantity = 1
-                        },
-                        new
-                        {
-                            ProfessionsItemId = 88,
-                            ItemId = 27,
-                            Quality = (byte)2,
+                            ItemId = 46,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 89,
-                            ItemId = 46,
-                            Quality = (byte)2,
+                            ItemId = 14,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 90,
-                            ItemId = 44,
-                            Quality = (byte)2,
+                            ItemId = 187,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 91,
-                            ItemId = 38,
-                            Quality = (byte)2,
-                            Quantity = 2
+                            ItemId = 1,
+                            Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 91,
-                            ItemId = 29,
-                            Quality = (byte)2,
-                            Quantity = 2
+                            ItemId = 27,
+                            Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 92,
-                            ItemId = 11,
-                            Quality = (byte)2,
+                            ItemId = 46,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 93,
-                            ItemId = 46,
-                            Quality = (byte)2,
+                            ItemId = 44,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 94,
-                            ItemId = 9,
-                            Quality = (byte)2,
-                            Quantity = 1
+                            ItemId = 38,
+                            Quantity = 2
+                        },
+                        new
+                        {
+                            ProfessionsItemId = 94,
+                            ItemId = 29,
+                            Quantity = 2
                         },
                         new
                         {
                             ProfessionsItemId = 95,
                             ItemId = 11,
-                            Quality = (byte)2,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 96,
-                            ItemId = 50,
-                            Quality = (byte)2,
+                            ItemId = 46,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 97,
-                            ItemId = 45,
-                            Quality = (byte)2,
+                            ItemId = 9,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 98,
-                            ItemId = 65,
-                            Quality = (byte)2,
-                            Quantity = 2
+                            ItemId = 11,
+                            Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 99,
-                            ItemId = 132,
-                            Quality = (byte)2,
+                            ItemId = 50,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 100,
-                            ItemId = 98,
-                            Quality = (byte)2,
+                            ItemId = 45,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 101,
-                            ItemId = 46,
-                            Quality = (byte)2,
-                            Quantity = 1
+                            ItemId = 65,
+                            Quantity = 2
                         },
                         new
                         {
                             ProfessionsItemId = 102,
-                            ItemId = 64,
-                            Quality = (byte)2,
+                            ItemId = 133,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 103,
-                            ItemId = 106,
-                            Quality = (byte)2,
+                            ItemId = 99,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 104,
-                            ItemId = 108,
-                            Quality = (byte)2,
+                            ItemId = 46,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 105,
-                            ItemId = 143,
-                            Quality = (byte)2,
+                            ItemId = 64,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 106,
-                            ItemId = 151,
-                            Quality = (byte)2,
+                            ItemId = 107,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 107,
-                            ItemId = 103,
-                            Quality = (byte)2,
+                            ItemId = 109,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 108,
-                            ItemId = 46,
-                            Quality = (byte)2,
+                            ItemId = 144,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 109,
-                            ItemId = 14,
-                            Quality = (byte)2,
+                            ItemId = 152,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 110,
-                            ItemId = 168,
-                            Quality = (byte)2,
+                            ItemId = 104,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 111,
-                            ItemId = 170,
-                            Quality = (byte)2,
+                            ItemId = 46,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 112,
-                            ItemId = 171,
-                            Quality = (byte)2,
+                            ItemId = 14,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 113,
-                            ItemId = 102,
-                            Quality = (byte)2,
+                            ItemId = 169,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 114,
-                            ItemId = 46,
-                            Quality = (byte)2,
+                            ItemId = 171,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 115,
-                            ItemId = 175,
-                            Quality = (byte)2,
+                            ItemId = 172,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 116,
-                            ItemId = 161,
-                            Quality = (byte)2,
-                            Quantity = 1
-                        },
-                        new
-                        {
-                            ProfessionsItemId = 116,
-                            ItemId = 164,
-                            Quality = (byte)2,
+                            ItemId = 103,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 117,
-                            ItemId = 161,
-                            Quality = (byte)2,
-                            Quantity = 1
-                        },
-                        new
-                        {
-                            ProfessionsItemId = 117,
-                            ItemId = 109,
-                            Quality = (byte)2,
-                            Quantity = 2
-                        },
-                        new
-                        {
-                            ProfessionsItemId = 118,
-                            ItemId = 27,
-                            Quality = (byte)2,
+                            ItemId = 46,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 118,
-                            ItemId = 26,
-                            Quality = (byte)2,
+                            ItemId = 176,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 119,
-                            ItemId = 18,
-                            Quality = (byte)2,
+                            ItemId = 162,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 119,
-                            ItemId = 17,
-                            Quality = (byte)2,
+                            ItemId = 165,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 120,
-                            ItemId = 37,
-                            Quality = (byte)2,
+                            ItemId = 162,
+                            Quantity = 1
+                        },
+                        new
+                        {
+                            ProfessionsItemId = 120,
+                            ItemId = 110,
+                            Quantity = 2
+                        },
+                        new
+                        {
+                            ProfessionsItemId = 121,
+                            ItemId = 27,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 121,
-                            ItemId = 46,
-                            Quality = (byte)2,
+                            ItemId = 26,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 122,
-                            ItemId = 14,
-                            Quality = (byte)2,
+                            ItemId = 18,
+                            Quantity = 1
+                        },
+                        new
+                        {
+                            ProfessionsItemId = 122,
+                            ItemId = 17,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 123,
-                            ItemId = 168,
-                            Quality = (byte)2,
+                            ItemId = 37,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 124,
-                            ItemId = 170,
-                            Quality = (byte)2,
+                            ItemId = 46,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 125,
-                            ItemId = 171,
-                            Quality = (byte)2,
+                            ItemId = 14,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 126,
-                            ItemId = 127,
-                            Quality = (byte)2,
+                            ItemId = 169,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 127,
-                            ItemId = 26,
-                            Quality = (byte)2,
-                            Quantity = 1
-                        },
-                        new
-                        {
-                            ProfessionsItemId = 127,
-                            ItemId = 22,
-                            Quality = (byte)2,
+                            ItemId = 171,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 128,
-                            ItemId = 46,
-                            Quality = (byte)2,
+                            ItemId = 172,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 129,
-                            ItemId = 15,
-                            Quality = (byte)2,
+                            ItemId = 128,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 130,
-                            ItemId = 37,
-                            Quality = (byte)2,
+                            ItemId = 26,
+                            Quantity = 1
+                        },
+                        new
+                        {
+                            ProfessionsItemId = 130,
+                            ItemId = 22,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 131,
-                            ItemId = 145,
-                            Quality = (byte)2,
+                            ItemId = 46,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 132,
-                            ItemId = 127,
-                            Quality = (byte)2,
+                            ItemId = 15,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 133,
-                            ItemId = 46,
-                            Quality = (byte)2,
+                            ItemId = 37,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 134,
-                            ItemId = 65,
-                            Quality = (byte)2,
-                            Quantity = 2
+                            ItemId = 146,
+                            Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 135,
-                            ItemId = 155,
-                            Quality = (byte)2,
+                            ItemId = 128,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 136,
-                            ItemId = 45,
-                            Quality = (byte)2,
+                            ItemId = 46,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 137,
-                            ItemId = 113,
-                            Quality = (byte)2,
-                            Quantity = 50
+                            ItemId = 65,
+                            Quantity = 2
                         },
                         new
                         {
                             ProfessionsItemId = 138,
-                            ItemId = 50,
-                            Quality = (byte)2,
+                            ItemId = 156,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 139,
-                            ItemId = 46,
-                            Quality = (byte)2,
+                            ItemId = 45,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 140,
-                            ItemId = 14,
-                            Quality = (byte)2,
-                            Quantity = 1
+                            ItemId = 114,
+                            Quantity = 50
                         },
                         new
                         {
                             ProfessionsItemId = 141,
-                            ItemId = 168,
-                            Quality = (byte)2,
+                            ItemId = 50,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 142,
-                            ItemId = 170,
-                            Quality = (byte)2,
+                            ItemId = 46,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 143,
-                            ItemId = 171,
-                            Quality = (byte)2,
+                            ItemId = 14,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 144,
-                            ItemId = 111,
-                            Quality = (byte)2,
-                            Quantity = 2
+                            ItemId = 169,
+                            Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 145,
-                            ItemId = 112,
-                            Quality = (byte)2,
-                            Quantity = 5
+                            ItemId = 171,
+                            Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 146,
-                            ItemId = 147,
-                            Quality = (byte)2,
+                            ItemId = 172,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 147,
-                            ItemId = 155,
-                            Quality = (byte)2,
-                            Quantity = 1
+                            ItemId = 112,
+                            Quantity = 2
                         },
                         new
                         {
                             ProfessionsItemId = 148,
-                            ItemId = 64,
-                            Quality = (byte)2,
-                            Quantity = 1
+                            ItemId = 113,
+                            Quantity = 5
                         },
                         new
                         {
                             ProfessionsItemId = 149,
-                            ItemId = 97,
-                            Quality = (byte)2,
+                            ItemId = 148,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 150,
-                            ItemId = 117,
-                            Quality = (byte)2,
+                            ItemId = 156,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 151,
-                            ItemId = 107,
-                            Quality = (byte)2,
+                            ItemId = 64,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 152,
-                            ItemId = 108,
-                            Quality = (byte)2,
+                            ItemId = 98,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 153,
-                            ItemId = 46,
-                            Quality = (byte)2,
+                            ItemId = 118,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 154,
                             ItemId = 108,
-                            Quality = (byte)2,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 155,
-                            ItemId = 31,
-                            Quality = (byte)2,
+                            ItemId = 109,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 156,
-                            ItemId = 50,
-                            Quality = (byte)2,
+                            ItemId = 46,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 157,
-                            ItemId = 46,
-                            Quality = (byte)2,
+                            ItemId = 109,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 158,
-                            ItemId = 14,
-                            Quality = (byte)2,
+                            ItemId = 31,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 159,
-                            ItemId = 167,
-                            Quality = (byte)2,
+                            ItemId = 50,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 160,
-                            ItemId = 170,
-                            Quality = (byte)2,
+                            ItemId = 46,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 161,
-                            ItemId = 171,
-                            Quality = (byte)2,
+                            ItemId = 14,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 162,
-                            ItemId = 127,
-                            Quality = (byte)2,
+                            ItemId = 168,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 163,
-                            ItemId = 33,
-                            Quality = (byte)2,
+                            ItemId = 171,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 164,
-                            ItemId = 169,
-                            Quality = (byte)2,
+                            ItemId = 172,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 165,
-                            ItemId = 170,
-                            Quality = (byte)2,
+                            ItemId = 128,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 166,
-                            ItemId = 171,
-                            Quality = (byte)2,
+                            ItemId = 33,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 167,
-                            ItemId = 106,
-                            Quality = (byte)2,
+                            ItemId = 170,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 168,
-                            ItemId = 108,
-                            Quality = (byte)2,
+                            ItemId = 171,
                             Quantity = 1
                         },
                         new
                         {
                             ProfessionsItemId = 169,
-                            ItemId = 151,
-                            Quality = (byte)2,
+                            ItemId = 172,
+                            Quantity = 1
+                        },
+                        new
+                        {
+                            ProfessionsItemId = 170,
+                            ItemId = 107,
+                            Quantity = 1
+                        },
+                        new
+                        {
+                            ProfessionsItemId = 171,
+                            ItemId = 109,
+                            Quantity = 1
+                        },
+                        new
+                        {
+                            ProfessionsItemId = 172,
+                            ItemId = 152,
                             Quantity = 1
                         });
                 });
@@ -10091,19 +9710,19 @@ namespace WarhammerProfessionApp.Migrations
                         new
                         {
                             Id = 69,
-                            ProfessionId = 20,
+                            ProfessionId = 19,
                             Quantity = (byte)1
                         },
                         new
                         {
                             Id = 70,
-                            ProfessionId = 20,
+                            ProfessionId = 19,
                             Quantity = (byte)1
                         },
                         new
                         {
                             Id = 71,
-                            ProfessionId = 20,
+                            ProfessionId = 19,
                             Quantity = (byte)1
                         },
                         new
@@ -10127,37 +9746,37 @@ namespace WarhammerProfessionApp.Migrations
                         new
                         {
                             Id = 75,
-                            ProfessionId = 21,
+                            ProfessionId = 20,
                             Quantity = (byte)1
                         },
                         new
                         {
                             Id = 76,
-                            ProfessionId = 21,
+                            ProfessionId = 20,
                             Quantity = (byte)1
                         },
                         new
                         {
                             Id = 77,
-                            ProfessionId = 21,
+                            ProfessionId = 20,
                             Quantity = (byte)1
                         },
                         new
                         {
                             Id = 78,
-                            ProfessionId = 22,
+                            ProfessionId = 21,
                             Quantity = (byte)1
                         },
                         new
                         {
                             Id = 79,
-                            ProfessionId = 22,
+                            ProfessionId = 21,
                             Quantity = (byte)1
                         },
                         new
                         {
                             Id = 80,
-                            ProfessionId = 22,
+                            ProfessionId = 21,
                             Quantity = (byte)1
                         },
                         new
@@ -10175,19 +9794,19 @@ namespace WarhammerProfessionApp.Migrations
                         new
                         {
                             Id = 83,
-                            ProfessionId = 23,
+                            ProfessionId = 22,
                             Quantity = (byte)1
                         },
                         new
                         {
                             Id = 84,
-                            ProfessionId = 23,
+                            ProfessionId = 22,
                             Quantity = (byte)1
                         },
                         new
                         {
                             Id = 85,
-                            ProfessionId = 23,
+                            ProfessionId = 22,
                             Quantity = (byte)1
                         },
                         new
@@ -10205,37 +9824,37 @@ namespace WarhammerProfessionApp.Migrations
                         new
                         {
                             Id = 88,
-                            ProfessionId = 24,
+                            ProfessionId = 23,
                             Quantity = (byte)1
                         },
                         new
                         {
                             Id = 89,
-                            ProfessionId = 24,
+                            ProfessionId = 23,
                             Quantity = (byte)1
                         },
                         new
                         {
                             Id = 90,
-                            ProfessionId = 24,
+                            ProfessionId = 23,
                             Quantity = (byte)1
                         },
                         new
                         {
                             Id = 91,
-                            ProfessionId = 25,
+                            ProfessionId = 24,
                             Quantity = (byte)1
                         },
                         new
                         {
                             Id = 92,
-                            ProfessionId = 25,
+                            ProfessionId = 24,
                             Quantity = (byte)1
                         },
                         new
                         {
                             Id = 93,
-                            ProfessionId = 25,
+                            ProfessionId = 24,
                             Quantity = (byte)1
                         },
                         new
@@ -10247,67 +9866,67 @@ namespace WarhammerProfessionApp.Migrations
                         new
                         {
                             Id = 95,
-                            ProfessionId = 26,
+                            ProfessionId = 25,
                             Quantity = (byte)1
                         },
                         new
                         {
                             Id = 96,
-                            ProfessionId = 26,
+                            ProfessionId = 25,
                             Quantity = (byte)1
                         },
                         new
                         {
                             Id = 97,
-                            ProfessionId = 26,
+                            ProfessionId = 25,
                             Quantity = (byte)1
                         },
                         new
                         {
                             Id = 98,
-                            ProfessionId = 27,
+                            ProfessionId = 26,
                             Quantity = (byte)1
                         },
                         new
                         {
                             Id = 99,
-                            ProfessionId = 27,
+                            ProfessionId = 26,
                             Quantity = (byte)1
                         },
                         new
                         {
                             Id = 100,
-                            ProfessionId = 27,
+                            ProfessionId = 26,
                             Quantity = (byte)1
                         },
                         new
                         {
                             Id = 101,
-                            ProfessionId = 28,
+                            ProfessionId = 27,
                             Quantity = (byte)1
                         },
                         new
                         {
                             Id = 102,
-                            ProfessionId = 28,
+                            ProfessionId = 27,
                             Quantity = (byte)1
                         },
                         new
                         {
                             Id = 103,
-                            ProfessionId = 29,
+                            ProfessionId = 27,
                             Quantity = (byte)1
                         },
                         new
                         {
                             Id = 104,
-                            ProfessionId = 29,
+                            ProfessionId = 28,
                             Quantity = (byte)1
                         },
                         new
                         {
                             Id = 105,
-                            ProfessionId = 29,
+                            ProfessionId = 28,
                             Quantity = (byte)1
                         },
                         new
@@ -10325,19 +9944,19 @@ namespace WarhammerProfessionApp.Migrations
                         new
                         {
                             Id = 108,
-                            ProfessionId = 30,
+                            ProfessionId = 29,
                             Quantity = (byte)1
                         },
                         new
                         {
                             Id = 109,
-                            ProfessionId = 30,
+                            ProfessionId = 29,
                             Quantity = (byte)1
                         },
                         new
                         {
                             Id = 110,
-                            ProfessionId = 30,
+                            ProfessionId = 29,
                             Quantity = (byte)1
                         },
                         new
@@ -10361,19 +9980,19 @@ namespace WarhammerProfessionApp.Migrations
                         new
                         {
                             Id = 114,
-                            ProfessionId = 31,
+                            ProfessionId = 30,
                             Quantity = (byte)1
                         },
                         new
                         {
                             Id = 115,
-                            ProfessionId = 31,
+                            ProfessionId = 30,
                             Quantity = (byte)1
                         },
                         new
                         {
                             Id = 116,
-                            ProfessionId = 31,
+                            ProfessionId = 30,
                             Quantity = (byte)1
                         },
                         new
@@ -10385,19 +10004,19 @@ namespace WarhammerProfessionApp.Migrations
                         new
                         {
                             Id = 118,
-                            ProfessionId = 32,
+                            ProfessionId = 31,
                             Quantity = (byte)1
                         },
                         new
                         {
                             Id = 119,
-                            ProfessionId = 32,
+                            ProfessionId = 31,
                             Quantity = (byte)1
                         },
                         new
                         {
                             Id = 120,
-                            ProfessionId = 32,
+                            ProfessionId = 31,
                             Quantity = (byte)1
                         },
                         new
@@ -10439,31 +10058,31 @@ namespace WarhammerProfessionApp.Migrations
                         new
                         {
                             Id = 127,
-                            ProfessionId = 33,
+                            ProfessionId = 32,
                             Quantity = (byte)1
                         },
                         new
                         {
                             Id = 128,
-                            ProfessionId = 33,
+                            ProfessionId = 32,
                             Quantity = (byte)1
                         },
                         new
                         {
                             Id = 129,
-                            ProfessionId = 34,
+                            ProfessionId = 32,
                             Quantity = (byte)1
                         },
                         new
                         {
                             Id = 130,
-                            ProfessionId = 34,
+                            ProfessionId = 33,
                             Quantity = (byte)1
                         },
                         new
                         {
                             Id = 131,
-                            ProfessionId = 34,
+                            ProfessionId = 33,
                             Quantity = (byte)1
                         },
                         new
@@ -10475,49 +10094,49 @@ namespace WarhammerProfessionApp.Migrations
                         new
                         {
                             Id = 133,
-                            ProfessionId = 35,
+                            ProfessionId = 34,
                             Quantity = (byte)1
                         },
                         new
                         {
                             Id = 134,
-                            ProfessionId = 35,
+                            ProfessionId = 34,
                             Quantity = (byte)1
                         },
                         new
                         {
                             Id = 135,
-                            ProfessionId = 35,
+                            ProfessionId = 34,
                             Quantity = (byte)1
                         },
                         new
                         {
                             Id = 136,
-                            ProfessionId = 36,
+                            ProfessionId = 35,
                             Quantity = (byte)1
                         },
                         new
                         {
                             Id = 137,
-                            ProfessionId = 36,
+                            ProfessionId = 35,
                             Quantity = (byte)1
                         },
                         new
                         {
                             Id = 138,
-                            ProfessionId = 37,
+                            ProfessionId = 35,
                             Quantity = (byte)1
                         },
                         new
                         {
                             Id = 139,
-                            ProfessionId = 37,
+                            ProfessionId = 36,
                             Quantity = (byte)1
                         },
                         new
                         {
                             Id = 140,
-                            ProfessionId = 37,
+                            ProfessionId = 36,
                             Quantity = (byte)1
                         },
                         new
@@ -10541,19 +10160,19 @@ namespace WarhammerProfessionApp.Migrations
                         new
                         {
                             Id = 144,
-                            ProfessionId = 38,
+                            ProfessionId = 37,
                             Quantity = (byte)1
                         },
                         new
                         {
                             Id = 145,
-                            ProfessionId = 38,
+                            ProfessionId = 37,
                             Quantity = (byte)1
                         },
                         new
                         {
                             Id = 146,
-                            ProfessionId = 38,
+                            ProfessionId = 37,
                             Quantity = (byte)1
                         },
                         new
@@ -10565,19 +10184,19 @@ namespace WarhammerProfessionApp.Migrations
                         new
                         {
                             Id = 148,
-                            ProfessionId = 39,
+                            ProfessionId = 38,
                             Quantity = (byte)1
                         },
                         new
                         {
                             Id = 149,
-                            ProfessionId = 39,
+                            ProfessionId = 38,
                             Quantity = (byte)1
                         },
                         new
                         {
                             Id = 150,
-                            ProfessionId = 39,
+                            ProfessionId = 38,
                             Quantity = (byte)1
                         },
                         new
@@ -10595,31 +10214,31 @@ namespace WarhammerProfessionApp.Migrations
                         new
                         {
                             Id = 153,
-                            ProfessionId = 40,
+                            ProfessionId = 39,
                             Quantity = (byte)1
                         },
                         new
                         {
                             Id = 154,
-                            ProfessionId = 40,
+                            ProfessionId = 39,
                             Quantity = (byte)1
                         },
                         new
                         {
                             Id = 155,
-                            ProfessionId = 41,
+                            ProfessionId = 39,
                             Quantity = (byte)1
                         },
                         new
                         {
                             Id = 156,
-                            ProfessionId = 41,
+                            ProfessionId = 40,
                             Quantity = (byte)1
                         },
                         new
                         {
                             Id = 157,
-                            ProfessionId = 41,
+                            ProfessionId = 40,
                             Quantity = (byte)1
                         },
                         new
@@ -10655,19 +10274,19 @@ namespace WarhammerProfessionApp.Migrations
                         new
                         {
                             Id = 163,
-                            ProfessionId = 42,
+                            ProfessionId = 41,
                             Quantity = (byte)1
                         },
                         new
                         {
                             Id = 164,
-                            ProfessionId = 42,
+                            ProfessionId = 41,
                             Quantity = (byte)1
                         },
                         new
                         {
                             Id = 165,
-                            ProfessionId = 42,
+                            ProfessionId = 41,
                             Quantity = (byte)1
                         },
                         new
@@ -10691,6 +10310,24 @@ namespace WarhammerProfessionApp.Migrations
                         new
                         {
                             Id = 169,
+                            ProfessionId = 42,
+                            Quantity = (byte)1
+                        },
+                        new
+                        {
+                            Id = 170,
+                            ProfessionId = 42,
+                            Quantity = (byte)1
+                        },
+                        new
+                        {
+                            Id = 171,
+                            ProfessionId = 42,
+                            Quantity = (byte)1
+                        },
+                        new
+                        {
+                            Id = 172,
                             ProfessionId = 42,
                             Quantity = (byte)1
                         });

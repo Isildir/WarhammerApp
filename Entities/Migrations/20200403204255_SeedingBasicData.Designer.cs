@@ -10,7 +10,7 @@ using WarhammerProfessionApp.Entities;
 namespace WarhammerProfessionApp.Migrations
 {
     [DbContext(typeof(ProfessionsContext))]
-    [Migration("20191205130956_SeedingBasicData")]
+    [Migration("20200403204255_SeedingBasicData")]
     partial class SeedingBasicData
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -28,10 +28,22 @@ namespace WarhammerProfessionApp.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("HasImpactOnStatictics")
+                        .HasColumnType("bit");
+
+                    b.Property<int?>("ImpactValue")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
+
+                    b.Property<byte?>("ValueToAlter")
+                        .HasColumnType("tinyint");
 
                     b.HasKey("Id");
 
@@ -41,428 +53,706 @@ namespace WarhammerProfessionApp.Migrations
                         new
                         {
                             Id = 1,
+                            HasImpactOnStatictics = false,
                             Name = "Artylerzysta"
                         },
                         new
                         {
                             Id = 2,
-                            Name = "Bardzo silny"
+                            HasImpactOnStatictics = true,
+                            ImpactValue = 5,
+                            Name = "Bardzo silny",
+                            ValueToAlter = (byte)3
                         },
                         new
                         {
                             Id = 3,
-                            Name = "Bardzo szybki"
+                            HasImpactOnStatictics = true,
+                            ImpactValue = 1,
+                            Name = "Bardzo szybki",
+                            ValueToAlter = (byte)13
                         },
                         new
                         {
                             Id = 4,
+                            HasImpactOnStatictics = false,
                             Name = "Bardzo wytrzymały"
                         },
                         new
                         {
                             Id = 5,
+                            HasImpactOnStatictics = false,
                             Name = "Bijatyka"
                         },
                         new
                         {
                             Id = 6,
+                            HasImpactOnStatictics = false,
                             Name = "Błyskawiczne przeładowanie"
                         },
                         new
                         {
                             Id = 7,
+                            HasImpactOnStatictics = false,
                             Name = "Błyskawiczny blok"
                         },
                         new
                         {
                             Id = 8,
-                            Name = "Błyskotliwość"
+                            HasImpactOnStatictics = true,
+                            ImpactValue = 5,
+                            Name = "Błyskotliwość",
+                            ValueToAlter = (byte)6
                         },
                         new
                         {
                             Id = 9,
+                            HasImpactOnStatictics = false,
                             Name = "Brawura"
                         },
                         new
                         {
                             Id = 10,
+                            HasImpactOnStatictics = false,
                             Name = "Broń naturalna"
                         },
                         new
                         {
                             Id = 11,
+                            HasImpactOnStatictics = false,
                             Name = "Broń specjalna (różne)"
                         },
                         new
                         {
                             Id = 12,
+                            HasImpactOnStatictics = false,
                             Name = "Bystry wzrok"
                         },
                         new
                         {
                             Id = 13,
-                            Name = "Charyzmatyczny"
+                            HasImpactOnStatictics = true,
+                            ImpactValue = 5,
+                            Name = "Charyzmatyczny",
+                            ValueToAlter = (byte)8
                         },
                         new
                         {
                             Id = 14,
+                            HasImpactOnStatictics = false,
                             Name = "Chirurgia"
                         },
                         new
                         {
                             Id = 15,
+                            HasImpactOnStatictics = false,
                             Name = "Chodu!"
                         },
                         new
                         {
                             Id = 16,
+                            HasImpactOnStatictics = false,
                             Name = "Czarnoksięstwo"
                         },
                         new
                         {
                             Id = 17,
+                            HasImpactOnStatictics = false,
                             Name = "Człowiek-guma"
                         },
                         new
                         {
                             Id = 18,
+                            HasImpactOnStatictics = false,
                             Name = "Czuły słuch"
                         },
                         new
                         {
                             Id = 19,
+                            HasImpactOnStatictics = false,
                             Name = "Dotyk mocy"
                         },
                         new
                         {
                             Id = 20,
+                            HasImpactOnStatictics = false,
                             Name = "Etykieta"
                         },
                         new
                         {
                             Id = 21,
+                            HasImpactOnStatictics = false,
                             Name = "Geniusz arytmetyczny"
                         },
                         new
                         {
                             Id = 22,
+                            HasImpactOnStatictics = false,
                             Name = "Grotołaz"
                         },
                         new
                         {
                             Id = 23,
+                            HasImpactOnStatictics = false,
                             Name = "Groźny"
                         },
                         new
                         {
                             Id = 24,
+                            HasImpactOnStatictics = false,
                             Name = "Gusła"
                         },
                         new
                         {
                             Id = 25,
+                            HasImpactOnStatictics = false,
                             Name = "Intrygant"
                         },
                         new
                         {
                             Id = 26,
+                            HasImpactOnStatictics = false,
                             Name = "Krasnoludzki fach"
                         },
                         new
                         {
                             Id = 27,
+                            HasImpactOnStatictics = false,
                             Name = "Krasomóstwo"
                         },
                         new
                         {
                             Id = 28,
+                            HasImpactOnStatictics = false,
                             Name = "Krzepki"
                         },
                         new
                         {
                             Id = 29,
+                            HasImpactOnStatictics = false,
                             Name = "Latanie"
                         },
                         new
                         {
                             Id = 30,
+                            HasImpactOnStatictics = false,
                             Name = "Lewitacja"
                         },
                         new
                         {
                             Id = 31,
+                            HasImpactOnStatictics = false,
                             Name = "Łotrzyk"
                         },
                         new
                         {
                             Id = 32,
+                            HasImpactOnStatictics = false,
                             Name = "Magia czarnoksięska"
                         },
                         new
                         {
                             Id = 33,
+                            HasImpactOnStatictics = false,
                             Name = "Magia kapłańska"
                         },
                         new
                         {
                             Id = 34,
+                            HasImpactOnStatictics = false,
                             Name = "Magia powszechna"
                         },
                         new
                         {
                             Id = 35,
+                            HasImpactOnStatictics = false,
                             Name = "Magia prosta"
                         },
                         new
                         {
                             Id = 36,
+                            HasImpactOnStatictics = false,
                             Name = "Magia tajemna"
                         },
                         new
                         {
                             Id = 37,
+                            HasImpactOnStatictics = false,
                             Name = "Medytacja"
                         },
                         new
                         {
                             Id = 38,
+                            HasImpactOnStatictics = false,
                             Name = "Morderczy atak"
                         },
                         new
                         {
                             Id = 39,
+                            HasImpactOnStatictics = false,
                             Name = "Morderczy pocisk"
                         },
                         new
                         {
                             Id = 40,
+                            HasImpactOnStatictics = false,
                             Name = "Naśladowca"
                         },
                         new
                         {
                             Id = 41,
+                            HasImpactOnStatictics = false,
                             Name = "Niepokojący"
                         },
                         new
                         {
                             Id = 42,
+                            HasImpactOnStatictics = false,
                             Name = "Nieustraszony"
                         },
                         new
                         {
                             Id = 43,
-                            Name = "Niezwykle odporny"
+                            HasImpactOnStatictics = true,
+                            ImpactValue = 5,
+                            Name = "Niezwykle odporny",
+                            ValueToAlter = (byte)4
                         },
                         new
                         {
                             Id = 44,
+                            HasImpactOnStatictics = false,
                             Name = "Obieżyświat"
                         },
                         new
                         {
                             Id = 45,
+                            HasImpactOnStatictics = false,
                             Name = "Oburęczność"
                         },
                         new
                         {
                             Id = 46,
+                            HasImpactOnStatictics = false,
                             Name = "Odporność"
                         },
                         new
                         {
                             Id = 47,
+                            HasImpactOnStatictics = false,
                             Name = "odpornosc na Chaos"
                         },
                         new
                         {
                             Id = 48,
+                            HasImpactOnStatictics = false,
                             Name = "odpornosc na choroby"
                         },
                         new
                         {
                             Id = 49,
+                            HasImpactOnStatictics = false,
                             Name = "odpornosc na magię"
                         },
                         new
                         {
                             Id = 50,
+                            HasImpactOnStatictics = false,
                             Name = "odpornosc na trucizny"
                         },
                         new
                         {
                             Id = 51,
+                            HasImpactOnStatictics = false,
                             Name = "odpornosc psychiczna"
                         },
                         new
                         {
                             Id = 52,
+                            HasImpactOnStatictics = false,
                             Name = "Odwaga"
                         },
                         new
                         {
                             Id = 53,
+                            HasImpactOnStatictics = false,
                             Name = "Ogłuszanie"
                         },
                         new
                         {
                             Id = 54,
-                            Name = "Opanowanie"
+                            HasImpactOnStatictics = true,
+                            ImpactValue = 5,
+                            Name = "Opanowanie",
+                            ValueToAlter = (byte)7
                         },
                         new
                         {
                             Id = 55,
+                            HasImpactOnStatictics = false,
                             Name = "Ożywieniec"
                         },
                         new
                         {
                             Id = 56,
+                            HasImpactOnStatictics = false,
                             Name = "Pancerz wiary"
                         },
                         new
                         {
                             Id = 57,
+                            HasImpactOnStatictics = false,
                             Name = "Poliglota"
                         },
                         new
                         {
                             Id = 58,
+                            HasImpactOnStatictics = false,
                             Name = "Przemawianie"
                         },
                         new
                         {
                             Id = 59,
+                            HasImpactOnStatictics = false,
                             Name = "Przerażajacy"
                         },
                         new
                         {
                             Id = 60,
+                            HasImpactOnStatictics = false,
                             Name = "rozbrojenie"
                         },
                         new
                         {
                             Id = 61,
+                            HasImpactOnStatictics = false,
                             Name = "Silny cios"
                         },
                         new
                         {
                             Id = 62,
+                            HasImpactOnStatictics = false,
                             Name = "Straszny"
                         },
                         new
                         {
                             Id = 63,
+                            HasImpactOnStatictics = false,
                             Name = "Strzał mierzony"
                         },
                         new
                         {
                             Id = 64,
+                            HasImpactOnStatictics = false,
                             Name = "Strzał precyzyjny"
                         },
                         new
                         {
                             Id = 65,
+                            HasImpactOnStatictics = false,
                             Name = "Strzał przebijający"
                         },
                         new
                         {
                             Id = 66,
-                            Name = "Strzelec wyborowy"
+                            HasImpactOnStatictics = true,
+                            ImpactValue = 5,
+                            Name = "Strzelec wyborowy",
+                            ValueToAlter = (byte)2
                         },
                         new
                         {
                             Id = 67,
+                            HasImpactOnStatictics = false,
                             Name = "Szał bojowy"
                         },
                         new
                         {
                             Id = 68,
+                            HasImpactOnStatictics = false,
                             Name = "Szczęście"
                         },
                         new
                         {
                             Id = 69,
+                            HasImpactOnStatictics = false,
                             Name = "Szósty zmysł"
                         },
                         new
                         {
                             Id = 70,
-                            Name = "Szybki refleks"
+                            HasImpactOnStatictics = true,
+                            ImpactValue = 5,
+                            Name = "Szybki refleks",
+                            ValueToAlter = (byte)5
                         },
                         new
                         {
                             Id = 71,
+                            HasImpactOnStatictics = false,
                             Name = "Szybkie wyciągnięcie"
                         },
                         new
                         {
                             Id = 72,
+                            HasImpactOnStatictics = false,
                             Name = "Talent artystyczny"
                         },
                         new
                         {
                             Id = 73,
-                            Name = "Twardziel"
+                            HasImpactOnStatictics = true,
+                            ImpactValue = 1,
+                            Name = "Twardziel",
+                            ValueToAlter = (byte)10
                         },
                         new
                         {
                             Id = 74,
+                            HasImpactOnStatictics = false,
                             Name = "Ulicznik"
                         },
                         new
                         {
                             Id = 75,
-                            Name = "Urodzony wojownik"
+                            HasImpactOnStatictics = true,
+                            ImpactValue = 5,
+                            Name = "Urodzony wojownik",
+                            ValueToAlter = (byte)1
                         },
                         new
                         {
                             Id = 76,
+                            HasImpactOnStatictics = false,
                             Name = "Wędrowiec"
                         },
                         new
                         {
                             Id = 77,
+                            HasImpactOnStatictics = false,
                             Name = "Widzenie w ciemności"
                         },
                         new
                         {
                             Id = 78,
+                            HasImpactOnStatictics = false,
                             Name = "Woltyżerka"
                         },
                         new
                         {
                             Id = 79,
+                            HasImpactOnStatictics = false,
                             Name = "Wyczucie kierunku"
                         },
                         new
                         {
                             Id = 80,
+                            HasImpactOnStatictics = false,
                             Name = "Wykrywanie pułapek"
                         },
                         new
                         {
                             Id = 81,
+                            HasImpactOnStatictics = false,
                             Name = "Wyostrzone zmysły"
                         },
                         new
                         {
                             Id = 82,
+                            HasImpactOnStatictics = false,
                             Name = "Zapasy"
                         },
                         new
                         {
                             Id = 83,
+                            HasImpactOnStatictics = false,
                             Name = "Zapiekła nienawiść"
                         },
                         new
                         {
                             Id = 84,
+                            HasImpactOnStatictics = false,
                             Name = "Zmysł magii"
                         },
                         new
                         {
                             Id = 85,
+                            HasImpactOnStatictics = false,
                             Name = "Żyłka handlowa"
                         });
+                });
+
+            modelBuilder.Entity("WarhammerProfessionApp.Entities.Models.AdditionalCharacterValue", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CharacterId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Value")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CharacterId");
+
+                    b.ToTable("AdditionalCharacterValue");
+                });
+
+            modelBuilder.Entity("WarhammerProfessionApp.Entities.Models.Character", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("CurrentProfessionId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ExperienceSummary")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ExperienceUsed")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Money")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Notes")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<byte?>("Race")
+                        .HasColumnType("tinyint");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CurrentProfessionId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Characters");
+                });
+
+            modelBuilder.Entity("WarhammerProfessionApp.Entities.Models.CharacterAbility", b =>
+                {
+                    b.Property<int>("CharacterId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("AbilityId")
+                        .HasColumnType("int");
+
+                    b.HasKey("CharacterId", "AbilityId");
+
+                    b.HasIndex("AbilityId");
+
+                    b.ToTable("CharacterAbility");
+                });
+
+            modelBuilder.Entity("WarhammerProfessionApp.Entities.Models.CharacterItem", b =>
+                {
+                    b.Property<int>("CharacterId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ItemId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.HasKey("CharacterId", "ItemId");
+
+                    b.HasIndex("ItemId");
+
+                    b.ToTable("CharacterItem");
+                });
+
+            modelBuilder.Entity("WarhammerProfessionApp.Entities.Models.CharacterProfession", b =>
+                {
+                    b.Property<int>("CharacterId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProfessionId")
+                        .HasColumnType("int");
+
+                    b.Property<byte>("Order")
+                        .HasColumnType("tinyint");
+
+                    b.HasKey("CharacterId", "ProfessionId");
+
+                    b.HasIndex("ProfessionId");
+
+                    b.ToTable("CharacterProfession");
+                });
+
+            modelBuilder.Entity("WarhammerProfessionApp.Entities.Models.CharacterSkill", b =>
+                {
+                    b.Property<int>("CharacterId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SkillId")
+                        .HasColumnType("int");
+
+                    b.Property<byte>("Level")
+                        .HasColumnType("tinyint");
+
+                    b.HasKey("CharacterId", "SkillId");
+
+                    b.HasIndex("SkillId");
+
+                    b.ToTable("CharacterSkill");
+                });
+
+            modelBuilder.Entity("WarhammerProfessionApp.Entities.Models.CharacterStatistic", b =>
+                {
+                    b.Property<int>("CharacterId")
+                        .HasColumnType("int");
+
+                    b.Property<byte>("StatisticId")
+                        .HasColumnType("tinyint");
+
+                    b.Property<int>("BaseValue")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CurrentValue")
+                        .HasColumnType("int");
+
+                    b.HasKey("CharacterId", "StatisticId");
+
+                    b.HasIndex("StatisticId");
+
+                    b.ToTable("CharacterStatistic");
+                });
+
+            modelBuilder.Entity("WarhammerProfessionApp.Entities.Models.ExperienceAdditionalCharacterValue", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CharacterId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Cost")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Value")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CharacterId");
+
+                    b.ToTable("ExperienceAdditionalCharacterValue");
                 });
 
             modelBuilder.Entity("WarhammerProfessionApp.Entities.Models.Image", b =>
@@ -496,10 +786,10 @@ namespace WarhammerProfessionApp.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<byte>("ItemType")
-                        .HasColumnType("tinyint");
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<byte>("MoneyType")
+                    b.Property<byte>("ItemType")
                         .HasColumnType("tinyint");
 
                     b.Property<string>("Name")
@@ -525,9 +815,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 1,
                             ItemType = (byte)1,
-                            MoneyType = (byte)1,
                             Name = "Halabarda",
-                            Price = 15,
+                            Price = 3600,
                             Rarity = (byte)5,
                             Weigth = 175
                         },
@@ -535,9 +824,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 2,
                             ItemType = (byte)1,
-                            MoneyType = (byte)2,
                             Name = "Kij",
-                            Price = 3,
+                            Price = 36,
                             Rarity = (byte)6,
                             Weigth = 50
                         },
@@ -545,9 +833,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 3,
                             ItemType = (byte)1,
-                            MoneyType = (byte)1,
                             Name = "Kopia",
-                            Price = 15,
+                            Price = 3600,
                             Rarity = (byte)2,
                             Weigth = 100
                         },
@@ -555,9 +842,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 4,
                             ItemType = (byte)1,
-                            MoneyType = (byte)1,
                             Name = "Korbacz",
-                            Price = 15,
+                            Price = 3600,
                             Rarity = (byte)3,
                             Weigth = 95
                         },
@@ -565,9 +851,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 5,
                             ItemType = (byte)1,
-                            MoneyType = (byte)1,
                             Name = "Lanca",
-                            Price = 20,
+                            Price = 4800,
                             Rarity = (byte)3,
                             Weigth = 75
                         },
@@ -575,9 +860,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 6,
                             ItemType = (byte)1,
-                            MoneyType = (byte)1,
                             Name = "Lewak",
-                            Price = 2,
+                            Price = 480,
                             Rarity = (byte)3,
                             Weigth = 10
                         },
@@ -585,9 +869,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 7,
                             ItemType = (byte)1,
-                            MoneyType = (byte)1,
                             Name = "Łamacz mieczy",
-                            Price = 5,
+                            Price = 1200,
                             Rarity = (byte)3,
                             Weigth = 40
                         },
@@ -595,9 +878,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 8,
                             ItemType = (byte)1,
-                            MoneyType = (byte)1,
                             Name = "Morgensztern",
-                            Price = 15,
+                            Price = 3600,
                             Rarity = (byte)3,
                             Weigth = 60
                         },
@@ -605,9 +887,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 9,
                             ItemType = (byte)1,
-                            MoneyType = (byte)1,
                             Name = "Puklerz",
-                            Price = 4,
+                            Price = 960,
                             Rarity = (byte)4,
                             Weigth = 15
                         },
@@ -615,9 +896,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 10,
                             ItemType = (byte)1,
-                            MoneyType = (byte)1,
                             Name = "Rapier",
-                            Price = 18,
+                            Price = 4320,
                             Rarity = (byte)3,
                             Weigth = 40
                         },
@@ -625,9 +905,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 11,
                             ItemType = (byte)1,
-                            MoneyType = (byte)1,
                             Name = "Rękawica/kastet",
-                            Price = 1,
+                            Price = 240,
                             Rarity = (byte)5,
                             Weigth = 1
                         },
@@ -635,9 +914,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 12,
                             ItemType = (byte)1,
-                            MoneyType = (byte)1,
                             Name = "Szpada",
-                            Price = 18,
+                            Price = 4320,
                             Rarity = (byte)2,
                             Weigth = 40
                         },
@@ -645,9 +923,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 13,
                             ItemType = (byte)1,
-                            MoneyType = (byte)1,
                             Name = "Sztylet",
-                            Price = 1,
+                            Price = 240,
                             Rarity = (byte)5,
                             Weigth = 10
                         },
@@ -655,9 +932,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 14,
                             ItemType = (byte)1,
-                            MoneyType = (byte)1,
                             Name = "Tarcza",
-                            Price = 10,
+                            Price = 2400,
                             Rarity = (byte)5,
                             Weigth = 50
                         },
@@ -665,9 +941,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 15,
                             ItemType = (byte)1,
-                            MoneyType = (byte)1,
                             Name = "Włócznia",
-                            Price = 10,
+                            Price = 2400,
                             Rarity = (byte)5,
                             Weigth = 50
                         },
@@ -675,7 +950,6 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 16,
                             ItemType = (byte)1,
-                            MoneyType = (byte)1,
                             Name = "Bron dwureczna",
                             Price = 0,
                             Rarity = (byte)7,
@@ -685,9 +959,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 17,
                             ItemType = (byte)2,
-                            MoneyType = (byte)1,
                             Name = "Arkan",
-                            Price = 1,
+                            Price = 240,
                             Rarity = (byte)6,
                             Weigth = 10
                         },
@@ -695,9 +968,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 18,
                             ItemType = (byte)2,
-                            MoneyType = (byte)1,
                             Name = "Bicz",
-                            Price = 2,
+                            Price = 480,
                             Rarity = (byte)4,
                             Weigth = 40
                         },
@@ -705,9 +977,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 19,
                             ItemType = (byte)2,
-                            MoneyType = (byte)2,
                             Name = "Bolas",
-                            Price = 7,
+                            Price = 84,
                             Rarity = (byte)3,
                             Weigth = 20
                         },
@@ -715,9 +986,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 20,
                             ItemType = (byte)2,
-                            MoneyType = (byte)1,
                             Name = "Długi łuk",
-                            Price = 15,
+                            Price = 3600,
                             Rarity = (byte)4,
                             Weigth = 90
                         },
@@ -725,9 +995,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 21,
                             ItemType = (byte)2,
-                            MoneyType = (byte)1,
                             Name = "Elfi łuk",
-                            Price = 70,
+                            Price = 16800,
                             Rarity = (byte)1,
                             Weigth = 75
                         },
@@ -735,9 +1004,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 22,
                             ItemType = (byte)2,
-                            MoneyType = (byte)1,
                             Name = "Garłacz",
-                            Price = 70,
+                            Price = 16800,
                             Rarity = (byte)1,
                             Weigth = 50
                         },
@@ -745,9 +1013,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 23,
                             ItemType = (byte)2,
-                            MoneyType = (byte)1,
                             Name = "Krótki łuk",
-                            Price = 7,
+                            Price = 16800,
                             Rarity = (byte)5,
                             Weigth = 75
                         },
@@ -755,9 +1022,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 24,
                             ItemType = (byte)2,
-                            MoneyType = (byte)1,
                             Name = "Kusza pistoletowa",
-                            Price = 35,
+                            Price = 8400,
                             Rarity = (byte)2,
                             Weigth = 25
                         },
@@ -765,9 +1031,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 25,
                             ItemType = (byte)2,
-                            MoneyType = (byte)1,
                             Name = "Kusza samopowtarzalna",
-                            Price = 100,
+                            Price = 24000,
                             Rarity = (byte)1,
                             Weigth = 150
                         },
@@ -775,9 +1040,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 26,
                             ItemType = (byte)2,
-                            MoneyType = (byte)1,
                             Name = "Kusza",
-                            Price = 25,
+                            Price = 6000,
                             Rarity = (byte)4,
                             Weigth = 120
                         },
@@ -785,9 +1049,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 27,
                             ItemType = (byte)2,
-                            MoneyType = (byte)1,
                             Name = "Łuk",
-                            Price = 10,
+                            Price = 2400,
                             Rarity = (byte)5,
                             Weigth = 80
                         },
@@ -795,9 +1058,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 28,
                             ItemType = (byte)2,
-                            MoneyType = (byte)1,
                             Name = "Muszkiet hochlandzki",
-                            Price = 450,
+                            Price = 108000,
                             Rarity = (byte)1,
                             Weigth = 70
                         },
@@ -805,9 +1067,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 29,
                             ItemType = (byte)2,
-                            MoneyType = (byte)1,
                             Name = "Nóź/gwiazdka do rzucania",
-                            Price = 3,
+                            Price = 720,
                             Rarity = (byte)5,
                             Weigth = 10
                         },
@@ -815,9 +1076,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 30,
                             ItemType = (byte)2,
-                            MoneyType = (byte)2,
                             Name = "Oszczep",
-                            Price = 25,
+                            Price = 300,
                             Rarity = (byte)4,
                             Weigth = 50
                         },
@@ -825,9 +1085,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 31,
                             ItemType = (byte)2,
-                            MoneyType = (byte)1,
                             Name = "Pistolet",
-                            Price = 200,
+                            Price = 48000,
                             Rarity = (byte)1,
                             Weigth = 25
                         },
@@ -835,9 +1094,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 32,
                             ItemType = (byte)2,
-                            MoneyType = (byte)1,
                             Name = "Pistolet wielostrzałowy",
-                            Price = 400,
+                            Price = 96000,
                             Rarity = (byte)1,
                             Weigth = 25
                         },
@@ -845,9 +1103,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 33,
                             ItemType = (byte)2,
-                            MoneyType = (byte)1,
                             Name = "Proca",
-                            Price = 4,
+                            Price = 960,
                             Rarity = (byte)5,
                             Weigth = 10
                         },
@@ -855,9 +1112,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 34,
                             ItemType = (byte)2,
-                            MoneyType = (byte)1,
                             Name = "Proca drzewcowa",
-                            Price = 6,
+                            Price = 1440,
                             Rarity = (byte)2,
                             Weigth = 50
                         },
@@ -865,9 +1121,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 35,
                             ItemType = (byte)2,
-                            MoneyType = (byte)1,
                             Name = "Rusznica",
-                            Price = 300,
+                            Price = 72000,
                             Rarity = (byte)1,
                             Weigth = 30
                         },
@@ -875,9 +1130,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 36,
                             ItemType = (byte)2,
-                            MoneyType = (byte)1,
                             Name = "Rusznica wielostrzałowa",
-                            Price = 600,
+                            Price = 144000,
                             Rarity = (byte)1,
                             Weigth = 30
                         },
@@ -885,9 +1139,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 37,
                             ItemType = (byte)2,
-                            MoneyType = (byte)1,
                             Name = "Sieć",
-                            Price = 3,
+                            Price = 720,
                             Rarity = (byte)6,
                             Weigth = 60
                         },
@@ -895,9 +1148,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 38,
                             ItemType = (byte)2,
-                            MoneyType = (byte)1,
                             Name = "Topór/młot do rzucania",
-                            Price = 5,
+                            Price = 1200,
                             Rarity = (byte)4,
                             Weigth = 40
                         },
@@ -905,7 +1157,6 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 39,
                             ItemType = (byte)2,
-                            MoneyType = (byte)1,
                             Name = "Włócznia",
                             Price = 0,
                             Rarity = (byte)5,
@@ -915,9 +1166,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 40,
                             ItemType = (byte)3,
-                            MoneyType = (byte)2,
-                            Name = "Strzały (5)",
-                            Price = 1,
+                            Name = "Strzała",
+                            Price = 2,
                             Rarity = (byte)5,
                             Weigth = 10
                         },
@@ -925,9 +1175,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 41,
                             ItemType = (byte)3,
-                            MoneyType = (byte)2,
-                            Name = "Bełty (5)",
-                            Price = 2,
+                            Name = "Bełt",
+                            Price = 4,
                             Rarity = (byte)4,
                             Weigth = 10
                         },
@@ -935,8 +1184,7 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 42,
                             ItemType = (byte)3,
-                            MoneyType = (byte)2,
-                            Name = "Kule do broni palnej (10)",
+                            Name = "Kula do broni palnej",
                             Price = 1,
                             Rarity = (byte)2,
                             Weigth = 10
@@ -945,9 +1193,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 43,
                             ItemType = (byte)3,
-                            MoneyType = (byte)2,
                             Name = "Proch strzelniczy (strzał)",
-                            Price = 3,
+                            Price = 36,
                             Rarity = (byte)1,
                             Weigth = 1
                         },
@@ -955,9 +1202,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 44,
                             ItemType = (byte)4,
-                            MoneyType = (byte)1,
-                            Name = "Hełm (Skórzana)",
-                            Price = 3,
+                            Name = "Hełm (Skórzany)",
+                            Price = 720,
                             Rarity = (byte)5,
                             Weigth = 10
                         },
@@ -965,9 +1211,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 45,
                             ItemType = (byte)4,
-                            MoneyType = (byte)1,
-                            Name = "Kaftan (Skórzana)",
-                            Price = 5,
+                            Name = "Kaftan (Skórzany)",
+                            Price = 1200,
                             Rarity = (byte)5,
                             Weigth = 40
                         },
@@ -975,9 +1220,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 46,
                             ItemType = (byte)4,
-                            MoneyType = (byte)1,
                             Name = "Kurta (Skórzana)",
-                            Price = 12,
+                            Price = 2880,
                             Rarity = (byte)5,
                             Weigth = 50
                         },
@@ -985,9 +1229,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 47,
                             ItemType = (byte)4,
-                            MoneyType = (byte)1,
-                            Name = "Nogawice (Skórzana)",
-                            Price = 10,
+                            Name = "Nogawice (Skórzane)",
+                            Price = 2400,
                             Rarity = (byte)5,
                             Weigth = 20
                         },
@@ -995,9 +1238,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 48,
                             ItemType = (byte)4,
-                            MoneyType = (byte)1,
-                            Name = "Skórznia (Skórzana)",
-                            Price = 25,
+                            Name = "Skórznia",
+                            Price = 6000,
                             Rarity = (byte)4,
                             Weigth = 80
                         },
@@ -1005,9 +1247,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 49,
                             ItemType = (byte)4,
-                            MoneyType = (byte)1,
-                            Name = "Czepiec (Kolcza)",
-                            Price = 20,
+                            Name = "Czepiec (Kolczy)",
+                            Price = 4800,
                             Rarity = (byte)4,
                             Weigth = 30
                         },
@@ -1015,9 +1256,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 50,
                             ItemType = (byte)4,
-                            MoneyType = (byte)1,
-                            Name = "Kaftan (Kolcza)",
-                            Price = 60,
+                            Name = "Kaftan (Kolczy)",
+                            Price = 14400,
                             Rarity = (byte)4,
                             Weigth = 60
                         },
@@ -1025,9 +1265,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 51,
                             ItemType = (byte)4,
-                            MoneyType = (byte)1,
                             Name = "Koszulka (Kolcza)",
-                            Price = 95,
+                            Price = 22800,
                             Rarity = (byte)4,
                             Weigth = 80
                         },
@@ -1035,9 +1274,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 52,
                             ItemType = (byte)4,
-                            MoneyType = (byte)1,
-                            Name = "Kolczuga (Kolcza)",
-                            Price = 75,
+                            Name = "Kolczuga",
+                            Price = 18000,
                             Rarity = (byte)4,
                             Weigth = 80
                         },
@@ -1045,9 +1283,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 53,
                             ItemType = (byte)4,
-                            MoneyType = (byte)1,
-                            Name = "Kolczuga z rękawami (Kolcza)",
-                            Price = 130,
+                            Name = "Kolczuga z rękawami",
+                            Price = 31200,
                             Rarity = (byte)4,
                             Weigth = 100
                         },
@@ -1055,9 +1292,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 54,
                             ItemType = (byte)4,
-                            MoneyType = (byte)1,
-                            Name = "Nogawice (Kolcza)",
-                            Price = 20,
+                            Name = "Nogawice (Kolcze)",
+                            Price = 4800,
                             Rarity = (byte)3,
                             Weigth = 40
                         },
@@ -1065,9 +1301,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 55,
                             ItemType = (byte)4,
-                            MoneyType = (byte)1,
-                            Name = "Zbroja kolcza (Kolcza)",
-                            Price = 170,
+                            Name = "Zbroja kolcza",
+                            Price = 40800,
                             Rarity = (byte)3,
                             Weigth = 210
                         },
@@ -1075,9 +1310,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 56,
                             ItemType = (byte)4,
-                            MoneyType = (byte)1,
-                            Name = "Hełm (płyta)",
-                            Price = 30,
+                            Name = "Hełm (płytowy)",
+                            Price = 7200,
                             Rarity = (byte)3,
                             Weigth = 40
                         },
@@ -1085,9 +1319,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 57,
                             ItemType = (byte)4,
-                            MoneyType = (byte)1,
-                            Name = "Naramienniki (płyta)",
-                            Price = 70,
+                            Name = "Naramienniki (płytowe)",
+                            Price = 16800,
                             Rarity = (byte)3,
                             Weigth = 75
                         },
@@ -1095,9 +1328,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 58,
                             ItemType = (byte)4,
-                            MoneyType = (byte)1,
-                            Name = "Nogawice (płyta)",
-                            Price = 60,
+                            Name = "Nogawice (płytowe)",
+                            Price = 14400,
                             Rarity = (byte)3,
                             Weigth = 30
                         },
@@ -1105,9 +1337,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 59,
                             ItemType = (byte)4,
-                            MoneyType = (byte)1,
-                            Name = "Napierśnik (płyta)",
-                            Price = 70,
+                            Name = "Napierśnik (płytowy)",
+                            Price = 16800,
                             Rarity = (byte)3,
                             Weigth = 40
                         },
@@ -1115,9 +1346,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 60,
                             ItemType = (byte)4,
-                            MoneyType = (byte)1,
-                            Name = "Zbroja płytowa (płyta)",
-                            Price = 400,
+                            Name = "Zbroja płytowa",
+                            Price = 96000,
                             Rarity = (byte)2,
                             Weigth = 395
                         },
@@ -1125,7 +1355,6 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 61,
                             ItemType = (byte)5,
-                            MoneyType = (byte)3,
                             Name = "Łachmany",
                             Price = 1,
                             Rarity = (byte)7,
@@ -1135,9 +1364,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 62,
                             ItemType = (byte)5,
-                            MoneyType = (byte)2,
                             Name = "Kiepskie odzienie",
-                            Price = 10,
+                            Price = 120,
                             Rarity = (byte)7,
                             Weigth = 10
                         },
@@ -1145,9 +1373,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 63,
                             ItemType = (byte)5,
-                            MoneyType = (byte)1,
                             Name = "Zwykłe ubranie",
-                            Price = 1,
+                            Price = 240,
                             Rarity = (byte)6,
                             Weigth = 15
                         },
@@ -1155,9 +1382,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 64,
                             ItemType = (byte)5,
-                            MoneyType = (byte)1,
                             Name = "Dobre ubranie",
-                            Price = 3,
+                            Price = 720,
                             Rarity = (byte)5,
                             Weigth = 15
                         },
@@ -1165,9 +1391,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 65,
                             ItemType = (byte)5,
-                            MoneyType = (byte)1,
                             Name = "Szykowne ubranie",
-                            Price = 10,
+                            Price = 2400,
                             Rarity = (byte)4,
                             Weigth = 20
                         },
@@ -1175,9 +1400,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 66,
                             ItemType = (byte)5,
-                            MoneyType = (byte)1,
                             Name = "Szaty",
-                            Price = 15,
+                            Price = 3600,
                             Rarity = (byte)4,
                             Weigth = 25
                         },
@@ -1185,9 +1409,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 67,
                             ItemType = (byte)5,
-                            MoneyType = (byte)1,
                             Name = "Kostium",
-                            Price = 5,
+                            Price = 1200,
                             Rarity = (byte)4,
                             Weigth = 10
                         },
@@ -1195,9 +1418,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 68,
                             ItemType = (byte)5,
-                            MoneyType = (byte)1,
                             Name = "Uniform",
-                            Price = 15,
+                            Price = 3600,
                             Rarity = (byte)3,
                             Weigth = 15
                         },
@@ -1205,9 +1427,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 69,
                             ItemType = (byte)5,
-                            MoneyType = (byte)1,
                             Name = "Strój szlachecki",
-                            Price = 50,
+                            Price = 12000,
                             Rarity = (byte)2,
                             Weigth = 30
                         },
@@ -1215,9 +1436,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 70,
                             ItemType = (byte)5,
-                            MoneyType = (byte)1,
                             Name = "Strój arystokraty",
-                            Price = 100,
+                            Price = 24000,
                             Rarity = (byte)1,
                             Weigth = 50
                         },
@@ -1225,9 +1445,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 71,
                             ItemType = (byte)5,
-                            MoneyType = (byte)1,
                             Name = "Peleryna",
-                            Price = 5,
+                            Price = 1200,
                             Rarity = (byte)6,
                             Weigth = 10
                         },
@@ -1235,9 +1454,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 72,
                             ItemType = (byte)5,
-                            MoneyType = (byte)1,
                             Name = "Płaszcz",
-                            Price = 10,
+                            Price = 2400,
                             Rarity = (byte)6,
                             Weigth = 15
                         },
@@ -1245,9 +1463,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 73,
                             ItemType = (byte)5,
-                            MoneyType = (byte)2,
                             Name = "Kapelusz zwykły",
-                            Price = 10,
+                            Price = 120,
                             Rarity = (byte)6,
                             Weigth = 15
                         },
@@ -1255,9 +1472,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 74,
                             ItemType = (byte)5,
-                            MoneyType = (byte)1,
                             Name = "Kapelusz z szerokim rondlem",
-                            Price = 1,
+                            Price = 240,
                             Rarity = (byte)6,
                             Weigth = 5
                         },
@@ -1265,9 +1481,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 75,
                             ItemType = (byte)5,
-                            MoneyType = (byte)2,
                             Name = "Kaptur lub maska",
-                            Price = 10,
+                            Price = 120,
                             Rarity = (byte)5,
                             Weigth = 2
                         },
@@ -1275,7 +1490,6 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 76,
                             ItemType = (byte)6,
-                            MoneyType = (byte)3,
                             Name = "Obrok (porcja na 1 dzień)",
                             Price = 5,
                             Rarity = (byte)6,
@@ -1285,7 +1499,6 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 77,
                             ItemType = (byte)6,
-                            MoneyType = (byte)3,
                             Name = "Bochenek chleba",
                             Price = 2,
                             Rarity = (byte)7,
@@ -1295,9 +1508,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 78,
                             ItemType = (byte)6,
-                            MoneyType = (byte)2,
                             Name = "Połeć mięsa",
-                            Price = 1,
+                            Price = 12,
                             Rarity = (byte)4,
                             Weigth = 10
                         },
@@ -1305,7 +1517,6 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 79,
                             ItemType = (byte)6,
-                            MoneyType = (byte)3,
                             Name = "Kiepskie jedzenie (porcja na 1 dzień)",
                             Price = 5,
                             Rarity = (byte)6,
@@ -1315,7 +1526,6 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 80,
                             ItemType = (byte)6,
-                            MoneyType = (byte)3,
                             Name = "Dobre jedzenie (porcja na 1 dzień)",
                             Price = 10,
                             Rarity = (byte)5,
@@ -1325,7 +1535,6 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 81,
                             ItemType = (byte)6,
-                            MoneyType = (byte)3,
                             Name = "Doskonałe jedzenie (porcja na 1 dzień)",
                             Price = 18,
                             Rarity = (byte)4,
@@ -1335,9 +1544,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 82,
                             ItemType = (byte)6,
-                            MoneyType = (byte)2,
                             Name = "Prowiant (porcja na 1 tydzień)",
-                            Price = 6,
+                            Price = 72,
                             Rarity = (byte)5,
                             Weigth = 50
                         },
@@ -1345,9 +1553,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 83,
                             ItemType = (byte)6,
-                            MoneyType = (byte)2,
                             Name = "Słodycze",
-                            Price = 1,
+                            Price = 12,
                             Rarity = (byte)5,
                             Weigth = 2
                         },
@@ -1355,9 +1562,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 84,
                             ItemType = (byte)6,
-                            MoneyType = (byte)2,
                             Name = "Smakołyki",
-                            Price = 3,
+                            Price = 36,
                             Rarity = (byte)3,
                             Weigth = 0
                         },
@@ -1365,7 +1571,6 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 85,
                             ItemType = (byte)6,
-                            MoneyType = (byte)3,
                             Name = "Ciemne piwo",
                             Price = 2,
                             Rarity = (byte)6,
@@ -1375,7 +1580,6 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 86,
                             ItemType = (byte)6,
-                            MoneyType = (byte)3,
                             Name = "Jasne piwo",
                             Price = 1,
                             Rarity = (byte)7,
@@ -1385,7 +1589,6 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 87,
                             ItemType = (byte)6,
-                            MoneyType = (byte)3,
                             Name = "Antałek piwa jasnego",
                             Price = 18,
                             Rarity = (byte)7,
@@ -1395,9 +1598,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 88,
                             ItemType = (byte)6,
-                            MoneyType = (byte)2,
                             Name = "Antałek piwa ciemnego",
-                            Price = 3,
+                            Price = 36,
                             Rarity = (byte)7,
                             Weigth = 30
                         },
@@ -1405,9 +1607,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 89,
                             ItemType = (byte)6,
-                            MoneyType = (byte)2,
                             Name = "Butelka gorzałki",
-                            Price = 1,
+                            Price = 12,
                             Rarity = (byte)4,
                             Weigth = 5
                         },
@@ -1415,9 +1616,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 90,
                             ItemType = (byte)6,
-                            MoneyType = (byte)2,
                             Name = "Wino pospolite",
-                            Price = 1,
+                            Price = 12,
                             Rarity = (byte)5,
                             Weigth = 5
                         },
@@ -1425,9 +1625,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 91,
                             ItemType = (byte)6,
-                            MoneyType = (byte)2,
                             Name = "Wino szlacheckie",
-                            Price = 10,
+                            Price = 120,
                             Rarity = (byte)4,
                             Weigth = 5
                         },
@@ -1435,9 +1634,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 92,
                             ItemType = (byte)7,
-                            MoneyType = (byte)2,
                             Name = "Bukłak",
-                            Price = 8,
+                            Price = 96,
                             Rarity = (byte)6,
                             Weigth = 1
                         },
@@ -1445,9 +1643,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 93,
                             ItemType = (byte)7,
-                            MoneyType = (byte)2,
                             Name = "Flaszka",
-                            Price = 4,
+                            Price = 48,
                             Rarity = (byte)6,
                             Weigth = 10
                         },
@@ -1455,9 +1652,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 94,
                             ItemType = (byte)7,
-                            MoneyType = (byte)1,
                             Name = "Juki",
-                            Price = 2,
+                            Price = 480,
                             Rarity = (byte)4,
                             Weigth = 5
                         },
@@ -1465,9 +1661,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 95,
                             ItemType = (byte)7,
-                            MoneyType = (byte)1,
                             Name = "Kuferek",
-                            Price = 5,
+                            Price = 1200,
                             Rarity = (byte)4,
                             Weigth = 40
                         },
@@ -1475,9 +1670,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 96,
                             ItemType = (byte)7,
-                            MoneyType = (byte)1,
                             Name = "Manierka metalowa",
-                            Price = 2,
+                            Price = 480,
                             Rarity = (byte)3,
                             Weigth = 15
                         },
@@ -1485,9 +1679,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 97,
                             ItemType = (byte)7,
-                            MoneyType = (byte)2,
                             Name = "Manierska skórzana",
-                            Price = 15,
+                            Price = 180,
                             Rarity = (byte)4,
                             Weigth = 5
                         },
@@ -1495,9 +1688,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 98,
                             ItemType = (byte)7,
-                            MoneyType = (byte)2,
                             Name = "Mieszek",
-                            Price = 2,
+                            Price = 24,
                             Rarity = (byte)6,
                             Weigth = 1
                         },
@@ -1505,9 +1697,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 99,
                             ItemType = (byte)7,
-                            MoneyType = (byte)2,
                             Name = "Plecak",
-                            Price = 30,
+                            Price = 360,
                             Rarity = (byte)6,
                             Weigth = 20
                         },
@@ -1515,9 +1706,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 100,
                             ItemType = (byte)7,
-                            MoneyType = (byte)2,
                             Name = "Sakiewka",
-                            Price = 5,
+                            Price = 60,
                             Rarity = (byte)6,
                             Weigth = 1
                         },
@@ -1525,9 +1715,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 101,
                             ItemType = (byte)7,
-                            MoneyType = (byte)1,
                             Name = "Tobołek",
-                            Price = 2,
+                            Price = 480,
                             Rarity = (byte)4,
                             Weigth = 5
                         },
@@ -1535,9 +1724,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 102,
                             ItemType = (byte)7,
-                            MoneyType = (byte)1,
                             Name = "Tuba na mapy/pergaminy",
-                            Price = 1,
+                            Price = 240,
                             Rarity = (byte)3,
                             Weigth = 2
                         },
@@ -1545,9 +1733,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 103,
                             ItemType = (byte)7,
-                            MoneyType = (byte)2,
                             Name = "Worek",
-                            Price = 5,
+                            Price = 60,
                             Rarity = (byte)6,
                             Weigth = 7
                         },
@@ -1555,9 +1742,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 104,
                             ItemType = (byte)8,
-                            MoneyType = (byte)2,
                             Name = "Drewno na opał",
-                            Price = 2,
+                            Price = 24,
                             Rarity = (byte)6,
                             Weigth = 5
                         },
@@ -1565,9 +1751,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 105,
                             ItemType = (byte)8,
-                            MoneyType = (byte)2,
                             Name = "Kaganek",
-                            Price = 5,
+                            Price = 60,
                             Rarity = (byte)6,
                             Weigth = 20
                         },
@@ -1575,9 +1760,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 106,
                             ItemType = (byte)8,
-                            MoneyType = (byte)1,
                             Name = "Latarnia",
-                            Price = 5,
+                            Price = 240,
                             Rarity = (byte)4,
                             Weigth = 20
                         },
@@ -1585,9 +1769,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 107,
                             ItemType = (byte)8,
-                            MoneyType = (byte)1,
                             Name = "Latarnia sztormowa",
-                            Price = 12,
+                            Price = 2880,
                             Rarity = (byte)3,
                             Weigth = 30
                         },
@@ -1595,9 +1778,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 108,
                             ItemType = (byte)8,
-                            MoneyType = (byte)2,
                             Name = "Olej do latarni",
-                            Price = 5,
+                            Price = 60,
                             Rarity = (byte)6,
                             Weigth = 5
                         },
@@ -1605,7 +1787,6 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 109,
                             ItemType = (byte)8,
-                            MoneyType = (byte)3,
                             Name = "Pochodnia",
                             Price = 5,
                             Rarity = (byte)6,
@@ -1615,9 +1796,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 110,
                             ItemType = (byte)8,
-                            MoneyType = (byte)2,
                             Name = "Świeczka łojowa",
-                            Price = 3,
+                            Price = 36,
                             Rarity = (byte)6,
                             Weigth = 5
                         },
@@ -1625,9 +1805,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 111,
                             ItemType = (byte)8,
-                            MoneyType = (byte)2,
                             Name = "Świeczka woskowa",
-                            Price = 6,
+                            Price = 72,
                             Rarity = (byte)4,
                             Weigth = 5
                         },
@@ -1635,7 +1814,6 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 112,
                             ItemType = (byte)8,
-                            MoneyType = (byte)3,
                             Name = "Zapałka",
                             Price = 1,
                             Rarity = (byte)4,
@@ -1645,9 +1823,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 113,
                             ItemType = (byte)9,
-                            MoneyType = (byte)1,
                             Name = "Zlota korona",
-                            Price = 1,
+                            Price = 240,
                             Rarity = (byte)5,
                             Weigth = 0
                         },
@@ -1655,7 +1832,6 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 114,
                             ItemType = (byte)9,
-                            MoneyType = (byte)3,
                             Name = "Pens",
                             Price = 1,
                             Rarity = (byte)7,
@@ -1665,9 +1841,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 115,
                             ItemType = (byte)9,
-                            MoneyType = (byte)2,
                             Name = "Szyling",
-                            Price = 1,
+                            Price = 12,
                             Rarity = (byte)6,
                             Weigth = 0
                         },
@@ -1675,9 +1850,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 116,
                             ItemType = (byte)9,
-                            MoneyType = (byte)2,
                             Name = "Drabina",
-                            Price = 10,
+                            Price = 120,
                             Rarity = (byte)5,
                             Weigth = 50
                         },
@@ -1685,9 +1859,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 117,
                             ItemType = (byte)9,
-                            MoneyType = (byte)2,
                             Name = "Hubka i krzesiwo",
-                            Price = 30,
+                            Price = 360,
                             Rarity = (byte)6,
                             Weigth = 5
                         },
@@ -1695,9 +1868,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 118,
                             ItemType = (byte)9,
-                            MoneyType = (byte)2,
                             Name = "Imbryk",
-                            Price = 30,
+                            Price = 360,
                             Rarity = (byte)6,
                             Weigth = 10
                         },
@@ -1705,9 +1877,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 119,
                             ItemType = (byte)9,
-                            MoneyType = (byte)1,
                             Name = "Instrument muzyczny",
-                            Price = 5,
+                            Price = 1200,
                             Rarity = (byte)5,
                             Weigth = 5
                         },
@@ -1715,9 +1886,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 120,
                             ItemType = (byte)9,
-                            MoneyType = (byte)1,
                             Name = "Kłódka dobrej jakości",
-                            Price = 10,
+                            Price = 2400,
                             Rarity = (byte)1,
                             Weigth = 5
                         },
@@ -1725,9 +1895,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 121,
                             ItemType = (byte)9,
-                            MoneyType = (byte)1,
                             Name = "Kłódka zwykłej jakości",
-                            Price = 1,
+                            Price = 240,
                             Rarity = (byte)5,
                             Weigth = 5
                         },
@@ -1735,9 +1904,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 122,
                             ItemType = (byte)9,
-                            MoneyType = (byte)2,
                             Name = "Koc",
-                            Price = 25,
+                            Price = 300,
                             Rarity = (byte)6,
                             Weigth = 10
                         },
@@ -1745,9 +1913,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 123,
                             ItemType = (byte)9,
-                            MoneyType = (byte)1,
                             Name = "Kociołek",
-                            Price = 1,
+                            Price = 240,
                             Rarity = (byte)6,
                             Weigth = 20
                         },
@@ -1755,9 +1922,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 124,
                             ItemType = (byte)9,
-                            MoneyType = (byte)2,
                             Name = "Kości do gry",
-                            Price = 6,
+                            Price = 72,
                             Rarity = (byte)6,
                             Weigth = 0
                         },
@@ -1765,9 +1931,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 125,
                             ItemType = (byte)9,
-                            MoneyType = (byte)2,
                             Name = "Kufel drewniany",
-                            Price = 10,
+                            Price = 120,
                             Rarity = (byte)6,
                             Weigth = 5
                         },
@@ -1775,9 +1940,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 126,
                             ItemType = (byte)9,
-                            MoneyType = (byte)1,
                             Name = "Kufel ze szkła barwionego",
-                            Price = 1,
+                            Price = 240,
                             Rarity = (byte)6,
                             Weigth = 5
                         },
@@ -1785,9 +1949,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 127,
                             ItemType = (byte)9,
-                            MoneyType = (byte)1,
                             Name = "Lina",
-                            Price = 1,
+                            Price = 240,
                             Rarity = (byte)5,
                             Weigth = 50
                         },
@@ -1795,9 +1958,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 128,
                             ItemType = (byte)9,
-                            MoneyType = (byte)1,
                             Name = "Luneta",
-                            Price = 100,
+                            Price = 24000,
                             Rarity = (byte)2,
                             Weigth = 5
                         },
@@ -1805,9 +1967,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 129,
                             ItemType = (byte)9,
-                            MoneyType = (byte)1,
                             Name = "Lustro",
-                            Price = 10,
+                            Price = 2400,
                             Rarity = (byte)2,
                             Weigth = 5
                         },
@@ -1815,9 +1976,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 130,
                             ItemType = (byte)9,
-                            MoneyType = (byte)2,
                             Name = "Namiot",
-                            Price = 15,
+                            Price = 180,
                             Rarity = (byte)5,
                             Weigth = 20
                         },
@@ -1825,9 +1985,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 131,
                             ItemType = (byte)9,
-                            MoneyType = (byte)2,
                             Name = "Papier",
-                            Price = 1,
+                            Price = 12,
                             Rarity = (byte)1,
                             Weigth = 0
                         },
@@ -1835,9 +1994,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 132,
                             ItemType = (byte)9,
-                            MoneyType = (byte)1,
                             Name = "Perfumy",
-                            Price = 1,
+                            Price = 240,
                             Rarity = (byte)5,
                             Weigth = 0
                         },
@@ -1845,9 +2003,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 133,
                             ItemType = (byte)9,
-                            MoneyType = (byte)2,
                             Name = "Pergamin",
-                            Price = 5,
+                            Price = 60,
                             Rarity = (byte)2,
                             Weigth = 0
                         },
@@ -1855,9 +2012,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 134,
                             ItemType = (byte)9,
-                            MoneyType = (byte)1,
                             Name = "Symbol religijny",
-                            Price = 1,
+                            Price = 240,
                             Rarity = (byte)5,
                             Weigth = 5
                         },
@@ -1865,9 +2021,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 135,
                             ItemType = (byte)9,
-                            MoneyType = (byte)2,
                             Name = "Sztućce drewniane",
-                            Price = 5,
+                            Price = 60,
                             Rarity = (byte)6,
                             Weigth = 2
                         },
@@ -1875,9 +2030,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 136,
                             ItemType = (byte)9,
-                            MoneyType = (byte)1,
                             Name = "Sztućce metalowe",
-                            Price = 3,
+                            Price = 720,
                             Rarity = (byte)5,
                             Weigth = 4
                         },
@@ -1885,9 +2039,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 137,
                             ItemType = (byte)9,
-                            MoneyType = (byte)1,
                             Name = "Sztućce srebrne",
-                            Price = 15,
+                            Price = 3600,
                             Rarity = (byte)3,
                             Weigth = 3
                         },
@@ -1895,9 +2048,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 138,
                             ItemType = (byte)9,
-                            MoneyType = (byte)1,
                             Name = "Talia kart",
-                            Price = 1,
+                            Price = 240,
                             Rarity = (byte)6,
                             Weigth = 1
                         },
@@ -1905,9 +2057,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 139,
                             ItemType = (byte)10,
-                            MoneyType = (byte)2,
                             Name = "Drąg, cena za metr",
-                            Price = 1,
+                            Price = 12,
                             Rarity = (byte)6,
                             Weigth = 10
                         },
@@ -1915,7 +2066,6 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 140,
                             ItemType = (byte)10,
-                            MoneyType = (byte)3,
                             Name = "Drewniany klin",
                             Price = 8,
                             Rarity = (byte)6,
@@ -1925,9 +2075,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 141,
                             ItemType = (byte)10,
-                            MoneyType = (byte)2,
                             Name = "Haczyk na ryby i żyłka",
-                            Price = 3,
+                            Price = 36,
                             Rarity = (byte)5,
                             Weigth = 2
                         },
@@ -1935,9 +2084,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 142,
                             ItemType = (byte)10,
-                            MoneyType = (byte)1,
                             Name = "Kajdany",
-                            Price = 5,
+                            Price = 1200,
                             Rarity = (byte)4,
                             Weigth = 20
                         },
@@ -1945,9 +2093,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 143,
                             ItemType = (byte)10,
-                            MoneyType = (byte)2,
                             Name = "Kilof",
-                            Price = 25,
+                            Price = 300,
                             Rarity = (byte)4,
                             Weigth = 20
                         },
@@ -1955,9 +2102,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 144,
                             ItemType = (byte)10,
-                            MoneyType = (byte)2,
                             Name = "Kołki",
-                            Price = 5,
+                            Price = 60,
                             Rarity = (byte)5,
                             Weigth = 5
                         },
@@ -1965,9 +2111,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 145,
                             ItemType = (byte)10,
-                            MoneyType = (byte)1,
                             Name = "Kotwiczka do wspinaczki",
-                            Price = 4,
+                            Price = 960,
                             Rarity = (byte)4,
                             Weigth = 20
                         },
@@ -1975,9 +2120,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 146,
                             ItemType = (byte)10,
-                            MoneyType = (byte)1,
                             Name = "Książka drukowana",
-                            Price = 100,
+                            Price = 24000,
                             Rarity = (byte)1,
                             Weigth = 35
                         },
@@ -1985,9 +2129,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 147,
                             ItemType = (byte)10,
-                            MoneyType = (byte)1,
                             Name = "Książka ilustrowana",
-                            Price = 350,
+                            Price = 84000,
                             Rarity = (byte)1,
                             Weigth = 50
                         },
@@ -1995,9 +2138,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 148,
                             ItemType = (byte)10,
-                            MoneyType = (byte)1,
                             Name = "Liczydło",
-                            Price = 10,
+                            Price = 2400,
                             Rarity = (byte)2,
                             Weigth = 5
                         },
@@ -2005,9 +2147,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 149,
                             ItemType = (byte)10,
-                            MoneyType = (byte)2,
                             Name = "Łańcuch, cena za metr",
-                            Price = 30,
+                            Price = 360,
                             Rarity = (byte)2,
                             Weigth = 5
                         },
@@ -2015,9 +2156,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 150,
                             ItemType = (byte)10,
-                            MoneyType = (byte)2,
                             Name = "Łom",
-                            Price = 10,
+                            Price = 120,
                             Rarity = (byte)5,
                             Weigth = 10
                         },
@@ -2025,9 +2165,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 151,
                             ItemType = (byte)10,
-                            MoneyType = (byte)2,
                             Name = "Łopata",
-                            Price = 25,
+                            Price = 300,
                             Rarity = (byte)5,
                             Weigth = 20
                         },
@@ -2035,9 +2174,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 152,
                             ItemType = (byte)10,
-                            MoneyType = (byte)2,
                             Name = "Młot",
-                            Price = 20,
+                            Price = 240,
                             Rarity = (byte)5,
                             Weigth = 40
                         },
@@ -2045,9 +2183,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 153,
                             ItemType = (byte)10,
-                            MoneyType = (byte)1,
                             Name = "Narzędzia",
-                            Price = 50,
+                            Price = 12000,
                             Rarity = (byte)4,
                             Weigth = 50
                         },
@@ -2055,9 +2192,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 154,
                             ItemType = (byte)10,
-                            MoneyType = (byte)2,
                             Name = "Potrzask",
-                            Price = 1,
+                            Price = 12,
                             Rarity = (byte)5,
                             Weigth = 2
                         },
@@ -2065,9 +2201,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 155,
                             ItemType = (byte)10,
-                            MoneyType = (byte)1,
                             Name = "Przybory do pisania",
-                            Price = 10,
+                            Price = 2400,
                             Rarity = (byte)4,
                             Weigth = 5
                         },
@@ -2075,9 +2210,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 156,
                             ItemType = (byte)10,
-                            MoneyType = (byte)2,
                             Name = "Sztabka metalu",
-                            Price = 25,
+                            Price = 300,
                             Rarity = (byte)4,
                             Weigth = 20
                         },
@@ -2085,9 +2219,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 157,
                             ItemType = (byte)10,
-                            MoneyType = (byte)1,
                             Name = "Wnyki",
-                            Price = 2,
+                            Price = 480,
                             Rarity = (byte)5,
                             Weigth = 20
                         },
@@ -2095,9 +2228,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 158,
                             ItemType = (byte)10,
-                            MoneyType = (byte)1,
                             Name = "Wytrychy",
-                            Price = 10,
+                            Price = 2400,
                             Rarity = (byte)4,
                             Weigth = 20
                         },
@@ -2105,9 +2237,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 159,
                             ItemType = (byte)10,
-                            MoneyType = (byte)1,
                             Name = "Zestaw do charakteryzacji",
-                            Price = 5,
+                            Price = 1200,
                             Rarity = (byte)3,
                             Weigth = 10
                         },
@@ -2115,9 +2246,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 160,
                             ItemType = (byte)11,
-                            MoneyType = (byte)1,
                             Name = "Wózek",
-                            Price = 50,
+                            Price = 12000,
                             Rarity = (byte)5,
                             Weigth = 0
                         },
@@ -2125,9 +2255,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 161,
                             ItemType = (byte)11,
-                            MoneyType = (byte)1,
                             Name = "Wóz",
-                            Price = 90,
+                            Price = 21600,
                             Rarity = (byte)5,
                             Weigth = 0
                         },
@@ -2135,9 +2264,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 162,
                             ItemType = (byte)11,
-                            MoneyType = (byte)1,
                             Name = "Powóz",
-                            Price = 500,
+                            Price = 120000,
                             Rarity = (byte)2,
                             Weigth = 0
                         },
@@ -2145,9 +2273,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 163,
                             ItemType = (byte)11,
-                            MoneyType = (byte)1,
                             Name = "Łódź rzeczna",
-                            Price = 600,
+                            Price = 144000,
                             Rarity = (byte)2,
                             Weigth = 0
                         },
@@ -2155,9 +2282,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 164,
                             ItemType = (byte)11,
-                            MoneyType = (byte)1,
                             Name = "Łódź wiosłowa",
-                            Price = 90,
+                            Price = 21600,
                             Rarity = (byte)4,
                             Weigth = 900
                         },
@@ -2165,9 +2291,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 165,
                             ItemType = (byte)11,
-                            MoneyType = (byte)1,
                             Name = "Statek",
-                            Price = 12000,
+                            Price = 2880000,
                             Rarity = (byte)3,
                             Weigth = 0
                         },
@@ -2175,9 +2300,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 166,
                             ItemType = (byte)11,
-                            MoneyType = (byte)1,
                             Name = "Rumak",
-                            Price = 500,
+                            Price = 120000,
                             Rarity = (byte)3,
                             Weigth = 0
                         },
@@ -2185,9 +2309,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 167,
                             ItemType = (byte)11,
-                            MoneyType = (byte)1,
                             Name = "Lekki koń bojowy",
-                            Price = 300,
+                            Price = 72000,
                             Rarity = (byte)5,
                             Weigth = 0
                         },
@@ -2195,9 +2318,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 168,
                             ItemType = (byte)11,
-                            MoneyType = (byte)1,
                             Name = "Koń",
-                            Price = 80,
+                            Price = 19200,
                             Rarity = (byte)5,
                             Weigth = 0
                         },
@@ -2205,9 +2327,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 169,
                             ItemType = (byte)11,
-                            MoneyType = (byte)1,
                             Name = "Kuc",
-                            Price = 50,
+                            Price = 12000,
                             Rarity = (byte)5,
                             Weigth = 0
                         },
@@ -2215,9 +2336,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 170,
                             ItemType = (byte)11,
-                            MoneyType = (byte)1,
                             Name = "Siodło",
-                            Price = 5,
+                            Price = 1200,
                             Rarity = (byte)5,
                             Weigth = 50
                         },
@@ -2225,9 +2345,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 171,
                             ItemType = (byte)11,
-                            MoneyType = (byte)1,
                             Name = "Uprząż",
-                            Price = 1,
+                            Price = 240,
                             Rarity = (byte)5,
                             Weigth = 20
                         },
@@ -2235,9 +2354,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 172,
                             ItemType = (byte)12,
-                            MoneyType = (byte)1,
                             Name = "Gołąb pocztowy",
-                            Price = 1,
+                            Price = 240,
                             Rarity = (byte)4,
                             Weigth = 0
                         },
@@ -2245,9 +2363,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 173,
                             ItemType = (byte)12,
-                            MoneyType = (byte)1,
                             Name = "Jastrząb",
-                            Price = 80,
+                            Price = 19200,
                             Rarity = (byte)2,
                             Weigth = 0
                         },
@@ -2255,9 +2372,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 174,
                             ItemType = (byte)12,
-                            MoneyType = (byte)1,
                             Name = "Koń juczny",
-                            Price = 40,
+                            Price = 9600,
                             Rarity = (byte)6,
                             Weigth = 0
                         },
@@ -2265,9 +2381,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 175,
                             ItemType = (byte)12,
-                            MoneyType = (byte)1,
                             Name = "Koń pociągowy lub muł",
-                            Price = 25,
+                            Price = 6000,
                             Rarity = (byte)6,
                             Weigth = 0
                         },
@@ -2275,9 +2390,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 176,
                             ItemType = (byte)12,
-                            MoneyType = (byte)2,
                             Name = "Kot",
-                            Price = 1,
+                            Price = 12,
                             Rarity = (byte)6,
                             Weigth = 0
                         },
@@ -2285,9 +2399,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 177,
                             ItemType = (byte)12,
-                            MoneyType = (byte)1,
                             Name = "Koza",
-                            Price = 2,
+                            Price = 480,
                             Rarity = (byte)6,
                             Weigth = 0
                         },
@@ -2295,9 +2408,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 178,
                             ItemType = (byte)12,
-                            MoneyType = (byte)1,
                             Name = "Krowa",
-                            Price = 10,
+                            Price = 2400,
                             Rarity = (byte)6,
                             Weigth = 0
                         },
@@ -2305,7 +2417,6 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 179,
                             ItemType = (byte)12,
-                            MoneyType = (byte)3,
                             Name = "Kurczak",
                             Price = 5,
                             Rarity = (byte)6,
@@ -2315,9 +2426,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 180,
                             ItemType = (byte)12,
-                            MoneyType = (byte)1,
                             Name = "Owca",
-                            Price = 2,
+                            Price = 480,
                             Rarity = (byte)6,
                             Weigth = 0
                         },
@@ -2325,9 +2435,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 181,
                             ItemType = (byte)12,
-                            MoneyType = (byte)1,
                             Name = "Pies (rasowy)",
-                            Price = 3,
+                            Price = 720,
                             Rarity = (byte)6,
                             Weigth = 0
                         },
@@ -2335,9 +2444,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 182,
                             ItemType = (byte)12,
-                            MoneyType = (byte)1,
                             Name = "Pies bojowy",
-                            Price = 30,
+                            Price = 7200,
                             Rarity = (byte)2,
                             Weigth = 0
                         },
@@ -2345,9 +2453,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 183,
                             ItemType = (byte)12,
-                            MoneyType = (byte)1,
                             Name = "Świnia",
-                            Price = 3,
+                            Price = 720,
                             Rarity = (byte)6,
                             Weigth = 0
                         },
@@ -2355,9 +2462,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 184,
                             ItemType = (byte)12,
-                            MoneyType = (byte)1,
                             Name = "Wół",
-                            Price = 30,
+                            Price = 7200,
                             Rarity = (byte)6,
                             Weigth = 0
                         },
@@ -2365,9 +2471,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 185,
                             ItemType = (byte)13,
-                            MoneyType = (byte)1,
                             Name = "Dar Grety",
-                            Price = 30,
+                            Price = 7200,
                             Rarity = (byte)1,
                             Weigth = 0
                         },
@@ -2375,9 +2480,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 186,
                             ItemType = (byte)13,
-                            MoneyType = (byte)1,
                             Name = "Mikstura lecznicza",
-                            Price = 5,
+                            Price = 1200,
                             Rarity = (byte)4,
                             Weigth = 0
                         },
@@ -2385,9 +2489,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 187,
                             ItemType = (byte)13,
-                            MoneyType = (byte)1,
                             Name = "Piwo Bugmana",
-                            Price = 50,
+                            Price = 12000,
                             Rarity = (byte)1,
                             Weigth = 5
                         },
@@ -2395,9 +2498,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 188,
                             ItemType = (byte)13,
-                            MoneyType = (byte)1,
                             Name = "Czarny Jad",
-                            Price = 30,
+                            Price = 7200,
                             Rarity = (byte)1,
                             Weigth = 0
                         },
@@ -2405,9 +2507,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 189,
                             ItemType = (byte)13,
-                            MoneyType = (byte)1,
                             Name = "Czarny lotos",
-                            Price = 20,
+                            Price = 4800,
                             Rarity = (byte)1,
                             Weigth = 0
                         },
@@ -2415,9 +2516,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 190,
                             ItemType = (byte)13,
-                            MoneyType = (byte)1,
                             Name = "Grzybki Szalonego Kapelusznika",
-                            Price = 30,
+                            Price = 7200,
                             Rarity = (byte)1,
                             Weigth = 0
                         },
@@ -2425,9 +2525,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 191,
                             ItemType = (byte)13,
-                            MoneyType = (byte)1,
                             Name = "Jad mantikory",
-                            Price = 65,
+                            Price = 15600,
                             Rarity = (byte)1,
                             Weigth = 0
                         },
@@ -2435,9 +2534,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 192,
                             ItemType = (byte)13,
-                            MoneyType = (byte)1,
                             Name = "Korzeń mandragory",
-                            Price = 25,
+                            Price = 6000,
                             Rarity = (byte)1,
                             Weigth = 0
                         },
@@ -2445,9 +2543,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 193,
                             ItemType = (byte)13,
-                            MoneyType = (byte)1,
                             Name = "Sercobój",
-                            Price = 800,
+                            Price = 192000,
                             Rarity = (byte)1,
                             Weigth = 0
                         },
@@ -2455,9 +2552,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 194,
                             ItemType = (byte)13,
-                            MoneyType = (byte)1,
                             Name = "Szkarłatny Cień",
-                            Price = 35,
+                            Price = 8400,
                             Rarity = (byte)1,
                             Weigth = 0
                         },
@@ -2465,9 +2561,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 195,
                             ItemType = (byte)13,
-                            MoneyType = (byte)1,
                             Name = "Ślina chimery",
-                            Price = 150,
+                            Price = 36000,
                             Rarity = (byte)1,
                             Weigth = 0
                         },
@@ -2475,9 +2570,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 196,
                             ItemType = (byte)13,
-                            MoneyType = (byte)1,
                             Name = "Księga wiedzy tajemnej",
-                            Price = 500,
+                            Price = 120000,
                             Rarity = (byte)1,
                             Weigth = 0
                         },
@@ -2485,9 +2579,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 197,
                             ItemType = (byte)13,
-                            MoneyType = (byte)3,
                             Name = "Napar kojący",
-                            Price = 5,
+                            Price = 1200,
                             Rarity = (byte)5,
                             Weigth = 0
                         },
@@ -2495,9 +2588,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 198,
                             ItemType = (byte)13,
-                            MoneyType = (byte)1,
                             Name = "Odtrutki",
-                            Price = 3,
+                            Price = 720,
                             Rarity = (byte)3,
                             Weigth = 0
                         },
@@ -2505,9 +2597,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 199,
                             ItemType = (byte)13,
-                            MoneyType = (byte)1,
                             Name = "Relikwia",
-                            Price = 5,
+                            Price = 1200,
                             Rarity = (byte)3,
                             Weigth = 0
                         },
@@ -2515,9 +2606,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 200,
                             ItemType = (byte)13,
-                            MoneyType = (byte)1,
                             Name = "Talizman szczęścia",
-                            Price = 15,
+                            Price = 3600,
                             Rarity = (byte)4,
                             Weigth = 0
                         },
@@ -2525,9 +2615,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 201,
                             ItemType = (byte)13,
-                            MoneyType = (byte)1,
                             Name = "Woda święcona",
-                            Price = 10,
+                            Price = 2400,
                             Rarity = (byte)3,
                             Weigth = 0
                         },
@@ -2535,9 +2624,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 202,
                             ItemType = (byte)13,
-                            MoneyType = (byte)1,
                             Name = "Dłoń weterana",
-                            Price = 60,
+                            Price = 14400,
                             Rarity = (byte)2,
                             Weigth = 0
                         },
@@ -2545,9 +2633,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 203,
                             ItemType = (byte)13,
-                            MoneyType = (byte)2,
                             Name = "Drewniane zęby",
-                            Price = 3,
+                            Price = 36,
                             Rarity = (byte)4,
                             Weigth = 0
                         },
@@ -2555,9 +2642,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 204,
                             ItemType = (byte)13,
-                            MoneyType = (byte)2,
                             Name = "Kolczyk",
-                            Price = 1,
+                            Price = 12,
                             Rarity = (byte)5,
                             Weigth = 0
                         },
@@ -2565,7 +2651,6 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 205,
                             ItemType = (byte)13,
-                            MoneyType = (byte)3,
                             Name = "Opaska na oko",
                             Price = 6,
                             Rarity = (byte)5,
@@ -2575,9 +2660,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 206,
                             ItemType = (byte)13,
-                            MoneyType = (byte)2,
                             Name = "Płytka czaszkowa",
-                            Price = 1,
+                            Price = 12,
                             Rarity = (byte)4,
                             Weigth = 0
                         },
@@ -2585,9 +2669,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 207,
                             ItemType = (byte)13,
-                            MoneyType = (byte)2,
                             Name = "Pozłacany nos",
-                            Price = 6,
+                            Price = 72,
                             Rarity = (byte)3,
                             Weigth = 0
                         },
@@ -2595,9 +2678,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 208,
                             ItemType = (byte)13,
-                            MoneyType = (byte)2,
                             Name = "Szklane oko",
-                            Price = 1,
+                            Price = 12,
                             Rarity = (byte)4,
                             Weigth = 0
                         },
@@ -2605,9 +2687,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 209,
                             ItemType = (byte)13,
-                            MoneyType = (byte)2,
                             Name = "Sztuczna noga",
-                            Price = 6,
+                            Price = 72,
                             Rarity = (byte)4,
                             Weigth = 0
                         },
@@ -2615,9 +2696,8 @@ namespace WarhammerProfessionApp.Migrations
                         {
                             Id = 210,
                             ItemType = (byte)13,
-                            MoneyType = (byte)2,
                             Name = "Tatuaż",
-                            Price = 3,
+                            Price = 36,
                             Rarity = (byte)4,
                             Weigth = 0
                         });
@@ -2665,9 +2745,6 @@ namespace WarhammerProfessionApp.Migrations
 
                     b.Property<int>("ItemId")
                         .HasColumnType("int");
-
-                    b.Property<byte>("Quality")
-                        .HasColumnType("tinyint");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
@@ -4980,6 +5057,9 @@ namespace WarhammerProfessionApp.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(50)")
@@ -5001,224 +5081,224 @@ namespace WarhammerProfessionApp.Migrations
                             Id = 1,
                             Name = "Charakteryzacja",
                             SkillLevel = (byte)1,
-                            Trait = (byte)4
+                            Trait = (byte)8
                         },
                         new
                         {
                             Id = 2,
                             Name = "Dowodzenie",
                             SkillLevel = (byte)1,
-                            Trait = (byte)4
+                            Trait = (byte)8
                         },
                         new
                         {
                             Id = 3,
                             Name = "Hazard",
                             SkillLevel = (byte)1,
-                            Trait = (byte)1
+                            Trait = (byte)6
                         },
                         new
                         {
                             Id = 4,
                             Name = "Jeździectwo",
                             SkillLevel = (byte)1,
-                            Trait = (byte)2
+                            Trait = (byte)5
                         },
                         new
                         {
                             Id = 5,
                             Name = "Mocna głowa",
                             SkillLevel = (byte)1,
-                            Trait = (byte)3
+                            Trait = (byte)4
                         },
                         new
                         {
                             Id = 6,
                             Name = "Opieka nad zwierzętami",
                             SkillLevel = (byte)1,
-                            Trait = (byte)1
+                            Trait = (byte)6
                         },
                         new
                         {
                             Id = 7,
                             Name = "Plotkowanie",
                             SkillLevel = (byte)1,
-                            Trait = (byte)4
+                            Trait = (byte)8
                         },
                         new
                         {
                             Id = 8,
                             Name = "Pływanie",
                             SkillLevel = (byte)1,
-                            Trait = (byte)5
+                            Trait = (byte)3
                         },
                         new
                         {
                             Id = 9,
                             Name = "Powożenie",
                             SkillLevel = (byte)1,
-                            Trait = (byte)5
+                            Trait = (byte)3
                         },
                         new
                         {
                             Id = 10,
                             Name = "Przekonywanie",
                             SkillLevel = (byte)1,
-                            Trait = (byte)4
+                            Trait = (byte)8
                         },
                         new
                         {
                             Id = 11,
                             Name = "Przeszukiwanie",
                             SkillLevel = (byte)1,
-                            Trait = (byte)1
+                            Trait = (byte)6
                         },
                         new
                         {
                             Id = 12,
                             Name = "Skradanie się",
                             SkillLevel = (byte)1,
-                            Trait = (byte)2
+                            Trait = (byte)5
                         },
                         new
                         {
                             Id = 13,
                             Name = "Spostrzegawczość",
                             SkillLevel = (byte)1,
-                            Trait = (byte)1
+                            Trait = (byte)6
                         },
                         new
                         {
                             Id = 14,
                             Name = "Sztuka przetrwania",
                             SkillLevel = (byte)1,
-                            Trait = (byte)1
+                            Trait = (byte)6
                         },
                         new
                         {
                             Id = 15,
                             Name = "Targowanie",
                             SkillLevel = (byte)1,
-                            Trait = (byte)4
+                            Trait = (byte)8
                         },
                         new
                         {
                             Id = 16,
                             Name = "Ukrywanie się",
                             SkillLevel = (byte)1,
-                            Trait = (byte)2
+                            Trait = (byte)5
                         },
                         new
                         {
                             Id = 17,
                             Name = "Wioślarstwo",
                             SkillLevel = (byte)1,
-                            Trait = (byte)5
+                            Trait = (byte)3
                         },
                         new
                         {
                             Id = 18,
                             Name = "Wspinaczka",
                             SkillLevel = (byte)1,
-                            Trait = (byte)5
+                            Trait = (byte)3
                         },
                         new
                         {
                             Id = 19,
                             Name = "Wycena",
                             SkillLevel = (byte)1,
-                            Trait = (byte)1
+                            Trait = (byte)6
                         },
                         new
                         {
                             Id = 20,
                             Name = "Zastraszanie",
                             SkillLevel = (byte)1,
-                            Trait = (byte)5
+                            Trait = (byte)3
                         },
                         new
                         {
                             Id = 21,
                             Name = "Brzuchomówstwo",
                             SkillLevel = (byte)2,
-                            Trait = (byte)4
+                            Trait = (byte)8
                         },
                         new
                         {
                             Id = 22,
                             Name = "Czytanie i pisanie",
                             SkillLevel = (byte)2,
-                            Trait = (byte)1
+                            Trait = (byte)6
                         },
                         new
                         {
                             Id = 23,
                             Name = "Czytanie z warg",
                             SkillLevel = (byte)2,
-                            Trait = (byte)1
+                            Trait = (byte)6
                         },
                         new
                         {
                             Id = 24,
                             Name = "Gadanina",
                             SkillLevel = (byte)2,
-                            Trait = (byte)4
+                            Trait = (byte)8
                         },
                         new
                         {
                             Id = 25,
                             Name = "Hipnoza",
                             SkillLevel = (byte)2,
-                            Trait = (byte)6
+                            Trait = (byte)7
                         },
                         new
                         {
                             Id = 26,
                             Name = "Język tajemny",
                             SkillLevel = (byte)2,
-                            Trait = (byte)1
+                            Trait = (byte)6
                         },
                         new
                         {
                             Id = 27,
                             Name = "Kuglarstwo",
                             SkillLevel = (byte)2,
-                            Trait = (byte)4
+                            Trait = (byte)8
                         },
                         new
                         {
                             Id = 28,
                             Name = "Leczenie",
                             SkillLevel = (byte)2,
-                            Trait = (byte)1
+                            Trait = (byte)6
                         },
                         new
                         {
                             Id = 29,
                             Name = "Nauka (różne)",
                             SkillLevel = (byte)2,
-                            Trait = (byte)1
+                            Trait = (byte)6
                         },
                         new
                         {
                             Id = 30,
                             Name = "Nawigacja",
                             SkillLevel = (byte)2,
-                            Trait = (byte)1
+                            Trait = (byte)6
                         },
                         new
                         {
                             Id = 31,
                             Name = "Oswajanie",
                             SkillLevel = (byte)2,
-                            Trait = (byte)4
+                            Trait = (byte)8
                         },
                         new
                         {
                             Id = 32,
                             Name = "Otwieranie zamków",
                             SkillLevel = (byte)2,
-                            Trait = (byte)2
+                            Trait = (byte)5
                         },
                         new
                         {
@@ -5232,106 +5312,262 @@ namespace WarhammerProfessionApp.Migrations
                             Id = 34,
                             Name = "Sekretne znaki (różne)",
                             SkillLevel = (byte)2,
-                            Trait = (byte)1
+                            Trait = (byte)6
                         },
                         new
                         {
                             Id = 35,
                             Name = "Sekretny język (różne)",
                             SkillLevel = (byte)2,
-                            Trait = (byte)1
+                            Trait = (byte)6
                         },
                         new
                         {
                             Id = 36,
                             Name = "Splatanie magii",
                             SkillLevel = (byte)2,
-                            Trait = (byte)5
+                            Trait = (byte)3
                         },
                         new
                         {
                             Id = 37,
                             Name = "Śledzenie",
                             SkillLevel = (byte)2,
-                            Trait = (byte)2
+                            Trait = (byte)5
                         },
                         new
                         {
                             Id = 38,
                             Name = "Torturowanie",
                             SkillLevel = (byte)2,
-                            Trait = (byte)4
+                            Trait = (byte)8
                         },
                         new
                         {
                             Id = 39,
                             Name = "Tresura",
                             SkillLevel = (byte)2,
-                            Trait = (byte)4
+                            Trait = (byte)8
                         },
                         new
                         {
                             Id = 40,
                             Name = "Tropienie",
                             SkillLevel = (byte)2,
-                            Trait = (byte)1
+                            Trait = (byte)6
                         },
                         new
                         {
                             Id = 41,
                             Name = "Unik",
                             SkillLevel = (byte)2,
-                            Trait = (byte)2
+                            Trait = (byte)5
                         },
                         new
                         {
                             Id = 42,
                             Name = "Warzenie trucizn",
                             SkillLevel = (byte)2,
-                            Trait = (byte)1
+                            Trait = (byte)6
                         },
                         new
                         {
                             Id = 43,
                             Name = "Wiedza (różne)",
                             SkillLevel = (byte)2,
-                            Trait = (byte)1
+                            Trait = (byte)6
                         },
                         new
                         {
                             Id = 44,
                             Name = "Wykrywanie magii",
                             SkillLevel = (byte)2,
-                            Trait = (byte)6
+                            Trait = (byte)7
                         },
                         new
                         {
                             Id = 45,
                             Name = "Zastawianie pułapek",
                             SkillLevel = (byte)2,
-                            Trait = (byte)2
+                            Trait = (byte)5
                         },
                         new
                         {
                             Id = 46,
                             Name = "Znajomość języka (różne)",
                             SkillLevel = (byte)2,
-                            Trait = (byte)1
+                            Trait = (byte)6
                         },
                         new
                         {
                             Id = 47,
                             Name = "Zwinne palce",
                             SkillLevel = (byte)2,
-                            Trait = (byte)2
+                            Trait = (byte)5
                         },
                         new
                         {
                             Id = 48,
                             Name = "Żeglarstwo",
                             SkillLevel = (byte)2,
-                            Trait = (byte)2
+                            Trait = (byte)5
                         });
+                });
+
+            modelBuilder.Entity("WarhammerProfessionApp.Entities.Models.Statistic", b =>
+                {
+                    b.Property<byte>("Id")
+                        .HasColumnType("tinyint");
+
+                    b.Property<bool>("IsBasicValue")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsCalculatedValue")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsReadOnly")
+                        .HasColumnType("bit");
+
+                    b.Property<byte>("Type")
+                        .HasColumnType("tinyint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Type")
+                        .IsUnique();
+
+                    b.ToTable("Statistics");
+                });
+
+            modelBuilder.Entity("WarhammerProfessionApp.Entities.Models.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Login")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
+
+                    b.Property<byte[]>("PasswordHash")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<byte[]>("PasswordSalt")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("WarhammerProfessionApp.Entities.Models.AdditionalCharacterValue", b =>
+                {
+                    b.HasOne("WarhammerProfessionApp.Entities.Models.Character", "Character")
+                        .WithMany("AdditionalValues")
+                        .HasForeignKey("CharacterId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("WarhammerProfessionApp.Entities.Models.Character", b =>
+                {
+                    b.HasOne("WarhammerProfessionApp.Entities.Models.Profession", "CurrentProfession")
+                        .WithMany()
+                        .HasForeignKey("CurrentProfessionId");
+
+                    b.HasOne("WarhammerProfessionApp.Entities.Models.User", "User")
+                        .WithMany("Characters")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("WarhammerProfessionApp.Entities.Models.CharacterAbility", b =>
+                {
+                    b.HasOne("WarhammerProfessionApp.Entities.Models.Ability", "Ability")
+                        .WithMany("Characters")
+                        .HasForeignKey("AbilityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("WarhammerProfessionApp.Entities.Models.Character", "Character")
+                        .WithMany("Abilities")
+                        .HasForeignKey("CharacterId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("WarhammerProfessionApp.Entities.Models.CharacterItem", b =>
+                {
+                    b.HasOne("WarhammerProfessionApp.Entities.Models.Character", "Character")
+                        .WithMany("Items")
+                        .HasForeignKey("CharacterId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("WarhammerProfessionApp.Entities.Models.Item", "Item")
+                        .WithMany("Characters")
+                        .HasForeignKey("ItemId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("WarhammerProfessionApp.Entities.Models.CharacterProfession", b =>
+                {
+                    b.HasOne("WarhammerProfessionApp.Entities.Models.Character", "Character")
+                        .WithMany("Professions")
+                        .HasForeignKey("CharacterId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("WarhammerProfessionApp.Entities.Models.Profession", "Profession")
+                        .WithMany("Characters")
+                        .HasForeignKey("ProfessionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("WarhammerProfessionApp.Entities.Models.CharacterSkill", b =>
+                {
+                    b.HasOne("WarhammerProfessionApp.Entities.Models.Character", "Character")
+                        .WithMany("Skills")
+                        .HasForeignKey("CharacterId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("WarhammerProfessionApp.Entities.Models.Skill", "Skill")
+                        .WithMany("Characters")
+                        .HasForeignKey("SkillId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("WarhammerProfessionApp.Entities.Models.CharacterStatistic", b =>
+                {
+                    b.HasOne("WarhammerProfessionApp.Entities.Models.Character", "Character")
+                        .WithMany("Statistics")
+                        .HasForeignKey("CharacterId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("WarhammerProfessionApp.Entities.Models.Statistic", "Statistic")
+                        .WithMany("Characters")
+                        .HasForeignKey("StatisticId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("WarhammerProfessionApp.Entities.Models.ExperienceAdditionalCharacterValue", b =>
+                {
+                    b.HasOne("WarhammerProfessionApp.Entities.Models.Character", "Character")
+                        .WithMany("AdditionalExcerienceCostValues")
+                        .HasForeignKey("CharacterId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("WarhammerProfessionApp.Entities.Models.ManyToMany.ProfessionAbilities", b =>

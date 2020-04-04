@@ -4,7 +4,7 @@
     {
         public string ActualProfessionName { get; set; }
 
-        public int CurrentLoad { get; set; }
+        public string CurrentLoad { get; set; }
 
         public int ExperienceLeft { get; set; }
 

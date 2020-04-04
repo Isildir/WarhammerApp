@@ -37,1890 +37,1688 @@ namespace WarhammerProfessionApp.Entities
 
             var halabarda = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Halabarda",
-                Price = 15,
+                Price = MoneyCalculator.GetUserMoney(15, 0, 0),
                 Rarity = ItemRarity.Average,
                 Weigth = 175,
                 ItemType = ItemType.WhiteWeapon
             };
             var kij = new Item
             {
-                MoneyType = MoneyType.Shilling,
                 Name = "Kij",
-                Price = 3,
+                Price = MoneyCalculator.GetUserMoney(0, 3, 0),
                 Rarity = ItemRarity.High,
                 Weigth = 50,
                 ItemType = ItemType.WhiteWeapon
             };
             var kopia = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Kopia",
-                Price = 15,
+                Price = MoneyCalculator.GetUserMoney(15, 0, 0),
                 Rarity = ItemRarity.Rare,
                 Weigth = 100,
                 ItemType = ItemType.WhiteWeapon
             };
             var korbacz = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Korbacz",
-                Price = 15,
+                Price = MoneyCalculator.GetUserMoney(15, 0, 0),
                 Rarity = ItemRarity.Occasional,
                 Weigth = 95,
                 ItemType = ItemType.WhiteWeapon
             };
             var lanca = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Lanca",
-                Price = 20,
+                Price = MoneyCalculator.GetUserMoney(20, 0, 0),
                 Rarity = ItemRarity.Occasional,
                 Weigth = 75,
                 ItemType = ItemType.WhiteWeapon
             };
             var lewak = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Lewak",
-                Price = 2,
+                Price = MoneyCalculator.GetUserMoney(2, 0, 0),
                 Rarity = ItemRarity.Occasional,
                 Weigth = 10,
                 ItemType = ItemType.WhiteWeapon
             };
             var lamaczMieczy = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Łamacz mieczy",
-                Price = 5,
+                Price = MoneyCalculator.GetUserMoney(5, 0, 0),
                 Rarity = ItemRarity.Occasional,
                 Weigth = 40,
                 ItemType = ItemType.WhiteWeapon
             };
             var morgensztern = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Morgensztern",
-                Price = 15,
+                Price = MoneyCalculator.GetUserMoney(15, 0, 0),
                 Rarity = ItemRarity.Occasional,
                 Weigth = 60,
                 ItemType = ItemType.WhiteWeapon
             };
             var puklerz = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Puklerz",
-                Price = 4,
+                Price = MoneyCalculator.GetUserMoney(4, 0, 0),
                 Rarity = ItemRarity.Low,
                 Weigth = 15,
                 ItemType = ItemType.WhiteWeapon
             };
             var rapier = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Rapier",
-                Price = 18,
+                Price = MoneyCalculator.GetUserMoney(18, 0, 0),
                 Rarity = ItemRarity.Occasional,
                 Weigth = 40,
                 ItemType = ItemType.WhiteWeapon
             };
             var kastet = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Rękawica/kastet",
-                Price = 1,
+                Price = MoneyCalculator.GetUserMoney(1, 0, 0),
                 Rarity = ItemRarity.Average,
                 Weigth = 1,
                 ItemType = ItemType.WhiteWeapon
             };
             var szpada = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Szpada",
-                Price = 18,
+                Price = MoneyCalculator.GetUserMoney(18, 0, 0),
                 Rarity = ItemRarity.Rare,
                 Weigth = 40,
                 ItemType = ItemType.WhiteWeapon
             };
             var sztylet = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Sztylet",
-                Price = 1,
+                Price = MoneyCalculator.GetUserMoney(1, 0, 0),
                 Rarity = ItemRarity.Average,
                 Weigth = 10,
                 ItemType = ItemType.WhiteWeapon
             };
             var tarcza = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Tarcza",
-                Price = 10,
+                Price = MoneyCalculator.GetUserMoney(10, 0, 0),
                 Rarity = ItemRarity.Average,
                 Weigth = 50,
                 ItemType = ItemType.WhiteWeapon
             };
             var wlocznia = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Włócznia",
-                Price = 10,
+                Price = MoneyCalculator.GetUserMoney(10, 0, 0),
                 Rarity = ItemRarity.Average,
                 Weigth = 50,
                 ItemType = ItemType.WhiteWeapon
             };
             var bronDwureczna = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Bron dwureczna",
-                Price = 0,
+                Price = MoneyCalculator.GetUserMoney(0, 0, 0),
                 Rarity = ItemRarity.Common,
                 Weigth = 0,
                 ItemType = ItemType.WhiteWeapon
             };
             var arkan = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Arkan",
-                Price = 1,
+                Price = MoneyCalculator.GetUserMoney(1, 0, 0),
                 Rarity = ItemRarity.High,
                 Weigth = 10,
                 ItemType = ItemType.RangedWeapon
             };
             var bicz = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Bicz",
-                Price = 2,
+                Price = MoneyCalculator.GetUserMoney(2, 0, 0),
                 Rarity = ItemRarity.Low,
                 Weigth = 40,
                 ItemType = ItemType.RangedWeapon
             };
             var bolas = new Item
             {
-                MoneyType = MoneyType.Shilling,
                 Name = "Bolas",
-                Price = 7,
+                Price = MoneyCalculator.GetUserMoney(0, 7, 0),
                 Rarity = ItemRarity.Occasional,
                 Weigth = 20,
                 ItemType = ItemType.RangedWeapon
             };
             var dlugiLuk = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Długi łuk",
-                Price = 15,
+                Price = MoneyCalculator.GetUserMoney(15, 0, 0),
                 Rarity = ItemRarity.Low,
                 Weigth = 90,
                 ItemType = ItemType.RangedWeapon
             };
             var elfiLuk = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Elfi łuk",
-                Price = 70,
+                Price = MoneyCalculator.GetUserMoney(70, 0, 0),
                 Rarity = ItemRarity.Insignificant,
                 Weigth = 75,
                 ItemType = ItemType.RangedWeapon
             };
             var garlacz = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Garłacz",
-                Price = 70,
+                Price = MoneyCalculator.GetUserMoney(70, 0, 0),
                 Rarity = ItemRarity.Insignificant,
                 Weigth = 50,
                 ItemType = ItemType.RangedWeapon
             };
             var krotkiLuk = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Krótki łuk",
-                Price = 7,
+                Price = MoneyCalculator.GetUserMoney(70, 0, 0),
                 Rarity = ItemRarity.Average,
                 Weigth = 75,
                 ItemType = ItemType.RangedWeapon
             };
             var kuszaPistoletowa = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Kusza pistoletowa",
-                Price = 35,
+                Price = MoneyCalculator.GetUserMoney(35, 0, 0),
                 Rarity = ItemRarity.Rare,
                 Weigth = 25,
                 ItemType = ItemType.RangedWeapon
             };
             var kuszaSamopowtarzalna = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Kusza samopowtarzalna",
-                Price = 100,
+                Price = MoneyCalculator.GetUserMoney(100, 0, 0),
                 Rarity = ItemRarity.Insignificant,
                 Weigth = 150,
                 ItemType = ItemType.RangedWeapon
             };
             var kusza = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Kusza",
-                Price = 25,
+                Price = MoneyCalculator.GetUserMoney(25, 0, 0),
                 Rarity = ItemRarity.Low,
                 Weigth = 120,
                 ItemType = ItemType.RangedWeapon
             };
             var luk = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Łuk",
-                Price = 10,
+                Price = MoneyCalculator.GetUserMoney(10, 0, 0),
                 Rarity = ItemRarity.Average,
                 Weigth = 80,
                 ItemType = ItemType.RangedWeapon
             };
             var muszkietHochlandzki = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Muszkiet hochlandzki",
-                Price = 450,
+                Price = MoneyCalculator.GetUserMoney(450, 0, 0),
                 Rarity = ItemRarity.Insignificant,
                 Weigth = 70,
                 ItemType = ItemType.RangedWeapon
             };
             var nozDoRzucania = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Nóź/gwiazdka do rzucania",
-                Price = 3,
+                Price = MoneyCalculator.GetUserMoney(3, 0, 0),
                 Rarity = ItemRarity.Average,
                 Weigth = 10,
                 ItemType = ItemType.RangedWeapon
             };
             var oszczep = new Item
             {
-                MoneyType = MoneyType.Shilling,
                 Name = "Oszczep",
-                Price = 25,
+                Price = MoneyCalculator.GetUserMoney(0, 25, 0),
                 Rarity = ItemRarity.Low,
                 Weigth = 50,
                 ItemType = ItemType.RangedWeapon
             };
             var pistolet = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Pistolet",
-                Price = 200,
+                Price = MoneyCalculator.GetUserMoney(200, 0, 0),
                 Rarity = ItemRarity.Insignificant,
                 Weigth = 25,
                 ItemType = ItemType.RangedWeapon
             };
             var pistoletWielostrzalowy = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Pistolet wielostrzałowy",
-                Price = 400,
+                Price = MoneyCalculator.GetUserMoney(400, 0, 0),
                 Rarity = ItemRarity.Insignificant,
                 Weigth = 25,
                 ItemType = ItemType.RangedWeapon
             };
             var proca = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Proca",
-                Price = 4,
+                Price = MoneyCalculator.GetUserMoney(4, 0, 0),
                 Rarity = ItemRarity.Average,
                 Weigth = 10,
                 ItemType = ItemType.RangedWeapon
             };
             var procaDrzewcowa = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Proca drzewcowa",
-                Price = 6,
+                Price = MoneyCalculator.GetUserMoney(6, 0, 0),
                 Rarity = ItemRarity.Rare,
                 Weigth = 50,
                 ItemType = ItemType.RangedWeapon
             };
             var rusznica = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Rusznica",
-                Price = 300,
+                Price = MoneyCalculator.GetUserMoney(300, 0, 0),
                 Rarity = ItemRarity.Insignificant,
                 Weigth = 30,
                 ItemType = ItemType.RangedWeapon
             };
             var rusznicaWielostrzalowa = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Rusznica wielostrzałowa",
-                Price = 600,
+                Price = MoneyCalculator.GetUserMoney(600, 0, 0),
                 Rarity = ItemRarity.Insignificant,
                 Weigth = 30,
                 ItemType = ItemType.RangedWeapon
             };
             var siec = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Sieć",
-                Price = 3,
+                Price = MoneyCalculator.GetUserMoney(3, 0, 0),
                 Rarity = ItemRarity.High,
                 Weigth = 60,
                 ItemType = ItemType.RangedWeapon
             };
             var toporDoRzucania = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Topór/młot do rzucania",
-                Price = 5,
+                Price = MoneyCalculator.GetUserMoney(5, 0, 0),
                 Rarity = ItemRarity.Low,
                 Weigth = 40,
                 ItemType = ItemType.RangedWeapon
             };
             var wloczniaDoRzucania = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Włócznia",
-                Price = 0,
+                Price = MoneyCalculator.GetUserMoney(0, 0, 0),
                 Rarity = ItemRarity.Average,
                 Weigth = 30,
                 ItemType = ItemType.RangedWeapon
             };
-            var strzaly = new Item
+            var strzala = new Item
             {
-                MoneyType = MoneyType.Shilling,
-                Name = "Strzały (5)",
-                Price = 1,
+                Name = "Strzała",
+                Price = MoneyCalculator.GetUserMoney(0, 0, 2),
                 Rarity = ItemRarity.Average,
                 Weigth = 10,
                 ItemType = ItemType.Ammunition
             };
-            var belty = new Item
+            var belt = new Item
             {
-                MoneyType = MoneyType.Shilling,
-                Name = "Bełty (5)",
-                Price = 2,
+                Name = "Bełt",
+                Price = MoneyCalculator.GetUserMoney(0, 0, 4),
                 Rarity = ItemRarity.Low,
                 Weigth = 10,
                 ItemType = ItemType.Ammunition
             };
             var kulaDoBroni = new Item
             {
-                MoneyType = MoneyType.Shilling,
-                Name = "Kule do broni palnej (10)",
-                Price = 1,
+                Name = "Kula do broni palnej",
+                Price = MoneyCalculator.GetUserMoney(0, 0, 1),
                 Rarity = ItemRarity.Rare,
                 Weigth = 10,
                 ItemType = ItemType.Ammunition
             };
             var prochStrzelniczy = new Item
             {
-                MoneyType = MoneyType.Shilling,
                 Name = "Proch strzelniczy (strzał)",
-                Price = 3,
+                Price = MoneyCalculator.GetUserMoney(0, 3, 0),
                 Rarity = ItemRarity.Insignificant,
                 Weigth = 1,
                 ItemType = ItemType.Ammunition
             };
             var helmSkora = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
-                Name = "Hełm (Skórzana)",
-                Price = 3,
+                Name = "Hełm (Skórzany)",
+                Price = MoneyCalculator.GetUserMoney(3, 0, 0),
                 Rarity = ItemRarity.Average,
                 Weigth = 10,
                 ItemType = ItemType.Armor
             };
             var kaftanSkora = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
-                Name = "Kaftan (Skórzana)",
-                Price = 5,
+                Name = "Kaftan (Skórzany)",
+                Price = MoneyCalculator.GetUserMoney(5, 0, 0),
                 Rarity = ItemRarity.Average,
                 Weigth = 40,
                 ItemType = ItemType.Armor
             };
             var kurtaSkora = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Kurta (Skórzana)",
-                Price = 12,
+                Price = MoneyCalculator.GetUserMoney(12, 0, 0),
                 Rarity = ItemRarity.Average,
                 Weigth = 50,
                 ItemType = ItemType.Armor
             };
             var nogawiceSkora = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
-                Name = "Nogawice (Skórzana)",
-                Price = 10,
+                Name = "Nogawice (Skórzane)",
+                Price = MoneyCalculator.GetUserMoney(10, 0, 0),
                 Rarity = ItemRarity.Average,
                 Weigth = 20,
                 ItemType = ItemType.Armor
             };
             var skorznia = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
-                Name = "Skórznia (Skórzana)",
-                Price = 25,
+                Name = "Skórznia",
+                Price = MoneyCalculator.GetUserMoney(25, 0, 0),
                 Rarity = ItemRarity.Low,
                 Weigth = 80,
                 ItemType = ItemType.Armor
             };
             var czepiecKolczy = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
-                Name = "Czepiec (Kolcza)",
-                Price = 20,
+                Name = "Czepiec (Kolczy)",
+                Price = MoneyCalculator.GetUserMoney(20, 0, 0),
                 Rarity = ItemRarity.Low,
                 Weigth = 30,
                 ItemType = ItemType.Armor
             };
             var kaftanKolczy = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
-                Name = "Kaftan (Kolcza)",
-                Price = 60,
+                Name = "Kaftan (Kolczy)",
+                Price = MoneyCalculator.GetUserMoney(60, 0, 0),
                 Rarity = ItemRarity.Low,
                 Weigth = 60,
                 ItemType = ItemType.Armor
             };
             var koszulkaKolcza = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Koszulka (Kolcza)",
-                Price = 95,
+                Price = MoneyCalculator.GetUserMoney(95, 0, 0),
                 Rarity = ItemRarity.Low,
                 Weigth = 80,
                 ItemType = ItemType.Armor
             };
             var kolczugaKolcza = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
-                Name = "Kolczuga (Kolcza)",
-                Price = 75,
+                Name = "Kolczuga",
+                Price = MoneyCalculator.GetUserMoney(75, 0, 0),
                 Rarity = ItemRarity.Low,
                 Weigth = 80,
                 ItemType = ItemType.Armor
             };
             var kolczugaZRekawami = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
-                Name = "Kolczuga z rękawami (Kolcza)",
-                Price = 130,
+                Name = "Kolczuga z rękawami",
+                Price = MoneyCalculator.GetUserMoney(130, 0, 0),
                 Rarity = ItemRarity.Low,
                 Weigth = 100,
                 ItemType = ItemType.Armor
             };
             var nogawiceKolcze = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
-                Name = "Nogawice (Kolcza)",
-                Price = 20,
+                Name = "Nogawice (Kolcze)",
+                Price = MoneyCalculator.GetUserMoney(20, 0, 0),
                 Rarity = ItemRarity.Occasional,
                 Weigth = 40,
                 ItemType = ItemType.Armor
             };
             var zbrojaKolcza = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
-                Name = "Zbroja kolcza (Kolcza)",
-                Price = 170,
+                Name = "Zbroja kolcza",
+                Price = MoneyCalculator.GetUserMoney(170, 0, 0),
                 Rarity = ItemRarity.Occasional,
                 Weigth = 210,
                 ItemType = ItemType.Armor
             };
             var helmPlytowy = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
-                Name = "Hełm (płyta)",
-                Price = 30,
+                Name = "Hełm (płytowy)",
+                Price = MoneyCalculator.GetUserMoney(30, 0, 0),
                 Rarity = ItemRarity.Occasional,
                 Weigth = 40,
                 ItemType = ItemType.Armor
             };
             var naramiennikiPlytowe = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
-                Name = "Naramienniki (płyta)",
-                Price = 70,
+                Name = "Naramienniki (płytowe)",
+                Price = MoneyCalculator.GetUserMoney(70, 0, 0),
                 Rarity = ItemRarity.Occasional,
                 Weigth = 75,
                 ItemType = ItemType.Armor
             };
             var nogawicePlytowe = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
-                Name = "Nogawice (płyta)",
-                Price = 60,
+                Name = "Nogawice (płytowe)",
+                Price = MoneyCalculator.GetUserMoney(60, 0, 0),
                 Rarity = ItemRarity.Occasional,
                 Weigth = 30,
                 ItemType = ItemType.Armor
             };
             var napiersnikPlytowy = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
-                Name = "Napierśnik (płyta)",
-                Price = 70,
+                Name = "Napierśnik (płytowy)",
+                Price = MoneyCalculator.GetUserMoney(70, 0, 0),
                 Rarity = ItemRarity.Occasional,
                 Weigth = 40,
                 ItemType = ItemType.Armor
             };
             var zbrojaPlytowa = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
-                Name = "Zbroja płytowa (płyta)",
-                Price = 400,
+                Name = "Zbroja płytowa",
+                Price = MoneyCalculator.GetUserMoney(400, 0, 0),
                 Rarity = ItemRarity.Rare,
                 Weigth = 395,
                 ItemType = ItemType.Armor
             };
             var lachmany = new Item
             {
-                MoneyType = MoneyType.Penny,
                 Name = "Łachmany",
-                Price = 1,
+                Price = MoneyCalculator.GetUserMoney(0, 0, 1),
                 Rarity = ItemRarity.Common,
                 Weigth = 5,
                 ItemType = ItemType.Cloth
             };
             var kiepskieOdzienie = new Item
             {
-                MoneyType = MoneyType.Shilling,
                 Name = "Kiepskie odzienie",
-                Price = 10,
+                Price = MoneyCalculator.GetUserMoney(0, 10, 0),
                 Rarity = ItemRarity.Common,
                 Weigth = 10,
                 ItemType = ItemType.Cloth
             };
             var zwykleUbranie = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Zwykłe ubranie",
-                Price = 1,
+                Price = MoneyCalculator.GetUserMoney(1, 0, 0),
                 Rarity = ItemRarity.High,
                 Weigth = 15,
                 ItemType = ItemType.Cloth
             };
             var dobreUbranie = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Dobre ubranie",
-                Price = 3,
+                Price = MoneyCalculator.GetUserMoney(3, 0, 0),
                 Rarity = ItemRarity.Average,
                 Weigth = 15,
                 ItemType = ItemType.Cloth
             };
             var szykowneUbranie = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Szykowne ubranie",
-                Price = 10,
+                Price = MoneyCalculator.GetUserMoney(10, 0, 0),
                 Rarity = ItemRarity.Low,
                 Weigth = 20,
                 ItemType = ItemType.Cloth
             };
             var szaty = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Szaty",
-                Price = 15,
+                Price = MoneyCalculator.GetUserMoney(15, 0, 0),
                 Rarity = ItemRarity.Low,
                 Weigth = 25,
                 ItemType = ItemType.Cloth
             };
             var kostium = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Kostium",
-                Price = 5,
+                Price = MoneyCalculator.GetUserMoney(5, 0, 0),
                 Rarity = ItemRarity.Low,
                 Weigth = 10,
                 ItemType = ItemType.Cloth
             };
             var uniform = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Uniform",
-                Price = 15,
+                Price = MoneyCalculator.GetUserMoney(15, 0, 0),
                 Rarity = ItemRarity.Occasional,
                 Weigth = 15,
                 ItemType = ItemType.Cloth
             };
             var strojSzlachecki = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Strój szlachecki",
-                Price = 50,
+                Price = MoneyCalculator.GetUserMoney(50, 0, 0),
                 Rarity = ItemRarity.Rare,
                 Weigth = 30,
                 ItemType = ItemType.Cloth
             };
             var strojArystokraty = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Strój arystokraty",
-                Price = 100,
+                Price = MoneyCalculator.GetUserMoney(100, 0, 0),
                 Rarity = ItemRarity.Insignificant,
                 Weigth = 50,
                 ItemType = ItemType.Cloth
             };
             var peleryna = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Peleryna",
-                Price = 5,
+                Price = MoneyCalculator.GetUserMoney(5, 0, 0),
                 Rarity = ItemRarity.High,
                 Weigth = 10,
                 ItemType = ItemType.Cloth
             };
             var plaszcz = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Płaszcz",
-                Price = 10,
+                Price = MoneyCalculator.GetUserMoney(10, 0, 0),
                 Rarity = ItemRarity.High,
                 Weigth = 15,
                 ItemType = ItemType.Cloth
             };
             var kapeluszZwykly = new Item
             {
-                MoneyType = MoneyType.Shilling,
                 Name = "Kapelusz zwykły",
-                Price = 10,
+                Price = MoneyCalculator.GetUserMoney(0, 10, 0),
                 Rarity = ItemRarity.High,
                 Weigth = 15,
                 ItemType = ItemType.Cloth
             };
             var kapeluszZRondem = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Kapelusz z szerokim rondlem",
-                Price = 1,
+                Price = MoneyCalculator.GetUserMoney(1, 0, 0),
                 Rarity = ItemRarity.High,
                 Weigth = 5,
                 ItemType = ItemType.Cloth
             };
             var kapturMaska = new Item
             {
-                MoneyType = MoneyType.Shilling,
                 Name = "Kaptur lub maska",
-                Price = 10,
+                Price = MoneyCalculator.GetUserMoney(0, 10, 0),
                 Rarity = ItemRarity.Average,
                 Weigth = 2,
                 ItemType = ItemType.Cloth
             };
             var obrok = new Item
             {
-                MoneyType = MoneyType.Penny,
                 Name = "Obrok (porcja na 1 dzień)",
-                Price = 5,
+                Price = MoneyCalculator.GetUserMoney(0, 0, 5),
                 Rarity = ItemRarity.High,
                 Weigth = 50,
                 ItemType = ItemType.Food
             };
             var bochenekChleba = new Item
             {
-                MoneyType = MoneyType.Penny,
                 Name = "Bochenek chleba",
-                Price = 2,
+                Price = MoneyCalculator.GetUserMoney(0, 0, 2),
                 Rarity = ItemRarity.Common,
                 Weigth = 2,
                 ItemType = ItemType.Food
             };
             var polecMiesa = new Item
             {
-                MoneyType = MoneyType.Shilling,
                 Name = "Połeć mięsa",
-                Price = 1,
+                Price = MoneyCalculator.GetUserMoney(0, 1, 0),
                 Rarity = ItemRarity.Low,
                 Weigth = 10,
                 ItemType = ItemType.Food
             };
             var kiepskieJedzenie = new Item
             {
-                MoneyType = MoneyType.Penny,
                 Name = "Kiepskie jedzenie (porcja na 1 dzień)",
-                Price = 5,
+                Price = MoneyCalculator.GetUserMoney(0, 0, 5),
                 Rarity = ItemRarity.High,
                 Weigth = 10,
                 ItemType = ItemType.Food
             };
             var dobreJedzenie = new Item
             {
-                MoneyType = MoneyType.Penny,
                 Name = "Dobre jedzenie (porcja na 1 dzień)",
-                Price = 10,
+                Price = MoneyCalculator.GetUserMoney(0, 0, 10),
                 Rarity = ItemRarity.Average,
                 Weigth = 10,
                 ItemType = ItemType.Food
             };
             var doskonaleJedzenie = new Item
             {
-                MoneyType = MoneyType.Penny,
                 Name = "Doskonałe jedzenie (porcja na 1 dzień)",
-                Price = 18,
+                Price = MoneyCalculator.GetUserMoney(0, 0, 18),
                 Rarity = ItemRarity.Low,
                 Weigth = 10,
                 ItemType = ItemType.Food
             };
             var prowiantNaTydzien = new Item
             {
-                MoneyType = MoneyType.Shilling,
                 Name = "Prowiant (porcja na 1 tydzień)",
-                Price = 6,
+                Price = MoneyCalculator.GetUserMoney(0, 6, 0),
                 Rarity = ItemRarity.Average,
                 Weigth = 50,
                 ItemType = ItemType.Food
             };
             var slodycze = new Item
             {
-                MoneyType = MoneyType.Shilling,
                 Name = "Słodycze",
-                Price = 1,
+                Price = MoneyCalculator.GetUserMoney(0, 1, 0),
                 Rarity = ItemRarity.Average,
                 Weigth = 2,
                 ItemType = ItemType.Food
             };
             var smakolyki = new Item
             {
-                MoneyType = MoneyType.Shilling,
                 Name = "Smakołyki",
-                Price = 3,
+                Price = MoneyCalculator.GetUserMoney(0, 3, 0),
                 Rarity = ItemRarity.Occasional,
                 Weigth = 0,
                 ItemType = ItemType.Food
             };
             var ciemnePiwo = new Item
             {
-                MoneyType = MoneyType.Penny,
                 Name = "Ciemne piwo",
-                Price = 2,
+                Price = MoneyCalculator.GetUserMoney(0, 0, 2),
                 Rarity = ItemRarity.High,
                 Weigth = 2,
                 ItemType = ItemType.Food
             };
             var jasnePiwo = new Item
             {
-                MoneyType = MoneyType.Penny,
                 Name = "Jasne piwo",
-                Price = 1,
+                Price = MoneyCalculator.GetUserMoney(0, 0, 1),
                 Rarity = ItemRarity.Common,
                 Weigth = 2,
                 ItemType = ItemType.Food
             };
             var antalekPiwaJasnego = new Item
             {
-                MoneyType = MoneyType.Penny,
                 Name = "Antałek piwa jasnego",
-                Price = 18,
+                Price = MoneyCalculator.GetUserMoney(0, 0, 18),
                 Rarity = ItemRarity.Common,
                 Weigth = 30,
                 ItemType = ItemType.Food
             };
             var antalekPiwaCiemnego = new Item
             {
-                MoneyType = MoneyType.Shilling,
                 Name = "Antałek piwa ciemnego",
-                Price = 3,
+                Price = MoneyCalculator.GetUserMoney(0, 3, 0),
                 Rarity = ItemRarity.Common,
                 Weigth = 30,
                 ItemType = ItemType.Food
             };
             var butelkaGorzalki = new Item
             {
-                MoneyType = MoneyType.Shilling,
                 Name = "Butelka gorzałki",
-                Price = 1,
+                Price = MoneyCalculator.GetUserMoney(0, 1, 0),
+                Rarity = ItemRarity.Low,
+                Weigth = 5,
+                ItemType = ItemType.Food
+            };
+            var butelkaGorzalkiDobrejJakosci = new Item
+            {
+                Name = "Butelka gorzałki dobrej jakości",
+                Price = MoneyCalculator.GetUserMoney(0, 3, 0),
                 Rarity = ItemRarity.Low,
                 Weigth = 5,
                 ItemType = ItemType.Food
             };
             var winoPospolite = new Item
             {
-                MoneyType = MoneyType.Shilling,
                 Name = "Wino pospolite",
-                Price = 1,
+                Price = MoneyCalculator.GetUserMoney(0, 1, 0),
                 Rarity = ItemRarity.Average,
                 Weigth = 5,
                 ItemType = ItemType.Food
             };
             var winoSzlacheckie = new Item
             {
-                MoneyType = MoneyType.Shilling,
                 Name = "Wino szlacheckie",
-                Price = 10,
+                Price = MoneyCalculator.GetUserMoney(0, 10, 0),
                 Rarity = ItemRarity.Low,
                 Weigth = 5,
                 ItemType = ItemType.Food
             };
             var buklak = new Item
             {
-                MoneyType = MoneyType.Shilling,
                 Name = "Bukłak",
-                Price = 8,
+                Price = MoneyCalculator.GetUserMoney(0, 8, 0),
                 Rarity = ItemRarity.High,
                 Weigth = 1,
                 ItemType = ItemType.Containers
             };
             var flaszka = new Item
             {
-                MoneyType = MoneyType.Shilling,
                 Name = "Flaszka",
-                Price = 4,
+                Price = MoneyCalculator.GetUserMoney(0, 4, 0),
                 Rarity = ItemRarity.High,
                 Weigth = 10,
                 ItemType = ItemType.Containers
             };
             var juki = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Juki",
-                Price = 2,
+                Price = MoneyCalculator.GetUserMoney(2, 0, 0),
                 Rarity = ItemRarity.Low,
                 Weigth = 5,
                 ItemType = ItemType.Containers
             };
             var kuferek = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Kuferek",
-                Price = 5,
+                Price = MoneyCalculator.GetUserMoney(5, 0, 0),
                 Rarity = ItemRarity.Low,
                 Weigth = 40,
                 ItemType = ItemType.Containers
             };
             var manierkaMetalowa = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Manierka metalowa",
-                Price = 2,
+                Price = MoneyCalculator.GetUserMoney(2, 0, 0),
                 Rarity = ItemRarity.Occasional,
                 Weigth = 15,
                 ItemType = ItemType.Containers
             };
             var manierkaSkorzana = new Item
             {
-                MoneyType = MoneyType.Shilling,
                 Name = "Manierska skórzana",
-                Price = 15,
+                Price = MoneyCalculator.GetUserMoney(0, 15, 0),
                 Rarity = ItemRarity.Low,
                 Weigth = 5,
                 ItemType = ItemType.Containers
             };
             var mieszek = new Item
             {
-                MoneyType = MoneyType.Shilling,
                 Name = "Mieszek",
-                Price = 2,
+                Price = MoneyCalculator.GetUserMoney(0, 2, 0),
                 Rarity = ItemRarity.High,
                 Weigth = 1,
                 ItemType = ItemType.Containers
             };
             var plecak = new Item
             {
-                MoneyType = MoneyType.Shilling,
                 Name = "Plecak",
-                Price = 30,
+                Price = MoneyCalculator.GetUserMoney(0, 30, 0),
                 Rarity = ItemRarity.High,
                 Weigth = 20,
                 ItemType = ItemType.Containers
             };
             var sakiewka = new Item
             {
-                MoneyType = MoneyType.Shilling,
                 Name = "Sakiewka",
-                Price = 5,
+                Price = MoneyCalculator.GetUserMoney(0, 5, 0),
                 Rarity = ItemRarity.High,
                 Weigth = 1,
                 ItemType = ItemType.Containers
             };
             var tobolek = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Tobołek",
-                Price = 2,
+                Price = MoneyCalculator.GetUserMoney(2, 0, 0),
                 Rarity = ItemRarity.Low,
                 Weigth = 5,
                 ItemType = ItemType.Containers
             };
             var tubaNaMapy = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Tuba na mapy/pergaminy",
-                Price = 1,
+                Price = MoneyCalculator.GetUserMoney(1, 0, 0),
                 Rarity = ItemRarity.Occasional,
                 Weigth = 2,
                 ItemType = ItemType.Containers
             };
             var worek = new Item
             {
-                MoneyType = MoneyType.Shilling,
                 Name = "Worek",
-                Price = 5,
+                Price = MoneyCalculator.GetUserMoney(0, 5, 0),
                 Rarity = ItemRarity.High,
                 Weigth = 7,
                 ItemType = ItemType.Containers
             };
             var drewnoNaOpal = new Item
             {
-                MoneyType = MoneyType.Shilling,
                 Name = "Drewno na opał",
-                Price = 2,
+                Price = MoneyCalculator.GetUserMoney(0, 2, 0),
                 Rarity = ItemRarity.High,
                 Weigth = 5,
                 ItemType = ItemType.Light
             };
             var kaganek = new Item
             {
-                MoneyType = MoneyType.Shilling,
                 Name = "Kaganek",
-                Price = 5,
+                Price = MoneyCalculator.GetUserMoney(0, 5, 0),
                 Rarity = ItemRarity.High,
                 Weigth = 20,
                 ItemType = ItemType.Light
             };
             var latarnia = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Latarnia",
-                Price = 5,
+                Price = MoneyCalculator.GetUserMoney(1, 0, 0),
                 Rarity = ItemRarity.Low,
                 Weigth = 20,
                 ItemType = ItemType.Light
             };
             var latarniaSztormowa = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Latarnia sztormowa",
-                Price = 12,
+                Price = MoneyCalculator.GetUserMoney(12, 0, 0),
                 Rarity = ItemRarity.Occasional,
                 Weigth = 30,
                 ItemType = ItemType.Light
             };
             var olejDoLatarni = new Item
             {
-                MoneyType = MoneyType.Shilling,
                 Name = "Olej do latarni",
-                Price = 5,
+                Price = MoneyCalculator.GetUserMoney(0, 5, 0),
                 Rarity = ItemRarity.High,
                 Weigth = 5,
                 ItemType = ItemType.Light
             };
             var pochodnia = new Item
             {
-                MoneyType = MoneyType.Penny,
                 Name = "Pochodnia",
-                Price = 5,
+                Price = MoneyCalculator.GetUserMoney(0, 0, 5),
                 Rarity = ItemRarity.High,
                 Weigth = 5,
                 ItemType = ItemType.Light
             };
             var swieczkaLojowa = new Item
             {
-                MoneyType = MoneyType.Shilling,
                 Name = "Świeczka łojowa",
-                Price = 3,
+                Price = MoneyCalculator.GetUserMoney(0, 3, 0),
                 Rarity = ItemRarity.High,
                 Weigth = 5,
                 ItemType = ItemType.Light
             };
             var swieczkaWoskowa = new Item
             {
-                MoneyType = MoneyType.Shilling,
                 Name = "Świeczka woskowa",
-                Price = 6,
+                Price = MoneyCalculator.GetUserMoney(0, 6, 0),
                 Rarity = ItemRarity.Low,
                 Weigth = 5,
                 ItemType = ItemType.Light
             };
             var zapalka = new Item
             {
-                MoneyType = MoneyType.Penny,
                 Name = "Zapałka",
-                Price = 1,
+                Price = MoneyCalculator.GetUserMoney(0, 0, 1),
                 Rarity = ItemRarity.Low,
                 Weigth = 0,
                 ItemType = ItemType.Light
             };
             var zlotaKorona = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Zlota korona",
-                Price = 1,
+                Price = MoneyCalculator.GetUserMoney(1, 0, 0),
                 Rarity = ItemRarity.Average,
                 Weigth = 0,
                 ItemType = ItemType.Utility
             };
             var pens = new Item
             {
-                MoneyType = MoneyType.Penny,
                 Name = "Pens",
-                Price = 1,
+                Price = MoneyCalculator.GetUserMoney(0, 0, 1),
                 Rarity = ItemRarity.Common,
                 Weigth = 0,
                 ItemType = ItemType.Utility
             };
             var szyling = new Item
             {
-                MoneyType = MoneyType.Shilling,
                 Name = "Szyling",
-                Price = 1,
+                Price = MoneyCalculator.GetUserMoney(0, 1, 0),
                 Rarity = ItemRarity.High,
                 Weigth = 0,
                 ItemType = ItemType.Utility
             };
             var drabina = new Item
             {
-                MoneyType = MoneyType.Shilling,
                 Name = "Drabina",
-                Price = 10,
+                Price = MoneyCalculator.GetUserMoney(0, 10, 0),
                 Rarity = ItemRarity.Average,
                 Weigth = 50,
                 ItemType = ItemType.Utility
             };
             var hubkaIKrzesiwo = new Item
             {
-                MoneyType = MoneyType.Shilling,
                 Name = "Hubka i krzesiwo",
-                Price = 30,
+                Price = MoneyCalculator.GetUserMoney(0, 30, 0),
                 Rarity = ItemRarity.High,
                 Weigth = 5,
                 ItemType = ItemType.Utility
             };
             var imbryk = new Item
             {
-                MoneyType = MoneyType.Shilling,
                 Name = "Imbryk",
-                Price = 30,
+                Price = MoneyCalculator.GetUserMoney(0, 30, 0),
                 Rarity = ItemRarity.High,
                 Weigth = 10,
                 ItemType = ItemType.Utility
             };
             var instrumentMuzyczny = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Instrument muzyczny",
-                Price = 5,
+                Price = MoneyCalculator.GetUserMoney(5, 0, 0),
                 Rarity = ItemRarity.Average,
                 Weigth = 5,
                 ItemType = ItemType.Utility
             };
             var klodkaDobrejJakosci = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Kłódka dobrej jakości",
-                Price = 10,
+                Price = MoneyCalculator.GetUserMoney(10, 0, 0),
                 Rarity = ItemRarity.Insignificant,
                 Weigth = 5,
                 ItemType = ItemType.Utility
             };
             var klodkaZwyklejJakosci = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Kłódka zwykłej jakości",
-                Price = 1,
+                Price = MoneyCalculator.GetUserMoney(1, 0, 0),
                 Rarity = ItemRarity.Average,
                 Weigth = 5,
                 ItemType = ItemType.Utility
             };
             var koc = new Item
             {
-                MoneyType = MoneyType.Shilling,
                 Name = "Koc",
-                Price = 25,
+                Price = MoneyCalculator.GetUserMoney(0, 25, 0),
                 Rarity = ItemRarity.High,
                 Weigth = 10,
                 ItemType = ItemType.Utility
             };
             var kociolek = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Kociołek",
-                Price = 1,
+                Price = MoneyCalculator.GetUserMoney(1, 0, 0),
                 Rarity = ItemRarity.High,
                 Weigth = 20,
                 ItemType = ItemType.Utility
             };
             var kosciDoGry = new Item
             {
-                MoneyType = MoneyType.Shilling,
                 Name = "Kości do gry",
-                Price = 6,
+                Price = MoneyCalculator.GetUserMoney(0, 6, 0),
                 Rarity = ItemRarity.High,
                 Weigth = 0,
                 ItemType = ItemType.Utility
             };
             var kufelDrewniany = new Item
             {
-                MoneyType = MoneyType.Shilling,
                 Name = "Kufel drewniany",
-                Price = 10,
+                Price = MoneyCalculator.GetUserMoney(0, 10, 0),
                 Rarity = ItemRarity.High,
                 Weigth = 5,
                 ItemType = ItemType.Utility
             };
             var kufelZeSzklaBarwionego = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Kufel ze szkła barwionego",
-                Price = 1,
+                Price = MoneyCalculator.GetUserMoney(1, 0, 0),
                 Rarity = ItemRarity.High,
                 Weigth = 5,
                 ItemType = ItemType.Utility
             };
             var lina = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Lina",
-                Price = 1,
+                Price = MoneyCalculator.GetUserMoney(1, 0, 0),
                 Rarity = ItemRarity.Average,
                 Weigth = 50,
                 ItemType = ItemType.Utility
             };
             var luneta = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Luneta",
-                Price = 100,
+                Price = MoneyCalculator.GetUserMoney(100, 0, 0),
                 Rarity = ItemRarity.Rare,
                 Weigth = 5,
                 ItemType = ItemType.Utility
             };
             var lustro = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Lustro",
-                Price = 10,
+                Price = MoneyCalculator.GetUserMoney(10, 0, 0),
                 Rarity = ItemRarity.Rare,
                 Weigth = 5,
                 ItemType = ItemType.Utility
             };
             var namiot = new Item
             {
-                MoneyType = MoneyType.Shilling,
                 Name = "Namiot",
-                Price = 15,
+                Price = MoneyCalculator.GetUserMoney(0, 15, 0),
                 Rarity = ItemRarity.Average,
                 Weigth = 20,
                 ItemType = ItemType.Utility
             };
             var papier = new Item
             {
-                MoneyType = MoneyType.Shilling,
                 Name = "Papier",
-                Price = 1,
+                Price = MoneyCalculator.GetUserMoney(0, 1, 0),
                 Rarity = ItemRarity.Insignificant,
                 Weigth = 0,
                 ItemType = ItemType.Utility
             };
             var perfumy = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Perfumy",
-                Price = 1,
+                Price = MoneyCalculator.GetUserMoney(1, 0, 0),
                 Rarity = ItemRarity.Average,
                 Weigth = 0,
                 ItemType = ItemType.Utility
             };
             var pergamin = new Item
             {
-                MoneyType = MoneyType.Shilling,
                 Name = "Pergamin",
-                Price = 5,
+                Price = MoneyCalculator.GetUserMoney(0, 5, 0),
                 Rarity = ItemRarity.Rare,
                 Weigth = 0,
                 ItemType = ItemType.Utility
             };
             var symbolReligijny = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Symbol religijny",
-                Price = 1,
+                Price = MoneyCalculator.GetUserMoney(1, 0, 0),
                 Rarity = ItemRarity.Average,
                 Weigth = 5,
                 ItemType = ItemType.Utility
             };
             var sztucceDrewniane = new Item
             {
-                MoneyType = MoneyType.Shilling,
                 Name = "Sztućce drewniane",
-                Price = 5,
+                Price = MoneyCalculator.GetUserMoney(0, 5, 0),
                 Rarity = ItemRarity.High,
                 Weigth = 2,
                 ItemType = ItemType.Utility
             };
             var sztucceMetalowe = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Sztućce metalowe",
-                Price = 3,
+                Price = MoneyCalculator.GetUserMoney(3, 0, 0),
                 Rarity = ItemRarity.Average,
                 Weigth = 4,
                 ItemType = ItemType.Utility
             };
             var sztucceSrebrne = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Sztućce srebrne",
-                Price = 15,
+                Price = MoneyCalculator.GetUserMoney(15, 0, 0),
                 Rarity = ItemRarity.Occasional,
                 Weigth = 3,
                 ItemType = ItemType.Utility
             };
             var taliaKart = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Talia kart",
-                Price = 1,
+                Price = MoneyCalculator.GetUserMoney(1, 0, 0),
                 Rarity = ItemRarity.High,
                 Weigth = 1,
                 ItemType = ItemType.Utility
             };
             var drag = new Item
             {
-                MoneyType = MoneyType.Shilling,
                 Name = "Drąg, cena za metr",
-                Price = 1,
+                Price = MoneyCalculator.GetUserMoney(0, 1, 0),
                 Rarity = ItemRarity.High,
                 Weigth = 10,
                 ItemType = ItemType.Tools
             };
             var drewnianyKlin = new Item
             {
-                MoneyType = MoneyType.Penny,
                 Name = "Drewniany klin",
-                Price = 8,
+                Price = MoneyCalculator.GetUserMoney(0, 0, 8),
                 Rarity = ItemRarity.High,
                 Weigth = 2,
                 ItemType = ItemType.Tools
             };
             var haczykNaRyby = new Item
             {
-                MoneyType = MoneyType.Shilling,
                 Name = "Haczyk na ryby i żyłka",
-                Price = 3,
+                Price = MoneyCalculator.GetUserMoney(0, 3, 0),
                 Rarity = ItemRarity.Average,
                 Weigth = 2,
                 ItemType = ItemType.Tools
             };
             var kajdany = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Kajdany",
-                Price = 5,
+                Price = MoneyCalculator.GetUserMoney(5, 0, 0),
                 Rarity = ItemRarity.Low,
                 Weigth = 20,
                 ItemType = ItemType.Tools
             };
             var kilof = new Item
             {
-                MoneyType = MoneyType.Shilling,
                 Name = "Kilof",
-                Price = 25,
+                Price = MoneyCalculator.GetUserMoney(0, 25, 0),
                 Rarity = ItemRarity.Low,
                 Weigth = 20,
                 ItemType = ItemType.Tools
             };
             var kolki = new Item
             {
-                MoneyType = MoneyType.Shilling,
                 Name = "Kołki",
-                Price = 5,
+                Price = MoneyCalculator.GetUserMoney(0, 5, 0),
                 Rarity = ItemRarity.Average,
                 Weigth = 5,
                 ItemType = ItemType.Tools
             };
             var kotwiczkaDoWspinaczki = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Kotwiczka do wspinaczki",
-                Price = 4,
+                Price = MoneyCalculator.GetUserMoney(4, 0, 0),
                 Rarity = ItemRarity.Low,
                 Weigth = 20,
                 ItemType = ItemType.Tools
             };
             var ksiazkaDrukowana = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Książka drukowana",
-                Price = 100,
+                Price = MoneyCalculator.GetUserMoney(100, 0, 0),
                 Rarity = ItemRarity.Insignificant,
                 Weigth = 35,
                 ItemType = ItemType.Tools
             };
             var ksiazkaIlustrowana = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Książka ilustrowana",
-                Price = 350,
+                Price = MoneyCalculator.GetUserMoney(350, 0, 0),
                 Rarity = ItemRarity.Insignificant,
                 Weigth = 50,
                 ItemType = ItemType.Tools
             };
             var liczydlo = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Liczydło",
-                Price = 10,
+                Price = MoneyCalculator.GetUserMoney(10, 0, 0),
                 Rarity = ItemRarity.Rare,
                 Weigth = 5,
                 ItemType = ItemType.Tools
             };
             var lancuch = new Item
             {
-                MoneyType = MoneyType.Shilling,
                 Name = "Łańcuch, cena za metr",
-                Price = 30,
+                Price = MoneyCalculator.GetUserMoney(0, 30, 0),
                 Rarity = ItemRarity.Rare,
                 Weigth = 5,
                 ItemType = ItemType.Tools
             };
             var lom = new Item
             {
-                MoneyType = MoneyType.Shilling,
                 Name = "Łom",
-                Price = 10,
+                Price = MoneyCalculator.GetUserMoney(0, 10, 0),
                 Rarity = ItemRarity.Average,
                 Weigth = 10,
                 ItemType = ItemType.Tools
             };
             var lopata = new Item
             {
-                MoneyType = MoneyType.Shilling,
                 Name = "Łopata",
-                Price = 25,
+                Price = MoneyCalculator.GetUserMoney(0, 25, 0),
                 Rarity = ItemRarity.Average,
                 Weigth = 20,
                 ItemType = ItemType.Tools
             };
             var mlot = new Item
             {
-                MoneyType = MoneyType.Shilling,
                 Name = "Młot",
-                Price = 20,
+                Price = MoneyCalculator.GetUserMoney(0, 20, 0),
                 Rarity = ItemRarity.Average,
                 Weigth = 40,
                 ItemType = ItemType.Tools
             };
             var narzedzia = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Narzędzia",
-                Price = 50,
+                Price = MoneyCalculator.GetUserMoney(50, 0, 0),
                 Rarity = ItemRarity.Low,
                 Weigth = 50,
                 ItemType = ItemType.Tools
             };
             var potrzask = new Item
             {
-                MoneyType = MoneyType.Shilling,
                 Name = "Potrzask",
-                Price = 1,
+                Price = MoneyCalculator.GetUserMoney(0, 1, 0),
                 Rarity = ItemRarity.Average,
                 Weigth = 2,
                 ItemType = ItemType.Tools
             };
             var przyboryDoPisania = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Przybory do pisania",
-                Price = 10,
+                Price = MoneyCalculator.GetUserMoney(10, 0, 0),
                 Rarity = ItemRarity.Low,
                 Weigth = 5,
                 ItemType = ItemType.Tools
             };
             var sztabkaMetalu = new Item
             {
-                MoneyType = MoneyType.Shilling,
                 Name = "Sztabka metalu",
-                Price = 25,
+                Price = MoneyCalculator.GetUserMoney(0, 25, 0),
                 Rarity = ItemRarity.Low,
                 Weigth = 20,
                 ItemType = ItemType.Tools
             };
             var wnyki = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Wnyki",
-                Price = 2,
+                Price = MoneyCalculator.GetUserMoney(2, 0, 0),
                 Rarity = ItemRarity.Average,
                 Weigth = 20,
                 ItemType = ItemType.Tools
             };
             var wytrychy = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Wytrychy",
-                Price = 10,
+                Price = MoneyCalculator.GetUserMoney(10, 0, 0),
                 Rarity = ItemRarity.Low,
                 Weigth = 20,
                 ItemType = ItemType.Tools
             };
             var zestawDoCharakteryzacji = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Zestaw do charakteryzacji",
-                Price = 5,
+                Price = MoneyCalculator.GetUserMoney(5, 0, 0),
                 Rarity = ItemRarity.Occasional,
                 Weigth = 10,
                 ItemType = ItemType.Tools
             };
             var wozek = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Wózek",
-                Price = 50,
+                Price = MoneyCalculator.GetUserMoney(50, 0, 0),
                 Rarity = ItemRarity.Average,
                 Weigth = 0,
                 ItemType = ItemType.Wehicles
             };
             var woz = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Wóz",
-                Price = 90,
+                Price = MoneyCalculator.GetUserMoney(90, 0, 0),
                 Rarity = ItemRarity.Average,
                 Weigth = 0,
                 ItemType = ItemType.Wehicles
             };
             var powoz = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Powóz",
-                Price = 500,
+                Price = MoneyCalculator.GetUserMoney(500, 0, 0),
                 Rarity = ItemRarity.Rare,
                 Weigth = 0,
                 ItemType = ItemType.Wehicles
             };
             var lodzRzeczna = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Łódź rzeczna",
-                Price = 600,
+                Price = MoneyCalculator.GetUserMoney(600, 0, 0),
                 Rarity = ItemRarity.Rare,
                 Weigth = 0,
                 ItemType = ItemType.Wehicles
             };
             var lodzWioslowa = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Łódź wiosłowa",
-                Price = 90,
+                Price = MoneyCalculator.GetUserMoney(90, 0, 0),
                 Rarity = ItemRarity.Low,
                 Weigth = 900,
                 ItemType = ItemType.Wehicles
             };
             var statek = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Statek",
-                Price = 12000,
+                Price = MoneyCalculator.GetUserMoney(12000, 0, 0),
                 Rarity = ItemRarity.Occasional,
                 Weigth = 0,
                 ItemType = ItemType.Wehicles
             };
             var rumak = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Rumak",
-                Price = 500,
+                Price = MoneyCalculator.GetUserMoney(500, 0, 0),
                 Rarity = ItemRarity.Occasional,
                 Weigth = 0,
                 ItemType = ItemType.Wehicles
             };
             var lekkiKonBojowy = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Lekki koń bojowy",
-                Price = 300,
+                Price = MoneyCalculator.GetUserMoney(300, 0, 0),
                 Rarity = ItemRarity.Average,
                 Weigth = 0,
                 ItemType = ItemType.Wehicles
             };
             var kon = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Koń",
-                Price = 80,
+                Price = MoneyCalculator.GetUserMoney(80, 0, 0),
                 Rarity = ItemRarity.Average,
                 Weigth = 0,
                 ItemType = ItemType.Wehicles
             };
             var kuc = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Kuc",
-                Price = 50,
+                Price = MoneyCalculator.GetUserMoney(50, 0, 0),
                 Rarity = ItemRarity.Average,
                 Weigth = 0,
                 ItemType = ItemType.Wehicles
             };
             var siodlo = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Siodło",
-                Price = 5,
+                Price = MoneyCalculator.GetUserMoney(5, 0, 0),
                 Rarity = ItemRarity.Average,
                 Weigth = 50,
                 ItemType = ItemType.Wehicles
             };
             var uprzaz = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Uprząż",
-                Price = 1,
+                Price = MoneyCalculator.GetUserMoney(1, 0, 0),
                 Rarity = ItemRarity.Average,
                 Weigth = 20,
                 ItemType = ItemType.Wehicles
             };
             var golabPocztowy = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Gołąb pocztowy",
-                Price = 1,
+                Price = MoneyCalculator.GetUserMoney(1, 0, 0),
                 Rarity = ItemRarity.Low,
                 Weigth = 0,
                 ItemType = ItemType.Animals
             };
             var jastrzab = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Jastrząb",
-                Price = 80,
+                Price = MoneyCalculator.GetUserMoney(80, 0, 0),
                 Rarity = ItemRarity.Rare,
                 Weigth = 0,
                 ItemType = ItemType.Animals
             };
             var konJuczny = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Koń juczny",
-                Price = 40,
+                Price = MoneyCalculator.GetUserMoney(40, 0, 0),
                 Rarity = ItemRarity.High,
                 Weigth = 0,
                 ItemType = ItemType.Animals
             };
             var konPociagowyLubMul = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Koń pociągowy lub muł",
-                Price = 25,
+                Price = MoneyCalculator.GetUserMoney(25, 0, 0),
                 Rarity = ItemRarity.High,
                 Weigth = 0,
                 ItemType = ItemType.Animals
             };
             var kot = new Item
             {
-                MoneyType = MoneyType.Shilling,
                 Name = "Kot",
-                Price = 1,
+                Price = MoneyCalculator.GetUserMoney(0, 1, 0),
                 Rarity = ItemRarity.High,
                 Weigth = 0,
                 ItemType = ItemType.Animals
             };
             var koza = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Koza",
-                Price = 2,
+                Price = MoneyCalculator.GetUserMoney(2, 0, 0),
                 Rarity = ItemRarity.High,
                 Weigth = 0,
                 ItemType = ItemType.Animals
             };
             var krowa = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Krowa",
-                Price = 10,
+                Price = MoneyCalculator.GetUserMoney(10, 0, 0),
                 Rarity = ItemRarity.High,
                 Weigth = 0,
                 ItemType = ItemType.Animals
             };
             var kurczak = new Item
             {
-                MoneyType = MoneyType.Penny,
                 Name = "Kurczak",
-                Price = 5,
+                Price = MoneyCalculator.GetUserMoney(0, 0, 5),
                 Rarity = ItemRarity.High,
                 Weigth = 0,
                 ItemType = ItemType.Animals
             };
             var owca = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Owca",
-                Price = 2,
+                Price = MoneyCalculator.GetUserMoney(2, 0, 0),
                 Rarity = ItemRarity.High,
                 Weigth = 0,
                 ItemType = ItemType.Animals
             };
             var pies = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Pies (rasowy)",
-                Price = 3,
+                Price = MoneyCalculator.GetUserMoney(3, 0, 0),
                 Rarity = ItemRarity.High,
                 Weigth = 0,
                 ItemType = ItemType.Animals
             };
             var piesBojowy = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Pies bojowy",
-                Price = 30,
+                Price = MoneyCalculator.GetUserMoney(30, 0, 0),
                 Rarity = ItemRarity.Rare,
                 Weigth = 0,
                 ItemType = ItemType.Animals
             };
             var swinia = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Świnia",
-                Price = 3,
+                Price = MoneyCalculator.GetUserMoney(3, 0, 0),
                 Rarity = ItemRarity.High,
                 Weigth = 0,
                 ItemType = ItemType.Animals
             };
             var wol = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Wół",
-                Price = 30,
+                Price = MoneyCalculator.GetUserMoney(30, 0, 0),
                 Rarity = ItemRarity.High,
                 Weigth = 0,
                 ItemType = ItemType.Animals
             };
             var darGrety = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Dar Grety",
-                Price = 30,
+                Price = MoneyCalculator.GetUserMoney(30, 0, 0),
                 Rarity = ItemRarity.Insignificant,
                 Weigth = 0,
                 ItemType = ItemType.Special
             };
             var miksturaLecznicza = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Mikstura lecznicza",
-                Price = 5,
+                Price = MoneyCalculator.GetUserMoney(5, 0, 0),
                 Rarity = ItemRarity.Low,
                 Weigth = 0,
                 ItemType = ItemType.Special
             };
             var piwoBugmana = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Piwo Bugmana",
-                Price = 50,
+                Price = MoneyCalculator.GetUserMoney(50, 0, 0),
                 Rarity = ItemRarity.Insignificant,
                 Weigth = 5,
                 ItemType = ItemType.Special
             };
             var czarnyJad = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Czarny Jad",
-                Price = 30,
+                Price = MoneyCalculator.GetUserMoney(30, 0, 0),
                 Rarity = ItemRarity.Insignificant,
                 Weigth = 0,
                 ItemType = ItemType.Special
             };
             var czarnyLotos = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Czarny lotos",
-                Price = 20,
+                Price = MoneyCalculator.GetUserMoney(20, 0, 0),
                 Rarity = ItemRarity.Insignificant,
                 Weigth = 0,
                 ItemType = ItemType.Special
             };
             var grzybkiSzalonegoKapelusznika = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Grzybki Szalonego Kapelusznika",
-                Price = 30,
+                Price = MoneyCalculator.GetUserMoney(30, 0, 0),
                 Rarity = ItemRarity.Insignificant,
                 Weigth = 0,
                 ItemType = ItemType.Special
             };
             var jadMantikory = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Jad mantikory",
-                Price = 65,
+                Price = MoneyCalculator.GetUserMoney(65, 0, 0),
                 Rarity = ItemRarity.Insignificant,
                 Weigth = 0,
                 ItemType = ItemType.Special
             };
             var korzenMandragory = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Korzeń mandragory",
-                Price = 25,
+                Price = MoneyCalculator.GetUserMoney(25, 0, 0),
                 Rarity = ItemRarity.Insignificant,
                 Weigth = 0,
                 ItemType = ItemType.Special
             };
             var sercoBoj = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Sercobój",
-                Price = 800,
+                Price = MoneyCalculator.GetUserMoney(800, 0, 0),
                 Rarity = ItemRarity.Insignificant,
                 Weigth = 0,
                 ItemType = ItemType.Special
             };
             var szkarlatnyCien = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Szkarłatny Cień",
-                Price = 35,
+                Price = MoneyCalculator.GetUserMoney(35, 0, 0),
                 Rarity = ItemRarity.Insignificant,
                 Weigth = 0,
                 ItemType = ItemType.Special
             };
             var slinaChimery = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Ślina chimery",
-                Price = 150,
+                Price = MoneyCalculator.GetUserMoney(150, 0, 0),
                 Rarity = ItemRarity.Insignificant,
                 Weigth = 0,
                 ItemType = ItemType.Special
             };
             var ksiegaWiedzyTajemnej = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Księga wiedzy tajemnej",
-                Price = 500,
+                Price = MoneyCalculator.GetUserMoney(500, 0, 0),
                 Rarity = ItemRarity.Insignificant,
                 Weigth = 0,
                 ItemType = ItemType.Special
             };
             var naparKojacy = new Item
             {
-                MoneyType = MoneyType.Penny,
                 Name = "Napar kojący",
-                Price = 5,
+                Price = MoneyCalculator.GetUserMoney(5, 0, 0),
                 Rarity = ItemRarity.Average,
                 Weigth = 0,
                 ItemType = ItemType.Special
             };
             var odtrutki = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Odtrutki",
-                Price = 3,
+                Price = MoneyCalculator.GetUserMoney(3, 0, 0),
                 Rarity = ItemRarity.Occasional,
                 Weigth = 0,
                 ItemType = ItemType.Special
             };
             var relikwia = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Relikwia",
-                Price = 5,
+                Price = MoneyCalculator.GetUserMoney(5, 0, 0),
                 Rarity = ItemRarity.Occasional,
                 Weigth = 0,
                 ItemType = ItemType.Special
             };
             var talizmanSzczescia = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Talizman szczęścia",
-                Price = 15,
+                Price = MoneyCalculator.GetUserMoney(15, 0, 0),
                 Rarity = ItemRarity.Low,
                 Weigth = 0,
                 ItemType = ItemType.Special
             };
             var wodaSwiecona = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Woda święcona",
-                Price = 10,
+                Price = MoneyCalculator.GetUserMoney(10, 0, 0),
                 Rarity = ItemRarity.Occasional,
                 Weigth = 0,
                 ItemType = ItemType.Special
             };
             var dlonWeterana = new Item
             {
-                MoneyType = MoneyType.GoldenCrown,
                 Name = "Dłoń weterana",
-                Price = 60,
+                Price = MoneyCalculator.GetUserMoney(60, 0, 0),
                 Rarity = ItemRarity.Rare,
                 Weigth = 0,
                 ItemType = ItemType.Special
             };
             var drewnianeZeby = new Item
             {
-                MoneyType = MoneyType.Shilling,
                 Name = "Drewniane zęby",
-                Price = 3,
+                Price = MoneyCalculator.GetUserMoney(0, 3, 0),
                 Rarity = ItemRarity.Low,
                 Weigth = 0,
                 ItemType = ItemType.Special
             };
             var kolczyk = new Item
             {
-                MoneyType = MoneyType.Shilling,
                 Name = "Kolczyk",
-                Price = 1,
+                Price = MoneyCalculator.GetUserMoney(0, 1, 0),
                 Rarity = ItemRarity.Average,
                 Weigth = 0,
                 ItemType = ItemType.Special
             };
             var opaskaNaOko = new Item
             {
-                MoneyType = MoneyType.Penny,
                 Name = "Opaska na oko",
-                Price = 6,
+                Price = MoneyCalculator.GetUserMoney(0, 0, 6),
                 Rarity = ItemRarity.Average,
                 Weigth = 0,
                 ItemType = ItemType.Special
             };
             var plytkaCzaszkowa = new Item
             {
-                MoneyType = MoneyType.Shilling,
                 Name = "Płytka czaszkowa",
-                Price = 1,
+                Price = MoneyCalculator.GetUserMoney(0, 1, 0),
                 Rarity = ItemRarity.Low,
                 Weigth = 0,
                 ItemType = ItemType.Special
             };
             var pozlacanyNos = new Item
             {
-                MoneyType = MoneyType.Shilling,
                 Name = "Pozłacany nos",
-                Price = 6,
+                Price = MoneyCalculator.GetUserMoney(0, 6, 0),
                 Rarity = ItemRarity.Occasional,
                 Weigth = 0,
                 ItemType = ItemType.Special
             };
             var szklaneOko = new Item
             {
-                MoneyType = MoneyType.Shilling,
                 Name = "Szklane oko",
-                Price = 1,
+                Price = MoneyCalculator.GetUserMoney(0, 1, 0),
                 Rarity = ItemRarity.Low,
                 Weigth = 0,
                 ItemType = ItemType.Special
             };
             var sztucznaNoga = new Item
             {
-                MoneyType = MoneyType.Shilling,
                 Name = "Sztuczna noga",
-                Price = 6,
+                Price = MoneyCalculator.GetUserMoney(0, 6, 0),
                 Rarity = ItemRarity.Low,
                 Weigth = 0,
                 ItemType = ItemType.Special
             };
             var tatuaz = new Item
             {
-                MoneyType = MoneyType.Shilling,
                 Name = "Tatuaż",
-                Price = 3,
+                Price = MoneyCalculator.GetUserMoney(0, 3, 0),
                 Rarity = ItemRarity.Low,
                 Weigth = 0,
                 ItemType = ItemType.Special
@@ -2923,7 +2721,7 @@ namespace WarhammerProfessionApp.Entities
             cyrulik.SetEquipment(new ProfessionBuilderItemModel(narzedzia));
 
             fanatyk.SetEquipment(new ProfessionBuilderItemModel(korbacz), new ProfessionBuilderItemModel(morgensztern));
-            fanatyk.SetEquipment(new ProfessionBuilderItemModel(butelkaGorzalki, 1, ItemQuality.Good));
+            fanatyk.SetEquipment(new ProfessionBuilderItemModel(butelkaGorzalkiDobrejJakosci));
             fanatyk.SetEquipment(new ProfessionBuilderItemModel(kurtaSkora));
 
             flisak.SetEquipment(new ProfessionBuilderItemModel(kurtaSkora));
@@ -2970,6 +2768,7 @@ namespace WarhammerProfessionApp.Entities
             kanciarz.SetEquipment(new ProfessionBuilderItemModel(zlotaKorona, 50));
 
             kozak.SetEquipment(new ProfessionBuilderItemModel(luk));
+            lowca.SetEquipment(new ProfessionBuilderItemModel(strzala, 10));
             kozak.SetEquipment(new ProfessionBuilderItemModel(bronDwureczna));
             kozak.SetEquipment(new ProfessionBuilderItemModel(kolczugaKolcza));
             kozak.SetEquipment(new ProfessionBuilderItemModel(kurtaSkora));
@@ -2980,6 +2779,7 @@ namespace WarhammerProfessionApp.Entities
             lesnik.SetEquipment(new ProfessionBuilderItemModel(odtrutki));
 
             lowca.SetEquipment(new ProfessionBuilderItemModel(dlugiLuk));
+            lowca.SetEquipment(new ProfessionBuilderItemModel(strzala, 10));
             lowca.SetEquipment(new ProfessionBuilderItemModel(potrzask, 2), new ProfessionBuilderItemModel(wnyki));
             lowca.SetEquipment(new ProfessionBuilderItemModel(odtrutki));
 
@@ -2995,6 +2795,7 @@ namespace WarhammerProfessionApp.Entities
             mieszczanin.SetEquipment(new ProfessionBuilderItemModel(latarnia));
 
             mytnik.SetEquipment(new ProfessionBuilderItemModel(kusza));
+            lowca.SetEquipment(new ProfessionBuilderItemModel(belt, 10));
             mytnik.SetEquipment(new ProfessionBuilderItemModel(kaftanKolczy));
             mytnik.SetEquipment(new ProfessionBuilderItemModel(kaftanSkora));
             mytnik.SetEquipment(new ProfessionBuilderItemModel(tarcza));
@@ -4881,8 +4682,8 @@ namespace WarhammerProfessionApp.Entities
                 siec,
                 toporDoRzucania,
                 wloczniaDoRzucania,
-                strzaly,
-                belty,
+                strzala,
+                belt,
                 kulaDoBroni,
                 prochStrzelniczy,
                 helmSkora,
@@ -4931,6 +4732,7 @@ namespace WarhammerProfessionApp.Entities
                 antalekPiwaJasnego,
                 antalekPiwaCiemnego,
                 butelkaGorzalki,
+                butelkaGorzalkiDobrejJakosci,
                 winoPospolite,
                 winoSzlacheckie,
                 buklak,
@@ -5789,14 +5591,15 @@ namespace WarhammerProfessionApp.Entities
             modelBuilder.Entity<Item>().HasData(itemResult);
             modelBuilder.Entity<Skill>().HasData(skillResult);
             modelBuilder.Entity<Ability>().HasData(abilityResult);
+            modelBuilder.Entity<Statistic>().HasData(statisticsDataSet);
             modelBuilder.Entity<ProfessionProfession>().HasData(profesionsConnectionsResult);
             modelBuilder.Entity<ProfessionItems>().HasData(professionItemsDataSet);
+
             modelBuilder.Entity<ProfessionItem>().HasData(professionItemDataSet);
             modelBuilder.Entity<ProfessionSkills>().HasData(professionSkillsDataSet);
             modelBuilder.Entity<ProfessionSkill>().HasData(professionSkillDataSet);
             modelBuilder.Entity<ProfessionAbilities>().HasData(professionAbilitiesDataSet);
             modelBuilder.Entity<ProfessionAbility>().HasData(professionAbilityDataSet);
-            modelBuilder.Entity<Statistic>().HasData(statisticsDataSet);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

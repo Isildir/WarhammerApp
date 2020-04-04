@@ -7,6 +7,11 @@ namespace WarhammerProfessionApp.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DeleteData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 211);
+
+            migrationBuilder.DeleteData(
                 table: "ProfessionAbility",
                 keyColumns: new[] { "ProfessionAbilitiesId", "AbilityId" },
                 keyValues: new object[] { 1, 2 });
@@ -2864,7 +2869,7 @@ namespace WarhammerProfessionApp.Migrations
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 2, 134 });
+                keyValues: new object[] { 2, 135 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
@@ -2914,27 +2919,27 @@ namespace WarhammerProfessionApp.Migrations
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 10, 92 });
+                keyValues: new object[] { 10, 93 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 11, 153 });
+                keyValues: new object[] { 11, 154 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 11, 200 });
+                keyValues: new object[] { 11, 201 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 12, 100 });
+                keyValues: new object[] { 12, 101 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 13, 130 });
+                keyValues: new object[] { 13, 131 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
@@ -2954,12 +2959,12 @@ namespace WarhammerProfessionApp.Migrations
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 16, 119 });
+                keyValues: new object[] { 16, 120 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 17, 153 });
+                keyValues: new object[] { 17, 154 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
@@ -2974,7 +2979,7 @@ namespace WarhammerProfessionApp.Migrations
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 19, 153 });
+                keyValues: new object[] { 19, 154 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
@@ -2989,7 +2994,7 @@ namespace WarhammerProfessionApp.Migrations
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 21, 89 });
+                keyValues: new object[] { 21, 90 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
@@ -3004,7 +3009,7 @@ namespace WarhammerProfessionApp.Migrations
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 24, 164 });
+                keyValues: new object[] { 24, 165 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
@@ -3029,17 +3034,17 @@ namespace WarhammerProfessionApp.Migrations
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 29, 168 });
+                keyValues: new object[] { 29, 169 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 30, 170 });
+                keyValues: new object[] { 30, 171 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 31, 171 });
+                keyValues: new object[] { 31, 172 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
@@ -3089,12 +3094,12 @@ namespace WarhammerProfessionApp.Migrations
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 39, 186 });
+                keyValues: new object[] { 39, 187 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 40, 200 });
+                keyValues: new object[] { 40, 201 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
@@ -3104,7 +3109,7 @@ namespace WarhammerProfessionApp.Migrations
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 42, 143 });
+                keyValues: new object[] { 42, 144 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
@@ -3114,22 +3119,22 @@ namespace WarhammerProfessionApp.Migrations
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 44, 151 });
+                keyValues: new object[] { 44, 152 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 45, 107 });
+                keyValues: new object[] { 45, 108 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 46, 108 });
+                keyValues: new object[] { 46, 109 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 47, 186 });
+                keyValues: new object[] { 47, 187 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
@@ -3149,27 +3154,27 @@ namespace WarhammerProfessionApp.Migrations
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 51, 150 });
+                keyValues: new object[] { 51, 151 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 52, 106 });
+                keyValues: new object[] { 52, 107 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 53, 108 });
+                keyValues: new object[] { 53, 109 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 54, 127 });
+                keyValues: new object[] { 54, 128 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 55, 103 });
+                keyValues: new object[] { 55, 104 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
@@ -3179,12 +3184,12 @@ namespace WarhammerProfessionApp.Migrations
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 56, 138 });
+                keyValues: new object[] { 56, 139 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 57, 113 });
+                keyValues: new object[] { 57, 114 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
@@ -3224,167 +3229,167 @@ namespace WarhammerProfessionApp.Migrations
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 65, 198 });
+                keyValues: new object[] { 65, 199 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 66, 20 });
+                keyValues: new object[] { 66, 40 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 67, 154 });
+                keyValues: new object[] { 67, 20 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 67, 157 });
+                keyValues: new object[] { 68, 40 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 68, 198 });
+                keyValues: new object[] { 69, 155 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 69, 26 });
+                keyValues: new object[] { 69, 158 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 70, 45 });
+                keyValues: new object[] { 70, 199 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 71, 44 });
+                keyValues: new object[] { 71, 41 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 72, 142 });
+                keyValues: new object[] { 72, 26 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 73, 127 });
+                keyValues: new object[] { 73, 45 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 74, 142 });
+                keyValues: new object[] { 74, 44 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 75, 64 });
+                keyValues: new object[] { 75, 143 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 76, 148 });
+                keyValues: new object[] { 76, 128 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 77, 106 });
+                keyValues: new object[] { 77, 143 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 78, 26 });
+                keyValues: new object[] { 78, 64 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 79, 50 });
+                keyValues: new object[] { 79, 149 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 80, 45 });
+                keyValues: new object[] { 80, 107 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 81, 14 });
+                keyValues: new object[] { 81, 26 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 82, 113 });
+                keyValues: new object[] { 82, 50 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 83, 26 });
+                keyValues: new object[] { 83, 45 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 84, 50 });
+                keyValues: new object[] { 84, 14 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 85, 46 });
+                keyValues: new object[] { 85, 114 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 86, 14 });
+                keyValues: new object[] { 86, 26 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 87, 186 });
+                keyValues: new object[] { 87, 50 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 88, 1 });
+                keyValues: new object[] { 88, 46 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 88, 27 });
+                keyValues: new object[] { 89, 14 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 89, 46 });
+                keyValues: new object[] { 90, 187 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 90, 44 });
+                keyValues: new object[] { 91, 1 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 91, 29 });
+                keyValues: new object[] { 91, 27 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 91, 38 });
+                keyValues: new object[] { 92, 46 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 92, 11 });
+                keyValues: new object[] { 93, 44 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 93, 46 });
+                keyValues: new object[] { 94, 29 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 94, 9 });
+                keyValues: new object[] { 94, 38 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
@@ -3394,317 +3399,317 @@ namespace WarhammerProfessionApp.Migrations
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 96, 50 });
+                keyValues: new object[] { 96, 46 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 97, 45 });
+                keyValues: new object[] { 97, 9 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 98, 65 });
+                keyValues: new object[] { 98, 11 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 99, 132 });
+                keyValues: new object[] { 99, 50 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 100, 98 });
+                keyValues: new object[] { 100, 45 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 101, 46 });
+                keyValues: new object[] { 101, 65 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 102, 64 });
+                keyValues: new object[] { 102, 133 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 103, 106 });
+                keyValues: new object[] { 103, 99 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 104, 108 });
+                keyValues: new object[] { 104, 46 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 105, 143 });
+                keyValues: new object[] { 105, 64 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 106, 151 });
+                keyValues: new object[] { 106, 107 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 107, 103 });
+                keyValues: new object[] { 107, 109 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 108, 46 });
+                keyValues: new object[] { 108, 144 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 109, 14 });
+                keyValues: new object[] { 109, 152 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 110, 168 });
+                keyValues: new object[] { 110, 104 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 111, 170 });
+                keyValues: new object[] { 111, 46 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 112, 171 });
+                keyValues: new object[] { 112, 14 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 113, 102 });
+                keyValues: new object[] { 113, 169 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 114, 46 });
+                keyValues: new object[] { 114, 171 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 115, 175 });
+                keyValues: new object[] { 115, 172 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 116, 161 });
+                keyValues: new object[] { 116, 103 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 116, 164 });
+                keyValues: new object[] { 117, 46 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 117, 109 });
+                keyValues: new object[] { 118, 176 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 117, 161 });
+                keyValues: new object[] { 119, 162 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 118, 26 });
+                keyValues: new object[] { 119, 165 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 118, 27 });
+                keyValues: new object[] { 120, 110 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 119, 17 });
+                keyValues: new object[] { 120, 162 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 119, 18 });
+                keyValues: new object[] { 121, 26 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 120, 37 });
+                keyValues: new object[] { 121, 27 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 121, 46 });
+                keyValues: new object[] { 122, 17 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 122, 14 });
+                keyValues: new object[] { 122, 18 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 123, 168 });
+                keyValues: new object[] { 123, 37 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 124, 170 });
+                keyValues: new object[] { 124, 46 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 125, 171 });
+                keyValues: new object[] { 125, 14 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 126, 127 });
+                keyValues: new object[] { 126, 169 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 127, 22 });
+                keyValues: new object[] { 127, 171 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 127, 26 });
+                keyValues: new object[] { 128, 172 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 128, 46 });
+                keyValues: new object[] { 129, 128 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 129, 15 });
+                keyValues: new object[] { 130, 22 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 130, 37 });
+                keyValues: new object[] { 130, 26 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 131, 145 });
+                keyValues: new object[] { 131, 46 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 132, 127 });
+                keyValues: new object[] { 132, 15 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 133, 46 });
+                keyValues: new object[] { 133, 37 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 134, 65 });
+                keyValues: new object[] { 134, 146 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 135, 155 });
+                keyValues: new object[] { 135, 128 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 136, 45 });
+                keyValues: new object[] { 136, 46 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 137, 113 });
+                keyValues: new object[] { 137, 65 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 138, 50 });
+                keyValues: new object[] { 138, 156 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 139, 46 });
+                keyValues: new object[] { 139, 45 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 140, 14 });
+                keyValues: new object[] { 140, 114 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 141, 168 });
+                keyValues: new object[] { 141, 50 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 142, 170 });
+                keyValues: new object[] { 142, 46 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 143, 171 });
+                keyValues: new object[] { 143, 14 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 144, 111 });
+                keyValues: new object[] { 144, 169 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 145, 112 });
+                keyValues: new object[] { 145, 171 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 146, 147 });
+                keyValues: new object[] { 146, 172 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 147, 155 });
+                keyValues: new object[] { 147, 112 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 148, 64 });
+                keyValues: new object[] { 148, 113 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 149, 97 });
+                keyValues: new object[] { 149, 148 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 150, 117 });
+                keyValues: new object[] { 150, 156 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 151, 107 });
+                keyValues: new object[] { 151, 64 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 152, 108 });
+                keyValues: new object[] { 152, 98 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 153, 46 });
+                keyValues: new object[] { 153, 118 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
@@ -3714,77 +3719,92 @@ namespace WarhammerProfessionApp.Migrations
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 155, 31 });
+                keyValues: new object[] { 155, 109 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 156, 50 });
+                keyValues: new object[] { 156, 46 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 157, 46 });
+                keyValues: new object[] { 157, 109 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 158, 14 });
+                keyValues: new object[] { 158, 31 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 159, 167 });
+                keyValues: new object[] { 159, 50 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 160, 170 });
+                keyValues: new object[] { 160, 46 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 161, 171 });
+                keyValues: new object[] { 161, 14 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 162, 127 });
+                keyValues: new object[] { 162, 168 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 163, 33 });
+                keyValues: new object[] { 163, 171 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 164, 169 });
+                keyValues: new object[] { 164, 172 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 165, 170 });
+                keyValues: new object[] { 165, 128 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 166, 171 });
+                keyValues: new object[] { 166, 33 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 167, 106 });
+                keyValues: new object[] { 167, 170 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 168, 108 });
+                keyValues: new object[] { 168, 171 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionItem",
                 keyColumns: new[] { "ProfessionsItemId", "ItemId" },
-                keyValues: new object[] { 169, 151 });
+                keyValues: new object[] { 169, 172 });
+
+            migrationBuilder.DeleteData(
+                table: "ProfessionItem",
+                keyColumns: new[] { "ProfessionsItemId", "ItemId" },
+                keyValues: new object[] { 170, 107 });
+
+            migrationBuilder.DeleteData(
+                table: "ProfessionItem",
+                keyColumns: new[] { "ProfessionsItemId", "ItemId" },
+                keyValues: new object[] { 171, 109 });
+
+            migrationBuilder.DeleteData(
+                table: "ProfessionItem",
+                keyColumns: new[] { "ProfessionsItemId", "ItemId" },
+                keyValues: new object[] { 172, 152 });
 
             migrationBuilder.DeleteData(
                 table: "ProfessionProfession",
@@ -12357,6 +12377,86 @@ namespace WarhammerProfessionApp.Migrations
                 keyValues: new object[] { 1024, 46 });
 
             migrationBuilder.DeleteData(
+                table: "Statistics",
+                keyColumn: "Id",
+                keyValue: (byte)1);
+
+            migrationBuilder.DeleteData(
+                table: "Statistics",
+                keyColumn: "Id",
+                keyValue: (byte)2);
+
+            migrationBuilder.DeleteData(
+                table: "Statistics",
+                keyColumn: "Id",
+                keyValue: (byte)3);
+
+            migrationBuilder.DeleteData(
+                table: "Statistics",
+                keyColumn: "Id",
+                keyValue: (byte)4);
+
+            migrationBuilder.DeleteData(
+                table: "Statistics",
+                keyColumn: "Id",
+                keyValue: (byte)5);
+
+            migrationBuilder.DeleteData(
+                table: "Statistics",
+                keyColumn: "Id",
+                keyValue: (byte)6);
+
+            migrationBuilder.DeleteData(
+                table: "Statistics",
+                keyColumn: "Id",
+                keyValue: (byte)7);
+
+            migrationBuilder.DeleteData(
+                table: "Statistics",
+                keyColumn: "Id",
+                keyValue: (byte)8);
+
+            migrationBuilder.DeleteData(
+                table: "Statistics",
+                keyColumn: "Id",
+                keyValue: (byte)9);
+
+            migrationBuilder.DeleteData(
+                table: "Statistics",
+                keyColumn: "Id",
+                keyValue: (byte)10);
+
+            migrationBuilder.DeleteData(
+                table: "Statistics",
+                keyColumn: "Id",
+                keyValue: (byte)11);
+
+            migrationBuilder.DeleteData(
+                table: "Statistics",
+                keyColumn: "Id",
+                keyValue: (byte)12);
+
+            migrationBuilder.DeleteData(
+                table: "Statistics",
+                keyColumn: "Id",
+                keyValue: (byte)13);
+
+            migrationBuilder.DeleteData(
+                table: "Statistics",
+                keyColumn: "Id",
+                keyValue: (byte)14);
+
+            migrationBuilder.DeleteData(
+                table: "Statistics",
+                keyColumn: "Id",
+                keyValue: (byte)15);
+
+            migrationBuilder.DeleteData(
+                table: "Statistics",
+                keyColumn: "Id",
+                keyValue: (byte)16);
+
+            migrationBuilder.DeleteData(
                 table: "ProfessionAbilities",
                 keyColumn: "Id",
                 keyValue: 1);
@@ -15305,6 +15405,21 @@ namespace WarhammerProfessionApp.Migrations
                 table: "ProfessionItems",
                 keyColumn: "Id",
                 keyValue: 169);
+
+            migrationBuilder.DeleteData(
+                table: "ProfessionItems",
+                keyColumn: "Id",
+                keyValue: 170);
+
+            migrationBuilder.DeleteData(
+                table: "ProfessionItems",
+                keyColumn: "Id",
+                keyValue: 171);
+
+            migrationBuilder.DeleteData(
+                table: "ProfessionItems",
+                keyColumn: "Id",
+                keyValue: 172);
 
             migrationBuilder.DeleteData(
                 table: "ProfessionSkills",
@@ -20425,54 +20540,2032 @@ namespace WarhammerProfessionApp.Migrations
                 table: "ProfessionSkills",
                 keyColumn: "Id",
                 keyValue: 1024);
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 90,
+                columns: new[] { "Name", "Price", "Rarity" },
+                values: new object[] { "Wino pospolite", 12, (byte)5 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 91,
+                columns: new[] { "Name", "Price", "Rarity" },
+                values: new object[] { "Wino szlacheckie", 120, (byte)4 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 92,
+                columns: new[] { "ItemType", "Name", "Price", "Rarity", "Weigth" },
+                values: new object[] { (byte)7, "Bukłak", 96, (byte)6, 1 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 93,
+                columns: new[] { "Name", "Price", "Weigth" },
+                values: new object[] { "Flaszka", 48, 10 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 94,
+                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                values: new object[] { "Juki", 480, (byte)4, 5 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 95,
+                columns: new[] { "Name", "Price", "Weigth" },
+                values: new object[] { "Kuferek", 1200, 40 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 96,
+                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                values: new object[] { "Manierka metalowa", 480, (byte)3, 15 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 97,
+                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                values: new object[] { "Manierska skórzana", 180, (byte)4, 5 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 98,
+                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                values: new object[] { "Mieszek", 24, (byte)6, 1 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 99,
+                columns: new[] { "Name", "Price", "Weigth" },
+                values: new object[] { "Plecak", 360, 20 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 100,
+                columns: new[] { "Name", "Price", "Weigth" },
+                values: new object[] { "Sakiewka", 60, 1 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 101,
+                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                values: new object[] { "Tobołek", 480, (byte)4, 5 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 102,
+                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                values: new object[] { "Tuba na mapy/pergaminy", 240, (byte)3, 2 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 103,
+                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                values: new object[] { "Worek", 60, (byte)6, 7 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 104,
+                columns: new[] { "ItemType", "Name", "Price", "Weigth" },
+                values: new object[] { (byte)8, "Drewno na opał", 24, 5 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 105,
+                columns: new[] { "Name", "Price", "Weigth" },
+                values: new object[] { "Kaganek", 60, 20 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 106,
+                columns: new[] { "Name", "Price", "Rarity" },
+                values: new object[] { "Latarnia", 240, (byte)4 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 107,
+                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                values: new object[] { "Latarnia sztormowa", 2880, (byte)3, 30 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 108,
+                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                values: new object[] { "Olej do latarni", 60, (byte)6, 5 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 109,
+                columns: new[] { "Name", "Price" },
+                values: new object[] { "Pochodnia", 5 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 110,
+                columns: new[] { "Name", "Price" },
+                values: new object[] { "Świeczka łojowa", 36 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 111,
+                columns: new[] { "Name", "Price", "Rarity" },
+                values: new object[] { "Świeczka woskowa", 72, (byte)4 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 112,
+                columns: new[] { "Name", "Price", "Weigth" },
+                values: new object[] { "Zapałka", 1, 0 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 113,
+                columns: new[] { "ItemType", "Name", "Price", "Rarity" },
+                values: new object[] { (byte)9, "Zlota korona", 240, (byte)5 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 114,
+                columns: new[] { "Name", "Price", "Rarity" },
+                values: new object[] { "Pens", 1, (byte)7 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 115,
+                columns: new[] { "Name", "Price", "Rarity" },
+                values: new object[] { "Szyling", 12, (byte)6 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 116,
+                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                values: new object[] { "Drabina", 120, (byte)5, 50 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 117,
+                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                values: new object[] { "Hubka i krzesiwo", 360, (byte)6, 5 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 118,
+                columns: new[] { "Name", "Weigth" },
+                values: new object[] { "Imbryk", 10 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 119,
+                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                values: new object[] { "Instrument muzyczny", 1200, (byte)5, 5 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 120,
+                columns: new[] { "Name", "Price", "Rarity" },
+                values: new object[] { "Kłódka dobrej jakości", 2400, (byte)1 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 121,
+                columns: new[] { "Name", "Price", "Rarity" },
+                values: new object[] { "Kłódka zwykłej jakości", 240, (byte)5 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 122,
+                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                values: new object[] { "Koc", 300, (byte)6, 10 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 123,
+                columns: new[] { "Name", "Price", "Weigth" },
+                values: new object[] { "Kociołek", 240, 20 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 124,
+                columns: new[] { "Name", "Price", "Weigth" },
+                values: new object[] { "Kości do gry", 72, 0 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 125,
+                columns: new[] { "Name", "Price", "Weigth" },
+                values: new object[] { "Kufel drewniany", 120, 5 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 126,
+                columns: new[] { "Name", "Price" },
+                values: new object[] { "Kufel ze szkła barwionego", 240 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 127,
+                columns: new[] { "Name", "Rarity", "Weigth" },
+                values: new object[] { "Lina", (byte)5, 50 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 128,
+                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                values: new object[] { "Luneta", 24000, (byte)2, 5 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 129,
+                columns: new[] { "Name", "Price" },
+                values: new object[] { "Lustro", 2400 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 130,
+                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                values: new object[] { "Namiot", 180, (byte)5, 20 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 131,
+                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                values: new object[] { "Papier", 12, (byte)1, 0 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 132,
+                columns: new[] { "Name", "Price", "Rarity" },
+                values: new object[] { "Perfumy", 240, (byte)5 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 133,
+                columns: new[] { "Name", "Price", "Rarity" },
+                values: new object[] { "Pergamin", 60, (byte)2 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 134,
+                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                values: new object[] { "Symbol religijny", 240, (byte)5, 5 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 135,
+                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                values: new object[] { "Sztućce drewniane", 60, (byte)6, 2 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 136,
+                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                values: new object[] { "Sztućce metalowe", 720, (byte)5, 4 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 137,
+                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                values: new object[] { "Sztućce srebrne", 3600, (byte)3, 3 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 138,
+                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                values: new object[] { "Talia kart", 240, (byte)6, 1 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 139,
+                columns: new[] { "ItemType", "Name", "Price", "Weigth" },
+                values: new object[] { (byte)10, "Drąg, cena za metr", 12, 10 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 140,
+                columns: new[] { "Name", "Price", "Weigth" },
+                values: new object[] { "Drewniany klin", 8, 2 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 141,
+                columns: new[] { "Name", "Price", "Rarity" },
+                values: new object[] { "Haczyk na ryby i żyłka", 36, (byte)5 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 142,
+                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                values: new object[] { "Kajdany", 1200, (byte)4, 20 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 143,
+                columns: new[] { "Name", "Price" },
+                values: new object[] { "Kilof", 300 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 144,
+                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                values: new object[] { "Kołki", 60, (byte)5, 5 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 145,
+                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                values: new object[] { "Kotwiczka do wspinaczki", 960, (byte)4, 20 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 146,
+                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                values: new object[] { "Książka drukowana", 24000, (byte)1, 35 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 147,
+                columns: new[] { "Name", "Price", "Weigth" },
+                values: new object[] { "Książka ilustrowana", 84000, 50 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 148,
+                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                values: new object[] { "Liczydło", 2400, (byte)2, 5 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 149,
+                columns: new[] { "Name", "Price" },
+                values: new object[] { "Łańcuch, cena za metr", 360 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 150,
+                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                values: new object[] { "Łom", 120, (byte)5, 10 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 151,
+                columns: new[] { "Name", "Price", "Weigth" },
+                values: new object[] { "Łopata", 300, 20 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 152,
+                columns: new[] { "Name", "Price", "Weigth" },
+                values: new object[] { "Młot", 240, 40 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 153,
+                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                values: new object[] { "Narzędzia", 12000, (byte)4, 50 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 154,
+                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                values: new object[] { "Potrzask", 12, (byte)5, 2 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 155,
+                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                values: new object[] { "Przybory do pisania", 2400, (byte)4, 5 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 156,
+                columns: new[] { "Name", "Price", "Weigth" },
+                values: new object[] { "Sztabka metalu", 300, 20 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 157,
+                columns: new[] { "Name", "Price", "Rarity" },
+                values: new object[] { "Wnyki", 480, (byte)5 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 158,
+                columns: new[] { "Name", "Price", "Rarity" },
+                values: new object[] { "Wytrychy", 2400, (byte)4 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 159,
+                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                values: new object[] { "Zestaw do charakteryzacji", 1200, (byte)3, 10 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 160,
+                columns: new[] { "ItemType", "Name", "Price", "Rarity", "Weigth" },
+                values: new object[] { (byte)11, "Wózek", 12000, (byte)5, 0 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 161,
+                columns: new[] { "Name", "Price" },
+                values: new object[] { "Wóz", 21600 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 162,
+                columns: new[] { "Name", "Price", "Rarity" },
+                values: new object[] { "Powóz", 120000, (byte)2 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 163,
+                columns: new[] { "Name", "Price" },
+                values: new object[] { "Łódź rzeczna", 144000 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 164,
+                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                values: new object[] { "Łódź wiosłowa", 21600, (byte)4, 900 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 165,
+                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                values: new object[] { "Statek", 2880000, (byte)3, 0 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 166,
+                columns: new[] { "Name", "Price" },
+                values: new object[] { "Rumak", 120000 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 167,
+                columns: new[] { "Name", "Price", "Rarity" },
+                values: new object[] { "Lekki koń bojowy", 72000, (byte)5 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 168,
+                columns: new[] { "Name", "Price" },
+                values: new object[] { "Koń", 19200 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 169,
+                columns: new[] { "Name", "Price" },
+                values: new object[] { "Kuc", 12000 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 170,
+                columns: new[] { "Name", "Price", "Weigth" },
+                values: new object[] { "Siodło", 1200, 50 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 171,
+                columns: new[] { "Name", "Price", "Weigth" },
+                values: new object[] { "Uprząż", 240, 20 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 172,
+                columns: new[] { "ItemType", "Name", "Rarity", "Weigth" },
+                values: new object[] { (byte)12, "Gołąb pocztowy", (byte)4, 0 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 173,
+                columns: new[] { "Name", "Price", "Rarity" },
+                values: new object[] { "Jastrząb", 19200, (byte)2 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 174,
+                columns: new[] { "Name", "Price", "Rarity" },
+                values: new object[] { "Koń juczny", 9600, (byte)6 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 175,
+                columns: new[] { "Name", "Price" },
+                values: new object[] { "Koń pociągowy lub muł", 6000 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 176,
+                columns: new[] { "Name", "Price" },
+                values: new object[] { "Kot", 12 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 177,
+                columns: new[] { "Name", "Price" },
+                values: new object[] { "Koza", 480 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 178,
+                columns: new[] { "Name", "Price" },
+                values: new object[] { "Krowa", 2400 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 179,
+                columns: new[] { "Name", "Price" },
+                values: new object[] { "Kurczak", 5 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 180,
+                columns: new[] { "Name", "Price" },
+                values: new object[] { "Owca", 480 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 181,
+                columns: new[] { "Name", "Price" },
+                values: new object[] { "Pies (rasowy)", 720 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 182,
+                columns: new[] { "Name", "Price", "Rarity" },
+                values: new object[] { "Pies bojowy", 7200, (byte)2 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 183,
+                columns: new[] { "Name", "Price", "Rarity" },
+                values: new object[] { "Świnia", 720, (byte)6 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 184,
+                columns: new[] { "Name", "Price" },
+                values: new object[] { "Wół", 7200 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 185,
+                columns: new[] { "ItemType", "Name", "Rarity" },
+                values: new object[] { (byte)13, "Dar Grety", (byte)1 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 186,
+                columns: new[] { "Name", "Price", "Rarity" },
+                values: new object[] { "Mikstura lecznicza", 1200, (byte)4 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 187,
+                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                values: new object[] { "Piwo Bugmana", 12000, (byte)1, 5 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 188,
+                columns: new[] { "Name", "Price", "Weigth" },
+                values: new object[] { "Czarny Jad", 7200, 0 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 189,
+                columns: new[] { "Name", "Price" },
+                values: new object[] { "Czarny lotos", 4800 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 190,
+                columns: new[] { "Name", "Price" },
+                values: new object[] { "Grzybki Szalonego Kapelusznika", 7200 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 191,
+                columns: new[] { "Name", "Price" },
+                values: new object[] { "Jad mantikory", 15600 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 192,
+                columns: new[] { "Name", "Price" },
+                values: new object[] { "Korzeń mandragory", 6000 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 193,
+                columns: new[] { "Name", "Price" },
+                values: new object[] { "Sercobój", 192000 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 194,
+                columns: new[] { "Name", "Price" },
+                values: new object[] { "Szkarłatny Cień", 8400 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 195,
+                columns: new[] { "Name", "Price" },
+                values: new object[] { "Ślina chimery", 36000 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 196,
+                columns: new[] { "Name", "Price" },
+                values: new object[] { "Księga wiedzy tajemnej", 120000 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 197,
+                columns: new[] { "Name", "Price", "Rarity" },
+                values: new object[] { "Napar kojący", 1200, (byte)5 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 198,
+                columns: new[] { "Name", "Price", "Rarity" },
+                values: new object[] { "Odtrutki", 720, (byte)3 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 199,
+                columns: new[] { "Name", "Price" },
+                values: new object[] { "Relikwia", 1200 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 200,
+                columns: new[] { "Name", "Price", "Rarity" },
+                values: new object[] { "Talizman szczęścia", 3600, (byte)4 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 201,
+                columns: new[] { "Name", "Price", "Rarity" },
+                values: new object[] { "Woda święcona", 2400, (byte)3 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 202,
+                columns: new[] { "Name", "Price", "Rarity" },
+                values: new object[] { "Dłoń weterana", 14400, (byte)2 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 203,
+                columns: new[] { "Name", "Price", "Rarity" },
+                values: new object[] { "Drewniane zęby", 36, (byte)4 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 204,
+                columns: new[] { "Name", "Price", "Rarity" },
+                values: new object[] { "Kolczyk", 12, (byte)5 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 205,
+                columns: new[] { "Name", "Price" },
+                values: new object[] { "Opaska na oko", 6 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 206,
+                columns: new[] { "Name", "Price", "Rarity" },
+                values: new object[] { "Płytka czaszkowa", 12, (byte)4 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 207,
+                columns: new[] { "Name", "Price", "Rarity" },
+                values: new object[] { "Pozłacany nos", 72, (byte)3 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 208,
+                columns: new[] { "Name", "Price", "Rarity" },
+                values: new object[] { "Szklane oko", 12, (byte)4 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 209,
+                columns: new[] { "Name", "Price" },
+                values: new object[] { "Sztuczna noga", 72 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 210,
+                columns: new[] { "Name", "Price" },
+                values: new object[] { "Tatuaż", 36 });
         }
 
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 90,
+                columns: new[] { "Name", "Price", "Rarity" },
+                values: new object[] { "Butelka gorzałki dobrej jakości", 36, (byte)4 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 91,
+                columns: new[] { "Name", "Price", "Rarity" },
+                values: new object[] { "Wino pospolite", 12, (byte)5 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 92,
+                columns: new[] { "ItemType", "Name", "Price", "Rarity", "Weigth" },
+                values: new object[] { (byte)6, "Wino szlacheckie", 120, (byte)4, 5 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 93,
+                columns: new[] { "Name", "Price", "Weigth" },
+                values: new object[] { "Bukłak", 96, 1 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 94,
+                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                values: new object[] { "Flaszka", 48, (byte)6, 10 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 95,
+                columns: new[] { "Name", "Price", "Weigth" },
+                values: new object[] { "Juki", 480, 5 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 96,
+                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                values: new object[] { "Kuferek", 1200, (byte)4, 40 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 97,
+                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                values: new object[] { "Manierka metalowa", 480, (byte)3, 15 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 98,
+                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                values: new object[] { "Manierska skórzana", 180, (byte)4, 5 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 99,
+                columns: new[] { "Name", "Price", "Weigth" },
+                values: new object[] { "Mieszek", 24, 1 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 100,
+                columns: new[] { "Name", "Price", "Weigth" },
+                values: new object[] { "Plecak", 360, 20 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 101,
+                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                values: new object[] { "Sakiewka", 60, (byte)6, 1 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 102,
+                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                values: new object[] { "Tobołek", 480, (byte)4, 5 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 103,
+                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                values: new object[] { "Tuba na mapy/pergaminy", 240, (byte)3, 2 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 104,
+                columns: new[] { "ItemType", "Name", "Price", "Weigth" },
+                values: new object[] { (byte)7, "Worek", 60, 7 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 105,
+                columns: new[] { "Name", "Price", "Weigth" },
+                values: new object[] { "Drewno na opał", 24, 5 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 106,
+                columns: new[] { "Name", "Price", "Rarity" },
+                values: new object[] { "Kaganek", 60, (byte)6 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 107,
+                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                values: new object[] { "Latarnia", 240, (byte)4, 20 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 108,
+                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                values: new object[] { "Latarnia sztormowa", 2880, (byte)3, 30 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 109,
+                columns: new[] { "Name", "Price" },
+                values: new object[] { "Olej do latarni", 60 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 110,
+                columns: new[] { "Name", "Price" },
+                values: new object[] { "Pochodnia", 5 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 111,
+                columns: new[] { "Name", "Price", "Rarity" },
+                values: new object[] { "Świeczka łojowa", 36, (byte)6 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 112,
+                columns: new[] { "Name", "Price", "Weigth" },
+                values: new object[] { "Świeczka woskowa", 72, 5 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 113,
+                columns: new[] { "ItemType", "Name", "Price", "Rarity" },
+                values: new object[] { (byte)8, "Zapałka", 1, (byte)4 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 114,
+                columns: new[] { "Name", "Price", "Rarity" },
+                values: new object[] { "Zlota korona", 240, (byte)5 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 115,
+                columns: new[] { "Name", "Price", "Rarity" },
+                values: new object[] { "Pens", 1, (byte)7 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 116,
+                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                values: new object[] { "Szyling", 12, (byte)6, 0 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 117,
+                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                values: new object[] { "Drabina", 120, (byte)5, 50 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 118,
+                columns: new[] { "Name", "Weigth" },
+                values: new object[] { "Hubka i krzesiwo", 5 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 119,
+                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                values: new object[] { "Imbryk", 360, (byte)6, 10 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 120,
+                columns: new[] { "Name", "Price", "Rarity" },
+                values: new object[] { "Instrument muzyczny", 1200, (byte)5 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 121,
+                columns: new[] { "Name", "Price", "Rarity" },
+                values: new object[] { "Kłódka dobrej jakości", 2400, (byte)1 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 122,
+                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                values: new object[] { "Kłódka zwykłej jakości", 240, (byte)5, 5 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 123,
+                columns: new[] { "Name", "Price", "Weigth" },
+                values: new object[] { "Koc", 300, 10 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 124,
+                columns: new[] { "Name", "Price", "Weigth" },
+                values: new object[] { "Kociołek", 240, 20 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 125,
+                columns: new[] { "Name", "Price", "Weigth" },
+                values: new object[] { "Kości do gry", 72, 0 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 126,
+                columns: new[] { "Name", "Price" },
+                values: new object[] { "Kufel drewniany", 120 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 127,
+                columns: new[] { "Name", "Rarity", "Weigth" },
+                values: new object[] { "Kufel ze szkła barwionego", (byte)6, 5 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 128,
+                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                values: new object[] { "Lina", 240, (byte)5, 50 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 129,
+                columns: new[] { "Name", "Price" },
+                values: new object[] { "Luneta", 24000 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 130,
+                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                values: new object[] { "Lustro", 2400, (byte)2, 5 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 131,
+                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                values: new object[] { "Namiot", 180, (byte)5, 20 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 132,
+                columns: new[] { "Name", "Price", "Rarity" },
+                values: new object[] { "Papier", 12, (byte)1 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 133,
+                columns: new[] { "Name", "Price", "Rarity" },
+                values: new object[] { "Perfumy", 240, (byte)5 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 134,
+                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                values: new object[] { "Pergamin", 60, (byte)2, 0 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 135,
+                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                values: new object[] { "Symbol religijny", 240, (byte)5, 5 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 136,
+                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                values: new object[] { "Sztućce drewniane", 60, (byte)6, 2 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 137,
+                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                values: new object[] { "Sztućce metalowe", 720, (byte)5, 4 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 138,
+                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                values: new object[] { "Sztućce srebrne", 3600, (byte)3, 3 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 139,
+                columns: new[] { "ItemType", "Name", "Price", "Weigth" },
+                values: new object[] { (byte)9, "Talia kart", 240, 1 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 140,
+                columns: new[] { "Name", "Price", "Weigth" },
+                values: new object[] { "Drąg, cena za metr", 12, 10 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 141,
+                columns: new[] { "Name", "Price", "Rarity" },
+                values: new object[] { "Drewniany klin", 8, (byte)6 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 142,
+                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                values: new object[] { "Haczyk na ryby i żyłka", 36, (byte)5, 2 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 143,
+                columns: new[] { "Name", "Price" },
+                values: new object[] { "Kajdany", 1200 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 144,
+                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                values: new object[] { "Kilof", 300, (byte)4, 20 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 145,
+                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                values: new object[] { "Kołki", 60, (byte)5, 5 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 146,
+                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                values: new object[] { "Kotwiczka do wspinaczki", 960, (byte)4, 20 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 147,
+                columns: new[] { "Name", "Price", "Weigth" },
+                values: new object[] { "Książka drukowana", 24000, 35 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 148,
+                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                values: new object[] { "Książka ilustrowana", 84000, (byte)1, 50 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 149,
+                columns: new[] { "Name", "Price" },
+                values: new object[] { "Liczydło", 2400 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 150,
+                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                values: new object[] { "Łańcuch, cena za metr", 360, (byte)2, 5 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 151,
+                columns: new[] { "Name", "Price", "Weigth" },
+                values: new object[] { "Łom", 120, 10 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 152,
+                columns: new[] { "Name", "Price", "Weigth" },
+                values: new object[] { "Łopata", 300, 20 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 153,
+                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                values: new object[] { "Młot", 240, (byte)5, 40 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 154,
+                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                values: new object[] { "Narzędzia", 12000, (byte)4, 50 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 155,
+                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                values: new object[] { "Potrzask", 12, (byte)5, 2 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 156,
+                columns: new[] { "Name", "Price", "Weigth" },
+                values: new object[] { "Przybory do pisania", 2400, 5 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 157,
+                columns: new[] { "Name", "Price", "Rarity" },
+                values: new object[] { "Sztabka metalu", 300, (byte)4 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 158,
+                columns: new[] { "Name", "Price", "Rarity" },
+                values: new object[] { "Wnyki", 480, (byte)5 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 159,
+                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                values: new object[] { "Wytrychy", 2400, (byte)4, 20 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 160,
+                columns: new[] { "ItemType", "Name", "Price", "Rarity", "Weigth" },
+                values: new object[] { (byte)10, "Zestaw do charakteryzacji", 1200, (byte)3, 10 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 161,
+                columns: new[] { "Name", "Price" },
+                values: new object[] { "Wózek", 12000 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 162,
+                columns: new[] { "Name", "Price", "Rarity" },
+                values: new object[] { "Wóz", 21600, (byte)5 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 163,
+                columns: new[] { "Name", "Price" },
+                values: new object[] { "Powóz", 120000 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 164,
+                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                values: new object[] { "Łódź rzeczna", 144000, (byte)2, 0 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 165,
+                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                values: new object[] { "Łódź wiosłowa", 21600, (byte)4, 900 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 166,
+                columns: new[] { "Name", "Price" },
+                values: new object[] { "Statek", 2880000 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 167,
+                columns: new[] { "Name", "Price", "Rarity" },
+                values: new object[] { "Rumak", 120000, (byte)3 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 168,
+                columns: new[] { "Name", "Price" },
+                values: new object[] { "Lekki koń bojowy", 72000 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 169,
+                columns: new[] { "Name", "Price" },
+                values: new object[] { "Koń", 19200 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 170,
+                columns: new[] { "Name", "Price", "Weigth" },
+                values: new object[] { "Kuc", 12000, 0 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 171,
+                columns: new[] { "Name", "Price", "Weigth" },
+                values: new object[] { "Siodło", 1200, 50 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 172,
+                columns: new[] { "ItemType", "Name", "Rarity", "Weigth" },
+                values: new object[] { (byte)11, "Uprząż", (byte)5, 20 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 173,
+                columns: new[] { "Name", "Price", "Rarity" },
+                values: new object[] { "Gołąb pocztowy", 240, (byte)4 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 174,
+                columns: new[] { "Name", "Price", "Rarity" },
+                values: new object[] { "Jastrząb", 19200, (byte)2 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 175,
+                columns: new[] { "Name", "Price" },
+                values: new object[] { "Koń juczny", 9600 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 176,
+                columns: new[] { "Name", "Price" },
+                values: new object[] { "Koń pociągowy lub muł", 6000 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 177,
+                columns: new[] { "Name", "Price" },
+                values: new object[] { "Kot", 12 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 178,
+                columns: new[] { "Name", "Price" },
+                values: new object[] { "Koza", 480 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 179,
+                columns: new[] { "Name", "Price" },
+                values: new object[] { "Krowa", 2400 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 180,
+                columns: new[] { "Name", "Price" },
+                values: new object[] { "Kurczak", 5 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 181,
+                columns: new[] { "Name", "Price" },
+                values: new object[] { "Owca", 480 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 182,
+                columns: new[] { "Name", "Price", "Rarity" },
+                values: new object[] { "Pies (rasowy)", 720, (byte)6 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 183,
+                columns: new[] { "Name", "Price", "Rarity" },
+                values: new object[] { "Pies bojowy", 7200, (byte)2 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 184,
+                columns: new[] { "Name", "Price" },
+                values: new object[] { "Świnia", 720 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 185,
+                columns: new[] { "ItemType", "Name", "Rarity" },
+                values: new object[] { (byte)12, "Wół", (byte)6 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 186,
+                columns: new[] { "Name", "Price", "Rarity" },
+                values: new object[] { "Dar Grety", 7200, (byte)1 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 187,
+                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                values: new object[] { "Mikstura lecznicza", 1200, (byte)4, 0 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 188,
+                columns: new[] { "Name", "Price", "Weigth" },
+                values: new object[] { "Piwo Bugmana", 12000, 5 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 189,
+                columns: new[] { "Name", "Price" },
+                values: new object[] { "Czarny Jad", 7200 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 190,
+                columns: new[] { "Name", "Price" },
+                values: new object[] { "Czarny lotos", 4800 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 191,
+                columns: new[] { "Name", "Price" },
+                values: new object[] { "Grzybki Szalonego Kapelusznika", 7200 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 192,
+                columns: new[] { "Name", "Price" },
+                values: new object[] { "Jad mantikory", 15600 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 193,
+                columns: new[] { "Name", "Price" },
+                values: new object[] { "Korzeń mandragory", 6000 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 194,
+                columns: new[] { "Name", "Price" },
+                values: new object[] { "Sercobój", 192000 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 195,
+                columns: new[] { "Name", "Price" },
+                values: new object[] { "Szkarłatny Cień", 8400 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 196,
+                columns: new[] { "Name", "Price" },
+                values: new object[] { "Ślina chimery", 36000 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 197,
+                columns: new[] { "Name", "Price", "Rarity" },
+                values: new object[] { "Księga wiedzy tajemnej", 120000, (byte)1 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 198,
+                columns: new[] { "Name", "Price", "Rarity" },
+                values: new object[] { "Napar kojący", 1200, (byte)5 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 199,
+                columns: new[] { "Name", "Price" },
+                values: new object[] { "Odtrutki", 720 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 200,
+                columns: new[] { "Name", "Price", "Rarity" },
+                values: new object[] { "Relikwia", 1200, (byte)3 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 201,
+                columns: new[] { "Name", "Price", "Rarity" },
+                values: new object[] { "Talizman szczęścia", 3600, (byte)4 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 202,
+                columns: new[] { "Name", "Price", "Rarity" },
+                values: new object[] { "Woda święcona", 2400, (byte)3 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 203,
+                columns: new[] { "Name", "Price", "Rarity" },
+                values: new object[] { "Dłoń weterana", 14400, (byte)2 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 204,
+                columns: new[] { "Name", "Price", "Rarity" },
+                values: new object[] { "Drewniane zęby", 36, (byte)4 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 205,
+                columns: new[] { "Name", "Price" },
+                values: new object[] { "Kolczyk", 12 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 206,
+                columns: new[] { "Name", "Price", "Rarity" },
+                values: new object[] { "Opaska na oko", 6, (byte)5 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 207,
+                columns: new[] { "Name", "Price", "Rarity" },
+                values: new object[] { "Płytka czaszkowa", 12, (byte)4 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 208,
+                columns: new[] { "Name", "Price", "Rarity" },
+                values: new object[] { "Pozłacany nos", 72, (byte)3 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 209,
+                columns: new[] { "Name", "Price" },
+                values: new object[] { "Szklane oko", 12 });
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 210,
+                columns: new[] { "Name", "Price" },
+                values: new object[] { "Sztuczna noga", 72 });
+
+            migrationBuilder.InsertData(
+                table: "Items",
+                columns: new[] { "Id", "Description", "ItemType", "Name", "Price", "Rarity", "Weigth" },
+                values: new object[] { 211, null, (byte)13, "Tatuaż", 36, (byte)4, 0 });
+
             migrationBuilder.InsertData(
                 table: "ProfessionAbilities",
                 columns: new[] { "Id", "ProfessionId", "Quantity" },
                 values: new object[,]
                 {
+                    { 122, 42, (byte)1 },
+                    { 410, 112, (byte)1 },
+                    { 409, 112, (byte)1 },
+                    { 408, 112, (byte)1 },
+                    { 407, 112, (byte)1 },
+                    { 406, 112, (byte)1 },
+                    { 405, 111, (byte)1 },
+                    { 404, 110, (byte)1 },
+                    { 403, 110, (byte)1 },
+                    { 402, 110, (byte)1 },
+                    { 401, 110, (byte)1 },
+                    { 411, 112, (byte)1 },
+                    { 400, 109, (byte)1 },
+                    { 398, 108, (byte)1 },
+                    { 397, 108, (byte)1 },
+                    { 396, 108, (byte)1 },
+                    { 395, 108, (byte)1 },
+                    { 394, 108, (byte)1 },
+                    { 393, 108, (byte)1 },
+                    { 392, 107, (byte)1 },
+                    { 391, 107, (byte)1 },
+                    { 390, 107, (byte)1 },
+                    { 389, 107, (byte)1 },
+                    { 399, 109, (byte)1 },
+                    { 388, 106, (byte)1 },
+                    { 412, 112, (byte)1 },
+                    { 414, 112, (byte)1 },
+                    { 14, 5, (byte)1 },
+                    { 13, 5, (byte)1 },
+                    { 12, 5, (byte)1 },
+                    { 11, 4, (byte)1 },
+                    { 10, 4, (byte)1 },
+                    { 9, 3, (byte)1 },
+                    { 8, 3, (byte)1 },
+                    { 7, 3, (byte)1 },
+                    { 6, 3, (byte)1 },
+                    { 5, 2, (byte)1 },
+                    { 413, 112, (byte)1 },
+                    { 4, 2, (byte)1 },
+                    { 2, 1, (byte)1 },
                     { 1, 1, (byte)1 },
-                    { 289, 85, (byte)1 },
-                    { 288, 85, (byte)1 },
-                    { 287, 84, (byte)1 },
-                    { 286, 84, (byte)1 },
-                    { 285, 84, (byte)1 },
-                    { 284, 83, (byte)1 },
-                    { 283, 83, (byte)1 },
-                    { 282, 83, (byte)1 },
-                    { 281, 83, (byte)1 },
-                    { 280, 83, (byte)1 },
-                    { 290, 85, (byte)1 },
-                    { 279, 82, (byte)1 },
-                    { 277, 82, (byte)1 },
-                    { 276, 81, (byte)1 },
-                    { 275, 81, (byte)1 },
-                    { 274, 80, (byte)1 },
-                    { 273, 80, (byte)1 },
-                    { 272, 80, (byte)1 },
-                    { 271, 80, (byte)1 },
-                    { 270, 80, (byte)1 },
-                    { 269, 80, (byte)1 },
-                    { 268, 79, (byte)1 },
-                    { 278, 82, (byte)1 },
-                    { 267, 79, (byte)1 },
-                    { 291, 85, (byte)1 },
-                    { 293, 86, (byte)1 },
-                    { 315, 93, (byte)1 },
-                    { 314, 92, (byte)1 },
-                    { 313, 92, (byte)1 },
-                    { 312, 92, (byte)1 },
-                    { 311, 91, (byte)1 },
-                    { 310, 91, (byte)1 },
-                    { 309, 91, (byte)1 },
-                    { 308, 90, (byte)1 },
-                    { 307, 90, (byte)1 },
-                    { 306, 90, (byte)1 },
-                    { 292, 85, (byte)1 },
-                    { 305, 90, (byte)1 },
+                    { 120, 42, (byte)1 },
+                    { 421, 113, (byte)1 },
+                    { 420, 113, (byte)1 },
+                    { 419, 113, (byte)1 },
+                    { 418, 113, (byte)1 },
+                    { 417, 112, (byte)1 },
+                    { 416, 112, (byte)1 },
+                    { 415, 112, (byte)1 },
+                    { 3, 1, (byte)1 },
+                    { 387, 106, (byte)1 },
+                    { 386, 106, (byte)1 },
+                    { 385, 106, (byte)1 },
+                    { 357, 99, (byte)1 },
+                    { 356, 99, (byte)1 },
+                    { 355, 99, (byte)1 },
+                    { 354, 99, (byte)1 },
+                    { 353, 99, (byte)1 },
+                    { 352, 98, (byte)1 },
+                    { 351, 98, (byte)1 },
+                    { 350, 98, (byte)1 },
+                    { 349, 98, (byte)1 },
+                    { 348, 98, (byte)1 },
+                    { 358, 99, (byte)1 },
+                    { 347, 98, (byte)1 },
+                    { 345, 98, (byte)1 },
+                    { 343, 97, (byte)1 },
+                    { 342, 97, (byte)1 },
+                    { 341, 97, (byte)1 },
+                    { 340, 97, (byte)1 },
+                    { 339, 96, (byte)1 },
+                    { 338, 96, (byte)1 },
+                    { 337, 96, (byte)1 },
+                    { 336, 96, (byte)1 },
+                    { 335, 95, (byte)1 },
+                    { 346, 98, (byte)1 },
+                    { 359, 100, (byte)1 },
+                    { 360, 100, (byte)1 },
+                    { 361, 100, (byte)1 },
+                    { 384, 106, (byte)1 },
+                    { 383, 106, (byte)1 },
+                    { 382, 105, (byte)1 },
+                    { 381, 105, (byte)1 },
+                    { 380, 105, (byte)1 },
+                    { 379, 105, (byte)1 },
+                    { 378, 105, (byte)1 },
+                    { 377, 104, (byte)1 },
+                    { 376, 104, (byte)1 },
+                    { 375, 104, (byte)1 },
+                    { 374, 104, (byte)1 },
+                    { 373, 103, (byte)1 },
+                    { 372, 102, (byte)1 },
+                    { 371, 102, (byte)1 },
+                    { 370, 102, (byte)1 },
+                    { 369, 102, (byte)1 },
+                    { 368, 101, (byte)1 },
+                    { 367, 101, (byte)1 },
+                    { 366, 101, (byte)1 },
+                    { 365, 101, (byte)1 },
+                    { 364, 101, (byte)1 },
+                    { 363, 100, (byte)1 },
+                    { 362, 100, (byte)1 },
+                    { 15, 5, (byte)1 },
+                    { 16, 6, (byte)2 },
+                    { 17, 7, (byte)1 },
+                    { 18, 7, (byte)1 },
+                    { 92, 30, (byte)1 },
+                    { 91, 29, (byte)1 },
+                    { 90, 29, (byte)1 },
+                    { 89, 29, (byte)1 },
+                    { 88, 28, (byte)1 },
+                    { 87, 28, (byte)1 },
+                    { 86, 28, (byte)1 },
+                    { 85, 27, (byte)1 },
+                    { 84, 27, (byte)1 },
+                    { 83, 27, (byte)1 },
+                    { 93, 30, (byte)1 },
+                    { 82, 26, (byte)1 },
+                    { 80, 26, (byte)1 },
+                    { 79, 26, (byte)1 },
+                    { 78, 26, (byte)1 },
+                    { 77, 25, (byte)1 },
+                    { 76, 25, (byte)1 },
+                    { 75, 25, (byte)1 },
+                    { 74, 25, (byte)1 },
+                    { 73, 25, (byte)1 },
+                    { 72, 25, (byte)1 },
+                    { 71, 24, (byte)1 },
+                    { 81, 26, (byte)1 },
+                    { 94, 31, (byte)1 },
+                    { 95, 32, (byte)1 },
+                    { 96, 32, (byte)1 },
+                    { 119, 41, (byte)1 },
+                    { 118, 41, (byte)1 },
+                    { 117, 40, (byte)1 },
+                    { 116, 40, (byte)1 },
+                    { 115, 40, (byte)1 },
+                    { 114, 40, (byte)1 },
+                    { 113, 39, (byte)1 },
+                    { 112, 39, (byte)1 },
+                    { 111, 39, (byte)1 },
+                    { 110, 38, (byte)1 },
+                    { 109, 37, (byte)1 },
+                    { 108, 37, (byte)1 },
+                    { 107, 37, (byte)1 },
+                    { 106, 37, (byte)1 },
+                    { 105, 37, (byte)1 },
+                    { 104, 37, (byte)1 },
+                    { 103, 36, (byte)1 },
+                    { 102, 35, (byte)1 },
+                    { 101, 34, (byte)1 },
+                    { 100, 34, (byte)1 },
+                    { 99, 33, (byte)1 },
+                    { 98, 33, (byte)1 },
+                    { 97, 32, (byte)1 },
+                    { 70, 24, (byte)1 },
+                    { 334, 95, (byte)1 },
+                    { 69, 23, (byte)1 },
+                    { 67, 23, (byte)1 },
+                    { 40, 12, (byte)1 },
+                    { 39, 12, (byte)1 },
+                    { 38, 12, (byte)1 },
+                    { 37, 12, (byte)1 },
+                    { 36, 12, (byte)1 },
+                    { 35, 11, (byte)1 },
+                    { 34, 11, (byte)1 },
+                    { 33, 11, (byte)1 },
+                    { 32, 11, (byte)1 },
+                    { 31, 11, (byte)1 },
+                    { 41, 13, (byte)1 },
+                    { 30, 11, (byte)1 },
+                    { 28, 10, (byte)1 },
+                    { 27, 10, (byte)1 },
+                    { 26, 10, (byte)1 },
+                    { 25, 9, (byte)1 },
+                    { 24, 9, (byte)1 },
+                    { 23, 8, (byte)1 },
+                    { 22, 8, (byte)1 },
+                    { 21, 8, (byte)1 },
+                    { 20, 8, (byte)1 },
+                    { 19, 7, (byte)1 },
+                    { 29, 11, (byte)1 },
+                    { 42, 13, (byte)1 },
+                    { 43, 13, (byte)1 },
+                    { 44, 14, (byte)1 },
+                    { 66, 22, (byte)1 },
+                    { 65, 21, (byte)1 },
+                    { 64, 21, (byte)1 },
+                    { 63, 20, (byte)1 },
+                    { 62, 20, (byte)1 },
+                    { 61, 20, (byte)1 },
+                    { 121, 42, (byte)1 },
+                    { 60, 20, (byte)1 },
+                    { 59, 19, (byte)1 },
+                    { 58, 19, (byte)1 },
+                    { 57, 19, (byte)1 },
+                    { 56, 19, (byte)1 },
+                    { 55, 18, (byte)1 },
+                    { 54, 18, (byte)1 },
+                    { 53, 18, (byte)1 },
+                    { 52, 17, (byte)1 },
+                    { 51, 17, (byte)1 },
+                    { 50, 16, (byte)1 },
+                    { 49, 16, (byte)1 },
+                    { 48, 16, (byte)1 },
+                    { 47, 15, (byte)1 },
+                    { 46, 15, (byte)1 },
+                    { 45, 14, (byte)1 },
+                    { 68, 23, (byte)1 },
+                    { 333, 95, (byte)1 },
+                    { 344, 98, (byte)1 },
+                    { 331, 95, (byte)1 },
+                    { 197, 64, (byte)1 },
+                    { 196, 64, (byte)1 },
+                    { 195, 63, (byte)1 },
+                    { 194, 63, (byte)1 },
+                    { 193, 63, (byte)1 },
+                    { 192, 62, (byte)1 },
+                    { 191, 62, (byte)1 },
+                    { 190, 62, (byte)1 },
+                    { 189, 62, (byte)1 },
+                    { 188, 62, (byte)1 },
+                    { 198, 65, (byte)1 },
+                    { 187, 61, (byte)1 },
+                    { 185, 61, (byte)1 },
+                    { 184, 61, (byte)1 },
+                    { 183, 61, (byte)1 },
+                    { 182, 61, (byte)1 },
+                    { 181, 60, (byte)1 },
+                    { 180, 60, (byte)1 },
+                    { 179, 60, (byte)1 },
+                    { 178, 59, (byte)1 },
+                    { 177, 59, (byte)1 },
+                    { 176, 59, (byte)1 },
+                    { 186, 61, (byte)1 },
+                    { 199, 65, (byte)1 },
+                    { 200, 65, (byte)1 },
+                    { 201, 66, (byte)1 },
+                    { 224, 70, (byte)1 },
+                    { 223, 70, (byte)1 },
+                    { 222, 70, (byte)1 },
+                    { 221, 69, (byte)1 },
+                    { 220, 69, (byte)1 },
+                    { 219, 69, (byte)1 },
+                    { 218, 69, (byte)1 },
+                    { 217, 69, (byte)1 },
+                    { 216, 69, (byte)1 },
+                    { 332, 95, (byte)1 },
+                    { 214, 69, (byte)1 },
+                    { 213, 69, (byte)1 },
+                    { 212, 69, (byte)1 },
+                    { 211, 68, (byte)1 },
+                    { 210, 68, (byte)1 },
+                    { 209, 68, (byte)1 },
+                    { 208, 68, (byte)1 },
+                    { 207, 67, (byte)1 },
+                    { 206, 67, (byte)1 },
+                    { 205, 67, (byte)1 },
+                    { 204, 67, (byte)1 },
+                    { 203, 66, (byte)1 },
+                    { 202, 66, (byte)1 },
+                    { 175, 59, (byte)1 },
+                    { 225, 71, (byte)1 },
+                    { 174, 59, (byte)1 },
+                    { 172, 58, (byte)1 },
+                    { 144, 48, (byte)1 },
+                    { 143, 48, (byte)1 },
+                    { 142, 48, (byte)1 },
+                    { 141, 48, (byte)1 },
+                    { 140, 47, (byte)1 },
+                    { 139, 47, (byte)1 },
+                    { 138, 46, (byte)1 },
+                    { 137, 46, (byte)1 },
+                    { 136, 46, (byte)1 },
+                    { 135, 46, (byte)1 },
+                    { 145, 48, (byte)1 },
+                    { 134, 45, (byte)1 },
+                    { 132, 45, (byte)1 },
+                    { 131, 45, (byte)1 },
+                    { 130, 44, (byte)1 },
+                    { 129, 44, (byte)1 },
+                    { 128, 44, (byte)1 },
+                    { 127, 44, (byte)1 },
+                    { 126, 43, (byte)1 },
+                    { 125, 43, (byte)1 },
+                    { 124, 43, (byte)1 },
+                    { 123, 43, (byte)1 },
+                    { 133, 45, (byte)1 },
+                    { 146, 49, (byte)1 },
+                    { 147, 49, (byte)1 },
+                    { 148, 49, (byte)1 },
+                    { 171, 58, (byte)1 },
+                    { 170, 57, (byte)1 },
+                    { 169, 57, (byte)1 },
+                    { 168, 57, (byte)1 },
+                    { 167, 56, (byte)1 },
+                    { 166, 56, (byte)1 },
+                    { 165, 55, (byte)1 },
+                    { 164, 55, (byte)1 },
+                    { 163, 54, (byte)1 },
+                    { 162, 54, (byte)1 },
+                    { 161, 54, (byte)1 },
+                    { 160, 54, (byte)1 },
+                    { 159, 54, (byte)1 },
+                    { 158, 54, (byte)1 },
+                    { 157, 53, (byte)1 },
+                    { 156, 53, (byte)1 },
+                    { 155, 52, (byte)1 },
+                    { 154, 52, (byte)1 },
+                    { 153, 51, (byte)1 },
+                    { 152, 51, (byte)1 },
+                    { 151, 51, (byte)1 },
+                    { 150, 50, (byte)1 },
+                    { 149, 50, (byte)1 },
+                    { 173, 58, (byte)1 },
+                    { 226, 71, (byte)1 },
+                    { 215, 69, (byte)1 },
+                    { 228, 71, (byte)1 },
                     { 303, 89, (byte)1 },
                     { 302, 88, (byte)1 },
                     { 301, 87, (byte)1 },
@@ -20484,127 +22577,22 @@ namespace WarhammerProfessionApp.Migrations
                     { 295, 87, (byte)1 },
                     { 294, 87, (byte)1 },
                     { 304, 89, (byte)1 },
-                    { 266, 79, (byte)1 },
-                    { 265, 79, (byte)1 },
-                    { 264, 79, (byte)1 },
-                    { 235, 73, (byte)1 },
-                    { 234, 73, (byte)1 },
-                    { 233, 73, (byte)1 },
-                    { 232, 73, (byte)1 },
-                    { 231, 72, (byte)1 },
-                    { 230, 72, (byte)1 },
-                    { 229, 71, (byte)1 },
-                    { 228, 71, (byte)1 },
+                    { 293, 86, (byte)1 },
+                    { 291, 85, (byte)1 },
+                    { 290, 85, (byte)1 },
+                    { 289, 85, (byte)1 },
+                    { 288, 85, (byte)1 },
+                    { 287, 84, (byte)1 },
+                    { 286, 84, (byte)1 },
+                    { 285, 84, (byte)1 },
+                    { 284, 83, (byte)1 },
+                    { 283, 83, (byte)1 },
+                    { 282, 83, (byte)1 },
                     { 227, 71, (byte)1 },
-                    { 226, 71, (byte)1 },
-                    { 236, 73, (byte)1 },
-                    { 225, 71, (byte)1 },
-                    { 223, 70, (byte)1 },
-                    { 222, 70, (byte)1 },
-                    { 221, 69, (byte)1 },
-                    { 220, 69, (byte)1 },
-                    { 219, 69, (byte)1 },
-                    { 218, 69, (byte)1 },
-                    { 217, 69, (byte)1 },
-                    { 216, 69, (byte)1 },
-                    { 215, 69, (byte)1 },
-                    { 214, 69, (byte)1 },
-                    { 224, 70, (byte)1 },
-                    { 237, 74, (byte)1 },
-                    { 238, 74, (byte)1 },
-                    { 239, 74, (byte)1 },
-                    { 263, 79, (byte)1 },
-                    { 262, 79, (byte)1 },
-                    { 261, 79, (byte)1 },
-                    { 260, 79, (byte)1 },
-                    { 259, 79, (byte)1 },
-                    { 258, 78, (byte)1 },
-                    { 257, 78, (byte)1 },
-                    { 256, 78, (byte)1 },
-                    { 255, 78, (byte)1 },
-                    { 254, 78, (byte)1 },
-                    { 252, 78, (byte)1 },
-                    { 251, 77, (byte)1 },
-                    { 250, 77, (byte)1 },
-                    { 249, 76, (byte)1 },
-                    { 248, 76, (byte)1 },
-                    { 247, 76, (byte)1 },
-                    { 246, 76, (byte)1 },
-                    { 245, 76, (byte)1 },
-                    { 244, 76, (byte)1 },
-                    { 243, 76, (byte)1 },
-                    { 242, 75, (byte)1 },
-                    { 241, 75, (byte)1 },
-                    { 240, 75, (byte)1 },
-                    { 316, 93, (byte)1 },
-                    { 317, 93, (byte)1 },
-                    { 318, 93, (byte)1 },
-                    { 319, 93, (byte)1 },
-                    { 394, 108, (byte)1 },
-                    { 393, 108, (byte)1 },
-                    { 392, 107, (byte)1 },
-                    { 391, 107, (byte)1 },
-                    { 390, 107, (byte)1 },
-                    { 389, 107, (byte)1 },
-                    { 388, 106, (byte)1 },
-                    { 387, 106, (byte)1 },
-                    { 386, 106, (byte)1 },
-                    { 385, 106, (byte)1 },
-                    { 395, 108, (byte)1 },
-                    { 384, 106, (byte)1 },
-                    { 382, 105, (byte)1 },
-                    { 381, 105, (byte)1 },
-                    { 380, 105, (byte)1 },
-                    { 379, 105, (byte)1 },
-                    { 378, 105, (byte)1 },
-                    { 377, 104, (byte)1 },
-                    { 376, 104, (byte)1 },
-                    { 375, 104, (byte)1 },
-                    { 374, 104, (byte)1 },
-                    { 373, 103, (byte)1 },
-                    { 383, 106, (byte)1 },
-                    { 396, 108, (byte)1 },
-                    { 397, 108, (byte)1 },
-                    { 398, 108, (byte)1 },
-                    { 421, 113, (byte)1 },
-                    { 420, 113, (byte)1 },
-                    { 419, 113, (byte)1 },
-                    { 418, 113, (byte)1 },
-                    { 417, 112, (byte)1 },
-                    { 416, 112, (byte)1 },
-                    { 415, 112, (byte)1 },
-                    { 414, 112, (byte)1 },
-                    { 413, 112, (byte)1 },
-                    { 412, 112, (byte)1 },
-                    { 411, 112, (byte)1 },
-                    { 410, 112, (byte)1 },
-                    { 409, 112, (byte)1 },
-                    { 408, 112, (byte)1 },
-                    { 407, 112, (byte)1 },
-                    { 406, 112, (byte)1 },
-                    { 405, 111, (byte)1 },
-                    { 404, 110, (byte)1 },
-                    { 403, 110, (byte)1 },
-                    { 402, 110, (byte)1 },
-                    { 401, 110, (byte)1 },
-                    { 400, 109, (byte)1 },
-                    { 399, 109, (byte)1 },
-                    { 372, 102, (byte)1 },
-                    { 213, 69, (byte)1 },
-                    { 371, 102, (byte)1 },
-                    { 369, 102, (byte)1 },
-                    { 341, 97, (byte)1 },
-                    { 340, 97, (byte)1 },
-                    { 339, 96, (byte)1 },
-                    { 338, 96, (byte)1 },
-                    { 337, 96, (byte)1 },
-                    { 336, 96, (byte)1 },
-                    { 335, 95, (byte)1 },
-                    { 334, 95, (byte)1 },
-                    { 333, 95, (byte)1 },
-                    { 332, 95, (byte)1 },
-                    { 342, 97, (byte)1 },
-                    { 331, 95, (byte)1 },
+                    { 305, 90, (byte)1 },
+                    { 306, 90, (byte)1 },
+                    { 307, 90, (byte)1 },
+                    { 330, 95, (byte)1 },
                     { 329, 95, (byte)1 },
                     { 328, 95, (byte)1 },
                     { 327, 95, (byte)1 },
@@ -20615,246 +22603,72 @@ namespace WarhammerProfessionApp.Migrations
                     { 322, 94, (byte)1 },
                     { 321, 93, (byte)1 },
                     { 320, 93, (byte)1 },
-                    { 330, 95, (byte)1 },
-                    { 343, 97, (byte)1 },
-                    { 344, 98, (byte)1 },
-                    { 345, 98, (byte)1 },
-                    { 368, 101, (byte)1 },
-                    { 367, 101, (byte)1 },
-                    { 366, 101, (byte)1 },
-                    { 365, 101, (byte)1 },
-                    { 364, 101, (byte)1 },
-                    { 363, 100, (byte)1 },
-                    { 362, 100, (byte)1 },
-                    { 361, 100, (byte)1 },
-                    { 360, 100, (byte)1 },
-                    { 359, 100, (byte)1 },
-                    { 358, 99, (byte)1 },
-                    { 357, 99, (byte)1 },
-                    { 356, 99, (byte)1 },
-                    { 355, 99, (byte)1 },
-                    { 354, 99, (byte)1 },
-                    { 353, 99, (byte)1 },
-                    { 352, 98, (byte)1 },
-                    { 351, 98, (byte)1 },
-                    { 350, 98, (byte)1 },
-                    { 349, 98, (byte)1 },
-                    { 348, 98, (byte)1 },
-                    { 347, 98, (byte)1 },
-                    { 346, 98, (byte)1 },
-                    { 370, 102, (byte)1 },
-                    { 212, 69, (byte)1 },
+                    { 319, 93, (byte)1 },
+                    { 318, 93, (byte)1 },
+                    { 317, 93, (byte)1 },
+                    { 316, 93, (byte)1 },
+                    { 315, 93, (byte)1 },
+                    { 314, 92, (byte)1 },
+                    { 313, 92, (byte)1 },
+                    { 312, 92, (byte)1 },
+                    { 311, 91, (byte)1 },
+                    { 310, 91, (byte)1 },
+                    { 309, 91, (byte)1 },
+                    { 308, 90, (byte)1 },
+                    { 281, 83, (byte)1 },
+                    { 280, 83, (byte)1 },
+                    { 292, 85, (byte)1 },
+                    { 278, 82, (byte)1 },
+                    { 250, 77, (byte)1 },
+                    { 249, 76, (byte)1 },
+                    { 248, 76, (byte)1 },
+                    { 247, 76, (byte)1 },
+                    { 246, 76, (byte)1 },
+                    { 245, 76, (byte)1 },
+                    { 244, 76, (byte)1 },
+                    { 243, 76, (byte)1 },
+                    { 242, 75, (byte)1 },
+                    { 279, 82, (byte)1 },
+                    { 251, 77, (byte)1 },
+                    { 240, 75, (byte)1 },
+                    { 238, 74, (byte)1 },
+                    { 237, 74, (byte)1 },
+                    { 236, 73, (byte)1 },
+                    { 235, 73, (byte)1 },
+                    { 234, 73, (byte)1 },
+                    { 233, 73, (byte)1 },
+                    { 232, 73, (byte)1 },
+                    { 231, 72, (byte)1 },
+                    { 230, 72, (byte)1 },
+                    { 229, 71, (byte)1 },
+                    { 239, 74, (byte)1 },
+                    { 252, 78, (byte)1 },
+                    { 241, 75, (byte)1 },
+                    { 254, 78, (byte)1 },
                     { 253, 78, (byte)1 },
-                    { 210, 68, (byte)1 },
-                    { 76, 25, (byte)1 },
-                    { 75, 25, (byte)1 },
-                    { 74, 25, (byte)1 },
-                    { 73, 25, (byte)1 },
-                    { 72, 25, (byte)1 },
-                    { 71, 24, (byte)1 },
-                    { 70, 24, (byte)1 },
-                    { 69, 23, (byte)1 },
-                    { 68, 23, (byte)1 },
-                    { 67, 23, (byte)1 },
-                    { 77, 25, (byte)1 },
-                    { 66, 22, (byte)1 },
-                    { 64, 21, (byte)1 },
-                    { 63, 20, (byte)1 },
-                    { 62, 20, (byte)1 },
-                    { 61, 20, (byte)1 },
-                    { 60, 20, (byte)1 },
-                    { 59, 19, (byte)1 },
-                    { 58, 19, (byte)1 },
-                    { 57, 19, (byte)1 },
-                    { 56, 19, (byte)1 },
-                    { 55, 18, (byte)1 },
-                    { 211, 68, (byte)1 },
-                    { 78, 26, (byte)1 },
-                    { 79, 26, (byte)1 },
-                    { 80, 26, (byte)1 },
-                    { 103, 36, (byte)1 },
-                    { 102, 35, (byte)1 },
-                    { 101, 34, (byte)1 },
-                    { 100, 34, (byte)1 },
-                    { 99, 33, (byte)1 },
-                    { 98, 33, (byte)1 },
-                    { 97, 32, (byte)1 },
-                    { 96, 32, (byte)1 },
-                    { 95, 32, (byte)1 },
-                    { 94, 31, (byte)1 },
-                    { 93, 30, (byte)1 },
-                    { 92, 30, (byte)1 },
-                    { 91, 29, (byte)1 },
-                    { 90, 29, (byte)1 },
-                    { 89, 29, (byte)1 },
-                    { 88, 28, (byte)1 },
-                    { 87, 28, (byte)1 },
-                    { 86, 28, (byte)1 },
-                    { 85, 27, (byte)1 },
-                    { 84, 27, (byte)1 },
-                    { 83, 27, (byte)1 },
-                    { 82, 26, (byte)1 },
-                    { 81, 26, (byte)1 },
-                    { 54, 18, (byte)1 },
-                    { 104, 37, (byte)1 },
-                    { 53, 18, (byte)1 },
-                    { 51, 17, (byte)1 },
-                    { 23, 8, (byte)1 },
-                    { 22, 8, (byte)1 },
-                    { 21, 8, (byte)1 },
-                    { 20, 8, (byte)1 },
-                    { 19, 7, (byte)1 },
-                    { 18, 7, (byte)1 },
-                    { 17, 7, (byte)1 },
-                    { 16, 6, (byte)2 },
-                    { 15, 5, (byte)1 },
-                    { 14, 5, (byte)1 },
-                    { 24, 9, (byte)1 },
-                    { 13, 5, (byte)1 },
-                    { 11, 4, (byte)1 },
-                    { 10, 4, (byte)1 },
-                    { 9, 3, (byte)1 },
-                    { 8, 3, (byte)1 },
-                    { 7, 3, (byte)1 },
-                    { 6, 3, (byte)1 },
-                    { 5, 2, (byte)1 },
-                    { 4, 2, (byte)1 },
-                    { 3, 1, (byte)1 },
-                    { 2, 1, (byte)1 },
-                    { 12, 5, (byte)1 },
-                    { 25, 9, (byte)1 },
-                    { 26, 10, (byte)1 },
-                    { 27, 10, (byte)1 },
-                    { 50, 16, (byte)1 },
-                    { 49, 16, (byte)1 },
-                    { 48, 16, (byte)1 },
-                    { 47, 15, (byte)1 },
-                    { 46, 15, (byte)1 },
-                    { 45, 14, (byte)1 },
-                    { 44, 14, (byte)1 },
-                    { 43, 13, (byte)1 },
-                    { 42, 13, (byte)1 },
-                    { 41, 13, (byte)1 },
-                    { 40, 12, (byte)1 },
-                    { 39, 12, (byte)1 },
-                    { 38, 12, (byte)1 },
-                    { 37, 12, (byte)1 },
-                    { 36, 12, (byte)1 },
-                    { 35, 11, (byte)1 },
-                    { 34, 11, (byte)1 },
-                    { 33, 11, (byte)1 },
-                    { 32, 11, (byte)1 },
-                    { 31, 11, (byte)1 },
-                    { 30, 11, (byte)1 },
-                    { 29, 11, (byte)1 },
-                    { 28, 10, (byte)1 },
-                    { 52, 17, (byte)1 },
-                    { 105, 37, (byte)1 },
-                    { 65, 21, (byte)1 },
-                    { 107, 37, (byte)1 },
-                    { 182, 61, (byte)1 },
-                    { 181, 60, (byte)1 },
-                    { 180, 60, (byte)1 },
-                    { 179, 60, (byte)1 },
-                    { 178, 59, (byte)1 },
-                    { 177, 59, (byte)1 },
-                    { 176, 59, (byte)1 },
-                    { 175, 59, (byte)1 },
-                    { 174, 59, (byte)1 },
-                    { 173, 58, (byte)1 },
-                    { 183, 61, (byte)1 },
-                    { 172, 58, (byte)1 },
-                    { 170, 57, (byte)1 },
-                    { 169, 57, (byte)1 },
-                    { 168, 57, (byte)1 },
-                    { 167, 56, (byte)1 },
-                    { 166, 56, (byte)1 },
-                    { 165, 55, (byte)1 },
-                    { 164, 55, (byte)1 },
-                    { 163, 54, (byte)1 },
-                    { 162, 54, (byte)1 },
-                    { 161, 54, (byte)1 },
-                    { 171, 58, (byte)1 },
-                    { 184, 61, (byte)1 },
-                    { 185, 61, (byte)1 },
-                    { 186, 61, (byte)1 },
-                    { 209, 68, (byte)1 },
-                    { 208, 68, (byte)1 },
-                    { 207, 67, (byte)1 },
-                    { 206, 67, (byte)1 },
-                    { 205, 67, (byte)1 },
-                    { 204, 67, (byte)1 },
-                    { 203, 66, (byte)1 },
-                    { 202, 66, (byte)1 },
-                    { 201, 66, (byte)1 },
-                    { 200, 65, (byte)1 },
-                    { 106, 37, (byte)1 },
-                    { 198, 65, (byte)1 },
-                    { 197, 64, (byte)1 },
-                    { 196, 64, (byte)1 },
-                    { 195, 63, (byte)1 },
-                    { 194, 63, (byte)1 },
-                    { 193, 63, (byte)1 },
-                    { 192, 62, (byte)1 },
-                    { 191, 62, (byte)1 },
-                    { 190, 62, (byte)1 },
-                    { 189, 62, (byte)1 },
-                    { 188, 62, (byte)1 },
-                    { 187, 61, (byte)1 },
-                    { 160, 54, (byte)1 },
-                    { 159, 54, (byte)1 },
-                    { 199, 65, (byte)1 },
-                    { 157, 53, (byte)1 },
-                    { 130, 44, (byte)1 },
-                    { 129, 44, (byte)1 },
-                    { 128, 44, (byte)1 },
-                    { 127, 44, (byte)1 },
-                    { 126, 43, (byte)1 },
-                    { 125, 43, (byte)1 },
-                    { 124, 43, (byte)1 },
-                    { 123, 43, (byte)1 },
-                    { 122, 42, (byte)1 },
-                    { 121, 42, (byte)1 },
-                    { 120, 42, (byte)1 },
-                    { 119, 41, (byte)1 },
-                    { 118, 41, (byte)1 },
-                    { 117, 40, (byte)1 },
-                    { 116, 40, (byte)1 },
-                    { 115, 40, (byte)1 },
-                    { 114, 40, (byte)1 },
-                    { 112, 39, (byte)1 },
-                    { 111, 39, (byte)1 },
-                    { 110, 38, (byte)1 },
-                    { 109, 37, (byte)1 },
-                    { 108, 37, (byte)1 },
-                    { 158, 54, (byte)1 },
-                    { 131, 45, (byte)1 },
-                    { 132, 45, (byte)1 },
-                    { 113, 39, (byte)1 },
-                    { 134, 45, (byte)1 },
-                    { 156, 53, (byte)1 },
-                    { 133, 45, (byte)1 },
-                    { 155, 52, (byte)1 },
-                    { 154, 52, (byte)1 },
-                    { 152, 51, (byte)1 },
-                    { 151, 51, (byte)1 },
-                    { 150, 50, (byte)1 },
-                    { 149, 50, (byte)1 },
-                    { 148, 49, (byte)1 },
-                    { 147, 49, (byte)1 },
-                    { 146, 49, (byte)1 },
-                    { 153, 51, (byte)1 },
-                    { 144, 48, (byte)1 },
-                    { 145, 48, (byte)1 },
-                    { 137, 46, (byte)1 },
-                    { 138, 46, (byte)1 },
-                    { 139, 47, (byte)1 },
-                    { 140, 47, (byte)1 },
-                    { 136, 46, (byte)1 },
-                    { 141, 48, (byte)1 },
-                    { 142, 48, (byte)1 },
-                    { 143, 48, (byte)1 },
-                    { 135, 46, (byte)1 }
+                    { 276, 81, (byte)1 },
+                    { 275, 81, (byte)1 },
+                    { 274, 80, (byte)1 },
+                    { 273, 80, (byte)1 },
+                    { 272, 80, (byte)1 },
+                    { 271, 80, (byte)1 },
+                    { 270, 80, (byte)1 },
+                    { 269, 80, (byte)1 },
+                    { 268, 79, (byte)1 },
+                    { 267, 79, (byte)1 },
+                    { 277, 82, (byte)1 },
+                    { 265, 79, (byte)1 },
+                    { 266, 79, (byte)1 },
+                    { 256, 78, (byte)1 },
+                    { 257, 78, (byte)1 },
+                    { 258, 78, (byte)1 },
+                    { 259, 79, (byte)1 },
+                    { 255, 78, (byte)1 },
+                    { 261, 79, (byte)1 },
+                    { 262, 79, (byte)1 },
+                    { 263, 79, (byte)1 },
+                    { 264, 79, (byte)1 },
+                    { 260, 79, (byte)1 }
                 });
 
             migrationBuilder.InsertData(
@@ -20862,175 +22676,185 @@ namespace WarhammerProfessionApp.Migrations
                 columns: new[] { "Id", "ProfessionId", "Quantity" },
                 values: new object[,]
                 {
-                    { 116, 31, (byte)1 },
-                    { 112, 30, (byte)1 },
-                    { 113, 30, (byte)1 },
-                    { 114, 31, (byte)1 },
-                    { 115, 31, (byte)1 },
-                    { 110, 30, (byte)1 },
-                    { 111, 30, (byte)1 },
-                    { 121, 32, (byte)1 },
-                    { 118, 32, (byte)1 },
-                    { 119, 32, (byte)1 },
-                    { 120, 32, (byte)1 },
-                    { 122, 32, (byte)1 },
-                    { 123, 32, (byte)1 },
-                    { 124, 32, (byte)1 },
-                    { 109, 30, (byte)1 },
-                    { 125, 32, (byte)1 },
-                    { 126, 32, (byte)1 },
-                    { 117, 31, (byte)1 },
-                    { 108, 30, (byte)1 },
-                    { 97, 26, (byte)1 },
-                    { 106, 29, (byte)1 },
-                    { 88, 24, (byte)1 },
-                    { 127, 33, (byte)1 },
-                    { 89, 24, (byte)1 },
-                    { 90, 24, (byte)1 },
-                    { 91, 25, (byte)1 },
-                    { 92, 25, (byte)1 },
-                    { 93, 25, (byte)1 },
-                    { 94, 25, (byte)1 },
-                    { 107, 29, (byte)1 },
-                    { 95, 26, (byte)1 },
-                    { 98, 27, (byte)1 },
-                    { 99, 27, (byte)1 },
-                    { 100, 27, (byte)1 },
-                    { 101, 28, (byte)1 },
-                    { 102, 28, (byte)1 },
-                    { 103, 29, (byte)1 },
-                    { 104, 29, (byte)1 },
-                    { 105, 29, (byte)1 },
-                    { 96, 26, (byte)1 },
-                    { 128, 33, (byte)1 },
-                    { 153, 40, (byte)1 },
-                    { 130, 34, (byte)1 },
-                    { 154, 40, (byte)1 },
-                    { 155, 41, (byte)1 },
-                    { 156, 41, (byte)1 },
-                    { 157, 41, (byte)1 },
-                    { 158, 41, (byte)1 },
                     { 159, 41, (byte)1 },
+                    { 151, 39, (byte)1 },
+                    { 152, 39, (byte)1 },
+                    { 153, 39, (byte)1 },
+                    { 154, 39, (byte)1 },
+                    { 155, 39, (byte)1 },
+                    { 156, 40, (byte)1 },
+                    { 150, 38, (byte)1 },
+                    { 157, 40, (byte)1 },
+                    { 158, 41, (byte)1 },
                     { 160, 41, (byte)1 },
-                    { 161, 41, (byte)1 },
-                    { 162, 41, (byte)1 },
-                    { 163, 42, (byte)1 },
-                    { 164, 42, (byte)1 },
-                    { 165, 42, (byte)1 },
                     { 166, 42, (byte)1 },
+                    { 162, 41, (byte)1 },
+                    { 163, 41, (byte)1 },
+                    { 164, 41, (byte)1 },
+                    { 165, 41, (byte)1 },
                     { 167, 42, (byte)1 },
                     { 168, 42, (byte)1 },
                     { 169, 42, (byte)1 },
-                    { 87, 23, (byte)1 },
-                    { 152, 39, (byte)1 },
-                    { 151, 39, (byte)1 },
-                    { 150, 39, (byte)1 },
-                    { 149, 39, (byte)1 },
-                    { 131, 34, (byte)1 },
-                    { 132, 34, (byte)1 },
-                    { 133, 35, (byte)1 },
-                    { 134, 35, (byte)1 },
-                    { 135, 35, (byte)1 },
-                    { 136, 36, (byte)1 },
-                    { 137, 36, (byte)1 },
-                    { 138, 37, (byte)1 },
-                    { 129, 34, (byte)1 },
-                    { 139, 37, (byte)1 },
-                    { 141, 37, (byte)1 },
-                    { 142, 37, (byte)1 },
-                    { 143, 37, (byte)1 },
-                    { 144, 38, (byte)1 },
-                    { 145, 38, (byte)1 },
-                    { 146, 38, (byte)1 },
-                    { 147, 38, (byte)1 },
-                    { 148, 39, (byte)1 },
-                    { 140, 37, (byte)1 },
-                    { 86, 23, (byte)1 },
-                    { 15, 6, (byte)1 },
-                    { 84, 23, (byte)1 },
-                    { 24, 9, (byte)1 },
-                    { 25, 10, (byte)1 },
-                    { 26, 10, (byte)1 },
-                    { 27, 10, (byte)1 },
-                    { 28, 10, (byte)1 },
-                    { 29, 10, (byte)1 },
-                    { 30, 10, (byte)1 },
-                    { 31, 10, (byte)1 },
-                    { 32, 11, (byte)1 },
-                    { 33, 11, (byte)1 },
-                    { 34, 11, (byte)1 },
-                    { 35, 11, (byte)1 },
-                    { 36, 11, (byte)1 },
-                    { 37, 12, (byte)1 },
-                    { 38, 12, (byte)1 },
-                    { 39, 12, (byte)1 },
+                    { 170, 42, (byte)1 },
+                    { 171, 42, (byte)1 },
+                    { 172, 42, (byte)1 },
+                    { 149, 38, (byte)1 },
+                    { 161, 41, (byte)1 },
+                    { 148, 38, (byte)1 },
+                    { 108, 29, (byte)1 },
+                    { 146, 37, (byte)1 },
+                    { 51, 15, (byte)1 },
+                    { 50, 15, (byte)1 },
+                    { 49, 14, (byte)1 },
+                    { 48, 14, (byte)1 },
+                    { 47, 14, (byte)1 },
+                    { 46, 13, (byte)1 },
+                    { 52, 15, (byte)1 },
+                    { 45, 13, (byte)1 },
+                    { 43, 13, (byte)1 },
+                    { 42, 13, (byte)1 },
+                    { 41, 13, (byte)1 },
                     { 40, 12, (byte)1 },
+                    { 39, 12, (byte)1 },
+                    { 38, 12, (byte)1 },
+                    { 44, 13, (byte)1 },
+                    { 53, 15, (byte)1 },
+                    { 54, 15, (byte)1 },
+                    { 55, 15, (byte)1 },
+                    { 70, 19, (byte)1 },
+                    { 69, 19, (byte)1 },
+                    { 68, 19, (byte)1 },
+                    { 67, 19, (byte)1 },
+                    { 66, 19, (byte)1 },
+                    { 65, 18, (byte)1 },
+                    { 64, 18, (byte)1 },
+                    { 63, 18, (byte)1 },
+                    { 62, 17, (byte)1 },
+                    { 61, 17, (byte)1 },
+                    { 60, 17, (byte)1 },
+                    { 59, 17, (byte)1 },
+                    { 58, 17, (byte)1 },
+                    { 57, 16, (byte)1 },
+                    { 56, 16, (byte)1 },
+                    { 37, 12, (byte)1 },
+                    { 71, 19, (byte)1 },
+                    { 36, 11, (byte)1 },
+                    { 34, 11, (byte)1 },
+                    { 13, 5, (byte)1 },
+                    { 12, 5, (byte)1 },
+                    { 11, 5, (byte)1 },
+                    { 10, 4, (byte)1 },
+                    { 9, 4, (byte)1 },
+                    { 8, 3, (byte)1 },
+                    { 14, 6, (byte)1 },
+                    { 7, 3, (byte)1 },
+                    { 5, 2, (byte)1 },
+                    { 4, 2, (byte)1 },
+                    { 3, 2, (byte)1 },
+                    { 2, 1, (byte)1 },
+                    { 1, 1, (byte)1 },
+                    { 147, 38, (byte)1 },
+                    { 6, 3, (byte)1 },
+                    { 15, 6, (byte)1 },
+                    { 16, 6, (byte)1 },
+                    { 17, 6, (byte)1 },
+                    { 33, 11, (byte)1 },
+                    { 32, 11, (byte)1 },
+                    { 31, 10, (byte)1 },
+                    { 30, 10, (byte)1 },
+                    { 29, 10, (byte)1 },
+                    { 28, 10, (byte)1 },
+                    { 27, 10, (byte)1 },
+                    { 26, 10, (byte)1 },
+                    { 25, 10, (byte)1 },
+                    { 24, 9, (byte)1 },
                     { 23, 9, (byte)1 },
                     { 22, 8, (byte)1 },
                     { 21, 8, (byte)1 },
                     { 20, 8, (byte)1 },
-                    { 85, 23, (byte)1 },
-                    { 1, 1, (byte)1 },
-                    { 2, 1, (byte)1 },
-                    { 3, 2, (byte)1 },
-                    { 4, 2, (byte)1 },
-                    { 5, 2, (byte)1 },
-                    { 6, 3, (byte)1 },
-                    { 7, 3, (byte)1 },
-                    { 41, 13, (byte)1 },
-                    { 8, 3, (byte)1 },
-                    { 11, 5, (byte)1 },
-                    { 12, 5, (byte)1 },
-                    { 13, 5, (byte)1 },
-                    { 14, 6, (byte)1 },
-                    { 16, 6, (byte)1 },
-                    { 17, 6, (byte)1 },
                     { 18, 6, (byte)1 },
-                    { 19, 7, (byte)1 },
-                    { 10, 4, (byte)1 },
-                    { 42, 13, (byte)1 },
-                    { 9, 4, (byte)1 },
-                    { 44, 13, (byte)1 },
-                    { 67, 19, (byte)1 },
-                    { 68, 19, (byte)1 },
-                    { 69, 20, (byte)1 },
-                    { 70, 20, (byte)1 },
-                    { 71, 20, (byte)1 },
+                    { 35, 11, (byte)1 },
                     { 72, 20, (byte)1 },
-                    { 73, 20, (byte)1 },
+                    { 19, 7, (byte)1 },
                     { 74, 20, (byte)1 },
-                    { 75, 21, (byte)1 },
-                    { 76, 21, (byte)1 },
-                    { 77, 21, (byte)1 },
-                    { 79, 22, (byte)1 },
-                    { 80, 22, (byte)1 },
+                    { 126, 32, (byte)1 },
+                    { 125, 32, (byte)1 },
+                    { 124, 32, (byte)1 },
+                    { 123, 32, (byte)1 },
+                    { 122, 32, (byte)1 },
+                    { 121, 32, (byte)1 },
+                    { 127, 32, (byte)1 },
+                    { 120, 31, (byte)1 },
+                    { 118, 31, (byte)1 },
+                    { 117, 31, (byte)1 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "ProfessionItems",
+                columns: new[] { "Id", "ProfessionId", "Quantity" },
+                values: new object[,]
+                {
+                    { 116, 30, (byte)1 },
+                    { 115, 30, (byte)1 },
+                    { 114, 30, (byte)1 },
+                    { 113, 30, (byte)1 },
+                    { 119, 31, (byte)1 },
+                    { 128, 32, (byte)1 },
+                    { 129, 32, (byte)1 },
+                    { 130, 33, (byte)1 },
+                    { 145, 37, (byte)1 },
+                    { 73, 20, (byte)1 },
+                    { 144, 37, (byte)1 },
+                    { 143, 37, (byte)1 },
+                    { 142, 37, (byte)1 },
+                    { 141, 37, (byte)1 },
+                    { 140, 36, (byte)1 },
+                    { 139, 36, (byte)1 },
+                    { 138, 35, (byte)1 },
+                    { 137, 35, (byte)1 },
+                    { 136, 35, (byte)1 },
+                    { 134, 34, (byte)1 },
+                    { 133, 34, (byte)1 },
+                    { 132, 34, (byte)1 },
+                    { 131, 33, (byte)1 },
+                    { 112, 30, (byte)1 },
+                    { 111, 30, (byte)1 },
+                    { 135, 34, (byte)1 },
+                    { 109, 29, (byte)1 },
+                    { 89, 23, (byte)1 },
+                    { 88, 23, (byte)1 },
+                    { 87, 23, (byte)1 },
+                    { 86, 23, (byte)1 },
+                    { 85, 22, (byte)1 },
+                    { 84, 22, (byte)1 },
+                    { 83, 22, (byte)1 },
                     { 81, 22, (byte)1 },
+                    { 80, 21, (byte)1 },
+                    { 79, 21, (byte)1 },
+                    { 78, 21, (byte)1 },
+                    { 77, 20, (byte)1 },
+                    { 110, 29, (byte)1 },
+                    { 75, 20, (byte)1 },
+                    { 76, 20, (byte)1 },
+                    { 90, 23, (byte)1 },
+                    { 91, 24, (byte)1 },
                     { 82, 22, (byte)1 },
-                    { 43, 13, (byte)1 },
-                    { 83, 23, (byte)1 },
-                    { 66, 19, (byte)1 },
-                    { 65, 18, (byte)1 },
-                    { 78, 22, (byte)1 },
-                    { 63, 18, (byte)1 },
-                    { 64, 18, (byte)1 },
-                    { 45, 13, (byte)1 },
-                    { 47, 14, (byte)1 },
-                    { 48, 14, (byte)1 },
-                    { 49, 14, (byte)1 },
-                    { 51, 15, (byte)1 },
-                    { 52, 15, (byte)1 },
-                    { 53, 15, (byte)1 },
-                    { 54, 15, (byte)1 },
-                    { 50, 15, (byte)1 },
-                    { 46, 13, (byte)1 },
-                    { 56, 16, (byte)1 },
-                    { 57, 16, (byte)1 },
-                    { 58, 17, (byte)1 },
-                    { 59, 17, (byte)1 },
-                    { 60, 17, (byte)1 },
-                    { 61, 17, (byte)1 },
-                    { 55, 15, (byte)1 },
-                    { 62, 17, (byte)1 }
+                    { 93, 24, (byte)1 },
+                    { 107, 29, (byte)1 },
+                    { 92, 24, (byte)1 },
+                    { 105, 28, (byte)1 },
+                    { 104, 28, (byte)1 },
+                    { 106, 29, (byte)1 },
+                    { 102, 27, (byte)1 },
+                    { 101, 27, (byte)1 },
+                    { 100, 26, (byte)1 },
+                    { 103, 27, (byte)1 },
+                    { 98, 26, (byte)1 },
+                    { 97, 25, (byte)1 },
+                    { 96, 25, (byte)1 },
+                    { 95, 25, (byte)1 },
+                    { 99, 26, (byte)1 },
+                    { 94, 25, (byte)1 }
                 });
 
             migrationBuilder.InsertData(
@@ -21038,154 +22862,131 @@ namespace WarhammerProfessionApp.Migrations
                 columns: new[] { "EntranceProfessionId", "OutputProfessionId" },
                 values: new object[,]
                 {
-                    { 69, 97 },
-                    { 69, 98 },
-                    { 69, 113 },
-                    { 70, 6 },
-                    { 70, 68 },
-                    { 70, 10 },
-                    { 70, 104 },
-                    { 70, 28 },
-                    { 71, 67 },
-                    { 71, 98 },
-                    { 69, 79 },
-                    { 71, 76 },
-                    { 70, 89 },
-                    { 71, 90 },
-                    { 67, 23 },
-                    { 68, 104 },
-                    { 65, 59 },
-                    { 66, 73 },
-                    { 72, 84 },
-                    { 66, 77 },
-                    { 66, 88 },
-                    { 66, 89 },
-                    { 68, 112 },
-                    { 67, 71 },
-                    { 67, 104 },
-                    { 67, 111 },
-                    { 68, 63 },
-                    { 68, 81 },
-                    { 68, 101 },
-                    { 68, 102 },
-                    { 67, 76 },
-                    { 72, 86 },
-                    { 76, 104 },
-                    { 72, 31 },
-                    { 77, 24 },
-                    { 77, 94 },
-                    { 77, 102 },
-                    { 77, 104 },
-                    { 78, 71 },
+                    { 79, 90 },
+                    { 80, 67 },
+                    { 78, 90 },
+                    { 78, 99 },
+                    { 79, 1 },
+                    { 79, 69 },
+                    { 75, 21 },
+                    { 79, 87 },
+                    { 80, 1 },
+                    { 79, 67 },
                     { 78, 80 },
                     { 77, 84 },
-                    { 78, 90 },
-                    { 79, 1 },
-                    { 79, 67 },
-                    { 79, 69 },
-                    { 79, 87 },
-                    { 65, 105 },
-                    { 79, 90 },
-                    { 78, 99 },
-                    { 72, 89 },
+                    { 77, 104 },
+                    { 77, 102 },
+                    { 77, 94 },
+                    { 77, 24 },
+                    { 76, 104 },
                     { 76, 83 },
-                    { 76, 67 },
-                    { 72, 93 },
-                    { 73, 63 },
-                    { 73, 89 },
-                    { 73, 102 },
-                    { 73, 103 },
-                    { 74, 65 },
                     { 76, 71 },
-                    { 74, 81 },
-                    { 74, 108 },
-                    { 75, 2 },
-                    { 75, 77 },
-                    { 75, 21 },
-                    { 75, 92 },
+                    { 76, 67 },
+                    { 80, 79 },
                     { 75, 31 },
-                    { 74, 103 },
-                    { 65, 91 },
-                    { 56, 101 },
-                    { 65, 67 },
-                    { 55, 22 },
-                    { 55, 24 },
-                    { 55, 31 },
-                    { 55, 94 },
-                    { 55, 37 },
-                    { 55, 104 },
-                    { 54, 110 },
-                    { 56, 6 },
-                    { 56, 16 },
-                    { 56, 92 },
-                    { 80, 1 },
-                    { 56, 107 },
-                    { 57, 1 },
-                    { 57, 7 },
-                    { 56, 15 },
-                    { 57, 72 },
-                    { 53, 113 },
-                    { 53, 95 },
-                    { 51, 18 },
-                    { 51, 47 },
-                    { 51, 111 },
-                    { 51, 56 },
-                    { 51, 113 },
-                    { 52, 19 },
-                    { 53, 41 },
-                    { 52, 32 },
-                    { 52, 51 },
-                    { 52, 113 },
-                    { 53, 2 },
-                    { 53, 22 },
-                    { 53, 31 },
-                    { 53, 33 },
-                    { 52, 105 },
-                    { 65, 74 },
-                    { 57, 82 },
-                    { 57, 35 },
-                    { 61, 79 },
-                    { 61, 103 },
-                    { 61, 104 },
-                    { 62, 84 },
-                    { 62, 89 },
-                    { 63, 73 },
-                    { 60, 97 },
-                    { 63, 90 },
-                    { 63, 103 },
-                    { 64, 67 },
-                    { 64, 95 },
-                    { 64, 101 },
-                    { 64, 102 },
-                    { 64, 57 },
-                    { 63, 96 },
-                    { 57, 28 },
-                    { 60, 31 },
-                    { 60, 66 },
-                    { 57, 49 },
-                    { 57, 103 },
-                    { 58, 66 },
-                    { 58, 16 },
-                    { 58, 88 },
-                    { 58, 31 },
-                    { 60, 26 },
-                    { 58, 60 },
-                    { 59, 32 },
-                    { 59, 97 },
-                    { 59, 40 },
-                    { 59, 105 },
-                    { 59, 51 },
-                    { 60, 2 },
-                    { 59, 23 },
-                    { 80, 67 },
-                    { 90, 28 },
+                    { 75, 92 },
+                    { 78, 71 },
                     { 80, 96 },
+                    { 84, 104 },
+                    { 81, 76 },
+                    { 87, 79 },
+                    { 87, 69 },
+                    { 75, 77 },
+                    { 87, 63 },
+                    { 86, 24 },
+                    { 86, 84 },
+                    { 86, 77 },
+                    { 86, 72 },
+                    { 86, 67 },
+                    { 85, 103 },
+                    { 85, 89 },
+                    { 85, 62 },
+                    { 84, 94 },
+                    { 84, 76 },
+                    { 83, 99 },
+                    { 83, 89 },
+                    { 83, 76 },
+                    { 83, 71 },
+                    { 82, 111 },
+                    { 82, 103 },
+                    { 82, 102 },
+                    { 82, 84 },
+                    { 81, 46 },
+                    { 81, 92 },
+                    { 81, 77 },
+                    { 80, 99 },
+                    { 75, 2 },
+                    { 67, 104 },
+                    { 74, 103 },
+                    { 68, 101 },
+                    { 68, 81 },
+                    { 68, 63 },
+                    { 67, 111 },
+                    { 67, 23 },
+                    { 67, 76 },
+                    { 67, 71 },
+                    { 66, 89 },
+                    { 66, 88 },
+                    { 66, 77 },
+                    { 66, 73 },
+                    { 68, 102 },
+                    { 65, 59 },
+                    { 65, 91 },
+                    { 65, 74 },
+                    { 65, 67 },
+                    { 64, 57 },
+                    { 64, 102 },
+                    { 64, 101 },
+                    { 64, 95 },
+                    { 64, 67 },
+                    { 63, 103 },
+                    { 87, 90 },
+                    { 63, 96 },
+                    { 65, 105 },
+                    { 74, 108 },
+                    { 68, 104 },
+                    { 69, 79 },
+                    { 74, 81 },
+                    { 74, 65 },
+                    { 73, 103 },
+                    { 73, 102 },
+                    { 73, 89 },
+                    { 73, 63 },
+                    { 72, 93 },
+                    { 72, 31 },
+                    { 72, 89 },
+                    { 72, 86 },
+                    { 72, 84 },
+                    { 68, 112 },
+                    { 71, 98 },
+                    { 71, 76 },
+                    { 71, 67 },
+                    { 70, 104 },
+                    { 70, 28 },
+                    { 70, 89 },
+                    { 70, 10 },
+                    { 70, 68 },
+                    { 70, 6 },
+                    { 69, 113 },
+                    { 69, 98 },
+                    { 69, 97 },
+                    { 71, 90 },
+                    { 88, 73 },
+                    { 104, 67 },
+                    { 88, 89 },
+                    { 106, 85 },
+                    { 105, 100 },
+                    { 105, 99 },
+                    { 105, 97 },
+                    { 105, 71 },
+                    { 105, 69 },
+                    { 104, 94 },
+                    { 104, 81 },
                     { 104, 76 },
                     { 104, 68 },
-                    { 104, 67 },
                     { 104, 63 },
+                    { 106, 101 },
                     { 103, 111 },
-                    { 103, 49 },
                     { 103, 89 },
                     { 103, 82 },
                     { 103, 81 },
@@ -21197,420 +22998,436 @@ namespace WarhammerProfessionApp.Migrations
                     { 101, 107 },
                     { 101, 104 },
                     { 101, 102 },
-                    { 98, 79 },
-                    { 98, 16 },
-                    { 98, 97 },
-                    { 99, 69 },
-                    { 99, 97 }
-                });
-
-            migrationBuilder.InsertData(
-                table: "ProfessionProfession",
-                columns: new[] { "EntranceProfessionId", "OutputProfessionId" },
-                values: new object[,]
-                {
-                    { 99, 98 },
-                    { 104, 81 },
-                    { 99, 112 },
-                    { 100, 69 },
-                    { 100, 79 },
-                    { 100, 97 },
-                    { 100, 98 },
-                    { 101, 2 },
+                    { 103, 49 },
                     { 101, 67 },
-                    { 100, 8 },
-                    { 104, 94 },
-                    { 105, 69 },
-                    { 105, 71 },
-                    { 111, 67 },
-                    { 111, 74 },
-                    { 111, 103 },
-                    { 112, 69 },
-                    { 112, 16 },
-                    { 112, 95 },
-                    { 111, 65 },
-                    { 112, 97 },
-                    { 113, 71 },
-                    { 113, 78 },
-                    { 113, 80 },
-                    { 113, 89 },
-                    { 113, 97 },
-                    { 51, 6 },
-                    { 112, 98 },
-                    { 98, 69 },
-                    { 110, 109 },
-                    { 108, 79 },
-                    { 105, 97 },
-                    { 105, 99 },
-                    { 105, 100 },
-                    { 106, 85 },
-                    { 106, 101 },
                     { 106, 103 },
-                    { 108, 103 },
-                    { 107, 76 },
-                    { 107, 92 },
-                    { 107, 94 },
-                    { 107, 51 },
-                    { 108, 61 },
-                    { 108, 65 },
-                    { 108, 67 },
                     { 107, 83 },
-                    { 80, 79 },
-                    { 97, 112 },
-                    { 97, 96 },
-                    { 88, 89 },
+                    { 63, 90 },
+                    { 113, 97 },
+                    { 113, 89 },
+                    { 113, 80 },
+                    { 113, 78 },
+                    { 113, 71 },
+                    { 112, 98 },
+                    { 112, 97 },
+                    { 112, 95 },
+                    { 112, 16 },
+                    { 112, 69 },
+                    { 107, 76 },
+                    { 111, 103 },
+                    { 111, 67 },
+                    { 111, 65 },
+                    { 110, 109 },
+                    { 108, 103 },
+                    { 108, 79 },
+                    { 108, 67 },
+                    { 108, 65 },
+                    { 108, 61 },
+                    { 107, 51 },
+                    { 107, 94 },
+                    { 107, 92 },
+                    { 111, 74 },
                     { 88, 86 },
-                    { 88, 73 },
-                    { 87, 90 },
-                    { 87, 79 },
-                    { 87, 69 },
-                    { 87, 63 },
-                    { 86, 24 },
-                    { 86, 84 },
-                    { 86, 77 },
-                    { 86, 72 },
-                    { 86, 67 },
-                    { 85, 103 },
-                    { 85, 89 },
-                    { 85, 62 },
-                    { 84, 104 },
-                    { 84, 94 },
-                    { 80, 99 },
-                    { 81, 76 },
-                    { 81, 77 },
-                    { 81, 92 },
-                    { 81, 46 },
-                    { 82, 84 },
-                    { 88, 103 },
-                    { 82, 102 },
-                    { 82, 111 },
-                    { 83, 71 },
-                    { 83, 76 },
-                    { 83, 89 },
-                    { 83, 99 },
-                    { 84, 76 },
-                    { 82, 103 },
-                    { 89, 73 },
-                    { 89, 77 },
-                    { 89, 90 },
+                    { 101, 2 },
+                    { 100, 97 },
                     { 94, 83 },
-                    { 94, 92 },
-                    { 94, 104 },
-                    { 95, 71 },
-                    { 95, 83 },
-                    { 95, 28 },
                     { 94, 70 },
-                    { 95, 97 },
-                    { 96, 1 },
-                    { 96, 63 },
-                    { 96, 80 },
-                    { 96, 87 },
-                    { 96, 90 },
-                    { 97, 90 },
-                    { 95, 112 },
-                    { 97, 100 },
                     { 93, 112 },
-                    { 93, 97 },
-                    { 89, 102 },
-                    { 90, 71 },
-                    { 90, 77 },
-                    { 90, 89 },
-                    { 90, 104 },
-                    { 91, 82 },
                     { 93, 105 },
-                    { 91, 94 },
-                    { 92, 76 },
-                    { 92, 83 },
-                    { 92, 94 },
-                    { 92, 101 },
-                    { 93, 68 },
+                    { 93, 97 },
                     { 93, 96 },
+                    { 93, 68 },
+                    { 92, 101 },
+                    { 92, 94 },
+                    { 92, 83 },
+                    { 92, 76 },
+                    { 94, 92 },
                     { 91, 56 },
-                    { 50, 113 },
+                    { 91, 82 },
+                    { 90, 104 },
+                    { 90, 28 },
+                    { 90, 89 },
+                    { 90, 77 },
+                    { 90, 71 },
+                    { 89, 102 },
+                    { 89, 90 },
+                    { 89, 77 },
+                    { 89, 73 },
+                    { 88, 103 },
+                    { 91, 94 },
+                    { 100, 98 },
+                    { 94, 104 },
+                    { 95, 83 },
+                    { 100, 79 },
+                    { 100, 69 },
+                    { 100, 8 },
+                    { 99, 112 },
+                    { 99, 98 },
+                    { 99, 97 },
+                    { 99, 69 },
+                    { 98, 97 },
+                    { 98, 16 },
+                    { 98, 79 },
                     { 98, 71 },
-                    { 50, 19 },
-                    { 19, 42 },
-                    { 19, 20 },
-                    { 19, 13 },
-                    { 18, 113 },
-                    { 18, 51 },
-                    { 18, 24 },
-                    { 18, 19 },
-                    { 18, 2 },
-                    { 17, 105 },
-                    { 17, 48 },
-                    { 17, 97 },
-                    { 17, 23 },
-                    { 17, 20 },
-                    { 16, 56 },
-                    { 16, 101 },
-                    { 16, 39 },
-                    { 16, 67 },
-                    { 13, 50 },
-                    { 13, 113 },
-                    { 14, 1 },
-                    { 14, 2 },
-                    { 14, 101 },
-                    { 14, 49 },
-                    { 19, 99 },
-                    { 14, 51 },
-                    { 15, 92 },
-                    { 15, 44 },
-                    { 15, 48 },
-                    { 15, 56 },
-                    { 16, 2 },
-                    { 16, 6 },
-                    { 15, 80 },
-                    { 19, 50 },
-                    { 19, 52 },
-                    { 19, 113 },
-                    { 22, 56 },
-                    { 22, 59 },
-                    { 23, 2 },
-                    { 23, 20 },
-                    { 23, 25 },
-                    { 23, 97 },
-                    { 22, 104 },
-                    { 23, 48 },
-                    { 24, 2 },
-                    { 24, 86 },
-                    { 24, 23 },
-                    { 24, 30 },
-                    { 24, 97 },
-                    { 24, 42 },
-                    { 23, 105 },
-                    { 13, 48 },
-                    { 22, 42 },
-                    { 22, 33 },
-                    { 19, 59 },
-                    { 20, 80 },
-                    { 20, 23 },
+                    { 95, 71 },
+                    { 98, 69 },
+                    { 97, 100 },
+                    { 97, 96 },
+                    { 97, 90 },
+                    { 96, 90 },
+                    { 96, 87 },
+                    { 96, 80 },
+                    { 96, 63 },
+                    { 96, 1 },
+                    { 95, 112 },
+                    { 95, 97 },
+                    { 95, 28 },
+                    { 97, 112 },
+                    { 63, 73 },
+                    { 59, 105 },
+                    { 62, 84 },
                     { 20, 37 },
                     { 20, 99 },
                     { 20, 113 },
-                    { 22, 95 },
                     { 21, 75 },
+                    { 21, 77 },
                     { 21, 24 },
                     { 21, 92 },
                     { 21, 27 },
                     { 21, 28 },
                     { 21, 36 },
                     { 22, 2 },
-                    { 21, 77 },
-                    { 24, 56 },
-                    { 13, 31 },
-                    { 13, 72 },
-                    { 5, 50 },
-                    { 5, 102 },
-                    { 5, 101 },
-                    { 5, 39 },
-                    { 5, 36 },
-                    { 5, 31 },
-                    { 4, 50 },
-                    { 4, 104 },
-                    { 4, 47 },
-                    { 4, 39 },
-                    { 4, 36 },
-                    { 4, 34 },
-                    { 4, 24 },
-                    { 4, 8 },
-                    { 4, 2 },
-                    { 3, 58 },
-                    { 3, 97 },
-                    { 50, 51 },
-                    { 1, 7 },
-                    { 1, 67 },
-                    { 1, 8 },
-                    { 1, 74 },
-                    { 1, 38 },
-                    { 5, 51 },
-                    { 1, 111 },
-                    { 2, 95 },
-                    { 2, 105 },
-                    { 2, 51 },
-                    { 2, 56 },
-                    { 3, 11 },
-                    { 3, 23 },
-                    { 2, 67 },
-                    { 6, 64 },
-                    { 6, 16 },
-                    { 6, 101 },
-                    { 10, 96 },
-                    { 10, 97 },
-                    { 10, 46 },
-                    { 10, 105 },
-                    { 11, 20 },
-                    { 11, 23 },
-                    { 10, 2 },
-                    { 11, 37 },
-                    { 11, 54 },
-                    { 12, 15 },
-                    { 12, 44 },
-                    { 12, 48 },
-                    { 12, 105 },
-                    { 12, 113 },
-                    { 11, 105 },
-                    { 13, 23 },
-                    { 9, 60 },
-                    { 9, 34 },
-                    { 6, 51 },
-                    { 6, 56 },
-                    { 7, 82 },
-                    { 7, 91 },
-                    { 7, 29 },
-                    { 7, 36 },
-                    { 9, 58 },
-                    { 7, 51 },
-                    { 8, 2 },
-                    { 8, 65 },
-                    { 8, 28 },
-                    { 8, 111 },
-                    { 9, 88 },
-                    { 9, 31 },
-                    { 8, 1 },
-                    { 25, 20 },
-                    { 3, 105 },
-                    { 25, 91 },
-                    { 43, 91 },
-                    { 43, 25 },
-                    { 42, 113 },
-                    { 42, 51 },
-                    { 42, 23 },
-                    { 42, 80 },
-                    { 42, 20 },
-                    { 41, 113 },
-                    { 41, 97 },
-                    { 41, 95 },
-                    { 41, 32 },
-                    { 41, 30 },
-                    { 41, 22 },
-                    { 41, 2 },
-                    { 40, 59 },
-                    { 40, 41 },
-                    { 40, 97 },
-                    { 38, 28 },
-                    { 38, 49 },
-                    { 38, 103 },
-                    { 39, 5 },
-                    { 39, 75 },
-                    { 39, 21 },
-                    { 43, 40 },
-                    { 39, 27 },
-                    { 39, 30 },
-                    { 39, 102 },
-                    { 39, 56 },
-                    { 40, 23 },
-                    { 40, 94 },
-                    { 40, 36 },
-                    { 39, 28 },
-                    { 43, 44 },
-                    { 43, 55 },
-                    { 44, 29 },
-                    { 47, 29 },
-                    { 47, 31 },
-                    { 47, 107 },
-                    { 48, 11 },
-                    { 48, 15 },
-                    { 48, 31 },
-                    { 47, 92 },
-                    { 48, 97 },
-                    { 49, 38 },
-                    { 49, 103 },
-                    { 49, 106 },
-                    { 50, 13 },
-                    { 25, 23 },
-                    { 50, 18 },
-                    { 48, 105 },
-                    { 38, 88 },
-                    { 47, 5 },
-                    { 46, 104 },
-                    { 44, 43 },
-                    { 44, 47 },
-                    { 44, 48 },
-                    { 44, 107 },
-                    { 44, 56 },
-                    { 45, 16 },
-                    { 46, 57 },
-                    { 45, 25 },
-                    { 45, 37 },
-                    { 45, 112 },
-                    { 46, 68 },
-                    { 46, 10 },
-                    { 46, 16 },
-                    { 46, 93 },
-                    { 45, 95 },
-                    { 38, 1 },
-                    { 48, 12 },
-                    { 37, 56 },
+                    { 22, 33 },
+                    { 22, 95 },
+                    { 22, 42 },
+                    { 22, 104 },
+                    { 22, 56 },
+                    { 22, 59 },
+                    { 20, 23 },
+                    { 20, 80 },
+                    { 19, 59 },
+                    { 19, 113 },
+                    { 16, 101 },
+                    { 16, 56 },
+                    { 17, 20 },
+                    { 17, 23 },
+                    { 17, 97 },
+                    { 17, 48 },
+                    { 17, 105 },
+                    { 18, 2 },
+                    { 23, 2 },
+                    { 18, 19 },
+                    { 18, 51 },
+                    { 18, 113 },
+                    { 19, 13 },
+                    { 19, 20 },
+                    { 19, 42 },
+                    { 19, 99 },
+                    { 19, 50 },
+                    { 19, 52 },
+                    { 18, 24 },
+                    { 16, 39 },
+                    { 23, 20 },
+                    { 23, 97 },
+                    { 27, 70 },
+                    { 27, 16 },
+                    { 27, 81 },
+                    { 27, 57 },
+                    { 28, 2 },
+                    { 28, 67 },
+                    { 28, 8 },
+                    { 28, 16 },
                     { 28, 101 },
                     { 28, 104 },
                     { 29, 92 },
                     { 29, 44 },
                     { 29, 107 },
                     { 29, 56 },
-                    { 28, 16 },
                     { 29, 57 },
-                    { 30, 41 },
-                    { 30, 52 },
-                    { 30, 53 },
-                    { 30, 113 },
-                    { 30, 59 },
-                    { 31, 9 },
                     { 30, 70 },
-                    { 31, 92 },
-                    { 28, 8 },
-                    { 28, 2 },
-                    { 25, 37 },
-                    { 37, 112 },
+                    { 30, 41 },
+                    { 27, 10 },
+                    { 26, 94 },
+                    { 26, 91 },
+                    { 26, 25 },
+                    { 23, 48 },
+                    { 23, 105 },
+                    { 24, 2 },
+                    { 24, 86 },
+                    { 24, 23 },
+                    { 24, 30 },
+                    { 24, 97 },
+                    { 24, 42 },
+                    { 23, 25 },
+                    { 24, 56 },
+                    { 25, 23 },
+                    { 25, 91 },
                     { 25, 94 },
+                    { 25, 37 },
                     { 25, 43 },
                     { 25, 55 },
                     { 26, 11 },
-                    { 28, 67 },
                     { 26, 23 },
-                    { 26, 94 },
-                    { 27, 10 },
-                    { 27, 70 },
-                    { 27, 16 },
-                    { 27, 81 },
-                    { 27, 57 },
-                    { 26, 91 },
-                    { 31, 33 },
-                    { 26, 25 },
-                    { 31, 48 },
+                    { 25, 20 },
+                    { 16, 67 },
+                    { 16, 6 },
+                    { 16, 2 },
+                    { 4, 39 },
+                    { 4, 47 },
+                    { 4, 104 },
+                    { 4, 50 },
+                    { 5, 31 },
+                    { 5, 36 },
+                    { 5, 39 },
+                    { 5, 101 },
+                    { 5, 102 },
+                    { 5, 50 },
+                    { 5, 51 },
+                    { 6, 64 },
+                    { 6, 16 },
+                    { 6, 101 },
+                    { 6, 51 },
+                    { 6, 56 },
+                    { 7, 82 },
+                    { 4, 36 },
+                    { 4, 34 },
+                    { 4, 24 },
+                    { 4, 8 },
+                    { 62, 89 },
+                    { 1, 7 },
+                    { 1, 67 },
+                    { 1, 8 },
+                    { 1, 74 },
+                    { 1, 38 },
+                    { 1, 111 },
+                    { 2, 67 },
+                    { 7, 91 },
+                    { 2, 95 },
+                    { 2, 51 },
+                    { 2, 56 },
+                    { 3, 11 },
+                    { 3, 23 },
+                    { 3, 97 },
+                    { 3, 105 },
+                    { 3, 58 },
+                    { 4, 2 },
+                    { 2, 105 },
+                    { 7, 29 },
+                    { 7, 36 },
+                    { 7, 51 },
+                    { 12, 105 },
+                    { 12, 113 },
+                    { 13, 72 },
+                    { 13, 23 },
+                    { 13, 31 },
+                    { 13, 48 },
+                    { 13, 50 },
+                    { 13, 113 },
+                    { 12, 48 },
+                    { 14, 1 },
+                    { 14, 101 },
+                    { 14, 49 },
+                    { 14, 51 },
+                    { 15, 80 },
+                    { 15, 92 },
+                    { 15, 44 },
+                    { 15, 48 },
+                    { 15, 56 },
+                    { 14, 2 },
+                    { 30, 52 },
+                    { 12, 44 },
+                    { 11, 54 },
+                    { 8, 1 },
+                    { 8, 2 },
+                    { 8, 65 },
+                    { 8, 28 },
+                    { 8, 111 },
+                    { 9, 88 },
+                    { 9, 31 },
+                    { 9, 34 },
+                    { 12, 15 },
+                    { 9, 58 },
+                    { 10, 2 },
+                    { 10, 96 },
+                    { 10, 97 },
+                    { 10, 46 },
+                    { 10, 105 },
+                    { 11, 20 },
+                    { 11, 23 },
+                    { 11, 105 },
+                    { 9, 60 },
+                    { 30, 53 },
+                    { 11, 37 },
+                    { 30, 59 },
+                    { 50, 19 },
+                    { 50, 51 },
+                    { 50, 113 },
+                    { 51, 6 },
+                    { 51, 18 },
+                    { 51, 47 },
+                    { 51, 111 },
+                    { 51, 56 },
+                    { 51, 113 },
+                    { 52, 19 },
+                    { 52, 32 },
+                    { 52, 105 },
+                    { 52, 51 },
+                    { 52, 113 },
+                    { 53, 2 },
+                    { 53, 22 },
+                    { 53, 31 },
+                    { 50, 18 },
+                    { 50, 13 },
+                    { 49, 106 },
+                    { 49, 103 },
+                    { 46, 68 },
+                    { 46, 10 },
+                    { 46, 16 },
+                    { 46, 93 },
+                    { 46, 104 },
+                    { 46, 57 },
+                    { 47, 5 },
+                    { 47, 92 },
+                    { 53, 33 },
+                    { 47, 29 },
+                    { 47, 107 },
+                    { 48, 11 },
+                    { 48, 12 },
+                    { 48, 15 },
+                    { 48, 31 },
+                    { 48, 97 },
+                    { 48, 105 },
+                    { 49, 38 },
+                    { 47, 31 },
+                    { 45, 112 },
+                    { 53, 95 },
+                    { 53, 113 },
+                    { 58, 88 },
+                    { 58, 31 },
+                    { 58, 60 },
+                    { 59, 23 },
+                    { 59, 32 },
+                    { 59, 97 },
+                    { 59, 40 },
+                    { 59, 51 },
+                    { 60, 2 },
+                    { 60, 66 },
+                    { 60, 26 },
+                    { 60, 31 },
+                    { 60, 97 },
+                    { 61, 79 },
+                    { 61, 103 },
+                    { 30, 113 },
+                    { 61, 104 },
+                    { 58, 16 },
+                    { 58, 66 },
+                    { 57, 103 },
+                    { 57, 49 },
+                    { 54, 110 },
+                    { 55, 22 },
+                    { 55, 24 },
+                    { 55, 31 },
+                    { 55, 94 },
+                    { 55, 37 },
+                    { 55, 104 },
+                    { 56, 6 },
+                    { 53, 41 },
+                    { 56, 15 },
+                    { 56, 101 },
+                    { 56, 107 },
+                    { 57, 1 },
+                    { 57, 7 },
+                    { 57, 72 },
+                    { 57, 82 },
+                    { 57, 28 },
+                    { 57, 35 },
+                    { 56, 92 },
+                    { 45, 37 },
+                    { 56, 16 },
+                    { 45, 25 },
                     { 35, 77 },
                     { 35, 101 },
                     { 35, 51 },
                     { 35, 58 },
                     { 35, 57 },
                     { 36, 8 },
-                    { 35, 16 },
                     { 36, 72 },
-                    { 37, 94 },
+                    { 36, 77 },
                     { 36, 86 },
-                    { 37, 26 },
+                    { 36, 24 },
                     { 36, 35 },
                     { 37, 11 },
-                    { 31, 101 },
-                    { 36, 77 },
+                    { 37, 26 },
+                    { 37, 94 },
+                    { 37, 56 },
+                    { 37, 112 },
+                    { 38, 1 },
+                    { 35, 16 },
                     { 34, 60 },
-                    { 36, 24 },
-                    { 34, 24 },
                     { 34, 58 },
+                    { 34, 24 },
+                    { 31, 92 },
+                    { 45, 95 },
+                    { 31, 33 },
+                    { 31, 101 },
+                    { 31, 48 },
+                    { 31, 56 },
                     { 31, 58 },
+                    { 32, 23 },
+                    { 38, 88 },
                     { 32, 95 },
-                    { 32, 41 },
                     { 32, 53 },
                     { 32, 113 },
                     { 33, 9 },
-                    { 32, 23 },
-                    { 31, 56 },
+                    { 33, 31 },
                     { 33, 95 },
                     { 33, 41 },
-                    { 33, 58 },
                     { 34, 77 },
                     { 34, 88 },
-                    { 33, 31 }
+                    { 32, 41 },
+                    { 38, 28 },
+                    { 33, 58 },
+                    { 38, 103 },
+                    { 42, 20 },
+                    { 42, 80 },
+                    { 42, 23 },
+                    { 42, 51 },
+                    { 42, 113 },
+                    { 43, 25 },
+                    { 43, 91 },
+                    { 43, 40 },
+                    { 41, 113 },
+                    { 43, 44 },
+                    { 44, 29 },
+                    { 44, 43 },
+                    { 44, 47 },
+                    { 44, 48 },
+                    { 44, 107 },
+                    { 38, 49 },
+                    { 44, 56 },
+                    { 45, 16 },
+                    { 43, 55 },
+                    { 41, 97 },
+                    { 31, 9 },
+                    { 41, 32 },
+                    { 41, 95 },
+                    { 39, 75 },
+                    { 39, 21 },
+                    { 39, 27 },
+                    { 39, 28 },
+                    { 39, 30 },
+                    { 39, 102 },
+                    { 39, 56 },
+                    { 40, 23 },
+                    { 40, 94 },
+                    { 39, 5 },
+                    { 40, 36 },
+                    { 40, 97 },
+                    { 40, 41 },
+                    { 40, 59 },
+                    { 41, 2 },
+                    { 41, 22 },
+                    { 41, 30 }
                 });
 
             migrationBuilder.InsertData(
@@ -21618,75 +23435,90 @@ namespace WarhammerProfessionApp.Migrations
                 columns: new[] { "Id", "ProfessionId", "Quantity" },
                 values: new object[,]
                 {
-                    { 685, 81, (byte)1 },
-                    { 684, 81, (byte)1 },
-                    { 683, 81, (byte)1 },
-                    { 682, 81, (byte)1 },
-                    { 674, 80, (byte)1 },
-                    { 678, 81, (byte)1 },
-                    { 680, 81, (byte)1 },
-                    { 679, 81, (byte)1 },
-                    { 677, 81, (byte)1 },
-                    { 676, 80, (byte)1 },
-                    { 686, 81, (byte)1 },
-                    { 681, 81, (byte)1 },
-                    { 675, 80, (byte)1 },
-                    { 693, 82, (byte)1 },
-                    { 688, 81, (byte)1 },
+                    { 739, 85, (byte)1 },
+                    { 725, 84, (byte)1 },
+                    { 724, 84, (byte)1 },
+                    { 723, 84, (byte)1 },
+                    { 720, 84, (byte)1 },
+                    { 721, 84, (byte)1 },
+                    { 726, 84, (byte)1 },
+                    { 719, 84, (byte)1 },
+                    { 718, 84, (byte)1 },
+                    { 722, 84, (byte)1 },
+                    { 727, 84, (byte)1 },
+                    { 730, 85, (byte)1 },
+                    { 729, 85, (byte)1 },
+                    { 738, 85, (byte)1 },
+                    { 731, 85, (byte)1 },
+                    { 741, 85, (byte)1 },
+                    { 732, 85, (byte)1 },
+                    { 733, 85, (byte)1 },
+                    { 734, 85, (byte)1 },
+                    { 717, 84, (byte)1 },
+                    { 736, 85, (byte)1 },
+                    { 737, 85, (byte)1 },
+                    { 740, 85, (byte)1 },
+                    { 728, 84, (byte)1 },
+                    { 735, 85, (byte)1 },
+                    { 708, 83, (byte)1 },
+                    { 715, 83, (byte)1 },
+                    { 742, 85, (byte)1 },
                     { 689, 81, (byte)1 },
-                    { 690, 81, (byte)1 },
                     { 691, 82, (byte)1 },
+                    { 690, 81, (byte)1 },
                     { 692, 82, (byte)1 },
+                    { 693, 82, (byte)1 },
                     { 694, 82, (byte)1 },
                     { 695, 82, (byte)1 },
                     { 696, 82, (byte)1 },
                     { 697, 82, (byte)1 },
-                    { 698, 82, (byte)1 },
                     { 699, 83, (byte)1 },
                     { 700, 83, (byte)1 },
                     { 701, 83, (byte)1 },
-                    { 687, 81, (byte)1 },
-                    { 673, 80, (byte)1 },
-                    { 658, 79, (byte)1 },
-                    { 671, 80, (byte)1 },
-                    { 644, 78, (byte)1 },
-                    { 645, 78, (byte)1 },
                     { 702, 83, (byte)1 },
-                    { 646, 78, (byte)1 },
-                    { 647, 78, (byte)1 },
-                    { 648, 78, (byte)1 },
-                    { 649, 78, (byte)1 },
-                    { 650, 78, (byte)1 },
-                    { 651, 78, (byte)1 },
-                    { 643, 78, (byte)1 },
-                    { 652, 78, (byte)1 },
-                    { 653, 79, (byte)1 },
-                    { 654, 79, (byte)1 },
-                    { 672, 80, (byte)1 },
-                    { 655, 79, (byte)1 },
-                    { 657, 79, (byte)1 },
-                    { 659, 79, (byte)1 },
-                    { 660, 79, (byte)1 },
-                    { 661, 79, (byte)1 },
-                    { 662, 79, (byte)1 },
-                    { 663, 79, (byte)1 },
-                    { 664, 79, (byte)1 },
-                    { 665, 79, (byte)1 },
-                    { 666, 80, (byte)1 },
-                    { 667, 80, (byte)1 },
-                    { 668, 80, (byte)1 },
-                    { 669, 80, (byte)1 },
-                    { 670, 80, (byte)1 },
-                    { 656, 79, (byte)1 },
                     { 703, 83, (byte)1 },
-                    { 736, 85, (byte)1 },
+                    { 704, 83, (byte)1 },
                     { 705, 83, (byte)1 },
-                    { 739, 85, (byte)1 },
-                    { 740, 85, (byte)1 },
-                    { 741, 85, (byte)1 },
-                    { 742, 85, (byte)1 },
-                    { 743, 86, (byte)1 },
+                    { 706, 83, (byte)1 },
+                    { 707, 83, (byte)1 },
+                    { 709, 83, (byte)1 },
+                    { 710, 83, (byte)1 },
+                    { 711, 83, (byte)1 },
+                    { 712, 83, (byte)1 },
+                    { 713, 83, (byte)1 },
+                    { 714, 83, (byte)1 },
+                    { 716, 84, (byte)1 },
+                    { 698, 82, (byte)1 },
+                    { 782, 89, (byte)1 },
                     { 744, 86, (byte)1 },
+                    { 774, 88, (byte)1 },
+                    { 775, 88, (byte)1 },
+                    { 776, 88, (byte)1 },
+                    { 777, 89, (byte)1 },
+                    { 778, 89, (byte)1 },
+                    { 779, 89, (byte)1 },
+                    { 780, 89, (byte)1 },
+                    { 781, 89, (byte)1 },
+                    { 783, 89, (byte)1 },
+                    { 784, 89, (byte)1 },
+                    { 785, 89, (byte)1 },
+                    { 773, 88, (byte)1 },
+                    { 786, 89, (byte)1 },
+                    { 788, 89, (byte)1 },
+                    { 789, 89, (byte)1 },
+                    { 790, 89, (byte)1 },
+                    { 791, 89, (byte)1 },
+                    { 792, 89, (byte)1 },
+                    { 793, 89, (byte)1 },
+                    { 794, 89, (byte)1 },
+                    { 795, 89, (byte)1 },
+                    { 796, 89, (byte)1 },
+                    { 688, 81, (byte)1 },
+                    { 797, 89, (byte)1 },
+                    { 787, 89, (byte)1 },
+                    { 772, 88, (byte)1 },
+                    { 771, 88, (byte)1 },
+                    { 770, 88, (byte)1 },
                     { 745, 86, (byte)1 },
                     { 746, 86, (byte)1 },
                     { 747, 86, (byte)1 },
@@ -21694,8 +23526,8 @@ namespace WarhammerProfessionApp.Migrations
                     { 749, 86, (byte)1 },
                     { 750, 86, (byte)1 },
                     { 751, 86, (byte)1 },
-                    { 738, 85, (byte)1 },
                     { 752, 86, (byte)1 },
+                    { 753, 87, (byte)1 },
                     { 754, 87, (byte)1 },
                     { 755, 87, (byte)1 },
                     { 756, 87, (byte)1 },
@@ -21706,115 +23538,29 @@ namespace WarhammerProfessionApp.Migrations
                     { 761, 87, (byte)1 },
                     { 762, 87, (byte)1 },
                     { 763, 87, (byte)1 },
-                    { 642, 78, (byte)1 },
                     { 764, 87, (byte)1 },
                     { 765, 87, (byte)1 },
-                    { 753, 87, (byte)1 },
-                    { 704, 83, (byte)1 },
-                    { 737, 85, (byte)1 },
-                    { 734, 85, (byte)1 },
-                    { 706, 83, (byte)1 },
-                    { 707, 83, (byte)1 },
-                    { 708, 83, (byte)1 },
-                    { 709, 83, (byte)1 },
-                    { 710, 83, (byte)1 },
-                    { 711, 83, (byte)1 },
-                    { 712, 83, (byte)1 },
-                    { 713, 83, (byte)1 },
-                    { 714, 83, (byte)1 },
-                    { 715, 83, (byte)1 },
-                    { 716, 84, (byte)1 },
-                    { 717, 84, (byte)1 },
-                    { 718, 84, (byte)1 },
-                    { 735, 85, (byte)1 },
-                    { 719, 84, (byte)1 },
-                    { 721, 84, (byte)1 },
-                    { 722, 84, (byte)1 },
-                    { 723, 84, (byte)1 },
-                    { 724, 84, (byte)1 },
-                    { 725, 84, (byte)1 },
-                    { 726, 84, (byte)1 },
-                    { 727, 84, (byte)1 },
-                    { 728, 84, (byte)1 },
-                    { 729, 85, (byte)1 },
-                    { 730, 85, (byte)1 },
-                    { 731, 85, (byte)1 },
-                    { 732, 85, (byte)1 },
-                    { 733, 85, (byte)1 },
-                    { 720, 84, (byte)1 },
-                    { 641, 78, (byte)1 },
-                    { 571, 72, (byte)1 },
-                    { 639, 77, (byte)1 },
-                    { 545, 70, (byte)1 },
-                    { 546, 70, (byte)1 },
-                    { 547, 70, (byte)1 },
-                    { 548, 70, (byte)1 },
-                    { 549, 70, (byte)1 },
-                    { 550, 70, (byte)1 },
-                    { 551, 70, (byte)1 },
-                    { 552, 70, (byte)1 },
-                    { 553, 70, (byte)1 },
-                    { 554, 70, (byte)1 },
-                    { 555, 70, (byte)1 },
-                    { 556, 71, (byte)1 },
-                    { 557, 71, (byte)1 },
-                    { 544, 70, (byte)1 },
-                    { 558, 71, (byte)1 },
-                    { 560, 71, (byte)1 },
-                    { 561, 71, (byte)1 },
-                    { 562, 71, (byte)1 },
-                    { 563, 71, (byte)1 },
-                    { 564, 71, (byte)1 },
-                    { 565, 71, (byte)1 },
-                    { 566, 71, (byte)1 },
-                    { 567, 72, (byte)1 },
-                    { 568, 72, (byte)1 },
-                    { 569, 72, (byte)1 },
-                    { 570, 72, (byte)1 },
-                    { 572, 72, (byte)1 },
-                    { 573, 72, (byte)1 },
-                    { 559, 71, (byte)1 },
-                    { 574, 72, (byte)1 },
-                    { 543, 70, (byte)1 },
-                    { 541, 69, (byte)1 },
-                    { 514, 67, (byte)1 },
                     { 766, 87, (byte)1 },
-                    { 515, 67, (byte)1 },
-                    { 516, 67, (byte)1 },
-                    { 517, 67, (byte)1 },
-                    { 518, 67, (byte)1 },
-                    { 519, 67, (byte)1 },
-                    { 520, 67, (byte)1 },
-                    { 521, 67, (byte)1 },
-                    { 522, 67, (byte)1 },
-                    { 523, 67, (byte)1 },
-                    { 524, 67, (byte)1 },
-                    { 525, 67, (byte)1 },
-                    { 542, 70, (byte)1 },
-                    { 526, 68, (byte)1 },
-                    { 528, 68, (byte)1 },
-                    { 529, 68, (byte)1 },
-                    { 530, 68, (byte)1 },
-                    { 531, 68, (byte)1 },
-                    { 532, 68, (byte)1 },
-                    { 533, 68, (byte)1 },
-                    { 534, 68, (byte)1 },
-                    { 535, 68, (byte)1 },
-                    { 536, 68, (byte)1 },
-                    { 537, 68, (byte)1 },
-                    { 538, 69, (byte)1 },
-                    { 539, 69, (byte)1 },
-                    { 540, 69, (byte)1 },
-                    { 527, 68, (byte)1 },
-                    { 575, 73, (byte)1 },
-                    { 576, 73, (byte)1 },
-                    { 577, 73, (byte)1 },
+                    { 767, 87, (byte)1 },
+                    { 768, 88, (byte)1 },
+                    { 769, 88, (byte)1 },
+                    { 743, 86, (byte)1 },
+                    { 687, 81, (byte)1 },
+                    { 603, 74, (byte)1 },
+                    { 685, 81, (byte)1 },
+                    { 604, 75, (byte)1 },
+                    { 605, 75, (byte)1 },
+                    { 606, 75, (byte)1 },
+                    { 607, 75, (byte)1 },
+                    { 608, 75, (byte)1 },
+                    { 609, 75, (byte)1 },
+                    { 610, 75, (byte)1 },
                     { 611, 75, (byte)1 },
                     { 612, 75, (byte)1 },
                     { 613, 75, (byte)1 },
                     { 614, 75, (byte)1 },
+                    { 602, 74, (byte)1 },
                     { 615, 76, (byte)1 },
-                    { 616, 76, (byte)1 },
                     { 617, 76, (byte)1 },
                     { 618, 76, (byte)1 },
                     { 619, 76, (byte)1 },
@@ -21822,25 +23568,17 @@ namespace WarhammerProfessionApp.Migrations
                     { 621, 76, (byte)1 },
                     { 622, 76, (byte)1 },
                     { 623, 76, (byte)1 },
-                    { 610, 75, (byte)1 },
                     { 624, 76, (byte)1 },
+                    { 625, 76, (byte)1 },
                     { 626, 76, (byte)1 },
                     { 627, 77, (byte)1 },
+                    { 616, 76, (byte)1 },
                     { 628, 77, (byte)1 },
-                    { 629, 77, (byte)1 },
-                    { 630, 77, (byte)1 },
-                    { 631, 77, (byte)1 },
-                    { 632, 77, (byte)1 },
-                    { 633, 77, (byte)1 },
-                    { 634, 77, (byte)1 },
-                    { 635, 77, (byte)1 },
-                    { 636, 77, (byte)1 },
-                    { 637, 77, (byte)1 },
-                    { 638, 77, (byte)1 },
-                    { 625, 76, (byte)1 },
-                    { 609, 75, (byte)1 },
-                    { 608, 75, (byte)1 },
-                    { 607, 75, (byte)1 },
+                    { 601, 74, (byte)1 },
+                    { 599, 74, (byte)1 },
+                    { 798, 90, (byte)1 },
+                    { 576, 73, (byte)1 },
+                    { 577, 73, (byte)1 },
                     { 578, 73, (byte)1 },
                     { 579, 73, (byte)1 },
                     { 580, 73, (byte)1 },
@@ -21849,8 +23587,8 @@ namespace WarhammerProfessionApp.Migrations
                     { 583, 73, (byte)1 },
                     { 584, 73, (byte)1 },
                     { 585, 73, (byte)1 },
+                    { 600, 74, (byte)1 },
                     { 586, 73, (byte)1 },
-                    { 587, 73, (byte)1 },
                     { 588, 73, (byte)1 },
                     { 589, 74, (byte)1 },
                     { 590, 74, (byte)1 },
@@ -21862,33 +23600,69 @@ namespace WarhammerProfessionApp.Migrations
                     { 596, 74, (byte)1 },
                     { 597, 74, (byte)1 },
                     { 598, 74, (byte)1 },
-                    { 599, 74, (byte)1 },
-                    { 600, 74, (byte)1 },
-                    { 601, 74, (byte)1 },
-                    { 602, 74, (byte)1 },
-                    { 603, 74, (byte)1 },
-                    { 604, 75, (byte)1 },
-                    { 605, 75, (byte)1 },
-                    { 606, 75, (byte)1 },
+                    { 587, 73, (byte)1 },
+                    { 629, 77, (byte)1 },
+                    { 630, 77, (byte)1 },
+                    { 631, 77, (byte)1 },
+                    { 661, 79, (byte)1 },
+                    { 662, 79, (byte)1 },
+                    { 663, 79, (byte)1 },
+                    { 664, 79, (byte)1 },
+                    { 665, 79, (byte)1 },
+                    { 666, 80, (byte)1 },
+                    { 667, 80, (byte)1 },
+                    { 668, 80, (byte)1 },
+                    { 669, 80, (byte)1 },
+                    { 670, 80, (byte)1 },
+                    { 671, 80, (byte)1 },
+                    { 660, 79, (byte)1 },
+                    { 672, 80, (byte)1 },
+                    { 674, 80, (byte)1 },
+                    { 675, 80, (byte)1 },
+                    { 676, 80, (byte)1 },
+                    { 677, 81, (byte)1 },
+                    { 678, 81, (byte)1 },
+                    { 679, 81, (byte)1 },
+                    { 680, 81, (byte)1 },
+                    { 681, 81, (byte)1 },
+                    { 682, 81, (byte)1 },
+                    { 683, 81, (byte)1 },
+                    { 684, 81, (byte)1 },
+                    { 673, 80, (byte)1 },
+                    { 659, 79, (byte)1 },
+                    { 658, 79, (byte)1 },
+                    { 657, 79, (byte)1 },
+                    { 632, 77, (byte)1 },
+                    { 633, 77, (byte)1 },
+                    { 634, 77, (byte)1 },
+                    { 635, 77, (byte)1 },
+                    { 636, 77, (byte)1 },
+                    { 637, 77, (byte)1 },
+                    { 638, 77, (byte)1 },
+                    { 639, 77, (byte)1 },
                     { 640, 78, (byte)1 },
-                    { 767, 87, (byte)1 },
-                    { 908, 102, (byte)1 },
-                    { 769, 88, (byte)1 },
-                    { 931, 104, (byte)1 },
-                    { 932, 104, (byte)1 },
-                    { 933, 104, (byte)1 },
-                    { 934, 104, (byte)1 },
-                    { 935, 104, (byte)1 },
-                    { 936, 105, (byte)1 },
-                    { 937, 105, (byte)1 },
-                    { 938, 105, (byte)1 },
-                    { 939, 105, (byte)1 },
-                    { 940, 105, (byte)1 },
-                    { 941, 105, (byte)1 },
-                    { 942, 105, (byte)1 },
-                    { 943, 105, (byte)1 },
-                    { 930, 104, (byte)1 },
+                    { 641, 78, (byte)1 },
+                    { 642, 78, (byte)1 },
+                    { 643, 78, (byte)1 },
+                    { 644, 78, (byte)1 },
+                    { 645, 78, (byte)1 },
+                    { 646, 78, (byte)1 },
+                    { 647, 78, (byte)1 },
+                    { 648, 78, (byte)1 },
+                    { 649, 78, (byte)1 },
+                    { 650, 78, (byte)1 },
+                    { 651, 78, (byte)1 },
+                    { 652, 78, (byte)1 },
+                    { 653, 79, (byte)1 },
+                    { 654, 79, (byte)1 },
+                    { 655, 79, (byte)1 },
+                    { 656, 79, (byte)1 },
+                    { 686, 81, (byte)1 },
+                    { 799, 90, (byte)1 },
+                    { 971, 108, (byte)1 },
+                    { 801, 90, (byte)1 },
                     { 944, 106, (byte)1 },
+                    { 945, 106, (byte)1 },
                     { 946, 106, (byte)1 },
                     { 947, 106, (byte)1 },
                     { 948, 106, (byte)1 },
@@ -21898,66 +23672,71 @@ namespace WarhammerProfessionApp.Migrations
                     { 952, 106, (byte)1 },
                     { 953, 106, (byte)1 },
                     { 954, 106, (byte)1 },
+                    { 943, 105, (byte)1 },
                     { 955, 106, (byte)1 },
-                    { 956, 106, (byte)1 },
                     { 957, 107, (byte)1 },
                     { 958, 107, (byte)1 },
-                    { 945, 106, (byte)1 },
                     { 959, 107, (byte)1 },
-                    { 929, 104, (byte)1 },
-                    { 927, 104, (byte)1 },
-                    { 899, 102, (byte)1 },
-                    { 900, 102, (byte)1 },
-                    { 901, 102, (byte)1 },
-                    { 902, 102, (byte)1 },
-                    { 903, 102, (byte)1 },
-                    { 904, 102, (byte)1 },
-                    { 905, 102, (byte)1 },
-                    { 906, 102, (byte)1 },
-                    { 907, 102, (byte)1 },
-                    { 513, 67, (byte)1 },
-                    { 909, 102, (byte)1 },
-                    { 910, 103, (byte)1 },
-                    { 911, 103, (byte)1 },
-                    { 928, 104, (byte)1 },
-                    { 912, 103, (byte)1 },
-                    { 914, 103, (byte)1 },
-                    { 915, 103, (byte)1 },
+                    { 960, 107, (byte)1 },
+                    { 961, 107, (byte)1 },
+                    { 962, 107, (byte)1 },
+                    { 963, 107, (byte)1 },
+                    { 964, 107, (byte)1 },
+                    { 965, 107, (byte)1 },
+                    { 966, 107, (byte)1 },
+                    { 967, 107, (byte)1 },
+                    { 956, 106, (byte)1 },
+                    { 968, 108, (byte)1 },
+                    { 942, 105, (byte)1 },
+                    { 940, 105, (byte)1 },
                     { 916, 103, (byte)1 },
                     { 917, 103, (byte)1 },
                     { 918, 103, (byte)1 },
                     { 919, 103, (byte)1 },
                     { 920, 103, (byte)1 },
                     { 921, 103, (byte)1 },
-                    { 922, 103, (byte)1 },
+                    { 922, 103, (byte)1 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "ProfessionSkills",
+                columns: new[] { "Id", "ProfessionId", "Quantity" },
+                values: new object[,]
+                {
                     { 923, 104, (byte)1 },
                     { 924, 104, (byte)1 },
                     { 925, 104, (byte)1 },
                     { 926, 104, (byte)1 },
-                    { 913, 103, (byte)1 },
-                    { 898, 102, (byte)1 },
-                    { 960, 107, (byte)1 },
-                    { 962, 107, (byte)1 },
-                    { 995, 111, (byte)1 },
-                    { 996, 111, (byte)1 },
-                    { 997, 111, (byte)1 },
-                    { 998, 111, (byte)1 },
-                    { 999, 111, (byte)1 },
-                    { 1000, 111, (byte)1 },
-                    { 1001, 111, (byte)1 },
+                    { 941, 105, (byte)1 },
+                    { 927, 104, (byte)1 },
+                    { 929, 104, (byte)1 },
+                    { 930, 104, (byte)1 },
+                    { 931, 104, (byte)1 },
+                    { 932, 104, (byte)1 },
+                    { 933, 104, (byte)1 },
+                    { 934, 104, (byte)1 },
+                    { 935, 104, (byte)1 },
+                    { 936, 105, (byte)1 },
+                    { 937, 105, (byte)1 },
+                    { 938, 105, (byte)1 },
+                    { 939, 105, (byte)1 },
+                    { 928, 104, (byte)1 },
+                    { 969, 108, (byte)1 },
+                    { 970, 108, (byte)1 },
+                    { 972, 108, (byte)1 },
                     { 1002, 111, (byte)1 },
                     { 1003, 112, (byte)1 },
                     { 1004, 112, (byte)1 },
                     { 1005, 112, (byte)1 },
                     { 1006, 112, (byte)1 },
                     { 1007, 112, (byte)1 },
-                    { 994, 111, (byte)1 },
                     { 1008, 112, (byte)1 },
+                    { 1009, 112, (byte)1 },
                     { 1010, 113, (byte)1 },
                     { 1011, 113, (byte)1 },
                     { 1012, 113, (byte)1 },
+                    { 1001, 111, (byte)1 },
                     { 1013, 113, (byte)1 },
-                    { 1014, 113, (byte)1 },
                     { 1015, 113, (byte)1 },
                     { 1016, 113, (byte)1 },
                     { 1017, 113, (byte)1 },
@@ -21966,25 +23745,18 @@ namespace WarhammerProfessionApp.Migrations
                     { 1020, 113, (byte)1 },
                     { 1021, 113, (byte)1 },
                     { 1022, 113, (byte)1 },
-                    { 1009, 112, (byte)1 },
-                    { 961, 107, (byte)1 },
-                    { 993, 111, (byte)1 },
-                    { 991, 110, (byte)1 },
-                    { 963, 107, (byte)1 },
-                    { 964, 107, (byte)1 },
-                    { 965, 107, (byte)1 },
-                    { 966, 107, (byte)1 },
-                    { 967, 107, (byte)1 },
-                    { 968, 108, (byte)1 },
-                    { 969, 108, (byte)1 },
-                    { 970, 108, (byte)1 },
-                    { 971, 108, (byte)1 },
-                    { 972, 108, (byte)1 },
+                    { 1023, 113, (byte)1 },
+                    { 1024, 113, (byte)1 },
+                    { 575, 73, (byte)1 },
+                    { 1014, 113, (byte)1 },
+                    { 1000, 111, (byte)1 },
+                    { 999, 111, (byte)1 },
+                    { 998, 111, (byte)1 },
                     { 973, 108, (byte)1 },
                     { 974, 108, (byte)1 },
                     { 975, 108, (byte)1 },
-                    { 992, 110, (byte)1 },
                     { 976, 108, (byte)1 },
+                    { 977, 108, (byte)1 },
                     { 978, 108, (byte)1 },
                     { 979, 108, (byte)1 },
                     { 980, 108, (byte)1 },
@@ -21998,10 +23770,45 @@ namespace WarhammerProfessionApp.Migrations
                     { 988, 110, (byte)1 },
                     { 989, 110, (byte)1 },
                     { 990, 110, (byte)1 },
-                    { 977, 108, (byte)1 },
-                    { 897, 102, (byte)1 },
-                    { 896, 102, (byte)1 },
-                    { 895, 102, (byte)1 },
+                    { 991, 110, (byte)1 },
+                    { 992, 110, (byte)1 },
+                    { 993, 111, (byte)1 },
+                    { 994, 111, (byte)1 },
+                    { 995, 111, (byte)1 },
+                    { 996, 111, (byte)1 },
+                    { 997, 111, (byte)1 },
+                    { 915, 103, (byte)1 },
+                    { 914, 103, (byte)1 },
+                    { 913, 103, (byte)1 },
+                    { 912, 103, (byte)1 },
+                    { 831, 94, (byte)1 },
+                    { 832, 94, (byte)1 },
+                    { 833, 94, (byte)1 },
+                    { 834, 94, (byte)1 },
+                    { 835, 94, (byte)1 },
+                    { 836, 94, (byte)1 },
+                    { 837, 95, (byte)1 },
+                    { 838, 95, (byte)1 },
+                    { 839, 95, (byte)1 },
+                    { 840, 95, (byte)1 },
+                    { 841, 95, (byte)1 },
+                    { 830, 94, (byte)1 },
+                    { 842, 95, (byte)1 },
+                    { 844, 95, (byte)1 },
+                    { 845, 96, (byte)1 },
+                    { 846, 96, (byte)1 },
+                    { 847, 96, (byte)1 },
+                    { 848, 96, (byte)1 },
+                    { 849, 96, (byte)1 },
+                    { 850, 96, (byte)1 },
+                    { 851, 96, (byte)1 },
+                    { 852, 96, (byte)1 },
+                    { 853, 97, (byte)1 },
+                    { 854, 97, (byte)1 },
+                    { 843, 95, (byte)1 },
+                    { 829, 94, (byte)1 },
+                    { 828, 94, (byte)1 },
+                    { 827, 93, (byte)1 },
                     { 802, 90, (byte)1 },
                     { 803, 90, (byte)1 },
                     { 804, 90, (byte)1 },
@@ -22015,8 +23822,8 @@ namespace WarhammerProfessionApp.Migrations
                     { 812, 91, (byte)1 },
                     { 813, 91, (byte)1 },
                     { 814, 91, (byte)1 },
-                    { 801, 90, (byte)1 },
                     { 815, 92, (byte)1 },
+                    { 816, 92, (byte)1 },
                     { 817, 92, (byte)1 },
                     { 818, 92, (byte)1 },
                     { 819, 92, (byte)1 },
@@ -22027,52 +23834,46 @@ namespace WarhammerProfessionApp.Migrations
                     { 824, 93, (byte)1 },
                     { 825, 93, (byte)1 },
                     { 826, 93, (byte)1 },
-                    { 827, 93, (byte)1 },
-                    { 828, 94, (byte)1 },
-                    { 829, 94, (byte)1 },
-                    { 816, 92, (byte)1 },
-                    { 830, 94, (byte)1 },
+                    { 855, 97, (byte)1 },
                     { 800, 90, (byte)1 },
-                    { 798, 90, (byte)1 },
-                    { 770, 88, (byte)1 },
-                    { 771, 88, (byte)1 },
-                    { 772, 88, (byte)1 },
-                    { 773, 88, (byte)1 },
-                    { 774, 88, (byte)1 },
-                    { 775, 88, (byte)1 },
-                    { 776, 88, (byte)1 },
-                    { 777, 89, (byte)1 },
-                    { 778, 89, (byte)1 },
-                    { 779, 89, (byte)1 },
-                    { 780, 89, (byte)1 },
-                    { 781, 89, (byte)1 },
-                    { 782, 89, (byte)1 },
-                    { 799, 90, (byte)1 },
-                    { 783, 89, (byte)1 }
-                });
-
-            migrationBuilder.InsertData(
-                table: "ProfessionSkills",
-                columns: new[] { "Id", "ProfessionId", "Quantity" },
-                values: new object[,]
-                {
-                    { 785, 89, (byte)1 },
-                    { 786, 89, (byte)1 },
-                    { 787, 89, (byte)1 },
-                    { 788, 89, (byte)1 },
-                    { 789, 89, (byte)1 },
-                    { 790, 89, (byte)1 },
-                    { 791, 89, (byte)1 },
-                    { 792, 89, (byte)1 },
-                    { 793, 89, (byte)1 },
-                    { 794, 89, (byte)1 },
-                    { 795, 89, (byte)1 },
-                    { 796, 89, (byte)1 },
-                    { 797, 89, (byte)1 },
-                    { 784, 89, (byte)1 },
-                    { 831, 94, (byte)1 },
-                    { 832, 94, (byte)1 },
-                    { 833, 94, (byte)1 },
+                    { 856, 97, (byte)1 },
+                    { 858, 97, (byte)1 },
+                    { 888, 101, (byte)1 },
+                    { 889, 101, (byte)1 },
+                    { 890, 101, (byte)1 },
+                    { 891, 101, (byte)1 },
+                    { 892, 101, (byte)1 },
+                    { 893, 101, (byte)1 },
+                    { 894, 102, (byte)1 },
+                    { 895, 102, (byte)1 },
+                    { 896, 102, (byte)1 },
+                    { 897, 102, (byte)1 },
+                    { 898, 102, (byte)1 },
+                    { 887, 101, (byte)1 },
+                    { 899, 102, (byte)1 },
+                    { 901, 102, (byte)1 },
+                    { 902, 102, (byte)1 },
+                    { 903, 102, (byte)1 },
+                    { 904, 102, (byte)1 },
+                    { 905, 102, (byte)1 },
+                    { 906, 102, (byte)1 },
+                    { 907, 102, (byte)1 },
+                    { 908, 102, (byte)1 },
+                    { 909, 102, (byte)1 },
+                    { 910, 103, (byte)1 },
+                    { 911, 103, (byte)1 },
+                    { 900, 102, (byte)1 },
+                    { 886, 101, (byte)1 },
+                    { 885, 101, (byte)1 },
+                    { 884, 101, (byte)1 },
+                    { 859, 97, (byte)1 },
+                    { 860, 97, (byte)1 },
+                    { 861, 97, (byte)1 },
+                    { 862, 97, (byte)1 },
+                    { 863, 97, (byte)1 },
+                    { 864, 98, (byte)1 },
+                    { 865, 98, (byte)1 },
+                    { 866, 98, (byte)1 },
                     { 867, 98, (byte)1 },
                     { 868, 98, (byte)1 },
                     { 869, 98, (byte)1 },
@@ -22086,154 +23887,24 @@ namespace WarhammerProfessionApp.Migrations
                     { 877, 99, (byte)1 },
                     { 878, 99, (byte)1 },
                     { 879, 100, (byte)1 },
-                    { 866, 98, (byte)1 },
                     { 880, 100, (byte)1 },
+                    { 881, 101, (byte)1 },
                     { 882, 101, (byte)1 },
                     { 883, 101, (byte)1 },
-                    { 884, 101, (byte)1 },
-                    { 885, 101, (byte)1 },
-                    { 886, 101, (byte)1 },
-                    { 887, 101, (byte)1 },
-                    { 888, 101, (byte)1 },
-                    { 889, 101, (byte)1 },
-                    { 890, 101, (byte)1 },
-                    { 891, 101, (byte)1 },
-                    { 892, 101, (byte)1 },
-                    { 893, 101, (byte)1 },
-                    { 894, 102, (byte)1 },
-                    { 881, 101, (byte)1 },
-                    { 865, 98, (byte)1 },
-                    { 864, 98, (byte)1 },
-                    { 863, 97, (byte)1 },
-                    { 834, 94, (byte)1 },
-                    { 835, 94, (byte)1 },
-                    { 836, 94, (byte)1 },
-                    { 837, 95, (byte)1 },
-                    { 838, 95, (byte)1 },
-                    { 839, 95, (byte)1 },
-                    { 840, 95, (byte)1 },
-                    { 841, 95, (byte)1 },
-                    { 842, 95, (byte)1 },
-                    { 843, 95, (byte)1 },
-                    { 844, 95, (byte)1 },
-                    { 845, 96, (byte)1 },
-                    { 846, 96, (byte)1 },
-                    { 847, 96, (byte)1 },
-                    { 848, 96, (byte)1 },
-                    { 849, 96, (byte)1 },
-                    { 850, 96, (byte)1 },
-                    { 851, 96, (byte)1 },
-                    { 852, 96, (byte)1 },
-                    { 853, 97, (byte)1 },
-                    { 854, 97, (byte)1 },
-                    { 855, 97, (byte)1 },
-                    { 856, 97, (byte)1 },
                     { 857, 97, (byte)1 },
-                    { 858, 97, (byte)1 },
-                    { 859, 97, (byte)1 },
-                    { 860, 97, (byte)1 },
-                    { 861, 97, (byte)1 },
-                    { 862, 97, (byte)1 },
-                    { 768, 88, (byte)1 },
-                    { 512, 66, (byte)1 },
-                    { 371, 50, (byte)1 },
-                    { 510, 66, (byte)1 },
-                    { 160, 22, (byte)1 },
-                    { 161, 22, (byte)1 },
-                    { 162, 22, (byte)1 },
-                    { 163, 22, (byte)1 },
-                    { 164, 22, (byte)1 },
-                    { 165, 23, (byte)1 },
-                    { 166, 23, (byte)1 },
-                    { 167, 23, (byte)1 },
-                    { 168, 23, (byte)1 },
-                    { 169, 23, (byte)1 },
-                    { 170, 23, (byte)1 },
-                    { 171, 23, (byte)1 },
-                    { 172, 23, (byte)1 },
-                    { 159, 22, (byte)1 },
-                    { 173, 24, (byte)1 },
-                    { 175, 24, (byte)1 },
-                    { 176, 24, (byte)1 },
-                    { 177, 24, (byte)1 },
-                    { 178, 24, (byte)1 },
-                    { 179, 24, (byte)1 },
-                    { 180, 24, (byte)1 },
-                    { 181, 25, (byte)1 },
+                    { 574, 72, (byte)1 },
+                    { 62, 8, (byte)1 },
+                    { 572, 72, (byte)1 },
                     { 182, 25, (byte)1 },
                     { 183, 25, (byte)1 },
                     { 184, 25, (byte)1 },
                     { 185, 26, (byte)1 },
                     { 186, 26, (byte)1 },
                     { 187, 26, (byte)1 },
-                    { 174, 24, (byte)1 },
                     { 188, 26, (byte)1 },
-                    { 158, 22, (byte)1 },
-                    { 156, 21, (byte)1 },
-                    { 128, 18, (byte)1 },
-                    { 129, 18, (byte)1 },
-                    { 130, 18, (byte)1 },
-                    { 131, 18, (byte)1 },
-                    { 132, 18, (byte)1 },
-                    { 133, 18, (byte)1 },
-                    { 134, 18, (byte)1 },
-                    { 135, 19, (byte)1 },
-                    { 136, 19, (byte)1 },
-                    { 137, 19, (byte)1 },
-                    { 138, 19, (byte)1 },
-                    { 139, 19, (byte)1 },
-                    { 140, 19, (byte)1 },
-                    { 157, 21, (byte)1 },
-                    { 141, 19, (byte)1 },
-                    { 143, 20, (byte)1 },
-                    { 144, 20, (byte)1 },
-                    { 145, 20, (byte)1 },
-                    { 146, 20, (byte)1 },
-                    { 147, 20, (byte)1 },
-                    { 148, 20, (byte)1 },
-                    { 149, 21, (byte)1 },
-                    { 150, 21, (byte)1 },
-                    { 151, 21, (byte)1 },
-                    { 152, 21, (byte)1 },
-                    { 153, 21, (byte)1 },
-                    { 154, 21, (byte)1 },
-                    { 155, 21, (byte)1 },
-                    { 142, 20, (byte)1 },
-                    { 127, 17, (byte)1 },
                     { 189, 26, (byte)1 },
-                    { 191, 27, (byte)1 },
-                    { 224, 31, (byte)1 },
-                    { 225, 31, (byte)1 },
-                    { 226, 31, (byte)1 },
-                    { 227, 31, (byte)1 },
-                    { 228, 31, (byte)1 },
-                    { 229, 31, (byte)1 },
-                    { 230, 31, (byte)1 },
-                    { 231, 31, (byte)1 },
-                    { 232, 32, (byte)1 },
-                    { 233, 32, (byte)1 },
-                    { 234, 32, (byte)1 },
-                    { 235, 32, (byte)1 },
-                    { 236, 32, (byte)1 },
-                    { 223, 31, (byte)1 },
-                    { 237, 32, (byte)1 },
-                    { 239, 32, (byte)1 },
-                    { 240, 33, (byte)1 },
-                    { 241, 33, (byte)1 },
-                    { 242, 33, (byte)1 },
-                    { 243, 33, (byte)1 },
-                    { 244, 33, (byte)1 },
-                    { 245, 33, (byte)1 },
-                    { 246, 33, (byte)1 },
-                    { 247, 33, (byte)1 },
-                    { 248, 34, (byte)1 },
-                    { 249, 34, (byte)1 },
-                    { 250, 34, (byte)1 },
-                    { 251, 34, (byte)1 },
-                    { 238, 32, (byte)1 },
                     { 190, 27, (byte)1 },
-                    { 222, 31, (byte)1 },
-                    { 220, 30, (byte)1 },
+                    { 191, 27, (byte)1 },
                     { 192, 27, (byte)1 },
                     { 193, 27, (byte)1 },
                     { 194, 27, (byte)1 },
@@ -22241,37 +23912,132 @@ namespace WarhammerProfessionApp.Migrations
                     { 196, 27, (byte)1 },
                     { 197, 27, (byte)1 },
                     { 198, 28, (byte)1 },
-                    { 199, 28, (byte)1 },
-                    { 200, 28, (byte)1 },
-                    { 201, 28, (byte)1 },
-                    { 202, 28, (byte)1 },
-                    { 203, 28, (byte)1 },
-                    { 204, 28, (byte)1 },
-                    { 221, 30, (byte)1 },
-                    { 205, 28, (byte)1 },
-                    { 207, 29, (byte)1 },
-                    { 208, 29, (byte)1 },
-                    { 209, 29, (byte)1 },
-                    { 210, 29, (byte)1 },
-                    { 211, 29, (byte)1 },
                     { 212, 29, (byte)1 },
+                    { 211, 29, (byte)1 },
+                    { 210, 29, (byte)1 },
+                    { 209, 29, (byte)1 },
+                    { 208, 29, (byte)1 },
+                    { 207, 29, (byte)1 },
+                    { 181, 25, (byte)1 },
+                    { 206, 29, (byte)1 },
+                    { 204, 28, (byte)1 },
+                    { 203, 28, (byte)1 },
+                    { 202, 28, (byte)1 },
+                    { 201, 28, (byte)1 },
+                    { 200, 28, (byte)1 },
+                    { 199, 28, (byte)1 },
+                    { 205, 28, (byte)1 },
+                    { 180, 24, (byte)1 },
+                    { 179, 24, (byte)1 },
+                    { 178, 24, (byte)1 },
+                    { 159, 22, (byte)1 },
+                    { 158, 22, (byte)1 },
+                    { 157, 21, (byte)1 },
+                    { 156, 21, (byte)1 },
+                    { 155, 21, (byte)1 },
+                    { 154, 21, (byte)1 },
+                    { 160, 22, (byte)1 },
+                    { 153, 21, (byte)1 },
+                    { 151, 21, (byte)1 },
+                    { 150, 21, (byte)1 },
+                    { 149, 21, (byte)1 },
+                    { 148, 20, (byte)1 },
+                    { 147, 20, (byte)1 },
+                    { 146, 20, (byte)1 },
+                    { 152, 21, (byte)1 },
                     { 213, 30, (byte)1 },
+                    { 161, 22, (byte)1 },
+                    { 163, 22, (byte)1 },
+                    { 177, 24, (byte)1 },
+                    { 176, 24, (byte)1 },
+                    { 175, 24, (byte)1 },
+                    { 174, 24, (byte)1 },
+                    { 173, 24, (byte)1 },
+                    { 172, 23, (byte)1 },
+                    { 162, 22, (byte)1 },
+                    { 171, 23, (byte)1 },
+                    { 169, 23, (byte)1 },
+                    { 168, 23, (byte)1 },
+                    { 167, 23, (byte)1 },
+                    { 166, 23, (byte)1 },
+                    { 165, 23, (byte)1 },
+                    { 164, 22, (byte)1 },
+                    { 170, 23, (byte)1 },
                     { 214, 30, (byte)1 },
                     { 215, 30, (byte)1 },
                     { 216, 30, (byte)1 },
-                    { 217, 30, (byte)1 },
-                    { 218, 30, (byte)1 },
-                    { 219, 30, (byte)1 },
-                    { 206, 29, (byte)1 },
+                    { 266, 35, (byte)1 },
+                    { 265, 35, (byte)1 },
+                    { 264, 35, (byte)1 },
+                    { 263, 35, (byte)1 },
+                    { 262, 35, (byte)1 },
+                    { 261, 35, (byte)1 },
+                    { 267, 36, (byte)1 },
+                    { 260, 35, (byte)1 },
+                    { 258, 35, (byte)1 },
+                    { 257, 35, (byte)1 },
+                    { 256, 34, (byte)1 },
+                    { 255, 34, (byte)1 },
+                    { 254, 34, (byte)1 },
+                    { 253, 34, (byte)1 },
+                    { 259, 35, (byte)1 },
                     { 252, 34, (byte)1 },
-                    { 126, 17, (byte)1 },
-                    { 124, 17, (byte)1 },
-                    { 32, 4, (byte)1 },
-                    { 33, 5, (byte)1 },
-                    { 34, 5, (byte)1 },
-                    { 35, 5, (byte)1 },
-                    { 36, 5, (byte)1 },
-                    { 37, 5, (byte)1 },
+                    { 268, 36, (byte)1 },
+                    { 270, 36, (byte)1 },
+                    { 284, 38, (byte)1 },
+                    { 283, 38, (byte)1 },
+                    { 282, 38, (byte)1 },
+                    { 281, 38, (byte)1 },
+                    { 280, 38, (byte)1 },
+                    { 573, 72, (byte)1 },
+                    { 269, 36, (byte)1 },
+                    { 278, 37, (byte)1 },
+                    { 276, 37, (byte)1 },
+                    { 275, 37, (byte)1 },
+                    { 274, 36, (byte)1 },
+                    { 273, 36, (byte)1 },
+                    { 272, 36, (byte)1 },
+                    { 271, 36, (byte)1 },
+                    { 277, 37, (byte)1 },
+                    { 145, 20, (byte)1 },
+                    { 251, 34, (byte)1 },
+                    { 249, 34, (byte)1 },
+                    { 230, 31, (byte)1 },
+                    { 229, 31, (byte)1 },
+                    { 228, 31, (byte)1 },
+                    { 227, 31, (byte)1 },
+                    { 226, 31, (byte)1 },
+                    { 225, 31, (byte)1 },
+                    { 231, 31, (byte)1 },
+                    { 224, 31, (byte)1 },
+                    { 222, 31, (byte)1 },
+                    { 221, 30, (byte)1 },
+                    { 220, 30, (byte)1 },
+                    { 219, 30, (byte)1 },
+                    { 218, 30, (byte)1 },
+                    { 217, 30, (byte)1 },
+                    { 223, 31, (byte)1 },
+                    { 250, 34, (byte)1 },
+                    { 232, 32, (byte)1 },
+                    { 234, 32, (byte)1 },
+                    { 248, 34, (byte)1 },
+                    { 247, 33, (byte)1 },
+                    { 246, 33, (byte)1 },
+                    { 245, 33, (byte)1 },
+                    { 244, 33, (byte)1 },
+                    { 243, 33, (byte)1 },
+                    { 233, 32, (byte)1 },
+                    { 242, 33, (byte)1 },
+                    { 240, 33, (byte)1 },
+                    { 239, 32, (byte)1 },
+                    { 238, 32, (byte)1 },
+                    { 237, 32, (byte)1 },
+                    { 236, 32, (byte)1 },
+                    { 235, 32, (byte)1 },
+                    { 241, 33, (byte)1 },
+                    { 285, 38, (byte)1 },
+                    { 144, 20, (byte)1 },
+                    { 142, 20, (byte)1 },
                     { 38, 5, (byte)1 },
                     { 39, 5, (byte)1 },
                     { 40, 5, (byte)1 },
@@ -22279,8 +24045,8 @@ namespace WarhammerProfessionApp.Migrations
                     { 42, 6, (byte)1 },
                     { 43, 6, (byte)1 },
                     { 44, 6, (byte)1 },
-                    { 31, 4, (byte)1 },
                     { 45, 6, (byte)1 },
+                    { 46, 6, (byte)1 },
                     { 47, 6, (byte)1 },
                     { 48, 6, (byte)1 },
                     { 49, 6, (byte)2 },
@@ -22289,111 +24055,379 @@ namespace WarhammerProfessionApp.Migrations
                     { 52, 7, (byte)1 },
                     { 53, 7, (byte)1 },
                     { 54, 7, (byte)1 },
-                    { 55, 7, (byte)1 },
-                    { 56, 7, (byte)1 },
-                    { 57, 7, (byte)1 },
-                    { 58, 8, (byte)1 },
-                    { 59, 8, (byte)1 },
-                    { 46, 6, (byte)1 },
-                    { 60, 8, (byte)1 },
-                    { 30, 4, (byte)1 },
-                    { 28, 4, (byte)1 },
-                    { 1023, 113, (byte)1 },
-                    { 1, 1, (byte)1 },
-                    { 2, 1, (byte)1 },
-                    { 3, 1, (byte)1 },
-                    { 4, 1, (byte)1 },
-                    { 5, 1, (byte)1 },
-                    { 6, 1, (byte)1 },
-                    { 7, 1, (byte)1 },
-                    { 8, 1, (byte)1 },
-                    { 9, 2, (byte)1 },
-                    { 10, 2, (byte)1 },
-                    { 11, 2, (byte)1 },
-                    { 12, 2, (byte)1 },
-                    { 29, 4, (byte)1 },
-                    { 13, 2, (byte)1 },
-                    { 15, 2, (byte)1 },
-                    { 16, 2, (byte)1 },
-                    { 17, 2, (byte)1 },
-                    { 18, 3, (byte)1 },
-                    { 19, 3, (byte)1 },
-                    { 20, 3, (byte)1 },
-                    { 21, 3, (byte)1 },
-                    { 22, 3, (byte)1 },
-                    { 23, 3, (byte)1 },
-                    { 24, 4, (byte)1 },
-                    { 25, 4, (byte)1 },
-                    { 26, 4, (byte)1 },
-                    { 27, 4, (byte)1 },
-                    { 14, 2, (byte)1 },
-                    { 125, 17, (byte)1 },
-                    { 61, 8, (byte)1 },
-                    { 63, 9, (byte)1 },
-                    { 96, 14, (byte)1 },
-                    { 97, 14, (byte)1 },
-                    { 98, 14, (byte)1 },
-                    { 99, 14, (byte)1 },
-                    { 100, 14, (byte)1 },
-                    { 101, 14, (byte)1 },
-                    { 102, 15, (byte)1 },
-                    { 103, 15, (byte)1 },
-                    { 104, 15, (byte)1 },
-                    { 105, 15, (byte)1 },
-                    { 106, 15, (byte)1 },
-                    { 107, 15, (byte)1 },
-                    { 108, 15, (byte)1 },
-                    { 95, 14, (byte)1 },
-                    { 109, 15, (byte)1 },
-                    { 111, 16, (byte)1 },
-                    { 112, 16, (byte)1 },
-                    { 113, 16, (byte)1 },
-                    { 114, 16, (byte)1 },
-                    { 115, 16, (byte)1 },
-                    { 116, 16, (byte)1 },
-                    { 117, 16, (byte)1 },
-                    { 118, 16, (byte)1 },
-                    { 119, 16, (byte)1 },
-                    { 120, 17, (byte)1 },
-                    { 121, 17, (byte)1 },
-                    { 122, 17, (byte)1 },
-                    { 123, 17, (byte)1 },
-                    { 110, 15, (byte)1 },
-                    { 62, 8, (byte)1 },
-                    { 94, 14, (byte)1 },
-                    { 92, 13, (byte)1 },
-                    { 64, 9, (byte)1 },
-                    { 65, 9, (byte)1 },
-                    { 66, 9, (byte)1 },
-                    { 67, 9, (byte)1 },
-                    { 68, 9, (byte)1 },
                     { 69, 9, (byte)1 },
+                    { 68, 9, (byte)1 },
+                    { 67, 9, (byte)1 },
+                    { 66, 9, (byte)1 },
+                    { 65, 9, (byte)1 },
+                    { 64, 9, (byte)1 },
+                    { 37, 5, (byte)1 },
+                    { 63, 9, (byte)1 },
+                    { 60, 8, (byte)1 },
+                    { 59, 8, (byte)1 },
+                    { 58, 8, (byte)1 },
+                    { 57, 7, (byte)1 },
+                    { 56, 7, (byte)1 },
+                    { 55, 7, (byte)1 },
+                    { 61, 8, (byte)1 },
+                    { 36, 5, (byte)1 },
+                    { 35, 5, (byte)1 },
+                    { 34, 5, (byte)1 },
+                    { 15, 2, (byte)1 },
+                    { 14, 2, (byte)1 },
+                    { 13, 2, (byte)1 },
+                    { 12, 2, (byte)1 },
+                    { 11, 2, (byte)1 },
+                    { 10, 2, (byte)1 },
+                    { 16, 2, (byte)1 },
+                    { 9, 2, (byte)1 },
+                    { 7, 1, (byte)1 },
+                    { 6, 1, (byte)1 },
+                    { 5, 1, (byte)1 },
+                    { 4, 1, (byte)1 },
+                    { 3, 1, (byte)1 },
+                    { 2, 1, (byte)1 },
+                    { 8, 1, (byte)1 },
                     { 70, 9, (byte)1 },
+                    { 17, 2, (byte)1 },
+                    { 19, 3, (byte)1 },
+                    { 33, 5, (byte)1 },
+                    { 32, 4, (byte)1 },
+                    { 31, 4, (byte)1 },
+                    { 30, 4, (byte)1 },
+                    { 29, 4, (byte)1 },
+                    { 28, 4, (byte)1 },
+                    { 18, 3, (byte)1 },
+                    { 27, 4, (byte)1 },
+                    { 25, 4, (byte)1 },
+                    { 24, 4, (byte)1 },
+                    { 23, 3, (byte)1 },
+                    { 22, 3, (byte)1 },
+                    { 21, 3, (byte)1 },
+                    { 20, 3, (byte)1 },
+                    { 26, 4, (byte)1 },
                     { 71, 9, (byte)1 },
                     { 72, 10, (byte)1 },
                     { 73, 10, (byte)1 },
-                    { 74, 10, (byte)1 },
-                    { 75, 10, (byte)1 },
-                    { 76, 10, (byte)1 },
-                    { 93, 13, (byte)1 },
-                    { 77, 10, (byte)1 },
-                    { 79, 11, (byte)1 },
-                    { 80, 11, (byte)1 },
-                    { 81, 12, (byte)1 },
-                    { 82, 12, (byte)1 },
-                    { 83, 12, (byte)1 },
-                    { 84, 12, (byte)1 },
-                    { 85, 12, (byte)1 },
-                    { 86, 12, (byte)1 },
+                    { 123, 17, (byte)1 },
+                    { 122, 17, (byte)1 },
+                    { 121, 17, (byte)1 },
+                    { 120, 17, (byte)1 },
+                    { 119, 16, (byte)1 },
+                    { 118, 16, (byte)1 },
+                    { 124, 17, (byte)1 },
+                    { 117, 16, (byte)1 },
+                    { 115, 16, (byte)1 },
+                    { 114, 16, (byte)1 },
+                    { 113, 16, (byte)1 },
+                    { 112, 16, (byte)1 },
+                    { 111, 16, (byte)1 },
+                    { 110, 15, (byte)1 },
+                    { 116, 16, (byte)1 },
+                    { 109, 15, (byte)1 },
+                    { 125, 17, (byte)1 },
+                    { 127, 17, (byte)1 },
+                    { 141, 19, (byte)1 },
+                    { 140, 19, (byte)1 },
+                    { 139, 19, (byte)1 },
+                    { 138, 19, (byte)1 },
+                    { 137, 19, (byte)1 },
+                    { 136, 19, (byte)1 },
+                    { 126, 17, (byte)1 },
+                    { 135, 19, (byte)1 },
+                    { 133, 18, (byte)1 },
+                    { 132, 18, (byte)1 },
+                    { 131, 18, (byte)1 },
+                    { 130, 18, (byte)1 },
+                    { 129, 18, (byte)1 },
+                    { 128, 18, (byte)1 },
+                    { 134, 18, (byte)1 },
+                    { 143, 20, (byte)1 },
+                    { 108, 15, (byte)1 },
+                    { 106, 15, (byte)1 },
                     { 87, 13, (byte)1 },
+                    { 86, 12, (byte)1 },
+                    { 85, 12, (byte)1 },
+                    { 84, 12, (byte)1 },
+                    { 83, 12, (byte)1 },
+                    { 82, 12, (byte)1 },
                     { 88, 13, (byte)1 },
-                    { 89, 13, (byte)1 },
-                    { 90, 13, (byte)1 },
-                    { 91, 13, (byte)1 },
+                    { 81, 12, (byte)1 },
+                    { 79, 11, (byte)1 },
                     { 78, 10, (byte)1 },
-                    { 253, 34, (byte)1 },
-                    { 254, 34, (byte)1 },
-                    { 255, 34, (byte)1 },
+                    { 77, 10, (byte)1 },
+                    { 76, 10, (byte)1 },
+                    { 75, 10, (byte)1 },
+                    { 74, 10, (byte)1 },
+                    { 80, 11, (byte)1 },
+                    { 107, 15, (byte)1 },
+                    { 89, 13, (byte)1 },
+                    { 91, 13, (byte)1 },
+                    { 105, 15, (byte)1 },
+                    { 104, 15, (byte)1 },
+                    { 103, 15, (byte)1 },
+                    { 102, 15, (byte)1 },
+                    { 101, 14, (byte)1 },
+                    { 100, 14, (byte)1 },
+                    { 90, 13, (byte)1 },
+                    { 99, 14, (byte)1 },
+                    { 97, 14, (byte)1 },
+                    { 96, 14, (byte)1 },
+                    { 95, 14, (byte)1 },
+                    { 94, 14, (byte)1 },
+                    { 93, 13, (byte)1 },
+                    { 92, 13, (byte)1 },
+                    { 98, 14, (byte)1 },
+                    { 286, 38, (byte)1 },
+                    { 279, 38, (byte)1 },
+                    { 288, 39, (byte)1 },
+                    { 469, 62, (byte)1 },
+                    { 470, 62, (byte)1 },
+                    { 471, 62, (byte)1 },
+                    { 472, 62, (byte)1 },
+                    { 473, 62, (byte)1 },
+                    { 474, 63, (byte)1 },
+                    { 475, 63, (byte)1 },
+                    { 476, 63, (byte)1 },
+                    { 477, 63, (byte)1 },
+                    { 478, 63, (byte)1 },
+                    { 479, 63, (byte)1 },
+                    { 480, 63, (byte)1 },
+                    { 481, 63, (byte)1 },
+                    { 482, 63, (byte)1 },
+                    { 483, 63, (byte)1 },
+                    { 484, 63, (byte)1 },
+                    { 485, 63, (byte)1 },
+                    { 499, 65, (byte)1 },
+                    { 498, 65, (byte)1 },
+                    { 497, 65, (byte)1 },
+                    { 496, 65, (byte)1 },
+                    { 495, 65, (byte)1 },
+                    { 494, 64, (byte)1 },
+                    { 468, 62, (byte)1 },
+                    { 493, 64, (byte)1 },
+                    { 491, 64, (byte)1 },
+                    { 490, 64, (byte)1 },
+                    { 489, 64, (byte)1 },
+                    { 488, 64, (byte)1 },
+                    { 487, 64, (byte)1 },
+                    { 486, 64, (byte)1 },
+                    { 492, 64, (byte)1 },
+                    { 467, 62, (byte)1 },
+                    { 466, 62, (byte)1 },
+                    { 465, 62, (byte)1 },
+                    { 446, 60, (byte)1 },
+                    { 445, 60, (byte)1 },
+                    { 444, 60, (byte)1 },
+                    { 443, 60, (byte)1 },
+                    { 442, 60, (byte)1 },
+                    { 441, 60, (byte)1 },
+                    { 447, 60, (byte)1 },
+                    { 440, 59, (byte)1 },
+                    { 287, 38, (byte)1 },
+                    { 437, 59, (byte)1 },
+                    { 436, 59, (byte)1 },
+                    { 435, 59, (byte)1 },
+                    { 434, 58, (byte)1 },
+                    { 433, 58, (byte)1 },
+                    { 439, 59, (byte)1 },
+                    { 500, 66, (byte)1 },
+                    { 448, 61, (byte)1 },
+                    { 450, 61, (byte)1 },
+                    { 464, 62, (byte)1 },
+                    { 463, 62, (byte)1 },
+                    { 462, 62, (byte)1 },
+                    { 461, 62, (byte)1 },
+                    { 460, 62, (byte)1 },
+                    { 459, 61, (byte)1 },
+                    { 449, 61, (byte)1 },
+                    { 458, 61, (byte)1 },
+                    { 456, 61, (byte)1 },
+                    { 455, 61, (byte)1 },
+                    { 454, 61, (byte)1 },
+                    { 453, 61, (byte)1 },
+                    { 452, 61, (byte)1 },
+                    { 451, 61, (byte)1 },
+                    { 457, 61, (byte)1 },
+                    { 501, 66, (byte)1 },
+                    { 502, 66, (byte)1 },
+                    { 503, 66, (byte)1 },
+                    { 553, 70, (byte)1 },
+                    { 552, 70, (byte)1 },
+                    { 551, 70, (byte)1 },
+                    { 550, 70, (byte)1 },
+                    { 549, 70, (byte)1 },
+                    { 548, 70, (byte)1 },
+                    { 554, 70, (byte)1 },
+                    { 547, 70, (byte)1 },
+                    { 545, 70, (byte)1 },
+                    { 544, 70, (byte)1 },
+                    { 543, 70, (byte)1 },
+                    { 542, 70, (byte)1 },
+                    { 541, 69, (byte)1 },
+                    { 540, 69, (byte)1 },
+                    { 546, 70, (byte)1 },
+                    { 539, 69, (byte)1 },
+                    { 555, 70, (byte)1 },
+                    { 557, 71, (byte)1 },
+                    { 571, 72, (byte)1 },
+                    { 570, 72, (byte)1 },
+                    { 569, 72, (byte)1 },
+                    { 568, 72, (byte)1 },
+                    { 567, 72, (byte)1 },
+                    { 566, 71, (byte)1 },
+                    { 556, 71, (byte)1 },
+                    { 565, 71, (byte)1 },
+                    { 563, 71, (byte)1 },
+                    { 562, 71, (byte)1 },
+                    { 561, 71, (byte)1 },
+                    { 560, 71, (byte)1 },
+                    { 559, 71, (byte)1 },
+                    { 558, 71, (byte)1 },
+                    { 564, 71, (byte)1 },
+                    { 432, 58, (byte)1 },
+                    { 538, 69, (byte)1 },
+                    { 536, 68, (byte)1 },
+                    { 517, 67, (byte)1 },
+                    { 516, 67, (byte)1 },
+                    { 515, 67, (byte)1 },
+                    { 514, 67, (byte)1 },
+                    { 513, 67, (byte)1 },
+                    { 512, 66, (byte)1 },
+                    { 518, 67, (byte)1 },
+                    { 511, 66, (byte)1 },
+                    { 509, 66, (byte)1 },
+                    { 508, 66, (byte)1 },
+                    { 507, 66, (byte)1 },
+                    { 506, 66, (byte)1 },
+                    { 505, 66, (byte)1 },
+                    { 504, 66, (byte)1 },
+                    { 510, 66, (byte)1 },
+                    { 537, 68, (byte)1 },
+                    { 519, 67, (byte)1 },
+                    { 521, 67, (byte)1 },
+                    { 535, 68, (byte)1 },
+                    { 534, 68, (byte)1 },
+                    { 533, 68, (byte)1 },
+                    { 532, 68, (byte)1 },
+                    { 531, 68, (byte)1 },
+                    { 530, 68, (byte)1 },
+                    { 520, 67, (byte)1 },
+                    { 529, 68, (byte)1 },
+                    { 527, 68, (byte)1 },
+                    { 526, 68, (byte)1 },
+                    { 525, 67, (byte)1 },
+                    { 524, 67, (byte)1 },
+                    { 523, 67, (byte)1 },
+                    { 522, 67, (byte)1 },
+                    { 528, 68, (byte)1 },
+                    { 431, 58, (byte)1 },
+                    { 438, 59, (byte)1 },
+                    { 429, 58, (byte)1 },
+                    { 344, 46, (byte)1 },
+                    { 343, 46, (byte)1 },
+                    { 342, 46, (byte)1 },
+                    { 341, 46, (byte)1 },
+                    { 340, 46, (byte)1 },
+                    { 339, 46, (byte)1 },
+                    { 338, 46, (byte)1 },
+                    { 345, 46, (byte)1 },
+                    { 337, 45, (byte)1 },
+                    { 335, 45, (byte)1 },
+                    { 334, 45, (byte)1 },
+                    { 333, 45, (byte)1 },
+                    { 332, 44, (byte)1 },
+                    { 331, 44, (byte)1 },
+                    { 330, 44, (byte)1 },
+                    { 329, 44, (byte)1 },
+                    { 336, 45, (byte)1 },
+                    { 328, 44, (byte)1 },
+                    { 346, 47, (byte)1 },
+                    { 348, 47, (byte)1 },
+                    { 364, 49, (byte)1 },
+                    { 363, 49, (byte)1 },
+                    { 362, 49, (byte)1 },
+                    { 361, 49, (byte)1 },
+                    { 360, 49, (byte)1 },
+                    { 359, 49, (byte)1 },
+                    { 358, 48, (byte)1 },
+                    { 347, 47, (byte)1 },
+                    { 357, 48, (byte)1 },
+                    { 355, 48, (byte)1 },
+                    { 354, 48, (byte)1 },
+                    { 353, 47, (byte)1 },
+                    { 352, 47, (byte)1 },
+                    { 351, 47, (byte)1 },
+                    { 350, 47, (byte)1 },
+                    { 349, 47, (byte)1 },
+                    { 356, 48, (byte)1 },
+                    { 365, 49, (byte)1 },
+                    { 327, 44, (byte)1 },
+                    { 325, 43, (byte)1 },
+                    { 304, 41, (byte)1 },
+                    { 303, 41, (byte)1 },
+                    { 302, 40, (byte)1 },
+                    { 301, 40, (byte)1 },
+                    { 300, 40, (byte)1 },
+                    { 299, 40, (byte)1 },
+                    { 298, 40, (byte)1 },
+                    { 305, 41, (byte)1 },
+                    { 297, 40, (byte)1 },
+                    { 295, 39, (byte)1 },
+                    { 294, 39, (byte)1 },
+                    { 293, 39, (byte)1 },
+                    { 292, 39, (byte)1 },
+                    { 291, 39, (byte)1 },
+                    { 290, 39, (byte)1 },
+                    { 289, 39, (byte)1 },
+                    { 296, 40, (byte)1 },
+                    { 326, 44, (byte)1 },
+                    { 306, 41, (byte)1 },
+                    { 308, 41, (byte)1 },
+                    { 324, 43, (byte)1 },
+                    { 323, 43, (byte)1 },
+                    { 322, 43, (byte)1 },
+                    { 321, 43, (byte)1 },
+                    { 320, 43, (byte)1 },
+                    { 319, 43, (byte)1 },
+                    { 318, 42, (byte)1 },
+                    { 307, 41, (byte)1 },
+                    { 317, 42, (byte)1 },
+                    { 315, 42, (byte)1 },
+                    { 314, 42, (byte)1 },
+                    { 313, 42, (byte)1 },
+                    { 312, 42, (byte)1 },
+                    { 311, 41, (byte)1 },
+                    { 310, 41, (byte)1 },
+                    { 309, 41, (byte)1 },
+                    { 316, 42, (byte)1 },
+                    { 430, 58, (byte)1 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "ProfessionSkills",
+                columns: new[] { "Id", "ProfessionId", "Quantity" },
+                values: new object[,]
+                {
+                    { 366, 49, (byte)1 },
+                    { 368, 50, (byte)1 },
+                    { 401, 54, (byte)1 },
+                    { 402, 55, (byte)1 },
+                    { 403, 55, (byte)1 },
+                    { 404, 55, (byte)1 },
+                    { 405, 55, (byte)1 },
+                    { 406, 55, (byte)1 },
+                    { 367, 50, (byte)1 },
+                    { 408, 55, (byte)1 },
+                    { 409, 55, (byte)1 },
+                    { 410, 56, (byte)1 },
+                    { 411, 56, (byte)1 },
+                    { 412, 56, (byte)1 },
+                    { 413, 56, (byte)1 },
+                    { 400, 54, (byte)1 },
+                    { 414, 56, (byte)1 },
+                    { 416, 56, (byte)1 },
+                    { 417, 56, (byte)1 },
                     { 418, 56, (byte)1 },
                     { 419, 57, (byte)1 },
                     { 420, 57, (byte)1 },
@@ -22405,250 +24439,63 @@ namespace WarhammerProfessionApp.Migrations
                     { 426, 57, (byte)1 },
                     { 427, 58, (byte)1 },
                     { 428, 58, (byte)1 },
-                    { 429, 58, (byte)1 },
-                    { 430, 58, (byte)1 },
-                    { 417, 56, (byte)1 },
-                    { 431, 58, (byte)1 },
-                    { 433, 58, (byte)1 },
-                    { 434, 58, (byte)1 },
-                    { 435, 59, (byte)1 },
-                    { 436, 59, (byte)1 },
-                    { 437, 59, (byte)1 },
-                    { 438, 59, (byte)1 },
-                    { 439, 59, (byte)1 },
-                    { 440, 59, (byte)1 },
-                    { 441, 60, (byte)1 },
-                    { 442, 60, (byte)1 },
-                    { 443, 60, (byte)1 },
-                    { 444, 60, (byte)1 },
-                    { 445, 60, (byte)1 },
-                    { 432, 58, (byte)1 },
-                    { 446, 60, (byte)1 },
-                    { 416, 56, (byte)1 },
-                    { 414, 56, (byte)1 },
-                    { 386, 52, (byte)1 },
-                    { 387, 52, (byte)1 },
-                    { 388, 52, (byte)1 },
-                    { 389, 52, (byte)1 },
-                    { 390, 52, (byte)1 },
-                    { 391, 53, (byte)1 },
-                    { 392, 53, (byte)1 },
-                    { 393, 53, (byte)1 },
-                    { 394, 53, (byte)1 },
-                    { 395, 53, (byte)1 },
-                    { 396, 53, (byte)1 },
-                    { 397, 53, (byte)1 },
-                    { 398, 53, (byte)1 },
                     { 415, 56, (byte)1 },
                     { 399, 54, (byte)1 },
-                    { 401, 54, (byte)1 },
-                    { 402, 55, (byte)1 },
-                    { 403, 55, (byte)1 },
-                    { 404, 55, (byte)1 },
-                    { 405, 55, (byte)1 },
-                    { 406, 55, (byte)1 },
                     { 407, 55, (byte)1 },
-                    { 408, 55, (byte)1 },
-                    { 409, 55, (byte)1 },
-                    { 410, 56, (byte)1 },
-                    { 411, 56, (byte)1 },
-                    { 412, 56, (byte)1 },
-                    { 413, 56, (byte)1 },
-                    { 400, 54, (byte)1 },
+                    { 397, 53, (byte)1 },
+                    { 388, 52, (byte)1 },
+                    { 387, 52, (byte)1 },
+                    { 386, 52, (byte)1 },
                     { 385, 52, (byte)1 },
-                    { 447, 60, (byte)1 },
-                    { 449, 61, (byte)1 },
-                    { 482, 63, (byte)1 },
-                    { 483, 63, (byte)1 },
-                    { 484, 63, (byte)1 },
-                    { 485, 63, (byte)1 },
-                    { 486, 64, (byte)1 },
-                    { 487, 64, (byte)1 },
-                    { 488, 64, (byte)1 },
-                    { 489, 64, (byte)1 },
-                    { 490, 64, (byte)1 },
-                    { 491, 64, (byte)1 },
-                    { 492, 64, (byte)1 },
-                    { 493, 64, (byte)1 },
-                    { 494, 64, (byte)1 },
-                    { 481, 63, (byte)1 },
-                    { 495, 65, (byte)1 },
-                    { 497, 65, (byte)1 },
-                    { 498, 65, (byte)1 },
-                    { 499, 65, (byte)1 },
-                    { 500, 66, (byte)1 },
-                    { 501, 66, (byte)1 },
-                    { 502, 66, (byte)1 },
-                    { 503, 66, (byte)1 },
-                    { 504, 66, (byte)1 },
-                    { 505, 66, (byte)1 },
-                    { 506, 66, (byte)1 },
-                    { 507, 66, (byte)1 },
-                    { 508, 66, (byte)1 },
-                    { 509, 66, (byte)1 },
-                    { 496, 65, (byte)1 },
-                    { 448, 61, (byte)1 },
-                    { 480, 63, (byte)1 },
-                    { 478, 63, (byte)1 },
-                    { 450, 61, (byte)1 },
-                    { 451, 61, (byte)1 },
-                    { 452, 61, (byte)1 },
-                    { 453, 61, (byte)1 },
-                    { 454, 61, (byte)1 },
-                    { 455, 61, (byte)1 },
-                    { 456, 61, (byte)1 },
-                    { 457, 61, (byte)1 },
-                    { 458, 61, (byte)1 },
-                    { 459, 61, (byte)1 },
-                    { 460, 62, (byte)1 },
-                    { 461, 62, (byte)1 },
-                    { 462, 62, (byte)1 },
-                    { 479, 63, (byte)1 },
-                    { 463, 62, (byte)1 },
-                    { 465, 62, (byte)1 },
-                    { 466, 62, (byte)1 },
-                    { 467, 62, (byte)1 },
-                    { 468, 62, (byte)1 },
-                    { 469, 62, (byte)1 },
-                    { 470, 62, (byte)1 },
-                    { 471, 62, (byte)1 },
-                    { 472, 62, (byte)1 },
-                    { 473, 62, (byte)1 },
-                    { 474, 63, (byte)1 },
-                    { 475, 63, (byte)1 },
-                    { 476, 63, (byte)1 },
-                    { 477, 63, (byte)1 },
-                    { 464, 62, (byte)1 },
                     { 384, 52, (byte)1 },
                     { 383, 52, (byte)1 },
                     { 382, 51, (byte)1 },
-                    { 288, 39, (byte)1 },
-                    { 289, 39, (byte)1 },
-                    { 290, 39, (byte)1 },
-                    { 291, 39, (byte)1 },
-                    { 292, 39, (byte)1 },
-                    { 293, 39, (byte)1 },
-                    { 294, 39, (byte)1 },
-                    { 295, 39, (byte)1 },
-                    { 296, 40, (byte)1 },
-                    { 297, 40, (byte)1 },
-                    { 298, 40, (byte)1 },
-                    { 299, 40, (byte)1 },
-                    { 300, 40, (byte)1 },
-                    { 287, 38, (byte)1 },
-                    { 301, 40, (byte)1 },
-                    { 303, 41, (byte)1 },
-                    { 304, 41, (byte)1 },
-                    { 305, 41, (byte)1 },
-                    { 306, 41, (byte)1 },
-                    { 307, 41, (byte)1 },
-                    { 308, 41, (byte)1 },
-                    { 309, 41, (byte)1 },
-                    { 310, 41, (byte)1 },
-                    { 311, 41, (byte)1 },
-                    { 312, 42, (byte)1 },
-                    { 313, 42, (byte)1 },
-                    { 314, 42, (byte)1 },
-                    { 315, 42, (byte)1 },
-                    { 302, 40, (byte)1 },
-                    { 316, 42, (byte)1 },
-                    { 286, 38, (byte)1 },
-                    { 284, 38, (byte)1 },
-                    { 256, 34, (byte)1 },
-                    { 257, 35, (byte)1 },
-                    { 258, 35, (byte)1 },
-                    { 259, 35, (byte)1 },
-                    { 260, 35, (byte)1 },
-                    { 261, 35, (byte)1 },
-                    { 262, 35, (byte)1 },
-                    { 263, 35, (byte)1 },
-                    { 264, 35, (byte)1 },
-                    { 265, 35, (byte)1 },
-                    { 266, 35, (byte)1 },
-                    { 267, 36, (byte)1 },
-                    { 268, 36, (byte)1 },
-                    { 285, 38, (byte)1 },
-                    { 269, 36, (byte)1 },
-                    { 271, 36, (byte)1 },
-                    { 272, 36, (byte)1 },
-                    { 273, 36, (byte)1 },
-                    { 274, 36, (byte)1 },
-                    { 275, 37, (byte)1 },
-                    { 276, 37, (byte)1 },
-                    { 277, 37, (byte)1 },
-                    { 278, 37, (byte)1 },
-                    { 279, 38, (byte)1 },
-                    { 280, 38, (byte)1 },
-                    { 281, 38, (byte)1 },
-                    { 282, 38, (byte)1 },
-                    { 283, 38, (byte)1 },
-                    { 270, 36, (byte)1 },
-                    { 317, 42, (byte)1 },
-                    { 318, 42, (byte)1 },
-                    { 319, 43, (byte)1 },
-                    { 353, 47, (byte)1 },
-                    { 354, 48, (byte)1 },
-                    { 355, 48, (byte)1 },
-                    { 356, 48, (byte)1 },
-                    { 357, 48, (byte)1 },
-                    { 358, 48, (byte)1 },
-                    { 359, 49, (byte)1 },
-                    { 360, 49, (byte)1 },
-                    { 361, 49, (byte)1 },
-                    { 362, 49, (byte)1 },
-                    { 363, 49, (byte)1 },
-                    { 364, 49, (byte)1 },
-                    { 365, 49, (byte)1 },
-                    { 352, 47, (byte)1 },
-                    { 366, 49, (byte)1 },
-                    { 368, 50, (byte)1 },
-                    { 369, 50, (byte)1 },
-                    { 370, 50, (byte)1 },
-                    { 372, 50, (byte)1 },
-                    { 373, 50, (byte)1 },
-                    { 374, 50, (byte)1 },
-                    { 375, 51, (byte)1 },
-                    { 376, 51, (byte)1 },
-                    { 377, 51, (byte)1 },
-                    { 378, 51, (byte)1 },
-                    { 379, 51, (byte)1 },
-                    { 380, 51, (byte)1 },
                     { 381, 51, (byte)1 },
-                    { 367, 50, (byte)1 },
-                    { 351, 47, (byte)1 },
-                    { 350, 47, (byte)1 },
-                    { 349, 47, (byte)1 },
-                    { 320, 43, (byte)1 },
-                    { 321, 43, (byte)1 },
-                    { 322, 43, (byte)1 },
-                    { 323, 43, (byte)1 },
-                    { 324, 43, (byte)1 },
-                    { 325, 43, (byte)1 },
-                    { 326, 44, (byte)1 },
-                    { 327, 44, (byte)1 },
-                    { 328, 44, (byte)1 },
-                    { 329, 44, (byte)1 },
-                    { 330, 44, (byte)1 },
-                    { 331, 44, (byte)1 },
-                    { 332, 44, (byte)1 },
-                    { 333, 45, (byte)1 },
-                    { 334, 45, (byte)1 },
-                    { 335, 45, (byte)1 },
-                    { 336, 45, (byte)1 },
-                    { 337, 45, (byte)1 },
-                    { 338, 46, (byte)1 },
-                    { 339, 46, (byte)1 },
-                    { 340, 46, (byte)1 },
-                    { 341, 46, (byte)1 },
-                    { 342, 46, (byte)1 },
-                    { 343, 46, (byte)1 },
-                    { 344, 46, (byte)1 },
-                    { 345, 46, (byte)1 },
-                    { 346, 47, (byte)1 },
-                    { 347, 47, (byte)1 },
-                    { 348, 47, (byte)1 },
-                    { 511, 66, (byte)1 },
-                    { 1024, 113, (byte)1 }
+                    { 380, 51, (byte)1 },
+                    { 389, 52, (byte)1 },
+                    { 379, 51, (byte)1 },
+                    { 377, 51, (byte)1 },
+                    { 376, 51, (byte)1 },
+                    { 375, 51, (byte)1 },
+                    { 374, 50, (byte)1 },
+                    { 373, 50, (byte)1 },
+                    { 372, 50, (byte)1 },
+                    { 371, 50, (byte)1 },
+                    { 370, 50, (byte)1 },
+                    { 369, 50, (byte)1 },
+                    { 378, 51, (byte)1 },
+                    { 398, 53, (byte)1 },
+                    { 1, 1, (byte)1 },
+                    { 396, 53, (byte)1 },
+                    { 395, 53, (byte)1 },
+                    { 394, 53, (byte)1 },
+                    { 393, 53, (byte)1 },
+                    { 392, 53, (byte)1 },
+                    { 391, 53, (byte)1 },
+                    { 390, 52, (byte)1 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Statistics",
+                columns: new[] { "Id", "IsBasicValue", "IsCalculatedValue", "IsReadOnly", "Type" },
+                values: new object[,]
+                {
+                    { (byte)3, true, false, false, (byte)3 },
+                    { (byte)16, false, true, false, (byte)16 },
+                    { (byte)15, false, true, false, (byte)15 },
+                    { (byte)2, true, false, false, (byte)2 },
+                    { (byte)14, false, false, true, (byte)14 },
+                    { (byte)12, false, true, true, (byte)12 },
+                    { (byte)11, false, true, true, (byte)11 },
+                    { (byte)10, false, false, false, (byte)10 },
+                    { (byte)9, false, false, false, (byte)9 },
+                    { (byte)8, true, false, false, (byte)8 },
+                    { (byte)7, true, false, false, (byte)7 },
+                    { (byte)6, true, false, false, (byte)6 },
+                    { (byte)5, true, false, false, (byte)5 },
+                    { (byte)4, true, false, false, (byte)4 },
+                    { (byte)13, false, false, true, (byte)13 },
+                    { (byte)1, true, false, false, (byte)1 }
                 });
 
             migrationBuilder.InsertData(
@@ -22796,7 +24643,7 @@ namespace WarhammerProfessionApp.Migrations
                     { 223, 27 },
                     { 224, 58 },
                     { 225, 6 },
-                    { 219, 64 },
+                    { 218, 11 },
                     { 184, 34 },
                     { 301, 53 },
                     { 303, 44 },
@@ -22941,7 +24788,7 @@ namespace WarhammerProfessionApp.Migrations
                     { 348, 11 },
                     { 342, 53 },
                     { 183, 20 },
-                    { 218, 11 },
+                    { 219, 64 },
                     { 182, 19 },
                     { 66, 70 },
                     { 65, 85 },
@@ -22949,8 +24796,8 @@ namespace WarhammerProfessionApp.Migrations
                     { 64, 8 },
                     { 63, 76 },
                     { 62, 53 },
+                    { 62, 66 },
                     { 182, 46 },
-                    { 61, 61 },
                     { 61, 63 },
                     { 60, 11 },
                     { 59, 11 },
@@ -23084,7 +24931,7 @@ namespace WarhammerProfessionApp.Migrations
                     { 29, 51 },
                     { 24, 44 },
                     { 90, 51 },
-                    { 62, 66 },
+                    { 61, 61 },
                     { 92, 44 },
                     { 160, 60 },
                     { 159, 11 },
@@ -23147,15 +24994,15 @@ namespace WarhammerProfessionApp.Migrations
                     { 166, 80 },
                     { 172, 61 },
                     { 167, 74 },
-                    { 168, 8 },
+                    { 91, 48 },
                     { 168, 13 },
                     { 169, 20 },
                     { 169, 57 },
                     { 170, 44 },
                     { 170, 21 },
-                    { 91, 48 },
-                    { 139, 54 },
                     { 167, 31 },
+                    { 139, 54 },
+                    { 168, 8 },
                     { 138, 68 },
                     { 103, 8 },
                     { 104, 5 },
@@ -23218,207 +25065,210 @@ namespace WarhammerProfessionApp.Migrations
                     { 118, 11 },
                     { 115, 8 },
                     { 119, 6 },
+                    { 120, 3 },
                     { 119, 71 },
                     { 120, 8 },
                     { 121, 64 },
                     { 121, 6 },
                     { 122, 76 },
                     { 122, 71 },
-                    { 123, 11 },
-                    { 120, 3 }
+                    { 123, 11 }
                 });
 
             migrationBuilder.InsertData(
                 table: "ProfessionItem",
-                columns: new[] { "ProfessionsItemId", "ItemId", "Quality", "Quantity" },
+                columns: new[] { "ProfessionsItemId", "ItemId", "Quantity" },
                 values: new object[,]
                 {
-                    { 110, 168, (byte)2, 1 },
-                    { 111, 170, (byte)2, 1 },
-                    { 109, 14, (byte)2, 1 },
-                    { 112, 171, (byte)2, 1 },
-                    { 113, 102, (byte)2, 1 },
-                    { 114, 46, (byte)2, 1 },
-                    { 115, 175, (byte)2, 1 },
-                    { 116, 161, (byte)2, 1 },
-                    { 116, 164, (byte)2, 1 },
-                    { 119, 17, (byte)2, 1 },
-                    { 117, 109, (byte)2, 2 },
-                    { 118, 27, (byte)2, 1 },
-                    { 118, 26, (byte)2, 1 },
-                    { 119, 18, (byte)2, 1 },
-                    { 120, 37, (byte)2, 1 },
-                    { 121, 46, (byte)2, 1 },
-                    { 123, 168, (byte)2, 1 },
-                    { 108, 46, (byte)2, 1 },
-                    { 122, 14, (byte)2, 1 },
-                    { 117, 161, (byte)2, 1 },
-                    { 107, 103, (byte)2, 1 },
-                    { 91, 29, (byte)2, 2 },
-                    { 105, 143, (byte)2, 1 },
-                    { 87, 186, (byte)2, 1 },
-                    { 124, 170, (byte)2, 1 },
-                    { 88, 1, (byte)2, 1 },
-                    { 88, 27, (byte)2, 1 },
-                    { 89, 46, (byte)2, 1 },
-                    { 90, 44, (byte)2, 1 },
-                    { 91, 38, (byte)2, 2 },
-                    { 92, 11, (byte)2, 1 },
-                    { 93, 46, (byte)2, 1 },
-                    { 106, 151, (byte)2, 1 },
-                    { 94, 9, (byte)2, 1 },
-                    { 96, 50, (byte)2, 1 },
-                    { 97, 45, (byte)2, 1 },
-                    { 98, 65, (byte)2, 2 },
-                    { 99, 132, (byte)2, 1 },
-                    { 100, 98, (byte)2, 1 },
-                    { 101, 46, (byte)2, 1 },
-                    { 102, 64, (byte)2, 1 },
-                    { 103, 106, (byte)2, 1 },
-                    { 104, 108, (byte)2, 1 },
-                    { 95, 11, (byte)2, 1 },
-                    { 125, 171, (byte)2, 1 },
-                    { 159, 167, (byte)2, 1 },
-                    { 127, 26, (byte)2, 1 },
-                    { 151, 107, (byte)2, 1 },
-                    { 152, 108, (byte)2, 1 },
-                    { 153, 46, (byte)2, 1 },
-                    { 154, 108, (byte)2, 1 },
-                    { 155, 31, (byte)2, 1 },
-                    { 156, 50, (byte)2, 1 },
-                    { 157, 46, (byte)2, 1 },
-                    { 158, 14, (byte)2, 1 },
-                    { 160, 170, (byte)2, 1 },
-                    { 161, 171, (byte)2, 1 },
-                    { 162, 127, (byte)2, 1 },
-                    { 163, 33, (byte)2, 1 },
-                    { 164, 169, (byte)2, 1 },
-                    { 165, 170, (byte)2, 1 },
-                    { 166, 171, (byte)2, 1 },
-                    { 167, 106, (byte)2, 1 },
-                    { 168, 108, (byte)2, 1 },
-                    { 169, 151, (byte)2, 1 },
-                    { 86, 14, (byte)2, 1 },
-                    { 150, 117, (byte)2, 1 },
-                    { 149, 97, (byte)2, 1 },
-                    { 148, 64, (byte)2, 1 },
-                    { 147, 155, (byte)2, 1 },
-                    { 127, 22, (byte)2, 1 },
-                    { 128, 46, (byte)2, 1 },
-                    { 129, 15, (byte)2, 1 },
-                    { 130, 37, (byte)2, 1 },
-                    { 131, 145, (byte)2, 1 },
-                    { 132, 127, (byte)2, 1 },
-                    { 133, 46, (byte)2, 1 },
-                    { 134, 65, (byte)2, 2 },
-                    { 135, 155, (byte)2, 1 },
-                    { 126, 127, (byte)2, 1 },
-                    { 136, 45, (byte)2, 1 },
-                    { 138, 50, (byte)2, 1 },
-                    { 139, 46, (byte)2, 1 },
-                    { 140, 14, (byte)2, 1 },
-                    { 141, 168, (byte)2, 1 },
-                    { 142, 170, (byte)2, 1 },
-                    { 143, 171, (byte)2, 1 },
-                    { 144, 111, (byte)2, 2 },
-                    { 145, 112, (byte)2, 5 },
-                    { 146, 147, (byte)2, 1 },
-                    { 137, 113, (byte)2, 50 },
-                    { 84, 50, (byte)2, 1 },
-                    { 85, 46, (byte)2, 1 },
-                    { 82, 113, (byte)2, 50 },
-                    { 20, 4, (byte)2, 1 },
-                    { 20, 8, (byte)2, 1 },
-                    { 21, 89, (byte)3, 1 },
-                    { 22, 46, (byte)2, 1 },
-                    { 23, 46, (byte)2, 1 },
-                    { 24, 164, (byte)2, 1 },
-                    { 25, 5, (byte)2, 1 },
-                    { 26, 50, (byte)2, 1 },
-                    { 27, 49, (byte)2, 1 },
-                    { 19, 153, (byte)2, 1 },
-                    { 28, 46, (byte)2, 1 },
-                    { 30, 170, (byte)2, 1 },
-                    { 31, 171, (byte)2, 1 },
-                    { 32, 4, (byte)2, 1 },
-                    { 32, 16, (byte)2, 1 },
-                    { 33, 11, (byte)2, 1 },
-                    { 34, 50, (byte)2, 1 },
-                    { 35, 46, (byte)2, 1 },
-                    { 36, 14, (byte)2, 1 },
-                    { 36, 9, (byte)2, 1 },
-                    { 29, 168, (byte)2, 1 },
-                    { 37, 26, (byte)2, 1 },
-                    { 18, 64, (byte)2, 1 },
-                    { 17, 153, (byte)2, 1 },
-                    { 83, 26, (byte)2, 1 },
-                    { 1, 66, (byte)2, 1 },
-                    { 2, 134, (byte)2, 1 },
-                    { 3, 45, (byte)2, 1 },
-                    { 4, 27, (byte)2, 1 },
-                    { 5, 14, (byte)2, 1 },
-                    { 6, 16, (byte)2, 1 },
-                    { 6, 14, (byte)2, 1 },
-                    { 7, 45, (byte)2, 1 },
-                    { 18, 67, (byte)2, 1 },
-                    { 8, 89, (byte)2, 1 },
-                    { 9, 2, (byte)2, 1 },
-                    { 10, 92, (byte)2, 1 },
-                    { 11, 153, (byte)2, 1 },
-                    { 12, 100, (byte)2, 1 },
-                    { 13, 130, (byte)2, 1 },
-                    { 14, 45, (byte)2, 1 },
-                    { 15, 29, (byte)2, 3 },
-                    { 15, 38, (byte)2, 2 },
-                    { 16, 119, (byte)2, 1 },
-                    { 9, 33, (byte)2, 1 },
-                    { 38, 46, (byte)2, 1 },
-                    { 11, 200, (byte)2, 1 },
-                    { 40, 200, (byte)2, 1 },
-                    { 64, 46, (byte)2, 1 },
-                    { 65, 198, (byte)2, 1 },
-                    { 66, 20, (byte)2, 1 },
-                    { 67, 154, (byte)2, 2 },
-                    { 67, 157, (byte)2, 1 },
-                    { 68, 198, (byte)2, 1 },
-                    { 69, 26, (byte)2, 1 },
-                    { 70, 45, (byte)2, 1 },
-                    { 71, 44, (byte)2, 1 },
-                    { 72, 142, (byte)2, 1 },
-                    { 73, 127, (byte)2, 1 },
-                    { 74, 142, (byte)2, 1 },
-                    { 76, 148, (byte)2, 1 },
-                    { 77, 106, (byte)2, 1 },
-                    { 78, 26, (byte)2, 1 },
-                    { 79, 50, (byte)2, 1 },
-                    { 80, 45, (byte)2, 1 },
-                    { 81, 14, (byte)2, 1 },
-                    { 39, 186, (byte)2, 1 },
-                    { 63, 16, (byte)2, 1 },
-                    { 62, 47, (byte)2, 1 },
-                    { 75, 64, (byte)2, 1 },
-                    { 60, 52, (byte)2, 1 },
-                    { 41, 16, (byte)2, 1 },
-                    { 61, 46, (byte)2, 1 },
-                    { 42, 143, (byte)2, 1 },
-                    { 43, 46, (byte)2, 1 },
-                    { 44, 151, (byte)2, 1 },
-                    { 46, 108, (byte)2, 1 },
-                    { 47, 186, (byte)2, 1 },
-                    { 48, 72, (byte)2, 1 },
-                    { 49, 75, (byte)2, 1 },
-                    { 50, 46, (byte)2, 1 },
-                    { 45, 107, (byte)2, 1 },
-                    { 52, 106, (byte)2, 1 },
-                    { 53, 108, (byte)2, 1 },
-                    { 59, 16, (byte)2, 1 },
-                    { 54, 127, (byte)2, 1 },
-                    { 55, 103, (byte)2, 2 },
-                    { 56, 65, (byte)2, 1 },
-                    { 56, 138, (byte)2, 1 },
-                    { 57, 113, (byte)2, 50 },
-                    { 51, 150, (byte)2, 1 },
-                    { 58, 27, (byte)2, 1 }
+                    { 111, 46, 1 },
+                    { 110, 104, 1 },
+                    { 113, 169, 1 },
+                    { 114, 171, 1 },
+                    { 115, 172, 1 },
+                    { 116, 103, 1 },
+                    { 117, 46, 1 },
+                    { 112, 14, 1 },
+                    { 118, 176, 1 },
+                    { 122, 18, 1 },
+                    { 119, 165, 1 },
+                    { 120, 162, 1 },
+                    { 120, 110, 2 },
+                    { 121, 27, 1 },
+                    { 121, 26, 1 },
+                    { 122, 17, 1 },
+                    { 123, 37, 1 },
+                    { 109, 152, 1 },
+                    { 125, 14, 1 },
+                    { 124, 46, 1 },
+                    { 119, 162, 1 },
+                    { 108, 144, 1 },
+                    { 93, 44, 1 },
+                    { 106, 107, 1 },
+                    { 88, 46, 1 },
+                    { 126, 169, 1 },
+                    { 89, 14, 1 },
+                    { 90, 187, 1 },
+                    { 91, 1, 1 },
+                    { 91, 27, 1 },
+                    { 92, 46, 1 },
+                    { 94, 38, 2 },
+                    { 94, 29, 2 },
+                    { 107, 109, 1 },
+                    { 95, 11, 1 },
+                    { 97, 9, 1 },
+                    { 98, 11, 1 },
+                    { 99, 50, 1 },
+                    { 100, 45, 1 },
+                    { 101, 65, 2 },
+                    { 102, 133, 1 },
+                    { 103, 99, 1 },
+                    { 104, 46, 1 },
+                    { 105, 64, 1 },
+                    { 96, 46, 1 },
+                    { 127, 171, 1 },
+                    { 161, 14, 1 },
+                    { 129, 128, 1 },
+                    { 153, 118, 1 },
+                    { 154, 108, 1 },
+                    { 155, 109, 1 },
+                    { 156, 46, 1 },
+                    { 157, 109, 1 },
+                    { 158, 31, 1 },
+                    { 159, 50, 1 },
+                    { 160, 46, 1 },
+                    { 162, 168, 1 },
+                    { 152, 98, 1 },
+                    { 163, 171, 1 },
+                    { 165, 128, 1 },
+                    { 166, 33, 1 },
+                    { 167, 170, 1 },
+                    { 168, 171, 1 },
+                    { 169, 172, 1 },
+                    { 170, 107, 1 },
+                    { 171, 109, 1 },
+                    { 172, 152, 1 },
+                    { 87, 50, 1 },
+                    { 164, 172, 1 },
+                    { 128, 172, 1 },
+                    { 151, 64, 1 },
+                    { 149, 148, 1 },
+                    { 130, 26, 1 },
+                    { 130, 22, 1 },
+                    { 131, 46, 1 },
+                    { 132, 15, 1 },
+                    { 133, 37, 1 },
+                    { 134, 146, 1 },
+                    { 135, 128, 1 },
+                    { 136, 46, 1 },
+                    { 137, 65, 2 },
+                    { 150, 156, 1 },
+                    { 138, 156, 1 },
+                    { 140, 114, 50 },
+                    { 141, 50, 1 },
+                    { 142, 46, 1 },
+                    { 143, 14, 1 },
+                    { 144, 169, 1 },
+                    { 145, 171, 1 },
+                    { 146, 172, 1 },
+                    { 147, 112, 2 },
+                    { 148, 113, 5 },
+                    { 139, 45, 1 },
+                    { 85, 114, 50 },
+                    { 86, 26, 1 },
+                    { 11, 201, 1 },
+                    { 20, 4, 1 },
+                    { 20, 8, 1 },
+                    { 21, 90, 1 },
+                    { 22, 46, 1 },
+                    { 23, 46, 1 },
+                    { 24, 165, 1 },
+                    { 26, 50, 1 },
+                    { 27, 49, 1 },
+                    { 28, 46, 1 },
+                    { 19, 154, 1 },
+                    { 29, 169, 1 },
+                    { 31, 172, 1 },
+                    { 32, 4, 1 },
+                    { 32, 16, 1 },
+                    { 33, 11, 1 },
+                    { 34, 50, 1 },
+                    { 35, 46, 1 },
+                    { 36, 14, 1 },
+                    { 36, 9, 1 },
+                    { 37, 26, 1 },
+                    { 30, 171, 1 },
+                    { 38, 46, 1 },
+                    { 18, 64, 1 },
+                    { 17, 154, 1 },
+                    { 84, 14, 1 },
+                    { 1, 66, 1 },
+                    { 2, 135, 1 },
+                    { 3, 45, 1 },
+                    { 4, 27, 1 },
+                    { 5, 14, 1 },
+                    { 6, 16, 1 },
+                    { 6, 14, 1 },
+                    { 7, 45, 1 },
+                    { 18, 67, 1 },
+                    { 8, 89, 1 },
+                    { 9, 2, 1 },
+                    { 10, 93, 1 },
+                    { 11, 154, 1 },
+                    { 12, 101, 1 },
+                    { 13, 131, 1 },
+                    { 14, 45, 1 },
+                    { 15, 29, 3 },
+                    { 15, 38, 2 },
+                    { 16, 120, 1 },
+                    { 9, 33, 1 },
+                    { 39, 187, 1 },
+                    { 25, 5, 1 },
+                    { 41, 16, 1 },
+                    { 65, 199, 1 },
+                    { 66, 40, 10 },
+                    { 67, 20, 1 },
+                    { 68, 40, 10 },
+                    { 69, 155, 2 },
+                    { 69, 158, 1 },
+                    { 70, 199, 1 },
+                    { 71, 41, 10 },
+                    { 72, 26, 1 },
+                    { 64, 46, 1 },
+                    { 73, 45, 1 },
+                    { 75, 143, 1 },
+                    { 40, 201, 1 },
+                    { 77, 143, 1 },
+                    { 78, 64, 1 },
+                    { 79, 149, 1 },
+                    { 80, 107, 1 },
+                    { 81, 26, 1 },
+                    { 82, 50, 1 },
+                    { 83, 45, 1 },
+                    { 74, 44, 1 },
+                    { 63, 16, 1 },
+                    { 76, 128, 1 },
+                    { 61, 46, 1 },
+                    { 42, 144, 1 },
+                    { 62, 47, 1 },
+                    { 43, 46, 1 },
+                    { 44, 152, 1 },
+                    { 45, 108, 1 },
+                    { 47, 187, 1 },
+                    { 48, 72, 1 },
+                    { 49, 75, 1 },
+                    { 50, 46, 1 },
+                    { 51, 151, 1 },
+                    { 52, 107, 1 },
+                    { 46, 109, 1 },
+                    { 54, 128, 1 },
+                    { 55, 104, 2 },
+                    { 56, 65, 1 },
+                    { 56, 139, 1 },
+                    { 57, 114, 50 },
+                    { 58, 27, 1 },
+                    { 53, 109, 1 },
+                    { 60, 52, 1 },
+                    { 59, 16, 1 }
                 });
 
             migrationBuilder.InsertData(
@@ -23432,19 +25282,19 @@ namespace WarhammerProfessionApp.Migrations
                     { 650, 41 },
                     { 649, 16 },
                     { 648, 40 },
-                    { 646, 14 },
-                    { 647, 37 },
                     { 645, 13 },
+                    { 646, 14 },
                     { 644, 12 },
-                    { 654, 4 },
                     { 643, 35 },
+                    { 654, 4 },
+                    { 641, 30 },
                     { 642, 34 },
-                    { 605, 23 },
+                    { 647, 37 },
                     { 655, 29 },
                     { 665, 46 },
                     { 657, 29 },
+                    { 640, 23 },
                     { 671, 40 },
-                    { 641, 30 },
                     { 670, 37 },
                     { 669, 13 },
                     { 668, 12 },
@@ -23458,53 +25308,54 @@ namespace WarhammerProfessionApp.Migrations
                     { 659, 10 },
                     { 658, 7 },
                     { 664, 20 },
-                    { 640, 23 },
+                    { 639, 46 },
+                    { 467, 10 },
+                    { 637, 19 },
                     { 617, 10 },
-                    { 638, 46 },
-                    { 619, 35 },
-                    { 618, 34 },
                     { 616, 7 },
                     { 615, 2 },
                     { 614, 46 },
                     { 613, 19 },
-                    { 620, 13 },
                     { 612, 43 },
-                    { 610, 13 },
+                    { 618, 34 },
+                    { 611, 15 },
                     { 609, 33 },
                     { 608, 10 },
                     { 607, 7 },
                     { 606, 5 },
+                    { 605, 23 },
                     { 672, 16 },
-                    { 611, 15 },
-                    { 639, 46 },
+                    { 610, 13 },
+                    { 619, 35 },
+                    { 620, 13 },
                     { 621, 15 },
-                    { 623, 41 },
-                    { 637, 19 },
                     { 636, 43 },
                     { 635, 43 },
                     { 634, 15 },
                     { 633, 35 },
                     { 632, 33 },
-                    { 622, 38 },
                     { 631, 10 },
+                    { 630, 9 },
                     { 629, 7 },
                     { 628, 4 },
                     { 627, 22 },
                     { 626, 20 },
                     { 625, 19 },
                     { 624, 43 },
-                    { 630, 9 },
+                    { 623, 41 },
+                    { 622, 38 },
+                    { 638, 46 },
                     { 673, 41 },
-                    { 718, 7 },
+                    { 719, 10 },
                     { 675, 18 },
                     { 724, 15 },
                     { 723, 13 },
                     { 722, 35 },
                     { 721, 33 },
                     { 720, 33 },
-                    { 719, 10 },
-                    { 725, 43 },
                     { 605, 24 },
+                    { 725, 43 },
+                    { 718, 7 },
                     { 716, 2 },
                     { 715, 47 },
                     { 714, 19 },
@@ -23532,14 +25383,7 @@ namespace WarhammerProfessionApp.Migrations
                     { 734, 4 },
                     { 674, 43 },
                     { 709, 12 },
-                    { 707, 34 }
-                });
-
-            migrationBuilder.InsertData(
-                table: "ProfessionSkill",
-                columns: new[] { "ProfessionSkillsId", "SkillId" },
-                values: new object[,]
-                {
+                    { 707, 34 },
                     { 689, 20 },
                     { 688, 19 },
                     { 687, 43 },
@@ -23574,7 +25418,7 @@ namespace WarhammerProfessionApp.Migrations
                     { 694, 7 },
                     { 700, 22 },
                     { 604, 47 },
-                    { 561, 12 },
+                    { 560, 35 },
                     { 603, 46 },
                     { 516, 29 },
                     { 515, 24 },
@@ -23626,7 +25470,14 @@ namespace WarhammerProfessionApp.Migrations
                     { 469, 43 },
                     { 468, 36 },
                     { 467, 20 },
-                    { 473, 46 },
+                    { 473, 46 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "ProfessionSkill",
+                columns: new[] { "ProfessionSkillsId", "SkillId" },
+                values: new object[,]
+                {
                     { 500, 2 },
                     { 482, 43 },
                     { 484, 46 },
@@ -23710,51 +25561,50 @@ namespace WarhammerProfessionApp.Migrations
                     { 563, 40 },
                     { 553, 19 },
                     { 562, 13 },
-                    { 560, 35 },
+                    { 741, 46 },
                     { 559, 34 },
                     { 558, 29 },
                     { 557, 4 },
                     { 556, 2 },
                     { 555, 46 },
-                    { 741, 46 },
+                    { 561, 12 },
                     { 742, 46 },
                     { 789, 40 },
                     { 744, 9 },
-                    { 936, 3 },
-                    { 935, 46 },
-                    { 934, 19 },
-                    { 933, 43 },
-                    { 932, 15 },
-                    { 931, 13 },
-                    { 937, 5 },
-                    { 930, 10 },
-                    { 928, 29 },
-                    { 927, 29 },
-                    { 926, 27 },
-                    { 925, 24 },
-                    { 924, 2 },
                     { 923, 22 },
+                    { 924, 2 },
+                    { 925, 24 },
+                    { 926, 27 },
+                    { 927, 29 },
+                    { 928, 29 },
                     { 929, 7 },
-                    { 922, 46 },
+                    { 930, 10 },
+                    { 931, 13 },
+                    { 932, 15 },
+                    { 933, 43 },
+                    { 934, 19 },
+                    { 935, 46 },
+                    { 936, 3 },
+                    { 937, 5 },
                     { 938, 7 },
-                    { 940, 13 },
-                    { 952, 43 },
+                    { 939, 35 },
                     { 951, 36 },
                     { 950, 20 },
                     { 950, 10 },
                     { 949, 7 },
                     { 948, 29 },
-                    { 939, 35 },
                     { 947, 29 },
-                    { 945, 8 },
+                    { 922, 46 },
+                    { 946, 26 },
                     { 945, 4 },
                     { 944, 22 },
                     { 943, 20 },
                     { 942, 43 },
                     { 941, 41 },
-                    { 946, 26 },
-                    { 953, 43 },
+                    { 940, 13 },
+                    { 945, 8 },
                     { 921, 46 },
+                    { 920, 46 },
                     { 919, 46 },
                     { 901, 12 },
                     { 900, 35 },
@@ -23771,7 +25621,7 @@ namespace WarhammerProfessionApp.Migrations
                     { 889, 43 },
                     { 888, 15 },
                     { 894, 1 },
-                    { 920, 46 },
+                    { 952, 43 },
                     { 903, 16 },
                     { 905, 43 },
                     { 918, 33 },
@@ -23789,80 +25639,80 @@ namespace WarhammerProfessionApp.Migrations
                     { 907, 46 },
                     { 906, 46 },
                     { 912, 29 },
-                    { 887, 13 },
+                    { 953, 43 },
                     { 954, 44 },
-                    { 956, 46 },
-                    { 1005, 10 },
+                    { 955, 46 },
                     { 1004, 7 },
                     { 1003, 3 },
                     { 1002, 46 },
                     { 1001, 46 },
                     { 1000, 46 },
-                    { 1006, 13 },
                     { 999, 43 },
-                    { 997, 14 },
+                    { 1005, 10 },
+                    { 998, 43 },
                     { 996, 13 },
                     { 995, 6 },
                     { 994, 29 },
                     { 993, 28 },
                     { 992, 20 },
-                    { 998, 43 },
                     { 991, 43 },
-                    { 1007, 41 },
-                    { 1009, 47 },
-                    { 467, 10 },
+                    { 997, 14 },
+                    { 990, 41 },
+                    { 1006, 13 },
+                    { 1008, 20 },
                     { 1022, 43 },
                     { 1021, 43 },
                     { 1020, 41 },
                     { 1019, 16 },
                     { 1018, 40 },
-                    { 1008, 20 },
                     { 1017, 13 },
-                    { 1015, 35 },
+                    { 1007, 41 },
+                    { 1016, 12 },
                     { 1014, 34 },
                     { 1013, 31 },
                     { 1012, 6 },
                     { 1011, 30 },
                     { 1010, 4 },
-                    { 1016, 12 },
-                    { 955, 46 },
-                    { 990, 41 },
-                    { 988, 5 },
-                    { 969, 26 },
+                    { 1009, 47 },
+                    { 1015, 35 },
+                    { 887, 13 },
+                    { 989, 13 },
+                    { 987, 20 },
                     { 968, 8 },
                     { 968, 4 },
                     { 967, 19 },
                     { 966, 18 },
                     { 965, 16 },
-                    { 970, 28 },
                     { 964, 15 },
-                    { 962, 12 },
+                    { 969, 26 },
+                    { 963, 13 },
                     { 961, 35 },
                     { 960, 34 },
                     { 959, 11 },
                     { 958, 7 },
                     { 957, 32 },
-                    { 963, 13 },
-                    { 989, 13 },
-                    { 971, 29 },
-                    { 973, 29 },
-                    { 987, 20 },
+                    { 956, 46 },
+                    { 962, 12 },
+                    { 988, 5 },
+                    { 970, 28 },
+                    { 972, 29 },
                     { 986, 18 },
                     { 985, 43 },
                     { 984, 43 },
                     { 983, 41 },
                     { 982, 5 },
-                    { 972, 29 },
                     { 981, 46 },
-                    { 979, 44 },
+                    { 971, 29 },
+                    { 980, 46 },
                     { 978, 43 },
                     { 977, 43 },
                     { 976, 36 },
                     { 975, 10 },
                     { 974, 7 },
-                    { 980, 46 },
-                    { 743, 7 },
+                    { 973, 29 },
+                    { 979, 44 },
                     { 886, 35 },
+                    { 885, 10 },
                     { 884, 7 },
                     { 795, 46 },
                     { 794, 19 },
@@ -23933,7 +25783,7 @@ namespace WarhammerProfessionApp.Migrations
                     { 764, 43 },
                     { 763, 41 },
                     { 769, 29 },
-                    { 885, 10 },
+                    { 743, 7 },
                     { 815, 3 },
                     { 817, 13 },
                     { 865, 7 },
@@ -24006,7 +25856,7 @@ namespace WarhammerProfessionApp.Migrations
                     { 835, 19 },
                     { 841, 12 },
                     { 466, 29 },
-                    { 151, 11 },
+                    { 150, 9 },
                     { 464, 29 },
                     { 137, 45 },
                     { 138, 13 },
@@ -24022,8 +25872,8 @@ namespace WarhammerProfessionApp.Migrations
                     { 148, 20 },
                     { 149, 7 },
                     { 149, 22 },
-                    { 150, 9 },
                     { 1023, 46 },
+                    { 151, 11 },
                     { 152, 13 },
                     { 164, 46 },
                     { 163, 19 },
@@ -24539,14 +26389,7 @@ namespace WarhammerProfessionApp.Migrations
                     { 342, 27 },
                     { 341, 4 },
                     { 340, 7 },
-                    { 340, 3 }
-                });
-
-            migrationBuilder.InsertData(
-                table: "ProfessionSkill",
-                columns: new[] { "ProfessionSkillsId", "SkillId" },
-                values: new object[,]
-                {
+                    { 340, 3 },
                     { 339, 2 },
                     { 339, 24 },
                     { 338, 22 },

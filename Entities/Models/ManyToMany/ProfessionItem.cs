@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
-using WarhammerProfessionApp.Entities.Models.Enums;
 
 namespace WarhammerProfessionApp.Entities.Models.ManyToMany
 {
@@ -14,8 +13,6 @@ namespace WarhammerProfessionApp.Entities.Models.ManyToMany
         public virtual ProfessionItems ProfessionItems { get; set; }
 
         public int ProfessionsItemId { get; set; }
-
-        public ItemQuality Quality { get; set; }
 
         public int Quantity { get; set; }
     }

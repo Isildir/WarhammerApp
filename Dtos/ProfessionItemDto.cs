@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using WarhammerProfessionApp.Entities.Models.Enums;
 
 namespace WarhammerProfessionApp.Dtos
 {
@@ -21,8 +20,6 @@ namespace WarhammerProfessionApp.Dtos
         public int Id { get; set; }
 
         public string Name { get; set; }
-
-        public ItemQuality Quality { get; set; }
 
         public int Quantity { get; set; }
     }

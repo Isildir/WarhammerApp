@@ -111,17 +111,10 @@ namespace WarhammerProfessionApp.Controllers
 
             if (value.ChangeMoney)
             {
-                var userMoney = GetUserMoney(character);
-                var itemCost = GetItemPrice(item);
-
-                if (userMoney < itemCost)
+                if (character.Money < item.Price)
                     return BadRequest("No za mało kasiorki byczku");
 
-                var moneyLeft = ConvertMoney(userMoney - itemCost);
-
-                character.Gold = moneyLeft.Gold;
-                character.Silver = moneyLeft.Silver;
-                character.Bronze = moneyLeft.Bronze;
+                character.Money -= character.Money - item.Price;
             }
 
             character.Items.Add(new CharacterItem
@@ -148,11 +141,17 @@ namespace WarhammerProfessionApp.Controllers
             if (!CheckCharacterExperienceLimit(character, 100))
                 return BadRequest();
 
-            if (!context.Skills.Any(a => a.Id == id) || character.Skills.Any(a => a.SkillId == id))
+            var characterSkill = character.Skills.FirstOrDefault(a => a.SkillId == id);
+
+            if (!context.Skills.Any(a => a.Id == id) || (characterSkill != null && characterSkill.Level >= 3))
                 return BadRequest();
 
             character.ExperienceUsed += 100;
-            character.Skills.Add(new CharacterSkill { SkillId = id });
+
+            if (characterSkill == null)
+                character.Skills.Add(new CharacterSkill { SkillId = id, Level = 1 });
+            else
+                characterSkill.Level++;
 
             context.SaveChanges();
 
@@ -171,7 +170,9 @@ namespace WarhammerProfessionApp.Controllers
 
             var characterStatistic = character.Statistics.FirstOrDefault(a => a.Statistic.Type == value.Type);
 
+            characterStatistic.CurrentValue -= characterStatistic.BaseValue;
             characterStatistic.BaseValue = value.Value;
+            characterStatistic.CurrentValue += characterStatistic.BaseValue;
 
             context.SaveChanges();
 
@@ -201,12 +202,7 @@ namespace WarhammerProfessionApp.Controllers
             if (character == null)
                 return NotFound();
 
-            var convertedValue = GetUserMoney(value.Gold, value.Silver, value.Bronze);
-            var convertedMoney = ConvertMoney(convertedValue);
-
-            character.Gold = convertedMoney.Gold;
-            character.Silver = convertedMoney.Silver;
-            character.Bronze = convertedMoney.Bronze;
+            character.Money = MoneyCalculator.GetUserMoney(value.Gold, value.Silver, value.Bronze);
 
             context.SaveChanges();
 
@@ -250,7 +246,12 @@ namespace WarhammerProfessionApp.Controllers
         {
             var userId = GetUserId();
 
-            var character = context.Characters.Include(a => a.Statistics).ThenInclude(a => a.Statistic).FirstOrDefault(a => a.UserId == userId);
+            var character = context.Characters
+                .Include(a => a.Professions)
+                .ThenInclude(a => a.Profession)
+                .Include(a => a.Statistics)
+                .ThenInclude(a => a.Statistic)
+                .FirstOrDefault(a => a.UserId == userId);
 
             if (character == null)
                 return NotFound();
@@ -262,18 +263,21 @@ namespace WarhammerProfessionApp.Controllers
 
             var incrementValue = characterStatistic.Statistic.IsBasicValue ? 5 : 1;
 
+            var maximumValue = GetStatisticMaximumValue(characterStatistic.Statistic.Type, character, out int professionValue, out Dictionary<string, int> _);
+
             if (value.IncrementingValue)
             {
-                var maximumValue = GetStatisticMaximumValue(characterStatistic.Statistic.Type, character, out int _, out Dictionary<string, int> _);
-
                 if (!CheckCharacterExperienceLimit(character, 100) || characterStatistic.CurrentValue + incrementValue > maximumValue)
-                    return BadRequest();
+                    return BadRequest("Za mało punktów doświadczenia lub przekroczono limit");
 
                 character.ExperienceUsed += 100;
                 characterStatistic.CurrentValue += incrementValue;
             }
             else
             {
+                if (characterStatistic.CurrentValue - incrementValue < maximumValue - professionValue)
+                    return BadRequest("Przekroczono dolną granicę");
+
                 character.ExperienceUsed -= 100;
                 characterStatistic.CurrentValue -= incrementValue;
             }
@@ -301,12 +305,8 @@ namespace WarhammerProfessionApp.Controllers
             if (character == null)
                 return NotFound();
 
-            var money = new MoneyDto
-            {
-                Gold = character.Gold,
-                Silver = character.Silver,
-                Bronze = character.Bronze
-            };
+            var money = MoneyCalculator.ConvertMoney(character.Money);
+            var load = character.Items.Any() ? character.Items.Sum(a => a.Quantity * a.Item.Weigth) : 0;
 
             var basicValues = new CharacterBasicValuesDto
             {
@@ -315,7 +315,7 @@ namespace WarhammerProfessionApp.Controllers
                 ExperienceSum = character.ExperienceSummary,
                 Name = character.Name,
                 Notes = character.Notes,
-                CurrentLoad = 100,
+                CurrentLoad = $"{load} / {character.Statistics.FirstOrDefault(a => a.Statistic.Type == StatisticType.Stamina).CurrentValue * 10}",
                 Race = character.Race != null ? new RaceDto
                 {
                     Id = (int)character.Race,
@@ -339,12 +339,14 @@ namespace WarhammerProfessionApp.Controllers
                     new AdditionalCharacterValueDto { Id = 3, Value = "Item za expa 3" }
                 };
 
-            var skills = character.Skills.Select(a => new SkillDto
+            var skills = character.Skills.Select(a => new CharacterSkillDto
             {
                 Id = a.SkillId,
                 Name = a.Skill.Name,
                 Trait = EnumTranslator.TranslateStaticticValue(a.Skill.Trait),
-                Description = a.Skill.Description
+                Description = a.Skill.Description,
+                Level = a.Level,
+                SkillLevel = a.Skill.SkillLevel.ToString()
             }).ToList();
 
             var abilities = character.Abilities.Select(a => new AbilityDto
@@ -380,6 +382,23 @@ namespace WarhammerProfessionApp.Controllers
                     MaximumValue = maximumValue,
                     Details = $"Bazowe {value.BaseValue}",
                 };
+
+                if (value.Statistic.Type == StatisticType.Hardness)
+                {
+                    var val = character.Statistics.FirstOrDefault(a => a.Statistic.Type == StatisticType.Resistance).CurrentValue / 10;
+
+                    result.BaseValue = val;
+                    result.CurrentValue = val;
+                    result.MaximumValue = val;
+                }
+                else if (value.Statistic.Type == StatisticType.Strength)
+                {
+                    var val = character.Statistics.FirstOrDefault(a => a.Statistic.Type == StatisticType.Stamina).CurrentValue / 10;
+
+                    result.BaseValue = val;
+                    result.CurrentValue = val;
+                    result.MaximumValue = val;
+                }
 
                 if (value.Statistic.IsCalculatedValue)
                 {
@@ -456,13 +475,34 @@ namespace WarhammerProfessionApp.Controllers
 
             var takenItemsIds = character.Items.Select(a => a.ItemId).ToList();
 
-            var values = context.Items.Where(a => !takenItemsIds.Contains(a.Id)).Select(a => new ItemDto
+            var values = context.Items.Where(a => !takenItemsIds.Contains(a.Id)).Select(a => new
             {
-                Id = a.Id,
-                Name = a.Name
+                a.Id,
+                a.Name,
+                a.Price,
+                a.Weigth
             }).ToList();
 
-            return Ok(values);
+            var convertedValues = new List<ItemDto>();
+
+            foreach (var item in values)
+            {
+                var money = MoneyCalculator.ConvertMoney(item.Price);
+
+                var value = new ItemDto
+                {
+                    Id = item.Id,
+                    Name = item.Name,
+                    Weigth = item.Weigth,
+                    Gold = money.Gold,
+                    Silver = money.Silver,
+                    Bronze = money.Bronze
+                };
+
+                convertedValues.Add(value);
+            }
+
+            return Ok(convertedValues);
         }
 
         [HttpGet(nameof(GetFilteredProfessions))]
@@ -493,7 +533,7 @@ namespace WarhammerProfessionApp.Controllers
         }
 
         [HttpGet(nameof(GetFilteredSkills))]
-        public async Task<ActionResult<SkillDto>> GetFilteredSkills()
+        public async Task<ActionResult<CharacterSkillGetDto>> GetFilteredSkills()
         {
             var userId = GetUserId();
 
@@ -506,17 +546,33 @@ namespace WarhammerProfessionApp.Controllers
                 .ThenInclude(a => a.Skill)
                 .FirstOrDefault(a => a.UserId == userId);
 
-            var availableSkills = character.Professions.SelectMany(a => a.Profession.Skills.SelectMany(b => b.Skills.Select(c => c.Skill))).ToList();
-            var availableSkillsIds = availableSkills.Select(c => c.Id).Distinct().ToList();
-            var takenSkillsIds = character.Skills.Select(a => a.SkillId).ToList();
+            var takenSkills = character.Skills.ToDictionary(a => a.SkillId, a => a.Level);
+            var availableSkills = character.Professions
+                .SelectMany(a => a.Profession.Skills.SelectMany(b => b.Skills.Select(c => c.Skill)));
 
-            var filteredSkillsIds = availableSkillsIds.Where(a => !takenSkillsIds.Contains(a)).ToList();
+            var groupedAvailableSkills = availableSkills.GroupBy(a => a.Id).ToDictionary(a => a.Key, a => a.Count());
 
-            var values = filteredSkillsIds.Select(a => availableSkills.First(b => b.Id == a)).Select(a => new SkillDto
+            var values = new List<CharacterSkillGetDto>();
+
+            foreach (var skill in groupedAvailableSkills)
             {
-                Id = a.Id,
-                Name = a.Name
-            }).ToList();
+                var record = availableSkills.FirstOrDefault(a => a.Id == skill.Key);
+
+                if (!takenSkills.ContainsKey(skill.Key))
+                    values.Add(new CharacterSkillGetDto
+                    {
+                        Id = record.Id,
+                        Name = record.Name,
+                        IsUpgrade = false
+                    });
+                else if (takenSkills.ContainsKey(skill.Key) && takenSkills[skill.Key] < skill.Value)
+                    values.Add(new CharacterSkillGetDto
+                    {
+                        Id = record.Id,
+                        Name = record.Name,
+                        IsUpgrade = true
+                    });
+            }
 
             return Ok(values);
         }
@@ -598,20 +654,14 @@ namespace WarhammerProfessionApp.Controllers
 
             if (value.ChangeMoney)
             {
-                var userMoney = GetUserMoney(character);
-                var itemCost = GetItemPrice(item.Item);
                 var change = value.Quantity - item.Quantity;
 
                 if (change != 0)
                 {
-                    if (change > 0 && userMoney < itemCost * change)
+                    if (change > 0 && character.Money < item.Item.Price * change)
                         return BadRequest("No za mało kasiorki byczku");
 
-                    var moneyLeft = ConvertMoney(userMoney - itemCost * change);
-
-                    character.Gold = moneyLeft.Gold;
-                    character.Silver = moneyLeft.Silver;
-                    character.Bronze = moneyLeft.Bronze;
+                    character.Money += item.Item.Price * change;
                 }
             }
 
@@ -716,16 +766,7 @@ namespace WarhammerProfessionApp.Controllers
             var item = character.Items.FirstOrDefault(a => a.ItemId == value.Id);
 
             if (value.ChangeMoney)
-            {
-                var userMoney = GetUserMoney(character);
-                var itemCost = GetItemPrice(item.Item);
-
-                var moneyLeft = ConvertMoney(userMoney + itemCost * item.Quantity);
-
-                character.Gold = moneyLeft.Gold;
-                character.Silver = moneyLeft.Silver;
-                character.Bronze = moneyLeft.Bronze;
-            }
+                character.Money += item.Item.Price * item.Quantity;
 
             character.Items.Remove(item);
 
@@ -750,7 +791,11 @@ namespace WarhammerProfessionApp.Controllers
                 return BadRequest();
 
             character.ExperienceUsed -= 100;
-            character.Skills.Remove(skill);
+
+            if (skill.Level <= 1)
+                character.Skills.Remove(skill);
+            else
+                skill.Level--;
 
             context.SaveChanges();
 
@@ -859,10 +904,6 @@ namespace WarhammerProfessionApp.Controllers
 
         private readonly ProfessionsContext context;
 
-        private readonly int goldValue = 20 * 12;
-
-        private readonly int silverValue = 12;
-
         private bool CheckCharacterExperienceLimit(Character character, int value) => character.ExperienceSummary - character.ExperienceUsed >= value;
 
         private bool CheckIfProfessionsAreFinished(Character character)
@@ -887,33 +928,6 @@ namespace WarhammerProfessionApp.Controllers
 
             return skillsCondition && abilityCondition && statisticsCondition;
         }
-
-        private MoneyDto ConvertMoney(int value)
-        {
-            var gold = value / goldValue;
-            value -= gold * goldValue;
-
-            var silver = value / silverValue;
-            value -= silver * silverValue;
-
-            var bronze = value;
-
-            return new MoneyDto
-            {
-                Gold = gold,
-                Silver = silver,
-                Bronze = bronze
-            };
-        }
-
-        private int GetItemPrice(Item item)
-            => item.MoneyType switch
-            {
-                MoneyType.GoldenCrown => item.Price * goldValue,
-                MoneyType.Shilling => item.Price * silverValue,
-                MoneyType.Penny => item.Price,
-                _ => 0
-            };
 
         private int GetStatisticMaximumValue(StatisticType type, Character character, out int professionValue, out Dictionary<string, int> abilitiesValues)
         {
@@ -966,10 +980,6 @@ namespace WarhammerProfessionApp.Controllers
 
             return int.Parse(claim);
         }
-
-        private int GetUserMoney(Character character) => GetUserMoney(character.Gold, character.Silver, character.Bronze);
-
-        private int GetUserMoney(int gold, int silver, int bronze) => gold * goldValue + silver * silverValue + bronze;
 
         private List<RaceDto> SortAvailableRaces(Character character)
         {

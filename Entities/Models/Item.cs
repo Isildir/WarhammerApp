@@ -16,8 +16,6 @@ namespace WarhammerProfessionApp.Entities.Models
 
         public ItemType ItemType { get; set; }
 
-        public MoneyType MoneyType { get; set; }
-
         [Required, StringLength(50)]
         public string Name { get; set; }
 
