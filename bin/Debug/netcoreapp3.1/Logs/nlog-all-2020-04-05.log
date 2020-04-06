@@ -1,6 +1,0 @@
-2020-04-05 20:07:49.7526||WARN|WarhammerProfessionApp.Utility.Logger|UsersController Register => Login Laerfuin is already taken System.Exception: Login Laerfuin is already taken
-   at WarhammerProfessionApp.Utility.UserService.Create(User user, String password) in C:\VS Projects\WarhammerProfessionApp\WarhammerProfessionApp\Utility\UserService.cs:line 38
-   at WarhammerProfessionApp.Controllers.UsersController.Register(UserDto userDto) in C:\VS Projects\WarhammerProfessionApp\WarhammerProfessionApp\Controllers\UsersController.cs:line 78
-2020-04-05 20:07:49.7526||WARN|WarhammerProfessionApp.Utility.Logger|UsersController Register => Login Laerfuin is already taken System.Exception: Login Laerfuin is already taken
-   at WarhammerProfessionApp.Utility.UserService.Create(User user, String password) in C:\VS Projects\WarhammerProfessionApp\WarhammerProfessionApp\Utility\UserService.cs:line 38
-   at WarhammerProfessionApp.Controllers.UsersController.Register(UserDto userDto) in C:\VS Projects\WarhammerProfessionApp\WarhammerProfessionApp\Controllers\UsersController.cs:line 78|url: |action: 
