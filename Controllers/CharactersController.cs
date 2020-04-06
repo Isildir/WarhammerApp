@@ -10,6 +10,7 @@ using WarhammerProfessionApp.Dtos;
 using WarhammerProfessionApp.Entities;
 using WarhammerProfessionApp.Entities.Models;
 using WarhammerProfessionApp.Entities.Models.Enums;
+using WarhammerProfessionApp.SignalR;
 using WarhammerProfessionApp.Utility;
 
 namespace WarhammerProfessionApp.Controllers
@@ -18,9 +19,10 @@ namespace WarhammerProfessionApp.Controllers
     [ApiController, Authorize]
     public class CharactersController : ControllerBase
     {
-        public CharactersController(ProfessionsContext context)
+        public CharactersController(ProfessionsContext context, CharacterHub characterHub)
         {
             this.context = context;
+            this.characterHub = characterHub;
         }
 
         [HttpPost(nameof(AddCharacterAbility))]
@@ -221,6 +223,10 @@ namespace WarhammerProfessionApp.Controllers
 
             context.SaveChanges();
 
+            var generator = new Random();
+
+            characterHub.OnMoneyChange(character.Id, generator.Next(1, 100), generator.Next(1, 100), generator.Next(1, 100));
+
             return Ok(false);
         }
 
@@ -310,6 +316,7 @@ namespace WarhammerProfessionApp.Controllers
 
             var basicValues = new CharacterBasicValuesDto
             {
+                Id = character.Id,
                 ActualProfessionName = character.CurrentProfession?.Name,
                 ExperienceLeft = character.ExperienceSummary - character.ExperienceUsed,
                 ExperienceSum = character.ExperienceSummary,
@@ -902,6 +909,7 @@ namespace WarhammerProfessionApp.Controllers
             return Ok(true);
         }
 
+        private readonly CharacterHub characterHub;
         private readonly ProfessionsContext context;
 
         private bool CheckCharacterExperienceLimit(Character character, int value) => character.ExperienceSummary - character.ExperienceUsed >= value;

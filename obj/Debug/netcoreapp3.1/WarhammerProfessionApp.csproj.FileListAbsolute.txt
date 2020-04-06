@@ -1,6 +1,7 @@
 C:\VS Projects\WarhammerProfessionApp\WarhammerProfessionApp\bin\Debug\netcoreapp3.1\nlog.config
 C:\VS Projects\WarhammerProfessionApp\WarhammerProfessionApp\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\VS Projects\WarhammerProfessionApp\WarhammerProfessionApp\bin\Debug\netcoreapp3.1\appsettings.json
+C:\VS Projects\WarhammerProfessionApp\WarhammerProfessionApp\bin\Debug\netcoreapp3.1\libman.json
 C:\VS Projects\WarhammerProfessionApp\WarhammerProfessionApp\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
 C:\VS Projects\WarhammerProfessionApp\WarhammerProfessionApp\bin\Debug\netcoreapp3.1\WarhammerProfessionApp.exe
 C:\VS Projects\WarhammerProfessionApp\WarhammerProfessionApp\bin\Debug\netcoreapp3.1\WarhammerProfessionApp.deps.json
@@ -115,11 +116,10 @@ C:\VS Projects\WarhammerProfessionApp\WarhammerProfessionApp\bin\Debug\netcoreap
 C:\VS Projects\WarhammerProfessionApp\WarhammerProfessionApp\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\VS Projects\WarhammerProfessionApp\WarhammerProfessionApp\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\VS Projects\WarhammerProfessionApp\WarhammerProfessionApp\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-C:\VS Projects\WarhammerProfessionApp\WarhammerProfessionApp\obj\Debug\netcoreapp3.1\staticwebassets\WarhammerProfessionApp.StaticWebAssets.Manifest.cache
-C:\VS Projects\WarhammerProfessionApp\WarhammerProfessionApp\obj\Debug\netcoreapp3.1\staticwebassets\WarhammerProfessionApp.StaticWebAssets.xml
 C:\VS Projects\WarhammerProfessionApp\WarhammerProfessionApp\obj\Debug\netcoreapp3.1\WarhammerProfessionApp.Resources.SharedResource.en-US.resources
 C:\VS Projects\WarhammerProfessionApp\WarhammerProfessionApp\obj\Debug\netcoreapp3.1\WarhammerProfessionApp.Resources.SharedResource.pl-PL.resources
 C:\VS Projects\WarhammerProfessionApp\WarhammerProfessionApp\obj\Debug\netcoreapp3.1\WarhammerProfessionApp.csproj.GenerateResource.cache
+C:\VS Projects\WarhammerProfessionApp\WarhammerProfessionApp\obj\Debug\netcoreapp3.1\WarhammerProfessionApp.csproj.CoreCompileInputs.cache
 C:\VS Projects\WarhammerProfessionApp\WarhammerProfessionApp\obj\Debug\netcoreapp3.1\WarhammerProfessionApp.MvcApplicationPartsAssemblyInfo.cache
 C:\VS Projects\WarhammerProfessionApp\WarhammerProfessionApp\obj\Debug\netcoreapp3.1\WarhammerProfessionApp.AssemblyInfoInputs.cache
 C:\VS Projects\WarhammerProfessionApp\WarhammerProfessionApp\obj\Debug\netcoreapp3.1\WarhammerProfessionApp.AssemblyInfo.cs
@@ -127,8 +127,11 @@ C:\VS Projects\WarhammerProfessionApp\WarhammerProfessionApp\obj\Debug\netcoreap
 C:\VS Projects\WarhammerProfessionApp\WarhammerProfessionApp\obj\Debug\netcoreapp3.1\pl-PL\WarhammerProfessionApp.resources.dll
 C:\VS Projects\WarhammerProfessionApp\WarhammerProfessionApp\obj\Debug\netcoreapp3.1\WarhammerProfessionApp.RazorTargetAssemblyInfo.cache
 C:\VS Projects\WarhammerProfessionApp\WarhammerProfessionApp\obj\Debug\netcoreapp3.1\WarhammerProfessionApp.csproj.CopyComplete
+C:\VS Projects\WarhammerProfessionApp\WarhammerProfessionApp\obj\Debug\netcoreapp3.1\staticwebassets\WarhammerProfessionApp.StaticWebAssets.Manifest.cache
+C:\VS Projects\WarhammerProfessionApp\WarhammerProfessionApp\obj\Debug\netcoreapp3.1\staticwebassets\WarhammerProfessionApp.StaticWebAssets.xml
 C:\VS Projects\WarhammerProfessionApp\WarhammerProfessionApp\obj\Debug\netcoreapp3.1\WarhammerProfessionApp.dll
 C:\VS Projects\WarhammerProfessionApp\WarhammerProfessionApp\obj\Debug\netcoreapp3.1\WarhammerProfessionApp.pdb
-C:\VS Projects\WarhammerProfessionApp\WarhammerProfessionApp\obj\Debug\netcoreapp3.1\WarhammerProfessionApp.csprojAssemblyReference.cache
-C:\VS Projects\WarhammerProfessionApp\WarhammerProfessionApp\obj\Debug\netcoreapp3.1\WarhammerProfessionApp.csproj.CoreCompileInputs.cache
 C:\VS Projects\WarhammerProfessionApp\WarhammerProfessionApp\obj\Debug\netcoreapp3.1\WarhammerProfessionApp.genruntimeconfig.cache
+C:\VS Projects\WarhammerProfessionApp\WarhammerProfessionApp\obj\Debug\netcoreapp3.1\WarhammerProfessionApp.csprojAssemblyReference.cache
+C:\VS Projects\WarhammerProfessionApp\WarhammerProfessionApp\obj\Debug\netcoreapp3.1\en-US\WarhammerProfessionApp.resources.cs
+C:\VS Projects\WarhammerProfessionApp\WarhammerProfessionApp\obj\Debug\netcoreapp3.1\pl-PL\WarhammerProfessionApp.resources.cs

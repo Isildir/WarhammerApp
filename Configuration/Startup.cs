@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WarhammerProfessionApp.Entities;
 using WarhammerProfessionApp.Interfaces;
+using WarhammerProfessionApp.SignalR;
 using WarhammerProfessionApp.Utility;
 
 namespace WarhammerProfessionApp.Configuration
@@ -30,9 +31,7 @@ namespace WarhammerProfessionApp.Configuration
             if (env.IsDevelopment())
                 app.UseDeveloperExceptionPage();
 
-            app.UseCors(
-                options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()
-            );
+            app.UseCors();
 
             app.UseAuthentication();
 
@@ -43,15 +42,20 @@ namespace WarhammerProfessionApp.Configuration
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<CharacterHub>("/characterHub");
             });
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddCors();
+            services.AddCors(a =>
+            {
+                a.AddDefaultPolicy(b => b.AllowAnyMethod().AllowAnyHeader().AllowCredentials().WithOrigins("http://localhost:3000"));
+            });
 
             services.AddControllers();
+            services.AddSignalR();
 
             services.AddDbContext<ProfessionsContext>(options =>
               options.UseSqlServer(Configuration.GetConnectionString("ProfessionsContext")));
@@ -97,6 +101,7 @@ namespace WarhammerProfessionApp.Configuration
             //services.AddLocalization(options => options.ResourcesPath = "Resources");
 
             services.AddScoped<IUserService, UserService>();
+            services.AddSingleton<CharacterHub>();
             services.AddSingleton(resolver => resolver.GetRequiredService<IOptions<AppSettings>>().Value);
         }
     }

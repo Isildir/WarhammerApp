@@ -1,6 +1,6 @@
-2020-02-27 22:26:23.4837 Info Message Template Auto Format enabled
-2020-02-27 22:26:23.5127 Info Loading assembly: NLog.Web.AspNetCore
-2020-02-27 22:26:23.5493 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Error loading extensions: NLog.Web.AspNetCore
+2020-04-05 20:07:49.5510 Info Message Template Auto Format enabled
+2020-04-05 20:07:49.5646 Info Loading assembly: NLog.Web.AspNetCore
+2020-04-05 20:07:49.5646 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Error loading extensions: NLog.Web.AspNetCore
  ---> System.IO.FileNotFoundException: Could not load file or assembly 'NLog.Web.AspNetCore, Culture=neutral, PublicKeyToken=null'. Nie można odnaleźć określonego pliku.
 File name: 'NLog.Web.AspNetCore, Culture=neutral, PublicKeyToken=null'
    at System.Reflection.RuntimeAssembly.nLoad(AssemblyName fileName, String codeBase, RuntimeAssembly assemblyContext, StackCrawlMark& stackMark, Boolean throwOnFileNotFound, AssemblyLoadContext assemblyLoadContext)
@@ -11,14 +11,14 @@ File name: 'NLog.Web.AspNetCore, Culture=neutral, PublicKeyToken=null'
 
 
    --- End of inner exception stack trace ---
-2020-02-27 22:26:23.6375 Info Adding target FileTarget(Name=allfile)
-2020-02-27 22:26:23.6467 Error Error parsing layout aspnet-request-url will be ignored. Exception: System.ArgumentException: LayoutRenderer cannot be found: 'aspnet-request-url'. Is NLog.Web not included?
+2020-04-05 20:07:49.6273 Info Adding target FileTarget(Name=allfile)
+2020-04-05 20:07:49.6273 Error Error parsing layout aspnet-request-url will be ignored. Exception: System.ArgumentException: LayoutRenderer cannot be found: 'aspnet-request-url'. Is NLog.Web not included?
    at NLog.Config.Factory`2.CreateInstance(String itemName)
    at NLog.Layouts.LayoutParser.GetLayoutRenderer(ConfigurationItemFactory configurationItemFactory, String name)
-2020-02-27 22:26:23.6550 Error Error parsing layout aspnet-mvc-action will be ignored. Exception: System.ArgumentException: LayoutRenderer cannot be found: 'aspnet-mvc-action'. Is NLog.Web not included?
+2020-04-05 20:07:49.6435 Error Error parsing layout aspnet-mvc-action will be ignored. Exception: System.ArgumentException: LayoutRenderer cannot be found: 'aspnet-mvc-action'. Is NLog.Web not included?
    at NLog.Config.Factory`2.CreateInstance(String itemName)
    at NLog.Layouts.LayoutParser.GetLayoutRenderer(ConfigurationItemFactory configurationItemFactory, String name)
-2020-02-27 22:26:23.6550 Info Adding target FileTarget(Name=ownFile-web)
-2020-02-27 22:26:23.7216 Info Found 42 configuration items
-2020-02-27 22:26:23.7476 Info Configuration initialized.
-2020-02-27 22:26:23.7916 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.6.8.10751. Product version: 4.6.8.
+2020-04-05 20:07:49.6648 Info Adding target FileTarget(Name=ownFile-web)
+2020-04-05 20:07:49.6976 Info Found 42 configuration items
+2020-04-05 20:07:49.7171 Info Configuration initialized.
+2020-04-05 20:07:49.7526 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.6.8.10751. Product version: 4.6.8.
