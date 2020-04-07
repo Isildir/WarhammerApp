@@ -2,6 +2,6 @@
 {
     public class CharacterSkillGetDto : SkillDto
     {
-        public bool IsUpgrade { get; set; }
+        public int Level { get; set; }
     }
 }

@@ -9,8 +9,8 @@ namespace WarhammerProfessionApp.Dtos
             Professions = new List<ShortProfessionDto>();
             BasicStatistics = new List<CharacterStatisticDto>();
             AdvancedStatistics = new List<CharacterStatisticDto>();
-            AdditionalExcerienceCostValues = new List<AdditionalCharacterValueDto>();
             AdditionalValues = new List<AdditionalCharacterValueDto>();
+            AdditionalItems = new List<CharacterItemDto>();
             Skills = new List<CharacterSkillDto>();
             Abilities = new List<AbilityDto>();
             Items = new List<CharacterItemDto>();
@@ -18,7 +18,7 @@ namespace WarhammerProfessionApp.Dtos
 
         public List<AbilityDto> Abilities { get; set; }
 
-        public List<AdditionalCharacterValueDto> AdditionalExcerienceCostValues { get; set; }
+        public List<CharacterItemDto> AdditionalItems { get; set; }
 
         public List<AdditionalCharacterValueDto> AdditionalValues { get; set; }
 

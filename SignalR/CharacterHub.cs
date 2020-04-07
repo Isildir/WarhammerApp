@@ -3,12 +3,29 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WarhammerProfessionApp.Utility;
 
 namespace WarhammerProfessionApp.SignalR
 {
     public class CharacterHub : Hub
     {
-        public Dictionary<string, int> dictionary = new Dictionary<string, int>();
+        public async Task ChangeExperience(int characterId, int value)
+        {
+            if (GetReceivers(characterId, out IClientProxy clients))
+                await clients.SendAsync("changeExperience", value);
+        }
+
+        public async Task ChangeMoney(int characterId, int gold, int silver, int bronze)
+        {
+            if (GetReceivers(characterId, out IClientProxy clients))
+                await clients.SendAsync("changeMoney", gold, silver, bronze);
+        }
+
+        public async Task ChangeStatisticValue(int characterId, StatisticType type, int currentValue, int maxValue)
+        {
+            if (GetReceivers(characterId, out IClientProxy clients))
+                await clients.SendAsync("changeStatisticValue", (byte)type, currentValue, maxValue);
+        }
 
         public override Task OnConnectedAsync()
         {
@@ -33,12 +50,27 @@ namespace WarhammerProfessionApp.SignalR
             return base.OnDisconnectedAsync(exception);
         }
 
-        public async Task OnMoneyChange(int id, int gold, int silver, int bronze)
+        public async Task RemoveAbility(int characterId, int abilityId)
         {
-            if (Clients != null)
-                await Clients.Clients(GetFilteredConnections(id)).SendAsync("onMoneyChange", gold, silver, bronze);
+            if (GetReceivers(characterId, out IClientProxy clients))
+                await clients.SendAsync("removeAbility", abilityId);
         }
 
-        private IReadOnlyList<string> GetFilteredConnections(int id) => dictionary.Where(a => a.Value == id).Select(a => a.Key).ToList();
+        public async Task RemoveSkill(int characterId, int skillId)
+        {
+            if (GetReceivers(characterId, out IClientProxy clients))
+                await clients.SendAsync("removeSkill", skillId);
+        }
+
+        private readonly Dictionary<string, int> dictionary = new Dictionary<string, int>();
+
+        private bool GetReceivers(int id, out IClientProxy clientProxy)
+        {
+            var connectionsIds = dictionary.Where(a => a.Value == id).Select(a => a.Key);
+
+            clientProxy = Clients?.Clients(connectionsIds.ToList()) ?? null;
+
+            return clientProxy != null;
+        }
     }
 }

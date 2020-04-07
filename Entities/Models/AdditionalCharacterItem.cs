@@ -1,20 +1,22 @@
-﻿using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace WarhammerProfessionApp.Entities.Models
 {
-    public class AdditionalCharacterValue
+    public class AdditionalCharacterItem
     {
         public Character Character { get; set; }
 
         public int CharacterId { get; set; }
 
-        [DefaultValue(100)]
-        public int Cost { get; set; }
+        public string Description { get; set; }
 
         [Key]
         public int Id { get; set; }
 
         public string Name { get; set; }
+
+        public int Quantity { get; set; }
+
+        public int Weigth { get; set; }
     }
 }

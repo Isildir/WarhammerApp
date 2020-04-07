@@ -9,8 +9,8 @@ namespace WarhammerProfessionApp.Entities.Models
         public Character()
         {
             Abilities = new List<CharacterAbility>();
-            AdditionalExcerienceCostValues = new List<ExperienceAdditionalCharacterValue>();
             AdditionalValues = new List<AdditionalCharacterValue>();
+            AdditionalItems = new List<AdditionalCharacterItem>();
             Professions = new List<CharacterProfession>();
             Items = new List<CharacterItem>();
             Skills = new List<CharacterSkill>();
@@ -19,7 +19,7 @@ namespace WarhammerProfessionApp.Entities.Models
 
         public List<CharacterAbility> Abilities { get; set; }
 
-        public List<ExperienceAdditionalCharacterValue> AdditionalExcerienceCostValues { get; set; }
+        public List<AdditionalCharacterItem> AdditionalItems { get; set; }
 
         public List<AdditionalCharacterValue> AdditionalValues { get; set; }
 
