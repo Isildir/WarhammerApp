@@ -39,9 +39,11 @@ namespace WarhammerProfessionApp.Controllers
         [HttpGet("{id}"), AllowAnonymous]
         public async Task<ActionResult<ProfessionShortenedDetailsDto>> GetProfession(int id)
         {
-            var entity = await context.Set<Profession>().Include(a => a.Abilities).ThenInclude(b => b.Abilities).ThenInclude(c => c.Ability)
+            var entity = await context.Set<Profession>()
+                .Include(a => a.Abilities).ThenInclude(b => b.Abilities).ThenInclude(c => c.Ability)
                 .Include(a => a.Skills).ThenInclude(b => b.Skills).ThenInclude(c => c.Skill)
                 .Include(a => a.Equipment).ThenInclude(b => b.Items).ThenInclude(c => c.Item)
+                .Include(a => a.Statistics).ThenInclude(b => b.Statistic)
                 .Include(a => a.OutputProfessions).ThenInclude(b => b.OutputProfession)
                 .Include(a => a.EntranceProfessions).ThenInclude(b => b.EntranceProfession)
                 .FirstOrDefaultAsync(a => a.Id == id);
@@ -55,18 +57,18 @@ namespace WarhammerProfessionApp.Controllers
                 Name = entity.Name,
                 ImageId = entity.ImageId,
                 Description = entity.Description ??= string.Join($"{Environment.NewLine}{Environment.NewLine}{Environment.NewLine}", Enumerable.Repeat(tempDescription, new Random().Next(1, 4))),
-                Agility = entity.Agility,
-                Attacks = entity.Attacks,
-                CloseCombat = entity.CloseCombat,
-                Hitpoints = entity.Hitpoints,
-                Inteligence = entity.Inteligence,
-                Magic = entity.Magic,
-                Polish = entity.Polish,
-                Resistance = entity.Resistance,
-                Shooting = entity.Shooting,
-                Speed = entity.Speed,
-                Stamina = entity.Stamina,
-                Willpower = entity.Willpower,
+                Agility = entity.Statistics.First(a => a.Statistic.Type == StatisticType.Agility).Value,
+                Attacks = entity.Statistics.First(a => a.Statistic.Type == StatisticType.Attacks).Value,
+                CloseCombat = entity.Statistics.First(a => a.Statistic.Type == StatisticType.CloseCombat).Value,
+                Hitpoints = entity.Statistics.First(a => a.Statistic.Type == StatisticType.Hitpoints).Value,
+                Inteligence = entity.Statistics.First(a => a.Statistic.Type == StatisticType.Inteligence).Value,
+                Magic = entity.Statistics.First(a => a.Statistic.Type == StatisticType.Magic).Value,
+                Polish = entity.Statistics.First(a => a.Statistic.Type == StatisticType.Polish).Value,
+                Resistance = entity.Statistics.First(a => a.Statistic.Type == StatisticType.Resistance).Value,
+                Shooting = entity.Statistics.First(a => a.Statistic.Type == StatisticType.Shooting).Value,
+                Speed = entity.Statistics.First(a => a.Statistic.Type == StatisticType.Speed).Value,
+                Stamina = entity.Statistics.First(a => a.Statistic.Type == StatisticType.Stamina).Value,
+                Willpower = entity.Statistics.First(a => a.Statistic.Type == StatisticType.Willpower).Value,
                 ProfessionLevel = entity.ProfessionLevel.ToString(),
                 ProfessionRaceAllowed = entity.ProfessionRaceAllowed.ToString(),
                 Abilities = string.Join(", ", entity.Abilities.Select(b => GetFormattedElement(b.Quantity, b.Abilities.Select(c => c.Ability.Name).ToList()))),

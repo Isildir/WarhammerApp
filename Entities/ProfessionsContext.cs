@@ -2347,348 +2347,373 @@ namespace WarhammerProfessionApp.Entities
 
             #endregion skills
 
+            #region statistics
+
+            var statisticsDataSet = new List<Statistic>
+            {
+                new Statistic{ Type = StatisticType.CloseCombat, IsBasicValue = true, IsReadOnly = false, IsCalculatedValue = false },
+                new Statistic{ Type = StatisticType.Shooting, IsBasicValue = true, IsReadOnly = false, IsCalculatedValue = false },
+                new Statistic{ Type = StatisticType.Stamina, IsBasicValue = true, IsReadOnly = false, IsCalculatedValue = false },
+                new Statistic{ Type = StatisticType.Resistance, IsBasicValue = true, IsReadOnly = false, IsCalculatedValue = false },
+                new Statistic{ Type = StatisticType.Agility, IsBasicValue = true, IsReadOnly = false, IsCalculatedValue = false },
+                new Statistic{ Type = StatisticType.Inteligence, IsBasicValue = true, IsReadOnly = false, IsCalculatedValue = false },
+                new Statistic{ Type = StatisticType.Willpower, IsBasicValue = true, IsReadOnly = false, IsCalculatedValue = false },
+                new Statistic{ Type = StatisticType.Polish, IsBasicValue = true, IsReadOnly = false, IsCalculatedValue = false },
+
+                new Statistic{ Type = StatisticType.Attacks, IsBasicValue = false, IsReadOnly = false, IsCalculatedValue = false },
+                new Statistic{ Type = StatisticType.Hitpoints, IsBasicValue = false, IsReadOnly = false, IsCalculatedValue = false },
+                new Statistic{ Type = StatisticType.Strength, IsBasicValue = false, IsReadOnly = true, IsCalculatedValue = true },
+                new Statistic{ Type = StatisticType.Hardness, IsBasicValue = false, IsReadOnly = true, IsCalculatedValue = true },
+                new Statistic{ Type = StatisticType.Speed, IsBasicValue = false, IsReadOnly = true, IsCalculatedValue = false },
+                new Statistic{ Type = StatisticType.Magic, IsBasicValue = false, IsReadOnly = true, IsCalculatedValue = false },
+                new Statistic{ Type = StatisticType.Insanity, IsBasicValue = false, IsReadOnly = false, IsCalculatedValue = true },
+                new Statistic{ Type = StatisticType.Destiny, IsBasicValue = false, IsReadOnly = false, IsCalculatedValue = true },
+            };
+
+            #endregion statistics
+
             #region professions
 
             var akolita = new ProfessionBuilder()
                 .SetBasicValues("Akolita", ProfessionLevel.Basic, 0, null, "Bohater musi wybrać boga i świątynię. Wybór ten zapewnia dodatkową cechę lub zdolność, wymienioną w opisie kultu")
-                .SetStatistics(5, 5, 0, 5, 0, 10, 10, 10, 0, 2, 0, 0);
+                .SetStatistics(5, 5, 0, 5, 0, 10, 10, 10, 0, 2, 0, 0, statisticsDataSet);
             var banita = new ProfessionBuilder()
                 .SetBasicValues("Banita", ProfessionLevel.Basic)
-                .SetStatistics(10, 10, 0, 0, 10, 5, 0, 0, 1, 2, 0, 0);
+                .SetStatistics(10, 10, 0, 0, 10, 5, 0, 0, 1, 2, 0, 0, statisticsDataSet);
             var berserker = new ProfessionBuilder()
                 .SetBasicValues("Berserker z norski", ProfessionLevel.Basic)
-                .SetStatistics(15, 0, 10, 10, 0, 0, 10, 0, 0, 2, 0, 0);
+                .SetStatistics(15, 0, 10, 10, 0, 0, 10, 0, 0, 2, 0, 0, statisticsDataSet);
             var chlop = new ProfessionBuilder()
                 .SetBasicValues("Chłop", ProfessionLevel.Basic)
-                .SetStatistics(5, 5, 5, 10, 5, 0, 5, 0, 0, 2, 0, 0);
+                .SetStatistics(5, 5, 5, 10, 5, 0, 5, 0, 0, 2, 0, 0, statisticsDataSet);
             var ciura = new ProfessionBuilder()
                 .SetBasicValues("Ciura obozowa", ProfessionLevel.Basic)
-                .SetStatistics(0, 0, 0, 5, 10, 5, 5, 10, 0, 2, 0, 0);
+                .SetStatistics(0, 0, 0, 5, 10, 5, 5, 10, 0, 2, 0, 0, statisticsDataSet);
             var cyrkowiec = new ProfessionBuilder()
                 .SetBasicValues("Cyrkowiec", ProfessionLevel.Basic)
-                .SetStatistics(5, 10, 0, 0, 10, 0, 5, 10, 0, 2, 0, 0);
+                .SetStatistics(5, 10, 0, 0, 10, 0, 5, 10, 0, 2, 0, 0, statisticsDataSet);
             var cyrulik = new ProfessionBuilder()
                 .SetBasicValues("Cyrulik", ProfessionLevel.Basic)
-                .SetStatistics(5, 0, 0, 0, 10, 10, 10, 5, 0, 2, 0, 0);
+                .SetStatistics(5, 0, 0, 0, 10, 10, 10, 5, 0, 2, 0, 0, statisticsDataSet);
             var fanatyk = new ProfessionBuilder()
                 .SetBasicValues("Fanatyk", ProfessionLevel.Basic)
-                .SetStatistics(10, 0, 5, 10, 0, 0, 10, 5, 0, 2, 0, 0);
+                .SetStatistics(10, 0, 5, 10, 0, 0, 10, 5, 0, 2, 0, 0, statisticsDataSet);
             var flisak = new ProfessionBuilder()
                 .SetBasicValues("Flisak", ProfessionLevel.Basic)
-                .SetStatistics(10, 5, 5, 5, 10, 5, 0, 0, 0, 2, 0, 0);
+                .SetStatistics(10, 5, 5, 5, 10, 5, 0, 0, 0, 2, 0, 0, statisticsDataSet);
             var giermek = new ProfessionBuilder()
                 .SetBasicValues("Giermek", ProfessionLevel.Basic)
-                .SetStatistics(10, 5, 5, 5, 5, 0, 0, 5, 1, 2, 0, 0);
+                .SetStatistics(10, 5, 5, 5, 5, 0, 0, 5, 1, 2, 0, 0, statisticsDataSet);
             var gladiator = new ProfessionBuilder()
                 .SetBasicValues("Gladiator", ProfessionLevel.Basic)
-                .SetStatistics(15, 0, 0, 10, 10, 0, 10, 0, 0, 2, 0, 0);
+                .SetStatistics(15, 0, 0, 10, 10, 0, 10, 0, 0, 2, 0, 0, statisticsDataSet);
             var goniec = new ProfessionBuilder()
                 .SetBasicValues("Goniec", ProfessionLevel.Basic)
-                .SetStatistics(10, 0, 5, 5, 10, 5, 5, 0, 0, 2, 0, 1);
+                .SetStatistics(10, 0, 5, 5, 10, 5, 5, 0, 0, 2, 0, 1, statisticsDataSet);
             var gornik = new ProfessionBuilder()
                 .SetBasicValues("Górnik", ProfessionLevel.Basic)
-                .SetStatistics(5, 5, 10, 5, 0, 5, 5, 0, 0, 2, 0, 0);
+                .SetStatistics(5, 5, 10, 5, 0, 5, 5, 0, 0, 2, 0, 0, statisticsDataSet);
             var guslarz = new ProfessionBuilder()
                 .SetBasicValues("Guślarz", ProfessionLevel.Basic)
-                .SetStatistics(0, 0, 0, 5, 5, 5, 10, 10, 0, 2, 1, 0);
+                .SetStatistics(0, 0, 0, 5, 5, 5, 10, 10, 0, 2, 1, 0, statisticsDataSet);
             var hiena = new ProfessionBuilder()
                 .SetBasicValues("Hiena cmentarna", ProfessionLevel.Basic)
-                .SetStatistics(10, 0, 0, 0, 10, 10, 10, 5, 0, 2, 0, 0);
+                .SetStatistics(10, 0, 0, 0, 10, 10, 10, 5, 0, 2, 0, 0, statisticsDataSet);
             var kanciarz = new ProfessionBuilder()
                 .SetBasicValues("Kanciarz", ProfessionLevel.Basic)
-                .SetStatistics(5, 5, 0, 0, 10, 5, 5, 10, 0, 2, 0, 0);
+                .SetStatistics(5, 5, 0, 0, 10, 5, 5, 10, 0, 2, 0, 0, statisticsDataSet);
             var kozak = new ProfessionBuilder()
                 .SetBasicValues("Kozak kislevski", ProfessionLevel.Basic)
-                .SetStatistics(10, 10, 0, 10, 0, 0, 10, 0, 0, 2, 0, 0);
+                .SetStatistics(10, 10, 0, 10, 0, 0, 10, 0, 0, 2, 0, 0, statisticsDataSet);
             var lesnik = new ProfessionBuilder()
                 .SetBasicValues("Leśnik", ProfessionLevel.Basic)
-                .SetStatistics(10, 0, 10, 0, 5, 0, 10, 0, 0, 3, 0, 0);
+                .SetStatistics(10, 0, 10, 0, 5, 0, 10, 0, 0, 3, 0, 0, statisticsDataSet);
             var lowca = new ProfessionBuilder()
                 .SetBasicValues("Łowca", ProfessionLevel.Basic)
-                .SetStatistics(0, 15, 0, 5, 10, 5, 0, 0, 0, 3, 0, 0);
+                .SetStatistics(0, 15, 0, 5, 10, 5, 0, 0, 0, 3, 0, 0, statisticsDataSet);
             var lowcanagrod = new ProfessionBuilder()
                 .SetBasicValues("Łowca nagród", ProfessionLevel.Basic)
-                .SetStatistics(5, 10, 5, 0, 10, 0, 5, 0, 0, 2, 0, 0);
+                .SetStatistics(5, 10, 5, 0, 10, 0, 5, 0, 0, 2, 0, 0, statisticsDataSet);
             var mieszczanin = new ProfessionBuilder()
                 .SetBasicValues("Mieszczanin", ProfessionLevel.Basic)
-                .SetStatistics(5, 0, 0, 0, 5, 10, 5, 5, 0, 2, 0, 0);
+                .SetStatistics(5, 0, 0, 0, 5, 10, 5, 5, 0, 2, 0, 0, statisticsDataSet);
             var mytnik = new ProfessionBuilder()
                 .SetBasicValues("Mytnik", ProfessionLevel.Basic)
-                .SetStatistics(10, 5, 5, 10, 5, 0, 5, 0, 0, 2, 0, 0);
+                .SetStatistics(10, 5, 5, 10, 5, 0, 5, 0, 0, 2, 0, 0, statisticsDataSet);
             var najemnik = new ProfessionBuilder()
                 .SetBasicValues("Najemnik", ProfessionLevel.Basic)
-                .SetStatistics(10, 10, 5, 5, 5, 0, 5, 0, 1, 2, 0, 0);
+                .SetStatistics(10, 10, 5, 5, 5, 0, 5, 0, 1, 2, 0, 0, statisticsDataSet);
             var ochotnik = new ProfessionBuilder()
                 .SetBasicValues("Ochotnik", ProfessionLevel.Basic)
-                .SetStatistics(10, 5, 5, 5, 10, 0, 0, 0, 0, 2, 0, 0);
+                .SetStatistics(10, 5, 5, 5, 10, 0, 0, 0, 0, 2, 0, 0, statisticsDataSet);
             var ochroniarz = new ProfessionBuilder()
                 .SetBasicValues("Ochroniarz", ProfessionLevel.Basic)
-                .SetStatistics(10, 0, 5, 5, 5, 0, 0, 0, 1, 3, 0, 0);
+                .SetStatistics(10, 0, 5, 5, 5, 0, 0, 0, 1, 3, 0, 0, statisticsDataSet);
             var oprych = new ProfessionBuilder()
                 .SetBasicValues("Oprych", ProfessionLevel.Basic)
-                .SetStatistics(10, 0, 5, 5, 0, 0, 5, 5, 1, 2, 0, 0);
+                .SetStatistics(10, 0, 5, 5, 0, 0, 5, 5, 1, 2, 0, 0, statisticsDataSet);
             var paz = new ProfessionBuilder()
                 .SetBasicValues("Paź", ProfessionLevel.Basic)
-                .SetStatistics(0, 0, 0, 0, 10, 10, 5, 10, 0, 2, 0, 0);
+                .SetStatistics(0, 0, 0, 0, 10, 10, 5, 10, 0, 2, 0, 0, statisticsDataSet);
             var podzegacz = new ProfessionBuilder()
                 .SetBasicValues("Podżegacz", ProfessionLevel.Basic)
-                .SetStatistics(5, 5, 0, 0, 5, 10, 0, 10, 0, 2, 0, 0);
+                .SetStatistics(5, 5, 0, 0, 5, 10, 0, 10, 0, 2, 0, 0, statisticsDataSet);
             var porywacz = new ProfessionBuilder()
                 .SetBasicValues("Porywacz zwłok", ProfessionLevel.Basic)
-                .SetStatistics(5, 5, 5, 0, 10, 0, 10, 0, 0, 2, 0, 0);
+                .SetStatistics(5, 5, 5, 0, 10, 0, 10, 0, 0, 2, 0, 0, statisticsDataSet);
             var poslaniec = new ProfessionBuilder()
                 .SetBasicValues("Posłaniec", ProfessionLevel.Basic)
-                .SetStatistics(5, 5, 0, 5, 10, 5, 5, 0, 0, 2, 0, 0);
+                .SetStatistics(5, 5, 0, 5, 10, 5, 5, 0, 0, 2, 0, 0, statisticsDataSet);
             var przemytnik = new ProfessionBuilder()
                 .SetBasicValues("Przemytnik", ProfessionLevel.Basic)
-                .SetStatistics(5, 5, 0, 0, 10, 10, 0, 10, 0, 2, 0, 0);
+                .SetStatistics(5, 5, 0, 0, 10, 10, 0, 10, 0, 2, 0, 0, statisticsDataSet);
             var przepatrywacz = new ProfessionBuilder()
                 .SetBasicValues("Przepatrywacz", ProfessionLevel.Basic)
-                .SetStatistics(5, 10, 0, 0, 10, 10, 5, 0, 0, 2, 0, 0);
+                .SetStatistics(5, 10, 0, 0, 10, 10, 5, 0, 0, 2, 0, 0, statisticsDataSet);
             var przewoznik = new ProfessionBuilder()
                 .SetBasicValues("Przewoźnik", ProfessionLevel.Basic)
-                .SetStatistics(5, 5, 10, 5, 5, 5, 0, 0, 0, 2, 0, 0);
+                .SetStatistics(5, 5, 10, 5, 5, 5, 0, 0, 0, 2, 0, 0, statisticsDataSet);
             var rybak = new ProfessionBuilder()
                 .SetBasicValues("Rybak", ProfessionLevel.Basic)
-                .SetStatistics(0, 5, 10, 5, 10, 5, 0, 0, 0, 2, 0, 0);
+                .SetStatistics(0, 5, 10, 5, 10, 5, 0, 0, 0, 2, 0, 0, statisticsDataSet);
             var rzecznik = new ProfessionBuilder()
                 .SetBasicValues("Rzecznik rodu", ProfessionLevel.Basic, Race.Human | Race.Dwarf | Race.Halfing)
-                .SetStatistics(5, 5, 0, 0, 5, 10, 5, 10, 0, 2, 0, 0);
+                .SetStatistics(5, 5, 0, 0, 5, 10, 5, 10, 0, 2, 0, 0, statisticsDataSet);
             var rzemieslnik = new ProfessionBuilder()
                 .SetBasicValues("Rzemieślnik", ProfessionLevel.Basic)
-                .SetStatistics(0, 0, 5, 5, 10, 5, 10, 0, 0, 2, 0, 0);
+                .SetStatistics(0, 0, 5, 5, 10, 5, 10, 0, 0, 2, 0, 0, statisticsDataSet);
             var rzezimieszek = new ProfessionBuilder()
                 .SetBasicValues("Rzezimieszek", ProfessionLevel.Basic)
-                .SetStatistics(10, 0, 10, 0, 10, 0, 10, 0, 1, 2, 0, 0);
+                .SetStatistics(10, 0, 10, 0, 10, 0, 10, 0, 1, 2, 0, 0, statisticsDataSet);
             var skryba = new ProfessionBuilder()
                 .SetBasicValues("Skryba", ProfessionLevel.Basic)
-                .SetStatistics(0, 0, 0, 0, 10, 10, 10, 5, 0, 2, 0, 0);
+                .SetStatistics(0, 0, 0, 0, 10, 10, 10, 5, 0, 2, 0, 0, statisticsDataSet);
             var sluga = new ProfessionBuilder()
                 .SetBasicValues("Sługa", ProfessionLevel.Basic)
-                .SetStatistics(5, 0, 5, 0, 10, 5, 10, 5, 0, 2, 0, 0);
+                .SetStatistics(5, 0, 5, 0, 10, 5, 10, 5, 0, 2, 0, 0, statisticsDataSet);
             var straznik = new ProfessionBuilder()
                 .SetBasicValues("Strażnik", ProfessionLevel.Basic)
-                .SetStatistics(10, 5, 5, 0, 5, 10, 0, 5, 0, 2, 0, 0);
+                .SetStatistics(10, 5, 5, 0, 5, 10, 0, 5, 0, 2, 0, 0, statisticsDataSet);
             var straznikDrog = new ProfessionBuilder()
                 .SetBasicValues("Strażnik dróg", ProfessionLevel.Basic)
-                .SetStatistics(10, 10, 5, 0, 10, 5, 5, 0, 0, 2, 0, 0);
+                .SetStatistics(10, 10, 5, 0, 10, 5, 5, 0, 0, 2, 0, 0, statisticsDataSet);
             var straznikPol = new ProfessionBuilder()
                 .SetBasicValues("Strażnik pól", ProfessionLevel.Basic, Race.Human | Race.Dwarf | Race.Elf)
-                .SetStatistics(5, 10, 0, 5, 10, 0, 10, 0, 0, 2, 0, 0);
+                .SetStatistics(5, 10, 0, 5, 10, 0, 10, 0, 0, 2, 0, 0, statisticsDataSet);
             var straznikWiezienny = new ProfessionBuilder()
                 .SetBasicValues("Strażnik więzienny", ProfessionLevel.Basic)
-                .SetStatistics(10, 0, 10, 10, 0, 0, 5, 0, 0, 3, 0, 0);
+                .SetStatistics(10, 0, 10, 10, 0, 0, 5, 0, 0, 3, 0, 0, statisticsDataSet);
             var szczurolap = new ProfessionBuilder()
                 .SetBasicValues("Szczurołap", ProfessionLevel.Basic)
-                .SetStatistics(5, 10, 0, 5, 10, 0, 10, 0, 0, 2, 0, 0);
+                .SetStatistics(5, 10, 0, 5, 10, 0, 10, 0, 0, 2, 0, 0, statisticsDataSet);
             var szermierz = new ProfessionBuilder()
                 .SetBasicValues("Szermierz estalijski", ProfessionLevel.Basic)
-                .SetStatistics(15, 0, 5, 5, 10, 5, 0, 0, 1, 2, 0, 0);
+                .SetStatistics(15, 0, 5, 5, 10, 5, 0, 0, 1, 2, 0, 0, statisticsDataSet);
             var szlachcic = new ProfessionBuilder()
                 .SetBasicValues("Szlachcic", ProfessionLevel.Basic)
-                .SetStatistics(10, 5, 0, 0, 5, 5, 5, 10, 0, 2, 0, 0);
+                .SetStatistics(10, 5, 0, 0, 5, 5, 5, 10, 0, 2, 0, 0, statisticsDataSet);
             var smieciarz = new ProfessionBuilder()
                 .SetBasicValues("Śmieciarz", ProfessionLevel.Basic)
-                .SetStatistics(5, 0, 5, 10, 5, 0, 5, 5, 0, 2, 0, 0);
+                .SetStatistics(5, 0, 5, 10, 5, 0, 5, 5, 0, 2, 0, 0, statisticsDataSet);
             var tarczownik = new ProfessionBuilder()
                 .SetBasicValues("Tarczownik", ProfessionLevel.Basic, Race.Human | Race.Halfing | Race.Elf)
-                .SetStatistics(10, 0, 5, 5, 10, 0, 5, 0, 1, 2, 0, 0);
+                .SetStatistics(10, 0, 5, 5, 10, 0, 5, 0, 1, 2, 0, 0, statisticsDataSet);
             var uczen = new ProfessionBuilder()
                 .SetBasicValues("Uczeń czarodzieja", ProfessionLevel.Basic, Race.Dwarf | Race.Halfing)
-                .SetStatistics(0, 0, 0, 0, 5, 10, 15, 5, 0, 2, 1, 0);
+                .SetStatistics(0, 0, 0, 0, 5, 10, 15, 5, 0, 2, 1, 0, statisticsDataSet);
             var weglarz = new ProfessionBuilder()
                 .SetBasicValues("Węglarz", ProfessionLevel.Basic)
-                .SetStatistics(5, 0, 5, 5, 5, 5, 5, 5, 0, 2, 0, 0);
+                .SetStatistics(5, 0, 5, 5, 5, 5, 5, 5, 0, 2, 0, 0, statisticsDataSet);
             var wloczykij = new ProfessionBuilder()
                 .SetBasicValues("Włóczykij", ProfessionLevel.Basic)
-                .SetStatistics(5, 10, 0, 0, 10, 5, 0, 5, 0, 2, 0, 0);
+                .SetStatistics(5, 10, 0, 0, 10, 5, 0, 5, 0, 2, 0, 0, statisticsDataSet);
             var wojownik = new ProfessionBuilder()
                 .SetBasicValues("Wojownik klanowy", ProfessionLevel.Basic, Race.Human | Race.Halfing | Race.Dwarf)
-                .SetStatistics(5, 5, 0, 0, 10, 10, 5, 0, 0, 2, 0, 0);
+                .SetStatistics(5, 5, 0, 0, 10, 10, 5, 0, 0, 2, 0, 0, statisticsDataSet);
             var woznica = new ProfessionBuilder()
                 .SetBasicValues("Woźnica", ProfessionLevel.Basic)
-                .SetStatistics(5, 10, 0, 0, 10, 0, 5, 5, 0, 2, 0, 0);
+                .SetStatistics(5, 10, 0, 0, 10, 0, 5, 5, 0, 2, 0, 0, statisticsDataSet);
             var zabojcaTroli = new ProfessionBuilder()
                 .SetBasicValues("Zabójca trolli", ProfessionLevel.Basic, Race.Human | Race.Halfing | Race.Elf)
-                .SetStatistics(10, 0, 5, 5, 5, 0, 10, 0, 1, 3, 0, 0);
+                .SetStatistics(10, 0, 5, 5, 5, 0, 10, 0, 1, 3, 0, 0, statisticsDataSet);
             var zarzadca = new ProfessionBuilder()
                 .SetBasicValues("Zarządca", ProfessionLevel.Basic)
-                .SetStatistics(5, 5, 5, 0, 0, 10, 5, 10, 0, 2, 0, 0);
+                .SetStatistics(5, 5, 5, 0, 0, 10, 5, 10, 0, 2, 0, 0, statisticsDataSet);
             var zlodziej = new ProfessionBuilder()
                 .SetBasicValues("Złodziej", ProfessionLevel.Basic)
-                .SetStatistics(5, 5, 0, 0, 15, 5, 0, 10, 0, 2, 0, 0);
+                .SetStatistics(5, 5, 0, 0, 15, 5, 0, 10, 0, 2, 0, 0, statisticsDataSet);
             var zak = new ProfessionBuilder()
                 .SetBasicValues("Żak", ProfessionLevel.Basic)
-                .SetStatistics(0, 0, 0, 0, 10, 10, 5, 10, 0, 2, 0, 0);
+                .SetStatistics(0, 0, 0, 0, 10, 10, 5, 10, 0, 2, 0, 0, statisticsDataSet);
             var zeglarz = new ProfessionBuilder()
                 .SetBasicValues("Żeglarz", ProfessionLevel.Basic)
-                .SetStatistics(10, 5, 10, 0, 10, 0, 0, 0, 1, 2, 0, 0);
+                .SetStatistics(10, 5, 10, 0, 10, 0, 0, 0, 1, 2, 0, 0, statisticsDataSet);
             var zolnierz = new ProfessionBuilder()
                 .SetBasicValues("Żołnierz", ProfessionLevel.Basic)
-                .SetStatistics(10, 10, 0, 0, 10, 0, 5, 0, 1, 2, 0, 0);
+                .SetStatistics(10, 10, 0, 0, 10, 0, 5, 0, 1, 2, 0, 0, statisticsDataSet);
             var zolnierzOkretowy = new ProfessionBuilder()
                 .SetBasicValues("Żołnierz okrętowy", ProfessionLevel.Basic)
-                .SetStatistics(10, 10, 10, 0, 5, 0, 5, 0, 1, 3, 0, 0);
+                .SetStatistics(10, 10, 10, 0, 5, 0, 5, 0, 1, 3, 0, 0, statisticsDataSet);
             var arcykaplan = new ProfessionBuilder()
                 .SetBasicValues("Arcykapłan", ProfessionLevel.Advanced)
-                .SetStatistics(20, 20, 15, 15, 15, 20, 30, 25, 1, 6, 3, 0);
+                .SetStatistics(20, 20, 15, 15, 15, 20, 30, 25, 1, 6, 3, 0, statisticsDataSet);
             var arcymag = new ProfessionBuilder()
                 .SetBasicValues("Arcymag", ProfessionLevel.Advanced)
-                .SetStatistics(15, 15, 5, 15, 20, 35, 40, 20, 0, 5, 4, 0);
+                .SetStatistics(15, 15, 5, 15, 20, 35, 40, 20, 0, 5, 4, 0, statisticsDataSet);
             var arystokrata = new ProfessionBuilder()
                 .SetBasicValues("Arystokrata", ProfessionLevel.Advanced)
-                .SetStatistics(25, 15, 10, 10, 10, 20, 20, 30, 1, 6, 0, 0);
+                .SetStatistics(25, 15, 10, 10, 10, 20, 20, 30, 1, 6, 0, 0, statisticsDataSet);
             var bard = new ProfessionBuilder()
                 .SetBasicValues("Bard", ProfessionLevel.Advanced)
-                .SetStatistics(10, 10, 0, 0, 15, 10, 5, 25, 0, 4, 0, 0);
+                .SetStatistics(10, 10, 0, 0, 15, 10, 5, 25, 0, 4, 0, 0, statisticsDataSet);
             var biczownik = new ProfessionBuilder()
                 .SetBasicValues("Biczownik", ProfessionLevel.Advanced, 0, null, "Bohater musi posiadać przynajmniej jedną chorobę umysłową")
-                .SetStatistics(15, 0, 10, 15, 5, 0, 20, 10, 1, 6, 0, 0);
+                .SetStatistics(15, 0, 10, 15, 5, 0, 20, 10, 1, 6, 0, 0, statisticsDataSet);
             var bosman = new ProfessionBuilder()
                 .SetBasicValues("Bosman", ProfessionLevel.Advanced)
-                .SetStatistics(15, 15, 10, 15, 10, 10, 10, 10, 1, 4, 0, 0);
+                .SetStatistics(15, 15, 10, 15, 10, 10, 10, 10, 1, 4, 0, 0, statisticsDataSet);
             var demagog = new ProfessionBuilder()
                 .SetBasicValues("Demagog", ProfessionLevel.Advanced)
-                .SetStatistics(10, 10, 0, 10, 15, 20, 15, 30, 1, 4, 0, 0);
+                .SetStatistics(10, 10, 0, 10, 15, 20, 15, 30, 1, 4, 0, 0, statisticsDataSet);
             var dworzanin = new ProfessionBuilder()
                 .SetBasicValues("Dworzanin", ProfessionLevel.Advanced)
-                .SetStatistics(5, 5, 0, 0, 10, 20, 20, 20, 0, 4, 0, 0);
+                .SetStatistics(5, 5, 0, 0, 10, 20, 20, 20, 0, 4, 0, 0, statisticsDataSet);
             var fechmistrz = new ProfessionBuilder()
                 .SetBasicValues("Fechmistrz", ProfessionLevel.Advanced)
-                .SetStatistics(40, 40, 25, 25, 30, 0, 20, 0, 2, 8, 0, 0);
+                .SetStatistics(40, 40, 25, 25, 30, 0, 20, 0, 2, 8, 0, 0, statisticsDataSet);
             var herold = new ProfessionBuilder()
                 .SetBasicValues("Herold", ProfessionLevel.Advanced)
-                .SetStatistics(10, 10, 5, 5, 15, 15, 10, 20, 0, 4, 0, 0);
+                .SetStatistics(10, 10, 5, 5, 15, 15, 10, 20, 0, 4, 0, 0, statisticsDataSet);
             var herszt = new ProfessionBuilder()
                 .SetBasicValues("Herszt banitów", ProfessionLevel.Advanced)
-                .SetStatistics(20, 30, 10, 20, 10, 10, 10, 20, 2, 6, 0, 0);
+                .SetStatistics(20, 30, 10, 20, 10, 10, 10, 20, 2, 6, 0, 0, statisticsDataSet);
             var inzynier = new ProfessionBuilder()
                 .SetBasicValues("Inżynier", ProfessionLevel.Advanced)
-                .SetStatistics(10, 15, 5, 5, 10, 20, 10, 0, 0, 4, 0, 0);
+                .SetStatistics(10, 15, 5, 5, 10, 20, 10, 0, 0, 4, 0, 0, statisticsDataSet);
             var kapitan = new ProfessionBuilder()
                 .SetBasicValues("Kapitan", ProfessionLevel.Advanced)
-                .SetStatistics(25, 20, 15, 20, 20, 20, 25, 30, 2, 6, 0, 0);
+                .SetStatistics(25, 20, 15, 20, 20, 20, 25, 30, 2, 6, 0, 0, statisticsDataSet);
             var kaplan = new ProfessionBuilder()
                 .SetBasicValues("Kapłan", ProfessionLevel.Advanced)
-                .SetStatistics(10, 10, 5, 10, 5, 10, 20, 15, 0, 4, 0, 0);
+                .SetStatistics(10, 10, 5, 10, 5, 10, 20, 15, 0, 4, 0, 0, statisticsDataSet);
             var karczmarz = new ProfessionBuilder()
                 .SetBasicValues("Karczmarz", ProfessionLevel.Advanced)
-                .SetStatistics(10, 5, 5, 10, 20, 10, 10, 20, 0, 4, 0, 0);
+                .SetStatistics(10, 5, 5, 10, 20, 10, 10, 20, 0, 4, 0, 0, statisticsDataSet);
             var ksiaze = new ProfessionBuilder()
                 .SetBasicValues("Książe złodzieji", ProfessionLevel.Advanced)
-                .SetStatistics(20, 20, 15, 15, 20, 25, 20, 30, 1, 6, 0, 0);
+                .SetStatistics(20, 20, 15, 15, 20, 25, 20, 30, 1, 6, 0, 0, statisticsDataSet);
             var kupiec = new ProfessionBuilder()
                 .SetBasicValues("Kupiec", ProfessionLevel.Advanced)
-                .SetStatistics(10, 10, 5, 5, 10, 25, 20, 20, 0, 4, 0, 0);
+                .SetStatistics(10, 10, 5, 5, 10, 25, 20, 20, 0, 4, 0, 0, statisticsDataSet);
             var lesnyDuch = new ProfessionBuilder()
                 .SetBasicValues("Leśny duch", ProfessionLevel.Advanced, Race.Human | Race.Halfing | Race.Dwarf)
-                .SetStatistics(20, 30, 15, 15, 25, 20, 20, 0, 2, 6, 0, 0);
+                .SetStatistics(20, 30, 15, 15, 25, 20, 20, 0, 2, 6, 0, 0, statisticsDataSet);
             var lowcaCzarownic = new ProfessionBuilder()
                 .SetBasicValues("Łowca czarownic", ProfessionLevel.Advanced)
-                .SetStatistics(30, 30, 15, 15, 15, 15, 35, 20, 2, 6, 0, 0);
+                .SetStatistics(30, 30, 15, 15, 15, 15, 35, 20, 2, 6, 0, 0, statisticsDataSet);
             var lowcaWampirow = new ProfessionBuilder()
                 .SetBasicValues("Łowca wampirów", ProfessionLevel.Advanced)
-                .SetStatistics(20, 20, 10, 20, 15, 15, 20, 0, 1, 4, 0, 0);
+                .SetStatistics(20, 20, 10, 20, 15, 15, 20, 0, 1, 4, 0, 0, statisticsDataSet);
             var majordomus = new ProfessionBuilder()
                 .SetBasicValues("Majordomus", ProfessionLevel.Advanced)
-                .SetStatistics(10, 10, 10, 10, 0, 30, 20, 25, 0, 4, 0, 0);
+                .SetStatistics(10, 10, 10, 10, 0, 30, 20, 25, 0, 4, 0, 0, statisticsDataSet);
             var medyk = new ProfessionBuilder()
                 .SetBasicValues("Medyk", ProfessionLevel.Advanced)
-                .SetStatistics(0, 0, 10, 10, 15, 30, 20, 15, 0, 4, 0, 0);
+                .SetStatistics(0, 0, 10, 10, 15, 30, 20, 15, 0, 4, 0, 0, statisticsDataSet);
             var mistrzCieni = new ProfessionBuilder()
                 .SetBasicValues("Mistrz cieni", ProfessionLevel.Advanced)
-                .SetStatistics(20, 20, 10, 10, 40, 25, 20, 25, 1, 6, 0, 0);
+                .SetStatistics(20, 20, 10, 10, 40, 25, 20, 25, 1, 6, 0, 0, statisticsDataSet);
             var mistrzGildii = new ProfessionBuilder()
                 .SetBasicValues("Mistrz gildii", ProfessionLevel.Advanced)
-                .SetStatistics(10, 10, 0, 10, 15, 30, 20, 35, 1, 5, 0, 0);
+                .SetStatistics(10, 10, 0, 10, 15, 30, 20, 35, 1, 5, 0, 0, statisticsDataSet);
             var mistrzMagii = new ProfessionBuilder()
                 .SetBasicValues("Mistrz magii", ProfessionLevel.Advanced)
-                .SetStatistics(10, 10, 0, 10, 15, 30, 35, 15, 0, 4, 3, 0);
+                .SetStatistics(10, 10, 0, 10, 15, 30, 35, 15, 0, 4, 3, 0, statisticsDataSet);
             var mistrzRzemiosla = new ProfessionBuilder()
                 .SetBasicValues("Mistrz rzemiosła", ProfessionLevel.Advanced)
-                .SetStatistics(0, 0, 10, 10, 20, 10, 10, 10, 0, 3, 0, 0);
+                .SetStatistics(0, 0, 10, 10, 20, 10, 10, 10, 0, 3, 0, 0, statisticsDataSet);
             var mistrzZakonny = new ProfessionBuilder()
                 .SetBasicValues("Mistrz zakonny", ProfessionLevel.Advanced)
-                .SetStatistics(35, 10, 20, 20, 20, 15, 25, 15, 2, 8, 0, 0);
+                .SetStatistics(35, 10, 20, 20, 20, 15, 25, 15, 2, 8, 0, 0, statisticsDataSet);
             var nawigator = new ProfessionBuilder()
                 .SetBasicValues("Nawigator", ProfessionLevel.Advanced)
-                .SetStatistics(10, 10, 5, 5, 10, 25, 10, 0, 0, 4, 0, 0);
+                .SetStatistics(10, 10, 5, 5, 10, 25, 10, 0, 0, 4, 0, 0, statisticsDataSet);
             var odkrywca = new ProfessionBuilder()
                 .SetBasicValues("Odkrywca", ProfessionLevel.Advanced)
-                .SetStatistics(20, 20, 10, 15, 15, 25, 20, 15, 1, 6, 0, 0);
+                .SetStatistics(20, 20, 10, 15, 15, 25, 20, 15, 1, 6, 0, 0, statisticsDataSet);
             var oficer = new ProfessionBuilder()
                 .SetBasicValues("Oficer", ProfessionLevel.Advanced)
-                .SetStatistics(30, 20, 20, 20, 20, 15, 15, 25, 2, 7, 0, 0);
+                .SetStatistics(30, 20, 20, 20, 20, 15, 15, 25, 2, 7, 0, 0, statisticsDataSet);
             var oprawca = new ProfessionBuilder()
                 .SetBasicValues("Oprawca", ProfessionLevel.Advanced)
-                .SetStatistics(15, 0, 20, 10, 10, 10, 20, 15, 0, 4, 0, 0);
+                .SetStatistics(15, 0, 20, 10, 10, 10, 20, 15, 0, 4, 0, 0, statisticsDataSet);
             var paser = new ProfessionBuilder()
                 .SetBasicValues("Paser", ProfessionLevel.Advanced)
-                .SetStatistics(15, 10, 10, 5, 10, 5, 10, 10, 1, 4, 0, 0);
+                .SetStatistics(15, 10, 10, 5, 10, 5, 10, 10, 1, 4, 0, 0, statisticsDataSet);
             var rajtar = new ProfessionBuilder()
                 .SetBasicValues("Rajtar", ProfessionLevel.Advanced)
-                .SetStatistics(20, 20, 10, 10, 15, 0, 15, 15, 1, 4, 0, 0);
+                .SetStatistics(20, 20, 10, 10, 15, 0, 15, 15, 1, 4, 0, 0, statisticsDataSet);
             var reketer = new ProfessionBuilder()
                 .SetBasicValues("Reketer", ProfessionLevel.Advanced)
-                .SetStatistics(20, 15, 15, 10, 10, 0, 15, 10, 1, 5, 0, 0);
+                .SetStatistics(20, 15, 15, 10, 10, 0, 15, 10, 1, 5, 0, 0, statisticsDataSet);
             var rozbojnik = new ProfessionBuilder()
                 .SetBasicValues("Rozbójnik", ProfessionLevel.Advanced)
-                .SetStatistics(20, 20, 10, 10, 30, 20, 15, 25, 1, 4, 0, 0);
+                .SetStatistics(20, 20, 10, 10, 30, 20, 15, 25, 1, 4, 0, 0, statisticsDataSet);
             var rycerz = new ProfessionBuilder()
                 .SetBasicValues("Rycerz", ProfessionLevel.Advanced)
-                .SetStatistics(25, 0, 15, 15, 15, 5, 15, 5, 1, 4, 0, 0);
+                .SetStatistics(25, 0, 15, 15, 15, 5, 15, 5, 1, 4, 0, 0, statisticsDataSet);
             var sierzant = new ProfessionBuilder()
                 .SetBasicValues("Sierżant", ProfessionLevel.Advanced)
-                .SetStatistics(20, 15, 10, 10, 10, 10, 10, 20, 1, 4, 0, 0);
+                .SetStatistics(20, 15, 10, 10, 10, 10, 10, 20, 1, 4, 0, 0, statisticsDataSet);
             var skrytobojca = new ProfessionBuilder()
                 .SetBasicValues("Skrytobójca", ProfessionLevel.Advanced)
-                .SetStatistics(25, 25, 10, 10, 30, 20, 10, 20, 2, 4, 0, 0);
+                .SetStatistics(25, 25, 10, 10, 30, 20, 10, 20, 2, 4, 0, 0, statisticsDataSet);
             var strzelec = new ProfessionBuilder()
                 .SetBasicValues("Strzelec", ProfessionLevel.Advanced)
-                .SetStatistics(0, 35, 10, 10, 25, 10, 20, 15, 1, 4, 0, 0);
+                .SetStatistics(0, 35, 10, 10, 25, 10, 20, 15, 1, 4, 0, 0, statisticsDataSet);
             var szampierz = new ProfessionBuilder()
                 .SetBasicValues("Szampierz", ProfessionLevel.Advanced)
-                .SetStatistics(35, 0, 15, 15, 20, 10, 15, 0, 2, 6, 0, 0);
+                .SetStatistics(35, 0, 15, 15, 20, 10, 15, 0, 2, 6, 0, 0, statisticsDataSet);
             var szarlatan = new ProfessionBuilder()
                 .SetBasicValues("Szarlatan", ProfessionLevel.Advanced)
-                .SetStatistics(10, 10, 5, 10, 15, 15, 15, 25, 0, 4, 0, 0);
+                .SetStatistics(10, 10, 5, 10, 15, 15, 15, 25, 0, 4, 0, 0, statisticsDataSet);
             var szpieg = new ProfessionBuilder()
                 .SetBasicValues("Szpieg", ProfessionLevel.Advanced)
-                .SetStatistics(15, 15, 5, 10, 20, 20, 35, 20, 1, 4, 0, 0);
+                .SetStatistics(15, 15, 5, 10, 20, 20, 35, 20, 1, 4, 0, 0, statisticsDataSet);
             var uczony = new ProfessionBuilder()
                 .SetBasicValues("Uczony", ProfessionLevel.Advanced)
-                .SetStatistics(5, 5, 5, 5, 10, 30, 15, 15, 0, 4, 0, 0);
+                .SetStatistics(5, 5, 5, 5, 10, 30, 15, 15, 0, 4, 0, 0, statisticsDataSet);
             var urzednik = new ProfessionBuilder()
                 .SetBasicValues("Urzędnik", ProfessionLevel.Advanced)
-                .SetStatistics(5, 5, 5, 10, 0, 20, 10, 20, 0, 4, 0, 0);
+                .SetStatistics(5, 5, 5, 10, 0, 20, 10, 20, 0, 4, 0, 0, statisticsDataSet);
             var weteran = new ProfessionBuilder()
                 .SetBasicValues("Weteran", ProfessionLevel.Advanced)
-                .SetStatistics(20, 20, 10, 10, 15, 0, 15, 0, 1, 6, 0, 0);
+                .SetStatistics(20, 20, 10, 10, 15, 0, 15, 0, 1, 6, 0, 0, statisticsDataSet);
             var wedrownyCzarodziej = new ProfessionBuilder()
                 .SetBasicValues("Wędrowny czarodziej", ProfessionLevel.Advanced)
-                .SetStatistics(5, 5, 0, 5, 10, 20, 25, 10, 0, 3, 2, 0);
+                .SetStatistics(5, 5, 0, 5, 10, 20, 25, 10, 0, 3, 2, 0, statisticsDataSet);
             var wlamywacz = new ProfessionBuilder()
                 .SetBasicValues("Włamywacz", ProfessionLevel.Advanced)
-                .SetStatistics(10, 10, 5, 5, 25, 10, 10, 0, 0, 4, 0, 0);
+                .SetStatistics(10, 10, 5, 5, 25, 10, 10, 0, 0, 4, 0, 0, statisticsDataSet);
             var wybraniecBozy = new ProfessionBuilder()
                 .SetBasicValues("Wybraniec boży", ProfessionLevel.Advanced)
-                .SetStatistics(15, 15, 10, 10, 10, 15, 25, 20, 1, 5, 2, 0);
+                .SetStatistics(15, 15, 10, 10, 10, 15, 25, 20, 1, 5, 2, 0, statisticsDataSet);
             var zabojcaDemonow = new ProfessionBuilder()
                 .SetBasicValues("Zabójca demonów", ProfessionLevel.Advanced, Race.Elf | Race.Halfing | Race.Human)
-                .SetStatistics(40, 0, 30, 30, 20, 0, 30, 0, 2, 8, 0, 0);
+                .SetStatistics(40, 0, 30, 30, 20, 0, 30, 0, 2, 8, 0, 0, statisticsDataSet);
             var zabojcaOlbrzymow = new ProfessionBuilder()
                 .SetBasicValues("Zabójca olbrzymów", ProfessionLevel.Advanced, Race.Elf | Race.Halfing | Race.Human, null,
                 "Bohater musi wcześniej zabić olbrzyma")
-                .SetStatistics(25, 0, 15, 15, 10, 0, 20, 0, 1, 6, 0, 0);
+                .SetStatistics(25, 0, 15, 15, 10, 0, 20, 0, 1, 6, 0, 0, statisticsDataSet);
             var zakonnik = new ProfessionBuilder()
                 .SetBasicValues("Zakonnik", ProfessionLevel.Advanced)
-                .SetStatistics(10, 0, 5, 10, 0, 15, 15, 15, 0, 4, 0, 0);
+                .SetStatistics(10, 0, 5, 10, 0, 15, 15, 15, 0, 4, 0, 0, statisticsDataSet);
             var zwadzca = new ProfessionBuilder()
                 .SetBasicValues("Zwadźca", ProfessionLevel.Advanced)
-                .SetStatistics(20, 20, 10, 20, 20, 15, 15, 10, 1, 4, 0, 0);
+                .SetStatistics(20, 20, 10, 20, 20, 15, 15, 10, 1, 4, 0, 0, statisticsDataSet);
             var zwiadowca = new ProfessionBuilder()
                 .SetBasicValues("Zwiadowca", ProfessionLevel.Advanced)
-                .SetStatistics(20, 20, 10, 10, 15, 20, 15, 0, 1, 6, 0, 0);
+                .SetStatistics(20, 20, 10, 10, 15, 20, 15, 0, 1, 6, 0, 0, statisticsDataSet);
 
             #endregion professions
 
@@ -4365,27 +4390,6 @@ namespace WarhammerProfessionApp.Entities
 
             #endregion profession abilities
 
-            var statisticsDataSet = new List<Statistic>
-            {
-                new Statistic{ Type = StatisticType.CloseCombat, IsBasicValue = true, IsReadOnly = false, IsCalculatedValue = false },
-                new Statistic{ Type = StatisticType.Shooting, IsBasicValue = true, IsReadOnly = false, IsCalculatedValue = false },
-                new Statistic{ Type = StatisticType.Stamina, IsBasicValue = true, IsReadOnly = false, IsCalculatedValue = false },
-                new Statistic{ Type = StatisticType.Resistance, IsBasicValue = true, IsReadOnly = false, IsCalculatedValue = false },
-                new Statistic{ Type = StatisticType.Agility, IsBasicValue = true, IsReadOnly = false, IsCalculatedValue = false },
-                new Statistic{ Type = StatisticType.Inteligence, IsBasicValue = true, IsReadOnly = false, IsCalculatedValue = false },
-                new Statistic{ Type = StatisticType.Willpower, IsBasicValue = true, IsReadOnly = false, IsCalculatedValue = false },
-                new Statistic{ Type = StatisticType.Polish, IsBasicValue = true, IsReadOnly = false, IsCalculatedValue = false },
-
-                new Statistic{ Type = StatisticType.Attacks, IsBasicValue = false, IsReadOnly = false, IsCalculatedValue = false },
-                new Statistic{ Type = StatisticType.Hitpoints, IsBasicValue = false, IsReadOnly = false, IsCalculatedValue = false },
-                new Statistic{ Type = StatisticType.Strength, IsBasicValue = false, IsReadOnly = true, IsCalculatedValue = true },
-                new Statistic{ Type = StatisticType.Hardness, IsBasicValue = false, IsReadOnly = true, IsCalculatedValue = true },
-                new Statistic{ Type = StatisticType.Speed, IsBasicValue = false, IsReadOnly = true, IsCalculatedValue = false },
-                new Statistic{ Type = StatisticType.Magic, IsBasicValue = false, IsReadOnly = true, IsCalculatedValue = false },
-                new Statistic{ Type = StatisticType.Insanity, IsBasicValue = false, IsReadOnly = false, IsCalculatedValue = true },
-                new Statistic{ Type = StatisticType.Destiny, IsBasicValue = false, IsReadOnly = false, IsCalculatedValue = true },
-            };
-
             var professionBuildersResult = new List<ProfessionBuilder>
             {
                 akolita,
@@ -4502,6 +4506,7 @@ namespace WarhammerProfessionApp.Entities
                 zwadzca,
                 zwiadowca
             };
+
             var skillResult = new List<Skill>
             {
                 charakteryzacja,
@@ -4553,6 +4558,7 @@ namespace WarhammerProfessionApp.Entities
                 zwinnePalce,
                 zelgarstwo
             };
+
             var abilityResult = new List<Ability>
             {
                 artylerzysta,
@@ -4641,6 +4647,7 @@ namespace WarhammerProfessionApp.Entities
                 zmyslMagii,
                 zylkaHandlowa
             };
+
             var itemResult = new List<Item>
             {
                 halabarda,
@@ -4862,6 +4869,7 @@ namespace WarhammerProfessionApp.Entities
             var professionSkillDataSet = new List<ProfessionSkill>();
             var professionAbilitiesDataSet = new List<ProfessionAbilities>();
             var professionAbilityDataSet = new List<ProfessionAbility>();
+            var professionStatisticDataSet = new List<ProfessionStatistic>();
 
             foreach (var professionBuilder in professionBuildersResult)
                 foreach (var dictionary in professionBuilder.GetAllRelations())
@@ -4871,6 +4879,7 @@ namespace WarhammerProfessionApp.Entities
                     else if (dictionary.Key == typeof(ProfessionSkill)) professionSkillDataSet.AddRange(dictionary.Value as IEnumerable<ProfessionSkill>);
                     else if (dictionary.Key == typeof(ProfessionItems)) professionItemsDataSet.AddRange(dictionary.Value as IEnumerable<ProfessionItems>);
                     else if (dictionary.Key == typeof(ProfessionItem)) professionItemDataSet.AddRange(dictionary.Value as IEnumerable<ProfessionItem>);
+                    else if (dictionary.Key == typeof(ProfessionStatistic)) professionStatisticDataSet.AddRange(dictionary.Value as IEnumerable<ProfessionStatistic>);
 
             int i = 0;
 
@@ -4890,11 +4899,13 @@ namespace WarhammerProfessionApp.Entities
             professionSkillDataSet.ForEach(a => { a.ProfessionSkillsId = a.ProfessionSkills.Id; a.ProfessionSkills = null; a.SkillId = a.Skill.Id; a.Skill = null; });
             professionAbilitiesDataSet.ForEach(a => { a.ProfessionId = a.Profession.Id; a.Profession = null; });
             professionAbilityDataSet.ForEach(a => { a.ProfessionAbilitiesId = a.ProfessionAbilities.Id; a.ProfessionAbilities = null; a.AbilityId = a.Ability.Id; a.Ability = null; });
+            professionStatisticDataSet.ForEach(a => { a.StatisticId = a.Statistic.Id; a.Statistic = null; a.ProfessionId = a.Profession.Id; a.Profession = null; });
 
             professionBuildersResult.ForEach(a =>
             {
                 var profession = a.GetResult();
 
+                profession.Statistics = null;
                 profession.Abilities = null;
                 profession.Skills = null;
                 profession.Equipment = null;
@@ -5600,6 +5611,7 @@ namespace WarhammerProfessionApp.Entities
             modelBuilder.Entity<ProfessionSkill>().HasData(professionSkillDataSet);
             modelBuilder.Entity<ProfessionAbilities>().HasData(professionAbilitiesDataSet);
             modelBuilder.Entity<ProfessionAbility>().HasData(professionAbilityDataSet);
+            modelBuilder.Entity<ProfessionStatistic>().HasData(professionStatisticDataSet);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -5626,6 +5638,8 @@ namespace WarhammerProfessionApp.Entities
             modelBuilder.Entity<ProfessionItem>().HasOne(a => a.ProfessionItems).WithMany(a => a.Items).HasForeignKey(a => a.ProfessionsItemId);
 
             modelBuilder.Entity<Statistic>().HasIndex(a => a.Type).IsUnique();
+
+            modelBuilder.Entity<ProfessionStatistic>().HasKey(a => new { a.ProfessionId, a.StatisticId });
 
             modelBuilder.Entity<CharacterItem>().HasKey(a => new { a.CharacterId, a.ItemId });
             modelBuilder.Entity<CharacterProfession>().HasKey(a => new { a.CharacterId, a.ProfessionId });

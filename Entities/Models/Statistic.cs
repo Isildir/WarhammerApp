@@ -17,6 +17,8 @@ namespace WarhammerProfessionApp.Entities.Models
 
         public bool IsReadOnly { get; set; }
 
+        public List<ProfessionStatistic> Professions { get; set; }
+
         public StatisticType Type { get; set; }
     }
 }
