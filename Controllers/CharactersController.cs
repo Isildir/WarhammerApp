@@ -26,12 +26,12 @@ namespace WarhammerProfessionApp.Controllers
         }
 
         [HttpPost(nameof(AddAbility))]
-        public ActionResult<CharacterChangeResponseDto> AddAbility([FromBody] int id)
+        public ActionResult<AbilityDto> AddAbility([FromBody] int id)
         {
             var userId = GetUserId();
 
             var character = context.Characters
-                .Include(a => a.Abilities)
+                .Include(a => a.Abilities).ThenInclude(a => a.Ability)
                 .Include(a => a.Professions).ThenInclude(a => a.Profession).ThenInclude(a => a.Statistics).ThenInclude(a => a.Statistic)
                 .Include(a => a.Statistics).ThenInclude(a => a.Statistic)
                 .FirstOrDefault(a => a.UserId == userId);
@@ -42,7 +42,7 @@ namespace WarhammerProfessionApp.Controllers
             if (!CheckCharacterExperienceLimit(character, 100))
                 return BadRequest();
 
-            var ability = context.Abilities.Find(id);
+            var ability = context.Abilities.FirstOrDefault(a => a.Id == id);
 
             if (ability == null || character.Abilities.Any(a => a.AbilityId == id))
                 return BadRequest();
@@ -66,7 +66,14 @@ namespace WarhammerProfessionApp.Controllers
             if (ability.HasImpactOnStatictics)
                 SendMessageAboutStatisticValueChange(character, characterStatistic);
 
-            return Ok(ability.HasImpactOnStatictics);
+            var result = new AbilityDto
+            {
+                Id = ability.Id,
+                Name = ability.Name,
+                Description = ability.Description
+            };
+
+            return Ok(result);
         }
 
         [HttpPost(nameof(AddAdditionalItem))]
@@ -153,7 +160,7 @@ namespace WarhammerProfessionApp.Controllers
         }
 
         [HttpPost(nameof(AddSkill))]
-        public ActionResult<CharacterChangeResponseDto> AddSkill([FromBody] int id)
+        public ActionResult<CharacterSkillDto> AddSkill([FromBody] int id)
         {
             var userId = GetUserId();
 
@@ -179,9 +186,20 @@ namespace WarhammerProfessionApp.Controllers
 
             context.SaveChanges();
 
+            var dbSkill = context.Skills.First(a => a.Id == id);
+
             SendMessageAboutExperienceChange(character);
 
-            return Ok(false);
+            var skill = new CharacterSkillDto
+            {
+                Id = dbSkill.Id,
+                Name = dbSkill.Name,
+                Trait = dbSkill.Trait.ToString(),
+                Level = characterSkill.Level,
+                Description = dbSkill.Description
+            };
+
+            return Ok(skill);
         }
 
         [HttpPost(nameof(ChangeBaseStatisticValue))]
@@ -191,8 +209,8 @@ namespace WarhammerProfessionApp.Controllers
 
             var character = context.Characters
                 .Include(a => a.Professions).ThenInclude(a => a.Profession).ThenInclude(a => a.Statistics).ThenInclude(a => a.Statistic)
-                .Include(a => a.Statistics)
-                .ThenInclude(a => a.Statistic)
+                .Include(a => a.Statistics).ThenInclude(a => a.Statistic)
+                .Include(a => a.Abilities).ThenInclude(a => a.Ability)
                 .FirstOrDefault(a => a.UserId == userId);
 
             if (character == null)
@@ -211,8 +229,8 @@ namespace WarhammerProfessionApp.Controllers
             return Ok();
         }
 
-        [HttpPost(nameof(ChangeCharacterMaximumExperience))]
-        public ActionResult<CharacterChangeResponseDto> ChangeCharacterMaximumExperience([FromBody] int value)
+        [HttpPost(nameof(ChangeMaximumExperience))]
+        public ActionResult<CharacterChangeResponseDto> ChangeMaximumExperience([FromBody] int value)
         {
             var character = GetUserCharacter();
 
@@ -228,8 +246,8 @@ namespace WarhammerProfessionApp.Controllers
             return Ok(false);
         }
 
-        [HttpPost(nameof(ChangeCharacterMoney))]
-        public ActionResult<CharacterChangeResponseDto> ChangeCharacterMoney([FromBody] MoneyDto value)
+        [HttpPost(nameof(ChangeMoney))]
+        public ActionResult<CharacterChangeResponseDto> ChangeMoney([FromBody] MoneyDto value)
         {
             var character = GetUserCharacter();
 
@@ -243,8 +261,8 @@ namespace WarhammerProfessionApp.Controllers
             return Ok(false);
         }
 
-        [HttpPost(nameof(ChangeCharacterName))]
-        public ActionResult<CharacterChangeResponseDto> ChangeCharacterName([FromBody] string name)
+        [HttpPost(nameof(ChangeName))]
+        public ActionResult<CharacterChangeResponseDto> ChangeName([FromBody] string name)
         {
             var character = GetUserCharacter();
 
@@ -258,8 +276,8 @@ namespace WarhammerProfessionApp.Controllers
             return Ok(false);
         }
 
-        [HttpPost(nameof(ChangeCharacterNotes))]
-        public ActionResult<bool> ChangeCharacterNotes([FromBody] string value)
+        [HttpPost(nameof(ChangeNotes))]
+        public ActionResult<bool> ChangeNotes([FromBody] string value)
         {
             var userId = GetUserId();
 
@@ -282,8 +300,8 @@ namespace WarhammerProfessionApp.Controllers
 
             var character = context.Characters
                 .Include(a => a.Professions).ThenInclude(a => a.Profession).ThenInclude(a => a.Statistics).ThenInclude(a => a.Statistic)
-                .Include(a => a.Statistics)
-                .ThenInclude(a => a.Statistic)
+                .Include(a => a.Statistics).ThenInclude(a => a.Statistic)
+                .Include(a => a.Abilities).ThenInclude(a => a.Ability)
                 .FirstOrDefault(a => a.UserId == userId);
 
             if (character == null)
@@ -344,6 +362,7 @@ namespace WarhammerProfessionApp.Controllers
 
             var money = MoneyCalculator.ConvertMoney(character.Money);
             var load = character.Items.Any() ? character.Items.Sum(a => a.Quantity * a.Item.Weigth) : 0;
+            var maxLoad = character.Statistics.FirstOrDefault(a => a.Statistic.Type == StatisticType.Stamina).CurrentValue * 10;
 
             var basicValues = new CharacterBasicValuesDto
             {
@@ -353,7 +372,7 @@ namespace WarhammerProfessionApp.Controllers
                 ExperienceSum = character.ExperienceSummary,
                 Name = character.Name,
                 Notes = character.Notes,
-                CurrentLoad = $"{load} / {character.Statistics.FirstOrDefault(a => a.Statistic.Type == StatisticType.Stamina).CurrentValue * 10}",
+                CurrentLoad = $"{load} / {maxLoad}",
                 Race = character.Race != null ? new RaceDto
                 {
                     Id = (int)character.Race,
@@ -384,8 +403,7 @@ namespace WarhammerProfessionApp.Controllers
                 Name = a.Skill.Name,
                 Trait = EnumTranslator.TranslateStaticticValue(a.Skill.Trait),
                 Description = a.Skill.Description,
-                Level = a.Level,
-                SkillLevel = a.Skill.SkillLevel.ToString()
+                Level = a.Level
             }).ToList();
 
             var abilities = character.Abilities.Select(a => new AbilityDto
@@ -455,6 +473,14 @@ namespace WarhammerProfessionApp.Controllers
 
                 if (abilitiesValues.Any())
                     result.Details += $" + {string.Join(',', abilitiesValues.Select(a => $"{a.Value} z {a.Key}"))}";
+
+                if (value.Statistic.Type == StatisticType.Speed && (load - maxLoad) % 50 > 1)
+                {
+                    var overload = (load - maxLoad) % 50;
+
+                    result.CurrentValue -= overload;
+                    result.Details += $" - {overload} z przeciążenia";
+                }
 
                 statistics.Add(new Tuple<bool, CharacterStatisticDto>(value.Statistic.IsBasicValue, result));
             }
@@ -723,15 +749,15 @@ namespace WarhammerProfessionApp.Controllers
             var userId = GetUserId();
 
             var character = context.Characters
-                .Include(a => a.Abilities)
-                .Include(a => a.Professions)
-                .ThenInclude(a => a.Profession).ThenInclude(a => a.Statistics).ThenInclude(a => a.Statistic)
+                .Include(a => a.Abilities).ThenInclude(a => a.Ability)
+                .Include(a => a.Statistics).ThenInclude(a => a.Statistic)
+                .Include(a => a.Professions).ThenInclude(a => a.Profession).ThenInclude(a => a.Statistics).ThenInclude(a => a.Statistic)
                 .FirstOrDefault(a => a.UserId == userId);
 
             if (character == null)
                 return NotFound();
 
-            var ability = context.Abilities.Find(id);
+            var ability = context.Abilities.FirstOrDefault(a => a.Id == id);
 
             var characterAbility = character.Abilities.FirstOrDefault(a => a.AbilityId == id);
 
@@ -838,12 +864,16 @@ namespace WarhammerProfessionApp.Controllers
             return Ok();
         }
 
-        [HttpPost(nameof(RemoveLastCharacterProfession))]
-        public ActionResult<CharacterChangeResponseDto> RemoveLastCharacterProfession()
+        [HttpPost(nameof(RemoveLastProfession))]
+        public ActionResult<int?> RemoveLastProfession()
         {
             var userId = GetUserId();
 
-            var character = context.Characters.Include(a => a.Professions).FirstOrDefault(a => a.UserId == userId);
+            var character = context.Characters
+                .Include(a => a.Professions).ThenInclude(a => a.Profession).ThenInclude(a => a.Statistics).ThenInclude(a => a.Statistic)
+                .Include(a => a.Statistics).ThenInclude(a => a.Statistic)
+                .Include(a => a.Abilities).ThenInclude(a => a.Ability)
+                .FirstOrDefault(a => a.UserId == userId);
 
             if (character == null)
                 return NotFound();
@@ -853,6 +883,7 @@ namespace WarhammerProfessionApp.Controllers
 
             var maxProfessionOrder = character.Professions.Max(a => a.Order);
             var professionToRemove = character.Professions.First(a => a.Order == maxProfessionOrder);
+            var newCurrentProfession = character.Professions.FirstOrDefault(a => a.Order == maxProfessionOrder - 1);
 
             character.Professions.Remove(professionToRemove);
 
@@ -863,9 +894,10 @@ namespace WarhammerProfessionApp.Controllers
                     .Include(a => a.Abilities)
                     .FirstOrDefault(a => a.Id == professionToRemove.ProfessionId);
 
-                character.CurrentProfessionId = null;
                 character.ExperienceSummary -= targetProfession.Skills.Sum(a => a.Quantity * 100) + targetProfession.Abilities.Sum(a => a.Quantity * 100);
             }
+
+            character.CurrentProfessionId = newCurrentProfession?.ProfessionId;
 
             if (maxProfessionOrder > 1)
                 character.ExperienceUsed -= 100;
@@ -873,8 +905,10 @@ namespace WarhammerProfessionApp.Controllers
             context.SaveChanges();
 
             SendMessageAboutExperienceChange(character);
+            SendMessageAboutExperienceSummaryChange(character);
+            character.Statistics.ForEach(a => SendMessageAboutStatisticValueChange(character, a));
 
-            return Ok(false);
+            return Ok(newCurrentProfession?.ProfessionId ?? 0);
         }
 
         [HttpDelete(nameof(RemoveSkill))]
@@ -906,34 +940,16 @@ namespace WarhammerProfessionApp.Controllers
             return Ok(false);
         }
 
-        [HttpPost(nameof(SetCharacterRace))]
-        public ActionResult<CharacterChangeResponseDto> SetCharacterRace([FromBody] int id)
+        [HttpPost(nameof(SetNextProfession))]
+        public ActionResult<CharacterChangeResponseDto> SetNextProfession([FromBody] int id)
         {
             var userId = GetUserId();
 
             var character = context.Characters
-                .Include(a => a.Professions)
-                .ThenInclude(a => a.Profession)
+                .Include(a => a.Professions).ThenInclude(a => a.Profession).ThenInclude(a => a.Statistics).ThenInclude(a => a.Statistic)
+                .Include(a => a.Statistics).ThenInclude(a => a.Statistic)
+                .Include(a => a.Abilities).ThenInclude(a => a.Ability)
                 .FirstOrDefault(a => a.UserId == userId);
-
-            var values = SortAvailableRaces(character);
-
-            if (!values.Any(a => a.Id == id))
-                return BadRequest();
-
-            character.Race = (Race)id;
-
-            context.SaveChanges();
-
-            return Ok();
-        }
-
-        [HttpPost(nameof(SetNextCharacterProfession))]
-        public ActionResult<CharacterChangeResponseDto> SetNextCharacterProfession([FromBody] int id)
-        {
-            var userId = GetUserId();
-
-            var character = context.Characters.Include(a => a.Professions).FirstOrDefault(a => a.UserId == userId);
 
             if (character == null)
                 return NotFound();
@@ -941,7 +957,7 @@ namespace WarhammerProfessionApp.Controllers
             var targetProfession = context.Professions
                 .Include(a => a.EntranceProfessions)
                 .Include(a => a.Skills)
-                .Include(a => a.Abilities)
+                .Include(a => a.Statistics).ThenInclude(a => a.Statistic)
                 .FirstOrDefault(a => a.Id == id);
 
             if (targetProfession == null || character.Professions.Any(a => a.ProfessionId == id))
@@ -967,8 +983,32 @@ namespace WarhammerProfessionApp.Controllers
             context.SaveChanges();
 
             SendMessageAboutExperienceChange(character);
+            SendMessageAboutExperienceSummaryChange(character);
+            character.Statistics.ForEach(a => SendMessageAboutStatisticValueChange(character, a));
 
             return Ok(true);
+        }
+
+        [HttpPost(nameof(SetRace))]
+        public ActionResult<CharacterChangeResponseDto> SetRace([FromBody] int id)
+        {
+            var userId = GetUserId();
+
+            var character = context.Characters
+                .Include(a => a.Professions)
+                .ThenInclude(a => a.Profession)
+                .FirstOrDefault(a => a.UserId == userId);
+
+            var values = SortAvailableRaces(character);
+
+            if (!values.Any(a => a.Id == id))
+                return BadRequest();
+
+            character.Race = (Race)id;
+
+            context.SaveChanges();
+
+            return Ok();
         }
 
         private readonly CharacterHub characterHub;
@@ -990,7 +1030,7 @@ namespace WarhammerProfessionApp.Controllers
             {
                 var maximumValue = GetTotalStatisticMaximumValue(value.Statistic.Type, character, out int professionValue, out Dictionary<string, int> abilitiesValues);
 
-                if (value.CurrentValue != maximumValue)
+                if (value.CurrentValue < maximumValue)
                 {
                     statisticsCondition = false;
                     break;
@@ -1010,14 +1050,14 @@ namespace WarhammerProfessionApp.Controllers
         }
 
         private int GetProfessionStatisticMaximumValue(StatisticType type, Character character)
-            => character.Professions.Max(a => a.Profession.Statistics.First(b => b.Statistic.Type == type).Value);
+            => character.Professions.Max(a => a.Profession.Statistics.FirstOrDefault(b => b.Statistic.Type == type)?.Value ?? 0);
 
-        private int GetTotalStatisticMaximumValue(StatisticType type, Character character)
+        private int GetTotalStatisticMaximumValue(StatisticType type, Character character, out int bonusesValue)
         {
             var maximumValueFromProfessions = character.Professions.Any() ? GetProfessionStatisticMaximumValue(type, character) : 0;
-            var bonuses = GetBonusStatisticMaximumValue(type, character);
+            bonusesValue = GetBonusStatisticMaximumValue(type, character);
 
-            return character.Statistics.First(a => a.Statistic.Type == type).BaseValue + bonuses + maximumValueFromProfessions;
+            return character.Statistics.First(a => a.Statistic.Type == type).BaseValue + bonusesValue + maximumValueFromProfessions;
         }
 
         private int GetTotalStatisticMaximumValue(StatisticType type, Character character, out int professionValue, out Dictionary<string, int> abilitiesValues)
@@ -1055,8 +1095,9 @@ namespace WarhammerProfessionApp.Controllers
             return int.Parse(claim);
         }
 
-        private void SendMessageAboutExperienceChange(Character character) =>
-                                                                                                                                                                                                                                                                                                                            characterHub.ChangeExperience(character.Id, character.ExperienceSummary - character.ExperienceUsed);
+        private void SendMessageAboutExperienceChange(Character character) => characterHub.ChangeExperience(character.Id, character.ExperienceSummary - character.ExperienceUsed);
+
+        private void SendMessageAboutExperienceSummaryChange(Character character) => characterHub.ChangeExperienceSummary(character.Id, character.ExperienceSummary);
 
         private void SendMessageAboutMoneyChange(Character character)
         {
@@ -1067,9 +1108,11 @@ namespace WarhammerProfessionApp.Controllers
 
         private void SendMessageAboutStatisticValueChange(Character character, CharacterStatistic characterStatistic)
         {
-            var maximumValue = GetTotalStatisticMaximumValue(characterStatistic.Statistic.Type, character);
+            var maximumValue = GetTotalStatisticMaximumValue(characterStatistic.Statistic.Type, character, out int bonusesValue);
+            var canBeDecreased = characterStatistic.CurrentValue > characterStatistic.BaseValue + bonusesValue;
+            var canBeIncreased = characterStatistic.CurrentValue < maximumValue;
 
-            characterHub.ChangeStatisticValue(character.Id, characterStatistic.Statistic.Type, characterStatistic.CurrentValue, maximumValue);
+            characterHub.ChangeStatisticValue(character.Id, characterStatistic.Statistic.Type, characterStatistic.CurrentValue, maximumValue, canBeDecreased, canBeIncreased);
 
             if (characterStatistic.Statistic.Type == StatisticType.Stamina)
                 SendMessageAboutStatisticValueChange(character, StatisticType.Strength, characterStatistic.CurrentValue / 10);
@@ -1078,7 +1121,7 @@ namespace WarhammerProfessionApp.Controllers
         }
 
         private void SendMessageAboutStatisticValueChange(Character character, StatisticType type, int value)
-            => characterHub.ChangeStatisticValue(character.Id, type, value, value);
+            => characterHub.ChangeStatisticValue(character.Id, type, value, value, false, false);
 
         private List<RaceDto> SortAvailableRaces(Character character)
         {

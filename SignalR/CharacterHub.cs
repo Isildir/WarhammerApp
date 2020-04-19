@@ -15,16 +15,22 @@ namespace WarhammerProfessionApp.SignalR
                 await clients.SendAsync("changeExperience", value);
         }
 
+        public async Task ChangeExperienceSummary(int characterId, int value)
+        {
+            if (GetReceivers(characterId, out IClientProxy clients))
+                await clients.SendAsync("changeExperienceSummary", value);
+        }
+
         public async Task ChangeMoney(int characterId, int gold, int silver, int bronze)
         {
             if (GetReceivers(characterId, out IClientProxy clients))
                 await clients.SendAsync("changeMoney", gold, silver, bronze);
         }
 
-        public async Task ChangeStatisticValue(int characterId, StatisticType type, int currentValue, int maxValue)
+        public async Task ChangeStatisticValue(int characterId, StatisticType type, int currentValue, int maxValue, bool canBeDecreased, bool canBeIncreased)
         {
             if (GetReceivers(characterId, out IClientProxy clients))
-                await clients.SendAsync("changeStatisticValue", (byte)type, currentValue, maxValue);
+                await clients.SendAsync("changeStatisticValue", (byte)type, currentValue, maxValue, canBeDecreased, canBeIncreased);
         }
 
         public override Task OnConnectedAsync()
