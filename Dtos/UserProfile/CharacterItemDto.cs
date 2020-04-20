@@ -11,5 +11,11 @@
         public int Quantity { get; set; }
 
         public int Weigth { get; set; }
+
+        public int Bronze { get; set; }
+
+        public int Gold { get; set; }
+
+        public int Silver { get; set; }
     }
 }

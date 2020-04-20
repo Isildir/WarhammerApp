@@ -19,188 +19,182 @@ namespace WarhammerProfessionApp.Controllers
     [ApiController, Authorize]
     public class CharactersController : ControllerBase
     {
+        private readonly CharacterHub characterHub;
+        private readonly ProfessionsContext context;
+
         public CharactersController(ProfessionsContext context, CharacterHub characterHub)
         {
             this.context = context;
             this.characterHub = characterHub;
         }
 
-        [HttpPost(nameof(AddAbility))]
-        public ActionResult<AbilityDto> AddAbility([FromBody] int id)
+        [HttpGet]
+        public async Task<ActionResult<CharacterDto>> GetCharacter()
         {
             var userId = GetUserId();
 
-            var character = context.Characters
-                .Include(a => a.Abilities).ThenInclude(a => a.Ability)
+            var character = await context.Characters
                 .Include(a => a.Professions).ThenInclude(a => a.Profession).ThenInclude(a => a.Statistics).ThenInclude(a => a.Statistic)
+                .Include(a => a.Skills).ThenInclude(a => a.Skill)
+                .Include(a => a.Abilities).ThenInclude(a => a.Ability)
+                .Include(a => a.Items).ThenInclude(a => a.Item)
                 .Include(a => a.Statistics).ThenInclude(a => a.Statistic)
-                .FirstOrDefault(a => a.UserId == userId);
+                .Include(a => a.AdditionalItems)
+                .Include(a => a.AdditionalValues)
+                .FirstOrDefaultAsync(a => a.UserId == userId);
 
             if (character == null)
                 return NotFound();
 
-            if (!CheckCharacterExperienceLimit(character, 100))
-                return BadRequest();
+            var money = MoneyCalculator.ConvertMoney(character.Money);
+            var load = character.Items.Any() ? character.Items.Sum(a => a.Quantity * a.Item.Weigth) : 0;
+            var maxLoad = character.Statistics.FirstOrDefault(a => a.Statistic.Type == StatisticType.Stamina).CurrentValue * 10;
 
-            var ability = context.Abilities.FirstOrDefault(a => a.Id == id);
-
-            if (ability == null || character.Abilities.Any(a => a.AbilityId == id))
-                return BadRequest();
-
-            character.ExperienceUsed += 100;
-            character.Abilities.Add(new CharacterAbility { AbilityId = id });
-
-            CharacterStatistic characterStatistic = null;
-
-            if (ability.HasImpactOnStatictics)
+            var basicValues = new CharacterBasicValuesDto
             {
-                characterStatistic = character.Statistics.FirstOrDefault(a => a.Statistic.Type == ability.ValueToAlter.Value);
-
-                characterStatistic.CurrentValue += ability.ImpactValue.Value;
-            }
-
-            context.SaveChanges();
-
-            SendMessageAboutExperienceChange(character);
-
-            if (ability.HasImpactOnStatictics)
-                SendMessageAboutStatisticValueChange(character, characterStatistic);
-
-            var result = new AbilityDto
-            {
-                Id = ability.Id,
-                Name = ability.Name,
-                Description = ability.Description
+                Id = character.Id,
+                ActualProfessionName = character.CurrentProfession?.Name,
+                ExperienceLeft = character.ExperienceSummary - character.ExperienceUsed,
+                ExperienceSum = character.ExperienceSummary,
+                Name = character.Name,
+                Notes = character.Notes,
+                CurrentLoad = $"{load} / {maxLoad}",
+                Race = character.Race != null ? new RaceDto
+                {
+                    Id = (int)character.Race,
+                    Name = character.Race.ToString()
+                } : null
             };
 
-            return Ok(result);
-        }
+            var professions = character.Professions.Select(a => new ShortProfessionDto { Id = a.Profession.Id, Name = a.Profession.Name }).ToList();
 
-        [HttpPost(nameof(AddAdditionalItem))]
-        public ActionResult<CharacterChangeResponseDto> AddAdditionalItem([FromBody] CharacterItemDto value)
-        {
-            var userId = GetUserId();
-
-            var character = context.Characters.Include(a => a.AdditionalValues).FirstOrDefault(a => a.UserId == userId);
-
-            if (character == null)
-                return NotFound();
-
-            character.AdditionalItems.Add(new AdditionalCharacterItem
+            var additionalItems = character.AdditionalItems.Select(a => new CharacterItemDto
             {
-                Name = value.Name,
-                Weigth = value.Weigth,
-                Quantity = value.Quantity,
-                Description = value.Description
-            });
+                Id = a.Id,
+                Name = a.Name,
+                Weigth = a.Weigth,
+                Quantity = a.Quantity,
+                Description = a.Description
+            }).ToList(); ;
 
-            context.SaveChanges();
-
-            return Ok(false);
-        }
-
-        [HttpPost(nameof(AddAdditionalValue))]
-        public ActionResult<CharacterChangeResponseDto> AddAdditionalValue([FromBody] AdditionalCharacterValueDto value)
-        {
-            var userId = GetUserId();
-
-            var character = context.Characters.Include(a => a.AdditionalValues).FirstOrDefault(a => a.UserId == userId);
-
-            if (character == null)
-                return NotFound();
-
-            if (!CheckCharacterExperienceLimit(character, 100))
-                return BadRequest();
-
-            character.ExperienceUsed += 100;
-            character.AdditionalValues.Add(new AdditionalCharacterValue { Name = value.Name });
-
-            context.SaveChanges();
-
-            SendMessageAboutExperienceChange(character);
-
-            return Ok(false);
-        }
-
-        [HttpPost(nameof(AddItem))]
-        public ActionResult AddItem(ModifyCharacterItemDto value)
-        {
-            var userId = GetUserId();
-
-            var character = context.Characters.Include(a => a.Items).FirstOrDefault(a => a.UserId == userId);
-
-            if (character == null)
-                return NotFound();
-
-            if (context.Items.Any(a => a.Id == value.Id))
-                return BadRequest();
-
-            var item = context.Items.FirstOrDefault(a => a.Id == value.Id);
-
-            if (value.ChangeMoney)
+            var additionalValues = character.AdditionalValues.Select(a => new AdditionalCharacterValueDto
             {
-                if (character.Money < item.Price)
-                    return BadRequest("No za mało kasiorki byczku");
+                Id = a.Id,
+                Name = a.Name
+            }).ToList();
 
-                character.Money -= character.Money - item.Price;
+            var skills = character.Skills.Select(a => new CharacterSkillDto
+            {
+                Id = a.SkillId,
+                Name = a.Skill.Name,
+                Trait = EnumTranslator.TranslateStaticticValue(a.Skill.Trait),
+                Description = a.Skill.Description,
+                Level = a.Level
+            }).ToList();
+
+            var abilities = character.Abilities.Select(a => new AbilityDto
+            {
+                Id = a.AbilityId,
+                Name = a.Ability.Name,
+                Description = a.Ability.Description
+            }).ToList();
+
+            var items = character.Items.Select(a =>
+            {
+                var convertedPrice = MoneyCalculator.ConvertMoney(a.Item.Price);
+
+                return new CharacterItemDto
+                {
+                    Id = a.Item.Id,
+                    Name = a.Item.Name,
+                    Weigth = a.Item.Weigth,
+                    Description = a.Item.Description,
+                    Quantity = a.Quantity,
+                    Gold = convertedPrice.Gold,
+                    Silver = convertedPrice.Silver,
+                    Bronze = convertedPrice.Bronze
+                };
+            }).ToList();
+
+            var statistics = new List<Tuple<bool, CharacterStatisticDto>>();
+
+            foreach (var value in character.Statistics)
+            {
+                var maximumValue = GetTotalStatisticMaximumValue(value.Statistic.Type, character, out int professionValue, out Dictionary<string, int> abilitiesValues);
+                var staticValues = abilitiesValues.Any() ? abilitiesValues.Sum(a => a.Value) : 0;
+
+                var result = new CharacterStatisticDto
+                {
+                    Type = value.Statistic.Type,
+                    Name = EnumTranslator.TranslateStaticticValue(value.Statistic.Type),
+                    IsReadOnly = value.Statistic.IsReadOnly,
+                    BaseValue = value.BaseValue,
+                    CurrentValue = value.CurrentValue,
+                    MaximumValue = maximumValue,
+                    Details = $"Bazowe {value.BaseValue}",
+                };
+
+                if (value.Statistic.Type == StatisticType.Hardness)
+                {
+                    var val = character.Statistics.FirstOrDefault(a => a.Statistic.Type == StatisticType.Resistance).CurrentValue / 10;
+
+                    result.BaseValue = val;
+                    result.CurrentValue = val;
+                    result.MaximumValue = val;
+                }
+                else if (value.Statistic.Type == StatisticType.Strength)
+                {
+                    var val = character.Statistics.FirstOrDefault(a => a.Statistic.Type == StatisticType.Stamina).CurrentValue / 10;
+
+                    result.BaseValue = val;
+                    result.CurrentValue = val;
+                    result.MaximumValue = val;
+                }
+
+                if (value.Statistic.IsCalculatedValue)
+                {
+                    result.CanBeDecreased = false;
+                    result.CanBeIncreased = false;
+                }
+                else
+                {
+                    result.CanBeDecreased = value.CurrentValue > value.BaseValue + staticValues;
+                    result.CanBeIncreased = value.CurrentValue < maximumValue;
+                }
+
+                if (character.Professions.Any())
+                    result.Details += $" + {professionValue} z rozwoju";
+
+                if (abilitiesValues.Any())
+                    result.Details += $" + {string.Join(',', abilitiesValues.Select(a => $"{a.Value} z {a.Key}"))}";
+
+                if (value.Statistic.Type == StatisticType.Speed && (load - maxLoad) % 50 > 1)
+                {
+                    var overload = (load - maxLoad) % 50;
+
+                    result.CurrentValue -= overload;
+                    result.Details += $" - {overload} z przeciążenia";
+                }
+
+                statistics.Add(new Tuple<bool, CharacterStatisticDto>(value.Statistic.IsBasicValue, result));
             }
 
-            character.Items.Add(new CharacterItem
+            return Ok(new CharacterDto
             {
-                ItemId = value.Id,
-                Quantity = 1
+                Money = money,
+                Items = items,
+                Skills = skills,
+                Abilities = abilities,
+                BasicValues = basicValues,
+                Professions = professions,
+                AdditionalItems = additionalItems,
+                AdditionalValues = additionalValues,
+                BasicStatistics = statistics.Where(a => a.Item1).Select(a => a.Item2).ToList(),
+                AdvancedStatistics = statistics.Where(a => !a.Item1).Select(a => a.Item2).ToList()
             });
-
-            context.SaveChanges();
-
-            if (value.ChangeMoney)
-                SendMessageAboutMoneyChange(character);
-
-            return Ok();
         }
 
-        [HttpPost(nameof(AddSkill))]
-        public ActionResult<CharacterSkillDto> AddSkill([FromBody] int id)
-        {
-            var userId = GetUserId();
-
-            var character = context.Characters.Include(a => a.Skills).FirstOrDefault(a => a.UserId == userId);
-
-            if (character == null)
-                return NotFound();
-
-            if (!CheckCharacterExperienceLimit(character, 100))
-                return BadRequest();
-
-            var characterSkill = character.Skills.FirstOrDefault(a => a.SkillId == id);
-
-            if (!context.Skills.Any(a => a.Id == id) || (characterSkill != null && characterSkill.Level >= 3))
-                return BadRequest();
-
-            character.ExperienceUsed += 100;
-
-            if (characterSkill == null)
-                character.Skills.Add(new CharacterSkill { SkillId = id, Level = 1 });
-            else
-                characterSkill.Level++;
-
-            context.SaveChanges();
-
-            var dbSkill = context.Skills.First(a => a.Id == id);
-
-            SendMessageAboutExperienceChange(character);
-
-            var skill = new CharacterSkillDto
-            {
-                Id = dbSkill.Id,
-                Name = dbSkill.Name,
-                Trait = dbSkill.Trait.ToString(),
-                Level = characterSkill.Level,
-                Description = dbSkill.Description
-            };
-
-            return Ok(skill);
-        }
+        #region Others
 
         [HttpPost(nameof(ChangeBaseStatisticValue))]
         public ActionResult<CharacterChangeResponseDto> ChangeBaseStatisticValue([FromBody] BaseStatiticValueChangeDto value)
@@ -342,233 +336,46 @@ namespace WarhammerProfessionApp.Controllers
             return Ok(characterStatistic.Statistic.Type == StatisticType.Stamina || characterStatistic.Statistic.Type == StatisticType.Resistance);
         }
 
-        [HttpGet]
-        public async Task<ActionResult<CharacterDto>> GetCharacter()
-        {
-            var userId = GetUserId();
-
-            var character = await context.Characters
-                .Include(a => a.Professions).ThenInclude(a => a.Profession).ThenInclude(a => a.Statistics).ThenInclude(a => a.Statistic)
-                .Include(a => a.Skills).ThenInclude(a => a.Skill)
-                .Include(a => a.Abilities).ThenInclude(a => a.Ability)
-                .Include(a => a.Items).ThenInclude(a => a.Item)
-                .Include(a => a.Statistics).ThenInclude(a => a.Statistic)
-                .Include(a => a.AdditionalItems)
-                .Include(a => a.AdditionalValues)
-                .FirstOrDefaultAsync(a => a.UserId == userId);
-
-            if (character == null)
-                return NotFound();
-
-            var money = MoneyCalculator.ConvertMoney(character.Money);
-            var load = character.Items.Any() ? character.Items.Sum(a => a.Quantity * a.Item.Weigth) : 0;
-            var maxLoad = character.Statistics.FirstOrDefault(a => a.Statistic.Type == StatisticType.Stamina).CurrentValue * 10;
-
-            var basicValues = new CharacterBasicValuesDto
-            {
-                Id = character.Id,
-                ActualProfessionName = character.CurrentProfession?.Name,
-                ExperienceLeft = character.ExperienceSummary - character.ExperienceUsed,
-                ExperienceSum = character.ExperienceSummary,
-                Name = character.Name,
-                Notes = character.Notes,
-                CurrentLoad = $"{load} / {maxLoad}",
-                Race = character.Race != null ? new RaceDto
-                {
-                    Id = (int)character.Race,
-                    Name = character.Race.ToString()
-                } : null
-            };
-
-            var professions = character.Professions.Select(a => new ShortProfessionDto { Id = a.Profession.Id, Name = a.Profession.Name }).ToList();
-
-            var additionalItems = character.AdditionalItems.Select(a => new CharacterItemDto
-            {
-                Id = a.Id,
-                Name = a.Name,
-                Weigth = a.Weigth,
-                Quantity = a.Quantity,
-                Description = a.Description
-            }).ToList(); ;
-
-            var additionalValues = character.AdditionalValues.Select(a => new AdditionalCharacterValueDto
-            {
-                Id = a.Id,
-                Name = a.Name
-            }).ToList();
-
-            var skills = character.Skills.Select(a => new CharacterSkillDto
-            {
-                Id = a.SkillId,
-                Name = a.Skill.Name,
-                Trait = EnumTranslator.TranslateStaticticValue(a.Skill.Trait),
-                Description = a.Skill.Description,
-                Level = a.Level
-            }).ToList();
-
-            var abilities = character.Abilities.Select(a => new AbilityDto
-            {
-                Id = a.AbilityId,
-                Name = a.Ability.Name,
-                Description = a.Ability.Description
-            }).ToList();
-
-            var items = character.Items.Select(a => new CharacterItemDto
-            {
-                Id = a.Item.Id,
-                Name = a.Item.Name,
-                Weigth = a.Item.Weigth,
-                Description = a.Item.Description,
-                Quantity = a.Quantity
-            }).ToList();
-
-            var statistics = new List<Tuple<bool, CharacterStatisticDto>>();
-
-            foreach (var value in character.Statistics)
-            {
-                var maximumValue = GetTotalStatisticMaximumValue(value.Statistic.Type, character, out int professionValue, out Dictionary<string, int> abilitiesValues);
-                var staticValues = abilitiesValues.Any() ? abilitiesValues.Sum(a => a.Value) : 0;
-
-                var result = new CharacterStatisticDto
-                {
-                    Type = value.Statistic.Type,
-                    Name = EnumTranslator.TranslateStaticticValue(value.Statistic.Type),
-                    IsReadOnly = value.Statistic.IsReadOnly,
-                    BaseValue = value.BaseValue,
-                    CurrentValue = value.CurrentValue,
-                    MaximumValue = maximumValue,
-                    Details = $"Bazowe {value.BaseValue}",
-                };
-
-                if (value.Statistic.Type == StatisticType.Hardness)
-                {
-                    var val = character.Statistics.FirstOrDefault(a => a.Statistic.Type == StatisticType.Resistance).CurrentValue / 10;
-
-                    result.BaseValue = val;
-                    result.CurrentValue = val;
-                    result.MaximumValue = val;
-                }
-                else if (value.Statistic.Type == StatisticType.Strength)
-                {
-                    var val = character.Statistics.FirstOrDefault(a => a.Statistic.Type == StatisticType.Stamina).CurrentValue / 10;
-
-                    result.BaseValue = val;
-                    result.CurrentValue = val;
-                    result.MaximumValue = val;
-                }
-
-                if (value.Statistic.IsCalculatedValue)
-                {
-                    result.CanBeDecreased = false;
-                    result.CanBeIncreased = false;
-                }
-                else
-                {
-                    result.CanBeDecreased = value.CurrentValue > value.BaseValue + staticValues;
-                    result.CanBeIncreased = value.CurrentValue < maximumValue;
-                }
-
-                if (character.Professions.Any())
-                    result.Details += $" + {professionValue} z rozwoju";
-
-                if (abilitiesValues.Any())
-                    result.Details += $" + {string.Join(',', abilitiesValues.Select(a => $"{a.Value} z {a.Key}"))}";
-
-                if (value.Statistic.Type == StatisticType.Speed && (load - maxLoad) % 50 > 1)
-                {
-                    var overload = (load - maxLoad) % 50;
-
-                    result.CurrentValue -= overload;
-                    result.Details += $" - {overload} z przeciążenia";
-                }
-
-                statistics.Add(new Tuple<bool, CharacterStatisticDto>(value.Statistic.IsBasicValue, result));
-            }
-
-            return Ok(new CharacterDto
-            {
-                Money = money,
-                Items = items,
-                Skills = skills,
-                Abilities = abilities,
-                BasicValues = basicValues,
-                Professions = professions,
-                AdditionalItems = additionalItems,
-                AdditionalValues = additionalValues,
-                BasicStatistics = statistics.Where(a => a.Item1).Select(a => a.Item2).ToList(),
-                AdvancedStatistics = statistics.Where(a => !a.Item1).Select(a => a.Item2).ToList()
-            });
-        }
-
-        [HttpGet(nameof(GetFilteredAbilities))]
-        public async Task<ActionResult<AbilityDto>> GetFilteredAbilities()
+        [HttpGet(nameof(GetRaces))]
+        public async Task<ActionResult<RaceDto>> GetRaces()
         {
             var userId = GetUserId();
 
             var character = context.Characters
-                .Include(a => a.Abilities)
                 .Include(a => a.Professions)
                 .ThenInclude(a => a.Profession)
-                .ThenInclude(a => a.Abilities)
-                .ThenInclude(a => a.Abilities)
-                .ThenInclude(a => a.Ability)
                 .FirstOrDefault(a => a.UserId == userId);
 
-            var availableAbilities = character.Professions.SelectMany(a => a.Profession.Abilities.SelectMany(b => b.Abilities.Select(c => c.Ability))).ToList();
-            var availableAbilitiesIds = availableAbilities.Select(c => c.Id).Distinct().ToList();
-            var takenAbilitiesIds = character.Abilities.Select(a => a.AbilityId).ToList();
-
-            var filteredAbilitiesIds = availableAbilitiesIds.Where(a => !takenAbilitiesIds.Contains(a)).ToList();
-
-            var values = filteredAbilitiesIds.Select(a => availableAbilities.FirstOrDefault(b => b.Id == a)).Select(a => new AbilityDto
-            {
-                Id = a.Id,
-                Name = a.Name
-            }).ToList();
+            var values = SortAvailableRaces(character);
 
             return Ok(values);
         }
 
-        [HttpGet(nameof(GetFilteredItems))]
-        public async Task<ActionResult<ItemDto>> GetFilteredItems()
+        [HttpPost(nameof(SetRace))]
+        public ActionResult<CharacterChangeResponseDto> SetRace([FromBody] int id)
         {
             var userId = GetUserId();
 
             var character = context.Characters
-                .Include(a => a.Items)
+                .Include(a => a.Professions)
+                .ThenInclude(a => a.Profession)
                 .FirstOrDefault(a => a.UserId == userId);
 
-            var takenItemsIds = character.Items.Select(a => a.ItemId).ToList();
+            var values = SortAvailableRaces(character);
 
-            var values = context.Items.Where(a => !takenItemsIds.Contains(a.Id)).Select(a => new
-            {
-                a.Id,
-                a.Name,
-                a.Price,
-                a.Weigth
-            }).ToList();
+            if (!values.Any(a => a.Id == id))
+                return BadRequest();
 
-            var convertedValues = new List<ItemDto>();
+            character.Race = (Race)id;
 
-            foreach (var item in values)
-            {
-                var money = MoneyCalculator.ConvertMoney(item.Price);
+            context.SaveChanges();
 
-                var value = new ItemDto
-                {
-                    Id = item.Id,
-                    Name = item.Name,
-                    Weigth = item.Weigth,
-                    Gold = money.Gold,
-                    Silver = money.Silver,
-                    Bronze = money.Bronze
-                };
-
-                convertedValues.Add(value);
-            }
-
-            return Ok(convertedValues);
+            return Ok();
         }
+
+        #endregion Others
+
+        #region Professions
 
         [HttpGet(nameof(GetFilteredProfessions))]
         public async Task<ActionResult<ShortProfessionDto>> GetFilteredProfessions()
@@ -595,273 +402,6 @@ namespace WarhammerProfessionApp.Controllers
                 values = values.Where(a => a.ProfessionLevel == ProfessionLevel.Basic);
 
             return Ok(values.Select(a => new ShortProfessionDto { Id = a.Id, Name = a.Name }).ToList());
-        }
-
-        [HttpGet(nameof(GetFilteredSkills))]
-        public async Task<ActionResult<CharacterSkillGetDto>> GetFilteredSkills()
-        {
-            var userId = GetUserId();
-
-            var character = context.Characters
-                .Include(a => a.Skills)
-                .Include(a => a.Professions)
-                .ThenInclude(a => a.Profession)
-                .ThenInclude(a => a.Skills)
-                .ThenInclude(a => a.Skills)
-                .ThenInclude(a => a.Skill)
-                .FirstOrDefault(a => a.UserId == userId);
-
-            var takenSkills = character.Skills.ToDictionary(a => a.SkillId, a => a.Level);
-            var availableSkills = character.Professions
-                .SelectMany(a => a.Profession.Skills.SelectMany(b => b.Skills.Select(c => c.Skill)));
-
-            var groupedAvailableSkills = availableSkills.GroupBy(a => a.Id).ToDictionary(a => a.Key, a => a.Count());
-
-            var values = new List<CharacterSkillGetDto>();
-
-            foreach (var skill in groupedAvailableSkills)
-            {
-                var record = availableSkills.FirstOrDefault(a => a.Id == skill.Key);
-
-                if (!takenSkills.ContainsKey(skill.Key))
-                    values.Add(new CharacterSkillGetDto
-                    {
-                        Id = record.Id,
-                        Name = record.Name,
-                        Level = 1
-                    });
-                else if (takenSkills.ContainsKey(skill.Key) && takenSkills[skill.Key] < skill.Value)
-                    values.Add(new CharacterSkillGetDto
-                    {
-                        Id = record.Id,
-                        Name = record.Name,
-                        Level = takenSkills[skill.Key] + 1
-                    });
-            }
-
-            return Ok(values);
-        }
-
-        [HttpGet(nameof(GetRaces))]
-        public async Task<ActionResult<RaceDto>> GetRaces()
-        {
-            var userId = GetUserId();
-
-            var character = context.Characters
-                .Include(a => a.Professions)
-                .ThenInclude(a => a.Profession)
-                .FirstOrDefault(a => a.UserId == userId);
-
-            var values = SortAvailableRaces(character);
-
-            return Ok(values);
-        }
-
-        [HttpPost(nameof(ModifyAdditionalItem))]
-        public ActionResult<CharacterChangeResponseDto> ModifyAdditionalItem([FromBody] CharacterItemDto value)
-        {
-            var userId = GetUserId();
-
-            var character = context.Characters.Include(a => a.AdditionalItems).FirstOrDefault(a => a.UserId == userId);
-
-            if (character == null)
-                return NotFound();
-
-            var characterValue = character.AdditionalItems.FirstOrDefault(a => a.Id == value.Id);
-
-            if (characterValue == null)
-                return BadRequest();
-
-            characterValue.Name = value.Name;
-            characterValue.Weigth = value.Weigth;
-            characterValue.Quantity = value.Quantity;
-            characterValue.Description = value.Description;
-
-            context.SaveChanges();
-
-            return Ok(false);
-        }
-
-        [HttpPost(nameof(ModifyExcerienceCostValue))]
-        public ActionResult<CharacterChangeResponseDto> ModifyExcerienceCostValue([FromBody] AdditionalCharacterValueDto value)
-        {
-            var userId = GetUserId();
-
-            var character = context.Characters.Include(a => a.AdditionalValues).FirstOrDefault(a => a.UserId == userId);
-
-            if (character == null)
-                return NotFound();
-
-            if (!character.AdditionalValues.Any(a => a.Id == value.Id))
-                return BadRequest();
-
-            character.AdditionalValues.FirstOrDefault(a => a.Id == value.Id).Name = value.Name;
-
-            context.SaveChanges();
-
-            return Ok(false);
-        }
-
-        [HttpPost(nameof(ModifyItem))]
-        public ActionResult<int> ModifyItem(ModifyCharacterItemDto value)
-        {
-            var userId = GetUserId();
-
-            var character = context.Characters
-                .Include(a => a.Items)
-                .ThenInclude(a => a.Item)
-                .FirstOrDefault(a => a.UserId == userId);
-
-            if (character == null)
-                return NotFound();
-
-            if (!context.Items.Any(a => a.Id == value.Id))
-                return BadRequest();
-
-            var item = character.Items.FirstOrDefault(a => a.ItemId == value.Id);
-
-            if (value.ChangeMoney)
-            {
-                var change = value.Quantity - item.Quantity;
-
-                if (change != 0)
-                {
-                    if (change > 0 && character.Money < item.Item.Price * change)
-                        return BadRequest("No za mało kasiorki byczku");
-
-                    character.Money += item.Item.Price * change;
-                }
-            }
-
-            item.Quantity = value.Quantity;
-
-            context.SaveChanges();
-
-            if (value.ChangeMoney)
-                SendMessageAboutMoneyChange(character);
-
-            return Ok();
-        }
-
-        [HttpDelete(nameof(RemoveAbility))]
-        public ActionResult<CharacterChangeResponseDto> RemoveAbility(int id)
-        {
-            var userId = GetUserId();
-
-            var character = context.Characters
-                .Include(a => a.Abilities).ThenInclude(a => a.Ability)
-                .Include(a => a.Statistics).ThenInclude(a => a.Statistic)
-                .Include(a => a.Professions).ThenInclude(a => a.Profession).ThenInclude(a => a.Statistics).ThenInclude(a => a.Statistic)
-                .FirstOrDefault(a => a.UserId == userId);
-
-            if (character == null)
-                return NotFound();
-
-            var ability = context.Abilities.FirstOrDefault(a => a.Id == id);
-
-            var characterAbility = character.Abilities.FirstOrDefault(a => a.AbilityId == id);
-
-            if (ability == null || characterAbility == null)
-                return BadRequest();
-
-            character.ExperienceUsed -= 100;
-            character.Abilities.Remove(characterAbility);
-
-            CharacterStatistic characterStatistic = null;
-
-            if (ability.HasImpactOnStatictics)
-            {
-                characterStatistic = character.Statistics.FirstOrDefault(a => a.Statistic.Type == ability.ValueToAlter.Value);
-
-                characterStatistic.CurrentValue -= ability.ImpactValue.Value;
-            }
-
-            context.SaveChanges();
-
-            SendMessageAboutExperienceChange(character);
-
-            if (ability.HasImpactOnStatictics)
-                SendMessageAboutStatisticValueChange(character, characterStatistic);
-
-            return Ok(ability.HasImpactOnStatictics);
-        }
-
-        [HttpDelete(nameof(RemoveAdditionalItem))]
-        public ActionResult<CharacterChangeResponseDto> RemoveAdditionalItem(int id)
-        {
-            var userId = GetUserId();
-
-            var character = context.Characters
-                .Include(a => a.AdditionalItems)
-                .FirstOrDefault(a => a.UserId == userId);
-
-            if (character == null)
-                return NotFound();
-
-            var value = character.AdditionalItems.FirstOrDefault(a => a.Id == id);
-
-            if (value == null)
-                return BadRequest();
-
-            character.AdditionalItems.Remove(value);
-
-            context.SaveChanges();
-
-            return Ok(false);
-        }
-
-        [HttpDelete(nameof(RemoveAdditionalValue))]
-        public ActionResult<CharacterChangeResponseDto> RemoveAdditionalValue(int id)
-        {
-            var userId = GetUserId();
-
-            var character = context.Characters.Include(a => a.AdditionalValues).FirstOrDefault(a => a.UserId == userId);
-
-            if (character == null)
-                return NotFound();
-
-            if (!character.AdditionalValues.Any(a => a.Id == id))
-                return BadRequest();
-
-            character.ExperienceUsed -= 100;
-            character.AdditionalValues.Remove(character.AdditionalValues.First(a => a.Id == id));
-
-            context.SaveChanges();
-
-            SendMessageAboutExperienceChange(character);
-
-            return Ok(false);
-        }
-
-        [HttpPost(nameof(RemoveItem))]
-        public ActionResult<int> RemoveItem([FromBody] ModifyCharacterItemDto value)
-        {
-            var userId = GetUserId();
-
-            var character = context.Characters
-                .Include(a => a.Items)
-                .ThenInclude(a => a.Item)
-                .FirstOrDefault(a => a.UserId == userId);
-
-            if (character == null)
-                return NotFound();
-
-            if (!context.Items.Any(a => a.Id == value.Id))
-                return BadRequest();
-
-            var item = character.Items.FirstOrDefault(a => a.ItemId == value.Id);
-
-            if (value.ChangeMoney)
-                character.Money += item.Item.Price * item.Quantity;
-
-            character.Items.Remove(item);
-
-            context.SaveChanges();
-
-            if (value.ChangeMoney)
-                SendMessageAboutMoneyChange(character);
-
-            return Ok();
         }
 
         [HttpPost(nameof(RemoveLastProfession))]
@@ -909,35 +449,6 @@ namespace WarhammerProfessionApp.Controllers
             character.Statistics.ForEach(a => SendMessageAboutStatisticValueChange(character, a));
 
             return Ok(newCurrentProfession?.ProfessionId ?? 0);
-        }
-
-        [HttpDelete(nameof(RemoveSkill))]
-        public ActionResult<CharacterChangeResponseDto> RemoveSkill(int id)
-        {
-            var userId = GetUserId();
-
-            var character = context.Characters.Include(a => a.Skills).FirstOrDefault(a => a.UserId == userId);
-
-            if (character == null)
-                return NotFound();
-
-            var skill = character.Skills.FirstOrDefault(a => a.SkillId == id);
-
-            if (skill == null)
-                return BadRequest();
-
-            character.ExperienceUsed -= 100;
-
-            if (skill.Level <= 1)
-                character.Skills.Remove(skill);
-            else
-                skill.Level--;
-
-            context.SaveChanges();
-
-            SendMessageAboutExperienceChange(character);
-
-            return Ok(false);
         }
 
         [HttpPost(nameof(SetNextProfession))]
@@ -989,31 +500,571 @@ namespace WarhammerProfessionApp.Controllers
             return Ok(true);
         }
 
-        [HttpPost(nameof(SetRace))]
-        public ActionResult<CharacterChangeResponseDto> SetRace([FromBody] int id)
+        #endregion Professions
+
+        #region Items
+
+        [HttpPost(nameof(AddItem))]
+        public ActionResult<CharacterItemDto> AddItem(ModifyCharacterItemDto value)
+        {
+            var userId = GetUserId();
+
+            var character = context.Characters.Include(a => a.Items).FirstOrDefault(a => a.UserId == userId);
+
+            if (character == null)
+                return NotFound();
+
+            if (context.Items.Any(a => a.Id == value.Id))
+                return BadRequest();
+
+            var item = context.Items.FirstOrDefault(a => a.Id == value.Id);
+
+            if (value.ChangeMoney)
+            {
+                if (character.Money < item.Price)
+                    return BadRequest("No za mało kasiorki byczku");
+
+                character.Money -= character.Money - item.Price;
+            }
+
+            character.Items.Add(new CharacterItem
+            {
+                ItemId = value.Id,
+                Quantity = 1
+            });
+
+            context.SaveChanges();
+
+            var convertedPrice = MoneyCalculator.ConvertMoney(item.Price);
+
+            var result = new CharacterItemDto
+            {
+                Id = item.Id,
+                Name = item.Name,
+                Quantity = 1,
+                Weigth = item.Weigth,
+                Description = item.Description,
+                Gold = convertedPrice.Gold,
+                Silver = convertedPrice.Silver,
+                Bronze = convertedPrice.Bronze
+            };
+
+            if (value.ChangeMoney)
+                SendMessageAboutMoneyChange(character);
+
+            return Ok(result);
+        }
+
+        [HttpGet(nameof(GetFilteredItems))]
+        public async Task<ActionResult<ItemDto>> GetFilteredItems()
         {
             var userId = GetUserId();
 
             var character = context.Characters
-                .Include(a => a.Professions)
-                .ThenInclude(a => a.Profession)
+                .Include(a => a.Items)
                 .FirstOrDefault(a => a.UserId == userId);
 
-            var values = SortAvailableRaces(character);
+            var takenItemsIds = character.Items.Select(a => a.ItemId).ToList();
 
-            if (!values.Any(a => a.Id == id))
+            var values = context.Items.Where(a => !takenItemsIds.Contains(a.Id)).Select(a => new
+            {
+                a.Id,
+                a.Name,
+                a.Price,
+                a.Weigth
+            }).ToList();
+
+            var convertedValues = new List<ItemDto>();
+
+            foreach (var item in values)
+            {
+                var money = MoneyCalculator.ConvertMoney(item.Price);
+
+                var value = new ItemDto
+                {
+                    Id = item.Id,
+                    Name = item.Name,
+                    Weigth = item.Weigth,
+                    Gold = money.Gold,
+                    Silver = money.Silver,
+                    Bronze = money.Bronze
+                };
+
+                convertedValues.Add(value);
+            }
+
+            return Ok(convertedValues);
+        }
+
+        [HttpPost(nameof(ModifyItem))]
+        public ActionResult<int> ModifyItem(ModifyCharacterItemDto value)
+        {
+            var userId = GetUserId();
+
+            var character = context.Characters
+                .Include(a => a.Items)
+                .ThenInclude(a => a.Item)
+                .FirstOrDefault(a => a.UserId == userId);
+
+            if (character == null)
+                return NotFound();
+
+            if (!context.Items.Any(a => a.Id == value.Id))
                 return BadRequest();
 
-            character.Race = (Race)id;
+            var item = character.Items.FirstOrDefault(a => a.ItemId == value.Id);
+
+            if (value.ChangeMoney)
+            {
+                var change = value.Quantity - item.Quantity;
+
+                if (change != 0)
+                {
+                    if (change > 0 && character.Money < item.Item.Price * change)
+                        return BadRequest("No za mało kasiorki byczku");
+
+                    character.Money += item.Item.Price * change;
+                }
+            }
+
+            item.Quantity = value.Quantity;
 
             context.SaveChanges();
+
+            if (value.ChangeMoney)
+                SendMessageAboutMoneyChange(character);
 
             return Ok();
         }
 
-        private readonly CharacterHub characterHub;
+        [HttpPost(nameof(RemoveItem))]
+        public ActionResult<int> RemoveItem([FromBody] ModifyCharacterItemDto value)
+        {
+            var userId = GetUserId();
 
-        private readonly ProfessionsContext context;
+            var character = context.Characters
+                .Include(a => a.Items)
+                .ThenInclude(a => a.Item)
+                .FirstOrDefault(a => a.UserId == userId);
+
+            if (character == null)
+                return NotFound();
+
+            if (!context.Items.Any(a => a.Id == value.Id))
+                return BadRequest();
+
+            var item = character.Items.FirstOrDefault(a => a.ItemId == value.Id);
+
+            if (value.ChangeMoney)
+                character.Money += item.Item.Price * item.Quantity;
+
+            character.Items.Remove(item);
+
+            context.SaveChanges();
+
+            if (value.ChangeMoney)
+                SendMessageAboutMoneyChange(character);
+
+            return Ok();
+        }
+
+        #endregion Items
+
+        #region Abilities
+
+        [HttpPost(nameof(AddAbility))]
+        public ActionResult<AbilityDto> AddAbility([FromBody] int id)
+        {
+            var userId = GetUserId();
+
+            var character = context.Characters
+                .Include(a => a.Abilities).ThenInclude(a => a.Ability)
+                .Include(a => a.Professions).ThenInclude(a => a.Profession).ThenInclude(a => a.Statistics).ThenInclude(a => a.Statistic)
+                .Include(a => a.Statistics).ThenInclude(a => a.Statistic)
+                .FirstOrDefault(a => a.UserId == userId);
+
+            if (character == null)
+                return NotFound();
+
+            if (!CheckCharacterExperienceLimit(character, 100))
+                return BadRequest();
+
+            var ability = context.Abilities.FirstOrDefault(a => a.Id == id);
+
+            if (ability == null || character.Abilities.Any(a => a.AbilityId == id))
+                return BadRequest();
+
+            character.ExperienceUsed += 100;
+            character.Abilities.Add(new CharacterAbility { AbilityId = id });
+
+            CharacterStatistic characterStatistic = null;
+
+            if (ability.HasImpactOnStatictics)
+            {
+                characterStatistic = character.Statistics.FirstOrDefault(a => a.Statistic.Type == ability.ValueToAlter.Value);
+
+                characterStatistic.CurrentValue += ability.ImpactValue.Value;
+            }
+
+            context.SaveChanges();
+
+            SendMessageAboutExperienceChange(character);
+
+            if (ability.HasImpactOnStatictics)
+                SendMessageAboutStatisticValueChange(character, characterStatistic);
+
+            var result = new AbilityDto
+            {
+                Id = ability.Id,
+                Name = ability.Name,
+                Description = ability.Description
+            };
+
+            return Ok(result);
+        }
+
+        [HttpGet(nameof(GetFilteredAbilities))]
+        public async Task<ActionResult<AbilityDto>> GetFilteredAbilities()
+        {
+            var userId = GetUserId();
+
+            var character = context.Characters
+                .Include(a => a.Abilities)
+                .Include(a => a.Professions)
+                .ThenInclude(a => a.Profession)
+                .ThenInclude(a => a.Abilities)
+                .ThenInclude(a => a.Abilities)
+                .ThenInclude(a => a.Ability)
+                .FirstOrDefault(a => a.UserId == userId);
+
+            var availableAbilities = character.Professions.SelectMany(a => a.Profession.Abilities.SelectMany(b => b.Abilities.Select(c => c.Ability))).ToList();
+            var availableAbilitiesIds = availableAbilities.Select(c => c.Id).Distinct().ToList();
+            var takenAbilitiesIds = character.Abilities.Select(a => a.AbilityId).ToList();
+
+            var filteredAbilitiesIds = availableAbilitiesIds.Where(a => !takenAbilitiesIds.Contains(a)).ToList();
+
+            var values = filteredAbilitiesIds.Select(a => availableAbilities.FirstOrDefault(b => b.Id == a)).Select(a => new AbilityDto
+            {
+                Id = a.Id,
+                Name = a.Name
+            }).ToList();
+
+            return Ok(values);
+        }
+
+        [HttpDelete(nameof(RemoveAbility))]
+        public ActionResult<CharacterChangeResponseDto> RemoveAbility(int id)
+        {
+            var userId = GetUserId();
+
+            var character = context.Characters
+                .Include(a => a.Abilities).ThenInclude(a => a.Ability)
+                .Include(a => a.Statistics).ThenInclude(a => a.Statistic)
+                .Include(a => a.Professions).ThenInclude(a => a.Profession).ThenInclude(a => a.Statistics).ThenInclude(a => a.Statistic)
+                .FirstOrDefault(a => a.UserId == userId);
+
+            if (character == null)
+                return NotFound();
+
+            var ability = context.Abilities.FirstOrDefault(a => a.Id == id);
+
+            var characterAbility = character.Abilities.FirstOrDefault(a => a.AbilityId == id);
+
+            if (ability == null || characterAbility == null)
+                return BadRequest();
+
+            character.ExperienceUsed -= 100;
+            character.Abilities.Remove(characterAbility);
+
+            CharacterStatistic characterStatistic = null;
+
+            if (ability.HasImpactOnStatictics)
+            {
+                characterStatistic = character.Statistics.FirstOrDefault(a => a.Statistic.Type == ability.ValueToAlter.Value);
+
+                characterStatistic.CurrentValue -= ability.ImpactValue.Value;
+            }
+
+            context.SaveChanges();
+
+            SendMessageAboutExperienceChange(character);
+
+            if (ability.HasImpactOnStatictics)
+                SendMessageAboutStatisticValueChange(character, characterStatistic);
+
+            return Ok(ability.HasImpactOnStatictics);
+        }
+
+        #endregion Abilities
+
+        #region Skills
+
+        [HttpPost(nameof(AddSkill))]
+        public ActionResult<CharacterSkillDto> AddSkill([FromBody] int id)
+        {
+            var userId = GetUserId();
+
+            var character = context.Characters.Include(a => a.Skills).FirstOrDefault(a => a.UserId == userId);
+
+            if (character == null)
+                return NotFound();
+
+            if (!CheckCharacterExperienceLimit(character, 100))
+                return BadRequest();
+
+            var characterSkill = character.Skills.FirstOrDefault(a => a.SkillId == id);
+
+            if (!context.Skills.Any(a => a.Id == id) || (characterSkill != null && characterSkill.Level >= 3))
+                return BadRequest();
+
+            character.ExperienceUsed += 100;
+
+            if (characterSkill == null)
+                character.Skills.Add(new CharacterSkill { SkillId = id, Level = 1 });
+            else
+                characterSkill.Level++;
+
+            context.SaveChanges();
+
+            var dbSkill = context.Skills.First(a => a.Id == id);
+
+            SendMessageAboutExperienceChange(character);
+
+            var skill = new CharacterSkillDto
+            {
+                Id = dbSkill.Id,
+                Name = dbSkill.Name,
+                Trait = dbSkill.Trait.ToString(),
+                Level = characterSkill.Level,
+                Description = dbSkill.Description
+            };
+
+            return Ok(skill);
+        }
+
+        [HttpGet(nameof(GetFilteredSkills))]
+        public async Task<ActionResult<CharacterSkillGetDto>> GetFilteredSkills()
+        {
+            var userId = GetUserId();
+
+            var character = context.Characters
+                .Include(a => a.Skills)
+                .Include(a => a.Professions)
+                .ThenInclude(a => a.Profession)
+                .ThenInclude(a => a.Skills)
+                .ThenInclude(a => a.Skills)
+                .ThenInclude(a => a.Skill)
+                .FirstOrDefault(a => a.UserId == userId);
+
+            var takenSkills = character.Skills.ToDictionary(a => a.SkillId, a => a.Level);
+            var availableSkills = character.Professions
+                .SelectMany(a => a.Profession.Skills.SelectMany(b => b.Skills.Select(c => c.Skill)));
+
+            var groupedAvailableSkills = availableSkills.GroupBy(a => a.Id).ToDictionary(a => a.Key, a => a.Count());
+
+            var values = new List<CharacterSkillGetDto>();
+
+            foreach (var skill in groupedAvailableSkills)
+            {
+                var record = availableSkills.FirstOrDefault(a => a.Id == skill.Key);
+
+                if (!takenSkills.ContainsKey(skill.Key))
+                    values.Add(new CharacterSkillGetDto
+                    {
+                        Id = record.Id,
+                        Name = record.Name,
+                        Level = 1
+                    });
+                else if (takenSkills.ContainsKey(skill.Key) && takenSkills[skill.Key] < skill.Value)
+                    values.Add(new CharacterSkillGetDto
+                    {
+                        Id = record.Id,
+                        Name = record.Name,
+                        Level = takenSkills[skill.Key] + 1
+                    });
+            }
+
+            return Ok(values);
+        }
+
+        [HttpDelete(nameof(RemoveSkill))]
+        public ActionResult<CharacterChangeResponseDto> RemoveSkill(int id)
+        {
+            var userId = GetUserId();
+
+            var character = context.Characters.Include(a => a.Skills).FirstOrDefault(a => a.UserId == userId);
+
+            if (character == null)
+                return NotFound();
+
+            var skill = character.Skills.FirstOrDefault(a => a.SkillId == id);
+
+            if (skill == null)
+                return BadRequest();
+
+            character.ExperienceUsed -= 100;
+
+            if (skill.Level <= 1)
+                character.Skills.Remove(skill);
+            else
+                skill.Level--;
+
+            context.SaveChanges();
+
+            SendMessageAboutExperienceChange(character);
+
+            return Ok(false);
+        }
+
+        #endregion Skills
+
+        #region AdditionalItems
+
+        [HttpPost(nameof(AddAdditionalItem))]
+        public ActionResult<CharacterChangeResponseDto> AddAdditionalItem([FromBody] CharacterItemDto value)
+        {
+            var userId = GetUserId();
+
+            var character = context.Characters.Include(a => a.AdditionalValues).FirstOrDefault(a => a.UserId == userId);
+
+            if (character == null)
+                return NotFound();
+
+            character.AdditionalItems.Add(new AdditionalCharacterItem
+            {
+                Name = value.Name,
+                Weigth = value.Weigth,
+                Quantity = value.Quantity,
+                Description = value.Description
+            });
+
+            context.SaveChanges();
+
+            return Ok(false);
+        }
+
+        [HttpPost(nameof(ModifyAdditionalItem))]
+        public ActionResult<CharacterChangeResponseDto> ModifyAdditionalItem([FromBody] CharacterItemDto value)
+        {
+            var userId = GetUserId();
+
+            var character = context.Characters.Include(a => a.AdditionalItems).FirstOrDefault(a => a.UserId == userId);
+
+            if (character == null)
+                return NotFound();
+
+            var characterValue = character.AdditionalItems.FirstOrDefault(a => a.Id == value.Id);
+
+            if (characterValue == null)
+                return BadRequest();
+
+            characterValue.Name = value.Name;
+            characterValue.Weigth = value.Weigth;
+            characterValue.Quantity = value.Quantity;
+            characterValue.Description = value.Description;
+
+            context.SaveChanges();
+
+            return Ok(false);
+        }
+
+        [HttpDelete(nameof(RemoveAdditionalItem))]
+        public ActionResult<CharacterChangeResponseDto> RemoveAdditionalItem(int id)
+        {
+            var userId = GetUserId();
+
+            var character = context.Characters
+                .Include(a => a.AdditionalItems)
+                .FirstOrDefault(a => a.UserId == userId);
+
+            if (character == null)
+                return NotFound();
+
+            var value = character.AdditionalItems.FirstOrDefault(a => a.Id == id);
+
+            if (value == null)
+                return BadRequest();
+
+            character.AdditionalItems.Remove(value);
+
+            context.SaveChanges();
+
+            return Ok(false);
+        }
+
+        #endregion AdditionalItems
+
+        #region AdditionalValues
+
+        [HttpPost(nameof(AddAdditionalValue))]
+        public ActionResult<CharacterChangeResponseDto> AddAdditionalValue([FromBody] AdditionalCharacterValueDto value)
+        {
+            var userId = GetUserId();
+
+            var character = context.Characters.Include(a => a.AdditionalValues).FirstOrDefault(a => a.UserId == userId);
+
+            if (character == null)
+                return NotFound();
+
+            if (!CheckCharacterExperienceLimit(character, 100))
+                return BadRequest();
+
+            character.ExperienceUsed += 100;
+            character.AdditionalValues.Add(new AdditionalCharacterValue { Name = value.Name });
+
+            context.SaveChanges();
+
+            SendMessageAboutExperienceChange(character);
+
+            return Ok(false);
+        }
+
+        [HttpPost(nameof(ModifyAdditionalValue))]
+        public ActionResult<CharacterChangeResponseDto> ModifyAdditionalValue([FromBody] AdditionalCharacterValueDto value)
+        {
+            var userId = GetUserId();
+
+            var character = context.Characters.Include(a => a.AdditionalValues).FirstOrDefault(a => a.UserId == userId);
+
+            if (character == null)
+                return NotFound();
+
+            if (!character.AdditionalValues.Any(a => a.Id == value.Id))
+                return BadRequest();
+
+            character.AdditionalValues.FirstOrDefault(a => a.Id == value.Id).Name = value.Name;
+
+            context.SaveChanges();
+
+            return Ok(false);
+        }
+
+        [HttpDelete(nameof(RemoveAdditionalValue))]
+        public ActionResult<CharacterChangeResponseDto> RemoveAdditionalValue(int id)
+        {
+            var userId = GetUserId();
+
+            var character = context.Characters.Include(a => a.AdditionalValues).FirstOrDefault(a => a.UserId == userId);
+
+            if (character == null)
+                return NotFound();
+
+            if (!character.AdditionalValues.Any(a => a.Id == id))
+                return BadRequest();
+
+            character.ExperienceUsed -= 100;
+            character.AdditionalValues.Remove(character.AdditionalValues.First(a => a.Id == id));
+
+            context.SaveChanges();
+
+            SendMessageAboutExperienceChange(character);
+
+            return Ok(false);
+        }
+
+        #endregion AdditionalValues
+
+        #region PrivateMethods
 
         private bool CheckCharacterExperienceLimit(Character character, int value) => character.ExperienceSummary - character.ExperienceUsed >= value;
 
@@ -1160,5 +1211,7 @@ namespace WarhammerProfessionApp.Controllers
 
             return values;
         }
+
+        #endregion PrivateMethods
     }
 }
