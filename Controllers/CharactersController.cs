@@ -41,6 +41,7 @@ namespace WarhammerProfessionApp.Controllers
                 .Include(a => a.Statistics).ThenInclude(a => a.Statistic)
                 .Include(a => a.AdditionalItems)
                 .Include(a => a.AdditionalValues)
+                .AsNoTracking()
                 .FirstOrDefaultAsync(a => a.UserId == userId);
 
             if (character == null)
@@ -162,15 +163,15 @@ namespace WarhammerProfessionApp.Controllers
                     result.CanBeIncreased = value.CurrentValue < maximumValue;
                 }
 
-                if (character.Professions.Any())
+                if (character.Professions.Any() && professionValue != 0)
                     result.Details += $" + {professionValue} z rozwoju";
 
                 if (abilitiesValues.Any())
                     result.Details += $" + {string.Join(',', abilitiesValues.Select(a => $"{a.Value} z {a.Key}"))}";
 
-                if (value.Statistic.Type == StatisticType.Speed && (load - maxLoad) % 50 > 1)
+                if (value.Statistic.Type == StatisticType.Speed && (load - maxLoad) / 50 > 1)
                 {
-                    var overload = (load - maxLoad) % 50;
+                    var overload = (load - maxLoad) / 50;
 
                     result.CurrentValue -= overload;
                     result.Details += $" - {overload} z przeciążenia";
@@ -337,7 +338,7 @@ namespace WarhammerProfessionApp.Controllers
         }
 
         [HttpGet(nameof(GetRaces))]
-        public async Task<ActionResult<RaceDto>> GetRaces()
+        public ActionResult<RaceDto> GetRaces()
         {
             var userId = GetUserId();
 
@@ -378,7 +379,7 @@ namespace WarhammerProfessionApp.Controllers
         #region Professions
 
         [HttpGet(nameof(GetFilteredProfessions))]
-        public async Task<ActionResult<ShortProfessionDto>> GetFilteredProfessions()
+        public ActionResult<ShortProfessionDto> GetFilteredProfessions()
         {
             var userId = GetUserId();
 
@@ -522,7 +523,11 @@ namespace WarhammerProfessionApp.Controllers
             if (value.ChangeMoney)
             {
                 if (character.Money < item.Price)
-                    return BadRequest("No za mało kasiorki byczku");
+                {
+                    SendMessage(character.Id, "Nie wystarczająco pieniędzy");
+
+                    return BadRequest();
+                }
 
                 character.Money -= character.Money - item.Price;
             }
@@ -556,7 +561,7 @@ namespace WarhammerProfessionApp.Controllers
         }
 
         [HttpGet(nameof(GetFilteredItems))]
-        public async Task<ActionResult<ItemDto>> GetFilteredItems()
+        public ActionResult<ItemDto> GetFilteredItems()
         {
             var userId = GetUserId();
 
@@ -621,7 +626,11 @@ namespace WarhammerProfessionApp.Controllers
                 if (change != 0)
                 {
                     if (change > 0 && character.Money < item.Item.Price * change)
-                        return BadRequest("No za mało kasiorki byczku");
+                    {
+                        SendMessage(character.Id, "Nie wystarczająco pieniędzy");
+
+                        return BadRequest();
+                    }
 
                     character.Money += item.Item.Price * change;
                 }
@@ -724,7 +733,7 @@ namespace WarhammerProfessionApp.Controllers
         }
 
         [HttpGet(nameof(GetFilteredAbilities))]
-        public async Task<ActionResult<AbilityDto>> GetFilteredAbilities()
+        public ActionResult<AbilityDto> GetFilteredAbilities()
         {
             var userId = GetUserId();
 
@@ -843,7 +852,7 @@ namespace WarhammerProfessionApp.Controllers
         }
 
         [HttpGet(nameof(GetFilteredSkills))]
-        public async Task<ActionResult<CharacterSkillGetDto>> GetFilteredSkills()
+        public ActionResult<CharacterSkillGetDto> GetFilteredSkills()
         {
             var userId = GetUserId();
 
@@ -1146,34 +1155,6 @@ namespace WarhammerProfessionApp.Controllers
             return int.Parse(claim);
         }
 
-        private void SendMessageAboutExperienceChange(Character character) => characterHub.ChangeExperience(character.Id, character.ExperienceSummary - character.ExperienceUsed);
-
-        private void SendMessageAboutExperienceSummaryChange(Character character) => characterHub.ChangeExperienceSummary(character.Id, character.ExperienceSummary);
-
-        private void SendMessageAboutMoneyChange(Character character)
-        {
-            var money = MoneyCalculator.ConvertMoney(character.Money);
-
-            characterHub.ChangeMoney(character.Id, money.Gold, money.Silver, money.Bronze);
-        }
-
-        private void SendMessageAboutStatisticValueChange(Character character, CharacterStatistic characterStatistic)
-        {
-            var maximumValue = GetTotalStatisticMaximumValue(characterStatistic.Statistic.Type, character, out int bonusesValue);
-            var canBeDecreased = characterStatistic.CurrentValue > characterStatistic.BaseValue + bonusesValue;
-            var canBeIncreased = characterStatistic.CurrentValue < maximumValue;
-
-            characterHub.ChangeStatisticValue(character.Id, characterStatistic.Statistic.Type, characterStatistic.CurrentValue, maximumValue, canBeDecreased, canBeIncreased);
-
-            if (characterStatistic.Statistic.Type == StatisticType.Stamina)
-                SendMessageAboutStatisticValueChange(character, StatisticType.Strength, characterStatistic.CurrentValue / 10);
-            else if (characterStatistic.Statistic.Type == StatisticType.Resistance)
-                SendMessageAboutStatisticValueChange(character, StatisticType.Hardness, characterStatistic.CurrentValue / 10);
-        }
-
-        private void SendMessageAboutStatisticValueChange(Character character, StatisticType type, int value)
-            => characterHub.ChangeStatisticValue(character.Id, type, value, value, false, false);
-
         private List<RaceDto> SortAvailableRaces(Character character)
         {
             var allowedProfessions = character.Professions.Select(a => a.Profession.ProfessionRaceAllowed).ToList();
@@ -1213,5 +1194,39 @@ namespace WarhammerProfessionApp.Controllers
         }
 
         #endregion PrivateMethods
+
+        #region SignalRMethods
+
+        private void SendMessage(int characterId, string message) => characterHub.SendMessage(characterId, message).Start();
+
+        private void SendMessageAboutExperienceChange(Character character) => characterHub.ChangeExperience(character.Id, character.ExperienceSummary - character.ExperienceUsed).Start();
+
+        private void SendMessageAboutExperienceSummaryChange(Character character) => characterHub.ChangeExperienceSummary(character.Id, character.ExperienceSummary).Start();
+
+        private void SendMessageAboutMoneyChange(Character character)
+        {
+            var money = MoneyCalculator.ConvertMoney(character.Money);
+
+            characterHub.ChangeMoney(character.Id, money.Gold, money.Silver, money.Bronze).Start();
+        }
+
+        private void SendMessageAboutStatisticValueChange(Character character, CharacterStatistic characterStatistic)
+        {
+            var maximumValue = GetTotalStatisticMaximumValue(characterStatistic.Statistic.Type, character, out int bonusesValue);
+            var canBeDecreased = characterStatistic.CurrentValue > characterStatistic.BaseValue + bonusesValue;
+            var canBeIncreased = characterStatistic.CurrentValue < maximumValue;
+
+            characterHub.ChangeStatisticValue(character.Id, characterStatistic.Statistic.Type, characterStatistic.CurrentValue, maximumValue, canBeDecreased, canBeIncreased).Start();
+
+            if (characterStatistic.Statistic.Type == StatisticType.Stamina)
+                SendMessageAboutStatisticValueChange(character, StatisticType.Strength, characterStatistic.CurrentValue / 10);
+            else if (characterStatistic.Statistic.Type == StatisticType.Resistance)
+                SendMessageAboutStatisticValueChange(character, StatisticType.Hardness, characterStatistic.CurrentValue / 10);
+        }
+
+        private void SendMessageAboutStatisticValueChange(Character character, StatisticType type, int value)
+            => characterHub.ChangeStatisticValue(character.Id, type, value, value, false, false).Start();
+
+        #endregion SignalRMethods
     }
 }

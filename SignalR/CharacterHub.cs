@@ -9,6 +9,12 @@ namespace WarhammerProfessionApp.SignalR
 {
     public class CharacterHub : Hub
     {
+        public async Task SendMessage(int characterId, string message)
+        {
+            if (GetReceivers(characterId, out IClientProxy clients))
+                await clients.SendAsync("sendMessage", message);
+        }
+
         public async Task ChangeExperience(int characterId, int value)
         {
             if (GetReceivers(characterId, out IClientProxy clients))
