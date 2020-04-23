@@ -18,6 +18,6 @@
 
         public int Silver { get; set; }
 
-        public int Weigth { get; set; }
+        public int Weight { get; set; }
     }
 }

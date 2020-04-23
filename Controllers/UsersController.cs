@@ -16,6 +16,10 @@ namespace WarhammerProfessionApp.Controllers
     [Authorize, ApiController, Route("api/[controller]")]
     public class UsersController : Controller
     {
+        private readonly AppSettings appSettings;
+
+        private readonly IUserService userService;
+
         public UsersController(IUserService userService, IOptions<AppSettings> appSettings)
         {
             this.userService = userService;
@@ -86,8 +90,5 @@ namespace WarhammerProfessionApp.Controllers
                 return BadRequest(ex.Message);
             }
         }
-
-        private readonly AppSettings appSettings;
-        private readonly IUserService userService;
     }
 }

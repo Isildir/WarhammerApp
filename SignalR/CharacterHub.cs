@@ -9,11 +9,7 @@ namespace WarhammerProfessionApp.SignalR
 {
     public class CharacterHub : Hub
     {
-        public async Task SendMessage(int characterId, string message)
-        {
-            if (GetReceivers(characterId, out IClientProxy clients))
-                await clients.SendAsync("sendMessage", message);
-        }
+        private readonly Dictionary<string, int> dictionary = new Dictionary<string, int>();
 
         public async Task ChangeExperience(int characterId, int value)
         {
@@ -74,7 +70,11 @@ namespace WarhammerProfessionApp.SignalR
                 await clients.SendAsync("removeSkill", skillId);
         }
 
-        private readonly Dictionary<string, int> dictionary = new Dictionary<string, int>();
+        public async Task SendMessage(int characterId, string message)
+        {
+            if (GetReceivers(characterId, out IClientProxy clients))
+                await clients.SendAsync("sendMessage", message);
+        }
 
         private bool GetReceivers(int id, out IClientProxy clientProxy)
         {

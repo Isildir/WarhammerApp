@@ -271,7 +271,7 @@ namespace WarhammerProfessionApp.Migrations
                     b.Property<byte>("Rarity")
                         .HasColumnType("tinyint");
 
-                    b.Property<int>("Weigth")
+                    b.Property<int>("Weight")
                         .HasColumnType("int");
 
                     b.HasKey("Id");

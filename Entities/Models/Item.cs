@@ -25,6 +25,6 @@ namespace WarhammerProfessionApp.Entities.Models
 
         public ItemRarity Rarity { get; set; }
 
-        public int Weigth { get; set; }
+        public int Weight { get; set; }
     }
 }

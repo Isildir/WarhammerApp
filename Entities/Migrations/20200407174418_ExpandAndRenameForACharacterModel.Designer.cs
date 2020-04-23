@@ -760,7 +760,7 @@ namespace WarhammerProfessionApp.Migrations
                     b.Property<byte>("Rarity")
                         .HasColumnType("tinyint");
 
-                    b.Property<int>("Weigth")
+                    b.Property<int>("Weight")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -775,7 +775,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Halabarda",
                             Price = 3600,
                             Rarity = (byte)5,
-                            Weigth = 175
+                            Weight = 175
                         },
                         new
                         {
@@ -784,7 +784,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Kij",
                             Price = 36,
                             Rarity = (byte)6,
-                            Weigth = 50
+                            Weight = 50
                         },
                         new
                         {
@@ -793,7 +793,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Kopia",
                             Price = 3600,
                             Rarity = (byte)2,
-                            Weigth = 100
+                            Weight = 100
                         },
                         new
                         {
@@ -802,7 +802,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Korbacz",
                             Price = 3600,
                             Rarity = (byte)3,
-                            Weigth = 95
+                            Weight = 95
                         },
                         new
                         {
@@ -811,7 +811,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Lanca",
                             Price = 4800,
                             Rarity = (byte)3,
-                            Weigth = 75
+                            Weight = 75
                         },
                         new
                         {
@@ -820,7 +820,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Lewak",
                             Price = 480,
                             Rarity = (byte)3,
-                            Weigth = 10
+                            Weight = 10
                         },
                         new
                         {
@@ -829,7 +829,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Łamacz mieczy",
                             Price = 1200,
                             Rarity = (byte)3,
-                            Weigth = 40
+                            Weight = 40
                         },
                         new
                         {
@@ -838,7 +838,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Morgensztern",
                             Price = 3600,
                             Rarity = (byte)3,
-                            Weigth = 60
+                            Weight = 60
                         },
                         new
                         {
@@ -847,7 +847,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Puklerz",
                             Price = 960,
                             Rarity = (byte)4,
-                            Weigth = 15
+                            Weight = 15
                         },
                         new
                         {
@@ -856,7 +856,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Rapier",
                             Price = 4320,
                             Rarity = (byte)3,
-                            Weigth = 40
+                            Weight = 40
                         },
                         new
                         {
@@ -865,7 +865,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Rękawica/kastet",
                             Price = 240,
                             Rarity = (byte)5,
-                            Weigth = 1
+                            Weight = 1
                         },
                         new
                         {
@@ -874,7 +874,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Szpada",
                             Price = 4320,
                             Rarity = (byte)2,
-                            Weigth = 40
+                            Weight = 40
                         },
                         new
                         {
@@ -883,7 +883,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Sztylet",
                             Price = 240,
                             Rarity = (byte)5,
-                            Weigth = 10
+                            Weight = 10
                         },
                         new
                         {
@@ -892,7 +892,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Tarcza",
                             Price = 2400,
                             Rarity = (byte)5,
-                            Weigth = 50
+                            Weight = 50
                         },
                         new
                         {
@@ -901,7 +901,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Włócznia",
                             Price = 2400,
                             Rarity = (byte)5,
-                            Weigth = 50
+                            Weight = 50
                         },
                         new
                         {
@@ -910,7 +910,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Bron dwureczna",
                             Price = 0,
                             Rarity = (byte)7,
-                            Weigth = 0
+                            Weight = 0
                         },
                         new
                         {
@@ -919,7 +919,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Arkan",
                             Price = 240,
                             Rarity = (byte)6,
-                            Weigth = 10
+                            Weight = 10
                         },
                         new
                         {
@@ -928,7 +928,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Bicz",
                             Price = 480,
                             Rarity = (byte)4,
-                            Weigth = 40
+                            Weight = 40
                         },
                         new
                         {
@@ -937,7 +937,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Bolas",
                             Price = 84,
                             Rarity = (byte)3,
-                            Weigth = 20
+                            Weight = 20
                         },
                         new
                         {
@@ -946,7 +946,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Długi łuk",
                             Price = 3600,
                             Rarity = (byte)4,
-                            Weigth = 90
+                            Weight = 90
                         },
                         new
                         {
@@ -955,7 +955,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Elfi łuk",
                             Price = 16800,
                             Rarity = (byte)1,
-                            Weigth = 75
+                            Weight = 75
                         },
                         new
                         {
@@ -964,7 +964,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Garłacz",
                             Price = 16800,
                             Rarity = (byte)1,
-                            Weigth = 50
+                            Weight = 50
                         },
                         new
                         {
@@ -973,7 +973,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Krótki łuk",
                             Price = 16800,
                             Rarity = (byte)5,
-                            Weigth = 75
+                            Weight = 75
                         },
                         new
                         {
@@ -982,7 +982,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Kusza pistoletowa",
                             Price = 8400,
                             Rarity = (byte)2,
-                            Weigth = 25
+                            Weight = 25
                         },
                         new
                         {
@@ -991,7 +991,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Kusza samopowtarzalna",
                             Price = 24000,
                             Rarity = (byte)1,
-                            Weigth = 150
+                            Weight = 150
                         },
                         new
                         {
@@ -1000,7 +1000,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Kusza",
                             Price = 6000,
                             Rarity = (byte)4,
-                            Weigth = 120
+                            Weight = 120
                         },
                         new
                         {
@@ -1009,7 +1009,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Łuk",
                             Price = 2400,
                             Rarity = (byte)5,
-                            Weigth = 80
+                            Weight = 80
                         },
                         new
                         {
@@ -1018,7 +1018,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Muszkiet hochlandzki",
                             Price = 108000,
                             Rarity = (byte)1,
-                            Weigth = 70
+                            Weight = 70
                         },
                         new
                         {
@@ -1027,7 +1027,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Nóź/gwiazdka do rzucania",
                             Price = 720,
                             Rarity = (byte)5,
-                            Weigth = 10
+                            Weight = 10
                         },
                         new
                         {
@@ -1036,7 +1036,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Oszczep",
                             Price = 300,
                             Rarity = (byte)4,
-                            Weigth = 50
+                            Weight = 50
                         },
                         new
                         {
@@ -1045,7 +1045,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Pistolet",
                             Price = 48000,
                             Rarity = (byte)1,
-                            Weigth = 25
+                            Weight = 25
                         },
                         new
                         {
@@ -1054,7 +1054,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Pistolet wielostrzałowy",
                             Price = 96000,
                             Rarity = (byte)1,
-                            Weigth = 25
+                            Weight = 25
                         },
                         new
                         {
@@ -1063,7 +1063,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Proca",
                             Price = 960,
                             Rarity = (byte)5,
-                            Weigth = 10
+                            Weight = 10
                         },
                         new
                         {
@@ -1072,7 +1072,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Proca drzewcowa",
                             Price = 1440,
                             Rarity = (byte)2,
-                            Weigth = 50
+                            Weight = 50
                         },
                         new
                         {
@@ -1081,7 +1081,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Rusznica",
                             Price = 72000,
                             Rarity = (byte)1,
-                            Weigth = 30
+                            Weight = 30
                         },
                         new
                         {
@@ -1090,7 +1090,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Rusznica wielostrzałowa",
                             Price = 144000,
                             Rarity = (byte)1,
-                            Weigth = 30
+                            Weight = 30
                         },
                         new
                         {
@@ -1099,7 +1099,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Sieć",
                             Price = 720,
                             Rarity = (byte)6,
-                            Weigth = 60
+                            Weight = 60
                         },
                         new
                         {
@@ -1108,7 +1108,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Topór/młot do rzucania",
                             Price = 1200,
                             Rarity = (byte)4,
-                            Weigth = 40
+                            Weight = 40
                         },
                         new
                         {
@@ -1117,7 +1117,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Włócznia",
                             Price = 0,
                             Rarity = (byte)5,
-                            Weigth = 30
+                            Weight = 30
                         },
                         new
                         {
@@ -1126,7 +1126,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Strzała",
                             Price = 2,
                             Rarity = (byte)5,
-                            Weigth = 10
+                            Weight = 10
                         },
                         new
                         {
@@ -1135,7 +1135,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Bełt",
                             Price = 4,
                             Rarity = (byte)4,
-                            Weigth = 10
+                            Weight = 10
                         },
                         new
                         {
@@ -1144,7 +1144,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Kula do broni palnej",
                             Price = 1,
                             Rarity = (byte)2,
-                            Weigth = 10
+                            Weight = 10
                         },
                         new
                         {
@@ -1153,7 +1153,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Proch strzelniczy (strzał)",
                             Price = 36,
                             Rarity = (byte)1,
-                            Weigth = 1
+                            Weight = 1
                         },
                         new
                         {
@@ -1162,7 +1162,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Hełm (Skórzany)",
                             Price = 720,
                             Rarity = (byte)5,
-                            Weigth = 10
+                            Weight = 10
                         },
                         new
                         {
@@ -1171,7 +1171,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Kaftan (Skórzany)",
                             Price = 1200,
                             Rarity = (byte)5,
-                            Weigth = 40
+                            Weight = 40
                         },
                         new
                         {
@@ -1180,7 +1180,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Kurta (Skórzana)",
                             Price = 2880,
                             Rarity = (byte)5,
-                            Weigth = 50
+                            Weight = 50
                         },
                         new
                         {
@@ -1189,7 +1189,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Nogawice (Skórzane)",
                             Price = 2400,
                             Rarity = (byte)5,
-                            Weigth = 20
+                            Weight = 20
                         },
                         new
                         {
@@ -1198,7 +1198,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Skórznia",
                             Price = 6000,
                             Rarity = (byte)4,
-                            Weigth = 80
+                            Weight = 80
                         },
                         new
                         {
@@ -1207,7 +1207,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Czepiec (Kolczy)",
                             Price = 4800,
                             Rarity = (byte)4,
-                            Weigth = 30
+                            Weight = 30
                         },
                         new
                         {
@@ -1216,7 +1216,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Kaftan (Kolczy)",
                             Price = 14400,
                             Rarity = (byte)4,
-                            Weigth = 60
+                            Weight = 60
                         },
                         new
                         {
@@ -1225,7 +1225,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Koszulka (Kolcza)",
                             Price = 22800,
                             Rarity = (byte)4,
-                            Weigth = 80
+                            Weight = 80
                         },
                         new
                         {
@@ -1234,7 +1234,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Kolczuga",
                             Price = 18000,
                             Rarity = (byte)4,
-                            Weigth = 80
+                            Weight = 80
                         },
                         new
                         {
@@ -1243,7 +1243,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Kolczuga z rękawami",
                             Price = 31200,
                             Rarity = (byte)4,
-                            Weigth = 100
+                            Weight = 100
                         },
                         new
                         {
@@ -1252,7 +1252,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Nogawice (Kolcze)",
                             Price = 4800,
                             Rarity = (byte)3,
-                            Weigth = 40
+                            Weight = 40
                         },
                         new
                         {
@@ -1261,7 +1261,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Zbroja kolcza",
                             Price = 40800,
                             Rarity = (byte)3,
-                            Weigth = 210
+                            Weight = 210
                         },
                         new
                         {
@@ -1270,7 +1270,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Hełm (płytowy)",
                             Price = 7200,
                             Rarity = (byte)3,
-                            Weigth = 40
+                            Weight = 40
                         },
                         new
                         {
@@ -1279,7 +1279,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Naramienniki (płytowe)",
                             Price = 16800,
                             Rarity = (byte)3,
-                            Weigth = 75
+                            Weight = 75
                         },
                         new
                         {
@@ -1288,7 +1288,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Nogawice (płytowe)",
                             Price = 14400,
                             Rarity = (byte)3,
-                            Weigth = 30
+                            Weight = 30
                         },
                         new
                         {
@@ -1297,7 +1297,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Napierśnik (płytowy)",
                             Price = 16800,
                             Rarity = (byte)3,
-                            Weigth = 40
+                            Weight = 40
                         },
                         new
                         {
@@ -1306,7 +1306,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Zbroja płytowa",
                             Price = 96000,
                             Rarity = (byte)2,
-                            Weigth = 395
+                            Weight = 395
                         },
                         new
                         {
@@ -1315,7 +1315,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Łachmany",
                             Price = 1,
                             Rarity = (byte)7,
-                            Weigth = 5
+                            Weight = 5
                         },
                         new
                         {
@@ -1324,7 +1324,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Kiepskie odzienie",
                             Price = 120,
                             Rarity = (byte)7,
-                            Weigth = 10
+                            Weight = 10
                         },
                         new
                         {
@@ -1333,7 +1333,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Zwykłe ubranie",
                             Price = 240,
                             Rarity = (byte)6,
-                            Weigth = 15
+                            Weight = 15
                         },
                         new
                         {
@@ -1342,7 +1342,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Dobre ubranie",
                             Price = 720,
                             Rarity = (byte)5,
-                            Weigth = 15
+                            Weight = 15
                         },
                         new
                         {
@@ -1351,7 +1351,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Szykowne ubranie",
                             Price = 2400,
                             Rarity = (byte)4,
-                            Weigth = 20
+                            Weight = 20
                         },
                         new
                         {
@@ -1360,7 +1360,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Szaty",
                             Price = 3600,
                             Rarity = (byte)4,
-                            Weigth = 25
+                            Weight = 25
                         },
                         new
                         {
@@ -1369,7 +1369,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Kostium",
                             Price = 1200,
                             Rarity = (byte)4,
-                            Weigth = 10
+                            Weight = 10
                         },
                         new
                         {
@@ -1378,7 +1378,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Uniform",
                             Price = 3600,
                             Rarity = (byte)3,
-                            Weigth = 15
+                            Weight = 15
                         },
                         new
                         {
@@ -1387,7 +1387,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Strój szlachecki",
                             Price = 12000,
                             Rarity = (byte)2,
-                            Weigth = 30
+                            Weight = 30
                         },
                         new
                         {
@@ -1396,7 +1396,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Strój arystokraty",
                             Price = 24000,
                             Rarity = (byte)1,
-                            Weigth = 50
+                            Weight = 50
                         },
                         new
                         {
@@ -1405,7 +1405,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Peleryna",
                             Price = 1200,
                             Rarity = (byte)6,
-                            Weigth = 10
+                            Weight = 10
                         },
                         new
                         {
@@ -1414,7 +1414,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Płaszcz",
                             Price = 2400,
                             Rarity = (byte)6,
-                            Weigth = 15
+                            Weight = 15
                         },
                         new
                         {
@@ -1423,7 +1423,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Kapelusz zwykły",
                             Price = 120,
                             Rarity = (byte)6,
-                            Weigth = 15
+                            Weight = 15
                         },
                         new
                         {
@@ -1432,7 +1432,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Kapelusz z szerokim rondlem",
                             Price = 240,
                             Rarity = (byte)6,
-                            Weigth = 5
+                            Weight = 5
                         },
                         new
                         {
@@ -1441,7 +1441,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Kaptur lub maska",
                             Price = 120,
                             Rarity = (byte)5,
-                            Weigth = 2
+                            Weight = 2
                         },
                         new
                         {
@@ -1450,7 +1450,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Obrok (porcja na 1 dzień)",
                             Price = 5,
                             Rarity = (byte)6,
-                            Weigth = 50
+                            Weight = 50
                         },
                         new
                         {
@@ -1459,7 +1459,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Bochenek chleba",
                             Price = 2,
                             Rarity = (byte)7,
-                            Weigth = 2
+                            Weight = 2
                         },
                         new
                         {
@@ -1468,7 +1468,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Połeć mięsa",
                             Price = 12,
                             Rarity = (byte)4,
-                            Weigth = 10
+                            Weight = 10
                         },
                         new
                         {
@@ -1477,7 +1477,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Kiepskie jedzenie (porcja na 1 dzień)",
                             Price = 5,
                             Rarity = (byte)6,
-                            Weigth = 10
+                            Weight = 10
                         },
                         new
                         {
@@ -1486,7 +1486,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Dobre jedzenie (porcja na 1 dzień)",
                             Price = 10,
                             Rarity = (byte)5,
-                            Weigth = 10
+                            Weight = 10
                         },
                         new
                         {
@@ -1495,7 +1495,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Doskonałe jedzenie (porcja na 1 dzień)",
                             Price = 18,
                             Rarity = (byte)4,
-                            Weigth = 10
+                            Weight = 10
                         },
                         new
                         {
@@ -1504,7 +1504,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Prowiant (porcja na 1 tydzień)",
                             Price = 72,
                             Rarity = (byte)5,
-                            Weigth = 50
+                            Weight = 50
                         },
                         new
                         {
@@ -1513,7 +1513,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Słodycze",
                             Price = 12,
                             Rarity = (byte)5,
-                            Weigth = 2
+                            Weight = 2
                         },
                         new
                         {
@@ -1522,7 +1522,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Smakołyki",
                             Price = 36,
                             Rarity = (byte)3,
-                            Weigth = 0
+                            Weight = 0
                         },
                         new
                         {
@@ -1531,7 +1531,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Ciemne piwo",
                             Price = 2,
                             Rarity = (byte)6,
-                            Weigth = 2
+                            Weight = 2
                         },
                         new
                         {
@@ -1540,7 +1540,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Jasne piwo",
                             Price = 1,
                             Rarity = (byte)7,
-                            Weigth = 2
+                            Weight = 2
                         },
                         new
                         {
@@ -1549,7 +1549,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Antałek piwa jasnego",
                             Price = 18,
                             Rarity = (byte)7,
-                            Weigth = 30
+                            Weight = 30
                         },
                         new
                         {
@@ -1558,7 +1558,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Antałek piwa ciemnego",
                             Price = 36,
                             Rarity = (byte)7,
-                            Weigth = 30
+                            Weight = 30
                         },
                         new
                         {
@@ -1567,7 +1567,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Butelka gorzałki",
                             Price = 12,
                             Rarity = (byte)4,
-                            Weigth = 5
+                            Weight = 5
                         },
                         new
                         {
@@ -1576,7 +1576,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Butelka gorzałki dobrej jakości",
                             Price = 36,
                             Rarity = (byte)4,
-                            Weigth = 5
+                            Weight = 5
                         },
                         new
                         {
@@ -1585,7 +1585,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Wino pospolite",
                             Price = 12,
                             Rarity = (byte)5,
-                            Weigth = 5
+                            Weight = 5
                         },
                         new
                         {
@@ -1594,7 +1594,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Wino szlacheckie",
                             Price = 120,
                             Rarity = (byte)4,
-                            Weigth = 5
+                            Weight = 5
                         },
                         new
                         {
@@ -1603,7 +1603,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Bukłak",
                             Price = 96,
                             Rarity = (byte)6,
-                            Weigth = 1
+                            Weight = 1
                         },
                         new
                         {
@@ -1612,7 +1612,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Flaszka",
                             Price = 48,
                             Rarity = (byte)6,
-                            Weigth = 10
+                            Weight = 10
                         },
                         new
                         {
@@ -1621,7 +1621,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Juki",
                             Price = 480,
                             Rarity = (byte)4,
-                            Weigth = 5
+                            Weight = 5
                         },
                         new
                         {
@@ -1630,7 +1630,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Kuferek",
                             Price = 1200,
                             Rarity = (byte)4,
-                            Weigth = 40
+                            Weight = 40
                         },
                         new
                         {
@@ -1639,7 +1639,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Manierka metalowa",
                             Price = 480,
                             Rarity = (byte)3,
-                            Weigth = 15
+                            Weight = 15
                         },
                         new
                         {
@@ -1648,7 +1648,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Manierska skórzana",
                             Price = 180,
                             Rarity = (byte)4,
-                            Weigth = 5
+                            Weight = 5
                         },
                         new
                         {
@@ -1657,7 +1657,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Mieszek",
                             Price = 24,
                             Rarity = (byte)6,
-                            Weigth = 1
+                            Weight = 1
                         },
                         new
                         {
@@ -1666,7 +1666,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Plecak",
                             Price = 360,
                             Rarity = (byte)6,
-                            Weigth = 20
+                            Weight = 20
                         },
                         new
                         {
@@ -1675,7 +1675,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Sakiewka",
                             Price = 60,
                             Rarity = (byte)6,
-                            Weigth = 1
+                            Weight = 1
                         },
                         new
                         {
@@ -1684,7 +1684,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Tobołek",
                             Price = 480,
                             Rarity = (byte)4,
-                            Weigth = 5
+                            Weight = 5
                         },
                         new
                         {
@@ -1693,7 +1693,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Tuba na mapy/pergaminy",
                             Price = 240,
                             Rarity = (byte)3,
-                            Weigth = 2
+                            Weight = 2
                         },
                         new
                         {
@@ -1702,7 +1702,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Worek",
                             Price = 60,
                             Rarity = (byte)6,
-                            Weigth = 7
+                            Weight = 7
                         },
                         new
                         {
@@ -1711,7 +1711,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Drewno na opał",
                             Price = 24,
                             Rarity = (byte)6,
-                            Weigth = 5
+                            Weight = 5
                         },
                         new
                         {
@@ -1720,7 +1720,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Kaganek",
                             Price = 60,
                             Rarity = (byte)6,
-                            Weigth = 20
+                            Weight = 20
                         },
                         new
                         {
@@ -1729,7 +1729,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Latarnia",
                             Price = 240,
                             Rarity = (byte)4,
-                            Weigth = 20
+                            Weight = 20
                         },
                         new
                         {
@@ -1738,7 +1738,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Latarnia sztormowa",
                             Price = 2880,
                             Rarity = (byte)3,
-                            Weigth = 30
+                            Weight = 30
                         },
                         new
                         {
@@ -1747,7 +1747,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Olej do latarni",
                             Price = 60,
                             Rarity = (byte)6,
-                            Weigth = 5
+                            Weight = 5
                         },
                         new
                         {
@@ -1756,7 +1756,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Pochodnia",
                             Price = 5,
                             Rarity = (byte)6,
-                            Weigth = 5
+                            Weight = 5
                         },
                         new
                         {
@@ -1765,7 +1765,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Świeczka łojowa",
                             Price = 36,
                             Rarity = (byte)6,
-                            Weigth = 5
+                            Weight = 5
                         },
                         new
                         {
@@ -1774,7 +1774,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Świeczka woskowa",
                             Price = 72,
                             Rarity = (byte)4,
-                            Weigth = 5
+                            Weight = 5
                         },
                         new
                         {
@@ -1783,7 +1783,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Zapałka",
                             Price = 1,
                             Rarity = (byte)4,
-                            Weigth = 0
+                            Weight = 0
                         },
                         new
                         {
@@ -1792,7 +1792,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Zlota korona",
                             Price = 240,
                             Rarity = (byte)5,
-                            Weigth = 0
+                            Weight = 0
                         },
                         new
                         {
@@ -1801,7 +1801,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Pens",
                             Price = 1,
                             Rarity = (byte)7,
-                            Weigth = 0
+                            Weight = 0
                         },
                         new
                         {
@@ -1810,7 +1810,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Szyling",
                             Price = 12,
                             Rarity = (byte)6,
-                            Weigth = 0
+                            Weight = 0
                         },
                         new
                         {
@@ -1819,7 +1819,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Drabina",
                             Price = 120,
                             Rarity = (byte)5,
-                            Weigth = 50
+                            Weight = 50
                         },
                         new
                         {
@@ -1828,7 +1828,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Hubka i krzesiwo",
                             Price = 360,
                             Rarity = (byte)6,
-                            Weigth = 5
+                            Weight = 5
                         },
                         new
                         {
@@ -1837,7 +1837,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Imbryk",
                             Price = 360,
                             Rarity = (byte)6,
-                            Weigth = 10
+                            Weight = 10
                         },
                         new
                         {
@@ -1846,7 +1846,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Instrument muzyczny",
                             Price = 1200,
                             Rarity = (byte)5,
-                            Weigth = 5
+                            Weight = 5
                         },
                         new
                         {
@@ -1855,7 +1855,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Kłódka dobrej jakości",
                             Price = 2400,
                             Rarity = (byte)1,
-                            Weigth = 5
+                            Weight = 5
                         },
                         new
                         {
@@ -1864,7 +1864,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Kłódka zwykłej jakości",
                             Price = 240,
                             Rarity = (byte)5,
-                            Weigth = 5
+                            Weight = 5
                         },
                         new
                         {
@@ -1873,7 +1873,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Koc",
                             Price = 300,
                             Rarity = (byte)6,
-                            Weigth = 10
+                            Weight = 10
                         },
                         new
                         {
@@ -1882,7 +1882,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Kociołek",
                             Price = 240,
                             Rarity = (byte)6,
-                            Weigth = 20
+                            Weight = 20
                         },
                         new
                         {
@@ -1891,7 +1891,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Kości do gry",
                             Price = 72,
                             Rarity = (byte)6,
-                            Weigth = 0
+                            Weight = 0
                         },
                         new
                         {
@@ -1900,7 +1900,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Kufel drewniany",
                             Price = 120,
                             Rarity = (byte)6,
-                            Weigth = 5
+                            Weight = 5
                         },
                         new
                         {
@@ -1909,7 +1909,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Kufel ze szkła barwionego",
                             Price = 240,
                             Rarity = (byte)6,
-                            Weigth = 5
+                            Weight = 5
                         },
                         new
                         {
@@ -1918,7 +1918,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Lina",
                             Price = 240,
                             Rarity = (byte)5,
-                            Weigth = 50
+                            Weight = 50
                         },
                         new
                         {
@@ -1927,7 +1927,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Luneta",
                             Price = 24000,
                             Rarity = (byte)2,
-                            Weigth = 5
+                            Weight = 5
                         },
                         new
                         {
@@ -1936,7 +1936,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Lustro",
                             Price = 2400,
                             Rarity = (byte)2,
-                            Weigth = 5
+                            Weight = 5
                         },
                         new
                         {
@@ -1945,7 +1945,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Namiot",
                             Price = 180,
                             Rarity = (byte)5,
-                            Weigth = 20
+                            Weight = 20
                         },
                         new
                         {
@@ -1954,7 +1954,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Papier",
                             Price = 12,
                             Rarity = (byte)1,
-                            Weigth = 0
+                            Weight = 0
                         },
                         new
                         {
@@ -1963,7 +1963,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Perfumy",
                             Price = 240,
                             Rarity = (byte)5,
-                            Weigth = 0
+                            Weight = 0
                         },
                         new
                         {
@@ -1972,7 +1972,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Pergamin",
                             Price = 60,
                             Rarity = (byte)2,
-                            Weigth = 0
+                            Weight = 0
                         },
                         new
                         {
@@ -1981,7 +1981,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Symbol religijny",
                             Price = 240,
                             Rarity = (byte)5,
-                            Weigth = 5
+                            Weight = 5
                         },
                         new
                         {
@@ -1990,7 +1990,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Sztućce drewniane",
                             Price = 60,
                             Rarity = (byte)6,
-                            Weigth = 2
+                            Weight = 2
                         },
                         new
                         {
@@ -1999,7 +1999,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Sztućce metalowe",
                             Price = 720,
                             Rarity = (byte)5,
-                            Weigth = 4
+                            Weight = 4
                         },
                         new
                         {
@@ -2008,7 +2008,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Sztućce srebrne",
                             Price = 3600,
                             Rarity = (byte)3,
-                            Weigth = 3
+                            Weight = 3
                         },
                         new
                         {
@@ -2017,7 +2017,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Talia kart",
                             Price = 240,
                             Rarity = (byte)6,
-                            Weigth = 1
+                            Weight = 1
                         },
                         new
                         {
@@ -2026,7 +2026,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Drąg, cena za metr",
                             Price = 12,
                             Rarity = (byte)6,
-                            Weigth = 10
+                            Weight = 10
                         },
                         new
                         {
@@ -2035,7 +2035,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Drewniany klin",
                             Price = 8,
                             Rarity = (byte)6,
-                            Weigth = 2
+                            Weight = 2
                         },
                         new
                         {
@@ -2044,7 +2044,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Haczyk na ryby i żyłka",
                             Price = 36,
                             Rarity = (byte)5,
-                            Weigth = 2
+                            Weight = 2
                         },
                         new
                         {
@@ -2053,7 +2053,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Kajdany",
                             Price = 1200,
                             Rarity = (byte)4,
-                            Weigth = 20
+                            Weight = 20
                         },
                         new
                         {
@@ -2062,7 +2062,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Kilof",
                             Price = 300,
                             Rarity = (byte)4,
-                            Weigth = 20
+                            Weight = 20
                         },
                         new
                         {
@@ -2071,7 +2071,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Kołki",
                             Price = 60,
                             Rarity = (byte)5,
-                            Weigth = 5
+                            Weight = 5
                         },
                         new
                         {
@@ -2080,7 +2080,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Kotwiczka do wspinaczki",
                             Price = 960,
                             Rarity = (byte)4,
-                            Weigth = 20
+                            Weight = 20
                         },
                         new
                         {
@@ -2089,7 +2089,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Książka drukowana",
                             Price = 24000,
                             Rarity = (byte)1,
-                            Weigth = 35
+                            Weight = 35
                         },
                         new
                         {
@@ -2098,7 +2098,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Książka ilustrowana",
                             Price = 84000,
                             Rarity = (byte)1,
-                            Weigth = 50
+                            Weight = 50
                         },
                         new
                         {
@@ -2107,7 +2107,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Liczydło",
                             Price = 2400,
                             Rarity = (byte)2,
-                            Weigth = 5
+                            Weight = 5
                         },
                         new
                         {
@@ -2116,7 +2116,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Łańcuch, cena za metr",
                             Price = 360,
                             Rarity = (byte)2,
-                            Weigth = 5
+                            Weight = 5
                         },
                         new
                         {
@@ -2125,7 +2125,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Łom",
                             Price = 120,
                             Rarity = (byte)5,
-                            Weigth = 10
+                            Weight = 10
                         },
                         new
                         {
@@ -2134,7 +2134,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Łopata",
                             Price = 300,
                             Rarity = (byte)5,
-                            Weigth = 20
+                            Weight = 20
                         },
                         new
                         {
@@ -2143,7 +2143,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Młot",
                             Price = 240,
                             Rarity = (byte)5,
-                            Weigth = 40
+                            Weight = 40
                         },
                         new
                         {
@@ -2152,7 +2152,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Narzędzia",
                             Price = 12000,
                             Rarity = (byte)4,
-                            Weigth = 50
+                            Weight = 50
                         },
                         new
                         {
@@ -2161,7 +2161,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Potrzask",
                             Price = 12,
                             Rarity = (byte)5,
-                            Weigth = 2
+                            Weight = 2
                         },
                         new
                         {
@@ -2170,7 +2170,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Przybory do pisania",
                             Price = 2400,
                             Rarity = (byte)4,
-                            Weigth = 5
+                            Weight = 5
                         },
                         new
                         {
@@ -2179,7 +2179,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Sztabka metalu",
                             Price = 300,
                             Rarity = (byte)4,
-                            Weigth = 20
+                            Weight = 20
                         },
                         new
                         {
@@ -2188,7 +2188,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Wnyki",
                             Price = 480,
                             Rarity = (byte)5,
-                            Weigth = 20
+                            Weight = 20
                         },
                         new
                         {
@@ -2197,7 +2197,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Wytrychy",
                             Price = 2400,
                             Rarity = (byte)4,
-                            Weigth = 20
+                            Weight = 20
                         },
                         new
                         {
@@ -2206,7 +2206,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Zestaw do charakteryzacji",
                             Price = 1200,
                             Rarity = (byte)3,
-                            Weigth = 10
+                            Weight = 10
                         },
                         new
                         {
@@ -2215,7 +2215,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Wózek",
                             Price = 12000,
                             Rarity = (byte)5,
-                            Weigth = 0
+                            Weight = 0
                         },
                         new
                         {
@@ -2224,7 +2224,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Wóz",
                             Price = 21600,
                             Rarity = (byte)5,
-                            Weigth = 0
+                            Weight = 0
                         },
                         new
                         {
@@ -2233,7 +2233,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Powóz",
                             Price = 120000,
                             Rarity = (byte)2,
-                            Weigth = 0
+                            Weight = 0
                         },
                         new
                         {
@@ -2242,7 +2242,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Łódź rzeczna",
                             Price = 144000,
                             Rarity = (byte)2,
-                            Weigth = 0
+                            Weight = 0
                         },
                         new
                         {
@@ -2251,7 +2251,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Łódź wiosłowa",
                             Price = 21600,
                             Rarity = (byte)4,
-                            Weigth = 900
+                            Weight = 900
                         },
                         new
                         {
@@ -2260,7 +2260,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Statek",
                             Price = 2880000,
                             Rarity = (byte)3,
-                            Weigth = 0
+                            Weight = 0
                         },
                         new
                         {
@@ -2269,7 +2269,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Rumak",
                             Price = 120000,
                             Rarity = (byte)3,
-                            Weigth = 0
+                            Weight = 0
                         },
                         new
                         {
@@ -2278,7 +2278,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Lekki koń bojowy",
                             Price = 72000,
                             Rarity = (byte)5,
-                            Weigth = 0
+                            Weight = 0
                         },
                         new
                         {
@@ -2287,7 +2287,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Koń",
                             Price = 19200,
                             Rarity = (byte)5,
-                            Weigth = 0
+                            Weight = 0
                         },
                         new
                         {
@@ -2296,7 +2296,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Kuc",
                             Price = 12000,
                             Rarity = (byte)5,
-                            Weigth = 0
+                            Weight = 0
                         },
                         new
                         {
@@ -2305,7 +2305,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Siodło",
                             Price = 1200,
                             Rarity = (byte)5,
-                            Weigth = 50
+                            Weight = 50
                         },
                         new
                         {
@@ -2314,7 +2314,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Uprząż",
                             Price = 240,
                             Rarity = (byte)5,
-                            Weigth = 20
+                            Weight = 20
                         },
                         new
                         {
@@ -2323,7 +2323,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Gołąb pocztowy",
                             Price = 240,
                             Rarity = (byte)4,
-                            Weigth = 0
+                            Weight = 0
                         },
                         new
                         {
@@ -2332,7 +2332,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Jastrząb",
                             Price = 19200,
                             Rarity = (byte)2,
-                            Weigth = 0
+                            Weight = 0
                         },
                         new
                         {
@@ -2341,7 +2341,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Koń juczny",
                             Price = 9600,
                             Rarity = (byte)6,
-                            Weigth = 0
+                            Weight = 0
                         },
                         new
                         {
@@ -2350,7 +2350,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Koń pociągowy lub muł",
                             Price = 6000,
                             Rarity = (byte)6,
-                            Weigth = 0
+                            Weight = 0
                         },
                         new
                         {
@@ -2359,7 +2359,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Kot",
                             Price = 12,
                             Rarity = (byte)6,
-                            Weigth = 0
+                            Weight = 0
                         },
                         new
                         {
@@ -2368,7 +2368,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Koza",
                             Price = 480,
                             Rarity = (byte)6,
-                            Weigth = 0
+                            Weight = 0
                         },
                         new
                         {
@@ -2377,7 +2377,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Krowa",
                             Price = 2400,
                             Rarity = (byte)6,
-                            Weigth = 0
+                            Weight = 0
                         },
                         new
                         {
@@ -2386,7 +2386,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Kurczak",
                             Price = 5,
                             Rarity = (byte)6,
-                            Weigth = 0
+                            Weight = 0
                         },
                         new
                         {
@@ -2395,7 +2395,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Owca",
                             Price = 480,
                             Rarity = (byte)6,
-                            Weigth = 0
+                            Weight = 0
                         },
                         new
                         {
@@ -2404,7 +2404,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Pies (rasowy)",
                             Price = 720,
                             Rarity = (byte)6,
-                            Weigth = 0
+                            Weight = 0
                         },
                         new
                         {
@@ -2413,7 +2413,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Pies bojowy",
                             Price = 7200,
                             Rarity = (byte)2,
-                            Weigth = 0
+                            Weight = 0
                         },
                         new
                         {
@@ -2422,7 +2422,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Świnia",
                             Price = 720,
                             Rarity = (byte)6,
-                            Weigth = 0
+                            Weight = 0
                         },
                         new
                         {
@@ -2431,7 +2431,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Wół",
                             Price = 7200,
                             Rarity = (byte)6,
-                            Weigth = 0
+                            Weight = 0
                         },
                         new
                         {
@@ -2440,7 +2440,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Dar Grety",
                             Price = 7200,
                             Rarity = (byte)1,
-                            Weigth = 0
+                            Weight = 0
                         },
                         new
                         {
@@ -2449,7 +2449,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Mikstura lecznicza",
                             Price = 1200,
                             Rarity = (byte)4,
-                            Weigth = 0
+                            Weight = 0
                         },
                         new
                         {
@@ -2458,7 +2458,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Piwo Bugmana",
                             Price = 12000,
                             Rarity = (byte)1,
-                            Weigth = 5
+                            Weight = 5
                         },
                         new
                         {
@@ -2467,7 +2467,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Czarny Jad",
                             Price = 7200,
                             Rarity = (byte)1,
-                            Weigth = 0
+                            Weight = 0
                         },
                         new
                         {
@@ -2476,7 +2476,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Czarny lotos",
                             Price = 4800,
                             Rarity = (byte)1,
-                            Weigth = 0
+                            Weight = 0
                         },
                         new
                         {
@@ -2485,7 +2485,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Grzybki Szalonego Kapelusznika",
                             Price = 7200,
                             Rarity = (byte)1,
-                            Weigth = 0
+                            Weight = 0
                         },
                         new
                         {
@@ -2494,7 +2494,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Jad mantikory",
                             Price = 15600,
                             Rarity = (byte)1,
-                            Weigth = 0
+                            Weight = 0
                         },
                         new
                         {
@@ -2503,7 +2503,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Korzeń mandragory",
                             Price = 6000,
                             Rarity = (byte)1,
-                            Weigth = 0
+                            Weight = 0
                         },
                         new
                         {
@@ -2512,7 +2512,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Sercobój",
                             Price = 192000,
                             Rarity = (byte)1,
-                            Weigth = 0
+                            Weight = 0
                         },
                         new
                         {
@@ -2521,7 +2521,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Szkarłatny Cień",
                             Price = 8400,
                             Rarity = (byte)1,
-                            Weigth = 0
+                            Weight = 0
                         },
                         new
                         {
@@ -2530,7 +2530,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Ślina chimery",
                             Price = 36000,
                             Rarity = (byte)1,
-                            Weigth = 0
+                            Weight = 0
                         },
                         new
                         {
@@ -2539,7 +2539,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Księga wiedzy tajemnej",
                             Price = 120000,
                             Rarity = (byte)1,
-                            Weigth = 0
+                            Weight = 0
                         },
                         new
                         {
@@ -2548,7 +2548,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Napar kojący",
                             Price = 1200,
                             Rarity = (byte)5,
-                            Weigth = 0
+                            Weight = 0
                         },
                         new
                         {
@@ -2557,7 +2557,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Odtrutki",
                             Price = 720,
                             Rarity = (byte)3,
-                            Weigth = 0
+                            Weight = 0
                         },
                         new
                         {
@@ -2566,7 +2566,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Relikwia",
                             Price = 1200,
                             Rarity = (byte)3,
-                            Weigth = 0
+                            Weight = 0
                         },
                         new
                         {
@@ -2575,7 +2575,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Talizman szczęścia",
                             Price = 3600,
                             Rarity = (byte)4,
-                            Weigth = 0
+                            Weight = 0
                         },
                         new
                         {
@@ -2584,7 +2584,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Woda święcona",
                             Price = 2400,
                             Rarity = (byte)3,
-                            Weigth = 0
+                            Weight = 0
                         },
                         new
                         {
@@ -2593,7 +2593,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Dłoń weterana",
                             Price = 14400,
                             Rarity = (byte)2,
-                            Weigth = 0
+                            Weight = 0
                         },
                         new
                         {
@@ -2602,7 +2602,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Drewniane zęby",
                             Price = 36,
                             Rarity = (byte)4,
-                            Weigth = 0
+                            Weight = 0
                         },
                         new
                         {
@@ -2611,7 +2611,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Kolczyk",
                             Price = 12,
                             Rarity = (byte)5,
-                            Weigth = 0
+                            Weight = 0
                         },
                         new
                         {
@@ -2620,7 +2620,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Opaska na oko",
                             Price = 6,
                             Rarity = (byte)5,
-                            Weigth = 0
+                            Weight = 0
                         },
                         new
                         {
@@ -2629,7 +2629,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Płytka czaszkowa",
                             Price = 12,
                             Rarity = (byte)4,
-                            Weigth = 0
+                            Weight = 0
                         },
                         new
                         {
@@ -2638,7 +2638,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Pozłacany nos",
                             Price = 72,
                             Rarity = (byte)3,
-                            Weigth = 0
+                            Weight = 0
                         },
                         new
                         {
@@ -2647,7 +2647,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Szklane oko",
                             Price = 12,
                             Rarity = (byte)4,
-                            Weigth = 0
+                            Weight = 0
                         },
                         new
                         {
@@ -2656,7 +2656,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Sztuczna noga",
                             Price = 72,
                             Rarity = (byte)4,
-                            Weigth = 0
+                            Weight = 0
                         },
                         new
                         {
@@ -2665,7 +2665,7 @@ namespace WarhammerProfessionApp.Migrations
                             Name = "Tatuaż",
                             Price = 36,
                             Rarity = (byte)4,
-                            Weigth = 0
+                            Weight = 0
                         });
                 });
 

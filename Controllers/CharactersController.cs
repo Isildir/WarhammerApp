@@ -41,6 +41,7 @@ namespace WarhammerProfessionApp.Controllers
                 .Include(a => a.Statistics).ThenInclude(a => a.Statistic)
                 .Include(a => a.AdditionalItems)
                 .Include(a => a.AdditionalValues)
+                .Include(a => a.CurrentProfession)
                 .AsNoTracking()
                 .FirstOrDefaultAsync(a => a.UserId == userId);
 
@@ -48,7 +49,7 @@ namespace WarhammerProfessionApp.Controllers
                 return NotFound();
 
             var money = MoneyCalculator.ConvertMoney(character.Money);
-            var load = character.Items.Any() ? character.Items.Sum(a => a.Quantity * a.Item.Weigth) : 0;
+            var load = character.Items.Any() ? character.Items.Sum(a => a.Quantity * a.Item.Weight) : 0;
             var maxLoad = character.Statistics.FirstOrDefault(a => a.Statistic.Type == StatisticType.Stamina).CurrentValue * 10;
 
             var basicValues = new CharacterBasicValuesDto
@@ -73,7 +74,7 @@ namespace WarhammerProfessionApp.Controllers
             {
                 Id = a.Id,
                 Name = a.Name,
-                Weigth = a.Weigth,
+                Weight = a.Weight,
                 Quantity = a.Quantity,
                 Description = a.Description
             }).ToList(); ;
@@ -108,7 +109,7 @@ namespace WarhammerProfessionApp.Controllers
                 {
                     Id = a.Item.Id,
                     Name = a.Item.Name,
-                    Weigth = a.Item.Weigth,
+                    Weight = a.Item.Weight,
                     Description = a.Item.Description,
                     Quantity = a.Quantity,
                     Gold = convertedPrice.Gold,
@@ -390,8 +391,8 @@ namespace WarhammerProfessionApp.Controllers
                 .Include(a => a.Professions).ThenInclude(a => a.Profession).ThenInclude(a => a.Abilities).ThenInclude(a => a.Abilities)
                 .FirstOrDefault(a => a.UserId == userId);
 
-            if (!CheckIfProfessionsAreFinished(character))
-                return Ok();
+            //if (!CheckIfProfessionsAreFinished(character))
+            //   return Ok();
 
             var characterProfessions = character.Professions.Select(a => a.ProfessionId).ToList();
 
@@ -515,7 +516,7 @@ namespace WarhammerProfessionApp.Controllers
             if (character == null)
                 return NotFound();
 
-            if (context.Items.Any(a => a.Id == value.Id))
+            if (!context.Items.Any(a => a.Id == value.Id))
                 return BadRequest();
 
             var item = context.Items.FirstOrDefault(a => a.Id == value.Id);
@@ -529,7 +530,7 @@ namespace WarhammerProfessionApp.Controllers
                     return BadRequest();
                 }
 
-                character.Money -= character.Money - item.Price;
+                character.Money -= item.Price;
             }
 
             character.Items.Add(new CharacterItem
@@ -547,7 +548,7 @@ namespace WarhammerProfessionApp.Controllers
                 Id = item.Id,
                 Name = item.Name,
                 Quantity = 1,
-                Weigth = item.Weigth,
+                Weight = item.Weight,
                 Description = item.Description,
                 Gold = convertedPrice.Gold,
                 Silver = convertedPrice.Silver,
@@ -561,7 +562,7 @@ namespace WarhammerProfessionApp.Controllers
         }
 
         [HttpGet(nameof(GetFilteredItems))]
-        public ActionResult<CharacterItemDto> GetFilteredItems()
+        public ActionResult<CharacterItemDto> GetFilteredItems(string filter)
         {
             var userId = GetUserId();
 
@@ -571,12 +572,17 @@ namespace WarhammerProfessionApp.Controllers
 
             var takenItemsIds = character.Items.Select(a => a.ItemId).ToList();
 
-            var values = context.Items.Where(a => !takenItemsIds.Contains(a.Id)).Select(a => new
+            var query = context.Items.Where(a => !takenItemsIds.Contains(a.Id));
+
+            if (!string.IsNullOrEmpty(filter))
+                query = query.Where(a => a.Name.Contains(filter));
+
+            var values = query.Take(10).Select(a => new
             {
                 a.Id,
                 a.Name,
                 a.Price,
-                a.Weigth
+                a.Weight
             }).ToList();
 
             var convertedValues = new List<CharacterItemDto>();
@@ -589,7 +595,7 @@ namespace WarhammerProfessionApp.Controllers
                 {
                     Id = item.Id,
                     Name = item.Name,
-                    Weigth = item.Weigth,
+                    Weight = item.Weight,
                     Gold = money.Gold,
                     Silver = money.Silver,
                     Bronze = money.Bronze
@@ -632,7 +638,7 @@ namespace WarhammerProfessionApp.Controllers
                         return BadRequest();
                     }
 
-                    character.Money += item.Item.Price * change;
+                    character.Money -= item.Item.Price * change;
                 }
             }
 
@@ -930,7 +936,7 @@ namespace WarhammerProfessionApp.Controllers
         #region AdditionalItems
 
         [HttpPost(nameof(AddAdditionalItem))]
-        public ActionResult<CharacterChangeResponseDto> AddAdditionalItem([FromBody] CharacterAdditionalItemDto value)
+        public ActionResult<CharacterAdditionalItemDto> AddAdditionalItem([FromBody] CharacterAdditionalItemDto value)
         {
             var userId = GetUserId();
 
@@ -939,17 +945,21 @@ namespace WarhammerProfessionApp.Controllers
             if (character == null)
                 return NotFound();
 
-            character.AdditionalItems.Add(new AdditionalCharacterItem
+            var model = new AdditionalCharacterItem
             {
                 Name = value.Name,
-                Weigth = value.Weigth,
+                Weight = value.Weight,
                 Quantity = value.Quantity,
                 Description = value.Description
-            });
+            };
+
+            character.AdditionalItems.Add(model);
 
             context.SaveChanges();
 
-            return Ok(false);
+            value.Id = model.Id;
+
+            return Ok(value);
         }
 
         [HttpPost(nameof(ModifyAdditionalItem))]
@@ -968,13 +978,13 @@ namespace WarhammerProfessionApp.Controllers
                 return BadRequest();
 
             characterValue.Name = value.Name;
-            characterValue.Weigth = value.Weigth;
+            characterValue.Weight = value.Weight;
             characterValue.Quantity = value.Quantity;
             characterValue.Description = value.Description;
 
             context.SaveChanges();
 
-            return Ok(false);
+            return Ok();
         }
 
         [HttpDelete(nameof(RemoveAdditionalItem))]
@@ -998,7 +1008,7 @@ namespace WarhammerProfessionApp.Controllers
 
             context.SaveChanges();
 
-            return Ok(false);
+            return Ok();
         }
 
         #endregion AdditionalItems

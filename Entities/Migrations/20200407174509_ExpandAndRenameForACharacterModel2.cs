@@ -25,7 +25,7 @@ namespace WarhammerProfessionApp.Migrations
                     Description = table.Column<string>(nullable: true),
                     Name = table.Column<string>(nullable: true),
                     Quantity = table.Column<int>(nullable: false),
-                    Weigth = table.Column<int>(nullable: false)
+                    Weight = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {

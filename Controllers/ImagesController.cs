@@ -13,6 +13,8 @@ namespace WarhammerProfessionApp.Controllers
     [ApiController, Authorize]
     public class ImagesController : ControllerBase
     {
+        private readonly ProfessionsContext context;
+
         public ImagesController(ProfessionsContext context)
         {
             this.context = context;
@@ -96,8 +98,6 @@ namespace WarhammerProfessionApp.Controllers
 
             return NoContent();
         }
-
-        private readonly ProfessionsContext context;
 
         private bool ImageExists(int id)
         {

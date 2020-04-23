@@ -6,6 +6,12 @@ namespace WarhammerProfessionApp.Utility
 {
     internal class GraphFinder
     {
+        private readonly int maxDepth;
+
+        private readonly IDictionary<int, List<int>> values;
+
+        private List<Queue<int>> results;
+
         public GraphFinder(IDictionary<int, List<int>> values, int maxDepth)
         {
             this.values = values;
@@ -26,10 +32,6 @@ namespace WarhammerProfessionApp.Utility
 
             return results.ToList();
         }
-
-        private readonly int maxDepth;
-        private readonly IDictionary<int, List<int>> values;
-        private List<Queue<int>> results;
 
         private void CheckGraphElement(int startPoint, int endPoint, Queue<int> cache)
         {

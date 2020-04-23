@@ -2383,7 +2383,7 @@ namespace WarhammerProfessionApp.Migrations
 
             migrationBuilder.InsertData(
                 table: "Items",
-                columns: new[] { "Id", "Description", "ItemType", "Name", "Price", "Rarity", "Weigth" },
+                columns: new[] { "Id", "Description", "ItemType", "Name", "Price", "Rarity", "Weight" },
                 values: new object[,]
                 {
                     { 144, null, (byte)10, "Kołki", 60, (byte)5, 5 },

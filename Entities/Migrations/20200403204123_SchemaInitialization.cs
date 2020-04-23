@@ -118,7 +118,7 @@ namespace WarhammerProfessionApp.Migrations
                     Name = table.Column<string>(maxLength: 50, nullable: false),
                     Price = table.Column<int>(nullable: false),
                     Rarity = table.Column<byte>(nullable: false),
-                    Weigth = table.Column<int>(nullable: false)
+                    Weight = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {

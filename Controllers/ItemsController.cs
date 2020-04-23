@@ -14,6 +14,8 @@ namespace WarhammerProfessionApp.Controllers
     [ApiController, Authorize]
     public class ItemsController : ControllerBase
     {
+        private readonly ProfessionsContext context;
+
         public ItemsController(ProfessionsContext context)
         {
             this.context = context;
@@ -54,7 +56,7 @@ namespace WarhammerProfessionApp.Controllers
                 Silver = money.Silver,
                 Bronze = money.Bronze,
                 Rarity = item.Rarity.ToString(),
-                Weigth = item.Weigth
+                Weight = item.Weight
             };
         }
 
@@ -79,7 +81,7 @@ namespace WarhammerProfessionApp.Controllers
                     Silver = money.Silver,
                     Bronze = money.Bronze,
                     Rarity = item.Rarity.ToString(),
-                    Weigth = item.Weigth
+                    Weight = item.Weight
                 };
 
                 result.Add(record);
@@ -120,7 +122,5 @@ namespace WarhammerProfessionApp.Controllers
 
             return NoContent();
         }
-
-        private readonly ProfessionsContext context;
     }
 }

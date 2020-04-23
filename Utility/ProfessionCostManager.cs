@@ -13,8 +13,15 @@ namespace WarhammerProfessionApp.Utility
 {
     internal class ProfessionCostManager
     {
+        private readonly ProfessionsContext context;
+
+        internal ProfessionCostManager(ProfessionsContext context)
+        {
+            this.context = context;
+        }
+
         public async Task<ProfessionPathWrapperDto> GetProfessionsPaths(
-            int startProfessionId,
+                            int startProfessionId,
             int targetProfessionId,
             byte mappingLevels,
             bool includeStartingProfession,
@@ -63,13 +70,6 @@ namespace WarhammerProfessionApp.Utility
 
             return result;
         }
-
-        internal ProfessionCostManager(ProfessionsContext context)
-        {
-            this.context = context;
-        }
-
-        private readonly ProfessionsContext context;
 
         private ProfessionPathDto CalculateProfessionResult(
             IEnumerable<Profession> value,

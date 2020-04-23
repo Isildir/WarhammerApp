@@ -40,7 +40,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Halabarda",
                 Price = MoneyCalculator.GetUserMoney(15, 0, 0),
                 Rarity = ItemRarity.Average,
-                Weigth = 175,
+                Weight = 175,
                 ItemType = ItemType.WhiteWeapon
             };
             var kij = new Item
@@ -48,7 +48,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Kij",
                 Price = MoneyCalculator.GetUserMoney(0, 3, 0),
                 Rarity = ItemRarity.High,
-                Weigth = 50,
+                Weight = 50,
                 ItemType = ItemType.WhiteWeapon
             };
             var kopia = new Item
@@ -56,7 +56,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Kopia",
                 Price = MoneyCalculator.GetUserMoney(15, 0, 0),
                 Rarity = ItemRarity.Rare,
-                Weigth = 100,
+                Weight = 100,
                 ItemType = ItemType.WhiteWeapon
             };
             var korbacz = new Item
@@ -64,7 +64,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Korbacz",
                 Price = MoneyCalculator.GetUserMoney(15, 0, 0),
                 Rarity = ItemRarity.Occasional,
-                Weigth = 95,
+                Weight = 95,
                 ItemType = ItemType.WhiteWeapon
             };
             var lanca = new Item
@@ -72,7 +72,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Lanca",
                 Price = MoneyCalculator.GetUserMoney(20, 0, 0),
                 Rarity = ItemRarity.Occasional,
-                Weigth = 75,
+                Weight = 75,
                 ItemType = ItemType.WhiteWeapon
             };
             var lewak = new Item
@@ -80,7 +80,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Lewak",
                 Price = MoneyCalculator.GetUserMoney(2, 0, 0),
                 Rarity = ItemRarity.Occasional,
-                Weigth = 10,
+                Weight = 10,
                 ItemType = ItemType.WhiteWeapon
             };
             var lamaczMieczy = new Item
@@ -88,7 +88,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Łamacz mieczy",
                 Price = MoneyCalculator.GetUserMoney(5, 0, 0),
                 Rarity = ItemRarity.Occasional,
-                Weigth = 40,
+                Weight = 40,
                 ItemType = ItemType.WhiteWeapon
             };
             var morgensztern = new Item
@@ -96,7 +96,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Morgensztern",
                 Price = MoneyCalculator.GetUserMoney(15, 0, 0),
                 Rarity = ItemRarity.Occasional,
-                Weigth = 60,
+                Weight = 60,
                 ItemType = ItemType.WhiteWeapon
             };
             var puklerz = new Item
@@ -104,7 +104,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Puklerz",
                 Price = MoneyCalculator.GetUserMoney(4, 0, 0),
                 Rarity = ItemRarity.Low,
-                Weigth = 15,
+                Weight = 15,
                 ItemType = ItemType.WhiteWeapon
             };
             var rapier = new Item
@@ -112,7 +112,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Rapier",
                 Price = MoneyCalculator.GetUserMoney(18, 0, 0),
                 Rarity = ItemRarity.Occasional,
-                Weigth = 40,
+                Weight = 40,
                 ItemType = ItemType.WhiteWeapon
             };
             var kastet = new Item
@@ -120,7 +120,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Rękawica/kastet",
                 Price = MoneyCalculator.GetUserMoney(1, 0, 0),
                 Rarity = ItemRarity.Average,
-                Weigth = 1,
+                Weight = 1,
                 ItemType = ItemType.WhiteWeapon
             };
             var szpada = new Item
@@ -128,7 +128,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Szpada",
                 Price = MoneyCalculator.GetUserMoney(18, 0, 0),
                 Rarity = ItemRarity.Rare,
-                Weigth = 40,
+                Weight = 40,
                 ItemType = ItemType.WhiteWeapon
             };
             var sztylet = new Item
@@ -136,7 +136,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Sztylet",
                 Price = MoneyCalculator.GetUserMoney(1, 0, 0),
                 Rarity = ItemRarity.Average,
-                Weigth = 10,
+                Weight = 10,
                 ItemType = ItemType.WhiteWeapon
             };
             var tarcza = new Item
@@ -144,7 +144,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Tarcza",
                 Price = MoneyCalculator.GetUserMoney(10, 0, 0),
                 Rarity = ItemRarity.Average,
-                Weigth = 50,
+                Weight = 50,
                 ItemType = ItemType.WhiteWeapon
             };
             var wlocznia = new Item
@@ -152,7 +152,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Włócznia",
                 Price = MoneyCalculator.GetUserMoney(10, 0, 0),
                 Rarity = ItemRarity.Average,
-                Weigth = 50,
+                Weight = 50,
                 ItemType = ItemType.WhiteWeapon
             };
             var bronDwureczna = new Item
@@ -160,7 +160,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Bron dwureczna",
                 Price = MoneyCalculator.GetUserMoney(0, 0, 0),
                 Rarity = ItemRarity.Common,
-                Weigth = 0,
+                Weight = 0,
                 ItemType = ItemType.WhiteWeapon
             };
             var arkan = new Item
@@ -168,7 +168,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Arkan",
                 Price = MoneyCalculator.GetUserMoney(1, 0, 0),
                 Rarity = ItemRarity.High,
-                Weigth = 10,
+                Weight = 10,
                 ItemType = ItemType.RangedWeapon
             };
             var bicz = new Item
@@ -176,7 +176,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Bicz",
                 Price = MoneyCalculator.GetUserMoney(2, 0, 0),
                 Rarity = ItemRarity.Low,
-                Weigth = 40,
+                Weight = 40,
                 ItemType = ItemType.RangedWeapon
             };
             var bolas = new Item
@@ -184,7 +184,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Bolas",
                 Price = MoneyCalculator.GetUserMoney(0, 7, 0),
                 Rarity = ItemRarity.Occasional,
-                Weigth = 20,
+                Weight = 20,
                 ItemType = ItemType.RangedWeapon
             };
             var dlugiLuk = new Item
@@ -192,7 +192,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Długi łuk",
                 Price = MoneyCalculator.GetUserMoney(15, 0, 0),
                 Rarity = ItemRarity.Low,
-                Weigth = 90,
+                Weight = 90,
                 ItemType = ItemType.RangedWeapon
             };
             var elfiLuk = new Item
@@ -200,7 +200,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Elfi łuk",
                 Price = MoneyCalculator.GetUserMoney(70, 0, 0),
                 Rarity = ItemRarity.Insignificant,
-                Weigth = 75,
+                Weight = 75,
                 ItemType = ItemType.RangedWeapon
             };
             var garlacz = new Item
@@ -208,7 +208,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Garłacz",
                 Price = MoneyCalculator.GetUserMoney(70, 0, 0),
                 Rarity = ItemRarity.Insignificant,
-                Weigth = 50,
+                Weight = 50,
                 ItemType = ItemType.RangedWeapon
             };
             var krotkiLuk = new Item
@@ -216,7 +216,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Krótki łuk",
                 Price = MoneyCalculator.GetUserMoney(70, 0, 0),
                 Rarity = ItemRarity.Average,
-                Weigth = 75,
+                Weight = 75,
                 ItemType = ItemType.RangedWeapon
             };
             var kuszaPistoletowa = new Item
@@ -224,7 +224,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Kusza pistoletowa",
                 Price = MoneyCalculator.GetUserMoney(35, 0, 0),
                 Rarity = ItemRarity.Rare,
-                Weigth = 25,
+                Weight = 25,
                 ItemType = ItemType.RangedWeapon
             };
             var kuszaSamopowtarzalna = new Item
@@ -232,7 +232,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Kusza samopowtarzalna",
                 Price = MoneyCalculator.GetUserMoney(100, 0, 0),
                 Rarity = ItemRarity.Insignificant,
-                Weigth = 150,
+                Weight = 150,
                 ItemType = ItemType.RangedWeapon
             };
             var kusza = new Item
@@ -240,7 +240,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Kusza",
                 Price = MoneyCalculator.GetUserMoney(25, 0, 0),
                 Rarity = ItemRarity.Low,
-                Weigth = 120,
+                Weight = 120,
                 ItemType = ItemType.RangedWeapon
             };
             var luk = new Item
@@ -248,7 +248,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Łuk",
                 Price = MoneyCalculator.GetUserMoney(10, 0, 0),
                 Rarity = ItemRarity.Average,
-                Weigth = 80,
+                Weight = 80,
                 ItemType = ItemType.RangedWeapon
             };
             var muszkietHochlandzki = new Item
@@ -256,7 +256,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Muszkiet hochlandzki",
                 Price = MoneyCalculator.GetUserMoney(450, 0, 0),
                 Rarity = ItemRarity.Insignificant,
-                Weigth = 70,
+                Weight = 70,
                 ItemType = ItemType.RangedWeapon
             };
             var nozDoRzucania = new Item
@@ -264,7 +264,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Nóź/gwiazdka do rzucania",
                 Price = MoneyCalculator.GetUserMoney(3, 0, 0),
                 Rarity = ItemRarity.Average,
-                Weigth = 10,
+                Weight = 10,
                 ItemType = ItemType.RangedWeapon
             };
             var oszczep = new Item
@@ -272,7 +272,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Oszczep",
                 Price = MoneyCalculator.GetUserMoney(0, 25, 0),
                 Rarity = ItemRarity.Low,
-                Weigth = 50,
+                Weight = 50,
                 ItemType = ItemType.RangedWeapon
             };
             var pistolet = new Item
@@ -280,7 +280,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Pistolet",
                 Price = MoneyCalculator.GetUserMoney(200, 0, 0),
                 Rarity = ItemRarity.Insignificant,
-                Weigth = 25,
+                Weight = 25,
                 ItemType = ItemType.RangedWeapon
             };
             var pistoletWielostrzalowy = new Item
@@ -288,7 +288,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Pistolet wielostrzałowy",
                 Price = MoneyCalculator.GetUserMoney(400, 0, 0),
                 Rarity = ItemRarity.Insignificant,
-                Weigth = 25,
+                Weight = 25,
                 ItemType = ItemType.RangedWeapon
             };
             var proca = new Item
@@ -296,7 +296,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Proca",
                 Price = MoneyCalculator.GetUserMoney(4, 0, 0),
                 Rarity = ItemRarity.Average,
-                Weigth = 10,
+                Weight = 10,
                 ItemType = ItemType.RangedWeapon
             };
             var procaDrzewcowa = new Item
@@ -304,7 +304,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Proca drzewcowa",
                 Price = MoneyCalculator.GetUserMoney(6, 0, 0),
                 Rarity = ItemRarity.Rare,
-                Weigth = 50,
+                Weight = 50,
                 ItemType = ItemType.RangedWeapon
             };
             var rusznica = new Item
@@ -312,7 +312,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Rusznica",
                 Price = MoneyCalculator.GetUserMoney(300, 0, 0),
                 Rarity = ItemRarity.Insignificant,
-                Weigth = 30,
+                Weight = 30,
                 ItemType = ItemType.RangedWeapon
             };
             var rusznicaWielostrzalowa = new Item
@@ -320,7 +320,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Rusznica wielostrzałowa",
                 Price = MoneyCalculator.GetUserMoney(600, 0, 0),
                 Rarity = ItemRarity.Insignificant,
-                Weigth = 30,
+                Weight = 30,
                 ItemType = ItemType.RangedWeapon
             };
             var siec = new Item
@@ -328,7 +328,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Sieć",
                 Price = MoneyCalculator.GetUserMoney(3, 0, 0),
                 Rarity = ItemRarity.High,
-                Weigth = 60,
+                Weight = 60,
                 ItemType = ItemType.RangedWeapon
             };
             var toporDoRzucania = new Item
@@ -336,7 +336,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Topór/młot do rzucania",
                 Price = MoneyCalculator.GetUserMoney(5, 0, 0),
                 Rarity = ItemRarity.Low,
-                Weigth = 40,
+                Weight = 40,
                 ItemType = ItemType.RangedWeapon
             };
             var wloczniaDoRzucania = new Item
@@ -344,7 +344,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Włócznia",
                 Price = MoneyCalculator.GetUserMoney(0, 0, 0),
                 Rarity = ItemRarity.Average,
-                Weigth = 30,
+                Weight = 30,
                 ItemType = ItemType.RangedWeapon
             };
             var strzala = new Item
@@ -352,7 +352,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Strzała",
                 Price = MoneyCalculator.GetUserMoney(0, 0, 2),
                 Rarity = ItemRarity.Average,
-                Weigth = 10,
+                Weight = 10,
                 ItemType = ItemType.Ammunition
             };
             var belt = new Item
@@ -360,7 +360,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Bełt",
                 Price = MoneyCalculator.GetUserMoney(0, 0, 4),
                 Rarity = ItemRarity.Low,
-                Weigth = 10,
+                Weight = 10,
                 ItemType = ItemType.Ammunition
             };
             var kulaDoBroni = new Item
@@ -368,7 +368,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Kula do broni palnej",
                 Price = MoneyCalculator.GetUserMoney(0, 0, 1),
                 Rarity = ItemRarity.Rare,
-                Weigth = 10,
+                Weight = 10,
                 ItemType = ItemType.Ammunition
             };
             var prochStrzelniczy = new Item
@@ -376,7 +376,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Proch strzelniczy (strzał)",
                 Price = MoneyCalculator.GetUserMoney(0, 3, 0),
                 Rarity = ItemRarity.Insignificant,
-                Weigth = 1,
+                Weight = 1,
                 ItemType = ItemType.Ammunition
             };
             var helmSkora = new Item
@@ -384,7 +384,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Hełm (Skórzany)",
                 Price = MoneyCalculator.GetUserMoney(3, 0, 0),
                 Rarity = ItemRarity.Average,
-                Weigth = 10,
+                Weight = 10,
                 ItemType = ItemType.Armor
             };
             var kaftanSkora = new Item
@@ -392,7 +392,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Kaftan (Skórzany)",
                 Price = MoneyCalculator.GetUserMoney(5, 0, 0),
                 Rarity = ItemRarity.Average,
-                Weigth = 40,
+                Weight = 40,
                 ItemType = ItemType.Armor
             };
             var kurtaSkora = new Item
@@ -400,7 +400,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Kurta (Skórzana)",
                 Price = MoneyCalculator.GetUserMoney(12, 0, 0),
                 Rarity = ItemRarity.Average,
-                Weigth = 50,
+                Weight = 50,
                 ItemType = ItemType.Armor
             };
             var nogawiceSkora = new Item
@@ -408,7 +408,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Nogawice (Skórzane)",
                 Price = MoneyCalculator.GetUserMoney(10, 0, 0),
                 Rarity = ItemRarity.Average,
-                Weigth = 20,
+                Weight = 20,
                 ItemType = ItemType.Armor
             };
             var skorznia = new Item
@@ -416,7 +416,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Skórznia",
                 Price = MoneyCalculator.GetUserMoney(25, 0, 0),
                 Rarity = ItemRarity.Low,
-                Weigth = 80,
+                Weight = 80,
                 ItemType = ItemType.Armor
             };
             var czepiecKolczy = new Item
@@ -424,7 +424,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Czepiec (Kolczy)",
                 Price = MoneyCalculator.GetUserMoney(20, 0, 0),
                 Rarity = ItemRarity.Low,
-                Weigth = 30,
+                Weight = 30,
                 ItemType = ItemType.Armor
             };
             var kaftanKolczy = new Item
@@ -432,7 +432,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Kaftan (Kolczy)",
                 Price = MoneyCalculator.GetUserMoney(60, 0, 0),
                 Rarity = ItemRarity.Low,
-                Weigth = 60,
+                Weight = 60,
                 ItemType = ItemType.Armor
             };
             var koszulkaKolcza = new Item
@@ -440,7 +440,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Koszulka (Kolcza)",
                 Price = MoneyCalculator.GetUserMoney(95, 0, 0),
                 Rarity = ItemRarity.Low,
-                Weigth = 80,
+                Weight = 80,
                 ItemType = ItemType.Armor
             };
             var kolczugaKolcza = new Item
@@ -448,7 +448,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Kolczuga",
                 Price = MoneyCalculator.GetUserMoney(75, 0, 0),
                 Rarity = ItemRarity.Low,
-                Weigth = 80,
+                Weight = 80,
                 ItemType = ItemType.Armor
             };
             var kolczugaZRekawami = new Item
@@ -456,7 +456,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Kolczuga z rękawami",
                 Price = MoneyCalculator.GetUserMoney(130, 0, 0),
                 Rarity = ItemRarity.Low,
-                Weigth = 100,
+                Weight = 100,
                 ItemType = ItemType.Armor
             };
             var nogawiceKolcze = new Item
@@ -464,7 +464,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Nogawice (Kolcze)",
                 Price = MoneyCalculator.GetUserMoney(20, 0, 0),
                 Rarity = ItemRarity.Occasional,
-                Weigth = 40,
+                Weight = 40,
                 ItemType = ItemType.Armor
             };
             var zbrojaKolcza = new Item
@@ -472,7 +472,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Zbroja kolcza",
                 Price = MoneyCalculator.GetUserMoney(170, 0, 0),
                 Rarity = ItemRarity.Occasional,
-                Weigth = 210,
+                Weight = 210,
                 ItemType = ItemType.Armor
             };
             var helmPlytowy = new Item
@@ -480,7 +480,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Hełm (płytowy)",
                 Price = MoneyCalculator.GetUserMoney(30, 0, 0),
                 Rarity = ItemRarity.Occasional,
-                Weigth = 40,
+                Weight = 40,
                 ItemType = ItemType.Armor
             };
             var naramiennikiPlytowe = new Item
@@ -488,7 +488,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Naramienniki (płytowe)",
                 Price = MoneyCalculator.GetUserMoney(70, 0, 0),
                 Rarity = ItemRarity.Occasional,
-                Weigth = 75,
+                Weight = 75,
                 ItemType = ItemType.Armor
             };
             var nogawicePlytowe = new Item
@@ -496,7 +496,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Nogawice (płytowe)",
                 Price = MoneyCalculator.GetUserMoney(60, 0, 0),
                 Rarity = ItemRarity.Occasional,
-                Weigth = 30,
+                Weight = 30,
                 ItemType = ItemType.Armor
             };
             var napiersnikPlytowy = new Item
@@ -504,7 +504,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Napierśnik (płytowy)",
                 Price = MoneyCalculator.GetUserMoney(70, 0, 0),
                 Rarity = ItemRarity.Occasional,
-                Weigth = 40,
+                Weight = 40,
                 ItemType = ItemType.Armor
             };
             var zbrojaPlytowa = new Item
@@ -512,7 +512,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Zbroja płytowa",
                 Price = MoneyCalculator.GetUserMoney(400, 0, 0),
                 Rarity = ItemRarity.Rare,
-                Weigth = 395,
+                Weight = 395,
                 ItemType = ItemType.Armor
             };
             var lachmany = new Item
@@ -520,7 +520,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Łachmany",
                 Price = MoneyCalculator.GetUserMoney(0, 0, 1),
                 Rarity = ItemRarity.Common,
-                Weigth = 5,
+                Weight = 5,
                 ItemType = ItemType.Cloth
             };
             var kiepskieOdzienie = new Item
@@ -528,7 +528,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Kiepskie odzienie",
                 Price = MoneyCalculator.GetUserMoney(0, 10, 0),
                 Rarity = ItemRarity.Common,
-                Weigth = 10,
+                Weight = 10,
                 ItemType = ItemType.Cloth
             };
             var zwykleUbranie = new Item
@@ -536,7 +536,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Zwykłe ubranie",
                 Price = MoneyCalculator.GetUserMoney(1, 0, 0),
                 Rarity = ItemRarity.High,
-                Weigth = 15,
+                Weight = 15,
                 ItemType = ItemType.Cloth
             };
             var dobreUbranie = new Item
@@ -544,7 +544,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Dobre ubranie",
                 Price = MoneyCalculator.GetUserMoney(3, 0, 0),
                 Rarity = ItemRarity.Average,
-                Weigth = 15,
+                Weight = 15,
                 ItemType = ItemType.Cloth
             };
             var szykowneUbranie = new Item
@@ -552,7 +552,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Szykowne ubranie",
                 Price = MoneyCalculator.GetUserMoney(10, 0, 0),
                 Rarity = ItemRarity.Low,
-                Weigth = 20,
+                Weight = 20,
                 ItemType = ItemType.Cloth
             };
             var szaty = new Item
@@ -560,7 +560,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Szaty",
                 Price = MoneyCalculator.GetUserMoney(15, 0, 0),
                 Rarity = ItemRarity.Low,
-                Weigth = 25,
+                Weight = 25,
                 ItemType = ItemType.Cloth
             };
             var kostium = new Item
@@ -568,7 +568,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Kostium",
                 Price = MoneyCalculator.GetUserMoney(5, 0, 0),
                 Rarity = ItemRarity.Low,
-                Weigth = 10,
+                Weight = 10,
                 ItemType = ItemType.Cloth
             };
             var uniform = new Item
@@ -576,7 +576,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Uniform",
                 Price = MoneyCalculator.GetUserMoney(15, 0, 0),
                 Rarity = ItemRarity.Occasional,
-                Weigth = 15,
+                Weight = 15,
                 ItemType = ItemType.Cloth
             };
             var strojSzlachecki = new Item
@@ -584,7 +584,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Strój szlachecki",
                 Price = MoneyCalculator.GetUserMoney(50, 0, 0),
                 Rarity = ItemRarity.Rare,
-                Weigth = 30,
+                Weight = 30,
                 ItemType = ItemType.Cloth
             };
             var strojArystokraty = new Item
@@ -592,7 +592,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Strój arystokraty",
                 Price = MoneyCalculator.GetUserMoney(100, 0, 0),
                 Rarity = ItemRarity.Insignificant,
-                Weigth = 50,
+                Weight = 50,
                 ItemType = ItemType.Cloth
             };
             var peleryna = new Item
@@ -600,7 +600,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Peleryna",
                 Price = MoneyCalculator.GetUserMoney(5, 0, 0),
                 Rarity = ItemRarity.High,
-                Weigth = 10,
+                Weight = 10,
                 ItemType = ItemType.Cloth
             };
             var plaszcz = new Item
@@ -608,7 +608,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Płaszcz",
                 Price = MoneyCalculator.GetUserMoney(10, 0, 0),
                 Rarity = ItemRarity.High,
-                Weigth = 15,
+                Weight = 15,
                 ItemType = ItemType.Cloth
             };
             var kapeluszZwykly = new Item
@@ -616,7 +616,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Kapelusz zwykły",
                 Price = MoneyCalculator.GetUserMoney(0, 10, 0),
                 Rarity = ItemRarity.High,
-                Weigth = 15,
+                Weight = 15,
                 ItemType = ItemType.Cloth
             };
             var kapeluszZRondem = new Item
@@ -624,7 +624,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Kapelusz z szerokim rondlem",
                 Price = MoneyCalculator.GetUserMoney(1, 0, 0),
                 Rarity = ItemRarity.High,
-                Weigth = 5,
+                Weight = 5,
                 ItemType = ItemType.Cloth
             };
             var kapturMaska = new Item
@@ -632,7 +632,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Kaptur lub maska",
                 Price = MoneyCalculator.GetUserMoney(0, 10, 0),
                 Rarity = ItemRarity.Average,
-                Weigth = 2,
+                Weight = 2,
                 ItemType = ItemType.Cloth
             };
             var obrok = new Item
@@ -640,7 +640,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Obrok (porcja na 1 dzień)",
                 Price = MoneyCalculator.GetUserMoney(0, 0, 5),
                 Rarity = ItemRarity.High,
-                Weigth = 50,
+                Weight = 50,
                 ItemType = ItemType.Food
             };
             var bochenekChleba = new Item
@@ -648,7 +648,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Bochenek chleba",
                 Price = MoneyCalculator.GetUserMoney(0, 0, 2),
                 Rarity = ItemRarity.Common,
-                Weigth = 2,
+                Weight = 2,
                 ItemType = ItemType.Food
             };
             var polecMiesa = new Item
@@ -656,7 +656,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Połeć mięsa",
                 Price = MoneyCalculator.GetUserMoney(0, 1, 0),
                 Rarity = ItemRarity.Low,
-                Weigth = 10,
+                Weight = 10,
                 ItemType = ItemType.Food
             };
             var kiepskieJedzenie = new Item
@@ -664,7 +664,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Kiepskie jedzenie (porcja na 1 dzień)",
                 Price = MoneyCalculator.GetUserMoney(0, 0, 5),
                 Rarity = ItemRarity.High,
-                Weigth = 10,
+                Weight = 10,
                 ItemType = ItemType.Food
             };
             var dobreJedzenie = new Item
@@ -672,7 +672,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Dobre jedzenie (porcja na 1 dzień)",
                 Price = MoneyCalculator.GetUserMoney(0, 0, 10),
                 Rarity = ItemRarity.Average,
-                Weigth = 10,
+                Weight = 10,
                 ItemType = ItemType.Food
             };
             var doskonaleJedzenie = new Item
@@ -680,7 +680,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Doskonałe jedzenie (porcja na 1 dzień)",
                 Price = MoneyCalculator.GetUserMoney(0, 0, 18),
                 Rarity = ItemRarity.Low,
-                Weigth = 10,
+                Weight = 10,
                 ItemType = ItemType.Food
             };
             var prowiantNaTydzien = new Item
@@ -688,7 +688,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Prowiant (porcja na 1 tydzień)",
                 Price = MoneyCalculator.GetUserMoney(0, 6, 0),
                 Rarity = ItemRarity.Average,
-                Weigth = 50,
+                Weight = 50,
                 ItemType = ItemType.Food
             };
             var slodycze = new Item
@@ -696,7 +696,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Słodycze",
                 Price = MoneyCalculator.GetUserMoney(0, 1, 0),
                 Rarity = ItemRarity.Average,
-                Weigth = 2,
+                Weight = 2,
                 ItemType = ItemType.Food
             };
             var smakolyki = new Item
@@ -704,7 +704,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Smakołyki",
                 Price = MoneyCalculator.GetUserMoney(0, 3, 0),
                 Rarity = ItemRarity.Occasional,
-                Weigth = 0,
+                Weight = 0,
                 ItemType = ItemType.Food
             };
             var ciemnePiwo = new Item
@@ -712,7 +712,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Ciemne piwo",
                 Price = MoneyCalculator.GetUserMoney(0, 0, 2),
                 Rarity = ItemRarity.High,
-                Weigth = 2,
+                Weight = 2,
                 ItemType = ItemType.Food
             };
             var jasnePiwo = new Item
@@ -720,7 +720,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Jasne piwo",
                 Price = MoneyCalculator.GetUserMoney(0, 0, 1),
                 Rarity = ItemRarity.Common,
-                Weigth = 2,
+                Weight = 2,
                 ItemType = ItemType.Food
             };
             var antalekPiwaJasnego = new Item
@@ -728,7 +728,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Antałek piwa jasnego",
                 Price = MoneyCalculator.GetUserMoney(0, 0, 18),
                 Rarity = ItemRarity.Common,
-                Weigth = 30,
+                Weight = 30,
                 ItemType = ItemType.Food
             };
             var antalekPiwaCiemnego = new Item
@@ -736,7 +736,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Antałek piwa ciemnego",
                 Price = MoneyCalculator.GetUserMoney(0, 3, 0),
                 Rarity = ItemRarity.Common,
-                Weigth = 30,
+                Weight = 30,
                 ItemType = ItemType.Food
             };
             var butelkaGorzalki = new Item
@@ -744,7 +744,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Butelka gorzałki",
                 Price = MoneyCalculator.GetUserMoney(0, 1, 0),
                 Rarity = ItemRarity.Low,
-                Weigth = 5,
+                Weight = 5,
                 ItemType = ItemType.Food
             };
             var butelkaGorzalkiDobrejJakosci = new Item
@@ -752,7 +752,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Butelka gorzałki dobrej jakości",
                 Price = MoneyCalculator.GetUserMoney(0, 3, 0),
                 Rarity = ItemRarity.Low,
-                Weigth = 5,
+                Weight = 5,
                 ItemType = ItemType.Food
             };
             var winoPospolite = new Item
@@ -760,7 +760,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Wino pospolite",
                 Price = MoneyCalculator.GetUserMoney(0, 1, 0),
                 Rarity = ItemRarity.Average,
-                Weigth = 5,
+                Weight = 5,
                 ItemType = ItemType.Food
             };
             var winoSzlacheckie = new Item
@@ -768,7 +768,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Wino szlacheckie",
                 Price = MoneyCalculator.GetUserMoney(0, 10, 0),
                 Rarity = ItemRarity.Low,
-                Weigth = 5,
+                Weight = 5,
                 ItemType = ItemType.Food
             };
             var buklak = new Item
@@ -776,7 +776,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Bukłak",
                 Price = MoneyCalculator.GetUserMoney(0, 8, 0),
                 Rarity = ItemRarity.High,
-                Weigth = 1,
+                Weight = 1,
                 ItemType = ItemType.Containers
             };
             var flaszka = new Item
@@ -784,7 +784,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Flaszka",
                 Price = MoneyCalculator.GetUserMoney(0, 4, 0),
                 Rarity = ItemRarity.High,
-                Weigth = 10,
+                Weight = 10,
                 ItemType = ItemType.Containers
             };
             var juki = new Item
@@ -792,7 +792,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Juki",
                 Price = MoneyCalculator.GetUserMoney(2, 0, 0),
                 Rarity = ItemRarity.Low,
-                Weigth = 5,
+                Weight = 5,
                 ItemType = ItemType.Containers
             };
             var kuferek = new Item
@@ -800,7 +800,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Kuferek",
                 Price = MoneyCalculator.GetUserMoney(5, 0, 0),
                 Rarity = ItemRarity.Low,
-                Weigth = 40,
+                Weight = 40,
                 ItemType = ItemType.Containers
             };
             var manierkaMetalowa = new Item
@@ -808,7 +808,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Manierka metalowa",
                 Price = MoneyCalculator.GetUserMoney(2, 0, 0),
                 Rarity = ItemRarity.Occasional,
-                Weigth = 15,
+                Weight = 15,
                 ItemType = ItemType.Containers
             };
             var manierkaSkorzana = new Item
@@ -816,7 +816,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Manierska skórzana",
                 Price = MoneyCalculator.GetUserMoney(0, 15, 0),
                 Rarity = ItemRarity.Low,
-                Weigth = 5,
+                Weight = 5,
                 ItemType = ItemType.Containers
             };
             var mieszek = new Item
@@ -824,7 +824,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Mieszek",
                 Price = MoneyCalculator.GetUserMoney(0, 2, 0),
                 Rarity = ItemRarity.High,
-                Weigth = 1,
+                Weight = 1,
                 ItemType = ItemType.Containers
             };
             var plecak = new Item
@@ -832,7 +832,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Plecak",
                 Price = MoneyCalculator.GetUserMoney(0, 30, 0),
                 Rarity = ItemRarity.High,
-                Weigth = 20,
+                Weight = 20,
                 ItemType = ItemType.Containers
             };
             var sakiewka = new Item
@@ -840,7 +840,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Sakiewka",
                 Price = MoneyCalculator.GetUserMoney(0, 5, 0),
                 Rarity = ItemRarity.High,
-                Weigth = 1,
+                Weight = 1,
                 ItemType = ItemType.Containers
             };
             var tobolek = new Item
@@ -848,7 +848,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Tobołek",
                 Price = MoneyCalculator.GetUserMoney(2, 0, 0),
                 Rarity = ItemRarity.Low,
-                Weigth = 5,
+                Weight = 5,
                 ItemType = ItemType.Containers
             };
             var tubaNaMapy = new Item
@@ -856,7 +856,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Tuba na mapy/pergaminy",
                 Price = MoneyCalculator.GetUserMoney(1, 0, 0),
                 Rarity = ItemRarity.Occasional,
-                Weigth = 2,
+                Weight = 2,
                 ItemType = ItemType.Containers
             };
             var worek = new Item
@@ -864,7 +864,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Worek",
                 Price = MoneyCalculator.GetUserMoney(0, 5, 0),
                 Rarity = ItemRarity.High,
-                Weigth = 7,
+                Weight = 7,
                 ItemType = ItemType.Containers
             };
             var drewnoNaOpal = new Item
@@ -872,7 +872,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Drewno na opał",
                 Price = MoneyCalculator.GetUserMoney(0, 2, 0),
                 Rarity = ItemRarity.High,
-                Weigth = 5,
+                Weight = 5,
                 ItemType = ItemType.Light
             };
             var kaganek = new Item
@@ -880,7 +880,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Kaganek",
                 Price = MoneyCalculator.GetUserMoney(0, 5, 0),
                 Rarity = ItemRarity.High,
-                Weigth = 20,
+                Weight = 20,
                 ItemType = ItemType.Light
             };
             var latarnia = new Item
@@ -888,7 +888,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Latarnia",
                 Price = MoneyCalculator.GetUserMoney(1, 0, 0),
                 Rarity = ItemRarity.Low,
-                Weigth = 20,
+                Weight = 20,
                 ItemType = ItemType.Light
             };
             var latarniaSztormowa = new Item
@@ -896,7 +896,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Latarnia sztormowa",
                 Price = MoneyCalculator.GetUserMoney(12, 0, 0),
                 Rarity = ItemRarity.Occasional,
-                Weigth = 30,
+                Weight = 30,
                 ItemType = ItemType.Light
             };
             var olejDoLatarni = new Item
@@ -904,7 +904,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Olej do latarni",
                 Price = MoneyCalculator.GetUserMoney(0, 5, 0),
                 Rarity = ItemRarity.High,
-                Weigth = 5,
+                Weight = 5,
                 ItemType = ItemType.Light
             };
             var pochodnia = new Item
@@ -912,7 +912,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Pochodnia",
                 Price = MoneyCalculator.GetUserMoney(0, 0, 5),
                 Rarity = ItemRarity.High,
-                Weigth = 5,
+                Weight = 5,
                 ItemType = ItemType.Light
             };
             var swieczkaLojowa = new Item
@@ -920,7 +920,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Świeczka łojowa",
                 Price = MoneyCalculator.GetUserMoney(0, 3, 0),
                 Rarity = ItemRarity.High,
-                Weigth = 5,
+                Weight = 5,
                 ItemType = ItemType.Light
             };
             var swieczkaWoskowa = new Item
@@ -928,7 +928,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Świeczka woskowa",
                 Price = MoneyCalculator.GetUserMoney(0, 6, 0),
                 Rarity = ItemRarity.Low,
-                Weigth = 5,
+                Weight = 5,
                 ItemType = ItemType.Light
             };
             var zapalka = new Item
@@ -936,7 +936,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Zapałka",
                 Price = MoneyCalculator.GetUserMoney(0, 0, 1),
                 Rarity = ItemRarity.Low,
-                Weigth = 0,
+                Weight = 0,
                 ItemType = ItemType.Light
             };
             var zlotaKorona = new Item
@@ -944,7 +944,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Zlota korona",
                 Price = MoneyCalculator.GetUserMoney(1, 0, 0),
                 Rarity = ItemRarity.Average,
-                Weigth = 0,
+                Weight = 0,
                 ItemType = ItemType.Utility
             };
             var pens = new Item
@@ -952,7 +952,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Pens",
                 Price = MoneyCalculator.GetUserMoney(0, 0, 1),
                 Rarity = ItemRarity.Common,
-                Weigth = 0,
+                Weight = 0,
                 ItemType = ItemType.Utility
             };
             var szyling = new Item
@@ -960,7 +960,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Szyling",
                 Price = MoneyCalculator.GetUserMoney(0, 1, 0),
                 Rarity = ItemRarity.High,
-                Weigth = 0,
+                Weight = 0,
                 ItemType = ItemType.Utility
             };
             var drabina = new Item
@@ -968,7 +968,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Drabina",
                 Price = MoneyCalculator.GetUserMoney(0, 10, 0),
                 Rarity = ItemRarity.Average,
-                Weigth = 50,
+                Weight = 50,
                 ItemType = ItemType.Utility
             };
             var hubkaIKrzesiwo = new Item
@@ -976,7 +976,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Hubka i krzesiwo",
                 Price = MoneyCalculator.GetUserMoney(0, 30, 0),
                 Rarity = ItemRarity.High,
-                Weigth = 5,
+                Weight = 5,
                 ItemType = ItemType.Utility
             };
             var imbryk = new Item
@@ -984,7 +984,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Imbryk",
                 Price = MoneyCalculator.GetUserMoney(0, 30, 0),
                 Rarity = ItemRarity.High,
-                Weigth = 10,
+                Weight = 10,
                 ItemType = ItemType.Utility
             };
             var instrumentMuzyczny = new Item
@@ -992,7 +992,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Instrument muzyczny",
                 Price = MoneyCalculator.GetUserMoney(5, 0, 0),
                 Rarity = ItemRarity.Average,
-                Weigth = 5,
+                Weight = 5,
                 ItemType = ItemType.Utility
             };
             var klodkaDobrejJakosci = new Item
@@ -1000,7 +1000,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Kłódka dobrej jakości",
                 Price = MoneyCalculator.GetUserMoney(10, 0, 0),
                 Rarity = ItemRarity.Insignificant,
-                Weigth = 5,
+                Weight = 5,
                 ItemType = ItemType.Utility
             };
             var klodkaZwyklejJakosci = new Item
@@ -1008,7 +1008,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Kłódka zwykłej jakości",
                 Price = MoneyCalculator.GetUserMoney(1, 0, 0),
                 Rarity = ItemRarity.Average,
-                Weigth = 5,
+                Weight = 5,
                 ItemType = ItemType.Utility
             };
             var koc = new Item
@@ -1016,7 +1016,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Koc",
                 Price = MoneyCalculator.GetUserMoney(0, 25, 0),
                 Rarity = ItemRarity.High,
-                Weigth = 10,
+                Weight = 10,
                 ItemType = ItemType.Utility
             };
             var kociolek = new Item
@@ -1024,7 +1024,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Kociołek",
                 Price = MoneyCalculator.GetUserMoney(1, 0, 0),
                 Rarity = ItemRarity.High,
-                Weigth = 20,
+                Weight = 20,
                 ItemType = ItemType.Utility
             };
             var kosciDoGry = new Item
@@ -1032,7 +1032,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Kości do gry",
                 Price = MoneyCalculator.GetUserMoney(0, 6, 0),
                 Rarity = ItemRarity.High,
-                Weigth = 0,
+                Weight = 0,
                 ItemType = ItemType.Utility
             };
             var kufelDrewniany = new Item
@@ -1040,7 +1040,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Kufel drewniany",
                 Price = MoneyCalculator.GetUserMoney(0, 10, 0),
                 Rarity = ItemRarity.High,
-                Weigth = 5,
+                Weight = 5,
                 ItemType = ItemType.Utility
             };
             var kufelZeSzklaBarwionego = new Item
@@ -1048,7 +1048,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Kufel ze szkła barwionego",
                 Price = MoneyCalculator.GetUserMoney(1, 0, 0),
                 Rarity = ItemRarity.High,
-                Weigth = 5,
+                Weight = 5,
                 ItemType = ItemType.Utility
             };
             var lina = new Item
@@ -1056,7 +1056,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Lina",
                 Price = MoneyCalculator.GetUserMoney(1, 0, 0),
                 Rarity = ItemRarity.Average,
-                Weigth = 50,
+                Weight = 50,
                 ItemType = ItemType.Utility
             };
             var luneta = new Item
@@ -1064,7 +1064,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Luneta",
                 Price = MoneyCalculator.GetUserMoney(100, 0, 0),
                 Rarity = ItemRarity.Rare,
-                Weigth = 5,
+                Weight = 5,
                 ItemType = ItemType.Utility
             };
             var lustro = new Item
@@ -1072,7 +1072,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Lustro",
                 Price = MoneyCalculator.GetUserMoney(10, 0, 0),
                 Rarity = ItemRarity.Rare,
-                Weigth = 5,
+                Weight = 5,
                 ItemType = ItemType.Utility
             };
             var namiot = new Item
@@ -1080,7 +1080,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Namiot",
                 Price = MoneyCalculator.GetUserMoney(0, 15, 0),
                 Rarity = ItemRarity.Average,
-                Weigth = 20,
+                Weight = 20,
                 ItemType = ItemType.Utility
             };
             var papier = new Item
@@ -1088,7 +1088,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Papier",
                 Price = MoneyCalculator.GetUserMoney(0, 1, 0),
                 Rarity = ItemRarity.Insignificant,
-                Weigth = 0,
+                Weight = 0,
                 ItemType = ItemType.Utility
             };
             var perfumy = new Item
@@ -1096,7 +1096,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Perfumy",
                 Price = MoneyCalculator.GetUserMoney(1, 0, 0),
                 Rarity = ItemRarity.Average,
-                Weigth = 0,
+                Weight = 0,
                 ItemType = ItemType.Utility
             };
             var pergamin = new Item
@@ -1104,7 +1104,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Pergamin",
                 Price = MoneyCalculator.GetUserMoney(0, 5, 0),
                 Rarity = ItemRarity.Rare,
-                Weigth = 0,
+                Weight = 0,
                 ItemType = ItemType.Utility
             };
             var symbolReligijny = new Item
@@ -1112,7 +1112,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Symbol religijny",
                 Price = MoneyCalculator.GetUserMoney(1, 0, 0),
                 Rarity = ItemRarity.Average,
-                Weigth = 5,
+                Weight = 5,
                 ItemType = ItemType.Utility
             };
             var sztucceDrewniane = new Item
@@ -1120,7 +1120,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Sztućce drewniane",
                 Price = MoneyCalculator.GetUserMoney(0, 5, 0),
                 Rarity = ItemRarity.High,
-                Weigth = 2,
+                Weight = 2,
                 ItemType = ItemType.Utility
             };
             var sztucceMetalowe = new Item
@@ -1128,7 +1128,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Sztućce metalowe",
                 Price = MoneyCalculator.GetUserMoney(3, 0, 0),
                 Rarity = ItemRarity.Average,
-                Weigth = 4,
+                Weight = 4,
                 ItemType = ItemType.Utility
             };
             var sztucceSrebrne = new Item
@@ -1136,7 +1136,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Sztućce srebrne",
                 Price = MoneyCalculator.GetUserMoney(15, 0, 0),
                 Rarity = ItemRarity.Occasional,
-                Weigth = 3,
+                Weight = 3,
                 ItemType = ItemType.Utility
             };
             var taliaKart = new Item
@@ -1144,7 +1144,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Talia kart",
                 Price = MoneyCalculator.GetUserMoney(1, 0, 0),
                 Rarity = ItemRarity.High,
-                Weigth = 1,
+                Weight = 1,
                 ItemType = ItemType.Utility
             };
             var drag = new Item
@@ -1152,7 +1152,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Drąg, cena za metr",
                 Price = MoneyCalculator.GetUserMoney(0, 1, 0),
                 Rarity = ItemRarity.High,
-                Weigth = 10,
+                Weight = 10,
                 ItemType = ItemType.Tools
             };
             var drewnianyKlin = new Item
@@ -1160,7 +1160,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Drewniany klin",
                 Price = MoneyCalculator.GetUserMoney(0, 0, 8),
                 Rarity = ItemRarity.High,
-                Weigth = 2,
+                Weight = 2,
                 ItemType = ItemType.Tools
             };
             var haczykNaRyby = new Item
@@ -1168,7 +1168,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Haczyk na ryby i żyłka",
                 Price = MoneyCalculator.GetUserMoney(0, 3, 0),
                 Rarity = ItemRarity.Average,
-                Weigth = 2,
+                Weight = 2,
                 ItemType = ItemType.Tools
             };
             var kajdany = new Item
@@ -1176,7 +1176,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Kajdany",
                 Price = MoneyCalculator.GetUserMoney(5, 0, 0),
                 Rarity = ItemRarity.Low,
-                Weigth = 20,
+                Weight = 20,
                 ItemType = ItemType.Tools
             };
             var kilof = new Item
@@ -1184,7 +1184,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Kilof",
                 Price = MoneyCalculator.GetUserMoney(0, 25, 0),
                 Rarity = ItemRarity.Low,
-                Weigth = 20,
+                Weight = 20,
                 ItemType = ItemType.Tools
             };
             var kolki = new Item
@@ -1192,7 +1192,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Kołki",
                 Price = MoneyCalculator.GetUserMoney(0, 5, 0),
                 Rarity = ItemRarity.Average,
-                Weigth = 5,
+                Weight = 5,
                 ItemType = ItemType.Tools
             };
             var kotwiczkaDoWspinaczki = new Item
@@ -1200,7 +1200,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Kotwiczka do wspinaczki",
                 Price = MoneyCalculator.GetUserMoney(4, 0, 0),
                 Rarity = ItemRarity.Low,
-                Weigth = 20,
+                Weight = 20,
                 ItemType = ItemType.Tools
             };
             var ksiazkaDrukowana = new Item
@@ -1208,7 +1208,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Książka drukowana",
                 Price = MoneyCalculator.GetUserMoney(100, 0, 0),
                 Rarity = ItemRarity.Insignificant,
-                Weigth = 35,
+                Weight = 35,
                 ItemType = ItemType.Tools
             };
             var ksiazkaIlustrowana = new Item
@@ -1216,7 +1216,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Książka ilustrowana",
                 Price = MoneyCalculator.GetUserMoney(350, 0, 0),
                 Rarity = ItemRarity.Insignificant,
-                Weigth = 50,
+                Weight = 50,
                 ItemType = ItemType.Tools
             };
             var liczydlo = new Item
@@ -1224,7 +1224,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Liczydło",
                 Price = MoneyCalculator.GetUserMoney(10, 0, 0),
                 Rarity = ItemRarity.Rare,
-                Weigth = 5,
+                Weight = 5,
                 ItemType = ItemType.Tools
             };
             var lancuch = new Item
@@ -1232,7 +1232,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Łańcuch, cena za metr",
                 Price = MoneyCalculator.GetUserMoney(0, 30, 0),
                 Rarity = ItemRarity.Rare,
-                Weigth = 5,
+                Weight = 5,
                 ItemType = ItemType.Tools
             };
             var lom = new Item
@@ -1240,7 +1240,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Łom",
                 Price = MoneyCalculator.GetUserMoney(0, 10, 0),
                 Rarity = ItemRarity.Average,
-                Weigth = 10,
+                Weight = 10,
                 ItemType = ItemType.Tools
             };
             var lopata = new Item
@@ -1248,7 +1248,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Łopata",
                 Price = MoneyCalculator.GetUserMoney(0, 25, 0),
                 Rarity = ItemRarity.Average,
-                Weigth = 20,
+                Weight = 20,
                 ItemType = ItemType.Tools
             };
             var mlot = new Item
@@ -1256,7 +1256,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Młot",
                 Price = MoneyCalculator.GetUserMoney(0, 20, 0),
                 Rarity = ItemRarity.Average,
-                Weigth = 40,
+                Weight = 40,
                 ItemType = ItemType.Tools
             };
             var narzedzia = new Item
@@ -1264,7 +1264,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Narzędzia",
                 Price = MoneyCalculator.GetUserMoney(50, 0, 0),
                 Rarity = ItemRarity.Low,
-                Weigth = 50,
+                Weight = 50,
                 ItemType = ItemType.Tools
             };
             var potrzask = new Item
@@ -1272,7 +1272,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Potrzask",
                 Price = MoneyCalculator.GetUserMoney(0, 1, 0),
                 Rarity = ItemRarity.Average,
-                Weigth = 2,
+                Weight = 2,
                 ItemType = ItemType.Tools
             };
             var przyboryDoPisania = new Item
@@ -1280,7 +1280,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Przybory do pisania",
                 Price = MoneyCalculator.GetUserMoney(10, 0, 0),
                 Rarity = ItemRarity.Low,
-                Weigth = 5,
+                Weight = 5,
                 ItemType = ItemType.Tools
             };
             var sztabkaMetalu = new Item
@@ -1288,7 +1288,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Sztabka metalu",
                 Price = MoneyCalculator.GetUserMoney(0, 25, 0),
                 Rarity = ItemRarity.Low,
-                Weigth = 20,
+                Weight = 20,
                 ItemType = ItemType.Tools
             };
             var wnyki = new Item
@@ -1296,7 +1296,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Wnyki",
                 Price = MoneyCalculator.GetUserMoney(2, 0, 0),
                 Rarity = ItemRarity.Average,
-                Weigth = 20,
+                Weight = 20,
                 ItemType = ItemType.Tools
             };
             var wytrychy = new Item
@@ -1304,7 +1304,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Wytrychy",
                 Price = MoneyCalculator.GetUserMoney(10, 0, 0),
                 Rarity = ItemRarity.Low,
-                Weigth = 20,
+                Weight = 20,
                 ItemType = ItemType.Tools
             };
             var zestawDoCharakteryzacji = new Item
@@ -1312,7 +1312,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Zestaw do charakteryzacji",
                 Price = MoneyCalculator.GetUserMoney(5, 0, 0),
                 Rarity = ItemRarity.Occasional,
-                Weigth = 10,
+                Weight = 10,
                 ItemType = ItemType.Tools
             };
             var wozek = new Item
@@ -1320,7 +1320,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Wózek",
                 Price = MoneyCalculator.GetUserMoney(50, 0, 0),
                 Rarity = ItemRarity.Average,
-                Weigth = 0,
+                Weight = 0,
                 ItemType = ItemType.Wehicles
             };
             var woz = new Item
@@ -1328,7 +1328,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Wóz",
                 Price = MoneyCalculator.GetUserMoney(90, 0, 0),
                 Rarity = ItemRarity.Average,
-                Weigth = 0,
+                Weight = 0,
                 ItemType = ItemType.Wehicles
             };
             var powoz = new Item
@@ -1336,7 +1336,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Powóz",
                 Price = MoneyCalculator.GetUserMoney(500, 0, 0),
                 Rarity = ItemRarity.Rare,
-                Weigth = 0,
+                Weight = 0,
                 ItemType = ItemType.Wehicles
             };
             var lodzRzeczna = new Item
@@ -1344,7 +1344,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Łódź rzeczna",
                 Price = MoneyCalculator.GetUserMoney(600, 0, 0),
                 Rarity = ItemRarity.Rare,
-                Weigth = 0,
+                Weight = 0,
                 ItemType = ItemType.Wehicles
             };
             var lodzWioslowa = new Item
@@ -1352,7 +1352,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Łódź wiosłowa",
                 Price = MoneyCalculator.GetUserMoney(90, 0, 0),
                 Rarity = ItemRarity.Low,
-                Weigth = 900,
+                Weight = 900,
                 ItemType = ItemType.Wehicles
             };
             var statek = new Item
@@ -1360,7 +1360,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Statek",
                 Price = MoneyCalculator.GetUserMoney(12000, 0, 0),
                 Rarity = ItemRarity.Occasional,
-                Weigth = 0,
+                Weight = 0,
                 ItemType = ItemType.Wehicles
             };
             var rumak = new Item
@@ -1368,7 +1368,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Rumak",
                 Price = MoneyCalculator.GetUserMoney(500, 0, 0),
                 Rarity = ItemRarity.Occasional,
-                Weigth = 0,
+                Weight = 0,
                 ItemType = ItemType.Wehicles
             };
             var lekkiKonBojowy = new Item
@@ -1376,7 +1376,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Lekki koń bojowy",
                 Price = MoneyCalculator.GetUserMoney(300, 0, 0),
                 Rarity = ItemRarity.Average,
-                Weigth = 0,
+                Weight = 0,
                 ItemType = ItemType.Wehicles
             };
             var kon = new Item
@@ -1384,7 +1384,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Koń",
                 Price = MoneyCalculator.GetUserMoney(80, 0, 0),
                 Rarity = ItemRarity.Average,
-                Weigth = 0,
+                Weight = 0,
                 ItemType = ItemType.Wehicles
             };
             var kuc = new Item
@@ -1392,7 +1392,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Kuc",
                 Price = MoneyCalculator.GetUserMoney(50, 0, 0),
                 Rarity = ItemRarity.Average,
-                Weigth = 0,
+                Weight = 0,
                 ItemType = ItemType.Wehicles
             };
             var siodlo = new Item
@@ -1400,7 +1400,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Siodło",
                 Price = MoneyCalculator.GetUserMoney(5, 0, 0),
                 Rarity = ItemRarity.Average,
-                Weigth = 50,
+                Weight = 50,
                 ItemType = ItemType.Wehicles
             };
             var uprzaz = new Item
@@ -1408,7 +1408,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Uprząż",
                 Price = MoneyCalculator.GetUserMoney(1, 0, 0),
                 Rarity = ItemRarity.Average,
-                Weigth = 20,
+                Weight = 20,
                 ItemType = ItemType.Wehicles
             };
             var golabPocztowy = new Item
@@ -1416,7 +1416,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Gołąb pocztowy",
                 Price = MoneyCalculator.GetUserMoney(1, 0, 0),
                 Rarity = ItemRarity.Low,
-                Weigth = 0,
+                Weight = 0,
                 ItemType = ItemType.Animals
             };
             var jastrzab = new Item
@@ -1424,7 +1424,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Jastrząb",
                 Price = MoneyCalculator.GetUserMoney(80, 0, 0),
                 Rarity = ItemRarity.Rare,
-                Weigth = 0,
+                Weight = 0,
                 ItemType = ItemType.Animals
             };
             var konJuczny = new Item
@@ -1432,7 +1432,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Koń juczny",
                 Price = MoneyCalculator.GetUserMoney(40, 0, 0),
                 Rarity = ItemRarity.High,
-                Weigth = 0,
+                Weight = 0,
                 ItemType = ItemType.Animals
             };
             var konPociagowyLubMul = new Item
@@ -1440,7 +1440,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Koń pociągowy lub muł",
                 Price = MoneyCalculator.GetUserMoney(25, 0, 0),
                 Rarity = ItemRarity.High,
-                Weigth = 0,
+                Weight = 0,
                 ItemType = ItemType.Animals
             };
             var kot = new Item
@@ -1448,7 +1448,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Kot",
                 Price = MoneyCalculator.GetUserMoney(0, 1, 0),
                 Rarity = ItemRarity.High,
-                Weigth = 0,
+                Weight = 0,
                 ItemType = ItemType.Animals
             };
             var koza = new Item
@@ -1456,7 +1456,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Koza",
                 Price = MoneyCalculator.GetUserMoney(2, 0, 0),
                 Rarity = ItemRarity.High,
-                Weigth = 0,
+                Weight = 0,
                 ItemType = ItemType.Animals
             };
             var krowa = new Item
@@ -1464,7 +1464,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Krowa",
                 Price = MoneyCalculator.GetUserMoney(10, 0, 0),
                 Rarity = ItemRarity.High,
-                Weigth = 0,
+                Weight = 0,
                 ItemType = ItemType.Animals
             };
             var kurczak = new Item
@@ -1472,7 +1472,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Kurczak",
                 Price = MoneyCalculator.GetUserMoney(0, 0, 5),
                 Rarity = ItemRarity.High,
-                Weigth = 0,
+                Weight = 0,
                 ItemType = ItemType.Animals
             };
             var owca = new Item
@@ -1480,7 +1480,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Owca",
                 Price = MoneyCalculator.GetUserMoney(2, 0, 0),
                 Rarity = ItemRarity.High,
-                Weigth = 0,
+                Weight = 0,
                 ItemType = ItemType.Animals
             };
             var pies = new Item
@@ -1488,7 +1488,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Pies (rasowy)",
                 Price = MoneyCalculator.GetUserMoney(3, 0, 0),
                 Rarity = ItemRarity.High,
-                Weigth = 0,
+                Weight = 0,
                 ItemType = ItemType.Animals
             };
             var piesBojowy = new Item
@@ -1496,7 +1496,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Pies bojowy",
                 Price = MoneyCalculator.GetUserMoney(30, 0, 0),
                 Rarity = ItemRarity.Rare,
-                Weigth = 0,
+                Weight = 0,
                 ItemType = ItemType.Animals
             };
             var swinia = new Item
@@ -1504,7 +1504,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Świnia",
                 Price = MoneyCalculator.GetUserMoney(3, 0, 0),
                 Rarity = ItemRarity.High,
-                Weigth = 0,
+                Weight = 0,
                 ItemType = ItemType.Animals
             };
             var wol = new Item
@@ -1512,7 +1512,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Wół",
                 Price = MoneyCalculator.GetUserMoney(30, 0, 0),
                 Rarity = ItemRarity.High,
-                Weigth = 0,
+                Weight = 0,
                 ItemType = ItemType.Animals
             };
             var darGrety = new Item
@@ -1520,7 +1520,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Dar Grety",
                 Price = MoneyCalculator.GetUserMoney(30, 0, 0),
                 Rarity = ItemRarity.Insignificant,
-                Weigth = 0,
+                Weight = 0,
                 ItemType = ItemType.Special
             };
             var miksturaLecznicza = new Item
@@ -1528,7 +1528,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Mikstura lecznicza",
                 Price = MoneyCalculator.GetUserMoney(5, 0, 0),
                 Rarity = ItemRarity.Low,
-                Weigth = 0,
+                Weight = 0,
                 ItemType = ItemType.Special
             };
             var piwoBugmana = new Item
@@ -1536,7 +1536,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Piwo Bugmana",
                 Price = MoneyCalculator.GetUserMoney(50, 0, 0),
                 Rarity = ItemRarity.Insignificant,
-                Weigth = 5,
+                Weight = 5,
                 ItemType = ItemType.Special
             };
             var czarnyJad = new Item
@@ -1544,7 +1544,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Czarny Jad",
                 Price = MoneyCalculator.GetUserMoney(30, 0, 0),
                 Rarity = ItemRarity.Insignificant,
-                Weigth = 0,
+                Weight = 0,
                 ItemType = ItemType.Special
             };
             var czarnyLotos = new Item
@@ -1552,7 +1552,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Czarny lotos",
                 Price = MoneyCalculator.GetUserMoney(20, 0, 0),
                 Rarity = ItemRarity.Insignificant,
-                Weigth = 0,
+                Weight = 0,
                 ItemType = ItemType.Special
             };
             var grzybkiSzalonegoKapelusznika = new Item
@@ -1560,7 +1560,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Grzybki Szalonego Kapelusznika",
                 Price = MoneyCalculator.GetUserMoney(30, 0, 0),
                 Rarity = ItemRarity.Insignificant,
-                Weigth = 0,
+                Weight = 0,
                 ItemType = ItemType.Special
             };
             var jadMantikory = new Item
@@ -1568,7 +1568,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Jad mantikory",
                 Price = MoneyCalculator.GetUserMoney(65, 0, 0),
                 Rarity = ItemRarity.Insignificant,
-                Weigth = 0,
+                Weight = 0,
                 ItemType = ItemType.Special
             };
             var korzenMandragory = new Item
@@ -1576,7 +1576,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Korzeń mandragory",
                 Price = MoneyCalculator.GetUserMoney(25, 0, 0),
                 Rarity = ItemRarity.Insignificant,
-                Weigth = 0,
+                Weight = 0,
                 ItemType = ItemType.Special
             };
             var sercoBoj = new Item
@@ -1584,7 +1584,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Sercobój",
                 Price = MoneyCalculator.GetUserMoney(800, 0, 0),
                 Rarity = ItemRarity.Insignificant,
-                Weigth = 0,
+                Weight = 0,
                 ItemType = ItemType.Special
             };
             var szkarlatnyCien = new Item
@@ -1592,7 +1592,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Szkarłatny Cień",
                 Price = MoneyCalculator.GetUserMoney(35, 0, 0),
                 Rarity = ItemRarity.Insignificant,
-                Weigth = 0,
+                Weight = 0,
                 ItemType = ItemType.Special
             };
             var slinaChimery = new Item
@@ -1600,7 +1600,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Ślina chimery",
                 Price = MoneyCalculator.GetUserMoney(150, 0, 0),
                 Rarity = ItemRarity.Insignificant,
-                Weigth = 0,
+                Weight = 0,
                 ItemType = ItemType.Special
             };
             var ksiegaWiedzyTajemnej = new Item
@@ -1608,7 +1608,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Księga wiedzy tajemnej",
                 Price = MoneyCalculator.GetUserMoney(500, 0, 0),
                 Rarity = ItemRarity.Insignificant,
-                Weigth = 0,
+                Weight = 0,
                 ItemType = ItemType.Special
             };
             var naparKojacy = new Item
@@ -1616,7 +1616,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Napar kojący",
                 Price = MoneyCalculator.GetUserMoney(5, 0, 0),
                 Rarity = ItemRarity.Average,
-                Weigth = 0,
+                Weight = 0,
                 ItemType = ItemType.Special
             };
             var odtrutki = new Item
@@ -1624,7 +1624,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Odtrutki",
                 Price = MoneyCalculator.GetUserMoney(3, 0, 0),
                 Rarity = ItemRarity.Occasional,
-                Weigth = 0,
+                Weight = 0,
                 ItemType = ItemType.Special
             };
             var relikwia = new Item
@@ -1632,7 +1632,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Relikwia",
                 Price = MoneyCalculator.GetUserMoney(5, 0, 0),
                 Rarity = ItemRarity.Occasional,
-                Weigth = 0,
+                Weight = 0,
                 ItemType = ItemType.Special
             };
             var talizmanSzczescia = new Item
@@ -1640,7 +1640,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Talizman szczęścia",
                 Price = MoneyCalculator.GetUserMoney(15, 0, 0),
                 Rarity = ItemRarity.Low,
-                Weigth = 0,
+                Weight = 0,
                 ItemType = ItemType.Special
             };
             var wodaSwiecona = new Item
@@ -1648,7 +1648,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Woda święcona",
                 Price = MoneyCalculator.GetUserMoney(10, 0, 0),
                 Rarity = ItemRarity.Occasional,
-                Weigth = 0,
+                Weight = 0,
                 ItemType = ItemType.Special
             };
             var dlonWeterana = new Item
@@ -1656,7 +1656,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Dłoń weterana",
                 Price = MoneyCalculator.GetUserMoney(60, 0, 0),
                 Rarity = ItemRarity.Rare,
-                Weigth = 0,
+                Weight = 0,
                 ItemType = ItemType.Special
             };
             var drewnianeZeby = new Item
@@ -1664,7 +1664,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Drewniane zęby",
                 Price = MoneyCalculator.GetUserMoney(0, 3, 0),
                 Rarity = ItemRarity.Low,
-                Weigth = 0,
+                Weight = 0,
                 ItemType = ItemType.Special
             };
             var kolczyk = new Item
@@ -1672,7 +1672,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Kolczyk",
                 Price = MoneyCalculator.GetUserMoney(0, 1, 0),
                 Rarity = ItemRarity.Average,
-                Weigth = 0,
+                Weight = 0,
                 ItemType = ItemType.Special
             };
             var opaskaNaOko = new Item
@@ -1680,7 +1680,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Opaska na oko",
                 Price = MoneyCalculator.GetUserMoney(0, 0, 6),
                 Rarity = ItemRarity.Average,
-                Weigth = 0,
+                Weight = 0,
                 ItemType = ItemType.Special
             };
             var plytkaCzaszkowa = new Item
@@ -1688,7 +1688,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Płytka czaszkowa",
                 Price = MoneyCalculator.GetUserMoney(0, 1, 0),
                 Rarity = ItemRarity.Low,
-                Weigth = 0,
+                Weight = 0,
                 ItemType = ItemType.Special
             };
             var pozlacanyNos = new Item
@@ -1696,7 +1696,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Pozłacany nos",
                 Price = MoneyCalculator.GetUserMoney(0, 6, 0),
                 Rarity = ItemRarity.Occasional,
-                Weigth = 0,
+                Weight = 0,
                 ItemType = ItemType.Special
             };
             var szklaneOko = new Item
@@ -1704,7 +1704,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Szklane oko",
                 Price = MoneyCalculator.GetUserMoney(0, 1, 0),
                 Rarity = ItemRarity.Low,
-                Weigth = 0,
+                Weight = 0,
                 ItemType = ItemType.Special
             };
             var sztucznaNoga = new Item
@@ -1712,7 +1712,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Sztuczna noga",
                 Price = MoneyCalculator.GetUserMoney(0, 6, 0),
                 Rarity = ItemRarity.Low,
-                Weigth = 0,
+                Weight = 0,
                 ItemType = ItemType.Special
             };
             var tatuaz = new Item
@@ -1720,7 +1720,7 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Tatuaż",
                 Price = MoneyCalculator.GetUserMoney(0, 3, 0),
                 Rarity = ItemRarity.Low,
-                Weigth = 0,
+                Weight = 0,
                 ItemType = ItemType.Special
             };
 

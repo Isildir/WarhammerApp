@@ -20559,98 +20559,98 @@ namespace WarhammerProfessionApp.Migrations
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 92,
-                columns: new[] { "ItemType", "Name", "Price", "Rarity", "Weigth" },
+                columns: new[] { "ItemType", "Name", "Price", "Rarity", "Weight" },
                 values: new object[] { (byte)7, "Bukłak", 96, (byte)6, 1 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 93,
-                columns: new[] { "Name", "Price", "Weigth" },
+                columns: new[] { "Name", "Price", "Weight" },
                 values: new object[] { "Flaszka", 48, 10 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 94,
-                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                columns: new[] { "Name", "Price", "Rarity", "Weight" },
                 values: new object[] { "Juki", 480, (byte)4, 5 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 95,
-                columns: new[] { "Name", "Price", "Weigth" },
+                columns: new[] { "Name", "Price", "Weight" },
                 values: new object[] { "Kuferek", 1200, 40 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 96,
-                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                columns: new[] { "Name", "Price", "Rarity", "Weight" },
                 values: new object[] { "Manierka metalowa", 480, (byte)3, 15 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 97,
-                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                columns: new[] { "Name", "Price", "Rarity", "Weight" },
                 values: new object[] { "Manierska skórzana", 180, (byte)4, 5 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 98,
-                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                columns: new[] { "Name", "Price", "Rarity", "Weight" },
                 values: new object[] { "Mieszek", 24, (byte)6, 1 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 99,
-                columns: new[] { "Name", "Price", "Weigth" },
+                columns: new[] { "Name", "Price", "Weight" },
                 values: new object[] { "Plecak", 360, 20 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 100,
-                columns: new[] { "Name", "Price", "Weigth" },
+                columns: new[] { "Name", "Price", "Weight" },
                 values: new object[] { "Sakiewka", 60, 1 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 101,
-                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                columns: new[] { "Name", "Price", "Rarity", "Weight" },
                 values: new object[] { "Tobołek", 480, (byte)4, 5 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 102,
-                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                columns: new[] { "Name", "Price", "Rarity", "Weight" },
                 values: new object[] { "Tuba na mapy/pergaminy", 240, (byte)3, 2 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 103,
-                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                columns: new[] { "Name", "Price", "Rarity", "Weight" },
                 values: new object[] { "Worek", 60, (byte)6, 7 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 104,
-                columns: new[] { "ItemType", "Name", "Price", "Weigth" },
+                columns: new[] { "ItemType", "Name", "Price", "Weight" },
                 values: new object[] { (byte)8, "Drewno na opał", 24, 5 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 105,
-                columns: new[] { "Name", "Price", "Weigth" },
+                columns: new[] { "Name", "Price", "Weight" },
                 values: new object[] { "Kaganek", 60, 20 });
 
             migrationBuilder.UpdateData(
@@ -20664,14 +20664,14 @@ namespace WarhammerProfessionApp.Migrations
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 107,
-                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                columns: new[] { "Name", "Price", "Rarity", "Weight" },
                 values: new object[] { "Latarnia sztormowa", 2880, (byte)3, 30 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 108,
-                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                columns: new[] { "Name", "Price", "Rarity", "Weight" },
                 values: new object[] { "Olej do latarni", 60, (byte)6, 5 });
 
             migrationBuilder.UpdateData(
@@ -20699,7 +20699,7 @@ namespace WarhammerProfessionApp.Migrations
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 112,
-                columns: new[] { "Name", "Price", "Weigth" },
+                columns: new[] { "Name", "Price", "Weight" },
                 values: new object[] { "Zapałka", 1, 0 });
 
             migrationBuilder.UpdateData(
@@ -20727,28 +20727,28 @@ namespace WarhammerProfessionApp.Migrations
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 116,
-                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                columns: new[] { "Name", "Price", "Rarity", "Weight" },
                 values: new object[] { "Drabina", 120, (byte)5, 50 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 117,
-                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                columns: new[] { "Name", "Price", "Rarity", "Weight" },
                 values: new object[] { "Hubka i krzesiwo", 360, (byte)6, 5 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 118,
-                columns: new[] { "Name", "Weigth" },
+                columns: new[] { "Name", "Weight" },
                 values: new object[] { "Imbryk", 10 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 119,
-                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                columns: new[] { "Name", "Price", "Rarity", "Weight" },
                 values: new object[] { "Instrument muzyczny", 1200, (byte)5, 5 });
 
             migrationBuilder.UpdateData(
@@ -20769,28 +20769,28 @@ namespace WarhammerProfessionApp.Migrations
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 122,
-                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                columns: new[] { "Name", "Price", "Rarity", "Weight" },
                 values: new object[] { "Koc", 300, (byte)6, 10 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 123,
-                columns: new[] { "Name", "Price", "Weigth" },
+                columns: new[] { "Name", "Price", "Weight" },
                 values: new object[] { "Kociołek", 240, 20 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 124,
-                columns: new[] { "Name", "Price", "Weigth" },
+                columns: new[] { "Name", "Price", "Weight" },
                 values: new object[] { "Kości do gry", 72, 0 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 125,
-                columns: new[] { "Name", "Price", "Weigth" },
+                columns: new[] { "Name", "Price", "Weight" },
                 values: new object[] { "Kufel drewniany", 120, 5 });
 
             migrationBuilder.UpdateData(
@@ -20804,14 +20804,14 @@ namespace WarhammerProfessionApp.Migrations
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 127,
-                columns: new[] { "Name", "Rarity", "Weigth" },
+                columns: new[] { "Name", "Rarity", "Weight" },
                 values: new object[] { "Lina", (byte)5, 50 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 128,
-                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                columns: new[] { "Name", "Price", "Rarity", "Weight" },
                 values: new object[] { "Luneta", 24000, (byte)2, 5 });
 
             migrationBuilder.UpdateData(
@@ -20825,14 +20825,14 @@ namespace WarhammerProfessionApp.Migrations
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 130,
-                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                columns: new[] { "Name", "Price", "Rarity", "Weight" },
                 values: new object[] { "Namiot", 180, (byte)5, 20 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 131,
-                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                columns: new[] { "Name", "Price", "Rarity", "Weight" },
                 values: new object[] { "Papier", 12, (byte)1, 0 });
 
             migrationBuilder.UpdateData(
@@ -20853,49 +20853,49 @@ namespace WarhammerProfessionApp.Migrations
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 134,
-                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                columns: new[] { "Name", "Price", "Rarity", "Weight" },
                 values: new object[] { "Symbol religijny", 240, (byte)5, 5 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 135,
-                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                columns: new[] { "Name", "Price", "Rarity", "Weight" },
                 values: new object[] { "Sztućce drewniane", 60, (byte)6, 2 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 136,
-                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                columns: new[] { "Name", "Price", "Rarity", "Weight" },
                 values: new object[] { "Sztućce metalowe", 720, (byte)5, 4 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 137,
-                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                columns: new[] { "Name", "Price", "Rarity", "Weight" },
                 values: new object[] { "Sztućce srebrne", 3600, (byte)3, 3 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 138,
-                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                columns: new[] { "Name", "Price", "Rarity", "Weight" },
                 values: new object[] { "Talia kart", 240, (byte)6, 1 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 139,
-                columns: new[] { "ItemType", "Name", "Price", "Weigth" },
+                columns: new[] { "ItemType", "Name", "Price", "Weight" },
                 values: new object[] { (byte)10, "Drąg, cena za metr", 12, 10 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 140,
-                columns: new[] { "Name", "Price", "Weigth" },
+                columns: new[] { "Name", "Price", "Weight" },
                 values: new object[] { "Drewniany klin", 8, 2 });
 
             migrationBuilder.UpdateData(
@@ -20909,7 +20909,7 @@ namespace WarhammerProfessionApp.Migrations
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 142,
-                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                columns: new[] { "Name", "Price", "Rarity", "Weight" },
                 values: new object[] { "Kajdany", 1200, (byte)4, 20 });
 
             migrationBuilder.UpdateData(
@@ -20923,35 +20923,35 @@ namespace WarhammerProfessionApp.Migrations
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 144,
-                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                columns: new[] { "Name", "Price", "Rarity", "Weight" },
                 values: new object[] { "Kołki", 60, (byte)5, 5 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 145,
-                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                columns: new[] { "Name", "Price", "Rarity", "Weight" },
                 values: new object[] { "Kotwiczka do wspinaczki", 960, (byte)4, 20 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 146,
-                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                columns: new[] { "Name", "Price", "Rarity", "Weight" },
                 values: new object[] { "Książka drukowana", 24000, (byte)1, 35 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 147,
-                columns: new[] { "Name", "Price", "Weigth" },
+                columns: new[] { "Name", "Price", "Weight" },
                 values: new object[] { "Książka ilustrowana", 84000, 50 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 148,
-                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                columns: new[] { "Name", "Price", "Rarity", "Weight" },
                 values: new object[] { "Liczydło", 2400, (byte)2, 5 });
 
             migrationBuilder.UpdateData(
@@ -20965,49 +20965,49 @@ namespace WarhammerProfessionApp.Migrations
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 150,
-                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                columns: new[] { "Name", "Price", "Rarity", "Weight" },
                 values: new object[] { "Łom", 120, (byte)5, 10 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 151,
-                columns: new[] { "Name", "Price", "Weigth" },
+                columns: new[] { "Name", "Price", "Weight" },
                 values: new object[] { "Łopata", 300, 20 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 152,
-                columns: new[] { "Name", "Price", "Weigth" },
+                columns: new[] { "Name", "Price", "Weight" },
                 values: new object[] { "Młot", 240, 40 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 153,
-                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                columns: new[] { "Name", "Price", "Rarity", "Weight" },
                 values: new object[] { "Narzędzia", 12000, (byte)4, 50 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 154,
-                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                columns: new[] { "Name", "Price", "Rarity", "Weight" },
                 values: new object[] { "Potrzask", 12, (byte)5, 2 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 155,
-                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                columns: new[] { "Name", "Price", "Rarity", "Weight" },
                 values: new object[] { "Przybory do pisania", 2400, (byte)4, 5 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 156,
-                columns: new[] { "Name", "Price", "Weigth" },
+                columns: new[] { "Name", "Price", "Weight" },
                 values: new object[] { "Sztabka metalu", 300, 20 });
 
             migrationBuilder.UpdateData(
@@ -21028,14 +21028,14 @@ namespace WarhammerProfessionApp.Migrations
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 159,
-                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                columns: new[] { "Name", "Price", "Rarity", "Weight" },
                 values: new object[] { "Zestaw do charakteryzacji", 1200, (byte)3, 10 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 160,
-                columns: new[] { "ItemType", "Name", "Price", "Rarity", "Weigth" },
+                columns: new[] { "ItemType", "Name", "Price", "Rarity", "Weight" },
                 values: new object[] { (byte)11, "Wózek", 12000, (byte)5, 0 });
 
             migrationBuilder.UpdateData(
@@ -21063,14 +21063,14 @@ namespace WarhammerProfessionApp.Migrations
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 164,
-                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                columns: new[] { "Name", "Price", "Rarity", "Weight" },
                 values: new object[] { "Łódź wiosłowa", 21600, (byte)4, 900 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 165,
-                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                columns: new[] { "Name", "Price", "Rarity", "Weight" },
                 values: new object[] { "Statek", 2880000, (byte)3, 0 });
 
             migrationBuilder.UpdateData(
@@ -21105,21 +21105,21 @@ namespace WarhammerProfessionApp.Migrations
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 170,
-                columns: new[] { "Name", "Price", "Weigth" },
+                columns: new[] { "Name", "Price", "Weight" },
                 values: new object[] { "Siodło", 1200, 50 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 171,
-                columns: new[] { "Name", "Price", "Weigth" },
+                columns: new[] { "Name", "Price", "Weight" },
                 values: new object[] { "Uprząż", 240, 20 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 172,
-                columns: new[] { "ItemType", "Name", "Rarity", "Weigth" },
+                columns: new[] { "ItemType", "Name", "Rarity", "Weight" },
                 values: new object[] { (byte)12, "Gołąb pocztowy", (byte)4, 0 });
 
             migrationBuilder.UpdateData(
@@ -21224,14 +21224,14 @@ namespace WarhammerProfessionApp.Migrations
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 187,
-                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                columns: new[] { "Name", "Price", "Rarity", "Weight" },
                 values: new object[] { "Piwo Bugmana", 12000, (byte)1, 5 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 188,
-                columns: new[] { "Name", "Price", "Weigth" },
+                columns: new[] { "Name", "Price", "Weight" },
                 values: new object[] { "Czarny Jad", 7200, 0 });
 
             migrationBuilder.UpdateData(
@@ -21409,98 +21409,98 @@ namespace WarhammerProfessionApp.Migrations
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 92,
-                columns: new[] { "ItemType", "Name", "Price", "Rarity", "Weigth" },
+                columns: new[] { "ItemType", "Name", "Price", "Rarity", "Weight" },
                 values: new object[] { (byte)6, "Wino szlacheckie", 120, (byte)4, 5 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 93,
-                columns: new[] { "Name", "Price", "Weigth" },
+                columns: new[] { "Name", "Price", "Weight" },
                 values: new object[] { "Bukłak", 96, 1 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 94,
-                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                columns: new[] { "Name", "Price", "Rarity", "Weight" },
                 values: new object[] { "Flaszka", 48, (byte)6, 10 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 95,
-                columns: new[] { "Name", "Price", "Weigth" },
+                columns: new[] { "Name", "Price", "Weight" },
                 values: new object[] { "Juki", 480, 5 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 96,
-                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                columns: new[] { "Name", "Price", "Rarity", "Weight" },
                 values: new object[] { "Kuferek", 1200, (byte)4, 40 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 97,
-                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                columns: new[] { "Name", "Price", "Rarity", "Weight" },
                 values: new object[] { "Manierka metalowa", 480, (byte)3, 15 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 98,
-                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                columns: new[] { "Name", "Price", "Rarity", "Weight" },
                 values: new object[] { "Manierska skórzana", 180, (byte)4, 5 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 99,
-                columns: new[] { "Name", "Price", "Weigth" },
+                columns: new[] { "Name", "Price", "Weight" },
                 values: new object[] { "Mieszek", 24, 1 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 100,
-                columns: new[] { "Name", "Price", "Weigth" },
+                columns: new[] { "Name", "Price", "Weight" },
                 values: new object[] { "Plecak", 360, 20 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 101,
-                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                columns: new[] { "Name", "Price", "Rarity", "Weight" },
                 values: new object[] { "Sakiewka", 60, (byte)6, 1 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 102,
-                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                columns: new[] { "Name", "Price", "Rarity", "Weight" },
                 values: new object[] { "Tobołek", 480, (byte)4, 5 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 103,
-                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                columns: new[] { "Name", "Price", "Rarity", "Weight" },
                 values: new object[] { "Tuba na mapy/pergaminy", 240, (byte)3, 2 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 104,
-                columns: new[] { "ItemType", "Name", "Price", "Weigth" },
+                columns: new[] { "ItemType", "Name", "Price", "Weight" },
                 values: new object[] { (byte)7, "Worek", 60, 7 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 105,
-                columns: new[] { "Name", "Price", "Weigth" },
+                columns: new[] { "Name", "Price", "Weight" },
                 values: new object[] { "Drewno na opał", 24, 5 });
 
             migrationBuilder.UpdateData(
@@ -21514,14 +21514,14 @@ namespace WarhammerProfessionApp.Migrations
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 107,
-                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                columns: new[] { "Name", "Price", "Rarity", "Weight" },
                 values: new object[] { "Latarnia", 240, (byte)4, 20 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 108,
-                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                columns: new[] { "Name", "Price", "Rarity", "Weight" },
                 values: new object[] { "Latarnia sztormowa", 2880, (byte)3, 30 });
 
             migrationBuilder.UpdateData(
@@ -21549,7 +21549,7 @@ namespace WarhammerProfessionApp.Migrations
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 112,
-                columns: new[] { "Name", "Price", "Weigth" },
+                columns: new[] { "Name", "Price", "Weight" },
                 values: new object[] { "Świeczka woskowa", 72, 5 });
 
             migrationBuilder.UpdateData(
@@ -21577,28 +21577,28 @@ namespace WarhammerProfessionApp.Migrations
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 116,
-                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                columns: new[] { "Name", "Price", "Rarity", "Weight" },
                 values: new object[] { "Szyling", 12, (byte)6, 0 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 117,
-                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                columns: new[] { "Name", "Price", "Rarity", "Weight" },
                 values: new object[] { "Drabina", 120, (byte)5, 50 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 118,
-                columns: new[] { "Name", "Weigth" },
+                columns: new[] { "Name", "Weight" },
                 values: new object[] { "Hubka i krzesiwo", 5 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 119,
-                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                columns: new[] { "Name", "Price", "Rarity", "Weight" },
                 values: new object[] { "Imbryk", 360, (byte)6, 10 });
 
             migrationBuilder.UpdateData(
@@ -21619,28 +21619,28 @@ namespace WarhammerProfessionApp.Migrations
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 122,
-                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                columns: new[] { "Name", "Price", "Rarity", "Weight" },
                 values: new object[] { "Kłódka zwykłej jakości", 240, (byte)5, 5 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 123,
-                columns: new[] { "Name", "Price", "Weigth" },
+                columns: new[] { "Name", "Price", "Weight" },
                 values: new object[] { "Koc", 300, 10 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 124,
-                columns: new[] { "Name", "Price", "Weigth" },
+                columns: new[] { "Name", "Price", "Weight" },
                 values: new object[] { "Kociołek", 240, 20 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 125,
-                columns: new[] { "Name", "Price", "Weigth" },
+                columns: new[] { "Name", "Price", "Weight" },
                 values: new object[] { "Kości do gry", 72, 0 });
 
             migrationBuilder.UpdateData(
@@ -21654,14 +21654,14 @@ namespace WarhammerProfessionApp.Migrations
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 127,
-                columns: new[] { "Name", "Rarity", "Weigth" },
+                columns: new[] { "Name", "Rarity", "Weight" },
                 values: new object[] { "Kufel ze szkła barwionego", (byte)6, 5 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 128,
-                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                columns: new[] { "Name", "Price", "Rarity", "Weight" },
                 values: new object[] { "Lina", 240, (byte)5, 50 });
 
             migrationBuilder.UpdateData(
@@ -21675,14 +21675,14 @@ namespace WarhammerProfessionApp.Migrations
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 130,
-                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                columns: new[] { "Name", "Price", "Rarity", "Weight" },
                 values: new object[] { "Lustro", 2400, (byte)2, 5 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 131,
-                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                columns: new[] { "Name", "Price", "Rarity", "Weight" },
                 values: new object[] { "Namiot", 180, (byte)5, 20 });
 
             migrationBuilder.UpdateData(
@@ -21703,49 +21703,49 @@ namespace WarhammerProfessionApp.Migrations
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 134,
-                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                columns: new[] { "Name", "Price", "Rarity", "Weight" },
                 values: new object[] { "Pergamin", 60, (byte)2, 0 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 135,
-                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                columns: new[] { "Name", "Price", "Rarity", "Weight" },
                 values: new object[] { "Symbol religijny", 240, (byte)5, 5 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 136,
-                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                columns: new[] { "Name", "Price", "Rarity", "Weight" },
                 values: new object[] { "Sztućce drewniane", 60, (byte)6, 2 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 137,
-                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                columns: new[] { "Name", "Price", "Rarity", "Weight" },
                 values: new object[] { "Sztućce metalowe", 720, (byte)5, 4 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 138,
-                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                columns: new[] { "Name", "Price", "Rarity", "Weight" },
                 values: new object[] { "Sztućce srebrne", 3600, (byte)3, 3 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 139,
-                columns: new[] { "ItemType", "Name", "Price", "Weigth" },
+                columns: new[] { "ItemType", "Name", "Price", "Weight" },
                 values: new object[] { (byte)9, "Talia kart", 240, 1 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 140,
-                columns: new[] { "Name", "Price", "Weigth" },
+                columns: new[] { "Name", "Price", "Weight" },
                 values: new object[] { "Drąg, cena za metr", 12, 10 });
 
             migrationBuilder.UpdateData(
@@ -21759,7 +21759,7 @@ namespace WarhammerProfessionApp.Migrations
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 142,
-                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                columns: new[] { "Name", "Price", "Rarity", "Weight" },
                 values: new object[] { "Haczyk na ryby i żyłka", 36, (byte)5, 2 });
 
             migrationBuilder.UpdateData(
@@ -21773,35 +21773,35 @@ namespace WarhammerProfessionApp.Migrations
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 144,
-                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                columns: new[] { "Name", "Price", "Rarity", "Weight" },
                 values: new object[] { "Kilof", 300, (byte)4, 20 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 145,
-                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                columns: new[] { "Name", "Price", "Rarity", "Weight" },
                 values: new object[] { "Kołki", 60, (byte)5, 5 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 146,
-                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                columns: new[] { "Name", "Price", "Rarity", "Weight" },
                 values: new object[] { "Kotwiczka do wspinaczki", 960, (byte)4, 20 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 147,
-                columns: new[] { "Name", "Price", "Weigth" },
+                columns: new[] { "Name", "Price", "Weight" },
                 values: new object[] { "Książka drukowana", 24000, 35 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 148,
-                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                columns: new[] { "Name", "Price", "Rarity", "Weight" },
                 values: new object[] { "Książka ilustrowana", 84000, (byte)1, 50 });
 
             migrationBuilder.UpdateData(
@@ -21815,49 +21815,49 @@ namespace WarhammerProfessionApp.Migrations
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 150,
-                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                columns: new[] { "Name", "Price", "Rarity", "Weight" },
                 values: new object[] { "Łańcuch, cena za metr", 360, (byte)2, 5 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 151,
-                columns: new[] { "Name", "Price", "Weigth" },
+                columns: new[] { "Name", "Price", "Weight" },
                 values: new object[] { "Łom", 120, 10 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 152,
-                columns: new[] { "Name", "Price", "Weigth" },
+                columns: new[] { "Name", "Price", "Weight" },
                 values: new object[] { "Łopata", 300, 20 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 153,
-                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                columns: new[] { "Name", "Price", "Rarity", "Weight" },
                 values: new object[] { "Młot", 240, (byte)5, 40 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 154,
-                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                columns: new[] { "Name", "Price", "Rarity", "Weight" },
                 values: new object[] { "Narzędzia", 12000, (byte)4, 50 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 155,
-                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                columns: new[] { "Name", "Price", "Rarity", "Weight" },
                 values: new object[] { "Potrzask", 12, (byte)5, 2 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 156,
-                columns: new[] { "Name", "Price", "Weigth" },
+                columns: new[] { "Name", "Price", "Weight" },
                 values: new object[] { "Przybory do pisania", 2400, 5 });
 
             migrationBuilder.UpdateData(
@@ -21878,14 +21878,14 @@ namespace WarhammerProfessionApp.Migrations
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 159,
-                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                columns: new[] { "Name", "Price", "Rarity", "Weight" },
                 values: new object[] { "Wytrychy", 2400, (byte)4, 20 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 160,
-                columns: new[] { "ItemType", "Name", "Price", "Rarity", "Weigth" },
+                columns: new[] { "ItemType", "Name", "Price", "Rarity", "Weight" },
                 values: new object[] { (byte)10, "Zestaw do charakteryzacji", 1200, (byte)3, 10 });
 
             migrationBuilder.UpdateData(
@@ -21913,14 +21913,14 @@ namespace WarhammerProfessionApp.Migrations
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 164,
-                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                columns: new[] { "Name", "Price", "Rarity", "Weight" },
                 values: new object[] { "Łódź rzeczna", 144000, (byte)2, 0 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 165,
-                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                columns: new[] { "Name", "Price", "Rarity", "Weight" },
                 values: new object[] { "Łódź wiosłowa", 21600, (byte)4, 900 });
 
             migrationBuilder.UpdateData(
@@ -21955,21 +21955,21 @@ namespace WarhammerProfessionApp.Migrations
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 170,
-                columns: new[] { "Name", "Price", "Weigth" },
+                columns: new[] { "Name", "Price", "Weight" },
                 values: new object[] { "Kuc", 12000, 0 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 171,
-                columns: new[] { "Name", "Price", "Weigth" },
+                columns: new[] { "Name", "Price", "Weight" },
                 values: new object[] { "Siodło", 1200, 50 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 172,
-                columns: new[] { "ItemType", "Name", "Rarity", "Weigth" },
+                columns: new[] { "ItemType", "Name", "Rarity", "Weight" },
                 values: new object[] { (byte)11, "Uprząż", (byte)5, 20 });
 
             migrationBuilder.UpdateData(
@@ -22074,14 +22074,14 @@ namespace WarhammerProfessionApp.Migrations
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 187,
-                columns: new[] { "Name", "Price", "Rarity", "Weigth" },
+                columns: new[] { "Name", "Price", "Rarity", "Weight" },
                 values: new object[] { "Mikstura lecznicza", 1200, (byte)4, 0 });
 
             migrationBuilder.UpdateData(
                 table: "Items",
                 keyColumn: "Id",
                 keyValue: 188,
-                columns: new[] { "Name", "Price", "Weigth" },
+                columns: new[] { "Name", "Price", "Weight" },
                 values: new object[] { "Piwo Bugmana", 12000, 5 });
 
             migrationBuilder.UpdateData(
@@ -22240,7 +22240,7 @@ namespace WarhammerProfessionApp.Migrations
 
             migrationBuilder.InsertData(
                 table: "Items",
-                columns: new[] { "Id", "Description", "ItemType", "Name", "Price", "Rarity", "Weigth" },
+                columns: new[] { "Id", "Description", "ItemType", "Name", "Price", "Rarity", "Weight" },
                 values: new object[] { 211, null, (byte)13, "Tatuaż", 36, (byte)4, 0 });
 
             migrationBuilder.InsertData(

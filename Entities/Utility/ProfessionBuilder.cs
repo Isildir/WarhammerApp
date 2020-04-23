@@ -9,6 +9,22 @@ namespace WarhammerProfessionApp.Entities.Models.Utility
 {
     public class ProfessionBuilder
     {
+        private readonly List<ProfessionAbilities> abilityWrappers = new List<ProfessionAbilities>();
+
+        private readonly List<ProfessionItems> itemWrappers = new List<ProfessionItems>();
+
+        private readonly List<ProfessionAbility> professionAbilities = new List<ProfessionAbility>();
+
+        private readonly List<ProfessionItem> professionItems = new List<ProfessionItem>();
+
+        private readonly List<ProfessionSkill> professionSkills = new List<ProfessionSkill>();
+
+        private readonly List<ProfessionStatistic> professionStatistics = new List<ProfessionStatistic>();
+
+        private readonly List<ProfessionSkills> skillWrappers = new List<ProfessionSkills>();
+
+        private Profession profession;
+
         public ProfessionBuilder()
         {
             profession = new Profession();
@@ -131,14 +147,5 @@ namespace WarhammerProfessionApp.Entities.Models.Utility
 
             return this;
         }
-
-        private readonly List<ProfessionAbilities> abilityWrappers = new List<ProfessionAbilities>();
-        private readonly List<ProfessionItems> itemWrappers = new List<ProfessionItems>();
-        private readonly List<ProfessionAbility> professionAbilities = new List<ProfessionAbility>();
-        private readonly List<ProfessionItem> professionItems = new List<ProfessionItem>();
-        private readonly List<ProfessionSkill> professionSkills = new List<ProfessionSkill>();
-        private readonly List<ProfessionStatistic> professionStatistics = new List<ProfessionStatistic>();
-        private readonly List<ProfessionSkills> skillWrappers = new List<ProfessionSkills>();
-        private Profession profession;
     }
 }
