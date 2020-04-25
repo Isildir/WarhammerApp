@@ -10,8 +10,8 @@ using WarhammerProfessionApp.Entities;
 namespace WarhammerProfessionApp.Migrations
 {
     [DbContext(typeof(ProfessionsContext))]
-    [Migration("20200403204123_SchemaInitialization")]
-    partial class SchemaInitialization
+    [Migration("20200425210645_InitialSchemaMigration")]
+    partial class InitialSchemaMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -50,17 +50,49 @@ namespace WarhammerProfessionApp.Migrations
                     b.ToTable("Abilities");
                 });
 
-            modelBuilder.Entity("WarhammerProfessionApp.Entities.Models.AdditionalCharacterValue", b =>
+            modelBuilder.Entity("WarhammerProfessionApp.Entities.Models.AdditionalCharacterItem", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
+                        .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("CharacterId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Value")
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Weight")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CharacterId");
+
+                    b.ToTable("AdditionalCharacterItem");
+                });
+
+            modelBuilder.Entity("WarhammerProfessionApp.Entities.Models.AdditionalCharacterValue", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CharacterId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Cost")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -118,9 +150,19 @@ namespace WarhammerProfessionApp.Migrations
                     b.Property<int>("AbilityId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("DictionaryValueId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProfessionAbilitiesId")
+                        .HasColumnType("int");
+
                     b.HasKey("CharacterId", "AbilityId");
 
                     b.HasIndex("AbilityId");
+
+                    b.HasIndex("DictionaryValueId");
+
+                    b.HasIndex("ProfessionAbilitiesId");
 
                     b.ToTable("CharacterAbility");
                 });
@@ -169,10 +211,17 @@ namespace WarhammerProfessionApp.Migrations
                     b.Property<int>("SkillId")
                         .HasColumnType("int");
 
-                    b.Property<byte>("Level")
-                        .HasColumnType("tinyint");
+                    b.Property<int?>("DictionaryValueId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProfessionSkillsId")
+                        .HasColumnType("int");
 
                     b.HasKey("CharacterId", "SkillId");
+
+                    b.HasIndex("DictionaryValueId");
+
+                    b.HasIndex("ProfessionSkillsId");
 
                     b.HasIndex("SkillId");
 
@@ -184,8 +233,8 @@ namespace WarhammerProfessionApp.Migrations
                     b.Property<int>("CharacterId")
                         .HasColumnType("int");
 
-                    b.Property<byte>("StatisticId")
-                        .HasColumnType("tinyint");
+                    b.Property<short>("StatisticId")
+                        .HasColumnType("smallint");
 
                     b.Property<int>("BaseValue")
                         .HasColumnType("int");
@@ -200,17 +249,35 @@ namespace WarhammerProfessionApp.Migrations
                     b.ToTable("CharacterStatistic");
                 });
 
-            modelBuilder.Entity("WarhammerProfessionApp.Entities.Models.ExperienceAdditionalCharacterValue", b =>
+            modelBuilder.Entity("WarhammerProfessionApp.Entities.Models.DictionaryDefinition", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
+                        .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("CharacterId")
-                        .HasColumnType("int");
+                    b.Property<bool>("CanBeDeleted")
+                        .HasColumnType("bit");
 
-                    b.Property<int>("Cost")
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Dictionaries");
+                });
+
+            modelBuilder.Entity("WarhammerProfessionApp.Entities.Models.DictionaryValue", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("CanBeDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("DefinitionId")
                         .HasColumnType("int");
 
                     b.Property<string>("Value")
@@ -218,9 +285,39 @@ namespace WarhammerProfessionApp.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CharacterId");
+                    b.HasIndex("DefinitionId");
 
-                    b.ToTable("ExperienceAdditionalCharacterValue");
+                    b.ToTable("DictionaryValue");
+                });
+
+            modelBuilder.Entity("WarhammerProfessionApp.Entities.Models.DictionaryValueProfessionAbility", b =>
+                {
+                    b.Property<int>("DictionaryValueId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProfessionAbilityId")
+                        .HasColumnType("int");
+
+                    b.HasKey("DictionaryValueId", "ProfessionAbilityId");
+
+                    b.HasIndex("ProfessionAbilityId");
+
+                    b.ToTable("DictionaryValueProfessionAbility");
+                });
+
+            modelBuilder.Entity("WarhammerProfessionApp.Entities.Models.DictionaryValueProfessionSkill", b =>
+                {
+                    b.Property<int>("DictionaryValueId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProfessionSkillId")
+                        .HasColumnType("int");
+
+                    b.HasKey("DictionaryValueId", "ProfessionSkillId");
+
+                    b.HasIndex("ProfessionSkillId");
+
+                    b.ToTable("DictionaryValueProfessionSkill");
                 });
 
             modelBuilder.Entity("WarhammerProfessionApp.Entities.Models.Image", b =>
@@ -289,9 +386,6 @@ namespace WarhammerProfessionApp.Migrations
                     b.Property<int>("ProfessionId")
                         .HasColumnType("int");
 
-                    b.Property<byte>("Quantity")
-                        .HasColumnType("tinyint");
-
                     b.HasKey("Id");
 
                     b.HasIndex("ProfessionId");
@@ -301,15 +395,30 @@ namespace WarhammerProfessionApp.Migrations
 
             modelBuilder.Entity("WarhammerProfessionApp.Entities.Models.ManyToMany.ProfessionAbility", b =>
                 {
-                    b.Property<int>("ProfessionAbilitiesId")
-                        .HasColumnType("int");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("AbilityId")
                         .HasColumnType("int");
 
-                    b.HasKey("ProfessionAbilitiesId", "AbilityId");
+                    b.Property<bool?>("AllowAllValues")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("ProfessionAbilitiesId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ProfessionAbilitiesId1")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
 
                     b.HasIndex("AbilityId");
+
+                    b.HasIndex("ProfessionAbilitiesId");
+
+                    b.HasIndex("ProfessionAbilitiesId1");
 
                     b.ToTable("ProfessionAbility");
                 });
@@ -342,9 +451,6 @@ namespace WarhammerProfessionApp.Migrations
                     b.Property<int>("ProfessionId")
                         .HasColumnType("int");
 
-                    b.Property<byte>("Quantity")
-                        .HasColumnType("tinyint");
-
                     b.HasKey("Id");
 
                     b.HasIndex("ProfessionId");
@@ -369,13 +475,23 @@ namespace WarhammerProfessionApp.Migrations
 
             modelBuilder.Entity("WarhammerProfessionApp.Entities.Models.ManyToMany.ProfessionSkill", b =>
                 {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool?>("AllowAllValues")
+                        .HasColumnType("bit");
+
                     b.Property<int>("ProfessionSkillsId")
                         .HasColumnType("int");
 
                     b.Property<int>("SkillId")
                         .HasColumnType("int");
 
-                    b.HasKey("ProfessionSkillsId", "SkillId");
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProfessionSkillsId");
 
                     b.HasIndex("SkillId");
 
@@ -391,9 +507,6 @@ namespace WarhammerProfessionApp.Migrations
 
                     b.Property<int>("ProfessionId")
                         .HasColumnType("int");
-
-                    b.Property<byte>("Quantity")
-                        .HasColumnType("tinyint");
 
                     b.HasKey("Id");
 
@@ -413,38 +526,17 @@ namespace WarhammerProfessionApp.Migrations
                         .HasColumnType("nvarchar(150)")
                         .HasMaxLength(150);
 
-                    b.Property<byte>("Agility")
-                        .HasColumnType("tinyint");
-
-                    b.Property<byte>("Attacks")
-                        .HasColumnType("tinyint");
-
-                    b.Property<byte>("CloseCombat")
-                        .HasColumnType("tinyint");
-
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(250)")
                         .HasMaxLength(250);
 
-                    b.Property<byte>("Hitpoints")
-                        .HasColumnType("tinyint");
-
                     b.Property<int?>("ImageId")
                         .HasColumnType("int");
-
-                    b.Property<byte>("Inteligence")
-                        .HasColumnType("tinyint");
-
-                    b.Property<byte>("Magic")
-                        .HasColumnType("tinyint");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
-
-                    b.Property<byte>("Polish")
-                        .HasColumnType("tinyint");
 
                     b.Property<byte>("ProfessionLevel")
                         .HasColumnType("tinyint");
@@ -452,26 +544,29 @@ namespace WarhammerProfessionApp.Migrations
                     b.Property<byte>("ProfessionRaceAllowed")
                         .HasColumnType("tinyint");
 
-                    b.Property<byte>("Resistance")
-                        .HasColumnType("tinyint");
-
-                    b.Property<byte>("Shooting")
-                        .HasColumnType("tinyint");
-
-                    b.Property<byte>("Speed")
-                        .HasColumnType("tinyint");
-
-                    b.Property<byte>("Stamina")
-                        .HasColumnType("tinyint");
-
-                    b.Property<byte>("Willpower")
-                        .HasColumnType("tinyint");
-
                     b.HasKey("Id");
 
                     b.HasIndex("ImageId");
 
                     b.ToTable("Professions");
+                });
+
+            modelBuilder.Entity("WarhammerProfessionApp.Entities.Models.ProfessionStatistic", b =>
+                {
+                    b.Property<int>("ProfessionId")
+                        .HasColumnType("int");
+
+                    b.Property<short>("StatisticId")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte>("Value")
+                        .HasColumnType("tinyint");
+
+                    b.HasKey("ProfessionId", "StatisticId");
+
+                    b.HasIndex("StatisticId");
+
+                    b.ToTable("ProfessionStatistic");
                 });
 
             modelBuilder.Entity("WarhammerProfessionApp.Entities.Models.Skill", b =>
@@ -483,6 +578,9 @@ namespace WarhammerProfessionApp.Migrations
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("DictionaryId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -497,13 +595,17 @@ namespace WarhammerProfessionApp.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("DictionaryId");
+
                     b.ToTable("Skills");
                 });
 
             modelBuilder.Entity("WarhammerProfessionApp.Entities.Models.Statistic", b =>
                 {
-                    b.Property<byte>("Id")
-                        .HasColumnType("tinyint");
+                    b.Property<short>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("smallint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<bool>("IsBasicValue")
                         .HasColumnType("bit");
@@ -550,6 +652,15 @@ namespace WarhammerProfessionApp.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("WarhammerProfessionApp.Entities.Models.AdditionalCharacterItem", b =>
+                {
+                    b.HasOne("WarhammerProfessionApp.Entities.Models.Character", "Character")
+                        .WithMany("AdditionalItems")
+                        .HasForeignKey("CharacterId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("WarhammerProfessionApp.Entities.Models.AdditionalCharacterValue", b =>
                 {
                     b.HasOne("WarhammerProfessionApp.Entities.Models.Character", "Character")
@@ -583,6 +694,16 @@ namespace WarhammerProfessionApp.Migrations
                     b.HasOne("WarhammerProfessionApp.Entities.Models.Character", "Character")
                         .WithMany("Abilities")
                         .HasForeignKey("CharacterId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("WarhammerProfessionApp.Entities.Models.DictionaryValue", "DictionaryValue")
+                        .WithMany("CharacterAbilities")
+                        .HasForeignKey("DictionaryValueId");
+
+                    b.HasOne("WarhammerProfessionApp.Entities.Models.ManyToMany.ProfessionAbilities", "ProfessionAbilities")
+                        .WithMany()
+                        .HasForeignKey("ProfessionAbilitiesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -625,6 +746,16 @@ namespace WarhammerProfessionApp.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("WarhammerProfessionApp.Entities.Models.DictionaryValue", "DictionaryValue")
+                        .WithMany("CharacterSkills")
+                        .HasForeignKey("DictionaryValueId");
+
+                    b.HasOne("WarhammerProfessionApp.Entities.Models.ManyToMany.ProfessionSkills", "ProfessionSkills")
+                        .WithMany("Characters")
+                        .HasForeignKey("ProfessionSkillsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("WarhammerProfessionApp.Entities.Models.Skill", "Skill")
                         .WithMany("Characters")
                         .HasForeignKey("SkillId")
@@ -647,11 +778,41 @@ namespace WarhammerProfessionApp.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("WarhammerProfessionApp.Entities.Models.ExperienceAdditionalCharacterValue", b =>
+            modelBuilder.Entity("WarhammerProfessionApp.Entities.Models.DictionaryValue", b =>
                 {
-                    b.HasOne("WarhammerProfessionApp.Entities.Models.Character", "Character")
-                        .WithMany("AdditionalExcerienceCostValues")
-                        .HasForeignKey("CharacterId")
+                    b.HasOne("WarhammerProfessionApp.Entities.Models.DictionaryDefinition", "Definition")
+                        .WithMany("Values")
+                        .HasForeignKey("DefinitionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("WarhammerProfessionApp.Entities.Models.DictionaryValueProfessionAbility", b =>
+                {
+                    b.HasOne("WarhammerProfessionApp.Entities.Models.DictionaryValue", "DictionaryValue")
+                        .WithMany("Abilities")
+                        .HasForeignKey("DictionaryValueId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("WarhammerProfessionApp.Entities.Models.ManyToMany.ProfessionAbility", "ProfessionAbility")
+                        .WithMany("AllowedValues")
+                        .HasForeignKey("ProfessionAbilityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("WarhammerProfessionApp.Entities.Models.DictionaryValueProfessionSkill", b =>
+                {
+                    b.HasOne("WarhammerProfessionApp.Entities.Models.DictionaryValue", "DictionaryValue")
+                        .WithMany("Skills")
+                        .HasForeignKey("DictionaryValueId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("WarhammerProfessionApp.Entities.Models.ManyToMany.ProfessionSkill", "ProfessionSkill")
+                        .WithMany("AllowedValues")
+                        .HasForeignKey("ProfessionSkillId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -678,6 +839,10 @@ namespace WarhammerProfessionApp.Migrations
                         .HasForeignKey("ProfessionAbilitiesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("WarhammerProfessionApp.Entities.Models.ManyToMany.ProfessionAbilities", null)
+                        .WithMany("Characters")
+                        .HasForeignKey("ProfessionAbilitiesId1");
                 });
 
             modelBuilder.Entity("WarhammerProfessionApp.Entities.Models.ManyToMany.ProfessionItem", b =>
@@ -748,6 +913,28 @@ namespace WarhammerProfessionApp.Migrations
                     b.HasOne("WarhammerProfessionApp.Entities.Models.Image", "Image")
                         .WithMany("Professions")
                         .HasForeignKey("ImageId");
+                });
+
+            modelBuilder.Entity("WarhammerProfessionApp.Entities.Models.ProfessionStatistic", b =>
+                {
+                    b.HasOne("WarhammerProfessionApp.Entities.Models.Profession", "Profession")
+                        .WithMany("Statistics")
+                        .HasForeignKey("ProfessionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("WarhammerProfessionApp.Entities.Models.Statistic", "Statistic")
+                        .WithMany("Professions")
+                        .HasForeignKey("StatisticId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("WarhammerProfessionApp.Entities.Models.Skill", b =>
+                {
+                    b.HasOne("WarhammerProfessionApp.Entities.Models.DictionaryDefinition", "Dictionary")
+                        .WithMany("Skills")
+                        .HasForeignKey("DictionaryId");
                 });
 #pragma warning restore 612, 618
         }

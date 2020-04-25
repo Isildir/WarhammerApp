@@ -79,9 +79,9 @@ namespace WarhammerProfessionApp.Controllers
                 Willpower = entity.Statistics.First(a => a.Statistic.Type == StatisticType.Willpower).Value,
                 ProfessionLevel = entity.ProfessionLevel.ToString(),
                 ProfessionRaceAllowed = entity.ProfessionRaceAllowed.ToString(),
-                Abilities = string.Join(", ", entity.Abilities.Select(b => GetFormattedElement(b.Quantity, b.Abilities.Select(c => c.Ability.Name).ToList()))),
-                Skills = string.Join(", ", entity.Skills.Select(b => GetFormattedElement(b.Quantity, b.Skills.Select(c => c.Skill.Name).ToList()))),
-                Equipment = string.Join(", ", entity.Equipment.Select(b => GetFormattedElement(b.Quantity, b.Items.Select(c => new Tuple<string, int>(c.Item.Name, c.Quantity)).ToList()))),
+                Abilities = string.Join(", ", entity.Abilities.Select(b => GetFormattedElement(b.Abilities.Select(c => c.Ability.Name).ToList()))),
+                Skills = string.Join(", ", entity.Skills.Select(b => GetFormattedElement(b.Skills.Select(c => c.Skill.Name).ToList()))),
+                Equipment = string.Join(", ", entity.Equipment.Select(b => GetFormattedElement(b.Items.Select(c => new Tuple<string, int>(c.Item.Name, c.Quantity)).ToList()))),
                 EntranceProfessions = entity.EntranceProfessions.Select(b => new ShortProfessionDto
                 {
                     Id = b.EntranceProfessionId,
@@ -160,22 +160,13 @@ namespace WarhammerProfessionApp.Controllers
             return NoContent();
         }
 
-        private string GetFormattedElement(int quantity, IEnumerable<Tuple<string, int>> values)
+        private string GetFormattedElement(IEnumerable<Tuple<string, int>> values)
         {
             var convertedValues = values.Select(a => a.Item2 > 1 ? $"{a.Item2} x {a.Item1}" : $"{a.Item1}");
 
-            if (quantity < 2)
-                return string.Join(" albo ", convertedValues);
-            else
-                return $"Wybierz {quantity} z {string.Join(", ", convertedValues)}";
+            return string.Join(" albo ", convertedValues);
         }
 
-        private string GetFormattedElement(int quantity, IEnumerable<string> values)
-        {
-            if (quantity < 2)
-                return string.Join(" albo ", values);
-            else
-                return $"Wybierz {quantity} z {string.Join(", ", values)}";
-        }
+        private string GetFormattedElement(IEnumerable<string> values) => string.Join(" albo ", values);
     }
 }

@@ -6,7 +6,15 @@ namespace WarhammerProfessionApp.Entities.Models.ManyToMany
 {
     public class ProfessionAbilities
     {
+        public ProfessionAbilities()
+        {
+            Abilities = new List<ProfessionAbility>();
+            Characters = new List<ProfessionAbility>();
+        }
+
         public virtual List<ProfessionAbility> Abilities { get; set; }
+
+        public virtual List<ProfessionAbility> Characters { get; set; }
 
         [Key]
         public int Id { get; set; }
@@ -15,7 +23,5 @@ namespace WarhammerProfessionApp.Entities.Models.ManyToMany
         public virtual Profession Profession { get; set; }
 
         public int ProfessionId { get; set; }
-
-        public byte Quantity { get; set; }
     }
 }

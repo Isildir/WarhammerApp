@@ -9,69 +9,124 @@ namespace WarhammerProfessionApp.Entities.Models.Utility
 {
     public class ProfessionBuilder
     {
-        private readonly List<ProfessionAbilities> abilityWrappers = new List<ProfessionAbilities>();
-
-        private readonly List<ProfessionItems> itemWrappers = new List<ProfessionItems>();
-
-        private readonly List<ProfessionAbility> professionAbilities = new List<ProfessionAbility>();
-
-        private readonly List<ProfessionItem> professionItems = new List<ProfessionItem>();
-
-        private readonly List<ProfessionSkill> professionSkills = new List<ProfessionSkill>();
-
-        private readonly List<ProfessionStatistic> professionStatistics = new List<ProfessionStatistic>();
-
-        private readonly List<ProfessionSkills> skillWrappers = new List<ProfessionSkills>();
-
-        private Profession profession;
+        private readonly Profession profession;
 
         public ProfessionBuilder()
         {
             profession = new Profession();
         }
 
-        public void Clear()
+        public ProfessionBuilder AddAbilities(params Ability[] abilities)
         {
-            profession = new Profession();
-            skillWrappers.Clear();
-            professionSkills.Clear();
-            itemWrappers.Clear();
-            professionItems.Clear();
-            abilityWrappers.Clear();
-            professionAbilities.Clear();
-        }
-
-        public Dictionary<Type, object> GetAllRelations() => new Dictionary<Type, object>
-            {
-                { typeof(ProfessionSkills), skillWrappers },
-                { typeof(ProfessionSkill), professionSkills },
-                { typeof(ProfessionItems), itemWrappers },
-                { typeof(ProfessionItem), professionItems },
-                { typeof(ProfessionAbilities), abilityWrappers },
-                { typeof(ProfessionAbility), professionAbilities },
-                { typeof(ProfessionStatistic), professionStatistics },
-            };
-
-        public Profession GetResult() => profession;
-
-        public ProfessionBuilder SetAbilities(params Ability[] abilities) => SetAbilities(1, abilities);
-
-        public ProfessionBuilder SetAbilities(byte numberAllowed, params Ability[] abilities)
-        {
-            var wrapper = new ProfessionAbilities { Quantity = numberAllowed, Profession = profession };
-
-            profession.Abilities.Add(wrapper);
-            abilityWrappers.Add(wrapper);
+            var wrapper = new ProfessionAbilities { Profession = profession };
 
             foreach (var ability in abilities)
-                professionAbilities.Add(new ProfessionAbility
+                wrapper.Abilities.Add(new ProfessionAbility
                 {
                     ProfessionAbilities = wrapper,
                     Ability = ability
                 });
 
+            profession.Abilities.Add(wrapper);
+
             return this;
         }
+
+        public ProfessionBuilder AddDictionarySkills(Skill skill, Skill dictionarySkill, params string[] values)
+        {
+            var wrapper = new ProfessionSkills { Profession = profession };
+
+            wrapper.Skills.Add(new ProfessionSkill
+            {
+                ProfessionSkills = wrapper,
+                Skill = skill
+            });
+
+            wrapper.Skills.Add(new ProfessionSkill
+            {
+                ProfessionSkills = wrapper,
+                Skill = dictionarySkill,
+                AllowAllValues = !values.Any(),
+                AllowedValues = dictionarySkill.Dictionary.Values.Where(a => values.Contains(a.Value)).Select(a => new DictionaryValueProfessionSkill { DictionaryValue = a }).ToList()
+            });
+
+            profession.Skills.Add(wrapper);
+
+            return this;
+        }
+
+        public ProfessionBuilder AddDictionarySkills(params Tuple<Skill, string[]>[] skills)
+        {
+            var wrapper = new ProfessionSkills { Profession = profession };
+
+            foreach (var skill in skills)
+                wrapper.Skills.Add(new ProfessionSkill
+                {
+                    ProfessionSkills = wrapper,
+                    Skill = skill.Item1,
+                    AllowAllValues = !skill.Item2.Any(),
+                    AllowedValues = skill.Item1.Dictionary.Values.Where(a => skill.Item2.Contains(a.Value)).Select(a => new DictionaryValueProfessionSkill { DictionaryValue = a }).ToList()
+                });
+
+            profession.Skills.Add(wrapper);
+
+            return this;
+        }
+
+        public ProfessionBuilder AddDictionarySkills(Skill skill, params string[] values)
+        {
+            var wrapper = new ProfessionSkills { Profession = profession };
+
+            wrapper.Skills.Add(new ProfessionSkill
+            {
+                ProfessionSkills = wrapper,
+                Skill = skill,
+                AllowAllValues = !values.Any(),
+                AllowedValues = skill.Dictionary.Values.Where(a => values.Contains(a.Value)).Select(a => new DictionaryValueProfessionSkill { DictionaryValue = a }).ToList()
+            });
+
+            profession.Skills.Add(wrapper);
+
+            return this;
+        }
+
+        public ProfessionBuilder AddEquipment(params ProfessionBuilderItemModel[] items)
+        {
+            var wrapper = new ProfessionItems { Profession = profession };
+
+            foreach (var item in items)
+                wrapper.Items.Add(new ProfessionItem
+                {
+                    ProfessionItems = wrapper,
+                    Item = item.Item,
+                    Quantity = item.Quantity
+                });
+
+            profession.Equipment.Add(wrapper);
+
+            return this;
+        }
+
+        public void AddOutputProfession(Profession outputProfession)
+                                                    => profession.OutputProfessions.Add(new ProfessionProfession { OutputProfession = outputProfession });
+
+        public ProfessionBuilder AddSkills(params Skill[] skills)
+        {
+            var wrapper = new ProfessionSkills { Profession = profession };
+
+            foreach (var skill in skills)
+                wrapper.Skills.Add(new ProfessionSkill
+                {
+                    ProfessionSkills = wrapper,
+                    Skill = skill
+                });
+
+            profession.Skills.Add(wrapper);
+
+            return this;
+        }
+
+        public Profession GetResult() => profession;
 
         public ProfessionBuilder SetBasicValues(string name, ProfessionLevel professionLevel, Race professionRaceForbidden = 0,
             string description = null, string additionalInformations = null)
@@ -90,60 +145,21 @@ namespace WarhammerProfessionApp.Entities.Models.Utility
             return this;
         }
 
-        public ProfessionBuilder SetEquipment(params ProfessionBuilderItemModel[] items) => SetEquipment(1, items);
-
-        public ProfessionBuilder SetEquipment(byte numberAllowed, params ProfessionBuilderItemModel[] items)
-        {
-            var wrapper = new ProfessionItems { Quantity = numberAllowed, Profession = profession };
-
-            profession.Equipment.Add(wrapper);
-            itemWrappers.Add(wrapper);
-
-            foreach (var item in items)
-                professionItems.Add(new ProfessionItem
-                {
-                    ProfessionItems = wrapper,
-                    Item = item.Item,
-                    Quantity = item.Quantity
-                });
-
-            return this;
-        }
-
-        public ProfessionBuilder SetSkills(params Skill[] skills) => SetSkills(1, skills);
-
-        public ProfessionBuilder SetSkills(byte numberAllowed, params Skill[] skills)
-        {
-            var wrapper = new ProfessionSkills { Quantity = numberAllowed, Profession = profession };
-
-            profession.Skills.Add(wrapper);
-            skillWrappers.Add(wrapper);
-
-            foreach (var skill in skills)
-                professionSkills.Add(new ProfessionSkill
-                {
-                    ProfessionSkills = wrapper,
-                    Skill = skill
-                });
-
-            return this;
-        }
-
         public ProfessionBuilder SetStatistics(byte closeCombat, byte shooting, byte stamina, byte resistance, byte agility,
             byte inteligence, byte willpower, byte polish, byte attacks, byte hitpoints, byte magic, byte speed, IEnumerable<Statistic> statistics)
         {
-            professionStatistics.Add(new ProfessionStatistic { Statistic = statistics.FirstOrDefault(a => a.Type == StatisticType.CloseCombat), Profession = profession, Value = closeCombat });
-            professionStatistics.Add(new ProfessionStatistic { Statistic = statistics.FirstOrDefault(a => a.Type == StatisticType.Speed), Profession = profession, Value = speed });
-            professionStatistics.Add(new ProfessionStatistic { Statistic = statistics.FirstOrDefault(a => a.Type == StatisticType.Shooting), Profession = profession, Value = shooting });
-            professionStatistics.Add(new ProfessionStatistic { Statistic = statistics.FirstOrDefault(a => a.Type == StatisticType.Stamina), Profession = profession, Value = stamina });
-            professionStatistics.Add(new ProfessionStatistic { Statistic = statistics.FirstOrDefault(a => a.Type == StatisticType.Resistance), Profession = profession, Value = resistance });
-            professionStatistics.Add(new ProfessionStatistic { Statistic = statistics.FirstOrDefault(a => a.Type == StatisticType.Inteligence), Profession = profession, Value = inteligence });
-            professionStatistics.Add(new ProfessionStatistic { Statistic = statistics.FirstOrDefault(a => a.Type == StatisticType.Agility), Profession = profession, Value = agility });
-            professionStatistics.Add(new ProfessionStatistic { Statistic = statistics.FirstOrDefault(a => a.Type == StatisticType.Willpower), Profession = profession, Value = willpower });
-            professionStatistics.Add(new ProfessionStatistic { Statistic = statistics.FirstOrDefault(a => a.Type == StatisticType.Polish), Profession = profession, Value = polish });
-            professionStatistics.Add(new ProfessionStatistic { Statistic = statistics.FirstOrDefault(a => a.Type == StatisticType.Attacks), Profession = profession, Value = attacks });
-            professionStatistics.Add(new ProfessionStatistic { Statistic = statistics.FirstOrDefault(a => a.Type == StatisticType.Hitpoints), Profession = profession, Value = hitpoints });
-            professionStatistics.Add(new ProfessionStatistic { Statistic = statistics.FirstOrDefault(a => a.Type == StatisticType.Magic), Profession = profession, Value = magic });
+            profession.Statistics.Add(new ProfessionStatistic { Statistic = statistics.FirstOrDefault(a => a.Type == StatisticType.CloseCombat), Profession = profession, Value = closeCombat });
+            profession.Statistics.Add(new ProfessionStatistic { Statistic = statistics.FirstOrDefault(a => a.Type == StatisticType.Speed), Profession = profession, Value = speed });
+            profession.Statistics.Add(new ProfessionStatistic { Statistic = statistics.FirstOrDefault(a => a.Type == StatisticType.Shooting), Profession = profession, Value = shooting });
+            profession.Statistics.Add(new ProfessionStatistic { Statistic = statistics.FirstOrDefault(a => a.Type == StatisticType.Stamina), Profession = profession, Value = stamina });
+            profession.Statistics.Add(new ProfessionStatistic { Statistic = statistics.FirstOrDefault(a => a.Type == StatisticType.Resistance), Profession = profession, Value = resistance });
+            profession.Statistics.Add(new ProfessionStatistic { Statistic = statistics.FirstOrDefault(a => a.Type == StatisticType.Inteligence), Profession = profession, Value = inteligence });
+            profession.Statistics.Add(new ProfessionStatistic { Statistic = statistics.FirstOrDefault(a => a.Type == StatisticType.Agility), Profession = profession, Value = agility });
+            profession.Statistics.Add(new ProfessionStatistic { Statistic = statistics.FirstOrDefault(a => a.Type == StatisticType.Willpower), Profession = profession, Value = willpower });
+            profession.Statistics.Add(new ProfessionStatistic { Statistic = statistics.FirstOrDefault(a => a.Type == StatisticType.Polish), Profession = profession, Value = polish });
+            profession.Statistics.Add(new ProfessionStatistic { Statistic = statistics.FirstOrDefault(a => a.Type == StatisticType.Attacks), Profession = profession, Value = attacks });
+            profession.Statistics.Add(new ProfessionStatistic { Statistic = statistics.FirstOrDefault(a => a.Type == StatisticType.Hitpoints), Profession = profession, Value = hitpoints });
+            profession.Statistics.Add(new ProfessionStatistic { Statistic = statistics.FirstOrDefault(a => a.Type == StatisticType.Magic), Profession = profession, Value = magic });
 
             return this;
         }

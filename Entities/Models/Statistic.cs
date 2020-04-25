@@ -6,10 +6,16 @@ namespace WarhammerProfessionApp.Entities.Models
 {
     public class Statistic
     {
+        public Statistic()
+        {
+            Characters = new List<CharacterStatistic>();
+            Professions = new List<ProfessionStatistic>();
+        }
+
         public List<CharacterStatistic> Characters { get; set; }
 
         [Key]
-        public byte Id { get; set; }
+        public short Id { get; set; }
 
         public bool IsBasicValue { get; set; }
 

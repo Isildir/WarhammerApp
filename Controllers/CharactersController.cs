@@ -91,7 +91,7 @@ namespace WarhammerProfessionApp.Controllers
                 Name = a.Skill.Name,
                 Trait = EnumTranslator.TranslateStaticticValue(a.Skill.Trait),
                 Description = a.Skill.Description,
-                Level = a.Level
+                //Level = a.Level
             }).ToList();
 
             var abilities = character.Abilities.Select(a => new AbilityDto
@@ -436,7 +436,7 @@ namespace WarhammerProfessionApp.Controllers
                     .Include(a => a.Abilities)
                     .FirstOrDefault(a => a.Id == professionToRemove.ProfessionId);
 
-                character.ExperienceSummary -= targetProfession.Skills.Sum(a => a.Quantity * 100) + targetProfession.Abilities.Sum(a => a.Quantity * 100);
+                character.ExperienceSummary -= (targetProfession.Skills.Count + targetProfession.Abilities.Count) * 100;
             }
 
             character.CurrentProfessionId = newCurrentProfession?.ProfessionId;
@@ -484,7 +484,7 @@ namespace WarhammerProfessionApp.Controllers
             if (character.CurrentProfessionId.HasValue)
                 character.ExperienceUsed += 100;
             else
-                character.ExperienceSummary += targetProfession.Skills.Sum(a => a.Quantity * 100) + targetProfession.Abilities.Sum(a => a.Quantity * 100);
+                character.ExperienceSummary += (targetProfession.Skills.Count + targetProfession.Abilities.Count) * 100;
 
             character.CurrentProfessionId = id;
             character.Professions.Add(new CharacterProfession
@@ -828,17 +828,17 @@ namespace WarhammerProfessionApp.Controllers
                 return BadRequest();
 
             var characterSkill = character.Skills.FirstOrDefault(a => a.SkillId == id);
-
+            /*
             if (!context.Skills.Any(a => a.Id == id) || (characterSkill != null && characterSkill.Level >= 3))
                 return BadRequest();
-
+                */
             character.ExperienceUsed += 100;
-
+            /*
             if (characterSkill == null)
                 character.Skills.Add(new CharacterSkill { SkillId = id, Level = 1 });
             else
                 characterSkill.Level++;
-
+                */
             context.SaveChanges();
 
             var dbSkill = context.Skills.First(a => a.Id == id);
@@ -850,13 +850,14 @@ namespace WarhammerProfessionApp.Controllers
                 Id = dbSkill.Id,
                 Name = dbSkill.Name,
                 Trait = dbSkill.Trait.ToString(),
-                Level = characterSkill.Level,
+                //Level = characterSkill.Level,
                 Description = dbSkill.Description
             };
 
             return Ok(skill);
         }
 
+        /*
         [HttpGet(nameof(GetFilteredSkills))]
         public ActionResult<CharacterSkillGetDto> GetFilteredSkills()
         {
@@ -901,6 +902,7 @@ namespace WarhammerProfessionApp.Controllers
 
             return Ok(values);
         }
+        */
 
         [HttpDelete(nameof(RemoveSkill))]
         public ActionResult<CharacterChangeResponseDto> RemoveSkill(int id)
@@ -918,12 +920,12 @@ namespace WarhammerProfessionApp.Controllers
                 return BadRequest();
 
             character.ExperienceUsed -= 100;
-
+            /*
             if (skill.Level <= 1)
                 character.Skills.Remove(skill);
             else
                 skill.Level--;
-
+                */
             context.SaveChanges();
 
             SendMessageAboutExperienceChange(character);
@@ -1087,6 +1089,7 @@ namespace WarhammerProfessionApp.Controllers
 
         private bool CheckCharacterExperienceLimit(Character character, int value) => character.ExperienceSummary - character.ExperienceUsed >= value;
 
+        /*
         private bool CheckIfProfessionsAreFinished(Character character)
         {
             var allCharacterSkillsIds = character.Skills.Select(a => a.SkillId).ToList();
@@ -1109,6 +1112,7 @@ namespace WarhammerProfessionApp.Controllers
 
             return skillsCondition && abilityCondition && statisticsCondition;
         }
+        */
 
         private int GetBonusStatisticMaximumValue(StatisticType type, Character character)
         {

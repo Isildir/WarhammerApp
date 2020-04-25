@@ -1,9 +1,18 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WarhammerProfessionApp.Entities.Models.ManyToMany
 {
     public class ProfessionSkill
     {
+        public bool? AllowAllValues { get; set; }
+
+        public List<DictionaryValueProfessionSkill> AllowedValues { get; set; }
+
+        [Key]
+        public int Id { get; set; }
+
         [ForeignKey(nameof(ProfessionSkillsId))]
         public virtual ProfessionSkills ProfessionSkills { get; set; }
 

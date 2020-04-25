@@ -106,12 +106,11 @@ namespace WarhammerProfessionApp.Utility
                     var abilitiesWrappers = profession.Abilities.Where(a => a.Abilities.Any(b => !abilitiesToEarn.Contains(b.AbilityId)));
                     var abilitiesCount = abilitiesWrappers.Select(a => new
                     {
-                        requiredCount = a.Quantity,
                         notOwnedCount = a.Abilities.Where(b => !abilitiesToEarn.Contains(b.AbilityId)).Count(),
                         totalCount = a.Abilities.Count()
                     });
 
-                    stepResult.MinimalExperienceCost += abilitiesCount.Sum(a => a.requiredCount - (a.totalCount - a.notOwnedCount));
+                    stepResult.MinimalExperienceCost += abilitiesCount.Sum(a => a.totalCount - a.notOwnedCount);
                     stepResult.MaximumExperienceCost += abilitiesCount.Sum(a => a.totalCount - (a.totalCount - a.notOwnedCount));
 
                     var localAbilities = dbAbilities.Select(a => a.Ability.Name).ToList();
@@ -122,7 +121,7 @@ namespace WarhammerProfessionApp.Utility
 
                     foreach (var skill in profession.Skills.Where(a => a.Skills.Any(b => !skillsToEarn.Where(c => c.Value < 3).Select(c => c.Key).Contains(b.SkillId))))
                     {
-                        stepResult.MinimalExperienceCost += skill.Quantity - (skill.Skills.Count - skill.Skills.Where(a => !skillsToEarn.Select(c => c.Key).Contains(a.SkillId)).Count());
+                        stepResult.MinimalExperienceCost += skill.Skills.Count - skill.Skills.Where(a => !skillsToEarn.Select(c => c.Key).Contains(a.SkillId)).Count();
 
                         foreach (var item in skill.Skills)
                         {

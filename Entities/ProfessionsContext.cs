@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using WarhammerProfessionApp.Entities.Models;
@@ -13,11 +14,16 @@ namespace WarhammerProfessionApp.Entities
     {
         public ProfessionsContext(DbContextOptions<ProfessionsContext> options) : base(options)
         {
+            Database.Migrate();
+
+            SeedData();
         }
 
         public DbSet<Ability> Abilities { get; set; }
 
         public DbSet<Character> Characters { get; set; }
+
+        public DbSet<DictionaryDefinition> Dictionaries { get; set; }
 
         public DbSet<Image> Images { get; set; }
 
@@ -31,8 +37,152 @@ namespace WarhammerProfessionApp.Entities
 
         public DbSet<User> Users { get; set; }
 
-        public static void SeedData(ModelBuilder modelBuilder)
+        public void SeedData()
         {
+            if (Professions.Any())
+                return;
+
+            #region Dictionaries
+
+            var dictValNauka = new DictionaryDefinition
+            {
+                Name = "Nauka",
+                Values = new List<DictionaryValue>
+                    {
+                        new DictionaryValue { Value = "Astronomia" },
+                        new DictionaryValue { Value = "Historia" },
+                        new DictionaryValue { Value = "Teologia" },
+                        new DictionaryValue { Value = "Genealogia/heraldyka" },
+                        new DictionaryValue { Value = "Historia" },
+                        new DictionaryValue { Value = "Prawo" },
+                        new DictionaryValue { Value = "Nekromancja" },
+                        new DictionaryValue { Value = "Anatomia" },
+                        new DictionaryValue { Value = "Magia" },
+                        new DictionaryValue { Value = "Strategia/taktyka" },
+                        new DictionaryValue { Value = "Sztuka" },
+                        new DictionaryValue { Value = "Inżynieria" },
+                        new DictionaryValue { Value = "Mechanika" }
+                    }
+            };
+
+            var dictValJezyk = new DictionaryDefinition
+            {
+                Name = "Język",
+                Values = new List<DictionaryValue>
+                    {
+                        new DictionaryValue { Value = "Klasyczny" },
+                        new DictionaryValue { Value = "Staroświatowy" },
+                        new DictionaryValue { Value = "Norski" },
+                        new DictionaryValue { Value = "Bretoński" },
+                        new DictionaryValue { Value = "Kislevski" },
+                        new DictionaryValue { Value = "Tileański" },
+                        new DictionaryValue { Value = "Eltharian" },
+                        new DictionaryValue { Value = "Khazalid" }
+                    }
+            };
+
+            var dictValSekretneZnaki = new DictionaryDefinition
+            {
+                Name = "Sekretne znaki",
+                Values = new List<DictionaryValue>
+                    {
+                        new DictionaryValue { Value = "Złodziei" },
+                        new DictionaryValue { Value = "Zwiadowców" },
+                        new DictionaryValue { Value = "Łowców" },
+                        new DictionaryValue { Value = "Rycerzy zakonnych" }
+                    }
+            };
+
+            var dictValSekretnyJezyk = new DictionaryDefinition
+            {
+                Name = "Sekretny język",
+                Values = new List<DictionaryValue>
+                    {
+                        new DictionaryValue { Value = "Łowców" },
+                        new DictionaryValue { Value = "Bitewny" },
+                        new DictionaryValue { Value = "Złodziei" },
+                        new DictionaryValue { Value = "Gildii" }
+                    }
+            };
+
+            var dictValKuglarstwo = new DictionaryDefinition
+            {
+                Name = "Kuglarstwo",
+                Values = new List<DictionaryValue>
+                    {
+                        new DictionaryValue { Value = "Gawędziarstwo" },
+                        new DictionaryValue { Value = "Taniec" },
+                        new DictionaryValue { Value = "Śpiew" },
+                        new DictionaryValue { Value = "Aktorstwo" },
+                        new DictionaryValue { Value = "Muzykalność" }
+                    }
+            };
+
+            var dictValRzemioslo = new DictionaryDefinition
+            {
+                Name = "Rzemiosło",
+                Values = new List<DictionaryValue>
+                    {
+                        new DictionaryValue { Value = "Gotowanie" },
+                        new DictionaryValue { Value = "Wyrób łuków" },
+                        new DictionaryValue { Value = "Uprawa ziemii" },
+                        new DictionaryValue { Value = "Handel" },
+                        new DictionaryValue { Value = "Kartografia" },
+                        new DictionaryValue { Value = "Kowalstwo" },
+                        new DictionaryValue { Value = "Krawiectwo" },
+                        new DictionaryValue { Value = "Kaligrafia" },
+                        new DictionaryValue { Value = "Płatnerstwo" },
+                        new DictionaryValue { Value = "Rusznikarstwo" },
+                        new DictionaryValue { Value = "Zielarstwo" },
+                        new DictionaryValue { Value = "Aptekarstwo" },
+                        new DictionaryValue { Value = "Górnictwo" },
+                        new DictionaryValue { Value = "Górnictwo odkrywkowe" },
+                        new DictionaryValue { Value = "Szkutnictwo" },
+                        new DictionaryValue { Value = "Aptekarstwo" }
+                    }
+            };
+
+            var dictValWiedza = new DictionaryDefinition
+            {
+                Name = "Wiedza",
+                Values = new List<DictionaryValue>
+                    {
+                        new DictionaryValue { Value = "Imperium" },
+                        new DictionaryValue { Value = "Norska" },
+                        new DictionaryValue { Value = "Kislev" },
+                        new DictionaryValue { Value = "Bretonia" },
+                        new DictionaryValue { Value = "Tilea" },
+                        new DictionaryValue { Value = "Jałowa kraina" },
+                        new DictionaryValue { Value = "Estalia" },
+                        new DictionaryValue { Value = "Krasnoludy" }
+                    }
+            };
+
+            var dictValJezykTajemny = new DictionaryDefinition
+            {
+                Name = "Język tajemny",
+                Values = new List<DictionaryValue>
+                    {
+                        new DictionaryValue { Value = "Magiczny" },
+                        new DictionaryValue { Value = "Demoniczny" },
+                        new DictionaryValue { Value = "Elfi" }
+                    }
+            };
+
+            var dictionaries = new List<DictionaryDefinition>
+            {
+                dictValNauka,
+                dictValJezyk,
+                dictValSekretneZnaki,
+                dictValSekretnyJezyk,
+                dictValKuglarstwo,
+                dictValRzemioslo,
+                dictValWiedza,
+                dictValJezykTajemny
+            };
+
+            #endregion Dictionaries
+
             #region items
 
             var halabarda = new Item
@@ -2207,27 +2357,9 @@ namespace WarhammerProfessionApp.Entities
                 SkillLevel = SkillLevel.Advanced,
                 Trait = StatisticType.Willpower
             };
-            var jezykTajemny = new Skill
-            {
-                Name = "Język tajemny",
-                SkillLevel = SkillLevel.Advanced,
-                Trait = StatisticType.Inteligence
-            };
-            var kuglarstwo = new Skill
-            {
-                Name = "Kuglarstwo",
-                SkillLevel = SkillLevel.Advanced,
-                Trait = StatisticType.Polish
-            };
             var leczenie = new Skill
             {
                 Name = "Leczenie",
-                SkillLevel = SkillLevel.Advanced,
-                Trait = StatisticType.Inteligence
-            };
-            var nauka = new Skill
-            {
-                Name = "Nauka (różne)",
                 SkillLevel = SkillLevel.Advanced,
                 Trait = StatisticType.Inteligence
             };
@@ -2248,23 +2380,6 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Otwieranie zamków",
                 SkillLevel = SkillLevel.Advanced,
                 Trait = StatisticType.Agility
-            };
-            var rzemioslo = new Skill
-            {
-                Name = "Rzemiosło (różne)",
-                SkillLevel = SkillLevel.Advanced
-            };
-            var sekretneZnaki = new Skill
-            {
-                Name = "Sekretne znaki (różne)",
-                SkillLevel = SkillLevel.Advanced,
-                Trait = StatisticType.Inteligence
-            };
-            var sekretnyJezyk = new Skill
-            {
-                Name = "Sekretny język (różne)",
-                SkillLevel = SkillLevel.Advanced,
-                Trait = StatisticType.Inteligence
             };
             var splatanieMagii = new Skill
             {
@@ -2308,12 +2423,6 @@ namespace WarhammerProfessionApp.Entities
                 SkillLevel = SkillLevel.Advanced,
                 Trait = StatisticType.Inteligence
             };
-            var wiedza = new Skill
-            {
-                Name = "Wiedza (różne)",
-                SkillLevel = SkillLevel.Advanced,
-                Trait = StatisticType.Inteligence
-            };
             var wykrywanieMagii = new Skill
             {
                 Name = "Wykrywanie magii",
@@ -2326,12 +2435,6 @@ namespace WarhammerProfessionApp.Entities
                 SkillLevel = SkillLevel.Advanced,
                 Trait = StatisticType.Agility
             };
-            var jezyk = new Skill
-            {
-                Name = "Znajomość języka (różne)",
-                SkillLevel = SkillLevel.Advanced,
-                Trait = StatisticType.Inteligence
-            };
             var zwinnePalce = new Skill
             {
                 Name = "Zwinne palce",
@@ -2343,6 +2446,62 @@ namespace WarhammerProfessionApp.Entities
                 Name = "Żeglarstwo",
                 SkillLevel = SkillLevel.Advanced,
                 Trait = StatisticType.Agility
+            };
+            var jezyk = new Skill
+            {
+                Name = "Znajomość języka",
+                SkillLevel = SkillLevel.Advanced,
+                Trait = StatisticType.Inteligence,
+                Dictionary = dictValJezyk
+            };
+            var wiedza = new Skill
+            {
+                Name = "Wiedza",
+                SkillLevel = SkillLevel.Advanced,
+                Trait = StatisticType.Inteligence,
+                Dictionary = dictValWiedza
+            };
+            var jezykTajemny = new Skill
+            {
+                Name = "Język tajemny",
+                SkillLevel = SkillLevel.Advanced,
+                Trait = StatisticType.Inteligence,
+                Dictionary = dictValJezykTajemny
+            };
+            var kuglarstwo = new Skill
+            {
+                Name = "Kuglarstwo",
+                SkillLevel = SkillLevel.Advanced,
+                Trait = StatisticType.Polish,
+                Dictionary = dictValKuglarstwo
+            };
+            var nauka = new Skill
+            {
+                Name = "Nauka",
+                SkillLevel = SkillLevel.Advanced,
+                Trait = StatisticType.Inteligence,
+                Dictionary = dictValNauka
+            };
+            var rzemioslo = new Skill
+            {
+                Name = "Rzemiosło",
+                SkillLevel = SkillLevel.Advanced,
+                Trait = StatisticType.Inteligence,
+                Dictionary = dictValRzemioslo
+            };
+            var sekretneZnaki = new Skill
+            {
+                Name = "Sekretne znaki",
+                SkillLevel = SkillLevel.Advanced,
+                Trait = StatisticType.Inteligence,
+                Dictionary = dictValSekretneZnaki
+            };
+            var sekretnyJezyk = new Skill
+            {
+                Name = "Sekretny język",
+                SkillLevel = SkillLevel.Advanced,
+                Trait = StatisticType.Inteligence,
+                Dictionary = dictValSekretnyJezyk
             };
 
             #endregion skills
@@ -2719,1676 +2878,2360 @@ namespace WarhammerProfessionApp.Entities
 
             #region profession items
 
-            akolita.SetEquipment(new ProfessionBuilderItemModel(szaty));
-            akolita.SetEquipment(new ProfessionBuilderItemModel(symbolReligijny));
+            akolita.AddEquipment(new ProfessionBuilderItemModel(szaty));
+            akolita.AddEquipment(new ProfessionBuilderItemModel(symbolReligijny));
 
-            banita.SetEquipment(new ProfessionBuilderItemModel(kaftanSkora));
-            banita.SetEquipment(new ProfessionBuilderItemModel(luk));
-            banita.SetEquipment(new ProfessionBuilderItemModel(tarcza));
+            banita.AddEquipment(new ProfessionBuilderItemModel(kaftanSkora));
+            banita.AddEquipment(new ProfessionBuilderItemModel(luk));
+            banita.AddEquipment(new ProfessionBuilderItemModel(tarcza));
 
-            berserker.SetEquipment(new ProfessionBuilderItemModel(bronDwureczna), new ProfessionBuilderItemModel(tarcza));
-            berserker.SetEquipment(new ProfessionBuilderItemModel(kaftanSkora));
-            berserker.SetEquipment(new ProfessionBuilderItemModel(butelkaGorzalki));
+            berserker.AddEquipment(new ProfessionBuilderItemModel(bronDwureczna), new ProfessionBuilderItemModel(tarcza));
+            berserker.AddEquipment(new ProfessionBuilderItemModel(kaftanSkora));
+            berserker.AddEquipment(new ProfessionBuilderItemModel(butelkaGorzalki));
 
-            chlop.SetEquipment(new ProfessionBuilderItemModel(proca), new ProfessionBuilderItemModel(kij));
-            chlop.SetEquipment(new ProfessionBuilderItemModel(buklak));
+            chlop.AddEquipment(new ProfessionBuilderItemModel(proca), new ProfessionBuilderItemModel(kij));
+            chlop.AddEquipment(new ProfessionBuilderItemModel(buklak));
 
-            ciura.SetEquipment(new ProfessionBuilderItemModel(talizmanSzczescia), new ProfessionBuilderItemModel(narzedzia));
-            ciura.SetEquipment(new ProfessionBuilderItemModel(sakiewka));
-            ciura.SetEquipment(new ProfessionBuilderItemModel(namiot));
+            ciura.AddEquipment(new ProfessionBuilderItemModel(talizmanSzczescia), new ProfessionBuilderItemModel(narzedzia));
+            ciura.AddEquipment(new ProfessionBuilderItemModel(sakiewka));
+            ciura.AddEquipment(new ProfessionBuilderItemModel(namiot));
 
-            cyrkowiec.SetEquipment(new ProfessionBuilderItemModel(kaftanSkora));
-            cyrkowiec.SetEquipment(new ProfessionBuilderItemModel(nozDoRzucania, 3), new ProfessionBuilderItemModel(toporDoRzucania, 2));
-            cyrkowiec.SetEquipment(new ProfessionBuilderItemModel(instrumentMuzyczny));
-            cyrkowiec.SetEquipment(new ProfessionBuilderItemModel(narzedzia));
-            cyrkowiec.SetEquipment(new ProfessionBuilderItemModel(kostium), new ProfessionBuilderItemModel(dobreUbranie));
+            cyrkowiec.AddEquipment(new ProfessionBuilderItemModel(kaftanSkora));
+            cyrkowiec.AddEquipment(new ProfessionBuilderItemModel(nozDoRzucania, 3), new ProfessionBuilderItemModel(toporDoRzucania, 2));
+            cyrkowiec.AddEquipment(new ProfessionBuilderItemModel(instrumentMuzyczny));
+            cyrkowiec.AddEquipment(new ProfessionBuilderItemModel(narzedzia));
+            cyrkowiec.AddEquipment(new ProfessionBuilderItemModel(kostium), new ProfessionBuilderItemModel(dobreUbranie));
 
-            cyrulik.SetEquipment(new ProfessionBuilderItemModel(narzedzia));
+            cyrulik.AddEquipment(new ProfessionBuilderItemModel(narzedzia));
 
-            fanatyk.SetEquipment(new ProfessionBuilderItemModel(korbacz), new ProfessionBuilderItemModel(morgensztern));
-            fanatyk.SetEquipment(new ProfessionBuilderItemModel(butelkaGorzalkiDobrejJakosci));
-            fanatyk.SetEquipment(new ProfessionBuilderItemModel(kurtaSkora));
+            fanatyk.AddEquipment(new ProfessionBuilderItemModel(korbacz), new ProfessionBuilderItemModel(morgensztern));
+            fanatyk.AddEquipment(new ProfessionBuilderItemModel(butelkaGorzalkiDobrejJakosci));
+            fanatyk.AddEquipment(new ProfessionBuilderItemModel(kurtaSkora));
 
-            flisak.SetEquipment(new ProfessionBuilderItemModel(kurtaSkora));
-            flisak.SetEquipment(new ProfessionBuilderItemModel(lodzWioslowa));
+            flisak.AddEquipment(new ProfessionBuilderItemModel(kurtaSkora));
+            flisak.AddEquipment(new ProfessionBuilderItemModel(lodzWioslowa));
 
-            giermek.SetEquipment(new ProfessionBuilderItemModel(lanca));
-            giermek.SetEquipment(new ProfessionBuilderItemModel(kaftanKolczy));
-            giermek.SetEquipment(new ProfessionBuilderItemModel(czepiecKolczy));
-            giermek.SetEquipment(new ProfessionBuilderItemModel(kurtaSkora));
-            giermek.SetEquipment(new ProfessionBuilderItemModel(kon));
-            giermek.SetEquipment(new ProfessionBuilderItemModel(siodlo));
-            giermek.SetEquipment(new ProfessionBuilderItemModel(uprzaz));
+            giermek.AddEquipment(new ProfessionBuilderItemModel(lanca));
+            giermek.AddEquipment(new ProfessionBuilderItemModel(kaftanKolczy));
+            giermek.AddEquipment(new ProfessionBuilderItemModel(czepiecKolczy));
+            giermek.AddEquipment(new ProfessionBuilderItemModel(kurtaSkora));
+            giermek.AddEquipment(new ProfessionBuilderItemModel(kon));
+            giermek.AddEquipment(new ProfessionBuilderItemModel(siodlo));
+            giermek.AddEquipment(new ProfessionBuilderItemModel(uprzaz));
 
-            gladiator.SetEquipment(new ProfessionBuilderItemModel(korbacz), new ProfessionBuilderItemModel(bronDwureczna));
-            gladiator.SetEquipment(new ProfessionBuilderItemModel(kastet));
-            gladiator.SetEquipment(new ProfessionBuilderItemModel(kaftanKolczy));
-            gladiator.SetEquipment(new ProfessionBuilderItemModel(kurtaSkora));
-            gladiator.SetEquipment(new ProfessionBuilderItemModel(tarcza), new ProfessionBuilderItemModel(puklerz));
+            gladiator.AddEquipment(new ProfessionBuilderItemModel(korbacz), new ProfessionBuilderItemModel(bronDwureczna));
+            gladiator.AddEquipment(new ProfessionBuilderItemModel(kastet));
+            gladiator.AddEquipment(new ProfessionBuilderItemModel(kaftanKolczy));
+            gladiator.AddEquipment(new ProfessionBuilderItemModel(kurtaSkora));
+            gladiator.AddEquipment(new ProfessionBuilderItemModel(tarcza), new ProfessionBuilderItemModel(puklerz));
 
-            goniec.SetEquipment(new ProfessionBuilderItemModel(kusza));
-            goniec.SetEquipment(new ProfessionBuilderItemModel(kurtaSkora));
-            goniec.SetEquipment(new ProfessionBuilderItemModel(miksturaLecznicza));
-            goniec.SetEquipment(new ProfessionBuilderItemModel(talizmanSzczescia));
+            goniec.AddEquipment(new ProfessionBuilderItemModel(kusza));
+            goniec.AddEquipment(new ProfessionBuilderItemModel(kurtaSkora));
+            goniec.AddEquipment(new ProfessionBuilderItemModel(miksturaLecznicza));
+            goniec.AddEquipment(new ProfessionBuilderItemModel(talizmanSzczescia));
 
-            gornik.SetEquipment(new ProfessionBuilderItemModel(bronDwureczna));
-            gornik.SetEquipment(new ProfessionBuilderItemModel(kilof));
-            gornik.SetEquipment(new ProfessionBuilderItemModel(kurtaSkora));
-            gornik.SetEquipment(new ProfessionBuilderItemModel(lopata));
-            gornik.SetEquipment(new ProfessionBuilderItemModel(latarniaSztormowa));
-            gornik.SetEquipment(new ProfessionBuilderItemModel(olejDoLatarni));
+            gornik.AddEquipment(new ProfessionBuilderItemModel(bronDwureczna));
+            gornik.AddEquipment(new ProfessionBuilderItemModel(kilof));
+            gornik.AddEquipment(new ProfessionBuilderItemModel(kurtaSkora));
+            gornik.AddEquipment(new ProfessionBuilderItemModel(lopata));
+            gornik.AddEquipment(new ProfessionBuilderItemModel(latarniaSztormowa));
+            gornik.AddEquipment(new ProfessionBuilderItemModel(olejDoLatarni));
 
-            guslarz.SetEquipment(new ProfessionBuilderItemModel(miksturaLecznicza));
-            guslarz.SetEquipment(new ProfessionBuilderItemModel(plaszcz));
-            guslarz.SetEquipment(new ProfessionBuilderItemModel(kapturMaska));
+            guslarz.AddEquipment(new ProfessionBuilderItemModel(miksturaLecznicza));
+            guslarz.AddEquipment(new ProfessionBuilderItemModel(plaszcz));
+            guslarz.AddEquipment(new ProfessionBuilderItemModel(kapturMaska));
 
-            hiena.SetEquipment(new ProfessionBuilderItemModel(kurtaSkora));
-            hiena.SetEquipment(new ProfessionBuilderItemModel(lom));
-            hiena.SetEquipment(new ProfessionBuilderItemModel(latarnia));
-            hiena.SetEquipment(new ProfessionBuilderItemModel(olejDoLatarni));
-            hiena.SetEquipment(new ProfessionBuilderItemModel(lina));
-            hiena.SetEquipment(new ProfessionBuilderItemModel(worek, 2));
+            hiena.AddEquipment(new ProfessionBuilderItemModel(kurtaSkora));
+            hiena.AddEquipment(new ProfessionBuilderItemModel(lom));
+            hiena.AddEquipment(new ProfessionBuilderItemModel(latarnia));
+            hiena.AddEquipment(new ProfessionBuilderItemModel(olejDoLatarni));
+            hiena.AddEquipment(new ProfessionBuilderItemModel(lina));
+            hiena.AddEquipment(new ProfessionBuilderItemModel(worek, 2));
 
-            kanciarz.SetEquipment(new ProfessionBuilderItemModel(szykowneUbranie), new ProfessionBuilderItemModel(taliaKart));
-            kanciarz.SetEquipment(new ProfessionBuilderItemModel(zlotaKorona, 50));
+            kanciarz.AddEquipment(new ProfessionBuilderItemModel(szykowneUbranie), new ProfessionBuilderItemModel(taliaKart));
+            kanciarz.AddEquipment(new ProfessionBuilderItemModel(zlotaKorona, 50));
 
-            kozak.SetEquipment(new ProfessionBuilderItemModel(luk));
-            lowca.SetEquipment(new ProfessionBuilderItemModel(strzala, 10));
-            kozak.SetEquipment(new ProfessionBuilderItemModel(bronDwureczna));
-            kozak.SetEquipment(new ProfessionBuilderItemModel(kolczugaKolcza));
-            kozak.SetEquipment(new ProfessionBuilderItemModel(kurtaSkora));
-            kozak.SetEquipment(new ProfessionBuilderItemModel(nogawiceSkora));
+            kozak.AddEquipment(new ProfessionBuilderItemModel(luk));
+            lowca.AddEquipment(new ProfessionBuilderItemModel(strzala, 10));
+            kozak.AddEquipment(new ProfessionBuilderItemModel(bronDwureczna));
+            kozak.AddEquipment(new ProfessionBuilderItemModel(kolczugaKolcza));
+            kozak.AddEquipment(new ProfessionBuilderItemModel(kurtaSkora));
+            kozak.AddEquipment(new ProfessionBuilderItemModel(nogawiceSkora));
 
-            lesnik.SetEquipment(new ProfessionBuilderItemModel(bronDwureczna));
-            lesnik.SetEquipment(new ProfessionBuilderItemModel(kurtaSkora));
-            lesnik.SetEquipment(new ProfessionBuilderItemModel(odtrutki));
+            lesnik.AddEquipment(new ProfessionBuilderItemModel(bronDwureczna));
+            lesnik.AddEquipment(new ProfessionBuilderItemModel(kurtaSkora));
+            lesnik.AddEquipment(new ProfessionBuilderItemModel(odtrutki));
 
-            lowca.SetEquipment(new ProfessionBuilderItemModel(dlugiLuk));
-            lowca.SetEquipment(new ProfessionBuilderItemModel(strzala, 10));
-            lowca.SetEquipment(new ProfessionBuilderItemModel(potrzask, 2), new ProfessionBuilderItemModel(wnyki));
-            lowca.SetEquipment(new ProfessionBuilderItemModel(odtrutki));
+            lowca.AddEquipment(new ProfessionBuilderItemModel(dlugiLuk));
+            lowca.AddEquipment(new ProfessionBuilderItemModel(strzala, 10));
+            lowca.AddEquipment(new ProfessionBuilderItemModel(potrzask, 2), new ProfessionBuilderItemModel(wnyki));
+            lowca.AddEquipment(new ProfessionBuilderItemModel(odtrutki));
 
-            lowcanagrod.SetEquipment(new ProfessionBuilderItemModel(kusza));
-            lowcanagrod.SetEquipment(new ProfessionBuilderItemModel(kaftanSkora));
-            lowcanagrod.SetEquipment(new ProfessionBuilderItemModel(helmSkora));
-            lowcanagrod.SetEquipment(new ProfessionBuilderItemModel(kajdany));
-            lowcanagrod.SetEquipment(new ProfessionBuilderItemModel(lina));
-            lowcanagrod.SetEquipment(new ProfessionBuilderItemModel(kajdany));
+            lowcanagrod.AddEquipment(new ProfessionBuilderItemModel(kusza));
+            lowcanagrod.AddEquipment(new ProfessionBuilderItemModel(kaftanSkora));
+            lowcanagrod.AddEquipment(new ProfessionBuilderItemModel(helmSkora));
+            lowcanagrod.AddEquipment(new ProfessionBuilderItemModel(kajdany));
+            lowcanagrod.AddEquipment(new ProfessionBuilderItemModel(lina));
+            lowcanagrod.AddEquipment(new ProfessionBuilderItemModel(kajdany));
 
-            mieszczanin.SetEquipment(new ProfessionBuilderItemModel(dobreUbranie));
-            mieszczanin.SetEquipment(new ProfessionBuilderItemModel(liczydlo));
-            mieszczanin.SetEquipment(new ProfessionBuilderItemModel(latarnia));
+            mieszczanin.AddEquipment(new ProfessionBuilderItemModel(dobreUbranie));
+            mieszczanin.AddEquipment(new ProfessionBuilderItemModel(liczydlo));
+            mieszczanin.AddEquipment(new ProfessionBuilderItemModel(latarnia));
 
-            mytnik.SetEquipment(new ProfessionBuilderItemModel(kusza));
-            lowca.SetEquipment(new ProfessionBuilderItemModel(belt, 10));
-            mytnik.SetEquipment(new ProfessionBuilderItemModel(kaftanKolczy));
-            mytnik.SetEquipment(new ProfessionBuilderItemModel(kaftanSkora));
-            mytnik.SetEquipment(new ProfessionBuilderItemModel(tarcza));
-            mytnik.SetEquipment(new ProfessionBuilderItemModel(zlotaKorona, 50));
+            mytnik.AddEquipment(new ProfessionBuilderItemModel(kusza));
+            lowca.AddEquipment(new ProfessionBuilderItemModel(belt, 10));
+            mytnik.AddEquipment(new ProfessionBuilderItemModel(kaftanKolczy));
+            mytnik.AddEquipment(new ProfessionBuilderItemModel(kaftanSkora));
+            mytnik.AddEquipment(new ProfessionBuilderItemModel(tarcza));
+            mytnik.AddEquipment(new ProfessionBuilderItemModel(zlotaKorona, 50));
 
-            najemnik.SetEquipment(new ProfessionBuilderItemModel(kusza));
-            najemnik.SetEquipment(new ProfessionBuilderItemModel(kaftanKolczy));
-            najemnik.SetEquipment(new ProfessionBuilderItemModel(kurtaSkora));
-            najemnik.SetEquipment(new ProfessionBuilderItemModel(tarcza));
-            najemnik.SetEquipment(new ProfessionBuilderItemModel(miksturaLecznicza));
+            najemnik.AddEquipment(new ProfessionBuilderItemModel(kusza));
+            najemnik.AddEquipment(new ProfessionBuilderItemModel(kaftanKolczy));
+            najemnik.AddEquipment(new ProfessionBuilderItemModel(kurtaSkora));
+            najemnik.AddEquipment(new ProfessionBuilderItemModel(tarcza));
+            najemnik.AddEquipment(new ProfessionBuilderItemModel(miksturaLecznicza));
 
-            ochotnik.SetEquipment(new ProfessionBuilderItemModel(halabarda), new ProfessionBuilderItemModel(luk));
-            ochotnik.SetEquipment(new ProfessionBuilderItemModel(kurtaSkora));
-            ochotnik.SetEquipment(new ProfessionBuilderItemModel(helmSkora));
+            ochotnik.AddEquipment(new ProfessionBuilderItemModel(halabarda), new ProfessionBuilderItemModel(luk));
+            ochotnik.AddEquipment(new ProfessionBuilderItemModel(kurtaSkora));
+            ochotnik.AddEquipment(new ProfessionBuilderItemModel(helmSkora));
 
-            ochroniarz.SetEquipment(new ProfessionBuilderItemModel(toporDoRzucania, 2), new ProfessionBuilderItemModel(nozDoRzucania, 2));
-            ochroniarz.SetEquipment(new ProfessionBuilderItemModel(kastet));
-            ochroniarz.SetEquipment(new ProfessionBuilderItemModel(kurtaSkora));
-            ochroniarz.SetEquipment(new ProfessionBuilderItemModel(puklerz));
+            ochroniarz.AddEquipment(new ProfessionBuilderItemModel(toporDoRzucania, 2), new ProfessionBuilderItemModel(nozDoRzucania, 2));
+            ochroniarz.AddEquipment(new ProfessionBuilderItemModel(kastet));
+            ochroniarz.AddEquipment(new ProfessionBuilderItemModel(kurtaSkora));
+            ochroniarz.AddEquipment(new ProfessionBuilderItemModel(puklerz));
 
-            oprych.SetEquipment(new ProfessionBuilderItemModel(kastet));
-            oprych.SetEquipment(new ProfessionBuilderItemModel(kaftanKolczy));
-            oprych.SetEquipment(new ProfessionBuilderItemModel(kaftanSkora));
+            oprych.AddEquipment(new ProfessionBuilderItemModel(kastet));
+            oprych.AddEquipment(new ProfessionBuilderItemModel(kaftanKolczy));
+            oprych.AddEquipment(new ProfessionBuilderItemModel(kaftanSkora));
 
-            paz.SetEquipment(new ProfessionBuilderItemModel(szykowneUbranie, 2));
-            paz.SetEquipment(new ProfessionBuilderItemModel(perfumy));
-            paz.SetEquipment(new ProfessionBuilderItemModel(mieszek));
+            paz.AddEquipment(new ProfessionBuilderItemModel(szykowneUbranie, 2));
+            paz.AddEquipment(new ProfessionBuilderItemModel(perfumy));
+            paz.AddEquipment(new ProfessionBuilderItemModel(mieszek));
 
-            podzegacz.SetEquipment(new ProfessionBuilderItemModel(kurtaSkora));
-            podzegacz.SetEquipment(new ProfessionBuilderItemModel(dobreUbranie));
+            podzegacz.AddEquipment(new ProfessionBuilderItemModel(kurtaSkora));
+            podzegacz.AddEquipment(new ProfessionBuilderItemModel(dobreUbranie));
 
-            porywacz.SetEquipment(new ProfessionBuilderItemModel(latarnia));
-            porywacz.SetEquipment(new ProfessionBuilderItemModel(olejDoLatarni));
-            porywacz.SetEquipment(new ProfessionBuilderItemModel(kilof));
-            porywacz.SetEquipment(new ProfessionBuilderItemModel(lopata));
-            porywacz.SetEquipment(new ProfessionBuilderItemModel(worek));
+            porywacz.AddEquipment(new ProfessionBuilderItemModel(latarnia));
+            porywacz.AddEquipment(new ProfessionBuilderItemModel(olejDoLatarni));
+            porywacz.AddEquipment(new ProfessionBuilderItemModel(kilof));
+            porywacz.AddEquipment(new ProfessionBuilderItemModel(lopata));
+            porywacz.AddEquipment(new ProfessionBuilderItemModel(worek));
 
-            poslaniec.SetEquipment(new ProfessionBuilderItemModel(kurtaSkora));
-            poslaniec.SetEquipment(new ProfessionBuilderItemModel(tarcza));
-            poslaniec.SetEquipment(new ProfessionBuilderItemModel(kon));
-            poslaniec.SetEquipment(new ProfessionBuilderItemModel(siodlo));
-            poslaniec.SetEquipment(new ProfessionBuilderItemModel(uprzaz));
-            poslaniec.SetEquipment(new ProfessionBuilderItemModel(tubaNaMapy));
+            poslaniec.AddEquipment(new ProfessionBuilderItemModel(kurtaSkora));
+            poslaniec.AddEquipment(new ProfessionBuilderItemModel(tarcza));
+            poslaniec.AddEquipment(new ProfessionBuilderItemModel(kon));
+            poslaniec.AddEquipment(new ProfessionBuilderItemModel(siodlo));
+            poslaniec.AddEquipment(new ProfessionBuilderItemModel(uprzaz));
+            poslaniec.AddEquipment(new ProfessionBuilderItemModel(tubaNaMapy));
 
-            przemytnik.SetEquipment(new ProfessionBuilderItemModel(kurtaSkora));
-            przemytnik.SetEquipment(new ProfessionBuilderItemModel(konPociagowyLubMul));
-            przemytnik.SetEquipment(new ProfessionBuilderItemModel(woz), new ProfessionBuilderItemModel(lodzWioslowa));
-            przemytnik.SetEquipment(new ProfessionBuilderItemModel(woz), new ProfessionBuilderItemModel(pochodnia, 2));
+            przemytnik.AddEquipment(new ProfessionBuilderItemModel(kurtaSkora));
+            przemytnik.AddEquipment(new ProfessionBuilderItemModel(konPociagowyLubMul));
+            przemytnik.AddEquipment(new ProfessionBuilderItemModel(woz), new ProfessionBuilderItemModel(lodzWioslowa));
+            przemytnik.AddEquipment(new ProfessionBuilderItemModel(woz), new ProfessionBuilderItemModel(pochodnia, 2));
 
-            przepatrywacz.SetEquipment(new ProfessionBuilderItemModel(luk), new ProfessionBuilderItemModel(kusza));
-            przepatrywacz.SetEquipment(new ProfessionBuilderItemModel(bicz), new ProfessionBuilderItemModel(arkan));
-            przepatrywacz.SetEquipment(new ProfessionBuilderItemModel(siec));
-            przepatrywacz.SetEquipment(new ProfessionBuilderItemModel(kurtaSkora));
-            przepatrywacz.SetEquipment(new ProfessionBuilderItemModel(tarcza));
-            przepatrywacz.SetEquipment(new ProfessionBuilderItemModel(kon));
-            przepatrywacz.SetEquipment(new ProfessionBuilderItemModel(siodlo));
-            przepatrywacz.SetEquipment(new ProfessionBuilderItemModel(uprzaz));
-            przepatrywacz.SetEquipment(new ProfessionBuilderItemModel(lina));
+            przepatrywacz.AddEquipment(new ProfessionBuilderItemModel(luk), new ProfessionBuilderItemModel(kusza));
+            przepatrywacz.AddEquipment(new ProfessionBuilderItemModel(bicz), new ProfessionBuilderItemModel(arkan));
+            przepatrywacz.AddEquipment(new ProfessionBuilderItemModel(siec));
+            przepatrywacz.AddEquipment(new ProfessionBuilderItemModel(kurtaSkora));
+            przepatrywacz.AddEquipment(new ProfessionBuilderItemModel(tarcza));
+            przepatrywacz.AddEquipment(new ProfessionBuilderItemModel(kon));
+            przepatrywacz.AddEquipment(new ProfessionBuilderItemModel(siodlo));
+            przepatrywacz.AddEquipment(new ProfessionBuilderItemModel(uprzaz));
+            przepatrywacz.AddEquipment(new ProfessionBuilderItemModel(lina));
 
-            przewoznik.SetEquipment(new ProfessionBuilderItemModel(kusza), new ProfessionBuilderItemModel(garlacz));
-            przewoznik.SetEquipment(new ProfessionBuilderItemModel(kurtaSkora));
+            przewoznik.AddEquipment(new ProfessionBuilderItemModel(kusza), new ProfessionBuilderItemModel(garlacz));
+            przewoznik.AddEquipment(new ProfessionBuilderItemModel(kurtaSkora));
 
-            rybak.SetEquipment(new ProfessionBuilderItemModel(wlocznia));
-            rybak.SetEquipment(new ProfessionBuilderItemModel(siec));
-            rybak.SetEquipment(new ProfessionBuilderItemModel(kotwiczkaDoWspinaczki));
-            rybak.SetEquipment(new ProfessionBuilderItemModel(lina));
+            rybak.AddEquipment(new ProfessionBuilderItemModel(wlocznia));
+            rybak.AddEquipment(new ProfessionBuilderItemModel(siec));
+            rybak.AddEquipment(new ProfessionBuilderItemModel(kotwiczkaDoWspinaczki));
+            rybak.AddEquipment(new ProfessionBuilderItemModel(lina));
 
-            rzecznik.SetEquipment(new ProfessionBuilderItemModel(kurtaSkora));
-            rzecznik.SetEquipment(new ProfessionBuilderItemModel(szykowneUbranie, 2));
-            rzecznik.SetEquipment(new ProfessionBuilderItemModel(przyboryDoPisania));
+            rzecznik.AddEquipment(new ProfessionBuilderItemModel(kurtaSkora));
+            rzecznik.AddEquipment(new ProfessionBuilderItemModel(szykowneUbranie, 2));
+            rzecznik.AddEquipment(new ProfessionBuilderItemModel(przyboryDoPisania));
 
-            rzemieslnik.SetEquipment(new ProfessionBuilderItemModel(kaftanSkora));
-            rzemieslnik.SetEquipment(new ProfessionBuilderItemModel(zlotaKorona, 50));
+            rzemieslnik.AddEquipment(new ProfessionBuilderItemModel(kaftanSkora));
+            rzemieslnik.AddEquipment(new ProfessionBuilderItemModel(zlotaKorona, 50));
 
-            rzezimieszek.SetEquipment(new ProfessionBuilderItemModel(kaftanKolczy));
-            rzezimieszek.SetEquipment(new ProfessionBuilderItemModel(kurtaSkora));
-            rzezimieszek.SetEquipment(new ProfessionBuilderItemModel(tarcza));
-            rzezimieszek.SetEquipment(new ProfessionBuilderItemModel(kon));
-            rzezimieszek.SetEquipment(new ProfessionBuilderItemModel(siodlo));
-            rzezimieszek.SetEquipment(new ProfessionBuilderItemModel(uprzaz));
+            rzezimieszek.AddEquipment(new ProfessionBuilderItemModel(kaftanKolczy));
+            rzezimieszek.AddEquipment(new ProfessionBuilderItemModel(kurtaSkora));
+            rzezimieszek.AddEquipment(new ProfessionBuilderItemModel(tarcza));
+            rzezimieszek.AddEquipment(new ProfessionBuilderItemModel(kon));
+            rzezimieszek.AddEquipment(new ProfessionBuilderItemModel(siodlo));
+            rzezimieszek.AddEquipment(new ProfessionBuilderItemModel(uprzaz));
 
-            skryba.SetEquipment(new ProfessionBuilderItemModel(swieczkaWoskowa, 2));
-            skryba.SetEquipment(new ProfessionBuilderItemModel(zapalka, 5));
-            skryba.SetEquipment(new ProfessionBuilderItemModel(ksiazkaIlustrowana));
-            skryba.SetEquipment(new ProfessionBuilderItemModel(przyboryDoPisania));
+            skryba.AddEquipment(new ProfessionBuilderItemModel(swieczkaWoskowa, 2));
+            skryba.AddEquipment(new ProfessionBuilderItemModel(zapalka, 5));
+            skryba.AddEquipment(new ProfessionBuilderItemModel(ksiazkaIlustrowana));
+            skryba.AddEquipment(new ProfessionBuilderItemModel(przyboryDoPisania));
 
-            sluga.SetEquipment(new ProfessionBuilderItemModel(dobreUbranie));
-            sluga.SetEquipment(new ProfessionBuilderItemModel(manierkaSkorzana));
-            sluga.SetEquipment(new ProfessionBuilderItemModel(hubkaIKrzesiwo));
-            sluga.SetEquipment(new ProfessionBuilderItemModel(latarniaSztormowa));
-            sluga.SetEquipment(new ProfessionBuilderItemModel(olejDoLatarni));
+            sluga.AddEquipment(new ProfessionBuilderItemModel(dobreUbranie));
+            sluga.AddEquipment(new ProfessionBuilderItemModel(manierkaSkorzana));
+            sluga.AddEquipment(new ProfessionBuilderItemModel(hubkaIKrzesiwo));
+            sluga.AddEquipment(new ProfessionBuilderItemModel(latarniaSztormowa));
+            sluga.AddEquipment(new ProfessionBuilderItemModel(olejDoLatarni));
 
-            straznik.SetEquipment(new ProfessionBuilderItemModel(kurtaSkora));
-            straznik.SetEquipment(new ProfessionBuilderItemModel(olejDoLatarni));
+            straznik.AddEquipment(new ProfessionBuilderItemModel(kurtaSkora));
+            straznik.AddEquipment(new ProfessionBuilderItemModel(olejDoLatarni));
 
-            straznikDrog.SetEquipment(new ProfessionBuilderItemModel(pistolet));
-            straznikDrog.SetEquipment(new ProfessionBuilderItemModel(kaftanKolczy));
-            straznikDrog.SetEquipment(new ProfessionBuilderItemModel(kurtaSkora));
-            straznikDrog.SetEquipment(new ProfessionBuilderItemModel(tarcza));
-            straznikDrog.SetEquipment(new ProfessionBuilderItemModel(lekkiKonBojowy));
-            straznikDrog.SetEquipment(new ProfessionBuilderItemModel(siodlo));
-            straznikDrog.SetEquipment(new ProfessionBuilderItemModel(uprzaz));
-            straznikDrog.SetEquipment(new ProfessionBuilderItemModel(lina));
+            straznikDrog.AddEquipment(new ProfessionBuilderItemModel(pistolet));
+            straznikDrog.AddEquipment(new ProfessionBuilderItemModel(kaftanKolczy));
+            straznikDrog.AddEquipment(new ProfessionBuilderItemModel(kurtaSkora));
+            straznikDrog.AddEquipment(new ProfessionBuilderItemModel(tarcza));
+            straznikDrog.AddEquipment(new ProfessionBuilderItemModel(lekkiKonBojowy));
+            straznikDrog.AddEquipment(new ProfessionBuilderItemModel(siodlo));
+            straznikDrog.AddEquipment(new ProfessionBuilderItemModel(uprzaz));
+            straznikDrog.AddEquipment(new ProfessionBuilderItemModel(lina));
 
-            straznikPol.SetEquipment(new ProfessionBuilderItemModel(proca));
-            straznikPol.SetEquipment(new ProfessionBuilderItemModel(kuc));
-            straznikPol.SetEquipment(new ProfessionBuilderItemModel(siodlo));
-            straznikPol.SetEquipment(new ProfessionBuilderItemModel(uprzaz));
-            straznikPol.SetEquipment(new ProfessionBuilderItemModel(latarnia));
-            straznikPol.SetEquipment(new ProfessionBuilderItemModel(olejDoLatarni));
-            straznikPol.SetEquipment(new ProfessionBuilderItemModel(lopata));
+            straznikPol.AddEquipment(new ProfessionBuilderItemModel(proca));
+            straznikPol.AddEquipment(new ProfessionBuilderItemModel(kuc));
+            straznikPol.AddEquipment(new ProfessionBuilderItemModel(siodlo));
+            straznikPol.AddEquipment(new ProfessionBuilderItemModel(uprzaz));
+            straznikPol.AddEquipment(new ProfessionBuilderItemModel(latarnia));
+            straznikPol.AddEquipment(new ProfessionBuilderItemModel(olejDoLatarni));
+            straznikPol.AddEquipment(new ProfessionBuilderItemModel(lopata));
 
             #endregion profession items
 
             #region profession skills
 
-            akolita.SetSkills(czytaniePisanie);
-            akolita.SetSkills(leczenie);
-            akolita.SetSkills(nauka);
-            akolita.SetSkills(nauka);
-            akolita.SetSkills(przekonywanie);
-            akolita.SetSkills(spostrzegawczosc);
-            akolita.SetSkills(jezyk);
-            akolita.SetSkills(jezyk);
-            banita.SetSkills(opieka, wiedza);
-            banita.SetSkills(plotkowanie, sekretneZnaki);
-            banita.SetSkills(powozenie, jezdziectwo);
-            banita.SetSkills(skradanie);
-            banita.SetSkills(spostrzegawczosc);
-            banita.SetSkills(ukrywanieSie);
-            banita.SetSkills(unik);
-            banita.SetSkills(wspinaczka);
-            banita.SetSkills(zastawianiePulapek, plywanie);
-            berserker.SetSkills(kuglarstwo);
-            berserker.SetSkills(mocnaGlowa);
-            berserker.SetSkills(plywanie);
-            berserker.SetSkills(wiedza);
-            berserker.SetSkills(zastraszanie);
-            berserker.SetSkills(jezyk);
-            chlop.SetSkills(hazard, kuglarstwo);
-            chlop.SetSkills(opieka, przekonywanie);
-            chlop.SetSkills(oswajanie, rzemioslo);
-            chlop.SetSkills(powozenie, rzemioslo);
-            chlop.SetSkills(sztukaPrzetrwania, rzemioslo);
-            chlop.SetSkills(tresura, plywanie);
-            chlop.SetSkills(ukrywanieSie);
-            chlop.SetSkills(wioslarstwo, zastawianiePulapek);
-            chlop.SetSkills(wspinaczka, skradanie);
-            ciura.SetSkills(opieka, powozenie);
-            ciura.SetSkills(plotkowanie);
-            ciura.SetSkills(przekonywanie, wycena);
-            ciura.SetSkills(przeszukiwanie);
-            ciura.SetSkills(rzemioslo);
-            ciura.SetSkills(spostrzegawczosc);
-            ciura.SetSkills(targowanie);
-            ciura.SetSkills(jezyk);
-            ciura.SetSkills(zwinnePalce);
-            cyrkowiec.SetSkills(kuglarstwo);
-            cyrkowiec.SetSkills(opieka, plywanie);
-            cyrkowiec.SetSkills(przekonywanie);
-            cyrkowiec.SetSkills(spostrzegawczosc);
-            cyrkowiec.SetSkills(wiedza);
-            cyrkowiec.SetSkills(wycena, plotkowanie);
-            cyrkowiec.SetSkills(jezyk);
-            cyrkowiec.SetSkills(2, brzuchomostwo, gadanina, hipnoza, jezdziectwo, oswajanie, tresura, wspinaczka, zwinnePalce);
-            cyrulik.SetSkills(czytaniePisanie);
-            cyrulik.SetSkills(leczenie);
-            cyrulik.SetSkills(powozenie, plywanie);
-            cyrulik.SetSkills(przekonywanie);
-            cyrulik.SetSkills(rzemioslo);
-            cyrulik.SetSkills(spostrzegawczosc);
-            cyrulik.SetSkills(targowanie);
-            cyrulik.SetSkills(jezyk);
-            fanatyk.SetSkills(czytaniePisanie);
-            fanatyk.SetSkills(nauka);
-            fanatyk.SetSkills(przekonywanie);
-            fanatyk.SetSkills(wiedza);
-            fanatyk.SetSkills(zastraszanie);
-            flisak.SetSkills(mocnaGlowa, plotkowanie);
-            flisak.SetSkills(nawigacja);
-            flisak.SetSkills(plywanie);
-            flisak.SetSkills(sekretnyJezyk, jezyk);
-            flisak.SetSkills(spostrzegawczosc);
-            flisak.SetSkills(sztukaPrzetrwania);
-            flisak.SetSkills(wiedza);
-            flisak.SetSkills(wioslarstwo);
-            flisak.SetSkills(zelgarstwo);
-            giermek.SetSkills(jezdziectwo);
-            giermek.SetSkills(nauka, wiedza);
-            giermek.SetSkills(opieka);
-            giermek.SetSkills(przekonywanie, plotkowanie);
-            giermek.SetSkills(tresura);
-            giermek.SetSkills(unik);
-            giermek.SetSkills(jezyk);
-            gladiator.SetSkills(unik);
-            gladiator.SetSkills(zastraszanie);
-            goniec.SetSkills(nawigacja);
-            goniec.SetSkills(plywanie);
-            goniec.SetSkills(sekretneZnaki);
-            goniec.SetSkills(spostrzegawczosc);
-            goniec.SetSkills(sztukaPrzetrwania);
-            goniec.SetSkills(unik);
-            gornik.SetSkills(nawigacja);
-            gornik.SetSkills(opieka);
-            gornik.SetSkills(rzemioslo);
-            gornik.SetSkills(spostrzegawczosc);
-            gornik.SetSkills(ukrywanieSie, powozenie);
-            gornik.SetSkills(wspinaczka);
-            gornik.SetSkills(wycena, sztukaPrzetrwania);
-            guslarz.SetSkills(leczenie, hipnoza);
-            guslarz.SetSkills(opieka, targowanie);
-            guslarz.SetSkills(oswajanie, rzemioslo);
-            guslarz.SetSkills(przekonywanie, zastraszanie);
-            guslarz.SetSkills(przeszukiwanie);
-            guslarz.SetSkills(splatanieMagii);
-            guslarz.SetSkills(spostrzegawczosc);
-            guslarz.SetSkills(wykrywanieMagii);
-            hiena.SetSkills(czytaniePisanie);
-            hiena.SetSkills(otwieranieZamkow, skradanie);
-            hiena.SetSkills(przeszukiwanie);
-            hiena.SetSkills(spostrzegawczosc);
-            hiena.SetSkills(ukrywanieSie, sztukaPrzetrwania);
-            hiena.SetSkills(wiedza, sekretneZnaki);
-            hiena.SetSkills(wspinaczka);
-            hiena.SetSkills(wycena);
-            hiena.SetSkills(jezyk);
-            kanciarz.SetSkills(gadanina);
-            kanciarz.SetSkills(hazard, sekretneZnaki);
-            kanciarz.SetSkills(kuglarstwo);
-            kanciarz.SetSkills(plotkowanie, targowanie);
-            kanciarz.SetSkills(przekonywanie);
-            kanciarz.SetSkills(przeszukiwanie, sekretnyJezyk);
-            kanciarz.SetSkills(spostrzegawczosc);
-            kanciarz.SetSkills(wycena);
-            kanciarz.SetSkills(jezyk);
-            kozak.SetSkills(hazard, targowanie);
-            kozak.SetSkills(mocnaGlowa);
-            kozak.SetSkills(przeszukiwanie);
-            kozak.SetSkills(spostrzegawczosc);
-            kozak.SetSkills(sztukaPrzetrwania);
-            kozak.SetSkills(unik);
-            kozak.SetSkills(wiedza);
-            kozak.SetSkills(jezyk);
-            lesnik.SetSkills(sekretneZnaki);
-            lesnik.SetSkills(sekretnyJezyk);
-            lesnik.SetSkills(skradanie);
-            lesnik.SetSkills(spostrzegawczosc);
-            lesnik.SetSkills(tropienie, zastawianiePulapek);
-            lesnik.SetSkills(ukrywanieSie);
-            lesnik.SetSkills(wspinaczka);
-            lowca.SetSkills(przeszukiwanie, plywanie);
-            lowca.SetSkills(sekretneZnaki);
-            lowca.SetSkills(skradanie, zastawianiePulapek);
-            lowca.SetSkills(spostrzegawczosc);
-            lowca.SetSkills(sztukaPrzetrwania);
-            lowca.SetSkills(tropienie);
-            lowca.SetSkills(ukrywanieSie);
-            lowcanagrod.SetSkills(przeszukiwanie);
-            lowcanagrod.SetSkills(skradanie);
-            lowcanagrod.SetSkills(spostrzegawczosc);
-            lowcanagrod.SetSkills(sztukaPrzetrwania);
-            lowcanagrod.SetSkills(sledzenie);
-            lowcanagrod.SetSkills(tropienie);
-            lowcanagrod.SetSkills(zastraszanie);
-            mieszczanin.SetSkills(plotkowanie, czytaniePisanie);
-            mieszczanin.SetSkills(powozenie);
-            mieszczanin.SetSkills(przeszukiwanie);
-            mieszczanin.SetSkills(spostrzegawczosc);
-            mieszczanin.SetSkills(targowanie);
-            mieszczanin.SetSkills(wiedza, mocnaGlowa);
-            mieszczanin.SetSkills(wycena);
-            mieszczanin.SetSkills(jezyk);
-            mieszczanin.SetSkills(jezyk);
-            mytnik.SetSkills(czytaniePisanie);
-            mytnik.SetSkills(plotkowanie, targowanie);
-            mytnik.SetSkills(przeszukiwanie);
-            mytnik.SetSkills(spostrzegawczosc);
-            mytnik.SetSkills(unik);
-            mytnik.SetSkills(wycena);
-            mytnik.SetSkills(jezyk);
-            najemnik.SetSkills(opieka, hazard);
-            najemnik.SetSkills(plotkowanie, targowanie);
-            najemnik.SetSkills(powozenie, jezdziectwo);
-            najemnik.SetSkills(sekretnyJezyk);
-            najemnik.SetSkills(spostrzegawczosc, przeszukiwanie);
-            najemnik.SetSkills(unik);
-            najemnik.SetSkills(wiedza);
-            najemnik.SetSkills(jezyk, plywanie);
-            ochotnik.SetSkills(hazard, plotkowanie);
-            ochotnik.SetSkills(opieka);
-            ochotnik.SetSkills(powozenie, plywanie);
-            ochotnik.SetSkills(przeszukiwanie);
-            ochotnik.SetSkills(rzemioslo);
-            ochotnik.SetSkills(spostrzegawczosc);
-            ochotnik.SetSkills(sztukaPrzetrwania);
-            ochotnik.SetSkills(unik);
-            ochroniarz.SetSkills(leczenie);
-            ochroniarz.SetSkills(spostrzegawczosc);
-            ochroniarz.SetSkills(unik);
-            ochroniarz.SetSkills(zastraszanie);
-            oprych.SetSkills(hazard);
-            oprych.SetSkills(mocnaGlowa);
-            oprych.SetSkills(sekretnyJezyk);
-            oprych.SetSkills(unik);
-            oprych.SetSkills(zastraszanie);
-            paz.SetSkills(czytaniePisanie);
-            paz.SetSkills(gadanina);
-            paz.SetSkills(nauka);
-            paz.SetSkills(plotkowanie, jezyk);
-            paz.SetSkills(przeszukiwanie);
-            paz.SetSkills(spostrzegawczosc);
-            paz.SetSkills(targowanie);
-            paz.SetSkills(wycena);
-            podzegacz.SetSkills(czytaniePisanie);
-            podzegacz.SetSkills(nauka, plotkowanie);
-            podzegacz.SetSkills(nauka, wiedza);
-            podzegacz.SetSkills(przekonywanie);
-            podzegacz.SetSkills(spostrzegawczosc);
-            podzegacz.SetSkills(ukrywanieSie);
-            podzegacz.SetSkills(jezyk);
-            podzegacz.SetSkills(jezyk);
-            porywacz.SetSkills(plotkowanie, targowanie);
-            porywacz.SetSkills(powozenie);
-            porywacz.SetSkills(przeszukiwanie);
-            porywacz.SetSkills(sekretneZnaki);
-            porywacz.SetSkills(skradanie);
-            porywacz.SetSkills(spostrzegawczosc);
-            porywacz.SetSkills(wspinaczka);
-            poslaniec.SetSkills(jezdziectwo);
-            poslaniec.SetSkills(nawigacja);
-            poslaniec.SetSkills(opieka);
-            poslaniec.SetSkills(plywanie);
-            poslaniec.SetSkills(sekretneZnaki);
-            poslaniec.SetSkills(spostrzegawczosc);
-            poslaniec.SetSkills(sztukaPrzetrwania);
-            poslaniec.SetSkills(wiedza, plotkowanie);
-            poslaniec.SetSkills(jezyk);
-            przemytnik.SetSkills(plotkowanie, sekretnyJezyk);
-            przemytnik.SetSkills(plywanie);
-            przemytnik.SetSkills(powozenie);
-            przemytnik.SetSkills(przeszukiwanie);
-            przemytnik.SetSkills(skradanie);
-            przemytnik.SetSkills(spostrzegawczosc);
-            przemytnik.SetSkills(targowanie);
-            przemytnik.SetSkills(wioslarstwo);
-            przemytnik.SetSkills(wycena);
-            przemytnik.SetSkills(jezyk, sekretneZnaki);
-            przepatrywacz.SetSkills(jezdziectwo);
-            przepatrywacz.SetSkills(nawigacja);
-            przepatrywacz.SetSkills(opieka);
-            przepatrywacz.SetSkills(przeszukiwanie);
-            przepatrywacz.SetSkills(skradanie);
-            przepatrywacz.SetSkills(spostrzegawczosc);
-            przepatrywacz.SetSkills(sztukaPrzetrwania);
-            przepatrywacz.SetSkills(tropienie);
-            przewoznik.SetSkills(plotkowanie, zastraszanie);
-            przewoznik.SetSkills(plywanie);
-            przewoznik.SetSkills(przekonywanie);
-            przewoznik.SetSkills(spostrzegawczosc);
-            przewoznik.SetSkills(targowanie);
-            przewoznik.SetSkills(wiedza);
-            przewoznik.SetSkills(wioslarstwo);
-            przewoznik.SetSkills(wycena, sekretnyJezyk);
-            rybak.SetSkills(mocnaGlowa, targowanie);
-            rybak.SetSkills(nawigacja, rzemioslo);
-            rybak.SetSkills(plywanie);
-            rybak.SetSkills(spostrzegawczosc);
-            rybak.SetSkills(sztukaPrzetrwania);
-            rybak.SetSkills(wiedza);
-            rybak.SetSkills(wioslarstwo);
-            rybak.SetSkills(jezyk);
-            rybak.SetSkills(zelgarstwo);
-            rzecznik.SetSkills(czytaniePisanie);
-            rzecznik.SetSkills(plotkowanie);
-            rzecznik.SetSkills(plywanie);
-            rzecznik.SetSkills(przekonywanie);
-            rzecznik.SetSkills(rzemioslo);
-            rzecznik.SetSkills(sekretnyJezyk);
-            rzecznik.SetSkills(spostrzegawczosc);
-            rzecznik.SetSkills(targowanie);
-            rzecznik.SetSkills(wiedza);
-            rzecznik.SetSkills(wycena);
-            rzemieslnik.SetSkills(czytaniePisanie);
-            rzemieslnik.SetSkills(opieka, plotkowanie);
-            rzemieslnik.SetSkills(powozenie);
-            rzemieslnik.SetSkills(rzemioslo);
-            rzemieslnik.SetSkills(sekretnyJezyk);
-            rzemieslnik.SetSkills(spostrzegawczosc);
-            rzemieslnik.SetSkills(targowanie);
-            rzemieslnik.SetSkills(wycena);
-            rzezimieszek.SetSkills(jezdziectwo);
-            rzezimieszek.SetSkills(plotkowanie, targowanie);
-            rzezimieszek.SetSkills(unik);
-            rzezimieszek.SetSkills(zastraszanie);
-            skryba.SetSkills(czytaniePisanie);
-            skryba.SetSkills(nauka);
-            skryba.SetSkills(rzemioslo);
-            skryba.SetSkills(sekretnyJezyk);
-            skryba.SetSkills(spostrzegawczosc);
-            skryba.SetSkills(wiedza, plotkowanie);
-            skryba.SetSkills(jezyk);
-            skryba.SetSkills(jezyk);
-            skryba.SetSkills(jezyk);
-            sluga.SetSkills(czytaniePisanie, zwinnePalce);
-            sluga.SetSkills(gadanina);
-            sluga.SetSkills(opieka, rzemioslo);
-            sluga.SetSkills(plotkowanie);
-            sluga.SetSkills(powozenie, przeszukiwanie);
-            sluga.SetSkills(spostrzegawczosc);
-            sluga.SetSkills(targowanie, wycena);
-            sluga.SetSkills(unik);
-            straznik.SetSkills(nauka);
-            straznik.SetSkills(plotkowanie);
-            straznik.SetSkills(przeszukiwanie);
-            straznik.SetSkills(spostrzegawczosc);
-            straznik.SetSkills(tropienie);
-            straznik.SetSkills(unik);
-            straznik.SetSkills(zastraszanie);
-            straznikDrog.SetSkills(jezdziectwo);
-            straznikDrog.SetSkills(nawigacja);
-            straznikDrog.SetSkills(opieka);
-            straznikDrog.SetSkills(powozenie);
-            straznikDrog.SetSkills(przeszukiwanie);
-            straznikDrog.SetSkills(spostrzegawczosc);
-            straznikDrog.SetSkills(sztukaPrzetrwania);
-            straznikDrog.SetSkills(tropienie, sekretneZnaki);
-            straznikDrog.SetSkills(wiedza, plotkowanie);
-            straznikPol.SetSkills(nauka, wiedza);
-            straznikPol.SetSkills(przeszukiwanie);
-            straznikPol.SetSkills(skradanie);
-            straznikPol.SetSkills(spostrzegawczosc);
-            straznikPol.SetSkills(sztukaPrzetrwania);
-            straznikPol.SetSkills(tropienie);
-            straznikPol.SetSkills(ukrywanieSie);
-            straznikWiezienny.SetSkills(dowodzenie);
-            straznikWiezienny.SetSkills(leczenie, zwinnePalce);
-            straznikWiezienny.SetSkills(mocnaGlowa);
-            straznikWiezienny.SetSkills(przeszukiwanie);
-            straznikWiezienny.SetSkills(spostrzegawczosc);
-            straznikWiezienny.SetSkills(unik);
-            straznikWiezienny.SetSkills(zastraszanie);
-            szczurolap.SetSkills(opieka);
-            szczurolap.SetSkills(przeszukiwanie);
-            szczurolap.SetSkills(skradanie);
-            szczurolap.SetSkills(spostrzegawczosc);
-            szczurolap.SetSkills(tresura);
-            szczurolap.SetSkills(ukrywanieSie);
-            szczurolap.SetSkills(zastawianiePulapek);
-            szermierz.SetSkills(czytaniePisanie);
-            szermierz.SetSkills(nauka);
-            szermierz.SetSkills(unik);
-            szermierz.SetSkills(wiedza);
-            szermierz.SetSkills(jezyk);
-            szlachcic.SetSkills(czytaniePisanie);
-            szlachcic.SetSkills(gadanina, dowodzenie);
-            szlachcic.SetSkills(hazard, plotkowanie);
-            szlachcic.SetSkills(jezdziectwo);
-            szlachcic.SetSkills(mocnaGlowa, kuglarstwo);
-            szlachcic.SetSkills(przekonywanie);
-            szlachcic.SetSkills(wiedza);
-            szlachcic.SetSkills(jezyk);
-            smieciarz.SetSkills(opieka);
-            smieciarz.SetSkills(powozenie);
-            smieciarz.SetSkills(przekonywanie, plotkowanie);
-            smieciarz.SetSkills(przeszukiwanie);
-            smieciarz.SetSkills(spostrzegawczosc);
-            smieciarz.SetSkills(targowanie);
-            smieciarz.SetSkills(wiedza);
-            smieciarz.SetSkills(wycena);
-            tarczownik.SetSkills(nawigacja);
-            tarczownik.SetSkills(spostrzegawczosc);
-            tarczownik.SetSkills(sledzenie);
-            tarczownik.SetSkills(unik);
-            tarczownik.SetSkills(wspinaczka);
-            uczen.SetSkills(czytaniePisanie);
-            uczen.SetSkills(jezyk);
-            uczen.SetSkills(nauka);
-            uczen.SetSkills(przeszukiwanie);
-            uczen.SetSkills(splatanieMagii);
-            uczen.SetSkills(spostrzegawczosc);
-            uczen.SetSkills(wykrywanieMagii);
-            uczen.SetSkills(jezyk);
-            weglarz.SetSkills(powozenie, plotkowanie);
-            weglarz.SetSkills(przeszukiwanie);
-            weglarz.SetSkills(sekretneZnaki);
-            weglarz.SetSkills(spostrzegawczosc);
-            weglarz.SetSkills(sztukaPrzetrwania);
-            weglarz.SetSkills(targowanie);
-            weglarz.SetSkills(wiedza, ukrywanieSie);
-            weglarz.SetSkills(wspinaczka);
-            wloczykij.SetSkills(kuglarstwo, sekretneZnaki);
-            wloczykij.SetSkills(leczenie, spostrzegawczosc);
-            wloczykij.SetSkills(nawigacja);
-            wloczykij.SetSkills(plotkowanie, sekretnyJezyk);
-            wloczykij.SetSkills(skradanie);
-            wloczykij.SetSkills(sztukaPrzetrwania);
-            wloczykij.SetSkills(targowanie, plywanie);
-            wloczykij.SetSkills(wiedza);
-            wojownik.SetSkills(leczenie, przeszukiwanie);
-            wojownik.SetSkills(skradanie);
-            wojownik.SetSkills(spostrzegawczosc);
-            wojownik.SetSkills(sztukaPrzetrwania);
-            wojownik.SetSkills(tropienie);
-            wojownik.SetSkills(ukrywanieSie);
-            wojownik.SetSkills(unik);
-            wojownik.SetSkills(wspinaczka);
-            woznica.SetSkills(leczenie, jezdziectwo);
-            woznica.SetSkills(nawigacja);
-            woznica.SetSkills(opieka);
-            woznica.SetSkills(plotkowanie, targowanie);
-            woznica.SetSkills(powozenie);
-            woznica.SetSkills(sekretneZnaki);
-            woznica.SetSkills(spostrzegawczosc);
-            woznica.SetSkills(jezyk);
-            zabojcaTroli.SetSkills(mocnaGlowa);
-            zabojcaTroli.SetSkills(unik);
-            zabojcaTroli.SetSkills(zastraszanie);
-            zarzadca.SetSkills(czytaniePisanie);
-            zarzadca.SetSkills(dowodzenie, nawigacja);
-            zarzadca.SetSkills(jezdziectwo);
-            zarzadca.SetSkills(nauka);
-            zarzadca.SetSkills(opieka, plotkowanie);
-            zarzadca.SetSkills(przekonywanie);
-            zarzadca.SetSkills(spostrzegawczosc);
-            zarzadca.SetSkills(zastraszanie, wiedza);
-            zlodziej.SetSkills(czytaniePisanie, zwinnePalce);
-            zlodziej.SetSkills(hazard, otwieranieZamkow);
-            zlodziej.SetSkills(przekonywanie, wspinaczka);
-            zlodziej.SetSkills(przeszukiwanie);
-            zlodziej.SetSkills(sekretnyJezyk, sekretneZnaki);
-            zlodziej.SetSkills(skradanie);
-            zlodziej.SetSkills(spostrzegawczosc);
-            zlodziej.SetSkills(ukrywanieSie);
-            zlodziej.SetSkills(wycena, charakteryzacja);
-            zak.SetSkills(czytaniePisanie);
-            zak.SetSkills(leczenie, przeszukiwanie);
-            zak.SetSkills(nauka);
-            zak.SetSkills(nauka, plotkowanie);
-            zak.SetSkills(przekonywanie, mocnaGlowa);
-            zak.SetSkills(spostrzegawczosc);
-            zak.SetSkills(jezyk);
-            zak.SetSkills(jezyk);
-            zeglarz.SetSkills(mocnaGlowa, spostrzegawczosc);
-            zeglarz.SetSkills(plywanie);
-            zeglarz.SetSkills(unik);
-            zeglarz.SetSkills(wiedza);
-            zeglarz.SetSkills(wioslarstwo);
-            zeglarz.SetSkills(wspinaczka);
-            zeglarz.SetSkills(jezyk);
-            zeglarz.SetSkills(zelgarstwo);
-            zolnierz.SetSkills(hazard, plotkowanie);
-            zolnierz.SetSkills(opieka, leczenie);
-            zolnierz.SetSkills(powozenie, jezdziectwo);
-            zolnierz.SetSkills(unik);
-            zolnierz.SetSkills(wiedza, spostrzegawczosc);
-            zolnierz.SetSkills(zastraszanie);
-            zolnierzOkretowy.SetSkills(mocnaGlowa);
-            zolnierzOkretowy.SetSkills(plotkowanie, sekretnyJezyk);
-            zolnierzOkretowy.SetSkills(plywanie);
-            zolnierzOkretowy.SetSkills(unik);
-            zolnierzOkretowy.SetSkills(wiedza, hazard);
-            zolnierzOkretowy.SetSkills(wioslarstwo);
-            zolnierzOkretowy.SetSkills(zastraszanie);
-            arcykaplan.SetSkills(jezdziectwo, plywanie);
-            arcykaplan.SetSkills(jezyk);
-            arcykaplan.SetSkills(leczenie);
-            arcykaplan.SetSkills(nauka);
-            arcykaplan.SetSkills(nauka);
-            arcykaplan.SetSkills(plotkowanie);
-            arcykaplan.SetSkills(przekonywanie);
-            arcykaplan.SetSkills(splatanieMagii);
-            arcykaplan.SetSkills(wiedza);
-            arcykaplan.SetSkills(wykrywanieMagii);
-            arcykaplan.SetSkills(zastraszanie);
-            arcykaplan.SetSkills(jezyk);
-            arcymag.SetSkills(czytaniePisanie);
-            arcymag.SetSkills(jezyk);
-            arcymag.SetSkills(jezyk);
-            arcymag.SetSkills(nauka);
-            arcymag.SetSkills(nauka);
-            arcymag.SetSkills(nauka);
-            arcymag.SetSkills(nauka);
-            arcymag.SetSkills(przekonywanie, zastraszanie);
-            arcymag.SetSkills(splatanieMagii);
-            arcymag.SetSkills(wiedza);
-            arcymag.SetSkills(wiedza);
-            arcymag.SetSkills(wiedza);
-            arcymag.SetSkills(wykrywanieMagii);
-            arcymag.SetSkills(jezyk);
-            arystokrata.SetSkills(czytaniePisanie);
-            arystokrata.SetSkills(dowodzenie);
-            arystokrata.SetSkills(jezdziectwo);
-            arystokrata.SetSkills(nauka);
-            arystokrata.SetSkills(nauka);
-            arystokrata.SetSkills(plotkowanie);
-            arystokrata.SetSkills(przekonywanie);
-            arystokrata.SetSkills(spostrzegawczosc);
-            arystokrata.SetSkills(wiedza);
-            arystokrata.SetSkills(wycena);
-            arystokrata.SetSkills(jezyk);
-            arystokrata.SetSkills(jezyk);
-            bard.SetSkills(czytaniePisanie);
-            bard.SetSkills(kuglarstwo);
-            bard.SetSkills(kuglarstwo);
-            bard.SetSkills(plotkowanie);
-            bard.SetSkills(przekonywanie);
-            bard.SetSkills(spostrzegawczosc);
-            bard.SetSkills(wiedza);
-            bard.SetSkills(wiedza);
-            bard.SetSkills(jezyk);
-            biczownik.SetSkills(leczenie);
-            biczownik.SetSkills(nauka);
-            biczownik.SetSkills(przekonywanie);
-            biczownik.SetSkills(zastraszanie);
-            biczownik.SetSkills(jezyk);
-            bosman.SetSkills(dowodzenie);
-            bosman.SetSkills(hazard);
-            bosman.SetSkills(mocnaGlowa);
-            bosman.SetSkills(plotkowanie);
-            bosman.SetSkills(plywanie);
-            bosman.SetSkills(rzemioslo);
-            bosman.SetSkills(unik);
-            bosman.SetSkills(wiedza);
-            bosman.SetSkills(wiedza);
-            bosman.SetSkills(wioslarstwo);
-            bosman.SetSkills(zastraszanie);
-            bosman.SetSkills(jezyk);
-            bosman.SetSkills(zelgarstwo);
-            demagog.SetSkills(charakteryzacja);
-            demagog.SetSkills(dowodzenie);
-            demagog.SetSkills(gadanina);
-            demagog.SetSkills(nauka);
-            demagog.SetSkills(nauka);
-            demagog.SetSkills(plotkowanie);
-            demagog.SetSkills(przekonywanie);
-            demagog.SetSkills(spostrzegawczosc);
-            demagog.SetSkills(ukrywanieSie);
-            demagog.SetSkills(unik);
-            demagog.SetSkills(wiedza);
-            demagog.SetSkills(zastraszanie);
-            demagog.SetSkills(jezyk);
-            dworzanin.SetSkills(czytaniePisanie);
-            dworzanin.SetSkills(dowodzenie, kuglarstwo);
-            dworzanin.SetSkills(gadanina);
-            dworzanin.SetSkills(jezdziectwo);
-            dworzanin.SetSkills(nauka, hazard);
-            dworzanin.SetSkills(plotkowanie);
-            dworzanin.SetSkills(przekonywanie);
-            dworzanin.SetSkills(spostrzegawczosc);
-            dworzanin.SetSkills(wiedza);
-            dworzanin.SetSkills(wycena);
-            dworzanin.SetSkills(jezyk);
-            dworzanin.SetSkills(jezyk);
-            fechmistrz.SetSkills(spostrzegawczosc);
-            fechmistrz.SetSkills(unik);
-            fechmistrz.SetSkills(wycena);
-            fechmistrz.SetSkills(zastraszanie);
-            herold.SetSkills(czytaniePisanie);
-            herold.SetSkills(gadanina);
-            herold.SetSkills(jezdziectwo);
-            herold.SetSkills(nauka);
-            herold.SetSkills(nauka);
-            herold.SetSkills(plotkowanie);
-            herold.SetSkills(przekonywanie);
-            herold.SetSkills(spostrzegawczosc);
-            herold.SetSkills(targowanie);
-            herold.SetSkills(wiedza);
-            herold.SetSkills(wiedza);
-            herold.SetSkills(wycena);
-            herold.SetSkills(jezyk);
-            herold.SetSkills(jezyk);
-            herszt.SetSkills(dowodzenie);
-            herszt.SetSkills(jezdziectwo);
-            herszt.SetSkills(nauka);
-            herszt.SetSkills(sekretneZnaki);
-            herszt.SetSkills(sekretnyJezyk);
-            herszt.SetSkills(skradanie);
-            herszt.SetSkills(spostrzegawczosc);
-            herszt.SetSkills(tropienie);
-            herszt.SetSkills(ukrywanieSie);
-            herszt.SetSkills(wiedza);
-            herszt.SetSkills(wspinaczka);
-            inzynier.SetSkills(czytaniePisanie);
-            inzynier.SetSkills(nauka);
-            inzynier.SetSkills(nauka);
-            inzynier.SetSkills(powozenie, jezdziectwo);
-            inzynier.SetSkills(rzemioslo);
-            inzynier.SetSkills(spostrzegawczosc);
-            inzynier.SetSkills(wiedza);
-            inzynier.SetSkills(jezyk);
-            kapitan.SetSkills(dowodzenie);
-            kapitan.SetSkills(nauka);
-            kapitan.SetSkills(plywanie);
-            kapitan.SetSkills(rzemioslo);
-            kapitan.SetSkills(spostrzegawczosc);
-            kapitan.SetSkills(tresura);
-            kapitan.SetSkills(unik);
-            kapitan.SetSkills(wiedza);
-            kapitan.SetSkills(wiedza);
-            kapitan.SetSkills(wiedza);
-            kapitan.SetSkills(jezyk);
-            kapitan.SetSkills(jezyk);
-            kapitan.SetSkills(jezyk);
-            kapitan.SetSkills(zelgarstwo);
-            kaplan.SetSkills(czytaniePisanie);
-            kaplan.SetSkills(jezdziectwo, plywanie);
-            kaplan.SetSkills(jezykTajemny);
-            kaplan.SetSkills(leczenie);
-            kaplan.SetSkills(nauka);
-            kaplan.SetSkills(nauka);
-            kaplan.SetSkills(plotkowanie);
-            kaplan.SetSkills(przekonywanie);
-            kaplan.SetSkills(splatanieMagii);
-            kaplan.SetSkills(spostrzegawczosc);
-            kaplan.SetSkills(wiedza);
-            kaplan.SetSkills(wiedza);
-            kaplan.SetSkills(wykrywanieMagii);
-            kaplan.SetSkills(jezyk);
-            kaplan.SetSkills(jezyk);
-            karczmarz.SetSkills(czytaniePisanie, zwinnePalce);
-            karczmarz.SetSkills(gadanina, czytanieZWarg);
-            karczmarz.SetSkills(mocnaGlowa);
-            karczmarz.SetSkills(plotkowanie);
-            karczmarz.SetSkills(przekonywanie);
-            karczmarz.SetSkills(rzemioslo);
-            karczmarz.SetSkills(spostrzegawczosc);
-            karczmarz.SetSkills(targowanie);
-            karczmarz.SetSkills(wiedza);
-            karczmarz.SetSkills(wycena);
-            karczmarz.SetSkills(jezyk);
-            ksiaze.SetSkills(dowodzenie);
-            ksiaze.SetSkills(plotkowanie);
-            ksiaze.SetSkills(przekonywanie);
-            ksiaze.SetSkills(sekretneZnaki);
-            ksiaze.SetSkills(sekretnyJezyk);
-            ksiaze.SetSkills(spostrzegawczosc);
-            ksiaze.SetSkills(targowanie);
-            ksiaze.SetSkills(torturowanie);
-            ksiaze.SetSkills(unik);
-            ksiaze.SetSkills(wiedza);
-            ksiaze.SetSkills(wycena);
-            ksiaze.SetSkills(zastraszanie);
-            kupiec.SetSkills(czytaniePisanie);
-            kupiec.SetSkills(jezdziectwo);
-            kupiec.SetSkills(plotkowanie);
-            kupiec.SetSkills(powozenie);
-            kupiec.SetSkills(przekonywanie);
-            kupiec.SetSkills(rzemioslo);
-            kupiec.SetSkills(sekretnyJezyk);
-            kupiec.SetSkills(targowanie);
-            kupiec.SetSkills(wiedza);
-            kupiec.SetSkills(wiedza);
-            kupiec.SetSkills(wycena);
-            kupiec.SetSkills(jezyk);
-            kupiec.SetSkills(jezyk);
-            lesnyDuch.SetSkills(czytanieZWarg);
-            lesnyDuch.SetSkills(nawigacja);
-            lesnyDuch.SetSkills(sekretneZnaki);
-            lesnyDuch.SetSkills(sekretnyJezyk);
-            lesnyDuch.SetSkills(skradanie);
-            lesnyDuch.SetSkills(spostrzegawczosc);
-            lesnyDuch.SetSkills(sztukaPrzetrwania);
-            lesnyDuch.SetSkills(sledzenie);
-            lesnyDuch.SetSkills(tropienie);
-            lesnyDuch.SetSkills(ukrywanieSie);
-            lesnyDuch.SetSkills(unik);
-            lesnyDuch.SetSkills(zastawianiePulapek);
-            lesnyDuch.SetSkills(zastraszanie);
-            lowcaCzarownic.SetSkills(dowodzenie);
-            lowcaCzarownic.SetSkills(jezdziectwo);
-            lowcaCzarownic.SetSkills(nauka);
-            lowcaCzarownic.SetSkills(nauka);
-            lowcaCzarownic.SetSkills(nauka);
-            lowcaCzarownic.SetSkills(plotkowanie);
-            lowcaCzarownic.SetSkills(przekonywanie);
-            lowcaCzarownic.SetSkills(przeszukiwanie);
-            lowcaCzarownic.SetSkills(skradanie);
-            lowcaCzarownic.SetSkills(spostrzegawczosc);
-            lowcaCzarownic.SetSkills(wiedza);
-            lowcaCzarownic.SetSkills(zastraszanie);
-            lowcaCzarownic.SetSkills(jezyk);
-            lowcaWampirow.SetSkills(nauka);
-            lowcaWampirow.SetSkills(przeszukiwanie);
-            lowcaWampirow.SetSkills(skradanie);
-            lowcaWampirow.SetSkills(spostrzegawczosc);
-            lowcaWampirow.SetSkills(sledzenie);
-            lowcaWampirow.SetSkills(tropienie);
-            lowcaWampirow.SetSkills(ukrywanieSie);
-            lowcaWampirow.SetSkills(unik);
-            lowcaWampirow.SetSkills(wiedza);
-            lowcaWampirow.SetSkills(wspinaczka);
-            lowcaWampirow.SetSkills(jezyk);
-            majordomus.SetSkills(czytaniePisanie);
-            majordomus.SetSkills(dowodzenie);
-            majordomus.SetSkills(jezdziectwo);
-            majordomus.SetSkills(nauka);
-            majordomus.SetSkills(plotkowanie);
-            majordomus.SetSkills(przekonywanie);
-            majordomus.SetSkills(przeszukiwanie);
-            majordomus.SetSkills(rzemioslo);
-            majordomus.SetSkills(spostrzegawczosc);
-            majordomus.SetSkills(targowanie);
-            majordomus.SetSkills(wiedza);
-            majordomus.SetSkills(wycena);
-            majordomus.SetSkills(zastraszanie);
-            majordomus.SetSkills(jezyk);
-            medyk.SetSkills(czytaniePisanie);
-            medyk.SetSkills(leczenie);
-            medyk.SetSkills(nauka);
-            medyk.SetSkills(plotkowanie);
-            medyk.SetSkills(rzemioslo);
-            medyk.SetSkills(spostrzegawczosc);
-            medyk.SetSkills(warzenieTrucizn);
-            medyk.SetSkills(jezyk);
-            mistrzCieni.SetSkills(charakteryzacja);
-            mistrzCieni.SetSkills(czytaniePisanie);
-            mistrzCieni.SetSkills(hazard, czytanieZWarg);
-            mistrzCieni.SetSkills(otwieranieZamkow);
-            mistrzCieni.SetSkills(plotkowanie);
-            mistrzCieni.SetSkills(plywanie);
-            mistrzCieni.SetSkills(przekonywanie);
-            mistrzCieni.SetSkills(przeszukiwanie);
-            mistrzCieni.SetSkills(sekretneZnaki);
-            mistrzCieni.SetSkills(sekretnyJezyk);
-            mistrzCieni.SetSkills(skradanie);
-            mistrzCieni.SetSkills(spostrzegawczosc);
-            mistrzCieni.SetSkills(ukrywanieSie);
-            mistrzCieni.SetSkills(unik);
-            mistrzCieni.SetSkills(wspinaczka);
-            mistrzCieni.SetSkills(wycena);
-            mistrzCieni.SetSkills(zwinnePalce);
-            mistrzGildii.SetSkills(dowodzenie);
-            mistrzGildii.SetSkills(nauka);
-            mistrzGildii.SetSkills(plotkowanie);
-            mistrzGildii.SetSkills(przekonywanie);
-            mistrzGildii.SetSkills(rzemioslo);
-            mistrzGildii.SetSkills(rzemioslo);
-            mistrzGildii.SetSkills(sekretnyJezyk);
-            mistrzGildii.SetSkills(spostrzegawczosc);
-            mistrzGildii.SetSkills(targowanie);
-            mistrzGildii.SetSkills(wiedza);
-            mistrzGildii.SetSkills(wycena);
-            mistrzGildii.SetSkills(jezyk);
-            mistrzGildii.SetSkills(jezyk);
-            mistrzMagii.SetSkills(czytaniePisanie);
-            mistrzMagii.SetSkills(jezykTajemny);
-            mistrzMagii.SetSkills(jezykTajemny);
-            mistrzMagii.SetSkills(nauka);
-            mistrzMagii.SetSkills(nauka);
-            mistrzMagii.SetSkills(plotkowanie, jezdziectwo);
-            mistrzMagii.SetSkills(przekonywanie, zastraszanie);
-            mistrzMagii.SetSkills(splatanieMagii);
-            mistrzMagii.SetSkills(wiedza);
-            mistrzMagii.SetSkills(wiedza);
-            mistrzMagii.SetSkills(wykrywanieMagii);
-            mistrzMagii.SetSkills(jezyk);
-            mistrzMagii.SetSkills(jezyk);
-            mistrzMagii.SetSkills(jezyk);
-            mistrzRzemiosla.SetSkills(plotkowanie);
-            mistrzRzemiosla.SetSkills(powozenie);
-            mistrzRzemiosla.SetSkills(rzemioslo);
-            mistrzRzemiosla.SetSkills(rzemioslo);
-            mistrzRzemiosla.SetSkills(rzemioslo);
-            mistrzRzemiosla.SetSkills(sekretnyJezyk);
-            mistrzRzemiosla.SetSkills(spostrzegawczosc);
-            mistrzRzemiosla.SetSkills(targowanie);
-            mistrzRzemiosla.SetSkills(wycena);
-            mistrzRzemiosla.SetSkills(jezyk);
-            mistrzZakonny.SetSkills(czytaniePisanie);
-            mistrzZakonny.SetSkills(dowodzenie);
-            mistrzZakonny.SetSkills(jezdziectwo);
-            mistrzZakonny.SetSkills(nauka);
-            mistrzZakonny.SetSkills(nauka);
-            mistrzZakonny.SetSkills(przekonywanie);
-            mistrzZakonny.SetSkills(sekretneZnaki);
-            mistrzZakonny.SetSkills(sekretnyJezyk);
-            mistrzZakonny.SetSkills(spostrzegawczosc);
-            mistrzZakonny.SetSkills(tresura);
-            mistrzZakonny.SetSkills(unik);
-            mistrzZakonny.SetSkills(wiedza);
-            mistrzZakonny.SetSkills(wiedza);
-            mistrzZakonny.SetSkills(wiedza);
-            mistrzZakonny.SetSkills(jezyk);
-            nawigator.SetSkills(czytaniePisanie);
-            nawigator.SetSkills(nauka);
-            nawigator.SetSkills(nawigacja);
-            nawigator.SetSkills(plywanie);
-            nawigator.SetSkills(rzemioslo);
-            nawigator.SetSkills(spostrzegawczosc);
-            nawigator.SetSkills(wiedza);
-            nawigator.SetSkills(wiedza);
-            nawigator.SetSkills(jezyk);
-            odkrywca.SetSkills(czytaniePisanie);
-            odkrywca.SetSkills(dowodzenie);
-            odkrywca.SetSkills(jezdziectwo);
-            odkrywca.SetSkills(nauka);
-            odkrywca.SetSkills(nawigacja);
-            odkrywca.SetSkills(plywanie);
-            odkrywca.SetSkills(powozenie);
-            odkrywca.SetSkills(rzemioslo);
-            odkrywca.SetSkills(sekretneZnaki);
-            odkrywca.SetSkills(sekretnyJezyk);
-            odkrywca.SetSkills(spostrzegawczosc);
-            odkrywca.SetSkills(sztukaPrzetrwania);
-            odkrywca.SetSkills(tropienie);
-            odkrywca.SetSkills(wiedza);
-            odkrywca.SetSkills(wiedza);
-            odkrywca.SetSkills(wiedza);
-            odkrywca.SetSkills(wspinaczka);
-            odkrywca.SetSkills(wycena);
-            odkrywca.SetSkills(jezyk);
-            odkrywca.SetSkills(jezyk);
-            odkrywca.SetSkills(jezyk);
-            oficer.SetSkills(czytaniePisanie);
-            oficer.SetSkills(dowodzenie);
-            oficer.SetSkills(jezdziectwo);
-            oficer.SetSkills(nauka);
-            oficer.SetSkills(opieka);
-            oficer.SetSkills(plotkowanie);
-            oficer.SetSkills(sekretnyJezyk);
-            oficer.SetSkills(unik);
-            oficer.SetSkills(wiedza);
-            oficer.SetSkills(wiedza);
-            oficer.SetSkills(wiedza);
-            oficer.SetSkills(jezyk);
-            oprawca.SetSkills(leczenie);
-            oprawca.SetSkills(przekonywanie);
-            oprawca.SetSkills(spostrzegawczosc);
-            oprawca.SetSkills(torturowanie);
-            oprawca.SetSkills(zastraszanie);
-            paser.SetSkills(hazard);
-            paser.SetSkills(plotkowanie);
-            paser.SetSkills(spostrzegawczosc);
-            paser.SetSkills(targowanie);
-            paser.SetSkills(wycena);
-            paser.SetSkills(zastraszanie);
-            paser.SetSkills(zwinnePalce);
-            rajtar.SetSkills(jezdziectwo);
-            rajtar.SetSkills(opieka);
-            rajtar.SetSkills(sekretneZnaki);
-            rajtar.SetSkills(spostrzegawczosc);
-            rajtar.SetSkills(unik);
-            rajtar.SetSkills(wycena, plotkowanie);
-            reketer.SetSkills(dowodzenie);
-            reketer.SetSkills(plotkowanie);
-            reketer.SetSkills(spostrzegawczosc);
-            reketer.SetSkills(sledzenie);
-            reketer.SetSkills(targowanie);
-            reketer.SetSkills(unik);
-            reketer.SetSkills(wiedza);
-            reketer.SetSkills(wycena);
-            reketer.SetSkills(zastraszanie);
-            rozbojnik.SetSkills(jezdziectwo);
-            rozbojnik.SetSkills(opieka);
-            rozbojnik.SetSkills(plotkowanie);
-            rozbojnik.SetSkills(przekonywanie);
-            rozbojnik.SetSkills(skradanie);
-            rozbojnik.SetSkills(tresura);
-            rozbojnik.SetSkills(wiedza);
-            rozbojnik.SetSkills(wycena);
-            rycerz.SetSkills(jezdziectwo);
-            rycerz.SetSkills(nauka);
-            rycerz.SetSkills(nauka);
-            rycerz.SetSkills(sekretnyJezyk);
-            rycerz.SetSkills(spostrzegawczosc);
-            rycerz.SetSkills(unik);
-            rycerz.SetSkills(jezyk);
-            rycerz.SetSkills(jezyk);
-            sierzant.SetSkills(dowodzenie);
-            sierzant.SetSkills(jezdziectwo, plywanie);
-            sierzant.SetSkills(nauka);
-            sierzant.SetSkills(plotkowanie);
-            sierzant.SetSkills(sekretnyJezyk);
-            sierzant.SetSkills(spostrzegawczosc);
-            sierzant.SetSkills(unik);
-            sierzant.SetSkills(wiedza);
-            sierzant.SetSkills(wiedza);
-            sierzant.SetSkills(zastraszanie);
-            sierzant.SetSkills(jezyk);
-            skrytobojca.SetSkills(charakteryzacja);
-            skrytobojca.SetSkills(plotkowanie);
-            skrytobojca.SetSkills(sekretneZnaki);
-            skrytobojca.SetSkills(skradanie);
-            skrytobojca.SetSkills(spostrzegawczosc);
-            skrytobojca.SetSkills(sledzenie);
-            skrytobojca.SetSkills(ukrywanieSie);
-            skrytobojca.SetSkills(warzenieTrucizn);
-            skrytobojca.SetSkills(wspinaczka);
-            strzelec.SetSkills(plotkowanie);
-            strzelec.SetSkills(przeszukiwanie);
-            strzelec.SetSkills(spostrzegawczosc);
-            strzelec.SetSkills(sztukaPrzetrwania);
-            strzelec.SetSkills(wiedza);
-            strzelec.SetSkills(zwinnePalce);
-            szampierz.SetSkills(spostrzegawczosc);
-            szampierz.SetSkills(unik);
-            szarlatan.SetSkills(charakteryzacja);
-            szarlatan.SetSkills(gadanina);
-            szarlatan.SetSkills(hazard);
-            szarlatan.SetSkills(plotkowanie);
-            szarlatan.SetSkills(przekonywanie);
-            szarlatan.SetSkills(sekretnyJezyk);
-            szarlatan.SetSkills(spostrzegawczosc);
-            szarlatan.SetSkills(targowanie);
-            szarlatan.SetSkills(wiedza);
-            szarlatan.SetSkills(wycena);
-            szarlatan.SetSkills(jezyk);
-            szarlatan.SetSkills(jezyk);
-            szarlatan.SetSkills(zwinnePalce);
-            szpieg.SetSkills(charakteryzacja);
-            szpieg.SetSkills(czytanieZWarg);
-            szpieg.SetSkills(kuglarstwo);
-            szpieg.SetSkills(otwieranieZamkow);
-            szpieg.SetSkills(plotkowanie);
-            szpieg.SetSkills(przekonywanie);
-            szpieg.SetSkills(sekretnyJezyk);
-            szpieg.SetSkills(skradanie);
-            szpieg.SetSkills(sledzenie);
-            szpieg.SetSkills(ukrywanieSie);
-            szpieg.SetSkills(wiedza);
-            szpieg.SetSkills(wiedza);
-            szpieg.SetSkills(jezyk);
-            szpieg.SetSkills(jezyk);
-            szpieg.SetSkills(jezyk);
-            szpieg.SetSkills(zwinnePalce);
-            uczony.SetSkills(czytaniePisanie);
-            uczony.SetSkills(nauka);
-            uczony.SetSkills(nauka);
-            uczony.SetSkills(nauka);
-            uczony.SetSkills(spostrzegawczosc);
-            uczony.SetSkills(wiedza);
-            uczony.SetSkills(wiedza);
-            uczony.SetSkills(wiedza);
-            uczony.SetSkills(wycena, rzemioslo);
-            uczony.SetSkills(jezyk);
-            uczony.SetSkills(jezyk);
-            uczony.SetSkills(jezyk);
-            uczony.SetSkills(jezyk);
-            urzednik.SetSkills(czytaniePisanie);
-            urzednik.SetSkills(dowodzenie);
-            urzednik.SetSkills(gadanina);
-            urzednik.SetSkills(kuglarstwo);
-            urzednik.SetSkills(nauka);
-            urzednik.SetSkills(nauka);
-            urzednik.SetSkills(plotkowanie);
-            urzednik.SetSkills(przekonywanie);
-            urzednik.SetSkills(spostrzegawczosc);
-            urzednik.SetSkills(targowanie);
-            urzednik.SetSkills(wiedza);
-            urzednik.SetSkills(wycena);
-            urzednik.SetSkills(jezyk);
-            weteran.SetSkills(hazard);
-            weteran.SetSkills(mocnaGlowa);
-            weteran.SetSkills(plotkowanie);
-            weteran.SetSkills(sekretnyJezyk);
-            weteran.SetSkills(spostrzegawczosc);
-            weteran.SetSkills(unik);
-            weteran.SetSkills(wiedza);
-            weteran.SetSkills(zastraszanie);
-            wedrownyCzarodziej.SetSkills(czytaniePisanie);
-            wedrownyCzarodziej.SetSkills(jezdziectwo, plywanie);
-            wedrownyCzarodziej.SetSkills(jezykTajemny);
-            wedrownyCzarodziej.SetSkills(nauka);
-            wedrownyCzarodziej.SetSkills(nauka);
-            wedrownyCzarodziej.SetSkills(plotkowanie);
-            wedrownyCzarodziej.SetSkills(przekonywanie, zastraszanie);
-            wedrownyCzarodziej.SetSkills(splatanieMagii);
-            wedrownyCzarodziej.SetSkills(wiedza);
-            wedrownyCzarodziej.SetSkills(wiedza);
-            wedrownyCzarodziej.SetSkills(wykrywanieMagii);
-            wedrownyCzarodziej.SetSkills(jezyk);
-            wedrownyCzarodziej.SetSkills(jezyk);
-            wlamywacz.SetSkills(otwieranieZamkow);
-            wlamywacz.SetSkills(plotkowanie);
-            wlamywacz.SetSkills(przeszukiwanie);
-            wlamywacz.SetSkills(sekretneZnaki);
-            wlamywacz.SetSkills(sekretnyJezyk);
-            wlamywacz.SetSkills(skradanie);
-            wlamywacz.SetSkills(spostrzegawczosc);
-            wlamywacz.SetSkills(targowanie);
-            wlamywacz.SetSkills(ukrywanieSie);
-            wlamywacz.SetSkills(wspinaczka);
-            wlamywacz.SetSkills(wycena);
-            wybraniecBozy.SetSkills(jezdziectwo, plywanie);
-            wybraniecBozy.SetSkills(jezykTajemny);
-            wybraniecBozy.SetSkills(leczenie);
-            wybraniecBozy.SetSkills(nauka);
-            wybraniecBozy.SetSkills(nauka);
-            wybraniecBozy.SetSkills(nauka);
-            wybraniecBozy.SetSkills(plotkowanie);
-            wybraniecBozy.SetSkills(przekonywanie);
-            wybraniecBozy.SetSkills(splatanieMagii);
-            wybraniecBozy.SetSkills(wiedza);
-            wybraniecBozy.SetSkills(wiedza);
-            wybraniecBozy.SetSkills(wykrywanieMagii);
-            wybraniecBozy.SetSkills(jezyk);
-            wybraniecBozy.SetSkills(jezyk);
-            zabojcaDemonow.SetSkills(mocnaGlowa);
-            zabojcaDemonow.SetSkills(unik);
-            zabojcaDemonow.SetSkills(wiedza);
-            zabojcaDemonow.SetSkills(wiedza);
-            zabojcaDemonow.SetSkills(wspinaczka);
-            zabojcaDemonow.SetSkills(zastraszanie);
-            zabojcaOlbrzymow.SetSkills(mocnaGlowa);
-            zabojcaOlbrzymow.SetSkills(spostrzegawczosc);
-            zabojcaOlbrzymow.SetSkills(unik);
-            zabojcaOlbrzymow.SetSkills(wiedza);
-            zabojcaOlbrzymow.SetSkills(zastraszanie);
-            zakonnik.SetSkills(leczenie);
-            zakonnik.SetSkills(nauka);
-            zakonnik.SetSkills(opieka);
-            zakonnik.SetSkills(spostrzegawczosc);
-            zakonnik.SetSkills(sztukaPrzetrwania);
-            zakonnik.SetSkills(wiedza);
-            zakonnik.SetSkills(wiedza);
-            zakonnik.SetSkills(jezyk);
-            zakonnik.SetSkills(jezyk);
-            zakonnik.SetSkills(jezyk);
-            zwadzca.SetSkills(hazard);
-            zwadzca.SetSkills(plotkowanie);
-            zwadzca.SetSkills(przekonywanie);
-            zwadzca.SetSkills(spostrzegawczosc);
-            zwadzca.SetSkills(unik);
-            zwadzca.SetSkills(zastraszanie);
-            zwadzca.SetSkills(zwinnePalce);
-            zwiadowca.SetSkills(jezdziectwo);
-            zwiadowca.SetSkills(nawigacja);
-            zwiadowca.SetSkills(opieka);
-            zwiadowca.SetSkills(oswajanie);
-            zwiadowca.SetSkills(sekretneZnaki);
-            zwiadowca.SetSkills(sekretnyJezyk);
-            zwiadowca.SetSkills(skradanie);
-            zwiadowca.SetSkills(spostrzegawczosc);
-            zwiadowca.SetSkills(tropienie);
-            zwiadowca.SetSkills(ukrywanieSie);
-            zwiadowca.SetSkills(unik);
-            zwiadowca.SetSkills(wiedza);
-            zwiadowca.SetSkills(wiedza);
-            zwiadowca.SetSkills(jezyk);
-            zwiadowca.SetSkills(jezyk);
+            akolita.AddSkills(czytaniePisanie);
+            akolita.AddSkills(leczenie);
+            akolita.AddDictionarySkills(nauka, "Astronomia", "Historia");
+            akolita.AddDictionarySkills(nauka, "Teologia");
+            akolita.AddSkills(przekonywanie);
+            akolita.AddSkills(spostrzegawczosc);
+            akolita.AddDictionarySkills(jezyk, "Klasyczny");
+            akolita.AddDictionarySkills(jezyk, "Staroświatowy");
+            banita.AddDictionarySkills(opieka, wiedza, "Imperium");
+            banita.AddDictionarySkills(plotkowanie, sekretneZnaki, "Złodziei");
+            banita.AddSkills(powozenie, jezdziectwo);
+            banita.AddSkills(skradanie);
+            banita.AddSkills(spostrzegawczosc);
+            banita.AddSkills(ukrywanieSie);
+            banita.AddSkills(unik);
+            banita.AddSkills(wspinaczka);
+            banita.AddSkills(zastawianiePulapek, plywanie);
+            berserker.AddDictionarySkills(kuglarstwo, "Gawędziarstwo");
+            berserker.AddSkills(mocnaGlowa);
+            berserker.AddSkills(plywanie);
+            berserker.AddDictionarySkills(wiedza, "Norska");
+            berserker.AddSkills(zastraszanie);
+            berserker.AddDictionarySkills(jezyk, "Norski");
+            chlop.AddDictionarySkills(hazard, kuglarstwo, "Taniec", "Śpiew");
+            chlop.AddSkills(opieka, przekonywanie);
+            chlop.AddDictionarySkills(oswajanie, rzemioslo, "Gotowanie");
+            chlop.AddDictionarySkills(powozenie, rzemioslo, "Wyrób łuków");
+            chlop.AddDictionarySkills(sztukaPrzetrwania, rzemioslo, "Uprawa ziemii");
+            chlop.AddSkills(tresura, plywanie);
+            chlop.AddSkills(ukrywanieSie);
+            chlop.AddSkills(wioslarstwo, zastawianiePulapek);
+            chlop.AddSkills(wspinaczka, skradanie);
+            ciura.AddSkills(opieka, powozenie);
+            ciura.AddSkills(plotkowanie);
+            ciura.AddSkills(przekonywanie, wycena);
+            ciura.AddSkills(przeszukiwanie);
+            ciura.AddDictionarySkills(rzemioslo, "Gotowanie", "Handel", "Kartografia", "Kowalstwo", "Krawiectwo", "Płatnerstwo", "Rusznikarstwo", "Wyrób łuków", "Zielarstwo");
+            ciura.AddSkills(spostrzegawczosc);
+            ciura.AddSkills(targowanie);
+            ciura.AddDictionarySkills(jezyk, "Bretoński", "Kislevski", "Tileański");
+            ciura.AddSkills(zwinnePalce);
+            cyrkowiec.AddSkills(kuglarstwo);
+            cyrkowiec.AddSkills(opieka, plywanie);
+            cyrkowiec.AddSkills(przekonywanie);
+            cyrkowiec.AddSkills(spostrzegawczosc);
+            cyrkowiec.AddDictionarySkills(wiedza, "Imperium");
+            cyrkowiec.AddSkills(wycena, plotkowanie);
+            cyrkowiec.AddDictionarySkills(jezyk, "Staroświatowy");
+            cyrkowiec.AddSkills(brzuchomostwo, gadanina, hipnoza, jezdziectwo, oswajanie, tresura, wspinaczka, zwinnePalce);
+            cyrulik.AddSkills(czytaniePisanie);
+            cyrulik.AddSkills(leczenie);
+            cyrulik.AddSkills(powozenie, plywanie);
+            cyrulik.AddSkills(przekonywanie);
+            cyrulik.AddDictionarySkills(rzemioslo, "Aptekarstwo");
+            cyrulik.AddSkills(spostrzegawczosc);
+            cyrulik.AddSkills(targowanie);
+            cyrulik.AddDictionarySkills(jezyk, "Bretoński", "Staroświatowy", "Tileański");
+            fanatyk.AddSkills(czytaniePisanie);
+            fanatyk.AddDictionarySkills(nauka, "Teologia");
+            fanatyk.AddSkills(przekonywanie);
+            fanatyk.AddDictionarySkills(wiedza, "Imperium");
+            fanatyk.AddSkills(zastraszanie);
+            flisak.AddSkills(mocnaGlowa, plotkowanie);
+            flisak.AddSkills(nawigacja);
+            flisak.AddSkills(plywanie);
+            flisak.AddDictionarySkills(new Tuple<Skill, string[]>(sekretnyJezyk, new string[] { "Łowców" }), new Tuple<Skill, string[]>(jezyk, new string[] { "Kislevski" }));
+            flisak.AddSkills(spostrzegawczosc);
+            flisak.AddSkills(sztukaPrzetrwania);
+            flisak.AddDictionarySkills(wiedza, "Imperium", "Kislev");
+            flisak.AddSkills(wioslarstwo);
+            flisak.AddSkills(zelgarstwo);
+            giermek.AddSkills(jezdziectwo);
+            giermek.AddDictionarySkills(new Tuple<Skill, string[]>(nauka, new string[] { "Genealogia/heraldyka" }), new Tuple<Skill, string[]>(wiedza, new string[] { "Bretonia" }));
+            giermek.AddSkills(opieka);
+            giermek.AddSkills(przekonywanie, plotkowanie);
+            giermek.AddSkills(tresura);
+            giermek.AddSkills(unik);
+            giermek.AddDictionarySkills(jezyk, "Bretoński", "Staroświatowy");
+            gladiator.AddSkills(unik);
+            gladiator.AddSkills(zastraszanie);
+            goniec.AddSkills(nawigacja);
+            goniec.AddSkills(plywanie);
+            goniec.AddDictionarySkills(sekretneZnaki, "Zwiadowców");
+            goniec.AddSkills(spostrzegawczosc);
+            goniec.AddSkills(sztukaPrzetrwania);
+            goniec.AddSkills(unik);
+            gornik.AddSkills(nawigacja);
+            gornik.AddSkills(opieka);
+            gornik.AddDictionarySkills(rzemioslo, "Górnictwo", "Górnictwo odkrywkowe");
+            gornik.AddSkills(spostrzegawczosc);
+            gornik.AddSkills(ukrywanieSie, powozenie);
+            gornik.AddSkills(wspinaczka);
+            gornik.AddSkills(wycena, sztukaPrzetrwania);
+            guslarz.AddSkills(leczenie, hipnoza);
+            guslarz.AddSkills(opieka, targowanie);
+            guslarz.AddDictionarySkills(oswajanie, rzemioslo, "Aptekarstwo");
+            guslarz.AddSkills(przekonywanie, zastraszanie);
+            guslarz.AddSkills(przeszukiwanie);
+            guslarz.AddSkills(splatanieMagii);
+            guslarz.AddSkills(spostrzegawczosc);
+            guslarz.AddSkills(wykrywanieMagii);
+            hiena.AddSkills(czytaniePisanie);
+            hiena.AddSkills(otwieranieZamkow, skradanie);
+            hiena.AddSkills(przeszukiwanie);
+            hiena.AddSkills(spostrzegawczosc);
+            hiena.AddSkills(ukrywanieSie, sztukaPrzetrwania);
+            hiena.AddDictionarySkills(new Tuple<Skill, string[]>(wiedza, new string[] { "Imperium" }), new Tuple<Skill, string[]>(sekretneZnaki, new string[] { "Złodziei" }));
+            hiena.AddSkills(wspinaczka);
+            hiena.AddSkills(wycena);
+            hiena.AddDictionarySkills(jezyk, "Eltharin", "Khazalid", "Klasyczny");
+            kanciarz.AddSkills(gadanina);
+            kanciarz.AddDictionarySkills(hazard, sekretneZnaki, "Złodziei");
+            kanciarz.AddDictionarySkills(kuglarstwo, "Aktorstwo", "Gawędziarstwo");
+            kanciarz.AddSkills(plotkowanie, targowanie);
+            kanciarz.AddSkills(przekonywanie);
+            kanciarz.AddDictionarySkills(przeszukiwanie, sekretnyJezyk, "Złodziei");
+            kanciarz.AddSkills(spostrzegawczosc);
+            kanciarz.AddSkills(wycena);
+            kanciarz.AddDictionarySkills(jezyk, "Staroświatowy");
+            kozak.AddSkills(hazard, targowanie);
+            kozak.AddSkills(mocnaGlowa);
+            kozak.AddSkills(przeszukiwanie);
+            kozak.AddSkills(spostrzegawczosc);
+            kozak.AddSkills(sztukaPrzetrwania);
+            kozak.AddSkills(unik);
+            kozak.AddDictionarySkills(wiedza, "Kislev");
+            kozak.AddDictionarySkills(jezyk, "Kislevski");
+            lesnik.AddDictionarySkills(sekretneZnaki, "Łowców");
+            lesnik.AddDictionarySkills(sekretnyJezyk, "Łowców");
+            lesnik.AddSkills(skradanie);
+            lesnik.AddSkills(spostrzegawczosc);
+            lesnik.AddSkills(tropienie, zastawianiePulapek);
+            lesnik.AddSkills(ukrywanieSie);
+            lesnik.AddSkills(wspinaczka);
+            lowca.AddSkills(przeszukiwanie, plywanie);
+            lowca.AddDictionarySkills(sekretneZnaki, "Łowców");
+            lowca.AddSkills(skradanie, zastawianiePulapek);
+            lowca.AddSkills(spostrzegawczosc);
+            lowca.AddSkills(sztukaPrzetrwania);
+            lowca.AddSkills(tropienie);
+            lowca.AddSkills(ukrywanieSie);
+            lowcanagrod.AddSkills(przeszukiwanie);
+            lowcanagrod.AddSkills(skradanie);
+            lowcanagrod.AddSkills(spostrzegawczosc);
+            lowcanagrod.AddSkills(sztukaPrzetrwania);
+            lowcanagrod.AddSkills(sledzenie);
+            lowcanagrod.AddSkills(tropienie);
+            lowcanagrod.AddSkills(zastraszanie);
+            mieszczanin.AddSkills(plotkowanie, czytaniePisanie);
+            mieszczanin.AddSkills(powozenie);
+            mieszczanin.AddSkills(przeszukiwanie);
+            mieszczanin.AddSkills(spostrzegawczosc);
+            mieszczanin.AddSkills(targowanie);
+            mieszczanin.AddDictionarySkills(mocnaGlowa, wiedza, "Imperium");
+            mieszczanin.AddSkills(wycena);
+            mieszczanin.AddDictionarySkills(jezyk, "Bretoński", "Kislevski", "Tileański");
+            mieszczanin.AddDictionarySkills(jezyk, "Staroświatowy");
+            mytnik.AddSkills(czytaniePisanie);
+            mytnik.AddSkills(plotkowanie, targowanie);
+            mytnik.AddSkills(przeszukiwanie);
+            mytnik.AddSkills(spostrzegawczosc);
+            mytnik.AddSkills(unik);
+            mytnik.AddSkills(wycena);
+            mytnik.AddDictionarySkills(jezyk, "Bretoński", "Kislevski", "Tileański");
+            najemnik.AddSkills(opieka, hazard);
+            najemnik.AddSkills(plotkowanie, targowanie);
+            najemnik.AddSkills(powozenie, jezdziectwo);
+            najemnik.AddDictionarySkills(sekretnyJezyk, "Bitewny");
+            najemnik.AddSkills(spostrzegawczosc, przeszukiwanie);
+            najemnik.AddSkills(unik);
+            najemnik.AddDictionarySkills(wiedza, "Bretonia", "Kislev", "Tilea");
+            najemnik.AddDictionarySkills(plywanie, jezyk, "Tileański");
+            ochotnik.AddSkills(hazard, plotkowanie);
+            ochotnik.AddSkills(opieka);
+            ochotnik.AddSkills(powozenie, plywanie);
+            ochotnik.AddSkills(przeszukiwanie);
+            ochotnik.AddDictionarySkills(rzemioslo);
+            ochotnik.AddSkills(spostrzegawczosc);
+            ochotnik.AddSkills(sztukaPrzetrwania);
+            ochotnik.AddSkills(unik);
+            ochroniarz.AddSkills(leczenie);
+            ochroniarz.AddSkills(spostrzegawczosc);
+            ochroniarz.AddSkills(unik);
+            ochroniarz.AddSkills(zastraszanie);
+            oprych.AddSkills(hazard);
+            oprych.AddSkills(mocnaGlowa);
+            oprych.AddDictionarySkills(sekretnyJezyk, "Złodziei");
+            oprych.AddSkills(unik);
+            oprych.AddSkills(zastraszanie);
+            paz.AddSkills(czytaniePisanie);
+            paz.AddSkills(gadanina);
+            paz.AddDictionarySkills(nauka, "Genealogia/heraldyka");
+            paz.AddDictionarySkills(plotkowanie, jezyk, "Bretoński", "Staroświatowy");
+            paz.AddSkills(przeszukiwanie);
+            paz.AddSkills(spostrzegawczosc);
+            paz.AddSkills(targowanie);
+            paz.AddSkills(wycena);
+            podzegacz.AddSkills(czytaniePisanie);
+            podzegacz.AddDictionarySkills(plotkowanie, nauka, "Historia");
+            podzegacz.AddDictionarySkills(new Tuple<Skill, string[]>(nauka, new string[] { "Prawo" }), new Tuple<Skill, string[]>(wiedza, new string[] { "Imperium" }));
+            podzegacz.AddSkills(przekonywanie);
+            podzegacz.AddSkills(spostrzegawczosc);
+            podzegacz.AddSkills(ukrywanieSie);
+            podzegacz.AddDictionarySkills(jezyk, "Bretoński", "Tileański");
+            podzegacz.AddDictionarySkills(jezyk, "Staroświatowy");
+            porywacz.AddSkills(plotkowanie, targowanie);
+            porywacz.AddSkills(powozenie);
+            porywacz.AddSkills(przeszukiwanie);
+            porywacz.AddDictionarySkills(sekretneZnaki, "Złodziei");
+            porywacz.AddSkills(skradanie);
+            porywacz.AddSkills(spostrzegawczosc);
+            porywacz.AddSkills(wspinaczka);
+            poslaniec.AddSkills(jezdziectwo);
+            poslaniec.AddSkills(nawigacja);
+            poslaniec.AddSkills(opieka);
+            poslaniec.AddSkills(plywanie);
+            poslaniec.AddDictionarySkills(sekretneZnaki, "Zwiadowców");
+            poslaniec.AddSkills(spostrzegawczosc);
+            poslaniec.AddSkills(sztukaPrzetrwania);
+            poslaniec.AddDictionarySkills(plotkowanie, wiedza, "Imperium", "Jałowa kraina");
+            poslaniec.AddDictionarySkills(jezyk, "Staroświatowy");
+            przemytnik.AddDictionarySkills(plotkowanie, sekretnyJezyk, "Złodziei");
+            przemytnik.AddSkills(plywanie);
+            przemytnik.AddSkills(powozenie);
+            przemytnik.AddSkills(przeszukiwanie);
+            przemytnik.AddSkills(skradanie);
+            przemytnik.AddSkills(spostrzegawczosc);
+            przemytnik.AddSkills(targowanie);
+            przemytnik.AddSkills(wioslarstwo);
+            przemytnik.AddSkills(wycena);
+            przemytnik.AddDictionarySkills(new Tuple<Skill, string[]>(jezyk, new string[] { "Bretoński", "Kislevski" }), new Tuple<Skill, string[]>(sekretneZnaki, new string[] { "Złodziei" }));
+            przepatrywacz.AddSkills(jezdziectwo);
+            przepatrywacz.AddSkills(nawigacja);
+            przepatrywacz.AddSkills(opieka);
+            przepatrywacz.AddSkills(przeszukiwanie);
+            przepatrywacz.AddSkills(skradanie);
+            przepatrywacz.AddSkills(spostrzegawczosc);
+            przepatrywacz.AddSkills(sztukaPrzetrwania);
+            przepatrywacz.AddSkills(tropienie);
+            przewoznik.AddSkills(plotkowanie, zastraszanie);
+            przewoznik.AddSkills(plywanie);
+            przewoznik.AddSkills(przekonywanie);
+            przewoznik.AddSkills(spostrzegawczosc);
+            przewoznik.AddSkills(targowanie);
+            przewoznik.AddDictionarySkills(wiedza, "Imperium");
+            przewoznik.AddSkills(wioslarstwo);
+            przewoznik.AddDictionarySkills(wycena, sekretnyJezyk, "Łowców");
+            rybak.AddSkills(mocnaGlowa, targowanie);
+            rybak.AddSkills(nawigacja, rzemioslo);
+            rybak.AddSkills(plywanie);
+            rybak.AddSkills(spostrzegawczosc);
+            rybak.AddSkills(sztukaPrzetrwania);
+            rybak.AddDictionarySkills(wiedza, "Imperium", "Jałowa kraina");
+            rybak.AddSkills(wioslarstwo);
+            rybak.AddDictionarySkills(jezyk, "Staroświatowy", "Norski");
+            rybak.AddSkills(zelgarstwo);
+            rzecznik.AddSkills(czytaniePisanie);
+            rzecznik.AddSkills(plotkowanie);
+            rzecznik.AddSkills(plywanie);
+            rzecznik.AddSkills(przekonywanie);
+            rzecznik.AddDictionarySkills(rzemioslo, "Handel");
+            rzecznik.AddDictionarySkills(sekretnyJezyk, "Gildii");
+            rzecznik.AddSkills(spostrzegawczosc);
+            rzecznik.AddSkills(targowanie);
+            rzecznik.AddDictionarySkills(wiedza, "Imperium", "Jałowa kraina");
+            rzecznik.AddSkills(wycena);
+            rzemieslnik.AddSkills(czytaniePisanie);
+            rzemieslnik.AddSkills(opieka, plotkowanie);
+            rzemieslnik.AddSkills(powozenie);
+            rzemieslnik.AddDictionarySkills(rzemioslo);
+            rzemieslnik.AddDictionarySkills(rzemioslo);
+            rzemieslnik.AddDictionarySkills(sekretnyJezyk, "Gildii");
+            rzemieslnik.AddSkills(spostrzegawczosc);
+            rzemieslnik.AddSkills(targowanie);
+            rzemieslnik.AddSkills(wycena);
+            rzezimieszek.AddSkills(jezdziectwo);
+            rzezimieszek.AddSkills(plotkowanie, targowanie);
+            rzezimieszek.AddSkills(unik);
+            rzezimieszek.AddSkills(zastraszanie);
+            skryba.AddSkills(czytaniePisanie);
+            skryba.AddDictionarySkills(nauka);
+            skryba.AddDictionarySkills(rzemioslo, "Kaligrafia");
+            skryba.AddDictionarySkills(sekretnyJezyk, "Gildii");
+            skryba.AddSkills(spostrzegawczosc);
+            skryba.AddDictionarySkills(plotkowanie, wiedza, "Imperium");
+            skryba.AddDictionarySkills(jezyk, "Bretoński");
+            skryba.AddDictionarySkills(jezyk, "Klasyczny");
+            skryba.AddDictionarySkills(jezyk, "Staroświatowy", "Tileański");
+            sluga.AddSkills(czytaniePisanie, zwinnePalce);
+            sluga.AddSkills(gadanina);
+            sluga.AddDictionarySkills(opieka, rzemioslo, "Gotowanie");
+            sluga.AddSkills(plotkowanie);
+            sluga.AddSkills(powozenie, przeszukiwanie);
+            sluga.AddSkills(spostrzegawczosc);
+            sluga.AddSkills(targowanie, wycena);
+            sluga.AddSkills(unik);
+            straznik.AddDictionarySkills(nauka, "Prawo");
+            straznik.AddSkills(plotkowanie);
+            straznik.AddSkills(przeszukiwanie);
+            straznik.AddSkills(spostrzegawczosc);
+            straznik.AddSkills(tropienie);
+            straznik.AddSkills(unik);
+            straznik.AddSkills(zastraszanie);
+            straznikDrog.AddSkills(jezdziectwo);
+            straznikDrog.AddSkills(nawigacja);
+            straznikDrog.AddSkills(opieka);
+            straznikDrog.AddSkills(powozenie);
+            straznikDrog.AddSkills(przeszukiwanie);
+            straznikDrog.AddSkills(spostrzegawczosc);
+            straznikDrog.AddSkills(sztukaPrzetrwania);
+            straznikDrog.AddDictionarySkills(tropienie, sekretneZnaki, "Zwiadowców");
+            straznikDrog.AddDictionarySkills(plotkowanie, wiedza, "Imperium");
+            straznikPol.AddDictionarySkills(new Tuple<Skill, string[]>(nauka, new string[] { "Nekromancja" }), new Tuple<Skill, string[]>(wiedza, new string[] { "Imperium" }));
+            straznikPol.AddSkills(przeszukiwanie);
+            straznikPol.AddSkills(skradanie);
+            straznikPol.AddSkills(spostrzegawczosc);
+            straznikPol.AddSkills(sztukaPrzetrwania);
+            straznikPol.AddSkills(tropienie);
+            straznikPol.AddSkills(ukrywanieSie);
+            straznikWiezienny.AddSkills(dowodzenie);
+            straznikWiezienny.AddSkills(leczenie, zwinnePalce);
+            straznikWiezienny.AddSkills(mocnaGlowa);
+            straznikWiezienny.AddSkills(przeszukiwanie);
+            straznikWiezienny.AddSkills(spostrzegawczosc);
+            straznikWiezienny.AddSkills(unik);
+            straznikWiezienny.AddSkills(zastraszanie);
+            szczurolap.AddSkills(opieka);
+            szczurolap.AddSkills(przeszukiwanie);
+            szczurolap.AddSkills(skradanie);
+            szczurolap.AddSkills(spostrzegawczosc);
+            szczurolap.AddSkills(tresura);
+            szczurolap.AddSkills(ukrywanieSie);
+            szczurolap.AddSkills(zastawianiePulapek);
+            szermierz.AddSkills(czytaniePisanie);
+            szermierz.AddDictionarySkills(nauka, "Anatomia");
+            szermierz.AddSkills(unik);
+            szermierz.AddDictionarySkills(wiedza, "Estalia");
+            szermierz.AddDictionarySkills(jezyk, "Estalijski");
+            szlachcic.AddSkills(czytaniePisanie);
+            szlachcic.AddSkills(gadanina, dowodzenie);
+            szlachcic.AddSkills(hazard, plotkowanie);
+            szlachcic.AddSkills(jezdziectwo);
+            szlachcic.AddDictionarySkills(mocnaGlowa, kuglarstwo, "Muzykalność");
+            szlachcic.AddSkills(przekonywanie);
+            szlachcic.AddDictionarySkills(wiedza, "Imperium");
+            szlachcic.AddDictionarySkills(jezyk, "Staroświatowy");
+            smieciarz.AddSkills(opieka);
+            smieciarz.AddSkills(powozenie);
+            smieciarz.AddSkills(przekonywanie, plotkowanie);
+            smieciarz.AddSkills(przeszukiwanie);
+            smieciarz.AddSkills(spostrzegawczosc);
+            smieciarz.AddSkills(targowanie);
+            smieciarz.AddDictionarySkills(wiedza, "Imperium");
+            smieciarz.AddSkills(wycena);
+            tarczownik.AddSkills(nawigacja);
+            tarczownik.AddSkills(spostrzegawczosc);
+            tarczownik.AddSkills(sledzenie);
+            tarczownik.AddSkills(unik);
+            tarczownik.AddSkills(wspinaczka);
+            uczen.AddSkills(czytaniePisanie);
+            uczen.AddDictionarySkills(jezyk, "Magiczny");
+            uczen.AddDictionarySkills(nauka, "Magia");
+            uczen.AddSkills(przeszukiwanie);
+            uczen.AddSkills(splatanieMagii);
+            uczen.AddSkills(spostrzegawczosc);
+            uczen.AddSkills(wykrywanieMagii);
+            uczen.AddDictionarySkills(jezyk, "Klasyczny");
+            weglarz.AddSkills(powozenie, plotkowanie);
+            weglarz.AddSkills(przeszukiwanie);
+            weglarz.AddDictionarySkills(sekretneZnaki, "Łowców");
+            weglarz.AddSkills(spostrzegawczosc);
+            weglarz.AddSkills(sztukaPrzetrwania);
+            weglarz.AddSkills(targowanie);
+            weglarz.AddDictionarySkills(ukrywanieSie, wiedza, "Imperium");
+            weglarz.AddSkills(wspinaczka);
+            wloczykij.AddDictionarySkills(new Tuple<Skill, string[]>(kuglarstwo, new string[] { "Gawędziarstwo", "Śpiew", "Taniec" }), new Tuple<Skill, string[]>(sekretneZnaki, new string[] { "Łowców", "Złodziei" }));
+            wloczykij.AddSkills(leczenie, spostrzegawczosc);
+            wloczykij.AddSkills(nawigacja);
+            wloczykij.AddDictionarySkills(plotkowanie, sekretnyJezyk, "Łowców", "Złodziei");
+            wloczykij.AddSkills(skradanie);
+            wloczykij.AddSkills(sztukaPrzetrwania);
+            wloczykij.AddSkills(targowanie, plywanie);
+            wloczykij.AddDictionarySkills(wiedza, "Bretonia", "Estalia", "Kislev", "Tilea");
+            wojownik.AddSkills(leczenie, przeszukiwanie);
+            wojownik.AddSkills(skradanie);
+            wojownik.AddSkills(spostrzegawczosc);
+            wojownik.AddSkills(sztukaPrzetrwania);
+            wojownik.AddSkills(tropienie);
+            wojownik.AddSkills(ukrywanieSie);
+            wojownik.AddSkills(unik);
+            wojownik.AddSkills(wspinaczka);
+            woznica.AddSkills(leczenie, jezdziectwo);
+            woznica.AddSkills(nawigacja);
+            woznica.AddSkills(opieka);
+            woznica.AddSkills(plotkowanie, targowanie);
+            woznica.AddSkills(powozenie);
+            woznica.AddDictionarySkills(sekretneZnaki, "Łowców");
+            woznica.AddSkills(spostrzegawczosc);
+            woznica.AddDictionarySkills(jezyk, "Bretoński", "Kislevski", "Tileański");
+            zabojcaTroli.AddSkills(mocnaGlowa);
+            zabojcaTroli.AddSkills(unik);
+            zabojcaTroli.AddSkills(zastraszanie);
+            zarzadca.AddSkills(czytaniePisanie);
+            zarzadca.AddSkills(dowodzenie, nawigacja);
+            zarzadca.AddSkills(jezdziectwo);
+            zarzadca.AddDictionarySkills(nauka, "Prawo");
+            zarzadca.AddSkills(opieka, plotkowanie);
+            zarzadca.AddSkills(przekonywanie);
+            zarzadca.AddSkills(spostrzegawczosc);
+            zarzadca.AddDictionarySkills(zastraszanie, wiedza, "Imperium");
+            zlodziej.AddSkills(czytaniePisanie, zwinnePalce);
+            zlodziej.AddSkills(hazard, otwieranieZamkow);
+            zlodziej.AddSkills(przekonywanie, wspinaczka);
+            zlodziej.AddSkills(przeszukiwanie);
+            zlodziej.AddDictionarySkills(new Tuple<Skill, string[]>(sekretnyJezyk, new string[] { "Złodziei" }), new Tuple<Skill, string[]>(sekretneZnaki, new string[] { "Złodziei" }));
+            zlodziej.AddSkills(skradanie);
+            zlodziej.AddSkills(spostrzegawczosc);
+            zlodziej.AddSkills(ukrywanieSie);
+            zlodziej.AddSkills(wycena, charakteryzacja);
+            zak.AddSkills(czytaniePisanie);
+            zak.AddSkills(leczenie, przeszukiwanie);
+            zak.AddDictionarySkills(nauka);
+            zak.AddDictionarySkills(plotkowanie, nauka);
+            zak.AddSkills(przekonywanie, mocnaGlowa);
+            zak.AddSkills(spostrzegawczosc);
+            zak.AddDictionarySkills(jezyk, "Klasyczny");
+            zak.AddDictionarySkills(jezyk, "Staroswiatowy");
+            zeglarz.AddSkills(mocnaGlowa, spostrzegawczosc);
+            zeglarz.AddSkills(plywanie);
+            zeglarz.AddSkills(unik);
+            zeglarz.AddDictionarySkills(wiedza, "Bretonia", "Norska", "Tilea", "Jałowa kraina");
+            zeglarz.AddSkills(wioslarstwo);
+            zeglarz.AddSkills(wspinaczka);
+            zeglarz.AddDictionarySkills(jezyk, "Bretoński", "Norski", "Tileański");
+            zeglarz.AddSkills(zelgarstwo);
+            zolnierz.AddSkills(hazard, plotkowanie);
+            zolnierz.AddSkills(opieka, leczenie);
+            zolnierz.AddSkills(powozenie, jezdziectwo);
+            zolnierz.AddSkills(unik);
+            zolnierz.AddDictionarySkills(spostrzegawczosc, wiedza, "Imperium");
+            zolnierz.AddSkills(zastraszanie);
+            zolnierzOkretowy.AddSkills(mocnaGlowa);
+            zolnierzOkretowy.AddDictionarySkills(plotkowanie, sekretnyJezyk, "Bitewny");
+            zolnierzOkretowy.AddSkills(plywanie);
+            zolnierzOkretowy.AddSkills(unik);
+            zolnierzOkretowy.AddDictionarySkills(hazard, wiedza, "Jałowa kraina");
+            zolnierzOkretowy.AddSkills(wioslarstwo);
+            zolnierzOkretowy.AddSkills(zastraszanie);///////////////////////////////////////////////////////////////////////////
+            arcykaplan.AddSkills(jezdziectwo, plywanie);
+            arcykaplan.AddSkills(jezyk);
+            arcykaplan.AddSkills(leczenie);
+            arcykaplan.AddSkills(nauka);
+            arcykaplan.AddSkills(nauka);
+            arcykaplan.AddSkills(plotkowanie);
+            arcykaplan.AddSkills(przekonywanie);
+            arcykaplan.AddSkills(splatanieMagii);
+            arcykaplan.AddSkills(wiedza);
+            arcykaplan.AddSkills(wykrywanieMagii);
+            arcykaplan.AddSkills(zastraszanie);
+            arcykaplan.AddSkills(jezyk);
+            arcymag.AddSkills(czytaniePisanie);
+            arcymag.AddSkills(jezyk);
+            arcymag.AddSkills(jezyk);
+            arcymag.AddSkills(nauka);
+            arcymag.AddSkills(nauka);
+            arcymag.AddSkills(nauka);
+            arcymag.AddSkills(nauka);
+            arcymag.AddSkills(przekonywanie, zastraszanie);
+            arcymag.AddSkills(splatanieMagii);
+            arcymag.AddSkills(wiedza);
+            arcymag.AddSkills(wiedza);
+            arcymag.AddSkills(wiedza);
+            arcymag.AddSkills(wykrywanieMagii);
+            arcymag.AddSkills(jezyk);
+            arystokrata.AddSkills(czytaniePisanie);
+            arystokrata.AddSkills(dowodzenie);
+            arystokrata.AddSkills(jezdziectwo);
+            arystokrata.AddSkills(nauka);
+            arystokrata.AddSkills(nauka);
+            arystokrata.AddSkills(plotkowanie);
+            arystokrata.AddSkills(przekonywanie);
+            arystokrata.AddSkills(spostrzegawczosc);
+            arystokrata.AddSkills(wiedza);
+            arystokrata.AddSkills(wycena);
+            arystokrata.AddSkills(jezyk);
+            arystokrata.AddSkills(jezyk);
+            bard.AddSkills(czytaniePisanie);
+            bard.AddSkills(kuglarstwo);
+            bard.AddSkills(kuglarstwo);
+            bard.AddSkills(plotkowanie);
+            bard.AddSkills(przekonywanie);
+            bard.AddSkills(spostrzegawczosc);
+            bard.AddSkills(wiedza);
+            bard.AddSkills(wiedza);
+            bard.AddSkills(jezyk);
+            biczownik.AddSkills(leczenie);
+            biczownik.AddSkills(nauka);
+            biczownik.AddSkills(przekonywanie);
+            biczownik.AddSkills(zastraszanie);
+            biczownik.AddSkills(jezyk);
+            bosman.AddSkills(dowodzenie);
+            bosman.AddSkills(hazard);
+            bosman.AddSkills(mocnaGlowa);
+            bosman.AddSkills(plotkowanie);
+            bosman.AddSkills(plywanie);
+            bosman.AddSkills(rzemioslo);
+            bosman.AddSkills(unik);
+            bosman.AddSkills(wiedza);
+            bosman.AddSkills(wiedza);
+            bosman.AddSkills(wioslarstwo);
+            bosman.AddSkills(zastraszanie);
+            bosman.AddSkills(jezyk);
+            bosman.AddSkills(zelgarstwo);
+            demagog.AddSkills(charakteryzacja);
+            demagog.AddSkills(dowodzenie);
+            demagog.AddSkills(gadanina);
+            demagog.AddSkills(nauka);
+            demagog.AddSkills(nauka);
+            demagog.AddSkills(plotkowanie);
+            demagog.AddSkills(przekonywanie);
+            demagog.AddSkills(spostrzegawczosc);
+            demagog.AddSkills(ukrywanieSie);
+            demagog.AddSkills(unik);
+            demagog.AddSkills(wiedza);
+            demagog.AddSkills(zastraszanie);
+            demagog.AddSkills(jezyk);
+            dworzanin.AddSkills(czytaniePisanie);
+            dworzanin.AddSkills(dowodzenie, kuglarstwo);
+            dworzanin.AddSkills(gadanina);
+            dworzanin.AddSkills(jezdziectwo);
+            dworzanin.AddSkills(nauka, hazard);
+            dworzanin.AddSkills(plotkowanie);
+            dworzanin.AddSkills(przekonywanie);
+            dworzanin.AddSkills(spostrzegawczosc);
+            dworzanin.AddSkills(wiedza);
+            dworzanin.AddSkills(wycena);
+            dworzanin.AddSkills(jezyk);
+            dworzanin.AddSkills(jezyk);
+            fechmistrz.AddSkills(spostrzegawczosc);
+            fechmistrz.AddSkills(unik);
+            fechmistrz.AddSkills(wycena);
+            fechmistrz.AddSkills(zastraszanie);
+            herold.AddSkills(czytaniePisanie);
+            herold.AddSkills(gadanina);
+            herold.AddSkills(jezdziectwo);
+            herold.AddSkills(nauka);
+            herold.AddSkills(nauka);
+            herold.AddSkills(plotkowanie);
+            herold.AddSkills(przekonywanie);
+            herold.AddSkills(spostrzegawczosc);
+            herold.AddSkills(targowanie);
+            herold.AddSkills(wiedza);
+            herold.AddSkills(wiedza);
+            herold.AddSkills(wycena);
+            herold.AddSkills(jezyk);
+            herold.AddSkills(jezyk);
+            herszt.AddSkills(dowodzenie);
+            herszt.AddSkills(jezdziectwo);
+            herszt.AddSkills(nauka);
+            herszt.AddSkills(sekretneZnaki);
+            herszt.AddSkills(sekretnyJezyk);
+            herszt.AddSkills(skradanie);
+            herszt.AddSkills(spostrzegawczosc);
+            herszt.AddSkills(tropienie);
+            herszt.AddSkills(ukrywanieSie);
+            herszt.AddSkills(wiedza);
+            herszt.AddSkills(wspinaczka);
+            inzynier.AddSkills(czytaniePisanie);
+            inzynier.AddSkills(nauka);
+            inzynier.AddSkills(nauka);
+            inzynier.AddSkills(powozenie, jezdziectwo);
+            inzynier.AddSkills(rzemioslo);
+            inzynier.AddSkills(spostrzegawczosc);
+            inzynier.AddSkills(wiedza);
+            inzynier.AddSkills(jezyk);
+            kapitan.AddSkills(dowodzenie);
+            kapitan.AddSkills(nauka);
+            kapitan.AddSkills(plywanie);
+            kapitan.AddSkills(rzemioslo);
+            kapitan.AddSkills(spostrzegawczosc);
+            kapitan.AddSkills(tresura);
+            kapitan.AddSkills(unik);
+            kapitan.AddSkills(wiedza);
+            kapitan.AddSkills(wiedza);
+            kapitan.AddSkills(wiedza);
+            kapitan.AddSkills(jezyk);
+            kapitan.AddSkills(jezyk);
+            kapitan.AddSkills(jezyk);
+            kapitan.AddSkills(zelgarstwo);
+            kaplan.AddSkills(czytaniePisanie);
+            kaplan.AddSkills(jezdziectwo, plywanie);
+            kaplan.AddSkills(jezykTajemny);
+            kaplan.AddSkills(leczenie);
+            kaplan.AddSkills(nauka);
+            kaplan.AddSkills(nauka);
+            kaplan.AddSkills(plotkowanie);
+            kaplan.AddSkills(przekonywanie);
+            kaplan.AddSkills(splatanieMagii);
+            kaplan.AddSkills(spostrzegawczosc);
+            kaplan.AddSkills(wiedza);
+            kaplan.AddSkills(wiedza);
+            kaplan.AddSkills(wykrywanieMagii);
+            kaplan.AddSkills(jezyk);
+            kaplan.AddSkills(jezyk);
+            karczmarz.AddSkills(czytaniePisanie, zwinnePalce);
+            karczmarz.AddSkills(gadanina, czytanieZWarg);
+            karczmarz.AddSkills(mocnaGlowa);
+            karczmarz.AddSkills(plotkowanie);
+            karczmarz.AddSkills(przekonywanie);
+            karczmarz.AddSkills(rzemioslo);
+            karczmarz.AddSkills(spostrzegawczosc);
+            karczmarz.AddSkills(targowanie);
+            karczmarz.AddSkills(wiedza);
+            karczmarz.AddSkills(wycena);
+            karczmarz.AddSkills(jezyk);
+            ksiaze.AddSkills(dowodzenie);
+            ksiaze.AddSkills(plotkowanie);
+            ksiaze.AddSkills(przekonywanie);
+            ksiaze.AddSkills(sekretneZnaki);
+            ksiaze.AddSkills(sekretnyJezyk);
+            ksiaze.AddSkills(spostrzegawczosc);
+            ksiaze.AddSkills(targowanie);
+            ksiaze.AddSkills(torturowanie);
+            ksiaze.AddSkills(unik);
+            ksiaze.AddSkills(wiedza);
+            ksiaze.AddSkills(wycena);
+            ksiaze.AddSkills(zastraszanie);
+            kupiec.AddSkills(czytaniePisanie);
+            kupiec.AddSkills(jezdziectwo);
+            kupiec.AddSkills(plotkowanie);
+            kupiec.AddSkills(powozenie);
+            kupiec.AddSkills(przekonywanie);
+            kupiec.AddSkills(rzemioslo);
+            kupiec.AddSkills(sekretnyJezyk);
+            kupiec.AddSkills(targowanie);
+            kupiec.AddSkills(wiedza);
+            kupiec.AddSkills(wiedza);
+            kupiec.AddSkills(wycena);
+            kupiec.AddSkills(jezyk);
+            kupiec.AddSkills(jezyk);
+            lesnyDuch.AddSkills(czytanieZWarg);
+            lesnyDuch.AddSkills(nawigacja);
+            lesnyDuch.AddSkills(sekretneZnaki);
+            lesnyDuch.AddSkills(sekretnyJezyk);
+            lesnyDuch.AddSkills(skradanie);
+            lesnyDuch.AddSkills(spostrzegawczosc);
+            lesnyDuch.AddSkills(sztukaPrzetrwania);
+            lesnyDuch.AddSkills(sledzenie);
+            lesnyDuch.AddSkills(tropienie);
+            lesnyDuch.AddSkills(ukrywanieSie);
+            lesnyDuch.AddSkills(unik);
+            lesnyDuch.AddSkills(zastawianiePulapek);
+            lesnyDuch.AddSkills(zastraszanie);
+            lowcaCzarownic.AddSkills(dowodzenie);
+            lowcaCzarownic.AddSkills(jezdziectwo);
+            lowcaCzarownic.AddSkills(nauka);
+            lowcaCzarownic.AddSkills(nauka);
+            lowcaCzarownic.AddSkills(nauka);
+            lowcaCzarownic.AddSkills(plotkowanie);
+            lowcaCzarownic.AddSkills(przekonywanie);
+            lowcaCzarownic.AddSkills(przeszukiwanie);
+            lowcaCzarownic.AddSkills(skradanie);
+            lowcaCzarownic.AddSkills(spostrzegawczosc);
+            lowcaCzarownic.AddSkills(wiedza);
+            lowcaCzarownic.AddSkills(zastraszanie);
+            lowcaCzarownic.AddSkills(jezyk);
+            lowcaWampirow.AddSkills(nauka);
+            lowcaWampirow.AddSkills(przeszukiwanie);
+            lowcaWampirow.AddSkills(skradanie);
+            lowcaWampirow.AddSkills(spostrzegawczosc);
+            lowcaWampirow.AddSkills(sledzenie);
+            lowcaWampirow.AddSkills(tropienie);
+            lowcaWampirow.AddSkills(ukrywanieSie);
+            lowcaWampirow.AddSkills(unik);
+            lowcaWampirow.AddSkills(wiedza);
+            lowcaWampirow.AddSkills(wspinaczka);
+            lowcaWampirow.AddSkills(jezyk);
+            majordomus.AddSkills(czytaniePisanie);
+            majordomus.AddSkills(dowodzenie);
+            majordomus.AddSkills(jezdziectwo);
+            majordomus.AddSkills(nauka);
+            majordomus.AddSkills(plotkowanie);
+            majordomus.AddSkills(przekonywanie);
+            majordomus.AddSkills(przeszukiwanie);
+            majordomus.AddSkills(rzemioslo);
+            majordomus.AddSkills(spostrzegawczosc);
+            majordomus.AddSkills(targowanie);
+            majordomus.AddSkills(wiedza);
+            majordomus.AddSkills(wycena);
+            majordomus.AddSkills(zastraszanie);
+            majordomus.AddSkills(jezyk);
+            medyk.AddSkills(czytaniePisanie);
+            medyk.AddSkills(leczenie);
+            medyk.AddSkills(nauka);
+            medyk.AddSkills(plotkowanie);
+            medyk.AddSkills(rzemioslo);
+            medyk.AddSkills(spostrzegawczosc);
+            medyk.AddSkills(warzenieTrucizn);
+            medyk.AddSkills(jezyk);
+            mistrzCieni.AddSkills(charakteryzacja);
+            mistrzCieni.AddSkills(czytaniePisanie);
+            mistrzCieni.AddSkills(hazard, czytanieZWarg);
+            mistrzCieni.AddSkills(otwieranieZamkow);
+            mistrzCieni.AddSkills(plotkowanie);
+            mistrzCieni.AddSkills(plywanie);
+            mistrzCieni.AddSkills(przekonywanie);
+            mistrzCieni.AddSkills(przeszukiwanie);
+            mistrzCieni.AddSkills(sekretneZnaki);
+            mistrzCieni.AddSkills(sekretnyJezyk);
+            mistrzCieni.AddSkills(skradanie);
+            mistrzCieni.AddSkills(spostrzegawczosc);
+            mistrzCieni.AddSkills(ukrywanieSie);
+            mistrzCieni.AddSkills(unik);
+            mistrzCieni.AddSkills(wspinaczka);
+            mistrzCieni.AddSkills(wycena);
+            mistrzCieni.AddSkills(zwinnePalce);
+            mistrzGildii.AddSkills(dowodzenie);
+            mistrzGildii.AddSkills(nauka);
+            mistrzGildii.AddSkills(plotkowanie);
+            mistrzGildii.AddSkills(przekonywanie);
+            mistrzGildii.AddSkills(rzemioslo);
+            mistrzGildii.AddSkills(rzemioslo);
+            mistrzGildii.AddSkills(sekretnyJezyk);
+            mistrzGildii.AddSkills(spostrzegawczosc);
+            mistrzGildii.AddSkills(targowanie);
+            mistrzGildii.AddSkills(wiedza);
+            mistrzGildii.AddSkills(wycena);
+            mistrzGildii.AddSkills(jezyk);
+            mistrzGildii.AddSkills(jezyk);
+            mistrzMagii.AddSkills(czytaniePisanie);
+            mistrzMagii.AddSkills(jezykTajemny);
+            mistrzMagii.AddSkills(jezykTajemny);
+            mistrzMagii.AddSkills(nauka);
+            mistrzMagii.AddSkills(nauka);
+            mistrzMagii.AddSkills(plotkowanie, jezdziectwo);
+            mistrzMagii.AddSkills(przekonywanie, zastraszanie);
+            mistrzMagii.AddSkills(splatanieMagii);
+            mistrzMagii.AddSkills(wiedza);
+            mistrzMagii.AddSkills(wiedza);
+            mistrzMagii.AddSkills(wykrywanieMagii);
+            mistrzMagii.AddSkills(jezyk);
+            mistrzMagii.AddSkills(jezyk);
+            mistrzMagii.AddSkills(jezyk);
+            mistrzRzemiosla.AddSkills(plotkowanie);
+            mistrzRzemiosla.AddSkills(powozenie);
+            mistrzRzemiosla.AddSkills(rzemioslo);
+            mistrzRzemiosla.AddSkills(rzemioslo);
+            mistrzRzemiosla.AddSkills(rzemioslo);
+            mistrzRzemiosla.AddSkills(sekretnyJezyk);
+            mistrzRzemiosla.AddSkills(spostrzegawczosc);
+            mistrzRzemiosla.AddSkills(targowanie);
+            mistrzRzemiosla.AddSkills(wycena);
+            mistrzRzemiosla.AddSkills(jezyk);
+            mistrzZakonny.AddSkills(czytaniePisanie);
+            mistrzZakonny.AddSkills(dowodzenie);
+            mistrzZakonny.AddSkills(jezdziectwo);
+            mistrzZakonny.AddSkills(nauka);
+            mistrzZakonny.AddSkills(nauka);
+            mistrzZakonny.AddSkills(przekonywanie);
+            mistrzZakonny.AddSkills(sekretneZnaki);
+            mistrzZakonny.AddSkills(sekretnyJezyk);
+            mistrzZakonny.AddSkills(spostrzegawczosc);
+            mistrzZakonny.AddSkills(tresura);
+            mistrzZakonny.AddSkills(unik);
+            mistrzZakonny.AddSkills(wiedza);
+            mistrzZakonny.AddSkills(wiedza);
+            mistrzZakonny.AddSkills(wiedza);
+            mistrzZakonny.AddSkills(jezyk);
+            nawigator.AddSkills(czytaniePisanie);
+            nawigator.AddSkills(nauka);
+            nawigator.AddSkills(nawigacja);
+            nawigator.AddSkills(plywanie);
+            nawigator.AddSkills(rzemioslo);
+            nawigator.AddSkills(spostrzegawczosc);
+            nawigator.AddSkills(wiedza);
+            nawigator.AddSkills(wiedza);
+            nawigator.AddSkills(jezyk);
+            odkrywca.AddSkills(czytaniePisanie);
+            odkrywca.AddSkills(dowodzenie);
+            odkrywca.AddSkills(jezdziectwo);
+            odkrywca.AddSkills(nauka);
+            odkrywca.AddSkills(nawigacja);
+            odkrywca.AddSkills(plywanie);
+            odkrywca.AddSkills(powozenie);
+            odkrywca.AddSkills(rzemioslo);
+            odkrywca.AddSkills(sekretneZnaki);
+            odkrywca.AddSkills(sekretnyJezyk);
+            odkrywca.AddSkills(spostrzegawczosc);
+            odkrywca.AddSkills(sztukaPrzetrwania);
+            odkrywca.AddSkills(tropienie);
+            odkrywca.AddSkills(wiedza);
+            odkrywca.AddSkills(wiedza);
+            odkrywca.AddSkills(wiedza);
+            odkrywca.AddSkills(wspinaczka);
+            odkrywca.AddSkills(wycena);
+            odkrywca.AddSkills(jezyk);
+            odkrywca.AddSkills(jezyk);
+            odkrywca.AddSkills(jezyk);
+            oficer.AddSkills(czytaniePisanie);
+            oficer.AddSkills(dowodzenie);
+            oficer.AddSkills(jezdziectwo);
+            oficer.AddSkills(nauka);
+            oficer.AddSkills(opieka);
+            oficer.AddSkills(plotkowanie);
+            oficer.AddSkills(sekretnyJezyk);
+            oficer.AddSkills(unik);
+            oficer.AddSkills(wiedza);
+            oficer.AddSkills(wiedza);
+            oficer.AddSkills(wiedza);
+            oficer.AddSkills(jezyk);
+            oprawca.AddSkills(leczenie);
+            oprawca.AddSkills(przekonywanie);
+            oprawca.AddSkills(spostrzegawczosc);
+            oprawca.AddSkills(torturowanie);
+            oprawca.AddSkills(zastraszanie);
+            paser.AddSkills(hazard);
+            paser.AddSkills(plotkowanie);
+            paser.AddSkills(spostrzegawczosc);
+            paser.AddSkills(targowanie);
+            paser.AddSkills(wycena);
+            paser.AddSkills(zastraszanie);
+            paser.AddSkills(zwinnePalce);
+            rajtar.AddSkills(jezdziectwo);
+            rajtar.AddSkills(opieka);
+            rajtar.AddSkills(sekretneZnaki);
+            rajtar.AddSkills(spostrzegawczosc);
+            rajtar.AddSkills(unik);
+            rajtar.AddSkills(wycena, plotkowanie);
+            reketer.AddSkills(dowodzenie);
+            reketer.AddSkills(plotkowanie);
+            reketer.AddSkills(spostrzegawczosc);
+            reketer.AddSkills(sledzenie);
+            reketer.AddSkills(targowanie);
+            reketer.AddSkills(unik);
+            reketer.AddSkills(wiedza);
+            reketer.AddSkills(wycena);
+            reketer.AddSkills(zastraszanie);
+            rozbojnik.AddSkills(jezdziectwo);
+            rozbojnik.AddSkills(opieka);
+            rozbojnik.AddSkills(plotkowanie);
+            rozbojnik.AddSkills(przekonywanie);
+            rozbojnik.AddSkills(skradanie);
+            rozbojnik.AddSkills(tresura);
+            rozbojnik.AddSkills(wiedza);
+            rozbojnik.AddSkills(wycena);
+            rycerz.AddSkills(jezdziectwo);
+            rycerz.AddSkills(nauka);
+            rycerz.AddSkills(nauka);
+            rycerz.AddSkills(sekretnyJezyk);
+            rycerz.AddSkills(spostrzegawczosc);
+            rycerz.AddSkills(unik);
+            rycerz.AddSkills(jezyk);
+            rycerz.AddSkills(jezyk);
+            sierzant.AddSkills(dowodzenie);
+            sierzant.AddSkills(jezdziectwo, plywanie);
+            sierzant.AddSkills(nauka);
+            sierzant.AddSkills(plotkowanie);
+            sierzant.AddSkills(sekretnyJezyk);
+            sierzant.AddSkills(spostrzegawczosc);
+            sierzant.AddSkills(unik);
+            sierzant.AddSkills(wiedza);
+            sierzant.AddSkills(wiedza);
+            sierzant.AddSkills(zastraszanie);
+            sierzant.AddSkills(jezyk);
+            skrytobojca.AddSkills(charakteryzacja);
+            skrytobojca.AddSkills(plotkowanie);
+            skrytobojca.AddSkills(sekretneZnaki);
+            skrytobojca.AddSkills(skradanie);
+            skrytobojca.AddSkills(spostrzegawczosc);
+            skrytobojca.AddSkills(sledzenie);
+            skrytobojca.AddSkills(ukrywanieSie);
+            skrytobojca.AddSkills(warzenieTrucizn);
+            skrytobojca.AddSkills(wspinaczka);
+            strzelec.AddSkills(plotkowanie);
+            strzelec.AddSkills(przeszukiwanie);
+            strzelec.AddSkills(spostrzegawczosc);
+            strzelec.AddSkills(sztukaPrzetrwania);
+            strzelec.AddSkills(wiedza);
+            strzelec.AddSkills(zwinnePalce);
+            szampierz.AddSkills(spostrzegawczosc);
+            szampierz.AddSkills(unik);
+            szarlatan.AddSkills(charakteryzacja);
+            szarlatan.AddSkills(gadanina);
+            szarlatan.AddSkills(hazard);
+            szarlatan.AddSkills(plotkowanie);
+            szarlatan.AddSkills(przekonywanie);
+            szarlatan.AddSkills(sekretnyJezyk);
+            szarlatan.AddSkills(spostrzegawczosc);
+            szarlatan.AddSkills(targowanie);
+            szarlatan.AddSkills(wiedza);
+            szarlatan.AddSkills(wycena);
+            szarlatan.AddSkills(jezyk);
+            szarlatan.AddSkills(jezyk);
+            szarlatan.AddSkills(zwinnePalce);
+            szpieg.AddSkills(charakteryzacja);
+            szpieg.AddSkills(czytanieZWarg);
+            szpieg.AddSkills(kuglarstwo);
+            szpieg.AddSkills(otwieranieZamkow);
+            szpieg.AddSkills(plotkowanie);
+            szpieg.AddSkills(przekonywanie);
+            szpieg.AddSkills(sekretnyJezyk);
+            szpieg.AddSkills(skradanie);
+            szpieg.AddSkills(sledzenie);
+            szpieg.AddSkills(ukrywanieSie);
+            szpieg.AddSkills(wiedza);
+            szpieg.AddSkills(wiedza);
+            szpieg.AddSkills(jezyk);
+            szpieg.AddSkills(jezyk);
+            szpieg.AddSkills(jezyk);
+            szpieg.AddSkills(zwinnePalce);
+            uczony.AddSkills(czytaniePisanie);
+            uczony.AddSkills(nauka);
+            uczony.AddSkills(nauka);
+            uczony.AddSkills(nauka);
+            uczony.AddSkills(spostrzegawczosc);
+            uczony.AddSkills(wiedza);
+            uczony.AddSkills(wiedza);
+            uczony.AddSkills(wiedza);
+            uczony.AddSkills(wycena, rzemioslo);
+            uczony.AddSkills(jezyk);
+            uczony.AddSkills(jezyk);
+            uczony.AddSkills(jezyk);
+            uczony.AddSkills(jezyk);
+            urzednik.AddSkills(czytaniePisanie);
+            urzednik.AddSkills(dowodzenie);
+            urzednik.AddSkills(gadanina);
+            urzednik.AddSkills(kuglarstwo);
+            urzednik.AddSkills(nauka);
+            urzednik.AddSkills(nauka);
+            urzednik.AddSkills(plotkowanie);
+            urzednik.AddSkills(przekonywanie);
+            urzednik.AddSkills(spostrzegawczosc);
+            urzednik.AddSkills(targowanie);
+            urzednik.AddSkills(wiedza);
+            urzednik.AddSkills(wycena);
+            urzednik.AddSkills(jezyk);
+            weteran.AddSkills(hazard);
+            weteran.AddSkills(mocnaGlowa);
+            weteran.AddSkills(plotkowanie);
+            weteran.AddSkills(sekretnyJezyk);
+            weteran.AddSkills(spostrzegawczosc);
+            weteran.AddSkills(unik);
+            weteran.AddSkills(wiedza);
+            weteran.AddSkills(zastraszanie);
+            wedrownyCzarodziej.AddSkills(czytaniePisanie);
+            wedrownyCzarodziej.AddSkills(jezdziectwo, plywanie);
+            wedrownyCzarodziej.AddSkills(jezykTajemny);
+            wedrownyCzarodziej.AddSkills(nauka);
+            wedrownyCzarodziej.AddSkills(nauka);
+            wedrownyCzarodziej.AddSkills(plotkowanie);
+            wedrownyCzarodziej.AddSkills(przekonywanie, zastraszanie);
+            wedrownyCzarodziej.AddSkills(splatanieMagii);
+            wedrownyCzarodziej.AddSkills(wiedza);
+            wedrownyCzarodziej.AddSkills(wiedza);
+            wedrownyCzarodziej.AddSkills(wykrywanieMagii);
+            wedrownyCzarodziej.AddSkills(jezyk);
+            wedrownyCzarodziej.AddSkills(jezyk);
+            wlamywacz.AddSkills(otwieranieZamkow);
+            wlamywacz.AddSkills(plotkowanie);
+            wlamywacz.AddSkills(przeszukiwanie);
+            wlamywacz.AddSkills(sekretneZnaki);
+            wlamywacz.AddSkills(sekretnyJezyk);
+            wlamywacz.AddSkills(skradanie);
+            wlamywacz.AddSkills(spostrzegawczosc);
+            wlamywacz.AddSkills(targowanie);
+            wlamywacz.AddSkills(ukrywanieSie);
+            wlamywacz.AddSkills(wspinaczka);
+            wlamywacz.AddSkills(wycena);
+            wybraniecBozy.AddSkills(jezdziectwo, plywanie);
+            wybraniecBozy.AddSkills(jezykTajemny);
+            wybraniecBozy.AddSkills(leczenie);
+            wybraniecBozy.AddSkills(nauka);
+            wybraniecBozy.AddSkills(nauka);
+            wybraniecBozy.AddSkills(nauka);
+            wybraniecBozy.AddSkills(plotkowanie);
+            wybraniecBozy.AddSkills(przekonywanie);
+            wybraniecBozy.AddSkills(splatanieMagii);
+            wybraniecBozy.AddSkills(wiedza);
+            wybraniecBozy.AddSkills(wiedza);
+            wybraniecBozy.AddSkills(wykrywanieMagii);
+            wybraniecBozy.AddSkills(jezyk);
+            wybraniecBozy.AddSkills(jezyk);
+            zabojcaDemonow.AddSkills(mocnaGlowa);
+            zabojcaDemonow.AddSkills(unik);
+            zabojcaDemonow.AddSkills(wiedza);
+            zabojcaDemonow.AddSkills(wiedza);
+            zabojcaDemonow.AddSkills(wspinaczka);
+            zabojcaDemonow.AddSkills(zastraszanie);
+            zabojcaOlbrzymow.AddSkills(mocnaGlowa);
+            zabojcaOlbrzymow.AddSkills(spostrzegawczosc);
+            zabojcaOlbrzymow.AddSkills(unik);
+            zabojcaOlbrzymow.AddSkills(wiedza);
+            zabojcaOlbrzymow.AddSkills(zastraszanie);
+            zakonnik.AddSkills(leczenie);
+            zakonnik.AddSkills(nauka);
+            zakonnik.AddSkills(opieka);
+            zakonnik.AddSkills(spostrzegawczosc);
+            zakonnik.AddSkills(sztukaPrzetrwania);
+            zakonnik.AddSkills(wiedza);
+            zakonnik.AddSkills(wiedza);
+            zakonnik.AddSkills(jezyk);
+            zakonnik.AddSkills(jezyk);
+            zakonnik.AddSkills(jezyk);
+            zwadzca.AddSkills(hazard);
+            zwadzca.AddSkills(plotkowanie);
+            zwadzca.AddSkills(przekonywanie);
+            zwadzca.AddSkills(spostrzegawczosc);
+            zwadzca.AddSkills(unik);
+            zwadzca.AddSkills(zastraszanie);
+            zwadzca.AddSkills(zwinnePalce);
+            zwiadowca.AddSkills(jezdziectwo);
+            zwiadowca.AddSkills(nawigacja);
+            zwiadowca.AddSkills(opieka);
+            zwiadowca.AddSkills(oswajanie);
+            zwiadowca.AddSkills(sekretneZnaki);
+            zwiadowca.AddSkills(sekretnyJezyk);
+            zwiadowca.AddSkills(skradanie);
+            zwiadowca.AddSkills(spostrzegawczosc);
+            zwiadowca.AddSkills(tropienie);
+            zwiadowca.AddSkills(ukrywanieSie);
+            zwiadowca.AddSkills(unik);
+            zwiadowca.AddSkills(wiedza);
+            zwiadowca.AddSkills(wiedza);
+            zwiadowca.AddSkills(jezyk);
+            zwiadowca.AddSkills(jezyk);
 
             #endregion profession skills
 
             #region profession abilities
 
-            akolita.SetAbilities(bardzoSilny, szybkiRefleks);
-            akolita.SetAbilities(charyzmatyczny, urodzonyWojownik);
-            akolita.SetAbilities(przemawianie);
-            banita.SetAbilities(strzalMierzony, ogluszanie);
-            banita.SetAbilities(wedrowiec, lotrzyk);
-            berserker.SetAbilities(bronSpecjalna);
-            berserker.SetAbilities(grozny);
-            berserker.SetAbilities(szalBojowy);
-            berserker.SetAbilities(szybkieWyciagniecie);
-            chlop.SetAbilities(chodu, bronSpecjalna);
-            chlop.SetAbilities(twardziel, wedrowiec);
-            ciura.SetAbilities(chodu);
-            ciura.SetAbilities(odpornoscNaChoroby, obiezyswiat);
-            ciura.SetAbilities(twardziel, charyzmatyczny);
-            ciura.SetAbilities(zylkaHandlowa, bijatyka);
-            cyrkowiec.SetAbilities(2, bardzoSilny, bronSpecjalna, nasladowca, przemawianie, strzalMierzony, szybkiRefleks, szybkieWyciagniecie, woltyzerka, zapasy);
-            cyrulik.SetAbilities(charyzmatyczny, niezwykleOdporny);
-            cyrulik.SetAbilities(chirurgia);
-            cyrulik.SetAbilities(odpornoscNaChoroby, blyskotliwosc);
-            fanatyk.SetAbilities(bronSpecjalna);
-            fanatyk.SetAbilities(opanowanie, bardzoSilny);
-            fanatyk.SetAbilities(przemawianie);
-            fanatyk.SetAbilities(twardziel, charyzmatyczny);
-            flisak.SetAbilities(obiezyswiat);
-            flisak.SetAbilities(wyczucieKierunku);
-            giermek.SetAbilities(bronSpecjalna);
-            giermek.SetAbilities(etykieta);
-            giermek.SetAbilities(silnyCios);
-            gladiator.SetAbilities(bardzoSilny, odpornoscPsychiczna);
-            gladiator.SetAbilities(bronSpecjalna);
-            gladiator.SetAbilities(bronSpecjalna);
-            gladiator.SetAbilities(bronSpecjalna);
-            gladiator.SetAbilities(rozbrojenie, zapasy);
-            gladiator.SetAbilities(silnyCios);
-            gladiator.SetAbilities(szybkieWyciagniecie, morderczyAtak);
-            goniec.SetAbilities(bardzoSzybki, szostyZmysl);
-            goniec.SetAbilities(bardzoWytrzymaly, bardzoSilny);
-            goniec.SetAbilities(blyskawicznePrzeladowanie);
-            goniec.SetAbilities(chodu);
-            goniec.SetAbilities(wyczucieKierunku);
-            gornik.SetAbilities(bardzoWytrzymaly, urodzonyWojownik);
-            gornik.SetAbilities(bronSpecjalna);
-            gornik.SetAbilities(wyczucieKierunku);
-            guslarz.SetAbilities(gusla);
-            guslarz.SetAbilities(magiaProsta);
-            hiena.SetAbilities(szczescie, szostyZmysl);
-            hiena.SetAbilities(wykrywaniePulapek, grotolaz);
-            kanciarz.SetAbilities(chodu, lotrzyk);
-            kanciarz.SetAbilities(przemawianie);
-            kanciarz.SetAbilities(szczescie, szostyZmysl);
-            kozak.SetAbilities(bronSpecjalna);
-            kozak.SetAbilities(morderczyAtak);
-            lesnik.SetAbilities(bardzoSzybki, niezwykleOdporny);
-            lesnik.SetAbilities(bronSpecjalna);
-            lesnik.SetAbilities(wedrowiec);
-            lowca.SetAbilities(blyskawicznePrzeladowanie);
-            lowca.SetAbilities(strzelecWyborowy, wedrowiec);
-            lowca.SetAbilities(szybkiRefleks, niezwykleOdporny);
-            lowca.SetAbilities(twardziel, bronSpecjalna);
-            lowcanagrod.SetAbilities(bronSpecjalna);
-            lowcanagrod.SetAbilities(strzalMierzony, silnyCios);
-            lowcanagrod.SetAbilities(strzelecWyborowy, ogluszanie);
-            lowcanagrod.SetAbilities(wedrowiec);
-            mieszczanin.SetAbilities(blyskotliwosc, charyzmatyczny);
-            mieszczanin.SetAbilities(zylkaHandlowa);
-            mytnik.SetAbilities(szybkiRefleks, strzelecWyborowy);
-            najemnik.SetAbilities(blyskawicznePrzeladowanie, silnyCios);
-            najemnik.SetAbilities(rozbrojenie, szybkieWyciagniecie);
-            najemnik.SetAbilities(strzalMierzony, ogluszanie);
-            ochotnik.SetAbilities(bronSpecjalna, blyskawicznePrzeladowanie);
-            ochotnik.SetAbilities(silnyCios);
-            ochroniarz.SetAbilities(bardzoSilny, niezwykleOdporny);
-            ochroniarz.SetAbilities(bijatyka);
-            ochroniarz.SetAbilities(bronSpecjalna);
-            ochroniarz.SetAbilities(bronSpecjalna);
-            ochroniarz.SetAbilities(ogluszanie);
-            ochroniarz.SetAbilities(rozbrojenie, szybkieWyciagniecie);
-            oprych.SetAbilities(morderczyAtak, zapasy);
-            oprych.SetAbilities(odpornoscNaTrucizny, szybkieWyciagniecie);
-            oprych.SetAbilities(ogluszanie);
-            oprych.SetAbilities(opanowanie, szybkiRefleks);
-            oprych.SetAbilities(rozbrojenie);
-            paz.SetAbilities(etykieta);
-            paz.SetAbilities(opanowanie, charyzmatyczny);
-            paz.SetAbilities(zylkaHandlowa, obiezyswiat);
-            podzegacz.SetAbilities(chodu);
-            podzegacz.SetAbilities(opanowanie, bijatyka);
-            podzegacz.SetAbilities(przemawianie);
-            porywacz.SetAbilities(chodu);
-            porywacz.SetAbilities(lotrzyk, odpornoscPsychiczna);
-            porywacz.SetAbilities(odpornoscNaChoroby);
-            poslaniec.SetAbilities(obiezyswiat);
-            poslaniec.SetAbilities(wyczucieKierunku);
-            przemytnik.SetAbilities(zylkaHandlowa, lotrzyk);
-            przepatrywacz.SetAbilities(bronSpecjalna);
-            przepatrywacz.SetAbilities(opanowanie, bardzoSilny);
-            przepatrywacz.SetAbilities(wyczucieKierunku);
-            przewoznik.SetAbilities(bronSpecjalna, bijatyka);
-            przewoznik.SetAbilities(strzelecWyborowy, charyzmatyczny);
-            rybak.SetAbilities(twardziel, blyskotliwosc);
-            rybak.SetAbilities(wyczucieKierunku, bijatyka);
-            rzecznik.SetAbilities(obiezyswiat, zylkaHandlowa);
-            rzemieslnik.SetAbilities(zylkaHandlowa, blyskotliwosc);
-            rzezimieszek.SetAbilities(bijatyka);
-            rzezimieszek.SetAbilities(grozny, charyzmatyczny);
-            rzezimieszek.SetAbilities(morderczyAtak);
-            rzezimieszek.SetAbilities(ogluszanie);
-            rzezimieszek.SetAbilities(rozbrojenie, szybkieWyciagniecie);
-            rzezimieszek.SetAbilities(silnyCios);
-            skryba.SetAbilities(poliglota);
-            sluga.SetAbilities(bardzoWytrzymaly, szybkiRefleks);
-            sluga.SetAbilities(czulySluch, chodu);
-            sluga.SetAbilities(etykieta, twardziel);
-            straznik.SetAbilities(ogluszanie);
-            straznik.SetAbilities(opanowanie, blyskotliwosc);
-            straznik.SetAbilities(rozbrojenie, bijatyka);
-            straznik.SetAbilities(silnyCios);
-            straznikDrog.SetAbilities(bronSpecjalna);
-            straznikDrog.SetAbilities(szybkieWyciagniecie, blyskawicznePrzeladowanie);
-            straznikPol.SetAbilities(bardzoSzybki, blyskotliwosc);
-            straznikPol.SetAbilities(strzalPrecyzyjny, blyskawicznePrzeladowanie);
-            straznikPol.SetAbilities(wedrowiec, szybkieWyciagniecie);
-            straznikWiezienny.SetAbilities(bronSpecjalna);
-            straznikWiezienny.SetAbilities(odpornoscNaChoroby);
-            straznikWiezienny.SetAbilities(odpornoscNaTrucizny);
-            straznikWiezienny.SetAbilities(zapasy);
-            szczurolap.SetAbilities(bronSpecjalna);
-            szczurolap.SetAbilities(grotolaz);
-            szczurolap.SetAbilities(odpornoscNaChoroby);
-            szczurolap.SetAbilities(odpornoscNaTrucizny);
-            szermierz.SetAbilities(brawura, szybkiRefleks);
-            szermierz.SetAbilities(bronSpecjalna);
-            szermierz.SetAbilities(silnyCios);
-            szermierz.SetAbilities(szybkieWyciagniecie, morderczyAtak);
-            szlachcic.SetAbilities(blyskotliwosc, bronSpecjalna);
-            szlachcic.SetAbilities(bronSpecjalna, intrygant);
-            szlachcic.SetAbilities(etykieta);
-            szlachcic.SetAbilities(szczescie, przemawianie);
-            smieciarz.SetAbilities(opanowanie, lotrzyk);
-            smieciarz.SetAbilities(twardziel, odpornoscNaChoroby);
-            tarczownik.SetAbilities(czulySluch, opanowanie);
-            tarczownik.SetAbilities(morderczyAtak);
-            tarczownik.SetAbilities(ogluszanie);
-            tarczownik.SetAbilities(silnyCios);
-            tarczownik.SetAbilities(wyczucieKierunku);
-            uczen.SetAbilities(blyskotliwosc, niezwykleOdporny);
-            uczen.SetAbilities(magiaProsta);
-            uczen.SetAbilities(zmyslMagii, dotykMocy);
-            weglarz.SetAbilities(blyskotliwosc, bardzoSilny);
-            weglarz.SetAbilities(chodu);
-            wloczykij.SetAbilities(bardzoSilny, wedrowiec);
-            wloczykij.SetAbilities(obiezyswiat);
-            wloczykij.SetAbilities(strzelecWyborowy, wyczucieKierunku);
-            wojownik.SetAbilities(blyskawicznePrzeladowanie, urodzonyWojownik);
-            wojownik.SetAbilities(strzelecWyborowy, wedrowiec);
-            woznica.SetAbilities(bronSpecjalna);
-            woznica.SetAbilities(szybkieWyciagniecie, obiezyswiat);
-            zabojcaTroli.SetAbilities(bijatyka);
-            zabojcaTroli.SetAbilities(bronSpecjalna);
-            zabojcaTroli.SetAbilities(rozbrojenie, szybkieWyciagniecie);
-            zabojcaTroli.SetAbilities(silnyCios);
-            zabojcaTroli.SetAbilities(szybkiRefleks, niezwykleOdporny);
-            zabojcaTroli.SetAbilities(twardziel);
-            zarzadca.SetAbilities(etykieta, geniuszArytmetyczny);
-            zarzadca.SetAbilities(przemawianie);
-            zlodziej.SetAbilities(geniuszArytmetyczny, wykrywaniePulapek);
-            zlodziej.SetAbilities(ulicznik, lotrzyk);
-            zak.SetAbilities(blyskotliwosc, charyzmatyczny);
-            zak.SetAbilities(etykieta, poliglota);
-            zak.SetAbilities(obiezyswiat, geniuszArytmetyczny);
-            zeglarz.SetAbilities(obiezyswiat);
-            zeglarz.SetAbilities(silnyCios, brawura);
-            zeglarz.SetAbilities(twardziel, bijatyka);
-            zolnierz.SetAbilities(bronSpecjalna);
-            zolnierz.SetAbilities(morderczyAtak, blyskawicznePrzeladowanie);
-            zolnierz.SetAbilities(ogluszanie, strzalPrecyzyjny);
-            zolnierz.SetAbilities(rozbrojenie, szybkieWyciagniecie);
-            zolnierz.SetAbilities(strzalMierzony, silnyCios);
-            zolnierzOkretowy.SetAbilities(ogluszanie);
-            zolnierzOkretowy.SetAbilities(rozbrojenie, szybkieWyciagniecie);
-            zolnierzOkretowy.SetAbilities(silnyCios);
-            arcykaplan.SetAbilities(dotykMocy, odpornosc);
-            arcykaplan.SetAbilities(etykieta);
-            arcykaplan.SetAbilities(magiaPowszechna);
-            arcykaplan.SetAbilities(magiaPowszechna);
-            arcykaplan.SetAbilities(pancerzWiary, morderczyPocisk);
-            arcykaplan.SetAbilities(zmyslMagii, medytacja);
-            arcymag.SetAbilities(czarnoksiestwo, medytacja);
-            arcymag.SetAbilities(dotykMocy, twardziel);
-            arcymag.SetAbilities(magiaPowszechna);
-            arcymag.SetAbilities(magiaPowszechna);
-            arcymag.SetAbilities(zmyslMagii, morderczyPocisk);
-            arystokrata.SetAbilities(bronSpecjalna);
-            arystokrata.SetAbilities(krasomostwo);
-            arystokrata.SetAbilities(przemawianie);
-            bard.SetAbilities(etykieta);
-            bard.SetAbilities(przemawianie);
-            biczownik.SetAbilities(bronSpecjalna);
-            biczownik.SetAbilities(nieustraszony);
-            biczownik.SetAbilities(silnyCios);
-            bosman.SetAbilities(bijatyka);
-            bosman.SetAbilities(obiezyswiat);
-            bosman.SetAbilities(odpornoscNaChoroby);
-            demagog.SetAbilities(bijatyka);
-            demagog.SetAbilities(etykieta, lotrzyk);
-            demagog.SetAbilities(krasomostwo);
-            demagog.SetAbilities(przemawianie);
-            dworzanin.SetAbilities(blyskotliwosc, charyzmatyczny);
-            dworzanin.SetAbilities(intrygant, bronSpecjalna);
-            dworzanin.SetAbilities(przemawianie);
-            dworzanin.SetAbilities(zylkaHandlowa, etykieta);
-            fechmistrz.SetAbilities(artylerzysta);
-            fechmistrz.SetAbilities(bardzoSzybki, szybkiRefleks);
-            fechmistrz.SetAbilities(blyskawicznePrzeladowanie);
-            fechmistrz.SetAbilities(blyskawicznyBlok);
-            fechmistrz.SetAbilities(bronSpecjalna);
-            fechmistrz.SetAbilities(bronSpecjalna);
-            fechmistrz.SetAbilities(bronSpecjalna);
-            fechmistrz.SetAbilities(strzalPrecyzyjny);
-            fechmistrz.SetAbilities(szybkieWyciagniecie);
-            fechmistrz.SetAbilities(zapasy);
-            herold.SetAbilities(etykieta);
-            herold.SetAbilities(krasomostwo);
-            herold.SetAbilities(przemawianie);
-            herszt.SetAbilities(blyskawicznePrzeladowanie);
-            herszt.SetAbilities(blyskawicznyBlok);
-            herszt.SetAbilities(strzalPrecyzyjny);
-            herszt.SetAbilities(strzalPrzebijajacy);
-            herszt.SetAbilities(szybkieWyciagniecie);
-            inzynier.SetAbilities(artylerzysta);
-            inzynier.SetAbilities(bronSpecjalna);
-            kapitan.SetAbilities(blyskawicznyBlok, brawura);
-            kapitan.SetAbilities(bronSpecjalna);
-            kapitan.SetAbilities(obiezyswiat);
-            kapitan.SetAbilities(rozbrojenie);
-            kapitan.SetAbilities(silnyCios);
-            kaplan.SetAbilities(magiaProsta);
-            kaplan.SetAbilities(morderczyAtak, ogluszanie);
-            kaplan.SetAbilities(pancerzWiary, krasomostwo);
-            karczmarz.SetAbilities(etykieta, lotrzyk);
-            karczmarz.SetAbilities(ogluszanie);
-            karczmarz.SetAbilities(zylkaHandlowa, bijatyka);
-            ksiaze.SetAbilities(bronSpecjalna);
-            ksiaze.SetAbilities(grozny);
-            ksiaze.SetAbilities(lotrzyk);
-            ksiaze.SetAbilities(odpornoscNaTrucizny);
-            ksiaze.SetAbilities(przemawianie);
-            ksiaze.SetAbilities(szostyZmysl);
-            ksiaze.SetAbilities(zylkaHandlowa, intrygant);
-            kupiec.SetAbilities(geniuszArytmetyczny);
-            kupiec.SetAbilities(zylkaHandlowa, lotrzyk);
-            lesnyDuch.SetAbilities(blyskawicznePrzeladowanie);
-            lesnyDuch.SetAbilities(blyskawicznyBlok);
-            lesnyDuch.SetAbilities(blyskawicznyBlok);
-            lesnyDuch.SetAbilities(strzalPrecyzyjny);
-            lesnyDuch.SetAbilities(strzalPrzebijajacy);
-            lesnyDuch.SetAbilities(szybkieWyciagniecie);
-            lesnyDuch.SetAbilities(twardziel, bardzoSzybki);
-            lowcaCzarownic.SetAbilities(blyskawicznyBlok);
-            lowcaCzarownic.SetAbilities(bronSpecjalna);
-            lowcaCzarownic.SetAbilities(bronSpecjalna);
-            lowcaCzarownic.SetAbilities(bronSpecjalna);
-            lowcaCzarownic.SetAbilities(grozny);
-            lowcaCzarownic.SetAbilities(odwaga);
-            lowcaCzarownic.SetAbilities(przemawianie);
-            lowcaCzarownic.SetAbilities(silnyCios);
-            lowcaCzarownic.SetAbilities(szostyZmysl);
-            lowcaCzarownic.SetAbilities(szybkiRefleks, strzelecWyborowy);
-            lowcaWampirow.SetAbilities(bronSpecjalna);
-            lowcaWampirow.SetAbilities(grotolaz);
-            lowcaWampirow.SetAbilities(morderczyAtak);
-            lowcaWampirow.SetAbilities(odwaga);
-            lowcaWampirow.SetAbilities(silnyCios);
-            lowcaWampirow.SetAbilities(strzalPrecyzyjny, blyskawicznePrzeladowanie);
-            majordomus.SetAbilities(geniuszArytmetyczny);
-            majordomus.SetAbilities(przemawianie);
-            medyk.SetAbilities(chirurgia);
-            medyk.SetAbilities(odpornoscNaChoroby);
-            medyk.SetAbilities(ogluszanie);
-            mistrzCieni.SetAbilities(bijatyka, brawura);
-            mistrzCieni.SetAbilities(bronSpecjalna);
-            mistrzCieni.SetAbilities(bronSpecjalna);
-            mistrzCieni.SetAbilities(lotrzyk);
-            mistrzCieni.SetAbilities(wykrywaniePulapek);
-            mistrzGildii.SetAbilities(etykieta);
-            mistrzGildii.SetAbilities(poliglota);
-            mistrzGildii.SetAbilities(zylkaHandlowa);
-            mistrzMagii.SetAbilities(czarnoksiestwo, odpornoscPsychiczna);
-            mistrzMagii.SetAbilities(dotykMocy, morderczyPocisk);
-            mistrzMagii.SetAbilities(magiaPowszechna);
-            mistrzMagii.SetAbilities(magiaPowszechna);
-            mistrzMagii.SetAbilities(zmyslMagii, medytacja);
-            mistrzRzemiosla.SetAbilities(talentArtystyczny, etykieta);
-            mistrzZakonny.SetAbilities(blyskawicznyBlok);
-            mistrzZakonny.SetAbilities(bronSpecjalna);
-            mistrzZakonny.SetAbilities(bronSpecjalna);
-            mistrzZakonny.SetAbilities(etykieta);
-            mistrzZakonny.SetAbilities(morderczyAtak);
-            mistrzZakonny.SetAbilities(obiezyswiat);
-            mistrzZakonny.SetAbilities(odwaga);
-            mistrzZakonny.SetAbilities(ogluszanie);
-            nawigator.SetAbilities(wyczucieKierunku);
-            odkrywca.SetAbilities(obiezyswiat);
-            odkrywca.SetAbilities(wyczucieKierunku, poliglota);
-            oficer.SetAbilities(blyskawicznyBlok);
-            oficer.SetAbilities(bronSpecjalna);
-            oficer.SetAbilities(bronSpecjalna);
-            oficer.SetAbilities(rozbrojenie, szybkieWyciagniecie);
-            oprawca.SetAbilities(bronSpecjalna);
-            oprawca.SetAbilities(grozny);
-            oprawca.SetAbilities(zapasy);
-            paser.SetAbilities(geniuszArytmetyczny);
-            paser.SetAbilities(ogluszanie);
-            paser.SetAbilities(zylkaHandlowa, lotrzyk);
-            rajtar.SetAbilities(artylerzysta);
-            rajtar.SetAbilities(blyskawicznePrzeladowanie);
-            rajtar.SetAbilities(bronSpecjalna);
-            rajtar.SetAbilities(silnyCios);
-            rajtar.SetAbilities(strzalMierzony);
-            rajtar.SetAbilities(strzalPrzebijajacy);
-            rajtar.SetAbilities(szybkieWyciagniecie);
-            reketer.SetAbilities(bijatyka);
-            reketer.SetAbilities(grozny);
-            reketer.SetAbilities(lotrzyk);
-            reketer.SetAbilities(ogluszanie);
-            reketer.SetAbilities(silnyCios);
-            rozbojnik.SetAbilities(artylerzysta);
-            rozbojnik.SetAbilities(brawura);
-            rozbojnik.SetAbilities(bronSpecjalna);
-            rozbojnik.SetAbilities(bronSpecjalna);
-            rozbojnik.SetAbilities(etykieta);
-            rozbojnik.SetAbilities(oburecznosc);
-            rozbojnik.SetAbilities(strzalMierzony);
-            rozbojnik.SetAbilities(strzalPrecyzyjny);
-            rozbojnik.SetAbilities(woltyzerka);
-            rycerz.SetAbilities(bronSpecjalna);
-            rycerz.SetAbilities(bronSpecjalna);
-            rycerz.SetAbilities(bronSpecjalna);
-            rycerz.SetAbilities(silnyCios);
-            sierzant.SetAbilities(bijatyka, zapasy);
-            sierzant.SetAbilities(grozny, obiezyswiat);
-            sierzant.SetAbilities(ogluszanie);
-            sierzant.SetAbilities(silnyCios);
-            skrytobojca.SetAbilities(bijatyka);
-            skrytobojca.SetAbilities(blyskawicznyBlok);
-            skrytobojca.SetAbilities(brawura);
-            skrytobojca.SetAbilities(bronSpecjalna);
-            skrytobojca.SetAbilities(bronSpecjalna);
-            skrytobojca.SetAbilities(bronSpecjalna);
-            skrytobojca.SetAbilities(lotrzyk);
-            skrytobojca.SetAbilities(strzalMierzony);
-            skrytobojca.SetAbilities(szybkieWyciagniecie);
-            strzelec.SetAbilities(blyskawicznePrzeladowanie);
-            strzelec.SetAbilities(bronSpecjalna);
-            strzelec.SetAbilities(bronSpecjalna);
-            strzelec.SetAbilities(strzalMierzony);
-            strzelec.SetAbilities(strzalPrecyzyjny);
-            strzelec.SetAbilities(strzalPrzebijajacy);
-            szampierz.SetAbilities(blyskawicznyBlok);
-            szampierz.SetAbilities(bronSpecjalna);
-            szampierz.SetAbilities(bronSpecjalna);
-            szampierz.SetAbilities(bronSpecjalna);
-            szampierz.SetAbilities(bronSpecjalna);
-            szarlatan.SetAbilities(chodu);
-            szarlatan.SetAbilities(intrygant, lotrzyk);
-            szarlatan.SetAbilities(nasladowca);
-            szarlatan.SetAbilities(obiezyswiat);
-            szarlatan.SetAbilities(przemawianie);
-            szpieg.SetAbilities(charyzmatyczny, szostyZmysl);
-            szpieg.SetAbilities(chodu);
-            szpieg.SetAbilities(intrygant);
-            szpieg.SetAbilities(poliglota);
-            uczony.SetAbilities(poliglota);
-            urzednik.SetAbilities(etykieta, lotrzyk);
-            urzednik.SetAbilities(krasomostwo);
-            urzednik.SetAbilities(przemawianie);
-            urzednik.SetAbilities(zylkaHandlowa, intrygant);
-            weteran.SetAbilities(blyskawicznePrzeladowanie, morderczyAtak);
-            weteran.SetAbilities(bronSpecjalna);
-            weteran.SetAbilities(bronSpecjalna);
-            weteran.SetAbilities(niezwykleOdporny, bardzoSilny);
-            weteran.SetAbilities(strzalPrecyzyjny, silnyCios);
-            wedrownyCzarodziej.SetAbilities(dotykMocy, niezwykleOdporny);
-            wedrownyCzarodziej.SetAbilities(magiaTajemna, magiaCzarnoksieska);
-            wedrownyCzarodziej.SetAbilities(magiaPowszechna);
-            wedrownyCzarodziej.SetAbilities(magiaPowszechna);
-            wedrownyCzarodziej.SetAbilities(medytacja, morderczyPocisk);
-            wedrownyCzarodziej.SetAbilities(zmyslMagii, czarnoksiestwo);
-            wlamywacz.SetAbilities(bijatyka);
-            wlamywacz.SetAbilities(lotrzyk);
-            wlamywacz.SetAbilities(ulicznik);
-            wlamywacz.SetAbilities(wykrywaniePulapek);
-            wybraniecBozy.SetAbilities(magiaKaplanska);
-            wybraniecBozy.SetAbilities(magiaPowszechna);
-            wybraniecBozy.SetAbilities(magiaPowszechna);
-            wybraniecBozy.SetAbilities(obiezyswiat, silnyCios);
-            wybraniecBozy.SetAbilities(pancerzWiary, dotykMocy);
-            wybraniecBozy.SetAbilities(zmyslMagii, medytacja);
-            zabojcaDemonow.SetAbilities(blyskawicznyBlok);
-            zabojcaDemonow.SetAbilities(niepokojacy);
-            zabojcaOlbrzymow.SetAbilities(bronSpecjalna);
-            zabojcaOlbrzymow.SetAbilities(morderczyAtak);
-            zabojcaOlbrzymow.SetAbilities(nieustraszony);
-            zabojcaOlbrzymow.SetAbilities(odpornoscNaTrucizny);
-            zakonnik.SetAbilities(obiezyswiat);
-            zwadzca.SetAbilities(artylerzysta);
-            zwadzca.SetAbilities(brawura);
-            zwadzca.SetAbilities(bronSpecjalna);
-            zwadzca.SetAbilities(bronSpecjalna);
-            zwadzca.SetAbilities(bronSpecjalna);
-            zwadzca.SetAbilities(etykieta);
-            zwadzca.SetAbilities(morderczyAtak);
-            zwadzca.SetAbilities(oburecznosc, rozbrojenie);
-            zwadzca.SetAbilities(silnyCios);
-            zwadzca.SetAbilities(strzalMierzony);
-            zwadzca.SetAbilities(strzalPrecyzyjny);
-            zwadzca.SetAbilities(szybkieWyciagniecie);
-            zwiadowca.SetAbilities(blyskawicznePrzeladowanie);
-            zwiadowca.SetAbilities(bronSpecjalna);
-            zwiadowca.SetAbilities(strzalPrecyzyjny, strzalPrzebijajacy);
-            zwiadowca.SetAbilities(wyczucieKierunku);
+            akolita.AddAbilities(bardzoSilny, szybkiRefleks);
+            akolita.AddAbilities(charyzmatyczny, urodzonyWojownik);
+            akolita.AddAbilities(przemawianie);
+            banita.AddAbilities(strzalMierzony, ogluszanie);
+            banita.AddAbilities(wedrowiec, lotrzyk);
+            berserker.AddAbilities(bronSpecjalna);
+            berserker.AddAbilities(grozny);
+            berserker.AddAbilities(szalBojowy);
+            berserker.AddAbilities(szybkieWyciagniecie);
+            chlop.AddAbilities(chodu, bronSpecjalna);
+            chlop.AddAbilities(twardziel, wedrowiec);
+            ciura.AddAbilities(chodu);
+            ciura.AddAbilities(odpornoscNaChoroby, obiezyswiat);
+            ciura.AddAbilities(twardziel, charyzmatyczny);
+            ciura.AddAbilities(zylkaHandlowa, bijatyka);
+            cyrkowiec.AddAbilities(bardzoSilny, bronSpecjalna, nasladowca, przemawianie, strzalMierzony, szybkiRefleks, szybkieWyciagniecie, woltyzerka, zapasy);
+            cyrkowiec.AddAbilities(bardzoSilny, bronSpecjalna, nasladowca, przemawianie, strzalMierzony, szybkiRefleks, szybkieWyciagniecie, woltyzerka, zapasy);
+            cyrulik.AddAbilities(charyzmatyczny, niezwykleOdporny);
+            cyrulik.AddAbilities(chirurgia);
+            cyrulik.AddAbilities(odpornoscNaChoroby, blyskotliwosc);
+            fanatyk.AddAbilities(bronSpecjalna);
+            fanatyk.AddAbilities(opanowanie, bardzoSilny);
+            fanatyk.AddAbilities(przemawianie);
+            fanatyk.AddAbilities(twardziel, charyzmatyczny);
+            flisak.AddAbilities(obiezyswiat);
+            flisak.AddAbilities(wyczucieKierunku);
+            giermek.AddAbilities(bronSpecjalna);
+            giermek.AddAbilities(etykieta);
+            giermek.AddAbilities(silnyCios);
+            gladiator.AddAbilities(bardzoSilny, odpornoscPsychiczna);
+            gladiator.AddAbilities(bronSpecjalna);
+            gladiator.AddAbilities(bronSpecjalna);
+            gladiator.AddAbilities(bronSpecjalna);
+            gladiator.AddAbilities(rozbrojenie, zapasy);
+            gladiator.AddAbilities(silnyCios);
+            gladiator.AddAbilities(szybkieWyciagniecie, morderczyAtak);
+            goniec.AddAbilities(bardzoSzybki, szostyZmysl);
+            goniec.AddAbilities(bardzoWytrzymaly, bardzoSilny);
+            goniec.AddAbilities(blyskawicznePrzeladowanie);
+            goniec.AddAbilities(chodu);
+            goniec.AddAbilities(wyczucieKierunku);
+            gornik.AddAbilities(bardzoWytrzymaly, urodzonyWojownik);
+            gornik.AddAbilities(bronSpecjalna);
+            gornik.AddAbilities(wyczucieKierunku);
+            guslarz.AddAbilities(gusla);
+            guslarz.AddAbilities(magiaProsta);
+            hiena.AddAbilities(szczescie, szostyZmysl);
+            hiena.AddAbilities(wykrywaniePulapek, grotolaz);
+            kanciarz.AddAbilities(chodu, lotrzyk);
+            kanciarz.AddAbilities(przemawianie);
+            kanciarz.AddAbilities(szczescie, szostyZmysl);
+            kozak.AddAbilities(bronSpecjalna);
+            kozak.AddAbilities(morderczyAtak);
+            lesnik.AddAbilities(bardzoSzybki, niezwykleOdporny);
+            lesnik.AddAbilities(bronSpecjalna);
+            lesnik.AddAbilities(wedrowiec);
+            lowca.AddAbilities(blyskawicznePrzeladowanie);
+            lowca.AddAbilities(strzelecWyborowy, wedrowiec);
+            lowca.AddAbilities(szybkiRefleks, niezwykleOdporny);
+            lowca.AddAbilities(twardziel, bronSpecjalna);
+            lowcanagrod.AddAbilities(bronSpecjalna);
+            lowcanagrod.AddAbilities(strzalMierzony, silnyCios);
+            lowcanagrod.AddAbilities(strzelecWyborowy, ogluszanie);
+            lowcanagrod.AddAbilities(wedrowiec);
+            mieszczanin.AddAbilities(blyskotliwosc, charyzmatyczny);
+            mieszczanin.AddAbilities(zylkaHandlowa);
+            mytnik.AddAbilities(szybkiRefleks, strzelecWyborowy);
+            najemnik.AddAbilities(blyskawicznePrzeladowanie, silnyCios);
+            najemnik.AddAbilities(rozbrojenie, szybkieWyciagniecie);
+            najemnik.AddAbilities(strzalMierzony, ogluszanie);
+            ochotnik.AddAbilities(bronSpecjalna, blyskawicznePrzeladowanie);
+            ochotnik.AddAbilities(silnyCios);
+            ochroniarz.AddAbilities(bardzoSilny, niezwykleOdporny);
+            ochroniarz.AddAbilities(bijatyka);
+            ochroniarz.AddAbilities(bronSpecjalna);
+            ochroniarz.AddAbilities(bronSpecjalna);
+            ochroniarz.AddAbilities(ogluszanie);
+            ochroniarz.AddAbilities(rozbrojenie, szybkieWyciagniecie);
+            oprych.AddAbilities(morderczyAtak, zapasy);
+            oprych.AddAbilities(odpornoscNaTrucizny, szybkieWyciagniecie);
+            oprych.AddAbilities(ogluszanie);
+            oprych.AddAbilities(opanowanie, szybkiRefleks);
+            oprych.AddAbilities(rozbrojenie);
+            paz.AddAbilities(etykieta);
+            paz.AddAbilities(opanowanie, charyzmatyczny);
+            paz.AddAbilities(zylkaHandlowa, obiezyswiat);
+            podzegacz.AddAbilities(chodu);
+            podzegacz.AddAbilities(opanowanie, bijatyka);
+            podzegacz.AddAbilities(przemawianie);
+            porywacz.AddAbilities(chodu);
+            porywacz.AddAbilities(lotrzyk, odpornoscPsychiczna);
+            porywacz.AddAbilities(odpornoscNaChoroby);
+            poslaniec.AddAbilities(obiezyswiat);
+            poslaniec.AddAbilities(wyczucieKierunku);
+            przemytnik.AddAbilities(zylkaHandlowa, lotrzyk);
+            przepatrywacz.AddAbilities(bronSpecjalna);
+            przepatrywacz.AddAbilities(opanowanie, bardzoSilny);
+            przepatrywacz.AddAbilities(wyczucieKierunku);
+            przewoznik.AddAbilities(bronSpecjalna, bijatyka);
+            przewoznik.AddAbilities(strzelecWyborowy, charyzmatyczny);
+            rybak.AddAbilities(twardziel, blyskotliwosc);
+            rybak.AddAbilities(wyczucieKierunku, bijatyka);
+            rzecznik.AddAbilities(obiezyswiat, zylkaHandlowa);
+            rzemieslnik.AddAbilities(zylkaHandlowa, blyskotliwosc);
+            rzezimieszek.AddAbilities(bijatyka);
+            rzezimieszek.AddAbilities(grozny, charyzmatyczny);
+            rzezimieszek.AddAbilities(morderczyAtak);
+            rzezimieszek.AddAbilities(ogluszanie);
+            rzezimieszek.AddAbilities(rozbrojenie, szybkieWyciagniecie);
+            rzezimieszek.AddAbilities(silnyCios);
+            skryba.AddAbilities(poliglota);
+            sluga.AddAbilities(bardzoWytrzymaly, szybkiRefleks);
+            sluga.AddAbilities(czulySluch, chodu);
+            sluga.AddAbilities(etykieta, twardziel);
+            straznik.AddAbilities(ogluszanie);
+            straznik.AddAbilities(opanowanie, blyskotliwosc);
+            straznik.AddAbilities(rozbrojenie, bijatyka);
+            straznik.AddAbilities(silnyCios);
+            straznikDrog.AddAbilities(bronSpecjalna);
+            straznikDrog.AddAbilities(szybkieWyciagniecie, blyskawicznePrzeladowanie);
+            straznikPol.AddAbilities(bardzoSzybki, blyskotliwosc);
+            straznikPol.AddAbilities(strzalPrecyzyjny, blyskawicznePrzeladowanie);
+            straznikPol.AddAbilities(wedrowiec, szybkieWyciagniecie);
+            straznikWiezienny.AddAbilities(bronSpecjalna);
+            straznikWiezienny.AddAbilities(odpornoscNaChoroby);
+            straznikWiezienny.AddAbilities(odpornoscNaTrucizny);
+            straznikWiezienny.AddAbilities(zapasy);
+            szczurolap.AddAbilities(bronSpecjalna);
+            szczurolap.AddAbilities(grotolaz);
+            szczurolap.AddAbilities(odpornoscNaChoroby);
+            szczurolap.AddAbilities(odpornoscNaTrucizny);
+            szermierz.AddAbilities(brawura, szybkiRefleks);
+            szermierz.AddAbilities(bronSpecjalna);
+            szermierz.AddAbilities(silnyCios);
+            szermierz.AddAbilities(szybkieWyciagniecie, morderczyAtak);
+            szlachcic.AddAbilities(blyskotliwosc, bronSpecjalna);
+            szlachcic.AddAbilities(bronSpecjalna, intrygant);
+            szlachcic.AddAbilities(etykieta);
+            szlachcic.AddAbilities(szczescie, przemawianie);
+            smieciarz.AddAbilities(opanowanie, lotrzyk);
+            smieciarz.AddAbilities(twardziel, odpornoscNaChoroby);
+            tarczownik.AddAbilities(czulySluch, opanowanie);
+            tarczownik.AddAbilities(morderczyAtak);
+            tarczownik.AddAbilities(ogluszanie);
+            tarczownik.AddAbilities(silnyCios);
+            tarczownik.AddAbilities(wyczucieKierunku);
+            uczen.AddAbilities(blyskotliwosc, niezwykleOdporny);
+            uczen.AddAbilities(magiaProsta);
+            uczen.AddAbilities(zmyslMagii, dotykMocy);
+            weglarz.AddAbilities(blyskotliwosc, bardzoSilny);
+            weglarz.AddAbilities(chodu);
+            wloczykij.AddAbilities(bardzoSilny, wedrowiec);
+            wloczykij.AddAbilities(obiezyswiat);
+            wloczykij.AddAbilities(strzelecWyborowy, wyczucieKierunku);
+            wojownik.AddAbilities(blyskawicznePrzeladowanie, urodzonyWojownik);
+            wojownik.AddAbilities(strzelecWyborowy, wedrowiec);
+            woznica.AddAbilities(bronSpecjalna);
+            woznica.AddAbilities(szybkieWyciagniecie, obiezyswiat);
+            zabojcaTroli.AddAbilities(bijatyka);
+            zabojcaTroli.AddAbilities(bronSpecjalna);
+            zabojcaTroli.AddAbilities(rozbrojenie, szybkieWyciagniecie);
+            zabojcaTroli.AddAbilities(silnyCios);
+            zabojcaTroli.AddAbilities(szybkiRefleks, niezwykleOdporny);
+            zabojcaTroli.AddAbilities(twardziel);
+            zarzadca.AddAbilities(etykieta, geniuszArytmetyczny);
+            zarzadca.AddAbilities(przemawianie);
+            zlodziej.AddAbilities(geniuszArytmetyczny, wykrywaniePulapek);
+            zlodziej.AddAbilities(ulicznik, lotrzyk);
+            zak.AddAbilities(blyskotliwosc, charyzmatyczny);
+            zak.AddAbilities(etykieta, poliglota);
+            zak.AddAbilities(obiezyswiat, geniuszArytmetyczny);
+            zeglarz.AddAbilities(obiezyswiat);
+            zeglarz.AddAbilities(silnyCios, brawura);
+            zeglarz.AddAbilities(twardziel, bijatyka);
+            zolnierz.AddAbilities(bronSpecjalna);
+            zolnierz.AddAbilities(morderczyAtak, blyskawicznePrzeladowanie);
+            zolnierz.AddAbilities(ogluszanie, strzalPrecyzyjny);
+            zolnierz.AddAbilities(rozbrojenie, szybkieWyciagniecie);
+            zolnierz.AddAbilities(strzalMierzony, silnyCios);
+            zolnierzOkretowy.AddAbilities(ogluszanie);
+            zolnierzOkretowy.AddAbilities(rozbrojenie, szybkieWyciagniecie);
+            zolnierzOkretowy.AddAbilities(silnyCios);
+            arcykaplan.AddAbilities(dotykMocy, odpornosc);
+            arcykaplan.AddAbilities(etykieta);
+            arcykaplan.AddAbilities(magiaPowszechna);
+            arcykaplan.AddAbilities(magiaPowszechna);
+            arcykaplan.AddAbilities(pancerzWiary, morderczyPocisk);
+            arcykaplan.AddAbilities(zmyslMagii, medytacja);
+            arcymag.AddAbilities(czarnoksiestwo, medytacja);
+            arcymag.AddAbilities(dotykMocy, twardziel);
+            arcymag.AddAbilities(magiaPowszechna);
+            arcymag.AddAbilities(magiaPowszechna);
+            arcymag.AddAbilities(zmyslMagii, morderczyPocisk);
+            arystokrata.AddAbilities(bronSpecjalna);
+            arystokrata.AddAbilities(krasomostwo);
+            arystokrata.AddAbilities(przemawianie);
+            bard.AddAbilities(etykieta);
+            bard.AddAbilities(przemawianie);
+            biczownik.AddAbilities(bronSpecjalna);
+            biczownik.AddAbilities(nieustraszony);
+            biczownik.AddAbilities(silnyCios);
+            bosman.AddAbilities(bijatyka);
+            bosman.AddAbilities(obiezyswiat);
+            bosman.AddAbilities(odpornoscNaChoroby);
+            demagog.AddAbilities(bijatyka);
+            demagog.AddAbilities(etykieta, lotrzyk);
+            demagog.AddAbilities(krasomostwo);
+            demagog.AddAbilities(przemawianie);
+            dworzanin.AddAbilities(blyskotliwosc, charyzmatyczny);
+            dworzanin.AddAbilities(intrygant, bronSpecjalna);
+            dworzanin.AddAbilities(przemawianie);
+            dworzanin.AddAbilities(zylkaHandlowa, etykieta);
+            fechmistrz.AddAbilities(artylerzysta);
+            fechmistrz.AddAbilities(bardzoSzybki, szybkiRefleks);
+            fechmistrz.AddAbilities(blyskawicznePrzeladowanie);
+            fechmistrz.AddAbilities(blyskawicznyBlok);
+            fechmistrz.AddAbilities(bronSpecjalna);
+            fechmistrz.AddAbilities(bronSpecjalna);
+            fechmistrz.AddAbilities(bronSpecjalna);
+            fechmistrz.AddAbilities(strzalPrecyzyjny);
+            fechmistrz.AddAbilities(szybkieWyciagniecie);
+            fechmistrz.AddAbilities(zapasy);
+            herold.AddAbilities(etykieta);
+            herold.AddAbilities(krasomostwo);
+            herold.AddAbilities(przemawianie);
+            herszt.AddAbilities(blyskawicznePrzeladowanie);
+            herszt.AddAbilities(blyskawicznyBlok);
+            herszt.AddAbilities(strzalPrecyzyjny);
+            herszt.AddAbilities(strzalPrzebijajacy);
+            herszt.AddAbilities(szybkieWyciagniecie);
+            inzynier.AddAbilities(artylerzysta);
+            inzynier.AddAbilities(bronSpecjalna);
+            kapitan.AddAbilities(blyskawicznyBlok, brawura);
+            kapitan.AddAbilities(bronSpecjalna);
+            kapitan.AddAbilities(obiezyswiat);
+            kapitan.AddAbilities(rozbrojenie);
+            kapitan.AddAbilities(silnyCios);
+            kaplan.AddAbilities(magiaProsta);
+            kaplan.AddAbilities(morderczyAtak, ogluszanie);
+            kaplan.AddAbilities(pancerzWiary, krasomostwo);
+            karczmarz.AddAbilities(etykieta, lotrzyk);
+            karczmarz.AddAbilities(ogluszanie);
+            karczmarz.AddAbilities(zylkaHandlowa, bijatyka);
+            ksiaze.AddAbilities(bronSpecjalna);
+            ksiaze.AddAbilities(grozny);
+            ksiaze.AddAbilities(lotrzyk);
+            ksiaze.AddAbilities(odpornoscNaTrucizny);
+            ksiaze.AddAbilities(przemawianie);
+            ksiaze.AddAbilities(szostyZmysl);
+            ksiaze.AddAbilities(zylkaHandlowa, intrygant);
+            kupiec.AddAbilities(geniuszArytmetyczny);
+            kupiec.AddAbilities(zylkaHandlowa, lotrzyk);
+            lesnyDuch.AddAbilities(blyskawicznePrzeladowanie);
+            lesnyDuch.AddAbilities(blyskawicznyBlok);
+            lesnyDuch.AddAbilities(blyskawicznyBlok);
+            lesnyDuch.AddAbilities(strzalPrecyzyjny);
+            lesnyDuch.AddAbilities(strzalPrzebijajacy);
+            lesnyDuch.AddAbilities(szybkieWyciagniecie);
+            lesnyDuch.AddAbilities(twardziel, bardzoSzybki);
+            lowcaCzarownic.AddAbilities(blyskawicznyBlok);
+            lowcaCzarownic.AddAbilities(bronSpecjalna);
+            lowcaCzarownic.AddAbilities(bronSpecjalna);
+            lowcaCzarownic.AddAbilities(bronSpecjalna);
+            lowcaCzarownic.AddAbilities(grozny);
+            lowcaCzarownic.AddAbilities(odwaga);
+            lowcaCzarownic.AddAbilities(przemawianie);
+            lowcaCzarownic.AddAbilities(silnyCios);
+            lowcaCzarownic.AddAbilities(szostyZmysl);
+            lowcaCzarownic.AddAbilities(szybkiRefleks, strzelecWyborowy);
+            lowcaWampirow.AddAbilities(bronSpecjalna);
+            lowcaWampirow.AddAbilities(grotolaz);
+            lowcaWampirow.AddAbilities(morderczyAtak);
+            lowcaWampirow.AddAbilities(odwaga);
+            lowcaWampirow.AddAbilities(silnyCios);
+            lowcaWampirow.AddAbilities(strzalPrecyzyjny, blyskawicznePrzeladowanie);
+            majordomus.AddAbilities(geniuszArytmetyczny);
+            majordomus.AddAbilities(przemawianie);
+            medyk.AddAbilities(chirurgia);
+            medyk.AddAbilities(odpornoscNaChoroby);
+            medyk.AddAbilities(ogluszanie);
+            mistrzCieni.AddAbilities(bijatyka, brawura);
+            mistrzCieni.AddAbilities(bronSpecjalna);
+            mistrzCieni.AddAbilities(bronSpecjalna);
+            mistrzCieni.AddAbilities(lotrzyk);
+            mistrzCieni.AddAbilities(wykrywaniePulapek);
+            mistrzGildii.AddAbilities(etykieta);
+            mistrzGildii.AddAbilities(poliglota);
+            mistrzGildii.AddAbilities(zylkaHandlowa);
+            mistrzMagii.AddAbilities(czarnoksiestwo, odpornoscPsychiczna);
+            mistrzMagii.AddAbilities(dotykMocy, morderczyPocisk);
+            mistrzMagii.AddAbilities(magiaPowszechna);
+            mistrzMagii.AddAbilities(magiaPowszechna);
+            mistrzMagii.AddAbilities(zmyslMagii, medytacja);
+            mistrzRzemiosla.AddAbilities(talentArtystyczny, etykieta);
+            mistrzZakonny.AddAbilities(blyskawicznyBlok);
+            mistrzZakonny.AddAbilities(bronSpecjalna);
+            mistrzZakonny.AddAbilities(bronSpecjalna);
+            mistrzZakonny.AddAbilities(etykieta);
+            mistrzZakonny.AddAbilities(morderczyAtak);
+            mistrzZakonny.AddAbilities(obiezyswiat);
+            mistrzZakonny.AddAbilities(odwaga);
+            mistrzZakonny.AddAbilities(ogluszanie);
+            nawigator.AddAbilities(wyczucieKierunku);
+            odkrywca.AddAbilities(obiezyswiat);
+            odkrywca.AddAbilities(wyczucieKierunku, poliglota);
+            oficer.AddAbilities(blyskawicznyBlok);
+            oficer.AddAbilities(bronSpecjalna);
+            oficer.AddAbilities(bronSpecjalna);
+            oficer.AddAbilities(rozbrojenie, szybkieWyciagniecie);
+            oprawca.AddAbilities(bronSpecjalna);
+            oprawca.AddAbilities(grozny);
+            oprawca.AddAbilities(zapasy);
+            paser.AddAbilities(geniuszArytmetyczny);
+            paser.AddAbilities(ogluszanie);
+            paser.AddAbilities(zylkaHandlowa, lotrzyk);
+            rajtar.AddAbilities(artylerzysta);
+            rajtar.AddAbilities(blyskawicznePrzeladowanie);
+            rajtar.AddAbilities(bronSpecjalna);
+            rajtar.AddAbilities(silnyCios);
+            rajtar.AddAbilities(strzalMierzony);
+            rajtar.AddAbilities(strzalPrzebijajacy);
+            rajtar.AddAbilities(szybkieWyciagniecie);
+            reketer.AddAbilities(bijatyka);
+            reketer.AddAbilities(grozny);
+            reketer.AddAbilities(lotrzyk);
+            reketer.AddAbilities(ogluszanie);
+            reketer.AddAbilities(silnyCios);
+            rozbojnik.AddAbilities(artylerzysta);
+            rozbojnik.AddAbilities(brawura);
+            rozbojnik.AddAbilities(bronSpecjalna);
+            rozbojnik.AddAbilities(bronSpecjalna);
+            rozbojnik.AddAbilities(etykieta);
+            rozbojnik.AddAbilities(oburecznosc);
+            rozbojnik.AddAbilities(strzalMierzony);
+            rozbojnik.AddAbilities(strzalPrecyzyjny);
+            rozbojnik.AddAbilities(woltyzerka);
+            rycerz.AddAbilities(bronSpecjalna);
+            rycerz.AddAbilities(bronSpecjalna);
+            rycerz.AddAbilities(bronSpecjalna);
+            rycerz.AddAbilities(silnyCios);
+            sierzant.AddAbilities(bijatyka, zapasy);
+            sierzant.AddAbilities(grozny, obiezyswiat);
+            sierzant.AddAbilities(ogluszanie);
+            sierzant.AddAbilities(silnyCios);
+            skrytobojca.AddAbilities(bijatyka);
+            skrytobojca.AddAbilities(blyskawicznyBlok);
+            skrytobojca.AddAbilities(brawura);
+            skrytobojca.AddAbilities(bronSpecjalna);
+            skrytobojca.AddAbilities(bronSpecjalna);
+            skrytobojca.AddAbilities(bronSpecjalna);
+            skrytobojca.AddAbilities(lotrzyk);
+            skrytobojca.AddAbilities(strzalMierzony);
+            skrytobojca.AddAbilities(szybkieWyciagniecie);
+            strzelec.AddAbilities(blyskawicznePrzeladowanie);
+            strzelec.AddAbilities(bronSpecjalna);
+            strzelec.AddAbilities(bronSpecjalna);
+            strzelec.AddAbilities(strzalMierzony);
+            strzelec.AddAbilities(strzalPrecyzyjny);
+            strzelec.AddAbilities(strzalPrzebijajacy);
+            szampierz.AddAbilities(blyskawicznyBlok);
+            szampierz.AddAbilities(bronSpecjalna);
+            szampierz.AddAbilities(bronSpecjalna);
+            szampierz.AddAbilities(bronSpecjalna);
+            szampierz.AddAbilities(bronSpecjalna);
+            szarlatan.AddAbilities(chodu);
+            szarlatan.AddAbilities(intrygant, lotrzyk);
+            szarlatan.AddAbilities(nasladowca);
+            szarlatan.AddAbilities(obiezyswiat);
+            szarlatan.AddAbilities(przemawianie);
+            szpieg.AddAbilities(charyzmatyczny, szostyZmysl);
+            szpieg.AddAbilities(chodu);
+            szpieg.AddAbilities(intrygant);
+            szpieg.AddAbilities(poliglota);
+            uczony.AddAbilities(poliglota);
+            urzednik.AddAbilities(etykieta, lotrzyk);
+            urzednik.AddAbilities(krasomostwo);
+            urzednik.AddAbilities(przemawianie);
+            urzednik.AddAbilities(zylkaHandlowa, intrygant);
+            weteran.AddAbilities(blyskawicznePrzeladowanie, morderczyAtak);
+            weteran.AddAbilities(bronSpecjalna);
+            weteran.AddAbilities(bronSpecjalna);
+            weteran.AddAbilities(niezwykleOdporny, bardzoSilny);
+            weteran.AddAbilities(strzalPrecyzyjny, silnyCios);
+            wedrownyCzarodziej.AddAbilities(dotykMocy, niezwykleOdporny);
+            wedrownyCzarodziej.AddAbilities(magiaTajemna, magiaCzarnoksieska);
+            wedrownyCzarodziej.AddAbilities(magiaPowszechna);
+            wedrownyCzarodziej.AddAbilities(magiaPowszechna);
+            wedrownyCzarodziej.AddAbilities(medytacja, morderczyPocisk);
+            wedrownyCzarodziej.AddAbilities(zmyslMagii, czarnoksiestwo);
+            wlamywacz.AddAbilities(bijatyka);
+            wlamywacz.AddAbilities(lotrzyk);
+            wlamywacz.AddAbilities(ulicznik);
+            wlamywacz.AddAbilities(wykrywaniePulapek);
+            wybraniecBozy.AddAbilities(magiaKaplanska);
+            wybraniecBozy.AddAbilities(magiaPowszechna);
+            wybraniecBozy.AddAbilities(magiaPowszechna);
+            wybraniecBozy.AddAbilities(obiezyswiat, silnyCios);
+            wybraniecBozy.AddAbilities(pancerzWiary, dotykMocy);
+            wybraniecBozy.AddAbilities(zmyslMagii, medytacja);
+            zabojcaDemonow.AddAbilities(blyskawicznyBlok);
+            zabojcaDemonow.AddAbilities(niepokojacy);
+            zabojcaOlbrzymow.AddAbilities(bronSpecjalna);
+            zabojcaOlbrzymow.AddAbilities(morderczyAtak);
+            zabojcaOlbrzymow.AddAbilities(nieustraszony);
+            zabojcaOlbrzymow.AddAbilities(odpornoscNaTrucizny);
+            zakonnik.AddAbilities(obiezyswiat);
+            zwadzca.AddAbilities(artylerzysta);
+            zwadzca.AddAbilities(brawura);
+            zwadzca.AddAbilities(bronSpecjalna);
+            zwadzca.AddAbilities(bronSpecjalna);
+            zwadzca.AddAbilities(bronSpecjalna);
+            zwadzca.AddAbilities(etykieta);
+            zwadzca.AddAbilities(morderczyAtak);
+            zwadzca.AddAbilities(oburecznosc, rozbrojenie);
+            zwadzca.AddAbilities(silnyCios);
+            zwadzca.AddAbilities(strzalMierzony);
+            zwadzca.AddAbilities(strzalPrecyzyjny);
+            zwadzca.AddAbilities(szybkieWyciagniecie);
+            zwiadowca.AddAbilities(blyskawicznePrzeladowanie);
+            zwiadowca.AddAbilities(bronSpecjalna);
+            zwiadowca.AddAbilities(strzalPrecyzyjny, strzalPrzebijajacy);
+            zwiadowca.AddAbilities(wyczucieKierunku);
 
             #endregion profession abilities
+
+            #region profession connections
+
+            akolita.AddOutputProfession(cyrulik.GetResult());
+            akolita.AddOutputProfession(demagog.GetResult());
+            akolita.AddOutputProfession(fanatyk.GetResult());
+            akolita.AddOutputProfession(kaplan.GetResult());
+            akolita.AddOutputProfession(skryba.GetResult());
+            akolita.AddOutputProfession(zakonnik.GetResult());
+
+            banita.AddOutputProfession(demagog.GetResult());
+            banita.AddOutputProfession(rozbojnik.GetResult());
+            banita.AddOutputProfession(weteran.GetResult());
+            banita.AddOutputProfession(wloczykij.GetResult());
+            banita.AddOutputProfession(zlodziej.GetResult());
+
+            berserker.AddOutputProfession(gladiator.GetResult());
+            berserker.AddOutputProfession(najemnik.GetResult());
+            berserker.AddOutputProfession(sierzant.GetResult());
+            berserker.AddOutputProfession(weteran.GetResult());
+            berserker.AddOutputProfession(zeglarz.GetResult());
+
+            chlop.AddOutputProfession(banita.GetResult());
+            chlop.AddOutputProfession(fanatyk.GetResult());
+            chlop.AddOutputProfession(ochotnik.GetResult());
+            chlop.AddOutputProfession(rybak.GetResult());
+            chlop.AddOutputProfession(rzemieslnik.GetResult());
+            chlop.AddOutputProfession(sluga.GetResult());
+            chlop.AddOutputProfession(smieciarz.GetResult());
+            chlop.AddOutputProfession(urzednik.GetResult());
+            chlop.AddOutputProfession(weglarz.GetResult());
+
+            ciura.AddOutputProfession(przemytnik.GetResult());
+            ciura.AddOutputProfession(rzemieslnik.GetResult());
+            ciura.AddOutputProfession(sluga.GetResult());
+            ciura.AddOutputProfession(szarlatan.GetResult());
+            ciura.AddOutputProfession(szpieg.GetResult());
+            ciura.AddOutputProfession(weglarz.GetResult());
+            ciura.AddOutputProfession(wloczykij.GetResult());
+
+            cyrkowiec.AddOutputProfession(bard.GetResult());
+            cyrkowiec.AddOutputProfession(kanciarz.GetResult());
+            cyrkowiec.AddOutputProfession(szarlatan.GetResult());
+            cyrkowiec.AddOutputProfession(wloczykij.GetResult());
+            cyrkowiec.AddOutputProfession(zlodziej.GetResult());
+
+            cyrulik.AddOutputProfession(medyk.GetResult());
+            cyrulik.AddOutputProfession(oprawca.GetResult());
+            cyrulik.AddOutputProfession(porywacz.GetResult());
+            cyrulik.AddOutputProfession(rzemieslnik.GetResult());
+            cyrulik.AddOutputProfession(wloczykij.GetResult());
+
+            fanatyk.AddOutputProfession(akolita.GetResult());
+            fanatyk.AddOutputProfession(banita.GetResult());
+            fanatyk.AddOutputProfession(biczownik.GetResult());
+            fanatyk.AddOutputProfession(podzegacz.GetResult());
+            fanatyk.AddOutputProfession(zakonnik.GetResult());
+
+            flisak.AddOutputProfession(nawigator.GetResult());
+            flisak.AddOutputProfession(przemytnik.GetResult());
+            flisak.AddOutputProfession(rybak.GetResult());
+            flisak.AddOutputProfession(zeglarz.GetResult());
+            flisak.AddOutputProfession(zolnierzOkretowy.GetResult());
+
+            giermek.AddOutputProfession(banita.GetResult());
+            giermek.AddOutputProfession(rycerz.GetResult());
+            giermek.AddOutputProfession(sierzant.GetResult());
+            giermek.AddOutputProfession(szlachcic.GetResult());
+            giermek.AddOutputProfession(weteran.GetResult());
+
+            gladiator.AddOutputProfession(lowcanagrod.GetResult());
+            gladiator.AddOutputProfession(najemnik.GetResult());
+            gladiator.AddOutputProfession(rzezimieszek.GetResult());
+            gladiator.AddOutputProfession(weteran.GetResult());
+            gladiator.AddOutputProfession(zabojcaTroli.GetResult());
+
+            goniec.AddOutputProfession(hiena.GetResult());
+            goniec.AddOutputProfession(szczurolap.GetResult());
+            goniec.AddOutputProfession(tarczownik.GetResult());
+            goniec.AddOutputProfession(weteran.GetResult());
+            goniec.AddOutputProfession(zwiadowca.GetResult());
+
+            gornik.AddOutputProfession(inzynier.GetResult());
+            gornik.AddOutputProfession(najemnik.GetResult());
+            gornik.AddOutputProfession(przemytnik.GetResult());
+            gornik.AddOutputProfession(tarczownik.GetResult());
+            gornik.AddOutputProfession(weglarz.GetResult());
+            gornik.AddOutputProfession(zwiadowca.GetResult());
+
+            guslarz.AddOutputProfession(akolita.GetResult());
+            guslarz.AddOutputProfession(banita.GetResult());
+            guslarz.AddOutputProfession(szarlatan.GetResult());
+            guslarz.AddOutputProfession(uczen.GetResult());
+            guslarz.AddOutputProfession(wloczykij.GetResult());
+
+            hiena.AddOutputProfession(lowcaWampirow.GetResult());
+            hiena.AddOutputProfession(paser.GetResult());
+            hiena.AddOutputProfession(szczurolap.GetResult());
+            hiena.AddOutputProfession(tarczownik.GetResult());
+            hiena.AddOutputProfession(zlodziej.GetResult());
+
+            kanciarz.AddOutputProfession(banita.GetResult());
+            kanciarz.AddOutputProfession(cyrkowiec.GetResult());
+            kanciarz.AddOutputProfession(demagog.GetResult());
+            kanciarz.AddOutputProfession(sluga.GetResult());
+            kanciarz.AddOutputProfession(szarlatan.GetResult());
+            kanciarz.AddOutputProfession(zlodziej.GetResult());
+
+            kozak.AddOutputProfession(lowcanagrod.GetResult());
+            kozak.AddOutputProfession(najemnik.GetResult());
+            kozak.AddOutputProfession(sierzant.GetResult());
+            kozak.AddOutputProfession(tarczownik.GetResult());
+            kozak.AddOutputProfession(weteran.GetResult());
+
+            lesnik.AddOutputProfession(banita.GetResult());
+            lesnik.AddOutputProfession(lowca.GetResult());
+            lesnik.AddOutputProfession(ochotnik.GetResult());
+            lesnik.AddOutputProfession(wloczykij.GetResult());
+            lesnik.AddOutputProfession(zwiadowca.GetResult());
+
+            lowca.AddOutputProfession(gornik.GetResult());
+            lowca.AddOutputProfession(lowcanagrod.GetResult());
+            lowca.AddOutputProfession(straznikPol.GetResult());
+            lowca.AddOutputProfession(strzelec.GetResult());
+            lowca.AddOutputProfession(weglarz.GetResult());
+            lowca.AddOutputProfession(wojownik.GetResult());
+            lowca.AddOutputProfession(zwiadowca.GetResult());
+            lowca.AddOutputProfession(zolnierz.GetResult());
+
+            lowcanagrod.AddOutputProfession(lowcaWampirow.GetResult());
+            lowcanagrod.AddOutputProfession(najemnik.GetResult());
+            lowcanagrod.AddOutputProfession(rzezimieszek.GetResult());
+            lowcanagrod.AddOutputProfession(strzelec.GetResult());
+            lowcanagrod.AddOutputProfession(zwiadowca.GetResult());
+
+            mieszczanin.AddOutputProfession(karczmarz.GetResult());
+            mieszczanin.AddOutputProfession(kupiec.GetResult());
+            mieszczanin.AddOutputProfession(ochotnik.GetResult());
+            mieszczanin.AddOutputProfession(paser.GetResult());
+            mieszczanin.AddOutputProfession(paz.GetResult());
+            mieszczanin.AddOutputProfession(podzegacz.GetResult());
+            mieszczanin.AddOutputProfession(rzemieslnik.GetResult());
+
+            mytnik.AddOutputProfession(banita.GetResult());
+            mytnik.AddOutputProfession(przewoznik.GetResult());
+            mytnik.AddOutputProfession(rozbojnik.GetResult());
+            mytnik.AddOutputProfession(straznikPol.GetResult());
+            mytnik.AddOutputProfession(urzednik.GetResult());
+            mytnik.AddOutputProfession(zlodziej.GetResult());
+            mytnik.AddOutputProfession(zolnierz.GetResult());
+
+            najemnik.AddOutputProfession(banita.GetResult());
+            najemnik.AddOutputProfession(lowcanagrod.GetResult());
+            najemnik.AddOutputProfession(ochroniarz.GetResult());
+            najemnik.AddOutputProfession(sierzant.GetResult());
+            najemnik.AddOutputProfession(tarczownik.GetResult());
+            najemnik.AddOutputProfession(weteran.GetResult());
+
+            ochotnik.AddOutputProfession(banita.GetResult());
+            ochotnik.AddOutputProfession(mistrzRzemiosla.GetResult());
+            ochotnik.AddOutputProfession(najemnik.GetResult());
+            ochotnik.AddOutputProfession(poslaniec.GetResult());
+            ochotnik.AddOutputProfession(sierzant.GetResult());
+            ochotnik.AddOutputProfession(straznikPol.GetResult());
+            ochotnik.AddOutputProfession(zlodziej.GetResult());
+
+            ochroniarz.AddOutputProfession(lowcanagrod.GetResult());
+            ochroniarz.AddOutputProfession(najemnik.GetResult());
+            ochroniarz.AddOutputProfession(oprawca.GetResult());
+            ochroniarz.AddOutputProfession(reketer.GetResult());
+            ochroniarz.AddOutputProfession(rzezimieszek.GetResult());
+            ochroniarz.AddOutputProfession(straznikWiezienny.GetResult());
+            ochroniarz.AddOutputProfession(zarzadca.GetResult());
+
+            oprych.AddOutputProfession(gladiator.GetResult());
+            oprych.AddOutputProfession(najemnik.GetResult());
+            oprych.AddOutputProfession(ochroniarz.GetResult());
+            oprych.AddOutputProfession(oprawca.GetResult());
+            oprych.AddOutputProfession(reketer.GetResult());
+
+            paz.AddOutputProfession(giermek.GetResult());
+            paz.AddOutputProfession(herold.GetResult());
+            paz.AddOutputProfession(kanciarz.GetResult());
+            paz.AddOutputProfession(majordomus.GetResult());
+            paz.AddOutputProfession(zak.GetResult());
+
+            podzegacz.AddOutputProfession(banita.GetResult());
+            podzegacz.AddOutputProfession(demagog.GetResult());
+            podzegacz.AddOutputProfession(fanatyk.GetResult());
+            podzegacz.AddOutputProfession(kanciarz.GetResult());
+            podzegacz.AddOutputProfession(szarlatan.GetResult());
+            podzegacz.AddOutputProfession(urzednik.GetResult());
+
+            porywacz.AddOutputProfession(paser.GetResult());
+            porywacz.AddOutputProfession(szczurolap.GetResult());
+            porywacz.AddOutputProfession(wlamywacz.GetResult());
+            porywacz.AddOutputProfession(zlodziej.GetResult());
+            porywacz.AddOutputProfession(zak.GetResult());
+
+            poslaniec.AddOutputProfession(herold.GetResult());
+            poslaniec.AddOutputProfession(straznikDrog.GetResult());
+            poslaniec.AddOutputProfession(wojownik.GetResult());
+            poslaniec.AddOutputProfession(woznica.GetResult());
+            poslaniec.AddOutputProfession(zwiadowca.GetResult());
+            poslaniec.AddOutputProfession(zolnierz.GetResult());
+
+            przemytnik.AddOutputProfession(flisak.GetResult());
+            przemytnik.AddOutputProfession(paser.GetResult());
+            przemytnik.AddOutputProfession(przewoznik.GetResult());
+            przemytnik.AddOutputProfession(szarlatan.GetResult());
+            przemytnik.AddOutputProfession(tarczownik.GetResult());
+            przemytnik.AddOutputProfession(zlodziej.GetResult());
+            przemytnik.AddOutputProfession(zeglarz.GetResult());
+
+            przepatrywacz.AddOutputProfession(najemnik.GetResult());
+            przepatrywacz.AddOutputProfession(rozbojnik.GetResult());
+            przepatrywacz.AddOutputProfession(straznikDrog.GetResult());
+            przepatrywacz.AddOutputProfession(woznica.GetResult());
+            przepatrywacz.AddOutputProfession(zwiadowca.GetResult());
+
+            przewoznik.AddOutputProfession(flisak.GetResult());
+            przewoznik.AddOutputProfession(przemytnik.GetResult());
+            przewoznik.AddOutputProfession(rozbojnik.GetResult());
+            przewoznik.AddOutputProfession(straznikDrog.GetResult());
+            przewoznik.AddOutputProfession(zeglarz.GetResult());
+
+            rybak.AddOutputProfession(kupiec.GetResult());
+            rybak.AddOutputProfession(nawigator.GetResult());
+            rybak.AddOutputProfession(ochotnik.GetResult());
+            rybak.AddOutputProfession(zeglarz.GetResult());
+            rybak.AddOutputProfession(zolnierzOkretowy.GetResult());
+
+            rzecznik.AddOutputProfession(kanciarz.GetResult());
+            rzecznik.AddOutputProfession(kupiec.GetResult());
+            rzecznik.AddOutputProfession(szarlatan.GetResult());
+            rzecznik.AddOutputProfession(wloczykij.GetResult());
+            rzecznik.AddOutputProfession(zeglarz.GetResult());
+            rzecznik.AddOutputProfession(zak.GetResult());
+
+            rzemieslnik.AddOutputProfession(fanatyk.GetResult());
+            rzemieslnik.AddOutputProfession(inzynier.GetResult());
+            rzemieslnik.AddOutputProfession(kupiec.GetResult());
+            rzemieslnik.AddOutputProfession(mistrzRzemiosla.GetResult());
+            rzemieslnik.AddOutputProfession(ochotnik.GetResult());
+            rzemieslnik.AddOutputProfession(rzecznik.GetResult());
+
+            rzezimieszek.AddOutputProfession(gladiator.GetResult());
+            rzezimieszek.AddOutputProfession(oprych.GetResult());
+            rzezimieszek.AddOutputProfession(reketer.GetResult());
+            rzezimieszek.AddOutputProfession(zlodziej.GetResult());
+            rzezimieszek.AddOutputProfession(zwadzca.GetResult());
+
+            skryba.AddOutputProfession(akolita.GetResult());
+            skryba.AddOutputProfession(nawigator.GetResult());
+            skryba.AddOutputProfession(podzegacz.GetResult());
+            skryba.AddOutputProfession(uczen.GetResult());
+            skryba.AddOutputProfession(uczony.GetResult());
+
+            sluga.AddOutputProfession(ciura.GetResult());
+            sluga.AddOutputProfession(karczmarz.GetResult());
+            sluga.AddOutputProfession(mieszczanin.GetResult());
+            sluga.AddOutputProfession(paz.GetResult());
+            sluga.AddOutputProfession(podzegacz.GetResult());
+            sluga.AddOutputProfession(poslaniec.GetResult());
+            sluga.AddOutputProfession(szpieg.GetResult());
+            sluga.AddOutputProfession(zlodziej.GetResult());
+
+            straznik.AddOutputProfession(najemnik.GetResult());
+            straznik.AddOutputProfession(reketer.GetResult());
+            straznik.AddOutputProfession(rzemieslnik.GetResult());
+            straznik.AddOutputProfession(sierzant.GetResult());
+            straznik.AddOutputProfession(straznikDrog.GetResult());
+            straznik.AddOutputProfession(zolnierz.GetResult());
+
+            straznikDrog.AddOutputProfession(banita.GetResult());
+            straznikDrog.AddOutputProfession(mytnik.GetResult());
+            straznikDrog.AddOutputProfession(poslaniec.GetResult());
+            straznikDrog.AddOutputProfession(przepatrywacz.GetResult());
+            straznikDrog.AddOutputProfession(rozbojnik.GetResult());
+            straznikDrog.AddOutputProfession(sierzant.GetResult());
+            straznikDrog.AddOutputProfession(zwiadowca.GetResult());
+
+            straznikPol.AddOutputProfession(lowcanagrod.GetResult());
+            straznikPol.AddOutputProfession(lowcaWampirow.GetResult());
+            straznikPol.AddOutputProfession(najemnik.GetResult());
+            straznikPol.AddOutputProfession(wloczykij.GetResult());
+            straznikPol.AddOutputProfession(zwiadowca.GetResult());
+
+            straznikWiezienny.AddOutputProfession(ochroniarz.GetResult());
+            straznikWiezienny.AddOutputProfession(oprawca.GetResult());
+            straznikWiezienny.AddOutputProfession(straznik.GetResult());
+            straznikWiezienny.AddOutputProfession(szczurolap.GetResult());
+            straznikWiezienny.AddOutputProfession(zarzadca.GetResult());
+
+            szczurolap.AddOutputProfession(porywacz.GetResult());
+            szczurolap.AddOutputProfession(straznikWiezienny.GetResult());
+            szczurolap.AddOutputProfession(smieciarz.GetResult());
+            szczurolap.AddOutputProfession(tarczownik.GetResult());
+            szczurolap.AddOutputProfession(wlamywacz.GetResult());
+            szczurolap.AddOutputProfession(zlodziej.GetResult());
+
+            szermierz.AddOutputProfession(kanciarz.GetResult());
+            szermierz.AddOutputProfession(ochroniarz.GetResult());
+            szermierz.AddOutputProfession(rozbojnik.GetResult());
+            szermierz.AddOutputProfession(rzezimieszek.GetResult());
+            szermierz.AddOutputProfession(zwadzca.GetResult());
+
+            szlachcic.AddOutputProfession(dworzanin.GetResult());
+            szlachcic.AddOutputProfession(giermek.GetResult());
+            szlachcic.AddOutputProfession(kanciarz.GetResult());
+            szlachcic.AddOutputProfession(rajtar.GetResult());
+            szlachcic.AddOutputProfession(urzednik.GetResult());
+            szlachcic.AddOutputProfession(zak.GetResult());
+
+            smieciarz.AddOutputProfession(ciura.GetResult());
+            smieciarz.AddOutputProfession(paser.GetResult());
+            smieciarz.AddOutputProfession(porywacz.GetResult());
+            smieciarz.AddOutputProfession(przemytnik.GetResult());
+            smieciarz.AddOutputProfession(wlamywacz.GetResult());
+
+            tarczownik.AddOutputProfession(gladiator.GetResult());
+            tarczownik.AddOutputProfession(goniec.GetResult());
+            tarczownik.AddOutputProfession(hiena.GetResult());
+            tarczownik.AddOutputProfession(przemytnik.GetResult());
+            tarczownik.AddOutputProfession(sierzant.GetResult());
+            tarczownik.AddOutputProfession(weteran.GetResult());
+
+            uczen.AddOutputProfession(skryba.GetResult());
+            uczen.AddOutputProfession(uczony.GetResult());
+            uczen.AddOutputProfession(wedrownyCzarodziej.GetResult());
+
+            weglarz.AddOutputProfession(gornik.GetResult());
+            weglarz.AddOutputProfession(lesnik.GetResult());
+            weglarz.AddOutputProfession(lowca.GetResult());
+            weglarz.AddOutputProfession(wloczykij.GetResult());
+            weglarz.AddOutputProfession(zwiadowca.GetResult());
+
+            wloczykij.AddOutputProfession(cyrkowiec.GetResult());
+            wloczykij.AddOutputProfession(lesnik.GetResult());
+            wloczykij.AddOutputProfession(smieciarz.GetResult());
+            wloczykij.AddOutputProfession(zakonnik.GetResult());
+            wloczykij.AddOutputProfession(zlodziej.GetResult());
+            wloczykij.AddOutputProfession(zwiadowca.GetResult());
+
+            wojownik.AddOutputProfession(lowca.GetResult());
+            wojownik.AddOutputProfession(przepatrywacz.GetResult());
+            wojownik.AddOutputProfession(weteran.GetResult());
+            wojownik.AddOutputProfession(wloczykij.GetResult());
+            wojownik.AddOutputProfession(zwiadowca.GetResult());
+
+            woznica.AddOutputProfession(banita.GetResult());
+            woznica.AddOutputProfession(mytnik.GetResult());
+            woznica.AddOutputProfession(przemytnik.GetResult());
+            woznica.AddOutputProfession(przewoznik.GetResult());
+            woznica.AddOutputProfession(rozbojnik.GetResult());
+            woznica.AddOutputProfession(straznikDrog.GetResult());
+            woznica.AddOutputProfession(zwiadowca.GetResult());
+
+            zabojcaTroli.AddOutputProfession(zabojcaOlbrzymow.GetResult());
+
+            zarzadca.AddOutputProfession(mytnik.GetResult());
+            zarzadca.AddOutputProfession(ochotnik.GetResult());
+            zarzadca.AddOutputProfession(przemytnik.GetResult());
+            zarzadca.AddOutputProfession(reketer.GetResult());
+            zarzadca.AddOutputProfession(rzezimieszek.GetResult());
+            zarzadca.AddOutputProfession(urzednik.GetResult());
+
+            zlodziej.AddOutputProfession(cyrkowiec.GetResult());
+            zlodziej.AddOutputProfession(hiena.GetResult());
+            zlodziej.AddOutputProfession(kanciarz.GetResult());
+            zlodziej.AddOutputProfession(paser.GetResult());
+            zlodziej.AddOutputProfession(szarlatan.GetResult());
+            zlodziej.AddOutputProfession(wlamywacz.GetResult());
+
+            zak.AddOutputProfession(akolita.GetResult());
+            zak.AddOutputProfession(cyrulik.GetResult());
+            zak.AddOutputProfession(inzynier.GetResult());
+            zak.AddOutputProfession(medyk.GetResult());
+            zak.AddOutputProfession(podzegacz.GetResult());
+            zak.AddOutputProfession(rzecznik.GetResult());
+            zak.AddOutputProfession(uczen.GetResult());
+            zak.AddOutputProfession(uczony.GetResult());
+
+            zeglarz.AddOutputProfession(bosman.GetResult());
+            zeglarz.AddOutputProfession(kanciarz.GetResult());
+            zeglarz.AddOutputProfession(nawigator.GetResult());
+            zeglarz.AddOutputProfession(przemytnik.GetResult());
+            zeglarz.AddOutputProfession(zolnierzOkretowy.GetResult());
+
+            zolnierz.AddOutputProfession(najemnik.GetResult());
+            zolnierz.AddOutputProfession(przepatrywacz.GetResult());
+            zolnierz.AddOutputProfession(sierzant.GetResult());
+            zolnierz.AddOutputProfession(straznik.GetResult());
+            zolnierz.AddOutputProfession(weteran.GetResult());
+            zolnierz.AddOutputProfession(wloczykij.GetResult());
+
+            zolnierzOkretowy.AddOutputProfession(banita.GetResult());
+            zolnierzOkretowy.AddOutputProfession(bosman.GetResult());
+            zolnierzOkretowy.AddOutputProfession(oprych.GetResult());
+            zolnierzOkretowy.AddOutputProfession(przemytnik.GetResult());
+            zolnierzOkretowy.AddOutputProfession(sierzant.GetResult());
+
+            arcykaplan.AddOutputProfession(lowcaCzarownic.GetResult());
+            arcykaplan.AddOutputProfession(uczony.GetResult());
+            arcykaplan.AddOutputProfession(urzednik.GetResult());
+
+            arcymag.AddOutputProfession(mistrzGildii.GetResult());
+            arcymag.AddOutputProfession(odkrywca.GetResult());
+
+            arystokrata.AddOutputProfession(kapitan.GetResult());
+            arystokrata.AddOutputProfession(oficer.GetResult());
+            arystokrata.AddOutputProfession(rycerz.GetResult());
+            arystokrata.AddOutputProfession(uczony.GetResult());
+
+            bard.AddOutputProfession(demagog.GetResult());
+            bard.AddOutputProfession(rozbojnik.GetResult());
+            bard.AddOutputProfession(szarlatan.GetResult());
+            bard.AddOutputProfession(szpieg.GetResult());
+            bard.AddOutputProfession(zak.GetResult());
+
+            biczownik.AddOutputProfession(demagog.GetResult());
+            biczownik.AddOutputProfession(kaplan.GetResult());
+            biczownik.AddOutputProfession(oprawca.GetResult());
+            biczownik.AddOutputProfession(weteran.GetResult());
+            biczownik.AddOutputProfession(zolnierz.GetResult());
+
+            bosman.AddOutputProfession(kapitan.GetResult());
+            bosman.AddOutputProfession(kupiec.GetResult());
+            bosman.AddOutputProfession(nawigator.GetResult());
+            bosman.AddOutputProfession(odkrywca.GetResult());
+
+            demagog.AddOutputProfession(herszt.GetResult());
+            demagog.AddOutputProfession(ksiaze.GetResult());
+            demagog.AddOutputProfession(najemnik.GetResult());
+            demagog.AddOutputProfession(urzednik.GetResult());
+            demagog.AddOutputProfession(zakonnik.GetResult());
+
+            dworzanin.AddOutputProfession(arystokrata.GetResult());
+            dworzanin.AddOutputProfession(majordomus.GetResult());
+            dworzanin.AddOutputProfession(szarlatan.GetResult());
+            dworzanin.AddOutputProfession(szpieg.GetResult());
+            dworzanin.AddOutputProfession(urzednik.GetResult());
+            dworzanin.AddOutputProfession(zwadzca.GetResult());
+
+            fechmistrz.AddOutputProfession(lowcaCzarownic.GetResult());
+            fechmistrz.AddOutputProfession(sierzant.GetResult());
+            fechmistrz.AddOutputProfession(skrytobojca.GetResult());
+            fechmistrz.AddOutputProfession(zwiadowca.GetResult());
+
+            herold.AddOutputProfession(cyrkowiec.GetResult());
+            herold.AddOutputProfession(dworzanin.GetResult());
+            herold.AddOutputProfession(giermek.GetResult());
+            herold.AddOutputProfession(odkrywca.GetResult());
+            herold.AddOutputProfession(podzegacz.GetResult());
+            herold.AddOutputProfession(urzednik.GetResult());
+
+            herszt.AddOutputProfession(demagog.GetResult());
+            herszt.AddOutputProfession(ksiaze.GetResult());
+            herszt.AddOutputProfession(oficer.GetResult());
+            herszt.AddOutputProfession(skrytobojca.GetResult());
+
+            inzynier.AddOutputProfession(mistrzGildii.GetResult());
+            inzynier.AddOutputProfession(mistrzRzemiosla.GetResult());
+            inzynier.AddOutputProfession(odkrywca.GetResult());
+            inzynier.AddOutputProfession(przemytnik.GetResult());
+            inzynier.AddOutputProfession(rajtar.GetResult());
+
+            kapitan.AddOutputProfession(arystokrata.GetResult());
+            kapitan.AddOutputProfession(odkrywca.GetResult());
+            kapitan.AddOutputProfession(szpieg.GetResult());
+            kapitan.AddOutputProfession(uczony.GetResult());
+
+            kaplan.AddOutputProfession(biczownik.GetResult());
+            kaplan.AddOutputProfession(majordomus.GetResult());
+            kaplan.AddOutputProfession(uczony.GetResult());
+            kaplan.AddOutputProfession(wybraniecBozy.GetResult());
+
+            karczmarz.AddOutputProfession(banita.GetResult());
+            karczmarz.AddOutputProfession(kupiec.GetResult());
+            karczmarz.AddOutputProfession(mieszczanin.GetResult());
+            karczmarz.AddOutputProfession(paser.GetResult());
+            karczmarz.AddOutputProfession(przemytnik.GetResult());
+
+            ksiaze.AddOutputProfession(demagog.GetResult());
+            ksiaze.AddOutputProfession(herszt.GetResult());
+            ksiaze.AddOutputProfession(mistrzCieni.GetResult());
+            ksiaze.AddOutputProfession(urzednik.GetResult());
+
+            kupiec.AddOutputProfession(mistrzGildii.GetResult());
+            kupiec.AddOutputProfession(ochotnik.GetResult());
+            kupiec.AddOutputProfession(reketer.GetResult());
+            kupiec.AddOutputProfession(szpieg.GetResult());
+            kupiec.AddOutputProfession(urzednik.GetResult());
+
+            lesnyDuch.AddOutputProfession(herszt.GetResult());
+            lesnyDuch.AddOutputProfession(lowcaWampirow.GetResult());
+            lesnyDuch.AddOutputProfession(oficer.GetResult());
+            lesnyDuch.AddOutputProfession(strzelec.GetResult());
+
+            lowcaCzarownic.AddOutputProfession(akolita.GetResult());
+            lowcaCzarownic.AddOutputProfession(demagog.GetResult());
+            lowcaCzarownic.AddOutputProfession(fechmistrz.GetResult());
+            lowcaCzarownic.AddOutputProfession(mistrzZakonny.GetResult());
+            lowcaCzarownic.AddOutputProfession(oficer.GetResult());
+
+            lowcaWampirow.AddOutputProfession(akolita.GetResult());
+            lowcaWampirow.AddOutputProfession(demagog.GetResult());
+            lowcaWampirow.AddOutputProfession(lowcaCzarownic.GetResult());
+            lowcaWampirow.AddOutputProfession(rycerz.GetResult());
+            lowcaWampirow.AddOutputProfession(strzelec.GetResult());
+
+            majordomus.AddOutputProfession(ksiaze.GetResult());
+            majordomus.AddOutputProfession(kupiec.GetResult());
+            majordomus.AddOutputProfession(paser.GetResult());
+            majordomus.AddOutputProfession(szlachcic.GetResult());
+
+            medyk.AddOutputProfession(mistrzGildii.GetResult());
+            medyk.AddOutputProfession(szpieg.GetResult());
+            medyk.AddOutputProfession(uczony.GetResult());
+            medyk.AddOutputProfession(zakonnik.GetResult());
+
+            mistrzCieni.AddOutputProfession(herszt.GetResult());
+            mistrzCieni.AddOutputProfession(ksiaze.GetResult());
+            mistrzCieni.AddOutputProfession(odkrywca.GetResult());
+            mistrzCieni.AddOutputProfession(strzelec.GetResult());
+
+            mistrzGildii.AddOutputProfession(ksiaze.GetResult());
+            mistrzGildii.AddOutputProfession(reketer.GetResult());
+            mistrzGildii.AddOutputProfession(urzednik.GetResult());
+
+            mistrzMagii.AddOutputProfession(arcymag.GetResult());
+            mistrzMagii.AddOutputProfession(odkrywca.GetResult());
+            mistrzMagii.AddOutputProfession(uczony.GetResult());
+
+            mistrzRzemiosla.AddOutputProfession(demagog.GetResult());
+            mistrzRzemiosla.AddOutputProfession(inzynier.GetResult());
+            mistrzRzemiosla.AddOutputProfession(kupiec.GetResult());
+            mistrzRzemiosla.AddOutputProfession(mistrzGildii.GetResult());
+            mistrzRzemiosla.AddOutputProfession(ochotnik.GetResult());
+
+            mistrzZakonny.AddOutputProfession(arystokrata.GetResult());
+            mistrzZakonny.AddOutputProfession(fechmistrz.GetResult());
+            mistrzZakonny.AddOutputProfession(lowcaCzarownic.GetResult());
+            mistrzZakonny.AddOutputProfession(oficer.GetResult());
+
+            nawigator.AddOutputProfession(kapitan.GetResult());
+            nawigator.AddOutputProfession(mistrzRzemiosla.GetResult());
+            nawigator.AddOutputProfession(odkrywca.GetResult());
+            nawigator.AddOutputProfession(uczony.GetResult());
+
+            odkrywca.AddOutputProfession(kapitan.GetResult());
+            odkrywca.AddOutputProfession(kupiec.GetResult());
+            odkrywca.AddOutputProfession(oficer.GetResult());
+            odkrywca.AddOutputProfession(szpieg.GetResult());
+
+            oficer.AddOutputProfession(herszt.GetResult());
+            oficer.AddOutputProfession(kupiec.GetResult());
+            oficer.AddOutputProfession(odkrywca.GetResult());
+            oficer.AddOutputProfession(podzegacz.GetResult());
+            oficer.AddOutputProfession(urzednik.GetResult());
+
+            oprawca.AddOutputProfession(medyk.GetResult());
+            oprawca.AddOutputProfession(reketer.GetResult());
+            oprawca.AddOutputProfession(zlodziej.GetResult());
+
+            paser.AddOutputProfession(ksiaze.GetResult());
+            paser.AddOutputProfession(mistrzCieni.GetResult());
+            paser.AddOutputProfession(reketer.GetResult());
+            paser.AddOutputProfession(szarlatan.GetResult());
+
+            rajtar.AddOutputProfession(dworzanin.GetResult());
+            rajtar.AddOutputProfession(rycerz.GetResult());
+            rajtar.AddOutputProfession(sierzant.GetResult());
+            rajtar.AddOutputProfession(weteran.GetResult());
+            rajtar.AddOutputProfession(zwadzca.GetResult());
+
+            reketer.AddOutputProfession(herold.GetResult());
+            reketer.AddOutputProfession(mistrzCieni.GetResult());
+            reketer.AddOutputProfession(paser.GetResult());
+            reketer.AddOutputProfession(urzednik.GetResult());
+
+            rozbojnik.AddOutputProfession(herszt.GetResult());
+            rozbojnik.AddOutputProfession(mistrzCieni.GetResult());
+            rozbojnik.AddOutputProfession(podzegacz.GetResult());
+            rozbojnik.AddOutputProfession(sierzant.GetResult());
+            rozbojnik.AddOutputProfession(zwadzca.GetResult());
+
+            rycerz.AddOutputProfession(akolita.GetResult());
+            rycerz.AddOutputProfession(arystokrata.GetResult());
+            rycerz.AddOutputProfession(lowcaWampirow.GetResult());
+            rycerz.AddOutputProfession(mistrzZakonny.GetResult());
+            rycerz.AddOutputProfession(oficer.GetResult());
+
+            sierzant.AddOutputProfession(oficer.GetResult());
+            sierzant.AddOutputProfession(rycerz.GetResult());
+            sierzant.AddOutputProfession(szampierz.GetResult());
+            sierzant.AddOutputProfession(zwadzca.GetResult());
+
+            skrytobojca.AddOutputProfession(fechmistrz.GetResult());
+            skrytobojca.AddOutputProfession(herszt.GetResult());
+            skrytobojca.AddOutputProfession(lowcaCzarownic.GetResult());
+            skrytobojca.AddOutputProfession(kanciarz.GetResult());
+            skrytobojca.AddOutputProfession(sierzant.GetResult());
+
+            strzelec.AddOutputProfession(fechmistrz.GetResult());
+            strzelec.AddOutputProfession(sierzant.GetResult());
+            strzelec.AddOutputProfession(skrytobojca.GetResult());
+            strzelec.AddOutputProfession(zwadzca.GetResult());
+
+            szampierz.AddOutputProfession(fanatyk.GetResult());
+            szampierz.AddOutputProfession(fechmistrz.GetResult());
+            szampierz.AddOutputProfession(lowcaCzarownic.GetResult());
+            szampierz.AddOutputProfession(sierzant.GetResult());
+            szampierz.AddOutputProfession(skrytobojca.GetResult());
+
+            szarlatan.AddOutputProfession(banita.GetResult());
+            szarlatan.AddOutputProfession(demagog.GetResult());
+            szarlatan.AddOutputProfession(szpieg.GetResult());
+            szarlatan.AddOutputProfession(urzednik.GetResult());
+            szarlatan.AddOutputProfession(wlamywacz.GetResult());
+
+            szpieg.AddOutputProfession(mistrzCieni.GetResult());
+            szpieg.AddOutputProfession(odkrywca.GetResult());
+            szpieg.AddOutputProfession(reketer.GetResult());
+            szpieg.AddOutputProfession(skrytobojca.GetResult());
+
+            uczony.AddOutputProfession(kupiec.GetResult());
+            uczony.AddOutputProfession(majordomus.GetResult());
+            uczony.AddOutputProfession(medyk.GetResult());
+            uczony.AddOutputProfession(odkrywca.GetResult());
+            uczony.AddOutputProfession(uczen.GetResult());
+            uczony.AddOutputProfession(zakonnik.GetResult());
+
+            urzednik.AddOutputProfession(arystokrata.GetResult());
+            urzednik.AddOutputProfession(demagog.GetResult());
+            urzednik.AddOutputProfession(dworzanin.GetResult());
+            urzednik.AddOutputProfession(ksiaze.GetResult());
+            urzednik.AddOutputProfession(majordomus.GetResult());
+            urzednik.AddOutputProfession(reketer.GetResult());
+
+            weteran.AddOutputProfession(fechmistrz.GetResult());
+            weteran.AddOutputProfession(herszt.GetResult());
+            weteran.AddOutputProfession(sierzant.GetResult());
+            weteran.AddOutputProfession(strzelec.GetResult());
+            weteran.AddOutputProfession(szampierz.GetResult());
+
+            wedrownyCzarodziej.AddOutputProfession(mistrzMagii.GetResult());
+            wedrownyCzarodziej.AddOutputProfession(szarlatan.GetResult());
+            wedrownyCzarodziej.AddOutputProfession(uczony.GetResult());
+
+            wlamywacz.AddOutputProfession(ksiaze.GetResult());
+            wlamywacz.AddOutputProfession(mistrzCieni.GetResult());
+            wlamywacz.AddOutputProfession(paser.GetResult());
+            wlamywacz.AddOutputProfession(reketer.GetResult());
+            wlamywacz.AddOutputProfession(wloczykij.GetResult());
+
+            wybraniecBozy.AddOutputProfession(arcykaplan.GetResult());
+            wybraniecBozy.AddOutputProfession(biczownik.GetResult());
+            wybraniecBozy.AddOutputProfession(demagog.GetResult());
+            wybraniecBozy.AddOutputProfession(lowcaCzarownic.GetResult());
+            wybraniecBozy.AddOutputProfession(uczony.GetResult());
+
+            zabojcaOlbrzymow.AddOutputProfession(zabojcaDemonow.GetResult());
+
+            zakonnik.AddOutputProfession(biczownik.GetResult());
+            zakonnik.AddOutputProfession(demagog.GetResult());
+            zakonnik.AddOutputProfession(kaplan.GetResult());
+            zakonnik.AddOutputProfession(uczony.GetResult());
+
+            zwadzca.AddOutputProfession(fechmistrz.GetResult());
+            zwadzca.AddOutputProfession(kanciarz.GetResult());
+            zwadzca.AddOutputProfession(rozbojnik.GetResult());
+            zwadzca.AddOutputProfession(sierzant.GetResult());
+            zwadzca.AddOutputProfession(skrytobojca.GetResult());
+
+            zwiadowca.AddOutputProfession(herszt.GetResult());
+            zwiadowca.AddOutputProfession(lesnyDuch.GetResult());
+            zwiadowca.AddOutputProfession(lowcaWampirow.GetResult());
+            zwiadowca.AddOutputProfession(odkrywca.GetResult());
+            zwiadowca.AddOutputProfession(sierzant.GetResult());
+
+            #endregion profession connections
 
             var professionBuildersResult = new List<ProfessionBuilder>
             {
@@ -4863,755 +5706,24 @@ namespace WarhammerProfessionApp.Entities
                 tatuaz
             };
 
-            var professionItemsDataSet = new List<ProfessionItems>();
-            var professionItemDataSet = new List<ProfessionItem>();
-            var professionSkillsDataSet = new List<ProfessionSkills>();
-            var professionSkillDataSet = new List<ProfessionSkill>();
-            var professionAbilitiesDataSet = new List<ProfessionAbilities>();
-            var professionAbilityDataSet = new List<ProfessionAbility>();
-            var professionStatisticDataSet = new List<ProfessionStatistic>();
-
-            foreach (var professionBuilder in professionBuildersResult)
-                foreach (var dictionary in professionBuilder.GetAllRelations())
-                    if (dictionary.Key == typeof(ProfessionAbilities)) professionAbilitiesDataSet.AddRange(dictionary.Value as IEnumerable<ProfessionAbilities>);
-                    else if (dictionary.Key == typeof(ProfessionAbility)) professionAbilityDataSet.AddRange(dictionary.Value as IEnumerable<ProfessionAbility>);
-                    else if (dictionary.Key == typeof(ProfessionSkills)) professionSkillsDataSet.AddRange(dictionary.Value as IEnumerable<ProfessionSkills>);
-                    else if (dictionary.Key == typeof(ProfessionSkill)) professionSkillDataSet.AddRange(dictionary.Value as IEnumerable<ProfessionSkill>);
-                    else if (dictionary.Key == typeof(ProfessionItems)) professionItemsDataSet.AddRange(dictionary.Value as IEnumerable<ProfessionItems>);
-                    else if (dictionary.Key == typeof(ProfessionItem)) professionItemDataSet.AddRange(dictionary.Value as IEnumerable<ProfessionItem>);
-                    else if (dictionary.Key == typeof(ProfessionStatistic)) professionStatisticDataSet.AddRange(dictionary.Value as IEnumerable<ProfessionStatistic>);
-
-            int i = 0;
-
-            professionBuildersResult.ForEach(a => a.GetResult().Id = ++i);
-
-            i = 0; abilityResult.ForEach(a => a.Id = ++i);
-            i = 0; skillResult.ForEach(a => a.Id = ++i);
-            i = 0; itemResult.ForEach(a => a.Id = ++i);
-            i = 0; professionItemsDataSet.ForEach(a => a.Id = ++i);
-            i = 0; professionSkillsDataSet.ForEach(a => a.Id = ++i);
-            i = 0; professionAbilitiesDataSet.ForEach(a => a.Id = ++i);
-            i = 0; statisticsDataSet.ForEach(a => a.Id = (byte)++i);
-
-            professionItemsDataSet.ForEach(a => { a.ProfessionId = a.Profession.Id; a.Profession = null; });
-            professionItemDataSet.ForEach(a => { a.ProfessionsItemId = a.ProfessionItems.Id; a.ProfessionItems = null; a.ItemId = a.Item.Id; a.Item = null; });
-            professionSkillsDataSet.ForEach(a => { a.ProfessionId = a.Profession.Id; a.Profession = null; });
-            professionSkillDataSet.ForEach(a => { a.ProfessionSkillsId = a.ProfessionSkills.Id; a.ProfessionSkills = null; a.SkillId = a.Skill.Id; a.Skill = null; });
-            professionAbilitiesDataSet.ForEach(a => { a.ProfessionId = a.Profession.Id; a.Profession = null; });
-            professionAbilityDataSet.ForEach(a => { a.ProfessionAbilitiesId = a.ProfessionAbilities.Id; a.ProfessionAbilities = null; a.AbilityId = a.Ability.Id; a.Ability = null; });
-            professionStatisticDataSet.ForEach(a => { a.StatisticId = a.Statistic.Id; a.Statistic = null; a.ProfessionId = a.Profession.Id; a.Profession = null; });
-
-            professionBuildersResult.ForEach(a =>
+            using var transaction = Database.BeginTransaction();
+            try
             {
-                var profession = a.GetResult();
+                Dictionaries.AddRange(dictionaries);
+                Items.AddRange(itemResult);
+                Skills.AddRange(skillResult);
+                Abilities.AddRange(abilityResult);
+                Statistics.AddRange(statisticsDataSet);
+                Professions.AddRange(professionBuildersResult.Select(a => a.GetResult()).ToList());
 
-                profession.Statistics = null;
-                profession.Abilities = null;
-                profession.Skills = null;
-                profession.Equipment = null;
-                profession.OutputProfessions = null;
-                profession.EntranceProfessions = null;
-            });
+                SaveChanges();
 
-            #region profession connections
-
-            var profesionsConnectionsResult = new List<ProfessionProfession>
+                transaction.Commit();
+            }
+            catch (Exception e)
             {
-                new ProfessionProfession { EntranceProfessionId = akolita.GetResult().Id, OutputProfessionId = cyrulik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = akolita.GetResult().Id, OutputProfessionId = demagog.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = akolita.GetResult().Id, OutputProfessionId = fanatyk.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = akolita.GetResult().Id, OutputProfessionId = kaplan.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = akolita.GetResult().Id, OutputProfessionId = skryba.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = akolita.GetResult().Id, OutputProfessionId = zakonnik.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = banita.GetResult().Id, OutputProfessionId = demagog.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = banita.GetResult().Id, OutputProfessionId = rozbojnik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = banita.GetResult().Id, OutputProfessionId = weteran.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = banita.GetResult().Id, OutputProfessionId = wloczykij.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = banita.GetResult().Id, OutputProfessionId = zlodziej.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = berserker.GetResult().Id, OutputProfessionId = gladiator.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = berserker.GetResult().Id, OutputProfessionId = najemnik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = berserker.GetResult().Id, OutputProfessionId = sierzant.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = berserker.GetResult().Id, OutputProfessionId = weteran.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = berserker.GetResult().Id, OutputProfessionId = zeglarz.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = chlop.GetResult().Id, OutputProfessionId = banita.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = chlop.GetResult().Id, OutputProfessionId = fanatyk.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = chlop.GetResult().Id, OutputProfessionId = ochotnik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = chlop.GetResult().Id, OutputProfessionId = rybak.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = chlop.GetResult().Id, OutputProfessionId = rzemieslnik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = chlop.GetResult().Id, OutputProfessionId = sluga.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = chlop.GetResult().Id, OutputProfessionId = smieciarz.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = chlop.GetResult().Id, OutputProfessionId = urzednik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = chlop.GetResult().Id, OutputProfessionId = weglarz.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = ciura.GetResult().Id, OutputProfessionId = przemytnik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = ciura.GetResult().Id, OutputProfessionId = rzemieslnik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = ciura.GetResult().Id, OutputProfessionId = sluga.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = ciura.GetResult().Id, OutputProfessionId = szarlatan.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = ciura.GetResult().Id, OutputProfessionId = szpieg.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = ciura.GetResult().Id, OutputProfessionId = weglarz.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = ciura.GetResult().Id, OutputProfessionId = wloczykij.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = cyrkowiec.GetResult().Id, OutputProfessionId = bard.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = cyrkowiec.GetResult().Id, OutputProfessionId = kanciarz.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = cyrkowiec.GetResult().Id, OutputProfessionId = szarlatan.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = cyrkowiec.GetResult().Id, OutputProfessionId = wloczykij.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = cyrkowiec.GetResult().Id, OutputProfessionId = zlodziej.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = cyrulik.GetResult().Id, OutputProfessionId = medyk.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = cyrulik.GetResult().Id, OutputProfessionId = oprawca.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = cyrulik.GetResult().Id, OutputProfessionId = porywacz.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = cyrulik.GetResult().Id, OutputProfessionId = rzemieslnik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = cyrulik.GetResult().Id, OutputProfessionId = wloczykij.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = fanatyk.GetResult().Id, OutputProfessionId = akolita.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = fanatyk.GetResult().Id, OutputProfessionId = banita.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = fanatyk.GetResult().Id, OutputProfessionId = biczownik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = fanatyk.GetResult().Id, OutputProfessionId = podzegacz.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = fanatyk.GetResult().Id, OutputProfessionId = zakonnik.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = flisak.GetResult().Id, OutputProfessionId = nawigator.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = flisak.GetResult().Id, OutputProfessionId = przemytnik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = flisak.GetResult().Id, OutputProfessionId = rybak.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = flisak.GetResult().Id, OutputProfessionId = zeglarz.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = flisak.GetResult().Id, OutputProfessionId = zolnierzOkretowy.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = giermek.GetResult().Id, OutputProfessionId = banita.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = giermek.GetResult().Id, OutputProfessionId = rycerz.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = giermek.GetResult().Id, OutputProfessionId = sierzant.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = giermek.GetResult().Id, OutputProfessionId = szlachcic.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = giermek.GetResult().Id, OutputProfessionId = weteran.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = gladiator.GetResult().Id, OutputProfessionId = lowcanagrod.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = gladiator.GetResult().Id, OutputProfessionId = najemnik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = gladiator.GetResult().Id, OutputProfessionId = rzezimieszek.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = gladiator.GetResult().Id, OutputProfessionId = weteran.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = gladiator.GetResult().Id, OutputProfessionId = zabojcaTroli.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = goniec.GetResult().Id, OutputProfessionId = hiena.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = goniec.GetResult().Id, OutputProfessionId = szczurolap.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = goniec.GetResult().Id, OutputProfessionId = tarczownik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = goniec.GetResult().Id, OutputProfessionId = weteran.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = goniec.GetResult().Id, OutputProfessionId = zwiadowca.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = gornik.GetResult().Id, OutputProfessionId = inzynier.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = gornik.GetResult().Id, OutputProfessionId = najemnik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = gornik.GetResult().Id, OutputProfessionId = przemytnik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = gornik.GetResult().Id, OutputProfessionId = tarczownik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = gornik.GetResult().Id, OutputProfessionId = weglarz.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = gornik.GetResult().Id, OutputProfessionId = zwiadowca.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = guslarz.GetResult().Id, OutputProfessionId = akolita.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = guslarz.GetResult().Id, OutputProfessionId = banita.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = guslarz.GetResult().Id, OutputProfessionId = szarlatan.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = guslarz.GetResult().Id, OutputProfessionId = uczen.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = guslarz.GetResult().Id, OutputProfessionId = wloczykij.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = hiena.GetResult().Id, OutputProfessionId = lowcaWampirow.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = hiena.GetResult().Id, OutputProfessionId = paser.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = hiena.GetResult().Id, OutputProfessionId = szczurolap.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = hiena.GetResult().Id, OutputProfessionId = tarczownik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = hiena.GetResult().Id, OutputProfessionId = zlodziej.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = kanciarz.GetResult().Id, OutputProfessionId = banita.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = kanciarz.GetResult().Id, OutputProfessionId = cyrkowiec.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = kanciarz.GetResult().Id, OutputProfessionId = demagog.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = kanciarz.GetResult().Id, OutputProfessionId = sluga.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = kanciarz.GetResult().Id, OutputProfessionId = szarlatan.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = kanciarz.GetResult().Id, OutputProfessionId = zlodziej.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = kozak.GetResult().Id, OutputProfessionId = lowcanagrod.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = kozak.GetResult().Id, OutputProfessionId = najemnik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = kozak.GetResult().Id, OutputProfessionId = sierzant.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = kozak.GetResult().Id, OutputProfessionId = tarczownik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = kozak.GetResult().Id, OutputProfessionId = weteran.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = lesnik.GetResult().Id, OutputProfessionId = banita.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = lesnik.GetResult().Id, OutputProfessionId = lowca.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = lesnik.GetResult().Id, OutputProfessionId = ochotnik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = lesnik.GetResult().Id, OutputProfessionId = wloczykij.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = lesnik.GetResult().Id, OutputProfessionId = zwiadowca.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = lowca.GetResult().Id, OutputProfessionId = gornik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = lowca.GetResult().Id, OutputProfessionId = lowcanagrod.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = lowca.GetResult().Id, OutputProfessionId = straznikPol.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = lowca.GetResult().Id, OutputProfessionId = strzelec.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = lowca.GetResult().Id, OutputProfessionId = weglarz.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = lowca.GetResult().Id, OutputProfessionId = wojownik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = lowca.GetResult().Id, OutputProfessionId = zwiadowca.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = lowca.GetResult().Id, OutputProfessionId = zolnierz.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = lowcanagrod.GetResult().Id, OutputProfessionId = lowcaWampirow.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = lowcanagrod.GetResult().Id, OutputProfessionId = najemnik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = lowcanagrod.GetResult().Id, OutputProfessionId = rzezimieszek.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = lowcanagrod.GetResult().Id, OutputProfessionId = strzelec.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = lowcanagrod.GetResult().Id, OutputProfessionId = zwiadowca.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = mieszczanin.GetResult().Id, OutputProfessionId = karczmarz.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = mieszczanin.GetResult().Id, OutputProfessionId = kupiec.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = mieszczanin.GetResult().Id, OutputProfessionId = ochotnik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = mieszczanin.GetResult().Id, OutputProfessionId = paser.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = mieszczanin.GetResult().Id, OutputProfessionId = paz.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = mieszczanin.GetResult().Id, OutputProfessionId = podzegacz.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = mieszczanin.GetResult().Id, OutputProfessionId = rzemieslnik.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = mytnik.GetResult().Id, OutputProfessionId = banita.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = mytnik.GetResult().Id, OutputProfessionId = przewoznik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = mytnik.GetResult().Id, OutputProfessionId = rozbojnik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = mytnik.GetResult().Id, OutputProfessionId = straznikPol.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = mytnik.GetResult().Id, OutputProfessionId = urzednik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = mytnik.GetResult().Id, OutputProfessionId = zlodziej.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = mytnik.GetResult().Id, OutputProfessionId = zolnierz.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = najemnik.GetResult().Id, OutputProfessionId = banita.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = najemnik.GetResult().Id, OutputProfessionId = lowcanagrod.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = najemnik.GetResult().Id, OutputProfessionId = ochroniarz.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = najemnik.GetResult().Id, OutputProfessionId = sierzant.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = najemnik.GetResult().Id, OutputProfessionId = tarczownik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = najemnik.GetResult().Id, OutputProfessionId = weteran.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = ochotnik.GetResult().Id, OutputProfessionId = banita.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = ochotnik.GetResult().Id, OutputProfessionId = mistrzRzemiosla.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = ochotnik.GetResult().Id, OutputProfessionId = najemnik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = ochotnik.GetResult().Id, OutputProfessionId = poslaniec.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = ochotnik.GetResult().Id, OutputProfessionId = sierzant.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = ochotnik.GetResult().Id, OutputProfessionId = straznikPol.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = ochotnik.GetResult().Id, OutputProfessionId = zlodziej.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = ochroniarz.GetResult().Id, OutputProfessionId = lowcanagrod.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = ochroniarz.GetResult().Id, OutputProfessionId = najemnik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = ochroniarz.GetResult().Id, OutputProfessionId = oprawca.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = ochroniarz.GetResult().Id, OutputProfessionId = reketer.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = ochroniarz.GetResult().Id, OutputProfessionId = rzezimieszek.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = ochroniarz.GetResult().Id, OutputProfessionId = straznikWiezienny.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = ochroniarz.GetResult().Id, OutputProfessionId = zarzadca.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = oprych.GetResult().Id, OutputProfessionId = gladiator.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = oprych.GetResult().Id, OutputProfessionId = najemnik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = oprych.GetResult().Id, OutputProfessionId = ochroniarz.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = oprych.GetResult().Id, OutputProfessionId = oprawca.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = oprych.GetResult().Id, OutputProfessionId = reketer.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = paz.GetResult().Id, OutputProfessionId = giermek.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = paz.GetResult().Id, OutputProfessionId = herold.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = paz.GetResult().Id, OutputProfessionId = kanciarz.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = paz.GetResult().Id, OutputProfessionId = majordomus.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = paz.GetResult().Id, OutputProfessionId = zak.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = podzegacz.GetResult().Id, OutputProfessionId = banita.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = podzegacz.GetResult().Id, OutputProfessionId = demagog.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = podzegacz.GetResult().Id, OutputProfessionId = fanatyk.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = podzegacz.GetResult().Id, OutputProfessionId = kanciarz.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = podzegacz.GetResult().Id, OutputProfessionId = szarlatan.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = podzegacz.GetResult().Id, OutputProfessionId = urzednik.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = porywacz.GetResult().Id, OutputProfessionId = paser.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = porywacz.GetResult().Id, OutputProfessionId = szczurolap.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = porywacz.GetResult().Id, OutputProfessionId = wlamywacz.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = porywacz.GetResult().Id, OutputProfessionId = zlodziej.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = porywacz.GetResult().Id, OutputProfessionId = zak.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = poslaniec.GetResult().Id, OutputProfessionId = herold.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = poslaniec.GetResult().Id, OutputProfessionId = straznikDrog.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = poslaniec.GetResult().Id, OutputProfessionId = wojownik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = poslaniec.GetResult().Id, OutputProfessionId = woznica.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = poslaniec.GetResult().Id, OutputProfessionId = zwiadowca.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = poslaniec.GetResult().Id, OutputProfessionId = zolnierz.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = przemytnik.GetResult().Id, OutputProfessionId = flisak.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = przemytnik.GetResult().Id, OutputProfessionId = paser.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = przemytnik.GetResult().Id, OutputProfessionId = przewoznik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = przemytnik.GetResult().Id, OutputProfessionId = szarlatan.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = przemytnik.GetResult().Id, OutputProfessionId = tarczownik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = przemytnik.GetResult().Id, OutputProfessionId = zlodziej.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = przemytnik.GetResult().Id, OutputProfessionId = zeglarz.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = przepatrywacz.GetResult().Id, OutputProfessionId = najemnik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = przepatrywacz.GetResult().Id, OutputProfessionId = rozbojnik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = przepatrywacz.GetResult().Id, OutputProfessionId = straznikDrog.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = przepatrywacz.GetResult().Id, OutputProfessionId = woznica.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = przepatrywacz.GetResult().Id, OutputProfessionId = zwiadowca.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = przewoznik.GetResult().Id, OutputProfessionId = flisak.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = przewoznik.GetResult().Id, OutputProfessionId = przemytnik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = przewoznik.GetResult().Id, OutputProfessionId = rozbojnik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = przewoznik.GetResult().Id, OutputProfessionId = straznikDrog.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = przewoznik.GetResult().Id, OutputProfessionId = zeglarz.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = rybak.GetResult().Id, OutputProfessionId = kupiec.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = rybak.GetResult().Id, OutputProfessionId = nawigator.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = rybak.GetResult().Id, OutputProfessionId = ochotnik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = rybak.GetResult().Id, OutputProfessionId = zeglarz.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = rybak.GetResult().Id, OutputProfessionId = zolnierzOkretowy.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = rzecznik.GetResult().Id, OutputProfessionId = kanciarz.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = rzecznik.GetResult().Id, OutputProfessionId = kupiec.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = rzecznik.GetResult().Id, OutputProfessionId = szarlatan.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = rzecznik.GetResult().Id, OutputProfessionId = wloczykij.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = rzecznik.GetResult().Id, OutputProfessionId = zeglarz.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = rzecznik.GetResult().Id, OutputProfessionId = zak.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = rzemieslnik.GetResult().Id, OutputProfessionId = fanatyk.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = rzemieslnik.GetResult().Id, OutputProfessionId = inzynier.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = rzemieslnik.GetResult().Id, OutputProfessionId = kupiec.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = rzemieslnik.GetResult().Id, OutputProfessionId = mistrzRzemiosla.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = rzemieslnik.GetResult().Id, OutputProfessionId = ochotnik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = rzemieslnik.GetResult().Id, OutputProfessionId = rzecznik.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = rzezimieszek.GetResult().Id, OutputProfessionId = gladiator.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = rzezimieszek.GetResult().Id, OutputProfessionId = oprych.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = rzezimieszek.GetResult().Id, OutputProfessionId = reketer.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = rzezimieszek.GetResult().Id, OutputProfessionId = zlodziej.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = rzezimieszek.GetResult().Id, OutputProfessionId = zwadzca.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = skryba.GetResult().Id, OutputProfessionId = akolita.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = skryba.GetResult().Id, OutputProfessionId = nawigator.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = skryba.GetResult().Id, OutputProfessionId = podzegacz.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = skryba.GetResult().Id, OutputProfessionId = uczen.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = skryba.GetResult().Id, OutputProfessionId = uczony.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = sluga.GetResult().Id, OutputProfessionId = ciura.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = sluga.GetResult().Id, OutputProfessionId = karczmarz.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = sluga.GetResult().Id, OutputProfessionId = mieszczanin.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = sluga.GetResult().Id, OutputProfessionId = paz.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = sluga.GetResult().Id, OutputProfessionId = podzegacz.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = sluga.GetResult().Id, OutputProfessionId = poslaniec.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = sluga.GetResult().Id, OutputProfessionId = szpieg.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = sluga.GetResult().Id, OutputProfessionId = zlodziej.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = straznik.GetResult().Id, OutputProfessionId = najemnik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = straznik.GetResult().Id, OutputProfessionId = reketer.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = straznik.GetResult().Id, OutputProfessionId = rzemieslnik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = straznik.GetResult().Id, OutputProfessionId = sierzant.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = straznik.GetResult().Id, OutputProfessionId = straznikDrog.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = straznik.GetResult().Id, OutputProfessionId = zolnierz.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = straznikDrog.GetResult().Id, OutputProfessionId = banita.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = straznikDrog.GetResult().Id, OutputProfessionId = mytnik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = straznikDrog.GetResult().Id, OutputProfessionId = poslaniec.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = straznikDrog.GetResult().Id, OutputProfessionId = przepatrywacz.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = straznikDrog.GetResult().Id, OutputProfessionId = rozbojnik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = straznikDrog.GetResult().Id, OutputProfessionId = sierzant.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = straznikDrog.GetResult().Id, OutputProfessionId = zwiadowca.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = straznikPol.GetResult().Id, OutputProfessionId = lowcanagrod.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = straznikPol.GetResult().Id, OutputProfessionId = lowcaWampirow.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = straznikPol.GetResult().Id, OutputProfessionId = najemnik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = straznikPol.GetResult().Id, OutputProfessionId = wloczykij.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = straznikPol.GetResult().Id, OutputProfessionId = zwiadowca.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = straznikWiezienny.GetResult().Id, OutputProfessionId = ochroniarz.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = straznikWiezienny.GetResult().Id, OutputProfessionId = oprawca.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = straznikWiezienny.GetResult().Id, OutputProfessionId = straznik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = straznikWiezienny.GetResult().Id, OutputProfessionId = szczurolap.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = straznikWiezienny.GetResult().Id, OutputProfessionId = zarzadca.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = szczurolap.GetResult().Id, OutputProfessionId = porywacz.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = szczurolap.GetResult().Id, OutputProfessionId = straznikWiezienny.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = szczurolap.GetResult().Id, OutputProfessionId = smieciarz.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = szczurolap.GetResult().Id, OutputProfessionId = tarczownik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = szczurolap.GetResult().Id, OutputProfessionId = wlamywacz.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = szczurolap.GetResult().Id, OutputProfessionId = zlodziej.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = szermierz.GetResult().Id, OutputProfessionId = kanciarz.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = szermierz.GetResult().Id, OutputProfessionId = ochroniarz.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = szermierz.GetResult().Id, OutputProfessionId = rozbojnik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = szermierz.GetResult().Id, OutputProfessionId = rzezimieszek.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = szermierz.GetResult().Id, OutputProfessionId = zwadzca.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = szlachcic.GetResult().Id, OutputProfessionId = dworzanin.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = szlachcic.GetResult().Id, OutputProfessionId = giermek.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = szlachcic.GetResult().Id, OutputProfessionId = kanciarz.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = szlachcic.GetResult().Id, OutputProfessionId = rajtar.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = szlachcic.GetResult().Id, OutputProfessionId = urzednik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = szlachcic.GetResult().Id, OutputProfessionId = zak.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = smieciarz.GetResult().Id, OutputProfessionId = ciura.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = smieciarz.GetResult().Id, OutputProfessionId = paser.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = smieciarz.GetResult().Id, OutputProfessionId = porywacz.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = smieciarz.GetResult().Id, OutputProfessionId = przemytnik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = smieciarz.GetResult().Id, OutputProfessionId = wlamywacz.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = tarczownik.GetResult().Id, OutputProfessionId = gladiator.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = tarczownik.GetResult().Id, OutputProfessionId = goniec.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = tarczownik.GetResult().Id, OutputProfessionId = hiena.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = tarczownik.GetResult().Id, OutputProfessionId = przemytnik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = tarczownik.GetResult().Id, OutputProfessionId = sierzant.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = tarczownik.GetResult().Id, OutputProfessionId = weteran.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = uczen.GetResult().Id, OutputProfessionId = skryba.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = uczen.GetResult().Id, OutputProfessionId = uczony.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = uczen.GetResult().Id, OutputProfessionId = wedrownyCzarodziej.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = weglarz.GetResult().Id, OutputProfessionId = gornik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = weglarz.GetResult().Id, OutputProfessionId = lesnik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = weglarz.GetResult().Id, OutputProfessionId = lowca.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = weglarz.GetResult().Id, OutputProfessionId = wloczykij.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = weglarz.GetResult().Id, OutputProfessionId = zwiadowca.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = wloczykij.GetResult().Id, OutputProfessionId = cyrkowiec.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = wloczykij.GetResult().Id, OutputProfessionId = lesnik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = wloczykij.GetResult().Id, OutputProfessionId = smieciarz.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = wloczykij.GetResult().Id, OutputProfessionId = zakonnik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = wloczykij.GetResult().Id, OutputProfessionId = zlodziej.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = wloczykij.GetResult().Id, OutputProfessionId = zwiadowca.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = wojownik.GetResult().Id, OutputProfessionId = lowca.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = wojownik.GetResult().Id, OutputProfessionId = przepatrywacz.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = wojownik.GetResult().Id, OutputProfessionId = weteran.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = wojownik.GetResult().Id, OutputProfessionId = wloczykij.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = wojownik.GetResult().Id, OutputProfessionId = zwiadowca.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = woznica.GetResult().Id, OutputProfessionId = banita.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = woznica.GetResult().Id, OutputProfessionId = mytnik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = woznica.GetResult().Id, OutputProfessionId = przemytnik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = woznica.GetResult().Id, OutputProfessionId = przewoznik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = woznica.GetResult().Id, OutputProfessionId = rozbojnik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = woznica.GetResult().Id, OutputProfessionId = straznikDrog.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = woznica.GetResult().Id, OutputProfessionId = zwiadowca.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = zabojcaTroli.GetResult().Id, OutputProfessionId = zabojcaOlbrzymow.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = zarzadca.GetResult().Id, OutputProfessionId = mytnik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = zarzadca.GetResult().Id, OutputProfessionId = ochotnik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = zarzadca.GetResult().Id, OutputProfessionId = przemytnik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = zarzadca.GetResult().Id, OutputProfessionId = reketer.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = zarzadca.GetResult().Id, OutputProfessionId = rzezimieszek.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = zarzadca.GetResult().Id, OutputProfessionId = urzednik.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = zlodziej.GetResult().Id, OutputProfessionId = cyrkowiec.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = zlodziej.GetResult().Id, OutputProfessionId = hiena.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = zlodziej.GetResult().Id, OutputProfessionId = kanciarz.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = zlodziej.GetResult().Id, OutputProfessionId = paser.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = zlodziej.GetResult().Id, OutputProfessionId = szarlatan.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = zlodziej.GetResult().Id, OutputProfessionId = wlamywacz.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = zak.GetResult().Id, OutputProfessionId = akolita.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = zak.GetResult().Id, OutputProfessionId = cyrulik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = zak.GetResult().Id, OutputProfessionId = inzynier.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = zak.GetResult().Id, OutputProfessionId = medyk.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = zak.GetResult().Id, OutputProfessionId = podzegacz.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = zak.GetResult().Id, OutputProfessionId = rzecznik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = zak.GetResult().Id, OutputProfessionId = uczen.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = zak.GetResult().Id, OutputProfessionId = uczony.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = zeglarz.GetResult().Id, OutputProfessionId = bosman.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = zeglarz.GetResult().Id, OutputProfessionId = kanciarz.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = zeglarz.GetResult().Id, OutputProfessionId = nawigator.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = zeglarz.GetResult().Id, OutputProfessionId = przemytnik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = zeglarz.GetResult().Id, OutputProfessionId = zolnierzOkretowy.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = zolnierz.GetResult().Id, OutputProfessionId = najemnik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = zolnierz.GetResult().Id, OutputProfessionId = przepatrywacz.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = zolnierz.GetResult().Id, OutputProfessionId = sierzant.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = zolnierz.GetResult().Id, OutputProfessionId = straznik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = zolnierz.GetResult().Id, OutputProfessionId = weteran.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = zolnierz.GetResult().Id, OutputProfessionId = wloczykij.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = zolnierzOkretowy.GetResult().Id, OutputProfessionId = banita.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = zolnierzOkretowy.GetResult().Id, OutputProfessionId = bosman.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = zolnierzOkretowy.GetResult().Id, OutputProfessionId = oprych.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = zolnierzOkretowy.GetResult().Id, OutputProfessionId = przemytnik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = zolnierzOkretowy.GetResult().Id, OutputProfessionId = sierzant.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = arcykaplan.GetResult().Id, OutputProfessionId = lowcaCzarownic.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = arcykaplan.GetResult().Id, OutputProfessionId = uczony.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = arcykaplan.GetResult().Id, OutputProfessionId = urzednik.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = arcymag.GetResult().Id, OutputProfessionId = mistrzGildii.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = arcymag.GetResult().Id, OutputProfessionId = odkrywca.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = arystokrata.GetResult().Id, OutputProfessionId = kapitan.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = arystokrata.GetResult().Id, OutputProfessionId = oficer.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = arystokrata.GetResult().Id, OutputProfessionId = rycerz.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = arystokrata.GetResult().Id, OutputProfessionId = uczony.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = bard.GetResult().Id, OutputProfessionId = demagog.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = bard.GetResult().Id, OutputProfessionId = rozbojnik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = bard.GetResult().Id, OutputProfessionId = szarlatan.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = bard.GetResult().Id, OutputProfessionId = szpieg.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = bard.GetResult().Id, OutputProfessionId = zak.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = biczownik.GetResult().Id, OutputProfessionId = demagog.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = biczownik.GetResult().Id, OutputProfessionId = kaplan.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = biczownik.GetResult().Id, OutputProfessionId = oprawca.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = biczownik.GetResult().Id, OutputProfessionId = weteran.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = biczownik.GetResult().Id, OutputProfessionId = zolnierz.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = bosman.GetResult().Id, OutputProfessionId = kapitan.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = bosman.GetResult().Id, OutputProfessionId = kupiec.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = bosman.GetResult().Id, OutputProfessionId = nawigator.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = bosman.GetResult().Id, OutputProfessionId = odkrywca.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = demagog.GetResult().Id, OutputProfessionId = herszt.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = demagog.GetResult().Id, OutputProfessionId = ksiaze.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = demagog.GetResult().Id, OutputProfessionId = najemnik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = demagog.GetResult().Id, OutputProfessionId = urzednik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = demagog.GetResult().Id, OutputProfessionId = zakonnik.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = dworzanin.GetResult().Id, OutputProfessionId = arystokrata.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = dworzanin.GetResult().Id, OutputProfessionId = majordomus.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = dworzanin.GetResult().Id, OutputProfessionId = szarlatan.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = dworzanin.GetResult().Id, OutputProfessionId = szpieg.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = dworzanin.GetResult().Id, OutputProfessionId = urzednik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = dworzanin.GetResult().Id, OutputProfessionId = zwadzca.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = fechmistrz.GetResult().Id, OutputProfessionId = lowcaCzarownic.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = fechmistrz.GetResult().Id, OutputProfessionId = sierzant.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = fechmistrz.GetResult().Id, OutputProfessionId = skrytobojca.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = fechmistrz.GetResult().Id, OutputProfessionId = zwiadowca.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = herold.GetResult().Id, OutputProfessionId = cyrkowiec.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = herold.GetResult().Id, OutputProfessionId = dworzanin.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = herold.GetResult().Id, OutputProfessionId = giermek.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = herold.GetResult().Id, OutputProfessionId = odkrywca.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = herold.GetResult().Id, OutputProfessionId = podzegacz.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = herold.GetResult().Id, OutputProfessionId = urzednik.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = herszt.GetResult().Id, OutputProfessionId = demagog.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = herszt.GetResult().Id, OutputProfessionId = ksiaze.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = herszt.GetResult().Id, OutputProfessionId = oficer.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = herszt.GetResult().Id, OutputProfessionId = skrytobojca.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = inzynier.GetResult().Id, OutputProfessionId = mistrzGildii.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = inzynier.GetResult().Id, OutputProfessionId = mistrzRzemiosla.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = inzynier.GetResult().Id, OutputProfessionId = odkrywca.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = inzynier.GetResult().Id, OutputProfessionId = przemytnik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = inzynier.GetResult().Id, OutputProfessionId = rajtar.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = kapitan.GetResult().Id, OutputProfessionId = arystokrata.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = kapitan.GetResult().Id, OutputProfessionId = odkrywca.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = kapitan.GetResult().Id, OutputProfessionId = szpieg.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = kapitan.GetResult().Id, OutputProfessionId = uczony.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = kaplan.GetResult().Id, OutputProfessionId = biczownik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = kaplan.GetResult().Id, OutputProfessionId = majordomus.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = kaplan.GetResult().Id, OutputProfessionId = uczony.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = kaplan.GetResult().Id, OutputProfessionId = wybraniecBozy.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = karczmarz.GetResult().Id, OutputProfessionId = banita.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = karczmarz.GetResult().Id, OutputProfessionId = kupiec.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = karczmarz.GetResult().Id, OutputProfessionId = mieszczanin.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = karczmarz.GetResult().Id, OutputProfessionId = paser.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = karczmarz.GetResult().Id, OutputProfessionId = przemytnik.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = ksiaze.GetResult().Id, OutputProfessionId = demagog.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = ksiaze.GetResult().Id, OutputProfessionId = herszt.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = ksiaze.GetResult().Id, OutputProfessionId = mistrzCieni.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = ksiaze.GetResult().Id, OutputProfessionId = urzednik.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = kupiec.GetResult().Id, OutputProfessionId = mistrzGildii.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = kupiec.GetResult().Id, OutputProfessionId = ochotnik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = kupiec.GetResult().Id, OutputProfessionId = reketer.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = kupiec.GetResult().Id, OutputProfessionId = szpieg.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = kupiec.GetResult().Id, OutputProfessionId = urzednik.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = lesnyDuch.GetResult().Id, OutputProfessionId = herszt.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = lesnyDuch.GetResult().Id, OutputProfessionId = lowcaWampirow.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = lesnyDuch.GetResult().Id, OutputProfessionId = oficer.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = lesnyDuch.GetResult().Id, OutputProfessionId = strzelec.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = lowcaCzarownic.GetResult().Id, OutputProfessionId = akolita.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = lowcaCzarownic.GetResult().Id, OutputProfessionId = demagog.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = lowcaCzarownic.GetResult().Id, OutputProfessionId = fechmistrz.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = lowcaCzarownic.GetResult().Id, OutputProfessionId = mistrzZakonny.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = lowcaCzarownic.GetResult().Id, OutputProfessionId = oficer.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = lowcaWampirow.GetResult().Id, OutputProfessionId = akolita.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = lowcaWampirow.GetResult().Id, OutputProfessionId = demagog.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = lowcaWampirow.GetResult().Id, OutputProfessionId = lowcaCzarownic.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = lowcaWampirow.GetResult().Id, OutputProfessionId = rycerz.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = lowcaWampirow.GetResult().Id, OutputProfessionId = strzelec.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = majordomus.GetResult().Id, OutputProfessionId = ksiaze.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = majordomus.GetResult().Id, OutputProfessionId = kupiec.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = majordomus.GetResult().Id, OutputProfessionId = paser.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = majordomus.GetResult().Id, OutputProfessionId = szlachcic.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = medyk.GetResult().Id, OutputProfessionId = mistrzGildii.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = medyk.GetResult().Id, OutputProfessionId = szpieg.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = medyk.GetResult().Id, OutputProfessionId = uczony.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = medyk.GetResult().Id, OutputProfessionId = zakonnik.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = mistrzCieni.GetResult().Id, OutputProfessionId = herszt.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = mistrzCieni.GetResult().Id, OutputProfessionId = ksiaze.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = mistrzCieni.GetResult().Id, OutputProfessionId = odkrywca.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = mistrzCieni.GetResult().Id, OutputProfessionId = strzelec.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = mistrzGildii.GetResult().Id, OutputProfessionId = ksiaze.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = mistrzGildii.GetResult().Id, OutputProfessionId = reketer.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = mistrzGildii.GetResult().Id, OutputProfessionId = urzednik.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = mistrzMagii.GetResult().Id, OutputProfessionId = arcymag.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = mistrzMagii.GetResult().Id, OutputProfessionId = odkrywca.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = mistrzMagii.GetResult().Id, OutputProfessionId = uczony.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = mistrzRzemiosla.GetResult().Id, OutputProfessionId = demagog.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = mistrzRzemiosla.GetResult().Id, OutputProfessionId = inzynier.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = mistrzRzemiosla.GetResult().Id, OutputProfessionId = kupiec.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = mistrzRzemiosla.GetResult().Id, OutputProfessionId = mistrzGildii.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = mistrzRzemiosla.GetResult().Id, OutputProfessionId = ochotnik.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = mistrzZakonny.GetResult().Id, OutputProfessionId = arystokrata.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = mistrzZakonny.GetResult().Id, OutputProfessionId = fechmistrz.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = mistrzZakonny.GetResult().Id, OutputProfessionId = lowcaCzarownic.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = mistrzZakonny.GetResult().Id, OutputProfessionId = oficer.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = nawigator.GetResult().Id, OutputProfessionId = kapitan.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = nawigator.GetResult().Id, OutputProfessionId = mistrzRzemiosla.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = nawigator.GetResult().Id, OutputProfessionId = odkrywca.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = nawigator.GetResult().Id, OutputProfessionId = uczony.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = odkrywca.GetResult().Id, OutputProfessionId = kapitan.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = odkrywca.GetResult().Id, OutputProfessionId = kupiec.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = odkrywca.GetResult().Id, OutputProfessionId = oficer.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = odkrywca.GetResult().Id, OutputProfessionId = szpieg.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = oficer.GetResult().Id, OutputProfessionId = herszt.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = oficer.GetResult().Id, OutputProfessionId = kupiec.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = oficer.GetResult().Id, OutputProfessionId = odkrywca.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = oficer.GetResult().Id, OutputProfessionId = podzegacz.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = oficer.GetResult().Id, OutputProfessionId = urzednik.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = oprawca.GetResult().Id, OutputProfessionId = medyk.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = oprawca.GetResult().Id, OutputProfessionId = reketer.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = oprawca.GetResult().Id, OutputProfessionId = zlodziej.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = paser.GetResult().Id, OutputProfessionId = ksiaze.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = paser.GetResult().Id, OutputProfessionId = mistrzCieni.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = paser.GetResult().Id, OutputProfessionId = reketer.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = paser.GetResult().Id, OutputProfessionId = szarlatan.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = rajtar.GetResult().Id, OutputProfessionId = dworzanin.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = rajtar.GetResult().Id, OutputProfessionId = rycerz.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = rajtar.GetResult().Id, OutputProfessionId = sierzant.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = rajtar.GetResult().Id, OutputProfessionId = weteran.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = rajtar.GetResult().Id, OutputProfessionId = zwadzca.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = reketer.GetResult().Id, OutputProfessionId = herold.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = reketer.GetResult().Id, OutputProfessionId = mistrzCieni.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = reketer.GetResult().Id, OutputProfessionId = paser.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = reketer.GetResult().Id, OutputProfessionId = urzednik.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = rozbojnik.GetResult().Id, OutputProfessionId = herszt.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = rozbojnik.GetResult().Id, OutputProfessionId = mistrzCieni.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = rozbojnik.GetResult().Id, OutputProfessionId = podzegacz.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = rozbojnik.GetResult().Id, OutputProfessionId = sierzant.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = rozbojnik.GetResult().Id, OutputProfessionId = zwadzca.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = rycerz.GetResult().Id, OutputProfessionId = akolita.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = rycerz.GetResult().Id, OutputProfessionId = arystokrata.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = rycerz.GetResult().Id, OutputProfessionId = lowcaWampirow.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = rycerz.GetResult().Id, OutputProfessionId = mistrzZakonny.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = rycerz.GetResult().Id, OutputProfessionId = oficer.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = sierzant.GetResult().Id, OutputProfessionId = oficer.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = sierzant.GetResult().Id, OutputProfessionId = rycerz.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = sierzant.GetResult().Id, OutputProfessionId = szampierz.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = sierzant.GetResult().Id, OutputProfessionId = zwadzca.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = skrytobojca.GetResult().Id, OutputProfessionId = fechmistrz.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = skrytobojca.GetResult().Id, OutputProfessionId = herszt.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = skrytobojca.GetResult().Id, OutputProfessionId = lowcaCzarownic.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = skrytobojca.GetResult().Id, OutputProfessionId = kanciarz.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = skrytobojca.GetResult().Id, OutputProfessionId = sierzant.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = strzelec.GetResult().Id, OutputProfessionId = fechmistrz.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = strzelec.GetResult().Id, OutputProfessionId = sierzant.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = strzelec.GetResult().Id, OutputProfessionId = skrytobojca.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = strzelec.GetResult().Id, OutputProfessionId = zwadzca.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = szampierz.GetResult().Id, OutputProfessionId = fanatyk.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = szampierz.GetResult().Id, OutputProfessionId = fechmistrz.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = szampierz.GetResult().Id, OutputProfessionId = lowcaCzarownic.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = szampierz.GetResult().Id, OutputProfessionId = sierzant.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = szampierz.GetResult().Id, OutputProfessionId = skrytobojca.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = szarlatan.GetResult().Id, OutputProfessionId = banita.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = szarlatan.GetResult().Id, OutputProfessionId = demagog.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = szarlatan.GetResult().Id, OutputProfessionId = szpieg.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = szarlatan.GetResult().Id, OutputProfessionId = urzednik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = szarlatan.GetResult().Id, OutputProfessionId = wlamywacz.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = szpieg.GetResult().Id, OutputProfessionId = mistrzCieni.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = szpieg.GetResult().Id, OutputProfessionId = odkrywca.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = szpieg.GetResult().Id, OutputProfessionId = reketer.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = szpieg.GetResult().Id, OutputProfessionId = skrytobojca.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = uczony.GetResult().Id, OutputProfessionId = kupiec.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = uczony.GetResult().Id, OutputProfessionId = majordomus.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = uczony.GetResult().Id, OutputProfessionId = medyk.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = uczony.GetResult().Id, OutputProfessionId = odkrywca.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = uczony.GetResult().Id, OutputProfessionId = uczen.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = uczony.GetResult().Id, OutputProfessionId = zakonnik.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = urzednik.GetResult().Id, OutputProfessionId = arystokrata.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = urzednik.GetResult().Id, OutputProfessionId = demagog.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = urzednik.GetResult().Id, OutputProfessionId = dworzanin.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = urzednik.GetResult().Id, OutputProfessionId = ksiaze.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = urzednik.GetResult().Id, OutputProfessionId = majordomus.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = urzednik.GetResult().Id, OutputProfessionId = reketer.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = weteran.GetResult().Id, OutputProfessionId = fechmistrz.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = weteran.GetResult().Id, OutputProfessionId = herszt.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = weteran.GetResult().Id, OutputProfessionId = sierzant.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = weteran.GetResult().Id, OutputProfessionId = strzelec.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = weteran.GetResult().Id, OutputProfessionId = szampierz.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = wedrownyCzarodziej.GetResult().Id, OutputProfessionId = mistrzMagii.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = wedrownyCzarodziej.GetResult().Id, OutputProfessionId = szarlatan.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = wedrownyCzarodziej.GetResult().Id, OutputProfessionId = uczony.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = wlamywacz.GetResult().Id, OutputProfessionId = ksiaze.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = wlamywacz.GetResult().Id, OutputProfessionId = mistrzCieni.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = wlamywacz.GetResult().Id, OutputProfessionId = paser.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = wlamywacz.GetResult().Id, OutputProfessionId = reketer.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = wlamywacz.GetResult().Id, OutputProfessionId = wloczykij.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = wybraniecBozy.GetResult().Id, OutputProfessionId = arcykaplan.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = wybraniecBozy.GetResult().Id, OutputProfessionId = biczownik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = wybraniecBozy.GetResult().Id, OutputProfessionId = demagog.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = wybraniecBozy.GetResult().Id, OutputProfessionId = lowcaCzarownic.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = wybraniecBozy.GetResult().Id, OutputProfessionId = uczony.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = zabojcaOlbrzymow.GetResult().Id, OutputProfessionId = zabojcaDemonow.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = zakonnik.GetResult().Id, OutputProfessionId = biczownik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = zakonnik.GetResult().Id, OutputProfessionId = demagog.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = zakonnik.GetResult().Id, OutputProfessionId = kaplan.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = zakonnik.GetResult().Id, OutputProfessionId = uczony.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = zwadzca.GetResult().Id, OutputProfessionId = fechmistrz.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = zwadzca.GetResult().Id, OutputProfessionId = kanciarz.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = zwadzca.GetResult().Id, OutputProfessionId = rozbojnik.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = zwadzca.GetResult().Id, OutputProfessionId = sierzant.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = zwadzca.GetResult().Id, OutputProfessionId = skrytobojca.GetResult().Id },
-
-                new ProfessionProfession { EntranceProfessionId = zwiadowca.GetResult().Id, OutputProfessionId = herszt.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = zwiadowca.GetResult().Id, OutputProfessionId = lesnyDuch.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = zwiadowca.GetResult().Id, OutputProfessionId = lowcaWampirow.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = zwiadowca.GetResult().Id, OutputProfessionId = odkrywca.GetResult().Id },
-                new ProfessionProfession { EntranceProfessionId = zwiadowca.GetResult().Id, OutputProfessionId = sierzant.GetResult().Id}
-            };
-
-            #endregion profession connections
-
-            modelBuilder.Entity<Profession>().HasData(professionBuildersResult.Select(a => a.GetResult()).ToList());
-            modelBuilder.Entity<Item>().HasData(itemResult);
-            modelBuilder.Entity<Skill>().HasData(skillResult);
-            modelBuilder.Entity<Ability>().HasData(abilityResult);
-            modelBuilder.Entity<Statistic>().HasData(statisticsDataSet);
-            modelBuilder.Entity<ProfessionProfession>().HasData(profesionsConnectionsResult);
-            modelBuilder.Entity<ProfessionItems>().HasData(professionItemsDataSet);
-
-            modelBuilder.Entity<ProfessionItem>().HasData(professionItemDataSet);
-            modelBuilder.Entity<ProfessionSkills>().HasData(professionSkillsDataSet);
-            modelBuilder.Entity<ProfessionSkill>().HasData(professionSkillDataSet);
-            modelBuilder.Entity<ProfessionAbilities>().HasData(professionAbilitiesDataSet);
-            modelBuilder.Entity<ProfessionAbility>().HasData(professionAbilityDataSet);
-            modelBuilder.Entity<ProfessionStatistic>().HasData(professionStatisticDataSet);
+                transaction.Rollback();
+            }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -5623,12 +5735,10 @@ namespace WarhammerProfessionApp.Entities
             modelBuilder.Entity<ProfessionProfession>().HasOne(a => a.OutputProfession).WithMany(a => a.EntranceProfessions).HasForeignKey(a => a.OutputProfessionId).OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<ProfessionAbilities>().HasOne(a => a.Profession).WithMany(a => a.Abilities).HasForeignKey(a => a.ProfessionId);
-            modelBuilder.Entity<ProfessionAbility>().HasKey(a => new { a.ProfessionAbilitiesId, a.AbilityId });
             modelBuilder.Entity<ProfessionAbility>().HasOne(a => a.Ability).WithMany(a => a.Professions).HasForeignKey(a => a.AbilityId);
             modelBuilder.Entity<ProfessionAbility>().HasOne(a => a.ProfessionAbilities).WithMany(a => a.Abilities).HasForeignKey(a => a.ProfessionAbilitiesId);
 
             modelBuilder.Entity<ProfessionSkills>().HasOne(a => a.Profession).WithMany(a => a.Skills).HasForeignKey(a => a.ProfessionId);
-            modelBuilder.Entity<ProfessionSkill>().HasKey(a => new { a.ProfessionSkillsId, a.SkillId });
             modelBuilder.Entity<ProfessionSkill>().HasOne(a => a.Skill).WithMany(a => a.Professions).HasForeignKey(a => a.SkillId);
             modelBuilder.Entity<ProfessionSkill>().HasOne(a => a.ProfessionSkills).WithMany(a => a.Skills).HasForeignKey(a => a.ProfessionSkillsId);
 
@@ -5636,6 +5746,14 @@ namespace WarhammerProfessionApp.Entities
             modelBuilder.Entity<ProfessionItem>().HasKey(a => new { a.ProfessionsItemId, a.ItemId });
             modelBuilder.Entity<ProfessionItem>().HasOne(a => a.Item).WithMany(a => a.Professions).HasForeignKey(a => a.ItemId);
             modelBuilder.Entity<ProfessionItem>().HasOne(a => a.ProfessionItems).WithMany(a => a.Items).HasForeignKey(a => a.ProfessionsItemId);
+
+            modelBuilder.Entity<DictionaryValueProfessionSkill>().HasKey(a => new { a.DictionaryValueId, a.ProfessionSkillId });
+            modelBuilder.Entity<DictionaryValueProfessionSkill>().HasOne(a => a.DictionaryValue).WithMany(a => a.Skills).HasForeignKey(a => a.DictionaryValueId);
+            modelBuilder.Entity<DictionaryValueProfessionSkill>().HasOne(a => a.ProfessionSkill).WithMany(a => a.AllowedValues).HasForeignKey(a => a.ProfessionSkillId);
+
+            modelBuilder.Entity<DictionaryValueProfessionAbility>().HasKey(a => new { a.DictionaryValueId, a.ProfessionAbilityId });
+            modelBuilder.Entity<DictionaryValueProfessionAbility>().HasOne(a => a.DictionaryValue).WithMany(a => a.Abilities).HasForeignKey(a => a.DictionaryValueId);
+            modelBuilder.Entity<DictionaryValueProfessionAbility>().HasOne(a => a.ProfessionAbility).WithMany(a => a.AllowedValues).HasForeignKey(a => a.ProfessionAbilityId);
 
             modelBuilder.Entity<Statistic>().HasIndex(a => a.Type).IsUnique();
 
@@ -5646,8 +5764,6 @@ namespace WarhammerProfessionApp.Entities
             modelBuilder.Entity<CharacterSkill>().HasKey(a => new { a.CharacterId, a.SkillId });
             modelBuilder.Entity<CharacterAbility>().HasKey(a => new { a.CharacterId, a.AbilityId });
             modelBuilder.Entity<CharacterStatistic>().HasKey(a => new { a.CharacterId, a.StatisticId });
-
-            SeedData(modelBuilder);
         }
     }
 }
