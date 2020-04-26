@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WarhammerProfessionApp.Entities;
 
 namespace WarhammerProfessionApp.Migrations
 {
     [DbContext(typeof(ProfessionsContext))]
-    partial class ProfessionsContextModelSnapshot : ModelSnapshot
+    [Migration("20200426214942_InitialSchemaMigration")]
+    partial class InitialSchemaMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -35,10 +37,16 @@ namespace WarhammerProfessionApp.Migrations
                     b.Property<int?>("ImpactValue")
                         .HasColumnType("int");
 
+                    b.Property<bool>("IsStartingValue")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
+
+                    b.Property<byte?>("Type")
+                        .HasColumnType("tinyint");
 
                     b.Property<byte?>("ValueToAlter")
                         .HasColumnType("tinyint");
@@ -125,7 +133,7 @@ namespace WarhammerProfessionApp.Migrations
                     b.Property<string>("Notes")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<byte?>("Race")
+                    b.Property<byte>("Race")
                         .HasColumnType("tinyint");
 
                     b.Property<int>("UserId")
@@ -151,7 +159,10 @@ namespace WarhammerProfessionApp.Migrations
                     b.Property<int?>("DictionaryValueId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ProfessionAbilitiesId")
+                    b.Property<bool>("IsAdditionalValue")
+                        .HasColumnType("bit");
+
+                    b.Property<int?>("ProfessionAbilitiesId")
                         .HasColumnType("int");
 
                     b.HasKey("CharacterId", "AbilityId");
@@ -212,7 +223,10 @@ namespace WarhammerProfessionApp.Migrations
                     b.Property<int?>("DictionaryValueId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ProfessionSkillsId")
+                    b.Property<bool>("IsAdditionalValue")
+                        .HasColumnType("bit");
+
+                    b.Property<int?>("ProfessionSkillsId")
                         .HasColumnType("int");
 
                     b.HasKey("CharacterId", "SkillId");
@@ -260,6 +274,9 @@ namespace WarhammerProfessionApp.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<byte?>("Type")
+                        .HasColumnType("tinyint");
+
                     b.HasKey("Id");
 
                     b.ToTable("Dictionaries");
@@ -278,6 +295,9 @@ namespace WarhammerProfessionApp.Migrations
                     b.Property<int>("DefinitionId")
                         .HasColumnType("int");
 
+                    b.Property<byte?>("Type")
+                        .HasColumnType("tinyint");
+
                     b.Property<string>("Value")
                         .HasColumnType("nvarchar(max)");
 
@@ -285,7 +305,7 @@ namespace WarhammerProfessionApp.Migrations
 
                     b.HasIndex("DefinitionId");
 
-                    b.ToTable("DictionaryValue");
+                    b.ToTable("DictionaryValues");
                 });
 
             modelBuilder.Entity("WarhammerProfessionApp.Entities.Models.DictionaryValueProfessionAbility", b =>
@@ -591,6 +611,9 @@ namespace WarhammerProfessionApp.Migrations
                     b.Property<byte>("Trait")
                         .HasColumnType("tinyint");
 
+                    b.Property<byte?>("Type")
+                        .HasColumnType("tinyint");
+
                     b.HasKey("Id");
 
                     b.HasIndex("DictionaryId");
@@ -701,9 +724,7 @@ namespace WarhammerProfessionApp.Migrations
 
                     b.HasOne("WarhammerProfessionApp.Entities.Models.ManyToMany.ProfessionAbilities", "ProfessionAbilities")
                         .WithMany()
-                        .HasForeignKey("ProfessionAbilitiesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ProfessionAbilitiesId");
                 });
 
             modelBuilder.Entity("WarhammerProfessionApp.Entities.Models.CharacterItem", b =>
@@ -750,9 +771,7 @@ namespace WarhammerProfessionApp.Migrations
 
                     b.HasOne("WarhammerProfessionApp.Entities.Models.ManyToMany.ProfessionSkills", "ProfessionSkills")
                         .WithMany("Characters")
-                        .HasForeignKey("ProfessionSkillsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ProfessionSkillsId");
 
                     b.HasOne("WarhammerProfessionApp.Entities.Models.Skill", "Skill")
                         .WithMany("Characters")

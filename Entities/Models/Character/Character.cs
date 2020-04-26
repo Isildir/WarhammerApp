@@ -44,7 +44,7 @@ namespace WarhammerProfessionApp.Entities.Models
 
         public List<CharacterProfession> Professions { get; set; }
 
-        public Race? Race { get; set; }
+        public Race Race { get; set; }
 
         public List<CharacterSkill> Skills { get; set; }
 

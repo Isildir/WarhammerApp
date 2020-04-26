@@ -6,6 +6,11 @@ namespace WarhammerProfessionApp.Entities.Models.ManyToMany
 {
     public class ProfessionSkill
     {
+        public ProfessionSkill()
+        {
+            AllowedValues = new List<DictionaryValueProfessionSkill>();
+        }
+
         public bool? AllowAllValues { get; set; }
 
         public List<DictionaryValueProfessionSkill> AllowedValues { get; set; }

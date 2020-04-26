@@ -28,6 +28,8 @@ namespace WarhammerProfessionApp.Controllers
             this.characterHub = characterHub;
         }
 
+        public static Dictionary<int, int> ActiveUsersProfessions { get; set; }
+
         [HttpGet]
         public async Task<ActionResult<CharacterDto>> GetCharacter()
         {
@@ -194,6 +196,41 @@ namespace WarhammerProfessionApp.Controllers
                 BasicStatistics = statistics.Where(a => a.Item1).Select(a => a.Item2).ToList(),
                 AdvancedStatistics = statistics.Where(a => !a.Item1).Select(a => a.Item2).ToList()
             });
+        }
+
+        [HttpGet]
+        public ActionResult<List<ShortCharacterDto>> GetUserCharacters()
+        {
+            var userId = GetUserId();
+
+            var result = context.Characters
+                .Include(a => a.CurrentProfession)
+                .Where(a => a.UserId == userId)
+                .Select(a => new ShortCharacterDto
+                {
+                    Id = a.Id,
+                    Name = a.Name,
+                    Race = a.Race.ToString(),
+                    ProfessionName = a.CurrentProfession.Name
+                }).ToList();
+
+            return Ok(result);
+        }
+
+        [HttpPost]
+        public ActionResult SetActiveCharacter(int id)
+        {
+            var userId = GetUserId();
+
+            if (!context.Characters.Any(a => a.Id == id && a.UserId == userId))
+                return BadRequest();
+
+            if (ActiveUsersProfessions.ContainsKey(userId))
+                ActiveUsersProfessions[userId] = id;
+            else
+                ActiveUsersProfessions.Add(userId, id);
+
+            return Ok();
         }
 
         #region Others
@@ -815,19 +852,42 @@ namespace WarhammerProfessionApp.Controllers
         #region Skills
 
         [HttpPost(nameof(AddSkill))]
-        public ActionResult<CharacterSkillDto> AddSkill([FromBody] int id)
+        public ActionResult<CharacterSkillDto> AddSkill([FromBody] CharacterSkillAddDto model)
         {
+            if (model == null)
+                return BadRequest();
+
             var userId = GetUserId();
 
-            var character = context.Characters.Include(a => a.Skills).FirstOrDefault(a => a.UserId == userId);
+            var character = context.Characters
+                .Include(a => a.Professions)
+                .ThenInclude(a => a.Profession)
+                .ThenInclude(a => a.Skills)
+                .ThenInclude(a => a.Skills)
+                .ThenInclude(a => a.AllowedValues)
+                .Include(a => a.Skills)
+                .FirstOrDefault(a => a.UserId == userId);
 
             if (character == null)
                 return NotFound();
 
-            if (!CheckCharacterExperienceLimit(character, 100))
+            var skillAvailabilityCondition = character.Professions
+                .SelectMany(a => a.Profession.Skills)
+                .Any(a => a.Id == model.WrapperId && a.Skills
+                .Any(b => b.SkillId == model.Id && (b.AllowAllValues ?? false || b.AllowedValues
+                .Any(c => c.DictionaryValueId == model.DictionaryValueId))));
+
+            if (!skillAvailabilityCondition || character.Skills.Any(a => a.ProfessionSkillsId == model.WrapperId))
                 return BadRequest();
 
-            var characterSkill = character.Skills.FirstOrDefault(a => a.SkillId == id);
+            if (!CheckCharacterExperienceLimit(character, 100))
+            {
+                SendMessage(character.Id, "Za mało doświadczenia");
+
+                return BadRequest();
+            }
+
+            //var characterSkill = character.Skills.FirstOrDefault(a => a.SkillId == id);
             /*
             if (!context.Skills.Any(a => a.Id == id) || (characterSkill != null && characterSkill.Level >= 3))
                 return BadRequest();
@@ -841,23 +901,22 @@ namespace WarhammerProfessionApp.Controllers
                 */
             context.SaveChanges();
 
-            var dbSkill = context.Skills.First(a => a.Id == id);
+            //var dbSkill = context.Skills.First(a => a.Id == id);
 
             SendMessageAboutExperienceChange(character);
 
             var skill = new CharacterSkillDto
             {
-                Id = dbSkill.Id,
-                Name = dbSkill.Name,
-                Trait = dbSkill.Trait.ToString(),
+                //Id = dbSkill.Id,
+                //Name = dbSkill.Name,
+                //Trait = dbSkill.Trait.ToString(),
                 //Level = characterSkill.Level,
-                Description = dbSkill.Description
+                //Description = dbSkill.Description
             };
 
             return Ok(skill);
         }
 
-        /*
         [HttpGet(nameof(GetFilteredSkills))]
         public ActionResult<CharacterSkillGetDto> GetFilteredSkills()
         {
@@ -869,40 +928,85 @@ namespace WarhammerProfessionApp.Controllers
                 .ThenInclude(a => a.Profession)
                 .ThenInclude(a => a.Skills)
                 .ThenInclude(a => a.Skills)
+                .ThenInclude(a => a.AllowedValues)
+                .Include(a => a.Professions)
+                .ThenInclude(a => a.Profession)
+                .ThenInclude(a => a.Skills)
+                .ThenInclude(a => a.Skills)
                 .ThenInclude(a => a.Skill)
+                .ThenInclude(a => a.Dictionary)
+                .ThenInclude(a => a.Values)
                 .FirstOrDefault(a => a.UserId == userId);
 
-            var takenSkills = character.Skills.ToDictionary(a => a.SkillId, a => a.Level);
-            var availableSkills = character.Professions
-                .SelectMany(a => a.Profession.Skills.SelectMany(b => b.Skills.Select(c => c.Skill)));
-
-            var groupedAvailableSkills = availableSkills.GroupBy(a => a.Id).ToDictionary(a => a.Key, a => a.Count());
-
-            var values = new List<CharacterSkillGetDto>();
-
-            foreach (var skill in groupedAvailableSkills)
+            var options = character.Professions.SelectMany(a => a.Profession.Skills.SelectMany(b => b.Skills.Select(c => new
             {
-                var record = availableSkills.FirstOrDefault(a => a.Id == skill.Key);
+                ProfessionName = a.Profession.Name,
+                WrapperId = c.Id,
+                c.SkillId,
+                c.Skill.Dictionary,
+                SkillName = c.Skill.Name,
+                c.Skill.Trait,
+                c.AllowAllValues,
+                AllowedValues = c.AllowedValues.Select(d => new
+                {
+                    d.DictionaryValueId,
+                    d.DictionaryValue.Value
+                })
+            }))).ToList();
 
-                if (!takenSkills.ContainsKey(skill.Key))
-                    values.Add(new CharacterSkillGetDto
+            var usedValues = character.Skills.Select(a => new
+            {
+                a.SkillId,
+                a.DictionaryValueId,
+                a.ProfessionSkillsId
+            }).ToList();
+
+            var filteredOptions = options.Where(a => !usedValues.Any(b => b.ProfessionSkillsId == a.WrapperId)).ToList();
+
+            var convertedOptions = new List<CharacterSkillGetDto>();
+
+            foreach (var option in filteredOptions)
+            {
+                if (option.Dictionary == null)
+                    convertedOptions.Add(new CharacterSkillGetDto
                     {
-                        Id = record.Id,
-                        Name = record.Name,
-                        Level = 1
+                        Id = option.SkillId,
+                        Name = $"{option.ProfessionName}: {option.SkillName}",
+                        WrapperId = option.WrapperId,
+                        Trait = option.Trait.ToString(),
+                        Level = usedValues.Count(a => a.SkillId == option.SkillId) + 1
                     });
-                else if (takenSkills.ContainsKey(skill.Key) && takenSkills[skill.Key] < skill.Value)
-                    values.Add(new CharacterSkillGetDto
-                    {
-                        Id = record.Id,
-                        Name = record.Name,
-                        Level = takenSkills[skill.Key] + 1
-                    });
+                else
+                {
+                    if (option.AllowAllValues.HasValue && option.AllowAllValues.Value)
+                        foreach (var value in option.Dictionary.Values)
+                            convertedOptions.Add(new CharacterSkillGetDto
+                            {
+                                Id = option.SkillId,
+                                Name = $"{option.ProfessionName}: {option.SkillName} ({value.Value})",
+                                WrapperId = option.WrapperId,
+                                Trait = option.Trait.ToString(),
+                                Level = usedValues.Count(a => a.SkillId == option.SkillId && a.DictionaryValueId == value.Id) + 1,
+                                DictionaryValueId = value.Id
+                            });
+                    else
+                        foreach (var value in option.AllowedValues)
+                            convertedOptions.Add(new CharacterSkillGetDto
+                            {
+                                Id = option.SkillId,
+                                Name = $"{option.ProfessionName}: {option.SkillName} ({value.Value})",
+                                WrapperId = option.WrapperId,
+                                Trait = option.Trait.ToString(),
+                                Level = usedValues.Count(a => a.SkillId == option.SkillId && a.DictionaryValueId == value.DictionaryValueId) + 1,
+                                DictionaryValueId = value.DictionaryValueId
+                            });
+                }
             }
 
-            return Ok(values);
+            convertedOptions.RemoveAll(a => a.Level > 3);
+
+            return Ok(convertedOptions);
         }
-        */
 
         [HttpDelete(nameof(RemoveSkill))]
         public ActionResult<CharacterChangeResponseDto> RemoveSkill(int id)

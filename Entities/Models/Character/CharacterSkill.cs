@@ -15,10 +15,12 @@ namespace WarhammerProfessionApp.Entities.Models
 
         public int? DictionaryValueId { get; set; }
 
+        public bool IsAdditionalValue { get; set; }
+
         [ForeignKey(nameof(ProfessionSkillsId))]
         public ProfessionSkills ProfessionSkills { get; set; }
 
-        public int ProfessionSkillsId { get; set; }
+        public int? ProfessionSkillsId { get; set; }
 
         [ForeignKey(nameof(SkillId))]
         public Skill Skill { get; set; }

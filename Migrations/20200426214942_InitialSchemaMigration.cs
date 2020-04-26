@@ -49,7 +49,7 @@ namespace WarhammerProfessionApp.Migrations
                 name: "ProfessionAbility");
 
             migrationBuilder.DropTable(
-                name: "DictionaryValue");
+                name: "DictionaryValues");
 
             migrationBuilder.DropTable(
                 name: "ProfessionSkill");
@@ -98,7 +98,9 @@ namespace WarhammerProfessionApp.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Description = table.Column<string>(nullable: true),
                     HasImpactOnStatictics = table.Column<bool>(nullable: false),
+                    Type = table.Column<byte>(nullable: true),
                     ImpactValue = table.Column<int>(nullable: true),
+                    IsStartingValue = table.Column<bool>(nullable: false),
                     Name = table.Column<string>(maxLength: 50, nullable: false),
                     ValueToAlter = table.Column<byte>(nullable: true)
                 },
@@ -113,8 +115,9 @@ namespace WarhammerProfessionApp.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    CanBeDeleted = table.Column<bool>(nullable: false),
                     Name = table.Column<string>(nullable: true),
-                    CanBeDeleted = table.Column<bool>(nullable: false)
+                    Type = table.Column<byte>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -186,20 +189,21 @@ namespace WarhammerProfessionApp.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "DictionaryValue",
+                name: "DictionaryValues",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Value = table.Column<string>(nullable: true),
                     CanBeDeleted = table.Column<bool>(nullable: false),
-                    DefinitionId = table.Column<int>(nullable: false)
+                    DefinitionId = table.Column<int>(nullable: false),
+                    Type = table.Column<byte>(nullable: true),
+                    Value = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_DictionaryValue", x => x.Id);
+                    table.PrimaryKey("PK_DictionaryValues", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_DictionaryValue_Dictionaries_DefinitionId",
+                        name: "FK_DictionaryValues_Dictionaries_DefinitionId",
                         column: x => x.DefinitionId,
                         principalTable: "Dictionaries",
                         principalColumn: "Id",
@@ -213,10 +217,11 @@ namespace WarhammerProfessionApp.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Description = table.Column<string>(nullable: true),
+                    DictionaryId = table.Column<int>(nullable: true),
+                    Type = table.Column<byte>(nullable: true),
                     Name = table.Column<string>(maxLength: 50, nullable: false),
                     SkillLevel = table.Column<byte>(nullable: false),
-                    Trait = table.Column<byte>(nullable: false),
-                    DictionaryId = table.Column<int>(nullable: true)
+                    Trait = table.Column<byte>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -265,7 +270,7 @@ namespace WarhammerProfessionApp.Migrations
                     Money = table.Column<int>(nullable: false),
                     Name = table.Column<string>(nullable: true),
                     Notes = table.Column<string>(nullable: true),
-                    Race = table.Column<byte>(nullable: true),
+                    Race = table.Column<byte>(nullable: false),
                     UserId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -517,8 +522,9 @@ namespace WarhammerProfessionApp.Migrations
                 {
                     AbilityId = table.Column<int>(nullable: false),
                     CharacterId = table.Column<int>(nullable: false),
-                    ProfessionAbilitiesId = table.Column<int>(nullable: false),
-                    DictionaryValueId = table.Column<int>(nullable: true)
+                    DictionaryValueId = table.Column<int>(nullable: true),
+                    ProfessionAbilitiesId = table.Column<int>(nullable: true),
+                    IsAdditionalValue = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -536,9 +542,9 @@ namespace WarhammerProfessionApp.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_CharacterAbility_DictionaryValue_DictionaryValueId",
+                        name: "FK_CharacterAbility_DictionaryValues_DictionaryValueId",
                         column: x => x.DictionaryValueId,
-                        principalTable: "DictionaryValue",
+                        principalTable: "DictionaryValues",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
@@ -546,7 +552,7 @@ namespace WarhammerProfessionApp.Migrations
                         column: x => x.ProfessionAbilitiesId,
                         principalTable: "ProfessionAbilities",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -556,8 +562,8 @@ namespace WarhammerProfessionApp.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     AbilityId = table.Column<int>(nullable: false),
-                    ProfessionAbilitiesId = table.Column<int>(nullable: false),
                     AllowAllValues = table.Column<bool>(nullable: true),
+                    ProfessionAbilitiesId = table.Column<int>(nullable: false),
                     ProfessionAbilitiesId1 = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
@@ -614,8 +620,9 @@ namespace WarhammerProfessionApp.Migrations
                 {
                     CharacterId = table.Column<int>(nullable: false),
                     SkillId = table.Column<int>(nullable: false),
-                    ProfessionSkillsId = table.Column<int>(nullable: false),
-                    DictionaryValueId = table.Column<int>(nullable: true)
+                    DictionaryValueId = table.Column<int>(nullable: true),
+                    ProfessionSkillsId = table.Column<int>(nullable: true),
+                    IsAdditionalValue = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -627,9 +634,9 @@ namespace WarhammerProfessionApp.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_CharacterSkill_DictionaryValue_DictionaryValueId",
+                        name: "FK_CharacterSkill_DictionaryValues_DictionaryValueId",
                         column: x => x.DictionaryValueId,
-                        principalTable: "DictionaryValue",
+                        principalTable: "DictionaryValues",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
@@ -637,7 +644,7 @@ namespace WarhammerProfessionApp.Migrations
                         column: x => x.ProfessionSkillsId,
                         principalTable: "ProfessionSkills",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_CharacterSkill_Skills_SkillId",
                         column: x => x.SkillId,
@@ -652,9 +659,9 @@ namespace WarhammerProfessionApp.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    AllowAllValues = table.Column<bool>(nullable: true),
                     ProfessionSkillsId = table.Column<int>(nullable: false),
-                    SkillId = table.Column<int>(nullable: false),
-                    AllowAllValues = table.Column<bool>(nullable: true)
+                    SkillId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -684,9 +691,9 @@ namespace WarhammerProfessionApp.Migrations
                 {
                     table.PrimaryKey("PK_DictionaryValueProfessionAbility", x => new { x.DictionaryValueId, x.ProfessionAbilityId });
                     table.ForeignKey(
-                        name: "FK_DictionaryValueProfessionAbility_DictionaryValue_DictionaryValueId",
+                        name: "FK_DictionaryValueProfessionAbility_DictionaryValues_DictionaryValueId",
                         column: x => x.DictionaryValueId,
-                        principalTable: "DictionaryValue",
+                        principalTable: "DictionaryValues",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -708,9 +715,9 @@ namespace WarhammerProfessionApp.Migrations
                 {
                     table.PrimaryKey("PK_DictionaryValueProfessionSkill", x => new { x.DictionaryValueId, x.ProfessionSkillId });
                     table.ForeignKey(
-                        name: "FK_DictionaryValueProfessionSkill_DictionaryValue_DictionaryValueId",
+                        name: "FK_DictionaryValueProfessionSkill_DictionaryValues_DictionaryValueId",
                         column: x => x.DictionaryValueId,
-                        principalTable: "DictionaryValue",
+                        principalTable: "DictionaryValues",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -787,11 +794,6 @@ namespace WarhammerProfessionApp.Migrations
                 column: "StatisticId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_DictionaryValue_DefinitionId",
-                table: "DictionaryValue",
-                column: "DefinitionId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_DictionaryValueProfessionAbility_ProfessionAbilityId",
                 table: "DictionaryValueProfessionAbility",
                 column: "ProfessionAbilityId");
@@ -800,6 +802,11 @@ namespace WarhammerProfessionApp.Migrations
                 name: "IX_DictionaryValueProfessionSkill_ProfessionSkillId",
                 table: "DictionaryValueProfessionSkill",
                 column: "ProfessionSkillId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_DictionaryValues_DefinitionId",
+                table: "DictionaryValues",
+                column: "DefinitionId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ProfessionAbilities_ProfessionId",

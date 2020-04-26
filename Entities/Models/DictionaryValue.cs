@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using WarhammerProfessionApp.Entities.Models.Enums;
 
 namespace WarhammerProfessionApp.Entities.Models
 {
@@ -21,6 +22,8 @@ namespace WarhammerProfessionApp.Entities.Models
         public int Id { get; set; }
 
         public List<DictionaryValueProfessionSkill> Skills { get; set; }
+
+        public BuiltInDictionaryValues? Type { get; set; }
 
         public string Value { get; set; }
     }

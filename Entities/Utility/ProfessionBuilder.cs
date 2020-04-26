@@ -32,7 +32,7 @@ namespace WarhammerProfessionApp.Entities.Models.Utility
             return this;
         }
 
-        public ProfessionBuilder AddDictionarySkills(Skill skill, Skill dictionarySkill, params string[] values)
+        public ProfessionBuilder AddDictionarySkills(Skill skill, Skill dictionarySkill, params BuiltInDictionaryValues[] values)
         {
             var wrapper = new ProfessionSkills { Profession = profession };
 
@@ -47,7 +47,7 @@ namespace WarhammerProfessionApp.Entities.Models.Utility
                 ProfessionSkills = wrapper,
                 Skill = dictionarySkill,
                 AllowAllValues = !values.Any(),
-                AllowedValues = dictionarySkill.Dictionary.Values.Where(a => values.Contains(a.Value)).Select(a => new DictionaryValueProfessionSkill { DictionaryValue = a }).ToList()
+                AllowedValues = dictionarySkill.Dictionary.Values.Where(a => values.Any(b => b == a.Type)).Select(a => new DictionaryValueProfessionSkill { DictionaryValue = a }).ToList()
             });
 
             profession.Skills.Add(wrapper);
@@ -55,7 +55,7 @@ namespace WarhammerProfessionApp.Entities.Models.Utility
             return this;
         }
 
-        public ProfessionBuilder AddDictionarySkills(params Tuple<Skill, string[]>[] skills)
+        public ProfessionBuilder AddDictionarySkills(params Tuple<Skill, BuiltInDictionaryValues[]>[] skills)
         {
             var wrapper = new ProfessionSkills { Profession = profession };
 
@@ -65,7 +65,7 @@ namespace WarhammerProfessionApp.Entities.Models.Utility
                     ProfessionSkills = wrapper,
                     Skill = skill.Item1,
                     AllowAllValues = !skill.Item2.Any(),
-                    AllowedValues = skill.Item1.Dictionary.Values.Where(a => skill.Item2.Contains(a.Value)).Select(a => new DictionaryValueProfessionSkill { DictionaryValue = a }).ToList()
+                    AllowedValues = skill.Item1.Dictionary.Values.Where(a => skill.Item2.Any(b => b == a.Type)).Select(a => new DictionaryValueProfessionSkill { DictionaryValue = a }).ToList()
                 });
 
             profession.Skills.Add(wrapper);
@@ -73,7 +73,7 @@ namespace WarhammerProfessionApp.Entities.Models.Utility
             return this;
         }
 
-        public ProfessionBuilder AddDictionarySkills(Skill skill, params string[] values)
+        public ProfessionBuilder AddDictionarySkills(Skill skill, params BuiltInDictionaryValues[] values)
         {
             var wrapper = new ProfessionSkills { Profession = profession };
 
@@ -82,7 +82,7 @@ namespace WarhammerProfessionApp.Entities.Models.Utility
                 ProfessionSkills = wrapper,
                 Skill = skill,
                 AllowAllValues = !values.Any(),
-                AllowedValues = skill.Dictionary.Values.Where(a => values.Contains(a.Value)).Select(a => new DictionaryValueProfessionSkill { DictionaryValue = a }).ToList()
+                AllowedValues = skill.Dictionary.Values.Where(a => values.Any(b => b == a.Type)).Select(a => new DictionaryValueProfessionSkill { DictionaryValue = a }).ToList()
             });
 
             profession.Skills.Add(wrapper);

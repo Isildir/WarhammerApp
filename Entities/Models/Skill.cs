@@ -27,5 +27,7 @@ namespace WarhammerProfessionApp.Entities.Models
         public SkillLevel SkillLevel { get; set; }
 
         public StatisticType Trait { get; set; }
+
+        public BuiltInSkills? Type { get; set; }
     }
 }

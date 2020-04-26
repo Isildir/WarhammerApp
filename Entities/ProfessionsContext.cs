@@ -25,6 +25,8 @@ namespace WarhammerProfessionApp.Entities
 
         public DbSet<DictionaryDefinition> Dictionaries { get; set; }
 
+        public DbSet<DictionaryValue> DictionaryValues { get; set; }
+
         public DbSet<Image> Images { get; set; }
 
         public DbSet<Item> Items { get; set; }
@@ -39,7 +41,7 @@ namespace WarhammerProfessionApp.Entities
 
         public void SeedData()
         {
-            if (Professions.Any())
+            if (Database.EnsureCreated() && Professions.Any())
                 return;
 
             #region Dictionaries
@@ -47,125 +49,143 @@ namespace WarhammerProfessionApp.Entities
             var dictValNauka = new DictionaryDefinition
             {
                 Name = "Nauka",
+                Type = BuiltInDictionaries.Science,
                 Values = new List<DictionaryValue>
                     {
-                        new DictionaryValue { Value = "Astronomia" },
-                        new DictionaryValue { Value = "Historia" },
-                        new DictionaryValue { Value = "Teologia" },
-                        new DictionaryValue { Value = "Genealogia/heraldyka" },
-                        new DictionaryValue { Value = "Historia" },
-                        new DictionaryValue { Value = "Prawo" },
-                        new DictionaryValue { Value = "Nekromancja" },
-                        new DictionaryValue { Value = "Anatomia" },
-                        new DictionaryValue { Value = "Magia" },
-                        new DictionaryValue { Value = "Strategia/taktyka" },
-                        new DictionaryValue { Value = "Sztuka" },
-                        new DictionaryValue { Value = "Inżynieria" },
-                        new DictionaryValue { Value = "Mechanika" }
+                        new DictionaryValue { Value = "Astronomia" , Type = BuiltInDictionaryValues.ScienceAstronomy },
+                        new DictionaryValue { Value = "Historia" , Type = BuiltInDictionaryValues.ScienceHistory },
+                        new DictionaryValue { Value = "Teologia" , Type = BuiltInDictionaryValues.ScienceTeology },
+                        new DictionaryValue { Value = "Genealogia/heraldyka" , Type = BuiltInDictionaryValues.ScienceGenealogy },
+                        new DictionaryValue { Value = "Prawo" , Type = BuiltInDictionaryValues.ScienceLaw },
+                        new DictionaryValue { Value = "Nekromancja" , Type = BuiltInDictionaryValues.ScienceNecromancy },
+                        new DictionaryValue { Value = "Anatomia" , Type = BuiltInDictionaryValues.ScienceAnatomy },
+                        new DictionaryValue { Value = "Magia" , Type = BuiltInDictionaryValues.ScienceMagic },
+                        new DictionaryValue { Value = "Strategia/taktyka" , Type = BuiltInDictionaryValues.ScienceStrategy },
+                        new DictionaryValue { Value = "Sztuka" , Type = BuiltInDictionaryValues.ScienceArt },
+                        new DictionaryValue { Value = "Inżynieria" , Type = BuiltInDictionaryValues.ScienceEngineering },
+                        new DictionaryValue { Value = "Mechanika", Type = BuiltInDictionaryValues.ScienceMechanics }
                     }
             };
 
             var dictValJezyk = new DictionaryDefinition
             {
                 Name = "Język",
+                Type = BuiltInDictionaries.Language,
                 Values = new List<DictionaryValue>
                     {
-                        new DictionaryValue { Value = "Klasyczny" },
-                        new DictionaryValue { Value = "Staroświatowy" },
-                        new DictionaryValue { Value = "Norski" },
-                        new DictionaryValue { Value = "Bretoński" },
-                        new DictionaryValue { Value = "Kislevski" },
-                        new DictionaryValue { Value = "Tileański" },
-                        new DictionaryValue { Value = "Eltharian" },
-                        new DictionaryValue { Value = "Khazalid" }
+                        new DictionaryValue { Value = "Klasyczny", Type = BuiltInDictionaryValues.LanguageClassic },
+                        new DictionaryValue { Value = "Staroświatowy", Type = BuiltInDictionaryValues.LanguageOldWorld },
+                        new DictionaryValue { Value = "Norski", Type = BuiltInDictionaryValues.LanguageNorsca },
+                        new DictionaryValue { Value = "Bretoński", Type = BuiltInDictionaryValues.LanguageBrittany },
+                        new DictionaryValue { Value = "Kislevski", Type = BuiltInDictionaryValues.LanguageKislev },
+                        new DictionaryValue { Value = "Tileański", Type = BuiltInDictionaryValues.LanguageTileanian },
+                        new DictionaryValue { Value = "Eltharian", Type = BuiltInDictionaryValues.LanguageEltharian },
+                        new DictionaryValue { Value = "Khazalid", Type = BuiltInDictionaryValues.LanguageKhazalid },
+                        new DictionaryValue { Value = "Estalijski", Type = BuiltInDictionaryValues.LanguageEstalian }
                     }
             };
 
             var dictValSekretneZnaki = new DictionaryDefinition
             {
                 Name = "Sekretne znaki",
+                Type = BuiltInDictionaries.SecretMarks,
                 Values = new List<DictionaryValue>
                     {
-                        new DictionaryValue { Value = "Złodziei" },
-                        new DictionaryValue { Value = "Zwiadowców" },
-                        new DictionaryValue { Value = "Łowców" },
-                        new DictionaryValue { Value = "Rycerzy zakonnych" }
+                        new DictionaryValue { Value = "Złodziei", Type = BuiltInDictionaryValues.SecretMarksThiefs },
+                        new DictionaryValue { Value = "Zwiadowców", Type = BuiltInDictionaryValues.SecretMarksScouts },
+                        new DictionaryValue { Value = "Łowców", Type = BuiltInDictionaryValues.SecretMarksHunters },
+                        new DictionaryValue { Value = "Rycerzy zakonnych", Type = BuiltInDictionaryValues.SecretMarksHolyOrderSoldiers }
                     }
             };
 
             var dictValSekretnyJezyk = new DictionaryDefinition
             {
                 Name = "Sekretny język",
+                Type = BuiltInDictionaries.SecretLanguage,
                 Values = new List<DictionaryValue>
                     {
-                        new DictionaryValue { Value = "Łowców" },
-                        new DictionaryValue { Value = "Bitewny" },
-                        new DictionaryValue { Value = "Złodziei" },
-                        new DictionaryValue { Value = "Gildii" }
+                        new DictionaryValue { Value = "Łowców", Type = BuiltInDictionaryValues.SecretLanguageHunters },
+                        new DictionaryValue { Value = "Bitewny", Type = BuiltInDictionaryValues.SecretLanguageBattle },
+                        new DictionaryValue { Value = "Złodziei", Type = BuiltInDictionaryValues.SecretLanguageThiefs },
+                        new DictionaryValue { Value = "Gildii", Type = BuiltInDictionaryValues.SecretLanguageGuild }
                     }
             };
 
             var dictValKuglarstwo = new DictionaryDefinition
             {
                 Name = "Kuglarstwo",
+                Type = BuiltInDictionaries.Prestidigitation,
                 Values = new List<DictionaryValue>
                     {
-                        new DictionaryValue { Value = "Gawędziarstwo" },
-                        new DictionaryValue { Value = "Taniec" },
-                        new DictionaryValue { Value = "Śpiew" },
-                        new DictionaryValue { Value = "Aktorstwo" },
-                        new DictionaryValue { Value = "Muzykalność" }
+                        new DictionaryValue { Value = "Gawędziarstwo", Type = BuiltInDictionaryValues.PrestidigitationStoryTelling },
+                        new DictionaryValue { Value = "Taniec", Type = BuiltInDictionaryValues.PrestidigitationDancing },
+                        new DictionaryValue { Value = "Śpiew", Type = BuiltInDictionaryValues.PrestidigitationSinging },
+                        new DictionaryValue { Value = "Aktorstwo", Type = BuiltInDictionaryValues.PrestidigitationTheatricalArt },
+                        new DictionaryValue { Value = "Muzykalność", Type = BuiltInDictionaryValues.PrestidigitationMusicality }
                     }
             };
 
             var dictValRzemioslo = new DictionaryDefinition
             {
                 Name = "Rzemiosło",
+                Type = BuiltInDictionaries.Craft,
                 Values = new List<DictionaryValue>
                     {
-                        new DictionaryValue { Value = "Gotowanie" },
-                        new DictionaryValue { Value = "Wyrób łuków" },
-                        new DictionaryValue { Value = "Uprawa ziemii" },
-                        new DictionaryValue { Value = "Handel" },
-                        new DictionaryValue { Value = "Kartografia" },
-                        new DictionaryValue { Value = "Kowalstwo" },
-                        new DictionaryValue { Value = "Krawiectwo" },
-                        new DictionaryValue { Value = "Kaligrafia" },
-                        new DictionaryValue { Value = "Płatnerstwo" },
-                        new DictionaryValue { Value = "Rusznikarstwo" },
-                        new DictionaryValue { Value = "Zielarstwo" },
-                        new DictionaryValue { Value = "Aptekarstwo" },
-                        new DictionaryValue { Value = "Górnictwo" },
-                        new DictionaryValue { Value = "Górnictwo odkrywkowe" },
-                        new DictionaryValue { Value = "Szkutnictwo" },
-                        new DictionaryValue { Value = "Aptekarstwo" }
+                        new DictionaryValue { Value = "Gotowanie" , Type = BuiltInDictionaryValues.CraftCooking },
+                        new DictionaryValue { Value = "Wyrób łuków" , Type = BuiltInDictionaryValues.CraftBowMaking },
+                        new DictionaryValue { Value = "Uprawa ziemii" , Type = BuiltInDictionaryValues.CraftTillage },
+                        new DictionaryValue { Value = "Handel" , Type = BuiltInDictionaryValues.CraftTrading },
+                        new DictionaryValue { Value = "Kartografia" , Type = BuiltInDictionaryValues.CraftCartography },
+                        new DictionaryValue { Value = "Kowalstwo" , Type = BuiltInDictionaryValues.CraftBlacksmithing },
+                        new DictionaryValue { Value = "Krawiectwo" , Type = BuiltInDictionaryValues.CraftTailoring },
+                        new DictionaryValue { Value = "Kaligrafia" , Type = BuiltInDictionaryValues.CraftCalligraphy },
+                        new DictionaryValue { Value = "Płatnerstwo" , Type = BuiltInDictionaryValues.CraftArmouring },
+                        new DictionaryValue { Value = "Rusznikarstwo" , Type = BuiltInDictionaryValues.CraftGunsmithing },
+                        new DictionaryValue { Value = "Zielarstwo" , Type = BuiltInDictionaryValues.CraftHerbology },
+                        new DictionaryValue { Value = "Aptekarstwo" , Type = BuiltInDictionaryValues.CraftPharmacy },
+                        new DictionaryValue { Value = "Górnictwo" , Type = BuiltInDictionaryValues.CraftMining },
+                        new DictionaryValue { Value = "Górnictwo odkrywkowe" , Type = BuiltInDictionaryValues.CraftOpencastMining },
+                        new DictionaryValue { Value = "Szkutnictwo", Type = BuiltInDictionaryValues.CraftBoatbuilding },
+                        new DictionaryValue { Value = "Kamieniarstwo", Type = BuiltInDictionaryValues.CraftMasonry }
                     }
             };
 
             var dictValWiedza = new DictionaryDefinition
             {
                 Name = "Wiedza",
+                Type = BuiltInDictionaries.Knowledge,
                 Values = new List<DictionaryValue>
                     {
-                        new DictionaryValue { Value = "Imperium" },
-                        new DictionaryValue { Value = "Norska" },
-                        new DictionaryValue { Value = "Kislev" },
-                        new DictionaryValue { Value = "Bretonia" },
-                        new DictionaryValue { Value = "Tilea" },
-                        new DictionaryValue { Value = "Jałowa kraina" },
-                        new DictionaryValue { Value = "Estalia" },
-                        new DictionaryValue { Value = "Krasnoludy" }
+                        new DictionaryValue { Value = "Imperium" , Type = BuiltInDictionaryValues.KnowledgeEmpire },
+                        new DictionaryValue { Value = "Norska" , Type = BuiltInDictionaryValues.KnowledgeNorsca },
+                        new DictionaryValue { Value = "Kislev" , Type = BuiltInDictionaryValues.KnowledgeKislev },
+                        new DictionaryValue { Value = "Bretonia" , Type = BuiltInDictionaryValues.KnowledgeBrittany },
+                        new DictionaryValue { Value = "Tilea" , Type = BuiltInDictionaryValues.KnowledgeTilea },
+                        new DictionaryValue { Value = "Jałowa kraina" , Type = BuiltInDictionaryValues.KnowledgeBarrenLand },
+                        new DictionaryValue { Value = "Estalia" , Type = BuiltInDictionaryValues.KnowledgeEstalia },
+                        new DictionaryValue { Value = "Krasnoludy", Type = BuiltInDictionaryValues.KnowledgeDwarves }
                     }
             };
 
             var dictValJezykTajemny = new DictionaryDefinition
             {
                 Name = "Język tajemny",
+                Type = BuiltInDictionaries.MisticLanguage,
                 Values = new List<DictionaryValue>
                     {
-                        new DictionaryValue { Value = "Magiczny" },
-                        new DictionaryValue { Value = "Demoniczny" },
-                        new DictionaryValue { Value = "Elfi" }
+                        new DictionaryValue { Value = "Magiczny" , Type = BuiltInDictionaryValues.MisticLanguageMagic },
+                        new DictionaryValue { Value = "Demoniczny" , Type = BuiltInDictionaryValues.MisticLanguageDemonic },
+                        new DictionaryValue { Value = "Elfi", Type = BuiltInDictionaryValues.MisticLanguageElven }
+                    }
+            };
+
+            var dictValBronSpecjalna = new DictionaryDefinition
+            {
+                Name = "Broń specjalna",
+                Type = BuiltInDictionaries.SpecialWeapon,
+                Values = new List<DictionaryValue>
+                    {
+                        new DictionaryValue { Value = "Długi łuk", Type = BuiltInDictionaryValues.SpecialWeaponLongBow }
                     }
             };
 
@@ -178,7 +198,8 @@ namespace WarhammerProfessionApp.Entities
                 dictValKuglarstwo,
                 dictValRzemioslo,
                 dictValWiedza,
-                dictValJezykTajemny
+                dictValJezykTajemny,
+                dictValBronSpecjalna
             };
 
             #endregion Dictionaries
@@ -1879,327 +1900,483 @@ namespace WarhammerProfessionApp.Entities
             #region abilities
 
             //Abilities
-            var artylerzysta = new Ability { Name = "Artylerzysta" };
-            var bardzoSilny = new Ability { Name = "Bardzo silny", HasImpactOnStatictics = true, ImpactValue = 5, ValueToAlter = StatisticType.Stamina };
-            var bardzoSzybki = new Ability { Name = "Bardzo szybki", HasImpactOnStatictics = true, ImpactValue = 1, ValueToAlter = StatisticType.Speed };
-            var bijatyka = new Ability { Name = "Bijatyka" };
-            var blyskawicznePrzeladowanie = new Ability { Name = "Błyskawiczne przeładowanie" };
-            var blyskawicznyBlok = new Ability { Name = "Błyskawiczny blok" };
-            var blyskotliwosc = new Ability { Name = "Błyskotliwość", HasImpactOnStatictics = true, ImpactValue = 5, ValueToAlter = StatisticType.Inteligence };
-            var brawura = new Ability { Name = "Brawura" };
-            var bronNaturalna = new Ability { Name = "Broń naturalna" };
-            var bronSpecjalna = new Ability { Name = "Broń specjalna (różne)", };
-            var bystryWzrok = new Ability { Name = "Bystry wzrok" };
+            var artylerzysta = new Ability
+            {
+                Name = "Artylerzysta",
+                Type = BuiltInAbilities.Gunner
+            };
+            var bardzoSilny = new Ability
+            {
+                Name = "Bardzo silny",
+                HasImpactOnStatictics = true,
+                ImpactValue = 5,
+                ValueToAlter = StatisticType.Stamina,
+                IsStartingValue = true,
+                Type = BuiltInAbilities.Strong
+            };
+            var bardzoSzybki = new Ability
+            {
+                Name = "Bardzo szybki",
+                HasImpactOnStatictics = true,
+                ImpactValue = 1,
+                ValueToAlter = StatisticType.Speed,
+                IsStartingValue = true,
+                Type = BuiltInAbilities.Fast
+            };
+            var bijatyka = new Ability
+            {
+                Name = "Bijatyka",
+                Type = BuiltInAbilities.Fight
+            };
+            var blyskawicznePrzeladowanie = new Ability
+            {
+                Name = "Błyskawiczne przeładowanie",
+                Type = BuiltInAbilities.InstantReload
+            };
+            var blyskawicznyBlok = new Ability
+            {
+                Name = "Błyskawiczny blok",
+                Type = BuiltInAbilities.InstantBlock
+            };
+            var blyskotliwosc = new Ability
+            {
+                Name = "Błyskotliwość",
+                HasImpactOnStatictics = true,
+                ImpactValue = 5,
+                ValueToAlter = StatisticType.Inteligence,
+                IsStartingValue = true,
+                Type = BuiltInAbilities.Brilliance
+            };
+            var brawura = new Ability
+            {
+                Name = "Brawura",
+                Type = BuiltInAbilities.Recklessness
+            };
+            var bronNaturalna = new Ability
+            {
+                Name = "Broń naturalna",
+                Type = BuiltInAbilities.NaturalWeapon
+            };
+            var bronSpecjalna = new Ability
+            {
+                Name = "Broń specjalna",
+                Type = BuiltInAbilities.SpecialWeapon
+            };
+            var bystryWzrok = new Ability
+            {
+                Name = "Bystry wzrok",
+                IsStartingValue = true,
+                Type = BuiltInAbilities.SharpEyesight
+            };
             var charyzmatyczny = new Ability
             {
                 Name = "Charyzmatyczny",
                 HasImpactOnStatictics = true,
                 ImpactValue = 5,
-                ValueToAlter = StatisticType.Polish
+                ValueToAlter = StatisticType.Polish,
+                IsStartingValue = true,
+                Type = BuiltInAbilities.Charismatic
             };
             var chirurgia = new Ability
             {
-                Name = "Chirurgia"
+                Name = "Chirurgia",
+                Type = BuiltInAbilities.Surgery
             };
             var chodu = new Ability
             {
-                Name = "Chodu!"
+                Name = "Chodu!",
+                Type = BuiltInAbilities.Gait
             };
             var czarnoksiestwo = new Ability
             {
-                Name = "Czarnoksięstwo"
+                Name = "Czarnoksięstwo",
+                Type = BuiltInAbilities.Sorcery
             };
             var czlowiekGuma = new Ability
             {
-                Name = "Człowiek-guma"
+                Name = "Człowiek-guma",
+                Type = BuiltInAbilities.Rubberman
             };
             var czulySluch = new Ability
             {
-                Name = "Czuły słuch"
+                Name = "Czuły słuch",
+                IsStartingValue = true,
+                Type = BuiltInAbilities.SensitiveHearing
             };
             var dotykMocy = new Ability
             {
-                Name = "Dotyk mocy"
+                Name = "Dotyk mocy",
+                Type = BuiltInAbilities.TouchOfPower
             };
-            var bardzoWytrzymaly = new Ability { Name = "Bardzo wytrzymały" };
-            var odpornosc = new Ability { Name = "Odporność" };
+            var bardzoWytrzymaly = new Ability
+            {
+                Name = "Bardzo wytrzymały",
+                Type = BuiltInAbilities.Durable
+            };
+            var odpornosc = new Ability
+            {
+                Name = "Odporność",
+                Type = BuiltInAbilities.Resistance
+            };
             var etykieta = new Ability
             {
-                Name = "Etykieta"
+                Name = "Etykieta",
+                Type = BuiltInAbilities.Etiquette
             };
             var geniuszArytmetyczny = new Ability
             {
-                Name = "Geniusz arytmetyczny"
+                Name = "Geniusz arytmetyczny",
+                IsStartingValue = true,
+                Type = BuiltInAbilities.ArithmeticGenius
             };
             var grotolaz = new Ability
             {
-                Name = "Grotołaz"
+                Name = "Grotołaz",
+                Type = BuiltInAbilities.Speleologist
             };
             var grozny = new Ability
             {
-                Name = "Groźny"
+                Name = "Groźny",
+                Type = BuiltInAbilities.Dangerous
             };
             var gusla = new Ability
             {
-                Name = "Gusła"
+                Name = "Gusła",
+                Type = BuiltInAbilities.Witchcraft
             };
             var intrygant = new Ability
             {
-                Name = "Intrygant"
+                Name = "Intrygant",
+                Type = BuiltInAbilities.Schemer
             };
             var krasnoludzkiFach = new Ability
             {
-                Name = "Krasnoludzki fach"
+                Name = "Krasnoludzki fach",
+                Type = BuiltInAbilities.DwarvenExpert
             };
             var krasomostwo = new Ability
             {
-                Name = "Krasomóstwo"
+                Name = "Krasomówstwo",
+                Type = BuiltInAbilities.Oratory
             };
             var krzepki = new Ability
             {
-                Name = "Krzepki"
+                Name = "Krzepki",
+                IsStartingValue = true,
+                Type = BuiltInAbilities.Robust
             };
             var latanie = new Ability
             {
-                Name = "Latanie"
+                Name = "Latanie",
+                Type = BuiltInAbilities.Flying
             };
             var lewitacja = new Ability
             {
-                Name = "Lewitacja"
+                Name = "Lewitacja",
+                Type = BuiltInAbilities.Levitation
             };
             var lotrzyk = new Ability
             {
-                Name = "Łotrzyk"
+                Name = "Łotrzyk",
+                Type = BuiltInAbilities.Rogue
             };
             var magiaCzarnoksieska = new Ability
             {
-                Name = "Magia czarnoksięska"
+                Name = "Magia czarnoksięska",
+                Type = BuiltInAbilities.SorcerersMagic
             };
             var magiaKaplanska = new Ability
             {
-                Name = "Magia kapłańska"
+                Name = "Magia kapłańska",
+                Type = BuiltInAbilities.PriesthoodMagic
             };
             var magiaPowszechna = new Ability
             {
-                Name = "Magia powszechna"
+                Name = "Magia powszechna",
+                Type = BuiltInAbilities.UniversalMagic
             };
             var magiaProsta = new Ability
             {
-                Name = "Magia prosta"
+                Name = "Magia prosta",
+                Type = BuiltInAbilities.SimpleMagic
             };
             var magiaTajemna = new Ability
             {
-                Name = "Magia tajemna"
+                Name = "Magia tajemna",
+                Type = BuiltInAbilities.ArcaneMagic
             };
             var medytacja = new Ability
             {
-                Name = "Medytacja"
+                Name = "Medytacja",
+                Type = BuiltInAbilities.Meditation
             };
             var morderczyAtak = new Ability
             {
-                Name = "Morderczy atak"
+                Name = "Morderczy atak",
+                Type = BuiltInAbilities.MurderousAttack
             };
             var morderczyPocisk = new Ability
             {
-                Name = "Morderczy pocisk"
+                Name = "Morderczy pocisk",
+                Type = BuiltInAbilities.DeadlyBullet
             };
             var nasladowca = new Ability
             {
-                Name = "Naśladowca"
+                Name = "Naśladowca",
+                IsStartingValue = true,
+                Type = BuiltInAbilities.Imitator
             };
             var niepokojacy = new Ability
             {
-                Name = "Niepokojący"
+                Name = "Niepokojący",
+                Type = BuiltInAbilities.Worriesome
             };
             var nieustraszony = new Ability
             {
-                Name = "Nieustraszony"
+                Name = "Nieustraszony",
+                Type = BuiltInAbilities.Fearless
             };
             var niezwykleOdporny = new Ability
             {
                 Name = "Niezwykle odporny",
                 HasImpactOnStatictics = true,
                 ImpactValue = 5,
-                ValueToAlter = StatisticType.Resistance
+                ValueToAlter = StatisticType.Resistance,
+                IsStartingValue = true,
+                Type = BuiltInAbilities.ExtremelyResistant
             };
             var obiezyswiat = new Ability
             {
-                Name = "Obieżyświat"
+                Name = "Obieżyświat",
+                Type = BuiltInAbilities.Globetrotter
             };
             var oburecznosc = new Ability
             {
-                Name = "Oburęczność"
+                Name = "Oburęczność",
+                IsStartingValue = true,
+                Type = BuiltInAbilities.Ambidexterity
             };
             var odpornoscNaChaos = new Ability
             {
-                Name = "odpornosc na Chaos"
+                Name = "Odpornosc na Chaos",
+                Type = BuiltInAbilities.ChaosResistance
             };
             var odpornoscNaChoroby = new Ability
             {
-                Name = "odpornosc na choroby"
+                Name = "Odpornosc na choroby",
+                IsStartingValue = true,
+                Type = BuiltInAbilities.DiseaseResistance
             };
             var odpornoscNaMagie = new Ability
             {
-                Name = "odpornosc na magię"
+                Name = "Odpornosc na magię",
+                IsStartingValue = true,
+                Type = BuiltInAbilities.MagicResistance
             };
             var odpornoscNaTrucizny = new Ability
             {
-                Name = "odpornosc na trucizny"
+                Name = "Odpornosc na trucizny",
+                IsStartingValue = true,
+                Type = BuiltInAbilities.PoisionResistance
             };
             var odpornoscPsychiczna = new Ability
             {
-                Name = "odpornosc psychiczna"
+                Name = "Odpornosc psychiczna",
+                IsStartingValue = true,
+                Type = BuiltInAbilities.MentalResistance
             };
             var odwaga = new Ability
             {
-                Name = "Odwaga"
+                Name = "Odwaga",
+                Type = BuiltInAbilities.Courage
             };
             var ogluszanie = new Ability
             {
-                Name = "Ogłuszanie"
+                Name = "Ogłuszanie",
+                Type = BuiltInAbilities.Stunning
             };
             var opanowanie = new Ability
             {
                 Name = "Opanowanie",
                 HasImpactOnStatictics = true,
                 ImpactValue = 5,
-                ValueToAlter = StatisticType.Willpower
+                ValueToAlter = StatisticType.Willpower,
+                IsStartingValue = true,
+                Type = BuiltInAbilities.SelfControl
             };
             var ozywieniec = new Ability
             {
-                Name = "Ożywieniec"
+                Name = "Ożywieniec",
+                Type = BuiltInAbilities.Undead
             };
             var pancerzWiary = new Ability
             {
-                Name = "Pancerz wiary"
+                Name = "Pancerz wiary",
+                Type = BuiltInAbilities.ArmorOfFaith
             };
             var poliglota = new Ability
             {
-                Name = "Poliglota"
+                Name = "Poliglota",
+                Type = BuiltInAbilities.Polyglot
             };
             var przemawianie = new Ability
             {
-                Name = "Przemawianie"
+                Name = "Przemawianie",
+                Type = BuiltInAbilities.Speaking
             };
             var przerazajacy = new Ability
             {
-                Name = "Przerażajacy"
+                Name = "Przerażajacy",
+                Type = BuiltInAbilities.Frightening
             };
             var rozbrojenie = new Ability
             {
-                Name = "rozbrojenie"
+                Name = "rozbrojenie",
+                Type = BuiltInAbilities.Disarmament
             };
             var silnyCios = new Ability
             {
-                Name = "Silny cios"
+                Name = "Silny cios",
+                Type = BuiltInAbilities.StrongBlow
             };
             var straszny = new Ability
             {
-                Name = "Straszny"
+                Name = "Straszny",
+                Type = BuiltInAbilities.Horrible
             };
             var strzalMierzony = new Ability
             {
-                Name = "Strzał mierzony"
+                Name = "Strzał mierzony",
+                Type = BuiltInAbilities.MeasuredShot
             };
             var strzalPrecyzyjny = new Ability
             {
-                Name = "Strzał precyzyjny"
+                Name = "Strzał precyzyjny",
+                Type = BuiltInAbilities.PrecisionShot
             };
             var strzalPrzebijajacy = new Ability
             {
-                Name = "Strzał przebijający"
+                Name = "Strzał przebijający",
+                Type = BuiltInAbilities.PiercingShot
             };
             var strzelecWyborowy = new Ability
             {
                 Name = "Strzelec wyborowy",
                 HasImpactOnStatictics = true,
                 ImpactValue = 5,
-                ValueToAlter = StatisticType.Shooting
+                ValueToAlter = StatisticType.Shooting,
+                IsStartingValue = true,
+                Type = BuiltInAbilities.Sharpshooter
             };
             var szalBojowy = new Ability
             {
-                Name = "Szał bojowy"
+                Name = "Szał bojowy",
+                Type = BuiltInAbilities.BattleFrenzy
             };
             var szczescie = new Ability
             {
-                Name = "Szczęście"
+                Name = "Szczęście",
+                IsStartingValue = true,
+                Type = BuiltInAbilities.Luck
             };
             var szostyZmysl = new Ability
             {
-                Name = "Szósty zmysł"
+                Name = "Szósty zmysł",
+                IsStartingValue = true,
+                Type = BuiltInAbilities.SixthSense
             };
             var szybkiRefleks = new Ability
             {
                 Name = "Szybki refleks",
                 HasImpactOnStatictics = true,
                 ImpactValue = 5,
-                ValueToAlter = StatisticType.Agility
+                ValueToAlter = StatisticType.Agility,
+                IsStartingValue = true,
+                Type = BuiltInAbilities.QuickReflexes
             };
             var szybkieWyciagniecie = new Ability
             {
-                Name = "Szybkie wyciągnięcie"
+                Name = "Szybkie wyciągnięcie",
+                Type = BuiltInAbilities.QucikPullout
             };
             var talentArtystyczny = new Ability
             {
-                Name = "Talent artystyczny"
+                Name = "Talent artystyczny",
+                Type = BuiltInAbilities.ArtisticTalent
             };
             var twardziel = new Ability
             {
                 Name = "Twardziel",
                 HasImpactOnStatictics = true,
                 ImpactValue = 1,
-                ValueToAlter = StatisticType.Hitpoints
+                ValueToAlter = StatisticType.Hitpoints,
+                IsStartingValue = true,
+                Type = BuiltInAbilities.Tough
             };
             var ulicznik = new Ability
             {
-                Name = "Ulicznik"
+                Name = "Ulicznik",
+                Type = BuiltInAbilities.Nipper
             };
             var urodzonyWojownik = new Ability
             {
                 Name = "Urodzony wojownik",
                 HasImpactOnStatictics = true,
                 ImpactValue = 5,
-                ValueToAlter = StatisticType.CloseCombat
+                ValueToAlter = StatisticType.CloseCombat,
+                IsStartingValue = true,
+                Type = BuiltInAbilities.BornWarrior
             };
             var wedrowiec = new Ability
             {
-                Name = "Wędrowiec"
+                Name = "Wędrowiec",
+                Type = BuiltInAbilities.Wanderer
             };
             var widzenieWCiemnosci = new Ability
             {
-                Name = "Widzenie w ciemności"
+                Name = "Widzenie w ciemności",
+                IsStartingValue = true,
+                Type = BuiltInAbilities.SeeingInTheDark
             };
             var woltyzerka = new Ability
             {
-                Name = "Woltyżerka"
+                Name = "Woltyżerka",
+                Type = BuiltInAbilities.EquestrianVaulting
             };
             var wyczucieKierunku = new Ability
             {
-                Name = "Wyczucie kierunku"
+                Name = "Wyczucie kierunku",
+                Type = BuiltInAbilities.SenseOfDirection
             };
             var wykrywaniePulapek = new Ability
             {
-                Name = "Wykrywanie pułapek"
+                Name = "Wykrywanie pułapek",
+                Type = BuiltInAbilities.TrapDetection
             };
             var wyostrzoneZmysly = new Ability
             {
-                Name = "Wyostrzone zmysły"
+                Name = "Wyostrzone zmysły",
+                Type = BuiltInAbilities.SharpSenses
             };
             var zapasy = new Ability
             {
-                Name = "Zapasy"
+                Name = "Zapasy",
+                Type = BuiltInAbilities.Wrestling
             };
             var zapieklaNienawisc = new Ability
             {
-                Name = "Zapiekła nienawiść"
+                Name = "Zapiekła nienawiść",
+                Type = BuiltInAbilities.Hatred
             };
             var zmyslMagii = new Ability
             {
-                Name = "Zmysł magii"
+                Name = "Zmysł magii",
+                Type = BuiltInAbilities.SenseOfMagic
             };
             var zylkaHandlowa = new Ability
             {
-                Name = "Żyłka handlowa"
+                Name = "Żyłka handlowa",
+                Type = BuiltInAbilities.CommercialFishingLine
             };
 
             #endregion abilities
@@ -2211,297 +2388,345 @@ namespace WarhammerProfessionApp.Entities
             {
                 Name = "Charakteryzacja",
                 SkillLevel = SkillLevel.Basic,
-                Trait = StatisticType.Polish
+                Trait = StatisticType.Polish,
+                Type = BuiltInSkills.Makeup
             };
             var dowodzenie = new Skill
             {
                 Name = "Dowodzenie",
                 SkillLevel = SkillLevel.Basic,
-                Trait = StatisticType.Polish
+                Trait = StatisticType.Polish,
+                Type = BuiltInSkills.Commanding
             };
             var hazard = new Skill
             {
                 Name = "Hazard",
                 SkillLevel = SkillLevel.Basic,
-                Trait = StatisticType.Inteligence
+                Trait = StatisticType.Inteligence,
+                Type = BuiltInSkills.Gambling
             };
             var jezdziectwo = new Skill
             {
                 Name = "Jeździectwo",
                 SkillLevel = SkillLevel.Basic,
-                Trait = StatisticType.Agility
+                Trait = StatisticType.Agility,
+                Type = BuiltInSkills.Horsemanship
             };
             var mocnaGlowa = new Skill
             {
                 Name = "Mocna głowa",
                 SkillLevel = SkillLevel.Basic,
-                Trait = StatisticType.Resistance
+                Trait = StatisticType.Resistance,
+                Type = BuiltInSkills.StrongHead
             };
             var opieka = new Skill
             {
                 Name = "Opieka nad zwierzętami",
                 SkillLevel = SkillLevel.Basic,
-                Trait = StatisticType.Inteligence
+                Trait = StatisticType.Inteligence,
+                Type = BuiltInSkills.AnimalCare
             };
             var plotkowanie = new Skill
             {
                 Name = "Plotkowanie",
                 SkillLevel = SkillLevel.Basic,
-                Trait = StatisticType.Polish
+                Trait = StatisticType.Polish,
+                Type = BuiltInSkills.Gossip
             };
             var plywanie = new Skill
             {
                 Name = "Pływanie",
                 SkillLevel = SkillLevel.Basic,
-                Trait = StatisticType.Stamina
+                Trait = StatisticType.Stamina,
+                Type = BuiltInSkills.Swimming
             };
             var powozenie = new Skill
             {
                 Name = "Powożenie",
                 SkillLevel = SkillLevel.Basic,
-                Trait = StatisticType.Stamina
+                Trait = StatisticType.Stamina,
+                Type = BuiltInSkills.Carriage
             };
             var przekonywanie = new Skill
             {
                 Name = "Przekonywanie",
                 SkillLevel = SkillLevel.Basic,
-                Trait = StatisticType.Polish
+                Trait = StatisticType.Polish,
+                Type = BuiltInSkills.Convincing
             };
             var przeszukiwanie = new Skill
             {
                 Name = "Przeszukiwanie",
                 SkillLevel = SkillLevel.Basic,
-                Trait = StatisticType.Inteligence
+                Trait = StatisticType.Inteligence,
+                Type = BuiltInSkills.Searching
             };
             var skradanie = new Skill
             {
                 Name = "Skradanie się",
                 SkillLevel = SkillLevel.Basic,
-                Trait = StatisticType.Agility
+                Trait = StatisticType.Agility,
+                Type = BuiltInSkills.Sneaking
             };
             var spostrzegawczosc = new Skill
             {
                 Name = "Spostrzegawczość",
                 SkillLevel = SkillLevel.Basic,
-                Trait = StatisticType.Inteligence
+                Trait = StatisticType.Inteligence,
+                Type = BuiltInSkills.Observation
             };
             var sztukaPrzetrwania = new Skill
             {
                 Name = "Sztuka przetrwania",
                 SkillLevel = SkillLevel.Basic,
-                Trait = StatisticType.Inteligence
+                Trait = StatisticType.Inteligence,
+                Type = BuiltInSkills.TheArtOfSurvival
             };
             var targowanie = new Skill
             {
                 Name = "Targowanie",
                 SkillLevel = SkillLevel.Basic,
-                Trait = StatisticType.Polish
+                Trait = StatisticType.Polish,
+                Type = BuiltInSkills.Bargaining
             };
             var ukrywanieSie = new Skill
             {
                 Name = "Ukrywanie się",
                 SkillLevel = SkillLevel.Basic,
-                Trait = StatisticType.Agility
+                Trait = StatisticType.Agility,
+                Type = BuiltInSkills.Hiding
             };
             var wioslarstwo = new Skill
             {
                 Name = "Wioślarstwo",
                 SkillLevel = SkillLevel.Basic,
-                Trait = StatisticType.Stamina
+                Trait = StatisticType.Stamina,
+                Type = BuiltInSkills.Rowing
             };
             var wspinaczka = new Skill
             {
                 Name = "Wspinaczka",
                 SkillLevel = SkillLevel.Basic,
-                Trait = StatisticType.Stamina
+                Trait = StatisticType.Stamina,
+                Type = BuiltInSkills.Climbing
             };
             var wycena = new Skill
             {
                 Name = "Wycena",
                 SkillLevel = SkillLevel.Basic,
-                Trait = StatisticType.Inteligence
+                Trait = StatisticType.Inteligence,
+                Type = BuiltInSkills.Valuation
             };
             var zastraszanie = new Skill
             {
                 Name = "Zastraszanie",
                 SkillLevel = SkillLevel.Basic,
-                Trait = StatisticType.Stamina
+                Trait = StatisticType.Stamina,
+                Type = BuiltInSkills.Intimidation
             };
             var brzuchomostwo = new Skill
             {
                 Name = "Brzuchomówstwo",
                 SkillLevel = SkillLevel.Advanced,
-                Trait = StatisticType.Polish
+                Trait = StatisticType.Polish,
+                Type = BuiltInSkills.Ventriloquism
             };
             var czytaniePisanie = new Skill
             {
                 Name = "Czytanie i pisanie",
                 SkillLevel = SkillLevel.Advanced,
-                Trait = StatisticType.Inteligence
+                Trait = StatisticType.Inteligence,
+                Type = BuiltInSkills.ReadingAndWriting
             };
             var czytanieZWarg = new Skill
             {
                 Name = "Czytanie z warg",
                 SkillLevel = SkillLevel.Advanced,
-                Trait = StatisticType.Inteligence
+                Trait = StatisticType.Inteligence,
+                Type = BuiltInSkills.LipReading
             };
             var gadanina = new Skill
             {
                 Name = "Gadanina",
                 SkillLevel = SkillLevel.Advanced,
-                Trait = StatisticType.Polish
+                Trait = StatisticType.Polish,
+                Type = BuiltInSkills.Talk
             };
             var hipnoza = new Skill
             {
                 Name = "Hipnoza",
                 SkillLevel = SkillLevel.Advanced,
-                Trait = StatisticType.Willpower
+                Trait = StatisticType.Willpower,
+                Type = BuiltInSkills.Hypnosis
             };
             var leczenie = new Skill
             {
                 Name = "Leczenie",
                 SkillLevel = SkillLevel.Advanced,
-                Trait = StatisticType.Inteligence
+                Trait = StatisticType.Inteligence,
+                Type = BuiltInSkills.Treatment
             };
             var nawigacja = new Skill
             {
                 Name = "Nawigacja",
                 SkillLevel = SkillLevel.Advanced,
-                Trait = StatisticType.Inteligence
+                Trait = StatisticType.Inteligence,
+                Type = BuiltInSkills.Navigation
             };
             var oswajanie = new Skill
             {
                 Name = "Oswajanie",
                 SkillLevel = SkillLevel.Advanced,
-                Trait = StatisticType.Polish
+                Trait = StatisticType.Polish,
+                Type = BuiltInSkills.Taming
             };
             var otwieranieZamkow = new Skill
             {
                 Name = "Otwieranie zamków",
                 SkillLevel = SkillLevel.Advanced,
-                Trait = StatisticType.Agility
+                Trait = StatisticType.Agility,
+                Type = BuiltInSkills.OpeningLocks
             };
             var splatanieMagii = new Skill
             {
                 Name = "Splatanie magii",
                 SkillLevel = SkillLevel.Advanced,
-                Trait = StatisticType.Stamina
+                Trait = StatisticType.Stamina,
+                Type = BuiltInSkills.MagicEntwining
             };
             var sledzenie = new Skill
             {
                 Name = "Śledzenie",
                 SkillLevel = SkillLevel.Advanced,
-                Trait = StatisticType.Agility
+                Trait = StatisticType.Agility,
+                Type = BuiltInSkills.Tracking
             };
             var torturowanie = new Skill
             {
                 Name = "Torturowanie",
                 SkillLevel = SkillLevel.Advanced,
-                Trait = StatisticType.Polish
+                Trait = StatisticType.Polish,
+                Type = BuiltInSkills.Torture
             };
             var tresura = new Skill
             {
                 Name = "Tresura",
                 SkillLevel = SkillLevel.Advanced,
-                Trait = StatisticType.Polish
+                Trait = StatisticType.Polish,
+                Type = BuiltInSkills.Training
             };
             var tropienie = new Skill
             {
                 Name = "Tropienie",
                 SkillLevel = SkillLevel.Advanced,
-                Trait = StatisticType.Inteligence
+                Trait = StatisticType.Inteligence,
+                Type = BuiltInSkills.TracesTracking
             };
             var unik = new Skill
             {
                 Name = "Unik",
                 SkillLevel = SkillLevel.Advanced,
-                Trait = StatisticType.Agility
+                Trait = StatisticType.Agility,
+                Type = BuiltInSkills.Dodge
             };
             var warzenieTrucizn = new Skill
             {
                 Name = "Warzenie trucizn",
                 SkillLevel = SkillLevel.Advanced,
-                Trait = StatisticType.Inteligence
+                Trait = StatisticType.Inteligence,
+                Type = BuiltInSkills.PoisionBrewing
             };
             var wykrywanieMagii = new Skill
             {
                 Name = "Wykrywanie magii",
                 SkillLevel = SkillLevel.Advanced,
-                Trait = StatisticType.Willpower
+                Trait = StatisticType.Willpower,
+                Type = BuiltInSkills.MagicDetection
             };
             var zastawianiePulapek = new Skill
             {
                 Name = "Zastawianie pułapek",
                 SkillLevel = SkillLevel.Advanced,
-                Trait = StatisticType.Agility
+                Trait = StatisticType.Agility,
+                Type = BuiltInSkills.SettingTraps
             };
             var zwinnePalce = new Skill
             {
                 Name = "Zwinne palce",
                 SkillLevel = SkillLevel.Advanced,
-                Trait = StatisticType.Agility
+                Trait = StatisticType.Agility,
+                Type = BuiltInSkills.NimbleFingers
             };
             var zelgarstwo = new Skill
             {
                 Name = "Żeglarstwo",
                 SkillLevel = SkillLevel.Advanced,
-                Trait = StatisticType.Agility
+                Trait = StatisticType.Agility,
+                Type = BuiltInSkills.Sailing
             };
             var jezyk = new Skill
             {
                 Name = "Znajomość języka",
                 SkillLevel = SkillLevel.Advanced,
                 Trait = StatisticType.Inteligence,
-                Dictionary = dictValJezyk
+                Dictionary = dictValJezyk,
+                Type = BuiltInSkills.Language
             };
             var wiedza = new Skill
             {
                 Name = "Wiedza",
                 SkillLevel = SkillLevel.Advanced,
                 Trait = StatisticType.Inteligence,
-                Dictionary = dictValWiedza
+                Dictionary = dictValWiedza,
+                Type = BuiltInSkills.Knowledge
             };
             var jezykTajemny = new Skill
             {
                 Name = "Język tajemny",
                 SkillLevel = SkillLevel.Advanced,
                 Trait = StatisticType.Inteligence,
-                Dictionary = dictValJezykTajemny
+                Dictionary = dictValJezykTajemny,
+                Type = BuiltInSkills.MisticLanguage
             };
             var kuglarstwo = new Skill
             {
                 Name = "Kuglarstwo",
                 SkillLevel = SkillLevel.Advanced,
                 Trait = StatisticType.Polish,
-                Dictionary = dictValKuglarstwo
+                Dictionary = dictValKuglarstwo,
+                Type = BuiltInSkills.Prestidigitation
             };
             var nauka = new Skill
             {
                 Name = "Nauka",
                 SkillLevel = SkillLevel.Advanced,
                 Trait = StatisticType.Inteligence,
-                Dictionary = dictValNauka
+                Dictionary = dictValNauka,
+                Type = BuiltInSkills.Science
             };
             var rzemioslo = new Skill
             {
                 Name = "Rzemiosło",
                 SkillLevel = SkillLevel.Advanced,
                 Trait = StatisticType.Inteligence,
-                Dictionary = dictValRzemioslo
+                Dictionary = dictValRzemioslo,
+                Type = BuiltInSkills.Craft
             };
             var sekretneZnaki = new Skill
             {
                 Name = "Sekretne znaki",
                 SkillLevel = SkillLevel.Advanced,
                 Trait = StatisticType.Inteligence,
-                Dictionary = dictValSekretneZnaki
+                Dictionary = dictValSekretneZnaki,
+                Type = BuiltInSkills.SecretMarks
             };
             var sekretnyJezyk = new Skill
             {
                 Name = "Sekretny język",
                 SkillLevel = SkillLevel.Advanced,
                 Trait = StatisticType.Inteligence,
-                Dictionary = dictValSekretnyJezyk
+                Dictionary = dictValSekretnyJezyk,
+                Type = BuiltInSkills.SecretLanguage
             };
 
             #endregion skills
@@ -3098,14 +3323,14 @@ namespace WarhammerProfessionApp.Entities
 
             akolita.AddSkills(czytaniePisanie);
             akolita.AddSkills(leczenie);
-            akolita.AddDictionarySkills(nauka, "Astronomia", "Historia");
-            akolita.AddDictionarySkills(nauka, "Teologia");
+            akolita.AddDictionarySkills(nauka, BuiltInDictionaryValues.ScienceAstronomy, BuiltInDictionaryValues.ScienceHistory);
+            akolita.AddDictionarySkills(nauka, BuiltInDictionaryValues.ScienceTeology);
             akolita.AddSkills(przekonywanie);
             akolita.AddSkills(spostrzegawczosc);
-            akolita.AddDictionarySkills(jezyk, "Klasyczny");
-            akolita.AddDictionarySkills(jezyk, "Staroświatowy");
-            banita.AddDictionarySkills(opieka, wiedza, "Imperium");
-            banita.AddDictionarySkills(plotkowanie, sekretneZnaki, "Złodziei");
+            akolita.AddDictionarySkills(jezyk, BuiltInDictionaryValues.LanguageClassic);
+            akolita.AddDictionarySkills(jezyk, BuiltInDictionaryValues.LanguageOldWorld);
+            banita.AddDictionarySkills(opieka, wiedza, BuiltInDictionaryValues.KnowledgeEmpire);
+            banita.AddDictionarySkills(plotkowanie, sekretneZnaki, BuiltInDictionaryValues.SecretMarksThiefs);
             banita.AddSkills(powozenie, jezdziectwo);
             banita.AddSkills(skradanie);
             banita.AddSkills(spostrzegawczosc);
@@ -3113,17 +3338,17 @@ namespace WarhammerProfessionApp.Entities
             banita.AddSkills(unik);
             banita.AddSkills(wspinaczka);
             banita.AddSkills(zastawianiePulapek, plywanie);
-            berserker.AddDictionarySkills(kuglarstwo, "Gawędziarstwo");
+            berserker.AddDictionarySkills(kuglarstwo, BuiltInDictionaryValues.PrestidigitationStoryTelling);
             berserker.AddSkills(mocnaGlowa);
             berserker.AddSkills(plywanie);
-            berserker.AddDictionarySkills(wiedza, "Norska");
+            berserker.AddDictionarySkills(wiedza, BuiltInDictionaryValues.KnowledgeNorsca);
             berserker.AddSkills(zastraszanie);
-            berserker.AddDictionarySkills(jezyk, "Norski");
-            chlop.AddDictionarySkills(hazard, kuglarstwo, "Taniec", "Śpiew");
+            berserker.AddDictionarySkills(jezyk, BuiltInDictionaryValues.LanguageNorsca);
+            chlop.AddDictionarySkills(hazard, kuglarstwo, BuiltInDictionaryValues.PrestidigitationDancing, BuiltInDictionaryValues.PrestidigitationSinging);
             chlop.AddSkills(opieka, przekonywanie);
-            chlop.AddDictionarySkills(oswajanie, rzemioslo, "Gotowanie");
-            chlop.AddDictionarySkills(powozenie, rzemioslo, "Wyrób łuków");
-            chlop.AddDictionarySkills(sztukaPrzetrwania, rzemioslo, "Uprawa ziemii");
+            chlop.AddDictionarySkills(oswajanie, rzemioslo, BuiltInDictionaryValues.CraftCooking);
+            chlop.AddDictionarySkills(powozenie, rzemioslo, BuiltInDictionaryValues.CraftBowMaking);
+            chlop.AddDictionarySkills(sztukaPrzetrwania, rzemioslo, BuiltInDictionaryValues.CraftTillage);
             chlop.AddSkills(tresura, plywanie);
             chlop.AddSkills(ukrywanieSie);
             chlop.AddSkills(wioslarstwo, zastawianiePulapek);
@@ -3132,66 +3357,72 @@ namespace WarhammerProfessionApp.Entities
             ciura.AddSkills(plotkowanie);
             ciura.AddSkills(przekonywanie, wycena);
             ciura.AddSkills(przeszukiwanie);
-            ciura.AddDictionarySkills(rzemioslo, "Gotowanie", "Handel", "Kartografia", "Kowalstwo", "Krawiectwo", "Płatnerstwo", "Rusznikarstwo", "Wyrób łuków", "Zielarstwo");
+            ciura.AddDictionarySkills(rzemioslo, BuiltInDictionaryValues.CraftCooking, BuiltInDictionaryValues.CraftTrading, BuiltInDictionaryValues.CraftCartography,
+                BuiltInDictionaryValues.CraftBlacksmithing, BuiltInDictionaryValues.CraftTailoring, BuiltInDictionaryValues.CraftArmouring,
+                BuiltInDictionaryValues.CraftGunsmithing, BuiltInDictionaryValues.CraftBowMaking, BuiltInDictionaryValues.CraftHerbology);
             ciura.AddSkills(spostrzegawczosc);
             ciura.AddSkills(targowanie);
-            ciura.AddDictionarySkills(jezyk, "Bretoński", "Kislevski", "Tileański");
+            ciura.AddDictionarySkills(jezyk, BuiltInDictionaryValues.LanguageBrittany, BuiltInDictionaryValues.LanguageKislev, BuiltInDictionaryValues.LanguageTileanian);
             ciura.AddSkills(zwinnePalce);
             cyrkowiec.AddSkills(kuglarstwo);
             cyrkowiec.AddSkills(opieka, plywanie);
             cyrkowiec.AddSkills(przekonywanie);
             cyrkowiec.AddSkills(spostrzegawczosc);
-            cyrkowiec.AddDictionarySkills(wiedza, "Imperium");
+            cyrkowiec.AddDictionarySkills(wiedza, BuiltInDictionaryValues.KnowledgeEmpire);
             cyrkowiec.AddSkills(wycena, plotkowanie);
-            cyrkowiec.AddDictionarySkills(jezyk, "Staroświatowy");
+            cyrkowiec.AddDictionarySkills(jezyk, BuiltInDictionaryValues.LanguageOldWorld);
             cyrkowiec.AddSkills(brzuchomostwo, gadanina, hipnoza, jezdziectwo, oswajanie, tresura, wspinaczka, zwinnePalce);
             cyrulik.AddSkills(czytaniePisanie);
             cyrulik.AddSkills(leczenie);
             cyrulik.AddSkills(powozenie, plywanie);
             cyrulik.AddSkills(przekonywanie);
-            cyrulik.AddDictionarySkills(rzemioslo, "Aptekarstwo");
+            cyrulik.AddDictionarySkills(rzemioslo, BuiltInDictionaryValues.CraftPharmacy);
             cyrulik.AddSkills(spostrzegawczosc);
             cyrulik.AddSkills(targowanie);
-            cyrulik.AddDictionarySkills(jezyk, "Bretoński", "Staroświatowy", "Tileański");
+            cyrulik.AddDictionarySkills(jezyk, BuiltInDictionaryValues.LanguageBrittany, BuiltInDictionaryValues.LanguageOldWorld, BuiltInDictionaryValues.LanguageTileanian);
             fanatyk.AddSkills(czytaniePisanie);
-            fanatyk.AddDictionarySkills(nauka, "Teologia");
+            fanatyk.AddDictionarySkills(nauka, BuiltInDictionaryValues.ScienceTeology);
             fanatyk.AddSkills(przekonywanie);
-            fanatyk.AddDictionarySkills(wiedza, "Imperium");
+            fanatyk.AddDictionarySkills(wiedza, BuiltInDictionaryValues.KnowledgeEmpire);
             fanatyk.AddSkills(zastraszanie);
             flisak.AddSkills(mocnaGlowa, plotkowanie);
             flisak.AddSkills(nawigacja);
             flisak.AddSkills(plywanie);
-            flisak.AddDictionarySkills(new Tuple<Skill, string[]>(sekretnyJezyk, new string[] { "Łowców" }), new Tuple<Skill, string[]>(jezyk, new string[] { "Kislevski" }));
+            flisak.AddDictionarySkills(
+                new Tuple<Skill, BuiltInDictionaryValues[]>(sekretnyJezyk, new BuiltInDictionaryValues[] { BuiltInDictionaryValues.SecretLanguageHunters }),
+                new Tuple<Skill, BuiltInDictionaryValues[]>(jezyk, new BuiltInDictionaryValues[] { BuiltInDictionaryValues.LanguageKislev }));
             flisak.AddSkills(spostrzegawczosc);
             flisak.AddSkills(sztukaPrzetrwania);
-            flisak.AddDictionarySkills(wiedza, "Imperium", "Kislev");
+            flisak.AddDictionarySkills(wiedza, BuiltInDictionaryValues.KnowledgeEmpire, BuiltInDictionaryValues.KnowledgeKislev);
             flisak.AddSkills(wioslarstwo);
             flisak.AddSkills(zelgarstwo);
             giermek.AddSkills(jezdziectwo);
-            giermek.AddDictionarySkills(new Tuple<Skill, string[]>(nauka, new string[] { "Genealogia/heraldyka" }), new Tuple<Skill, string[]>(wiedza, new string[] { "Bretonia" }));
+            giermek.AddDictionarySkills(
+                new Tuple<Skill, BuiltInDictionaryValues[]>(nauka, new BuiltInDictionaryValues[] { BuiltInDictionaryValues.ScienceGenealogy }),
+                new Tuple<Skill, BuiltInDictionaryValues[]>(wiedza, new BuiltInDictionaryValues[] { BuiltInDictionaryValues.KnowledgeBrittany }));
             giermek.AddSkills(opieka);
             giermek.AddSkills(przekonywanie, plotkowanie);
             giermek.AddSkills(tresura);
             giermek.AddSkills(unik);
-            giermek.AddDictionarySkills(jezyk, "Bretoński", "Staroświatowy");
+            giermek.AddDictionarySkills(jezyk, BuiltInDictionaryValues.LanguageBrittany, BuiltInDictionaryValues.LanguageOldWorld);
             gladiator.AddSkills(unik);
             gladiator.AddSkills(zastraszanie);
             goniec.AddSkills(nawigacja);
             goniec.AddSkills(plywanie);
-            goniec.AddDictionarySkills(sekretneZnaki, "Zwiadowców");
+            goniec.AddDictionarySkills(sekretneZnaki, BuiltInDictionaryValues.SecretMarksScouts);
             goniec.AddSkills(spostrzegawczosc);
             goniec.AddSkills(sztukaPrzetrwania);
             goniec.AddSkills(unik);
             gornik.AddSkills(nawigacja);
             gornik.AddSkills(opieka);
-            gornik.AddDictionarySkills(rzemioslo, "Górnictwo", "Górnictwo odkrywkowe");
+            gornik.AddDictionarySkills(rzemioslo, BuiltInDictionaryValues.CraftMining, BuiltInDictionaryValues.CraftOpencastMining);
             gornik.AddSkills(spostrzegawczosc);
             gornik.AddSkills(ukrywanieSie, powozenie);
             gornik.AddSkills(wspinaczka);
             gornik.AddSkills(wycena, sztukaPrzetrwania);
             guslarz.AddSkills(leczenie, hipnoza);
             guslarz.AddSkills(opieka, targowanie);
-            guslarz.AddDictionarySkills(oswajanie, rzemioslo, "Aptekarstwo");
+            guslarz.AddDictionarySkills(oswajanie, rzemioslo, BuiltInDictionaryValues.CraftPharmacy);
             guslarz.AddSkills(przekonywanie, zastraszanie);
             guslarz.AddSkills(przeszukiwanie);
             guslarz.AddSkills(splatanieMagii);
@@ -3202,36 +3433,38 @@ namespace WarhammerProfessionApp.Entities
             hiena.AddSkills(przeszukiwanie);
             hiena.AddSkills(spostrzegawczosc);
             hiena.AddSkills(ukrywanieSie, sztukaPrzetrwania);
-            hiena.AddDictionarySkills(new Tuple<Skill, string[]>(wiedza, new string[] { "Imperium" }), new Tuple<Skill, string[]>(sekretneZnaki, new string[] { "Złodziei" }));
+            hiena.AddDictionarySkills(
+                new Tuple<Skill, BuiltInDictionaryValues[]>(wiedza, new BuiltInDictionaryValues[] { BuiltInDictionaryValues.KnowledgeEmpire }),
+                new Tuple<Skill, BuiltInDictionaryValues[]>(sekretneZnaki, new BuiltInDictionaryValues[] { BuiltInDictionaryValues.SecretMarksThiefs }));
             hiena.AddSkills(wspinaczka);
             hiena.AddSkills(wycena);
-            hiena.AddDictionarySkills(jezyk, "Eltharin", "Khazalid", "Klasyczny");
+            hiena.AddDictionarySkills(jezyk, BuiltInDictionaryValues.LanguageEltharian, BuiltInDictionaryValues.LanguageKhazalid, BuiltInDictionaryValues.LanguageClassic);
             kanciarz.AddSkills(gadanina);
-            kanciarz.AddDictionarySkills(hazard, sekretneZnaki, "Złodziei");
-            kanciarz.AddDictionarySkills(kuglarstwo, "Aktorstwo", "Gawędziarstwo");
+            kanciarz.AddDictionarySkills(hazard, sekretneZnaki, BuiltInDictionaryValues.SecretMarksThiefs);
+            kanciarz.AddDictionarySkills(kuglarstwo, BuiltInDictionaryValues.PrestidigitationTheatricalArt, BuiltInDictionaryValues.PrestidigitationStoryTelling);
             kanciarz.AddSkills(plotkowanie, targowanie);
             kanciarz.AddSkills(przekonywanie);
-            kanciarz.AddDictionarySkills(przeszukiwanie, sekretnyJezyk, "Złodziei");
+            kanciarz.AddDictionarySkills(przeszukiwanie, sekretnyJezyk, BuiltInDictionaryValues.SecretLanguageThiefs);
             kanciarz.AddSkills(spostrzegawczosc);
             kanciarz.AddSkills(wycena);
-            kanciarz.AddDictionarySkills(jezyk, "Staroświatowy");
+            kanciarz.AddDictionarySkills(jezyk, BuiltInDictionaryValues.LanguageOldWorld);
             kozak.AddSkills(hazard, targowanie);
             kozak.AddSkills(mocnaGlowa);
             kozak.AddSkills(przeszukiwanie);
             kozak.AddSkills(spostrzegawczosc);
             kozak.AddSkills(sztukaPrzetrwania);
             kozak.AddSkills(unik);
-            kozak.AddDictionarySkills(wiedza, "Kislev");
-            kozak.AddDictionarySkills(jezyk, "Kislevski");
-            lesnik.AddDictionarySkills(sekretneZnaki, "Łowców");
-            lesnik.AddDictionarySkills(sekretnyJezyk, "Łowców");
+            kozak.AddDictionarySkills(wiedza, BuiltInDictionaryValues.KnowledgeKislev);
+            kozak.AddDictionarySkills(jezyk, BuiltInDictionaryValues.LanguageKislev);
+            lesnik.AddDictionarySkills(sekretneZnaki, BuiltInDictionaryValues.SecretMarksHunters);
+            lesnik.AddDictionarySkills(sekretnyJezyk, BuiltInDictionaryValues.SecretLanguageHunters);
             lesnik.AddSkills(skradanie);
             lesnik.AddSkills(spostrzegawczosc);
             lesnik.AddSkills(tropienie, zastawianiePulapek);
             lesnik.AddSkills(ukrywanieSie);
             lesnik.AddSkills(wspinaczka);
             lowca.AddSkills(przeszukiwanie, plywanie);
-            lowca.AddDictionarySkills(sekretneZnaki, "Łowców");
+            lowca.AddDictionarySkills(sekretneZnaki, BuiltInDictionaryValues.SecretMarksHunters);
             lowca.AddSkills(skradanie, zastawianiePulapek);
             lowca.AddSkills(spostrzegawczosc);
             lowca.AddSkills(sztukaPrzetrwania);
@@ -3249,25 +3482,25 @@ namespace WarhammerProfessionApp.Entities
             mieszczanin.AddSkills(przeszukiwanie);
             mieszczanin.AddSkills(spostrzegawczosc);
             mieszczanin.AddSkills(targowanie);
-            mieszczanin.AddDictionarySkills(mocnaGlowa, wiedza, "Imperium");
+            mieszczanin.AddDictionarySkills(mocnaGlowa, wiedza, BuiltInDictionaryValues.KnowledgeEmpire);
             mieszczanin.AddSkills(wycena);
-            mieszczanin.AddDictionarySkills(jezyk, "Bretoński", "Kislevski", "Tileański");
-            mieszczanin.AddDictionarySkills(jezyk, "Staroświatowy");
+            mieszczanin.AddDictionarySkills(jezyk, BuiltInDictionaryValues.LanguageBrittany, BuiltInDictionaryValues.LanguageKislev, BuiltInDictionaryValues.LanguageTileanian);
+            mieszczanin.AddDictionarySkills(jezyk, BuiltInDictionaryValues.LanguageOldWorld);
             mytnik.AddSkills(czytaniePisanie);
             mytnik.AddSkills(plotkowanie, targowanie);
             mytnik.AddSkills(przeszukiwanie);
             mytnik.AddSkills(spostrzegawczosc);
             mytnik.AddSkills(unik);
             mytnik.AddSkills(wycena);
-            mytnik.AddDictionarySkills(jezyk, "Bretoński", "Kislevski", "Tileański");
+            mytnik.AddDictionarySkills(jezyk, BuiltInDictionaryValues.LanguageBrittany, BuiltInDictionaryValues.LanguageKislev, BuiltInDictionaryValues.LanguageTileanian);
             najemnik.AddSkills(opieka, hazard);
             najemnik.AddSkills(plotkowanie, targowanie);
             najemnik.AddSkills(powozenie, jezdziectwo);
-            najemnik.AddDictionarySkills(sekretnyJezyk, "Bitewny");
+            najemnik.AddDictionarySkills(sekretnyJezyk, BuiltInDictionaryValues.SecretLanguageBattle);
             najemnik.AddSkills(spostrzegawczosc, przeszukiwanie);
             najemnik.AddSkills(unik);
-            najemnik.AddDictionarySkills(wiedza, "Bretonia", "Kislev", "Tilea");
-            najemnik.AddDictionarySkills(plywanie, jezyk, "Tileański");
+            najemnik.AddDictionarySkills(wiedza, BuiltInDictionaryValues.KnowledgeBrittany, BuiltInDictionaryValues.KnowledgeKislev, BuiltInDictionaryValues.KnowledgeTilea);
+            najemnik.AddDictionarySkills(plywanie, jezyk, BuiltInDictionaryValues.LanguageTileanian);
             ochotnik.AddSkills(hazard, plotkowanie);
             ochotnik.AddSkills(opieka);
             ochotnik.AddSkills(powozenie, plywanie);
@@ -3282,29 +3515,31 @@ namespace WarhammerProfessionApp.Entities
             ochroniarz.AddSkills(zastraszanie);
             oprych.AddSkills(hazard);
             oprych.AddSkills(mocnaGlowa);
-            oprych.AddDictionarySkills(sekretnyJezyk, "Złodziei");
+            oprych.AddDictionarySkills(sekretnyJezyk, BuiltInDictionaryValues.SecretLanguageThiefs);
             oprych.AddSkills(unik);
             oprych.AddSkills(zastraszanie);
             paz.AddSkills(czytaniePisanie);
             paz.AddSkills(gadanina);
-            paz.AddDictionarySkills(nauka, "Genealogia/heraldyka");
-            paz.AddDictionarySkills(plotkowanie, jezyk, "Bretoński", "Staroświatowy");
+            paz.AddDictionarySkills(nauka, BuiltInDictionaryValues.ScienceGenealogy);
+            paz.AddDictionarySkills(plotkowanie, jezyk, BuiltInDictionaryValues.LanguageBrittany, BuiltInDictionaryValues.LanguageOldWorld);
             paz.AddSkills(przeszukiwanie);
             paz.AddSkills(spostrzegawczosc);
             paz.AddSkills(targowanie);
             paz.AddSkills(wycena);
             podzegacz.AddSkills(czytaniePisanie);
-            podzegacz.AddDictionarySkills(plotkowanie, nauka, "Historia");
-            podzegacz.AddDictionarySkills(new Tuple<Skill, string[]>(nauka, new string[] { "Prawo" }), new Tuple<Skill, string[]>(wiedza, new string[] { "Imperium" }));
+            podzegacz.AddDictionarySkills(plotkowanie, nauka, BuiltInDictionaryValues.ScienceHistory);
+            podzegacz.AddDictionarySkills(
+                new Tuple<Skill, BuiltInDictionaryValues[]>(nauka, new BuiltInDictionaryValues[] { BuiltInDictionaryValues.ScienceLaw }),
+                new Tuple<Skill, BuiltInDictionaryValues[]>(wiedza, new BuiltInDictionaryValues[] { BuiltInDictionaryValues.KnowledgeEmpire }));
             podzegacz.AddSkills(przekonywanie);
             podzegacz.AddSkills(spostrzegawczosc);
             podzegacz.AddSkills(ukrywanieSie);
-            podzegacz.AddDictionarySkills(jezyk, "Bretoński", "Tileański");
-            podzegacz.AddDictionarySkills(jezyk, "Staroświatowy");
+            podzegacz.AddDictionarySkills(jezyk, BuiltInDictionaryValues.LanguageBrittany, BuiltInDictionaryValues.LanguageTileanian);
+            podzegacz.AddDictionarySkills(jezyk, BuiltInDictionaryValues.LanguageOldWorld);
             porywacz.AddSkills(plotkowanie, targowanie);
             porywacz.AddSkills(powozenie);
             porywacz.AddSkills(przeszukiwanie);
-            porywacz.AddDictionarySkills(sekretneZnaki, "Złodziei");
+            porywacz.AddDictionarySkills(sekretneZnaki, BuiltInDictionaryValues.SecretMarksThiefs);
             porywacz.AddSkills(skradanie);
             porywacz.AddSkills(spostrzegawczosc);
             porywacz.AddSkills(wspinaczka);
@@ -3312,12 +3547,12 @@ namespace WarhammerProfessionApp.Entities
             poslaniec.AddSkills(nawigacja);
             poslaniec.AddSkills(opieka);
             poslaniec.AddSkills(plywanie);
-            poslaniec.AddDictionarySkills(sekretneZnaki, "Zwiadowców");
+            poslaniec.AddDictionarySkills(sekretneZnaki, BuiltInDictionaryValues.SecretMarksScouts);
             poslaniec.AddSkills(spostrzegawczosc);
             poslaniec.AddSkills(sztukaPrzetrwania);
-            poslaniec.AddDictionarySkills(plotkowanie, wiedza, "Imperium", "Jałowa kraina");
-            poslaniec.AddDictionarySkills(jezyk, "Staroświatowy");
-            przemytnik.AddDictionarySkills(plotkowanie, sekretnyJezyk, "Złodziei");
+            poslaniec.AddDictionarySkills(plotkowanie, wiedza, BuiltInDictionaryValues.KnowledgeEmpire, BuiltInDictionaryValues.KnowledgeBarrenLand);
+            poslaniec.AddDictionarySkills(jezyk, BuiltInDictionaryValues.LanguageOldWorld);
+            przemytnik.AddDictionarySkills(plotkowanie, sekretnyJezyk, BuiltInDictionaryValues.SecretLanguageThiefs);
             przemytnik.AddSkills(plywanie);
             przemytnik.AddSkills(powozenie);
             przemytnik.AddSkills(przeszukiwanie);
@@ -3326,7 +3561,13 @@ namespace WarhammerProfessionApp.Entities
             przemytnik.AddSkills(targowanie);
             przemytnik.AddSkills(wioslarstwo);
             przemytnik.AddSkills(wycena);
-            przemytnik.AddDictionarySkills(new Tuple<Skill, string[]>(jezyk, new string[] { "Bretoński", "Kislevski" }), new Tuple<Skill, string[]>(sekretneZnaki, new string[] { "Złodziei" }));
+            przemytnik.AddDictionarySkills(
+                new Tuple<Skill, BuiltInDictionaryValues[]>(jezyk, new BuiltInDictionaryValues[]
+                {
+                    BuiltInDictionaryValues.LanguageBrittany,
+                    BuiltInDictionaryValues.LanguageKislev
+                }),
+                new Tuple<Skill, BuiltInDictionaryValues[]>(sekretneZnaki, new BuiltInDictionaryValues[] { BuiltInDictionaryValues.SecretMarksThiefs }));
             przepatrywacz.AddSkills(jezdziectwo);
             przepatrywacz.AddSkills(nawigacja);
             przepatrywacz.AddSkills(opieka);
@@ -3340,34 +3581,34 @@ namespace WarhammerProfessionApp.Entities
             przewoznik.AddSkills(przekonywanie);
             przewoznik.AddSkills(spostrzegawczosc);
             przewoznik.AddSkills(targowanie);
-            przewoznik.AddDictionarySkills(wiedza, "Imperium");
+            przewoznik.AddDictionarySkills(wiedza, BuiltInDictionaryValues.KnowledgeEmpire);
             przewoznik.AddSkills(wioslarstwo);
-            przewoznik.AddDictionarySkills(wycena, sekretnyJezyk, "Łowców");
+            przewoznik.AddDictionarySkills(wycena, sekretnyJezyk, BuiltInDictionaryValues.SecretLanguageHunters);
             rybak.AddSkills(mocnaGlowa, targowanie);
             rybak.AddSkills(nawigacja, rzemioslo);
             rybak.AddSkills(plywanie);
             rybak.AddSkills(spostrzegawczosc);
             rybak.AddSkills(sztukaPrzetrwania);
-            rybak.AddDictionarySkills(wiedza, "Imperium", "Jałowa kraina");
+            rybak.AddDictionarySkills(wiedza, BuiltInDictionaryValues.KnowledgeEmpire, BuiltInDictionaryValues.KnowledgeBarrenLand);
             rybak.AddSkills(wioslarstwo);
-            rybak.AddDictionarySkills(jezyk, "Staroświatowy", "Norski");
+            rybak.AddDictionarySkills(jezyk, BuiltInDictionaryValues.LanguageOldWorld, BuiltInDictionaryValues.LanguageNorsca);
             rybak.AddSkills(zelgarstwo);
             rzecznik.AddSkills(czytaniePisanie);
             rzecznik.AddSkills(plotkowanie);
             rzecznik.AddSkills(plywanie);
             rzecznik.AddSkills(przekonywanie);
-            rzecznik.AddDictionarySkills(rzemioslo, "Handel");
-            rzecznik.AddDictionarySkills(sekretnyJezyk, "Gildii");
+            rzecznik.AddDictionarySkills(rzemioslo, BuiltInDictionaryValues.CraftTrading);
+            rzecznik.AddDictionarySkills(sekretnyJezyk, BuiltInDictionaryValues.SecretLanguageGuild);
             rzecznik.AddSkills(spostrzegawczosc);
             rzecznik.AddSkills(targowanie);
-            rzecznik.AddDictionarySkills(wiedza, "Imperium", "Jałowa kraina");
+            rzecznik.AddDictionarySkills(wiedza, BuiltInDictionaryValues.KnowledgeEmpire, BuiltInDictionaryValues.KnowledgeBarrenLand);
             rzecznik.AddSkills(wycena);
             rzemieslnik.AddSkills(czytaniePisanie);
             rzemieslnik.AddSkills(opieka, plotkowanie);
             rzemieslnik.AddSkills(powozenie);
             rzemieslnik.AddDictionarySkills(rzemioslo);
             rzemieslnik.AddDictionarySkills(rzemioslo);
-            rzemieslnik.AddDictionarySkills(sekretnyJezyk, "Gildii");
+            rzemieslnik.AddDictionarySkills(sekretnyJezyk, BuiltInDictionaryValues.SecretLanguageGuild);
             rzemieslnik.AddSkills(spostrzegawczosc);
             rzemieslnik.AddSkills(targowanie);
             rzemieslnik.AddSkills(wycena);
@@ -3377,22 +3618,22 @@ namespace WarhammerProfessionApp.Entities
             rzezimieszek.AddSkills(zastraszanie);
             skryba.AddSkills(czytaniePisanie);
             skryba.AddDictionarySkills(nauka);
-            skryba.AddDictionarySkills(rzemioslo, "Kaligrafia");
-            skryba.AddDictionarySkills(sekretnyJezyk, "Gildii");
+            skryba.AddDictionarySkills(rzemioslo, BuiltInDictionaryValues.CraftCalligraphy);
+            skryba.AddDictionarySkills(sekretnyJezyk, BuiltInDictionaryValues.SecretLanguageGuild);
             skryba.AddSkills(spostrzegawczosc);
-            skryba.AddDictionarySkills(plotkowanie, wiedza, "Imperium");
-            skryba.AddDictionarySkills(jezyk, "Bretoński");
-            skryba.AddDictionarySkills(jezyk, "Klasyczny");
-            skryba.AddDictionarySkills(jezyk, "Staroświatowy", "Tileański");
+            skryba.AddDictionarySkills(plotkowanie, wiedza, BuiltInDictionaryValues.KnowledgeEmpire);
+            skryba.AddDictionarySkills(jezyk, BuiltInDictionaryValues.LanguageBrittany);
+            skryba.AddDictionarySkills(jezyk, BuiltInDictionaryValues.LanguageClassic);
+            skryba.AddDictionarySkills(jezyk, BuiltInDictionaryValues.LanguageOldWorld, BuiltInDictionaryValues.LanguageTileanian);
             sluga.AddSkills(czytaniePisanie, zwinnePalce);
             sluga.AddSkills(gadanina);
-            sluga.AddDictionarySkills(opieka, rzemioslo, "Gotowanie");
+            sluga.AddDictionarySkills(opieka, rzemioslo, BuiltInDictionaryValues.CraftCooking);
             sluga.AddSkills(plotkowanie);
             sluga.AddSkills(powozenie, przeszukiwanie);
             sluga.AddSkills(spostrzegawczosc);
             sluga.AddSkills(targowanie, wycena);
             sluga.AddSkills(unik);
-            straznik.AddDictionarySkills(nauka, "Prawo");
+            straznik.AddDictionarySkills(nauka, BuiltInDictionaryValues.ScienceLaw);
             straznik.AddSkills(plotkowanie);
             straznik.AddSkills(przeszukiwanie);
             straznik.AddSkills(spostrzegawczosc);
@@ -3406,9 +3647,11 @@ namespace WarhammerProfessionApp.Entities
             straznikDrog.AddSkills(przeszukiwanie);
             straznikDrog.AddSkills(spostrzegawczosc);
             straznikDrog.AddSkills(sztukaPrzetrwania);
-            straznikDrog.AddDictionarySkills(tropienie, sekretneZnaki, "Zwiadowców");
-            straznikDrog.AddDictionarySkills(plotkowanie, wiedza, "Imperium");
-            straznikPol.AddDictionarySkills(new Tuple<Skill, string[]>(nauka, new string[] { "Nekromancja" }), new Tuple<Skill, string[]>(wiedza, new string[] { "Imperium" }));
+            straznikDrog.AddDictionarySkills(tropienie, sekretneZnaki, BuiltInDictionaryValues.SecretMarksScouts);
+            straznikDrog.AddDictionarySkills(plotkowanie, wiedza, BuiltInDictionaryValues.KnowledgeEmpire);
+            straznikPol.AddDictionarySkills(
+                new Tuple<Skill, BuiltInDictionaryValues[]>(nauka, new BuiltInDictionaryValues[] { BuiltInDictionaryValues.ScienceNecromancy }),
+                new Tuple<Skill, BuiltInDictionaryValues[]>(wiedza, new BuiltInDictionaryValues[] { BuiltInDictionaryValues.KnowledgeEmpire }));
             straznikPol.AddSkills(przeszukiwanie);
             straznikPol.AddSkills(skradanie);
             straznikPol.AddSkills(spostrzegawczosc);
@@ -3430,25 +3673,25 @@ namespace WarhammerProfessionApp.Entities
             szczurolap.AddSkills(ukrywanieSie);
             szczurolap.AddSkills(zastawianiePulapek);
             szermierz.AddSkills(czytaniePisanie);
-            szermierz.AddDictionarySkills(nauka, "Anatomia");
+            szermierz.AddDictionarySkills(nauka, BuiltInDictionaryValues.ScienceAnatomy);
             szermierz.AddSkills(unik);
-            szermierz.AddDictionarySkills(wiedza, "Estalia");
-            szermierz.AddDictionarySkills(jezyk, "Estalijski");
+            szermierz.AddDictionarySkills(wiedza, BuiltInDictionaryValues.KnowledgeEstalia);
+            szermierz.AddDictionarySkills(jezyk, BuiltInDictionaryValues.LanguageEstalian);
             szlachcic.AddSkills(czytaniePisanie);
             szlachcic.AddSkills(gadanina, dowodzenie);
             szlachcic.AddSkills(hazard, plotkowanie);
             szlachcic.AddSkills(jezdziectwo);
-            szlachcic.AddDictionarySkills(mocnaGlowa, kuglarstwo, "Muzykalność");
+            szlachcic.AddDictionarySkills(mocnaGlowa, kuglarstwo, BuiltInDictionaryValues.PrestidigitationMusicality);
             szlachcic.AddSkills(przekonywanie);
-            szlachcic.AddDictionarySkills(wiedza, "Imperium");
-            szlachcic.AddDictionarySkills(jezyk, "Staroświatowy");
+            szlachcic.AddDictionarySkills(wiedza, BuiltInDictionaryValues.KnowledgeEmpire);
+            szlachcic.AddDictionarySkills(jezyk, BuiltInDictionaryValues.LanguageOldWorld);
             smieciarz.AddSkills(opieka);
             smieciarz.AddSkills(powozenie);
             smieciarz.AddSkills(przekonywanie, plotkowanie);
             smieciarz.AddSkills(przeszukiwanie);
             smieciarz.AddSkills(spostrzegawczosc);
             smieciarz.AddSkills(targowanie);
-            smieciarz.AddDictionarySkills(wiedza, "Imperium");
+            smieciarz.AddDictionarySkills(wiedza, BuiltInDictionaryValues.KnowledgeEmpire);
             smieciarz.AddSkills(wycena);
             tarczownik.AddSkills(nawigacja);
             tarczownik.AddSkills(spostrzegawczosc);
@@ -3456,29 +3699,40 @@ namespace WarhammerProfessionApp.Entities
             tarczownik.AddSkills(unik);
             tarczownik.AddSkills(wspinaczka);
             uczen.AddSkills(czytaniePisanie);
-            uczen.AddDictionarySkills(jezyk, "Magiczny");
-            uczen.AddDictionarySkills(nauka, "Magia");
+            uczen.AddDictionarySkills(jezykTajemny, BuiltInDictionaryValues.MisticLanguageMagic);
+            uczen.AddDictionarySkills(nauka, BuiltInDictionaryValues.ScienceMagic);
             uczen.AddSkills(przeszukiwanie);
             uczen.AddSkills(splatanieMagii);
             uczen.AddSkills(spostrzegawczosc);
             uczen.AddSkills(wykrywanieMagii);
-            uczen.AddDictionarySkills(jezyk, "Klasyczny");
+            uczen.AddDictionarySkills(jezyk, BuiltInDictionaryValues.LanguageClassic);
             weglarz.AddSkills(powozenie, plotkowanie);
             weglarz.AddSkills(przeszukiwanie);
-            weglarz.AddDictionarySkills(sekretneZnaki, "Łowców");
+            weglarz.AddDictionarySkills(sekretneZnaki, BuiltInDictionaryValues.SecretMarksHunters);
             weglarz.AddSkills(spostrzegawczosc);
             weglarz.AddSkills(sztukaPrzetrwania);
             weglarz.AddSkills(targowanie);
-            weglarz.AddDictionarySkills(ukrywanieSie, wiedza, "Imperium");
+            weglarz.AddDictionarySkills(ukrywanieSie, wiedza, BuiltInDictionaryValues.KnowledgeEmpire);
             weglarz.AddSkills(wspinaczka);
-            wloczykij.AddDictionarySkills(new Tuple<Skill, string[]>(kuglarstwo, new string[] { "Gawędziarstwo", "Śpiew", "Taniec" }), new Tuple<Skill, string[]>(sekretneZnaki, new string[] { "Łowców", "Złodziei" }));
+            wloczykij.AddDictionarySkills(
+                new Tuple<Skill, BuiltInDictionaryValues[]>(kuglarstwo, new BuiltInDictionaryValues[]
+                {
+                    BuiltInDictionaryValues.PrestidigitationStoryTelling,
+                    BuiltInDictionaryValues.PrestidigitationSinging,
+                    BuiltInDictionaryValues.PrestidigitationDancing
+                }),
+                new Tuple<Skill, BuiltInDictionaryValues[]>(sekretneZnaki, new BuiltInDictionaryValues[]
+                {
+                    BuiltInDictionaryValues.SecretMarksHunters,
+                    BuiltInDictionaryValues.SecretMarksThiefs
+                }));
             wloczykij.AddSkills(leczenie, spostrzegawczosc);
             wloczykij.AddSkills(nawigacja);
-            wloczykij.AddDictionarySkills(plotkowanie, sekretnyJezyk, "Łowców", "Złodziei");
+            wloczykij.AddDictionarySkills(plotkowanie, sekretnyJezyk, BuiltInDictionaryValues.SecretLanguageHunters, BuiltInDictionaryValues.SecretLanguageThiefs);
             wloczykij.AddSkills(skradanie);
             wloczykij.AddSkills(sztukaPrzetrwania);
             wloczykij.AddSkills(targowanie, plywanie);
-            wloczykij.AddDictionarySkills(wiedza, "Bretonia", "Estalia", "Kislev", "Tilea");
+            wloczykij.AddDictionarySkills(wiedza, BuiltInDictionaryValues.KnowledgeBrittany, BuiltInDictionaryValues.KnowledgeEstalia, BuiltInDictionaryValues.KnowledgeKislev, BuiltInDictionaryValues.KnowledgeTilea);
             wojownik.AddSkills(leczenie, przeszukiwanie);
             wojownik.AddSkills(skradanie);
             wojownik.AddSkills(spostrzegawczosc);
@@ -3492,25 +3746,27 @@ namespace WarhammerProfessionApp.Entities
             woznica.AddSkills(opieka);
             woznica.AddSkills(plotkowanie, targowanie);
             woznica.AddSkills(powozenie);
-            woznica.AddDictionarySkills(sekretneZnaki, "Łowców");
+            woznica.AddDictionarySkills(sekretneZnaki, BuiltInDictionaryValues.SecretMarksHunters);
             woznica.AddSkills(spostrzegawczosc);
-            woznica.AddDictionarySkills(jezyk, "Bretoński", "Kislevski", "Tileański");
+            woznica.AddDictionarySkills(jezyk, BuiltInDictionaryValues.LanguageBrittany, BuiltInDictionaryValues.LanguageKislev, BuiltInDictionaryValues.LanguageTileanian);
             zabojcaTroli.AddSkills(mocnaGlowa);
             zabojcaTroli.AddSkills(unik);
             zabojcaTroli.AddSkills(zastraszanie);
             zarzadca.AddSkills(czytaniePisanie);
             zarzadca.AddSkills(dowodzenie, nawigacja);
             zarzadca.AddSkills(jezdziectwo);
-            zarzadca.AddDictionarySkills(nauka, "Prawo");
+            zarzadca.AddDictionarySkills(nauka, BuiltInDictionaryValues.ScienceLaw);
             zarzadca.AddSkills(opieka, plotkowanie);
             zarzadca.AddSkills(przekonywanie);
             zarzadca.AddSkills(spostrzegawczosc);
-            zarzadca.AddDictionarySkills(zastraszanie, wiedza, "Imperium");
+            zarzadca.AddDictionarySkills(zastraszanie, wiedza, BuiltInDictionaryValues.KnowledgeEmpire);
             zlodziej.AddSkills(czytaniePisanie, zwinnePalce);
             zlodziej.AddSkills(hazard, otwieranieZamkow);
             zlodziej.AddSkills(przekonywanie, wspinaczka);
             zlodziej.AddSkills(przeszukiwanie);
-            zlodziej.AddDictionarySkills(new Tuple<Skill, string[]>(sekretnyJezyk, new string[] { "Złodziei" }), new Tuple<Skill, string[]>(sekretneZnaki, new string[] { "Złodziei" }));
+            zlodziej.AddDictionarySkills(
+                new Tuple<Skill, BuiltInDictionaryValues[]>(sekretnyJezyk, new BuiltInDictionaryValues[] { BuiltInDictionaryValues.SecretLanguageThiefs }),
+                new Tuple<Skill, BuiltInDictionaryValues[]>(sekretneZnaki, new BuiltInDictionaryValues[] { BuiltInDictionaryValues.SecretMarksThiefs }));
             zlodziej.AddSkills(skradanie);
             zlodziej.AddSkills(spostrzegawczosc);
             zlodziej.AddSkills(ukrywanieSie);
@@ -3521,27 +3777,27 @@ namespace WarhammerProfessionApp.Entities
             zak.AddDictionarySkills(plotkowanie, nauka);
             zak.AddSkills(przekonywanie, mocnaGlowa);
             zak.AddSkills(spostrzegawczosc);
-            zak.AddDictionarySkills(jezyk, "Klasyczny");
-            zak.AddDictionarySkills(jezyk, "Staroswiatowy");
+            zak.AddDictionarySkills(jezyk, BuiltInDictionaryValues.LanguageClassic);
+            zak.AddDictionarySkills(jezyk, BuiltInDictionaryValues.LanguageOldWorld);
             zeglarz.AddSkills(mocnaGlowa, spostrzegawczosc);
             zeglarz.AddSkills(plywanie);
             zeglarz.AddSkills(unik);
-            zeglarz.AddDictionarySkills(wiedza, "Bretonia", "Norska", "Tilea", "Jałowa kraina");
+            zeglarz.AddDictionarySkills(wiedza, BuiltInDictionaryValues.KnowledgeBrittany, BuiltInDictionaryValues.KnowledgeNorsca, BuiltInDictionaryValues.KnowledgeTilea, BuiltInDictionaryValues.KnowledgeBarrenLand);
             zeglarz.AddSkills(wioslarstwo);
             zeglarz.AddSkills(wspinaczka);
-            zeglarz.AddDictionarySkills(jezyk, "Bretoński", "Norski", "Tileański");
+            zeglarz.AddDictionarySkills(jezyk, BuiltInDictionaryValues.LanguageBrittany, BuiltInDictionaryValues.LanguageNorsca, BuiltInDictionaryValues.LanguageTileanian);
             zeglarz.AddSkills(zelgarstwo);
             zolnierz.AddSkills(hazard, plotkowanie);
             zolnierz.AddSkills(opieka, leczenie);
             zolnierz.AddSkills(powozenie, jezdziectwo);
             zolnierz.AddSkills(unik);
-            zolnierz.AddDictionarySkills(spostrzegawczosc, wiedza, "Imperium");
+            zolnierz.AddDictionarySkills(spostrzegawczosc, wiedza, BuiltInDictionaryValues.KnowledgeEmpire);
             zolnierz.AddSkills(zastraszanie);
             zolnierzOkretowy.AddSkills(mocnaGlowa);
-            zolnierzOkretowy.AddDictionarySkills(plotkowanie, sekretnyJezyk, "Bitewny");
+            zolnierzOkretowy.AddDictionarySkills(plotkowanie, sekretnyJezyk, BuiltInDictionaryValues.SecretLanguageBattle);
             zolnierzOkretowy.AddSkills(plywanie);
             zolnierzOkretowy.AddSkills(unik);
-            zolnierzOkretowy.AddDictionarySkills(hazard, wiedza, "Jałowa kraina");
+            zolnierzOkretowy.AddDictionarySkills(hazard, wiedza, BuiltInDictionaryValues.KnowledgeBarrenLand);
             zolnierzOkretowy.AddSkills(wioslarstwo);
             zolnierzOkretowy.AddSkills(zastraszanie);///////////////////////////////////////////////////////////////////////////
             arcykaplan.AddSkills(jezdziectwo, plywanie);

@@ -42,15 +42,8 @@ namespace WarhammerProfessionApp.Utility
             user.PasswordHash = passwordHash;
             user.PasswordSalt = passwordSalt;
 
-            var character = new Character
-            {
-                User = user,
-                ExperienceSummary = 100,
-                Statistics = context.Statistics.Select(a => new CharacterStatistic { StatisticId = a.Id }).ToList()
-            };
-
             context.Users.Add(user);
-            context.Characters.Add(character);
+
             context.SaveChanges();
 
             return user;
