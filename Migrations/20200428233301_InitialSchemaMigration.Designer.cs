@@ -10,7 +10,7 @@ using WarhammerProfessionApp.Entities;
 namespace WarhammerProfessionApp.Migrations
 {
     [DbContext(typeof(ProfessionsContext))]
-    [Migration("20200426214942_InitialSchemaMigration")]
+    [Migration("20200428233301_InitialSchemaMigration")]
     partial class InitialSchemaMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

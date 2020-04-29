@@ -20,7 +20,7 @@
         LanguageBrittany = 16,
         LanguageKislev = 17,
         LanguageTileanian = 18,
-        LanguageEltharian = 19,
+        LanguageEltharin = 19,
         LanguageKhazalid = 20,
         SecretMarksThiefs = 21,
         SecretMarksScouts = 22,
@@ -63,6 +63,10 @@
         MisticLanguageElven = 59,
         SpecialWeaponLongBow = 60,
         LanguageEstalian = 61,
-        CraftMasonry = 62
+        CraftMasonry = 62,
+        KnowledgeElves = 63,
+        LanguageHalfings = 64,
+        KnowledgeHalfings = 65,
+        SpecialWeaponSlingShot = 66
     }
 }

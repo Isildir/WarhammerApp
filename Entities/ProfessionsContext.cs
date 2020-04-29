@@ -79,9 +79,10 @@ namespace WarhammerProfessionApp.Entities
                         new DictionaryValue { Value = "Bretoński", Type = BuiltInDictionaryValues.LanguageBrittany },
                         new DictionaryValue { Value = "Kislevski", Type = BuiltInDictionaryValues.LanguageKislev },
                         new DictionaryValue { Value = "Tileański", Type = BuiltInDictionaryValues.LanguageTileanian },
-                        new DictionaryValue { Value = "Eltharian", Type = BuiltInDictionaryValues.LanguageEltharian },
+                        new DictionaryValue { Value = "Eltharian", Type = BuiltInDictionaryValues.LanguageEltharin },
                         new DictionaryValue { Value = "Khazalid", Type = BuiltInDictionaryValues.LanguageKhazalid },
-                        new DictionaryValue { Value = "Estalijski", Type = BuiltInDictionaryValues.LanguageEstalian }
+                        new DictionaryValue { Value = "Estalijski", Type = BuiltInDictionaryValues.LanguageEstalian },
+                        new DictionaryValue { Value = "Niziołków", Type = BuiltInDictionaryValues.LanguageHalfings }
                     }
             };
 
@@ -163,7 +164,9 @@ namespace WarhammerProfessionApp.Entities
                         new DictionaryValue { Value = "Tilea" , Type = BuiltInDictionaryValues.KnowledgeTilea },
                         new DictionaryValue { Value = "Jałowa kraina" , Type = BuiltInDictionaryValues.KnowledgeBarrenLand },
                         new DictionaryValue { Value = "Estalia" , Type = BuiltInDictionaryValues.KnowledgeEstalia },
-                        new DictionaryValue { Value = "Krasnoludy", Type = BuiltInDictionaryValues.KnowledgeDwarves }
+                        new DictionaryValue { Value = "Krasnoludy", Type = BuiltInDictionaryValues.KnowledgeDwarves },
+                        new DictionaryValue { Value = "Elfy", Type = BuiltInDictionaryValues.KnowledgeElves },
+                        new DictionaryValue { Value = "Niziołki", Type = BuiltInDictionaryValues.KnowledgeHalfings }
                     }
             };
 
@@ -185,7 +188,8 @@ namespace WarhammerProfessionApp.Entities
                 Type = BuiltInDictionaries.SpecialWeapon,
                 Values = new List<DictionaryValue>
                     {
-                        new DictionaryValue { Value = "Długi łuk", Type = BuiltInDictionaryValues.SpecialWeaponLongBow }
+                        new DictionaryValue { Value = "Długi łuk", Type = BuiltInDictionaryValues.SpecialWeaponLongBow },
+                        new DictionaryValue { Value = "Proca", Type = BuiltInDictionaryValues.SpecialWeaponSlingShot }
                     }
             };
 
@@ -3438,7 +3442,7 @@ namespace WarhammerProfessionApp.Entities
                 new Tuple<Skill, BuiltInDictionaryValues[]>(sekretneZnaki, new BuiltInDictionaryValues[] { BuiltInDictionaryValues.SecretMarksThiefs }));
             hiena.AddSkills(wspinaczka);
             hiena.AddSkills(wycena);
-            hiena.AddDictionarySkills(jezyk, BuiltInDictionaryValues.LanguageEltharian, BuiltInDictionaryValues.LanguageKhazalid, BuiltInDictionaryValues.LanguageClassic);
+            hiena.AddDictionarySkills(jezyk, BuiltInDictionaryValues.LanguageEltharin, BuiltInDictionaryValues.LanguageKhazalid, BuiltInDictionaryValues.LanguageClassic);
             kanciarz.AddSkills(gadanina);
             kanciarz.AddDictionarySkills(hazard, sekretneZnaki, BuiltInDictionaryValues.SecretMarksThiefs);
             kanciarz.AddDictionarySkills(kuglarstwo, BuiltInDictionaryValues.PrestidigitationTheatricalArt, BuiltInDictionaryValues.PrestidigitationStoryTelling);

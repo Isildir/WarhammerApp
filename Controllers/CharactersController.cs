@@ -198,7 +198,7 @@ namespace WarhammerProfessionApp.Controllers
             });
         }
 
-        [HttpGet]
+        [HttpGet(nameof(GetUserCharacters))]
         public ActionResult<List<ShortCharacterDto>> GetUserCharacters()
         {
             var userId = GetUserId();
@@ -217,7 +217,7 @@ namespace WarhammerProfessionApp.Controllers
             return Ok(result);
         }
 
-        [HttpPost]
+        [HttpPost(nameof(SetActiveCharacter))]
         public ActionResult SetActiveCharacter(int id)
         {
             var userId = GetUserId();

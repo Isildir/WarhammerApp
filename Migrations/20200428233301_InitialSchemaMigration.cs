@@ -98,10 +98,10 @@ namespace WarhammerProfessionApp.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Description = table.Column<string>(nullable: true),
                     HasImpactOnStatictics = table.Column<bool>(nullable: false),
-                    Type = table.Column<byte>(nullable: true),
                     ImpactValue = table.Column<int>(nullable: true),
                     IsStartingValue = table.Column<bool>(nullable: false),
                     Name = table.Column<string>(maxLength: 50, nullable: false),
+                    Type = table.Column<byte>(nullable: true),
                     ValueToAlter = table.Column<byte>(nullable: true)
                 },
                 constraints: table =>
@@ -218,10 +218,10 @@ namespace WarhammerProfessionApp.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Description = table.Column<string>(nullable: true),
                     DictionaryId = table.Column<int>(nullable: true),
-                    Type = table.Column<byte>(nullable: true),
                     Name = table.Column<string>(maxLength: 50, nullable: false),
                     SkillLevel = table.Column<byte>(nullable: false),
-                    Trait = table.Column<byte>(nullable: false)
+                    Trait = table.Column<byte>(nullable: false),
+                    Type = table.Column<byte>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -523,8 +523,8 @@ namespace WarhammerProfessionApp.Migrations
                     AbilityId = table.Column<int>(nullable: false),
                     CharacterId = table.Column<int>(nullable: false),
                     DictionaryValueId = table.Column<int>(nullable: true),
-                    ProfessionAbilitiesId = table.Column<int>(nullable: true),
-                    IsAdditionalValue = table.Column<bool>(nullable: false)
+                    IsAdditionalValue = table.Column<bool>(nullable: false),
+                    ProfessionAbilitiesId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -621,8 +621,8 @@ namespace WarhammerProfessionApp.Migrations
                     CharacterId = table.Column<int>(nullable: false),
                     SkillId = table.Column<int>(nullable: false),
                     DictionaryValueId = table.Column<int>(nullable: true),
-                    ProfessionSkillsId = table.Column<int>(nullable: true),
-                    IsAdditionalValue = table.Column<bool>(nullable: false)
+                    IsAdditionalValue = table.Column<bool>(nullable: false),
+                    ProfessionSkillsId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
