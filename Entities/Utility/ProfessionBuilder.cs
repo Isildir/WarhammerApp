@@ -128,7 +128,7 @@ namespace WarhammerProfessionApp.Entities.Models.Utility
 
         public Profession GetResult() => profession;
 
-        public ProfessionBuilder SetBasicValues(string name, ProfessionLevel professionLevel, Race professionRaceForbidden = 0,
+        public ProfessionBuilder SetBasicValues(string name, bool isBasicLevel, Race professionRaceForbidden = 0,
             string description = null, string additionalInformations = null)
         {
             Race allProfessionRaces = 0;
@@ -139,7 +139,7 @@ namespace WarhammerProfessionApp.Entities.Models.Utility
             profession.Name = name;
             profession.Description = description;
             profession.AdditionalInformations = additionalInformations;
-            profession.ProfessionLevel = professionLevel;
+            profession.IsBasicLevel = isBasicLevel;
             profession.ProfessionRaceAllowed = allProfessionRaces &= ~professionRaceForbidden;
 
             return this;

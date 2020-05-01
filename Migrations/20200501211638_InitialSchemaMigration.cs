@@ -91,25 +91,6 @@ namespace WarhammerProfessionApp.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Abilities",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Description = table.Column<string>(nullable: true),
-                    HasImpactOnStatictics = table.Column<bool>(nullable: false),
-                    ImpactValue = table.Column<int>(nullable: true),
-                    IsStartingValue = table.Column<bool>(nullable: false),
-                    Name = table.Column<string>(maxLength: 50, nullable: false),
-                    Type = table.Column<byte>(nullable: true),
-                    ValueToAlter = table.Column<byte>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Abilities", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Dictionaries",
                 columns: table => new
                 {
@@ -189,6 +170,32 @@ namespace WarhammerProfessionApp.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Abilities",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Description = table.Column<string>(nullable: true),
+                    HasImpactOnStatictics = table.Column<bool>(nullable: false),
+                    ImpactValue = table.Column<int>(nullable: true),
+                    IsStartingValue = table.Column<bool>(nullable: false),
+                    DictionaryId = table.Column<int>(nullable: true),
+                    Name = table.Column<string>(maxLength: 50, nullable: false),
+                    Type = table.Column<byte>(nullable: true),
+                    ValueToAlter = table.Column<byte>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Abilities", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Abilities_Dictionaries_DictionaryId",
+                        column: x => x.DictionaryId,
+                        principalTable: "Dictionaries",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "DictionaryValues",
                 columns: table => new
                 {
@@ -219,7 +226,7 @@ namespace WarhammerProfessionApp.Migrations
                     Description = table.Column<string>(nullable: true),
                     DictionaryId = table.Column<int>(nullable: true),
                     Name = table.Column<string>(maxLength: 50, nullable: false),
-                    SkillLevel = table.Column<byte>(nullable: false),
+                    IsBasicLevel = table.Column<bool>(nullable: false),
                     Trait = table.Column<byte>(nullable: false),
                     Type = table.Column<byte>(nullable: true)
                 },
@@ -244,7 +251,7 @@ namespace WarhammerProfessionApp.Migrations
                     Description = table.Column<string>(maxLength: 250, nullable: true),
                     ImageId = table.Column<int>(nullable: true),
                     Name = table.Column<string>(maxLength: 50, nullable: false),
-                    ProfessionLevel = table.Column<byte>(nullable: false),
+                    IsBasicLevel = table.Column<bool>(nullable: false),
                     ProfessionRaceAllowed = table.Column<byte>(nullable: false)
                 },
                 constraints: table =>
@@ -727,6 +734,11 @@ namespace WarhammerProfessionApp.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Abilities_DictionaryId",
+                table: "Abilities",
+                column: "DictionaryId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AdditionalCharacterItem_CharacterId",

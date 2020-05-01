@@ -77,7 +77,7 @@ namespace WarhammerProfessionApp.Controllers
                 Speed = entity.Statistics.First(a => a.Statistic.Type == StatisticType.Speed).Value,
                 Stamina = entity.Statistics.First(a => a.Statistic.Type == StatisticType.Stamina).Value,
                 Willpower = entity.Statistics.First(a => a.Statistic.Type == StatisticType.Willpower).Value,
-                ProfessionLevel = entity.ProfessionLevel.ToString(),
+                ProfessionLevel = entity.IsBasicLevel ? "Basic" : "Advanced",
                 ProfessionRaceAllowed = entity.ProfessionRaceAllowed.ToString(),
                 Abilities = string.Join(", ", entity.Abilities.Select(b => GetFormattedElement(b.Abilities.Select(c => c.Ability.Name).ToList()))),
                 Skills = string.Join(", ", entity.Skills.Select(b => GetFormattedElement(b.Skills.Select(c => c.Skill.Name).ToList()))),

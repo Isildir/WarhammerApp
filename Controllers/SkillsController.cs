@@ -44,7 +44,14 @@ namespace WarhammerProfessionApp.Controllers
             if (item == null)
                 return NotFound();
 
-            return new SkillDto { Id = item.Id, Name = item.Name, Description = item.Description, SkillLevel = item.SkillLevel.ToString(), Trait = item.Trait.ToString() };
+            return Ok(new SkillDto
+            {
+                Id = item.Id,
+                Name = item.Name,
+                Description = item.Description,
+                SkillLevel = item.IsBasicLevel ? "Basic" : "Advanced",
+                Trait = item.Trait.ToString()
+            });
         }
 
         [HttpGet, AllowAnonymous]
@@ -52,7 +59,14 @@ namespace WarhammerProfessionApp.Controllers
         {
             var entities = await context.Set<Skill>().ToListAsync();
 
-            return Ok(entities.Select(a => new SkillDto { Id = a.Id, Name = a.Name, Description = a.Description, SkillLevel = a.SkillLevel.ToString(), Trait = a.Trait.ToString() }));
+            return Ok(entities.Select(a => new SkillDto
+            {
+                Id = a.Id,
+                Name = a.Name,
+                Description = a.Description,
+                SkillLevel = a.IsBasicLevel ? "Basic" : "Advanced",
+                Trait = a.Trait.ToString()
+            }));
         }
 
         [HttpPost]

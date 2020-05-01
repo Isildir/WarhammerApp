@@ -9,7 +9,7 @@ namespace WarhammerProfessionApp.Dtos
 
         public List<ProfessionItemWrapperDto> Equipment { get; set; }
 
-        public ProfessionLevel ProfessionLevel { get; set; }
+        public string ProfessionLevel { get; set; }
 
         public Race ProfessionRaceAllowed { get; set; }
 

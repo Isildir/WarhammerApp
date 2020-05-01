@@ -4,7 +4,6 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Claims;
 using System.Threading.Tasks;
 using WarhammerProfessionApp.Dtos;
 using WarhammerProfessionApp.Entities;
@@ -33,7 +32,7 @@ namespace WarhammerProfessionApp.Controllers
         [HttpGet]
         public async Task<ActionResult<CharacterDto>> GetCharacter()
         {
-            var userId = GetUserId();
+            var userId = ClaimsReader.GetUserId(Request);
 
             var character = await context.Characters
                 .Include(a => a.Professions).ThenInclude(a => a.Profession).ThenInclude(a => a.Statistics).ThenInclude(a => a.Statistic)
@@ -201,7 +200,7 @@ namespace WarhammerProfessionApp.Controllers
         [HttpGet(nameof(GetUserCharacters))]
         public ActionResult<List<ShortCharacterDto>> GetUserCharacters()
         {
-            var userId = GetUserId();
+            var userId = ClaimsReader.GetUserId(Request);
 
             var result = context.Characters
                 .Include(a => a.CurrentProfession)
@@ -220,7 +219,7 @@ namespace WarhammerProfessionApp.Controllers
         [HttpPost(nameof(SetActiveCharacter))]
         public ActionResult SetActiveCharacter(int id)
         {
-            var userId = GetUserId();
+            var userId = ClaimsReader.GetUserId(Request);
 
             if (!context.Characters.Any(a => a.Id == id && a.UserId == userId))
                 return BadRequest();
@@ -238,7 +237,7 @@ namespace WarhammerProfessionApp.Controllers
         [HttpPost(nameof(ChangeBaseStatisticValue))]
         public ActionResult<CharacterChangeResponseDto> ChangeBaseStatisticValue([FromBody] BaseStatiticValueChangeDto value)
         {
-            var userId = GetUserId();
+            var userId = ClaimsReader.GetUserId(Request);
 
             var character = context.Characters
                 .Include(a => a.Professions).ThenInclude(a => a.Profession).ThenInclude(a => a.Statistics).ThenInclude(a => a.Statistic)
@@ -312,7 +311,7 @@ namespace WarhammerProfessionApp.Controllers
         [HttpPost(nameof(ChangeNotes))]
         public ActionResult<bool> ChangeNotes([FromBody] string value)
         {
-            var userId = GetUserId();
+            var userId = ClaimsReader.GetUserId(Request);
 
             var character = context.Characters.FirstOrDefault(a => a.UserId == userId);
 
@@ -329,7 +328,7 @@ namespace WarhammerProfessionApp.Controllers
         [HttpPost(nameof(ChangeStatisticValue))]
         public ActionResult<CharacterChangeResponseDto> ChangeStatisticValue([FromBody] StatiticValueChangeDto value)
         {
-            var userId = GetUserId();
+            var userId = ClaimsReader.GetUserId(Request);
 
             var character = context.Characters
                 .Include(a => a.Professions).ThenInclude(a => a.Profession).ThenInclude(a => a.Statistics).ThenInclude(a => a.Statistic)
@@ -378,7 +377,7 @@ namespace WarhammerProfessionApp.Controllers
         [HttpGet(nameof(GetRaces))]
         public ActionResult<RaceDto> GetRaces()
         {
-            var userId = GetUserId();
+            var userId = ClaimsReader.GetUserId(Request);
 
             var character = context.Characters
                 .Include(a => a.Professions)
@@ -393,7 +392,7 @@ namespace WarhammerProfessionApp.Controllers
         [HttpPost(nameof(SetRace))]
         public ActionResult<CharacterChangeResponseDto> SetRace([FromBody] int id)
         {
-            var userId = GetUserId();
+            var userId = ClaimsReader.GetUserId(Request);
 
             var character = context.Characters
                 .Include(a => a.Professions)
@@ -419,7 +418,7 @@ namespace WarhammerProfessionApp.Controllers
         [HttpGet(nameof(GetFilteredProfessions))]
         public ActionResult<ShortProfessionDto> GetFilteredProfessions()
         {
-            var userId = GetUserId();
+            var userId = ClaimsReader.GetUserId(Request);
 
             var character = context.Characters
                 .Include(a => a.Professions)
@@ -438,7 +437,7 @@ namespace WarhammerProfessionApp.Controllers
             if (character.CurrentProfessionId.HasValue)
                 values = values.Where(a => a.EntranceProfessions.Any(b => b.EntranceProfessionId == character.CurrentProfessionId.Value));
             else
-                values = values.Where(a => a.ProfessionLevel == ProfessionLevel.Basic);
+                values = values.Where(a => a.IsBasicLevel);
 
             return Ok(values.Select(a => new ShortProfessionDto { Id = a.Id, Name = a.Name }).ToList());
         }
@@ -446,7 +445,7 @@ namespace WarhammerProfessionApp.Controllers
         [HttpPost(nameof(RemoveLastProfession))]
         public ActionResult<int?> RemoveLastProfession()
         {
-            var userId = GetUserId();
+            var userId = ClaimsReader.GetUserId(Request);
 
             var character = context.Characters
                 .Include(a => a.Professions).ThenInclude(a => a.Profession).ThenInclude(a => a.Statistics).ThenInclude(a => a.Statistic)
@@ -493,7 +492,7 @@ namespace WarhammerProfessionApp.Controllers
         [HttpPost(nameof(SetNextProfession))]
         public ActionResult<CharacterChangeResponseDto> SetNextProfession([FromBody] int id)
         {
-            var userId = GetUserId();
+            var userId = ClaimsReader.GetUserId(Request);
 
             var character = context.Characters
                 .Include(a => a.Professions).ThenInclude(a => a.Profession).ThenInclude(a => a.Statistics).ThenInclude(a => a.Statistic)
@@ -546,7 +545,7 @@ namespace WarhammerProfessionApp.Controllers
         [HttpPost(nameof(AddItem))]
         public ActionResult<CharacterItemDto> AddItem(ModifyCharacterItemDto value)
         {
-            var userId = GetUserId();
+            var userId = ClaimsReader.GetUserId(Request);
 
             var character = context.Characters.Include(a => a.Items).FirstOrDefault(a => a.UserId == userId);
 
@@ -601,7 +600,7 @@ namespace WarhammerProfessionApp.Controllers
         [HttpGet(nameof(GetFilteredItems))]
         public ActionResult<CharacterItemDto> GetFilteredItems(string filter)
         {
-            var userId = GetUserId();
+            var userId = ClaimsReader.GetUserId(Request);
 
             var character = context.Characters
                 .Include(a => a.Items)
@@ -647,7 +646,7 @@ namespace WarhammerProfessionApp.Controllers
         [HttpPost(nameof(ModifyItem))]
         public ActionResult<int> ModifyItem(ModifyCharacterItemDto value)
         {
-            var userId = GetUserId();
+            var userId = ClaimsReader.GetUserId(Request);
 
             var character = context.Characters
                 .Include(a => a.Items)
@@ -692,7 +691,7 @@ namespace WarhammerProfessionApp.Controllers
         [HttpPost(nameof(RemoveItem))]
         public ActionResult<int> RemoveItem([FromBody] ModifyCharacterItemDto value)
         {
-            var userId = GetUserId();
+            var userId = ClaimsReader.GetUserId(Request);
 
             var character = context.Characters
                 .Include(a => a.Items)
@@ -727,7 +726,7 @@ namespace WarhammerProfessionApp.Controllers
         [HttpPost(nameof(AddAbility))]
         public ActionResult<AbilityDto> AddAbility([FromBody] int id)
         {
-            var userId = GetUserId();
+            var userId = ClaimsReader.GetUserId(Request);
 
             var character = context.Characters
                 .Include(a => a.Abilities).ThenInclude(a => a.Ability)
@@ -778,7 +777,7 @@ namespace WarhammerProfessionApp.Controllers
         [HttpGet(nameof(GetFilteredAbilities))]
         public ActionResult<AbilityDto> GetFilteredAbilities()
         {
-            var userId = GetUserId();
+            var userId = ClaimsReader.GetUserId(Request);
 
             var character = context.Characters
                 .Include(a => a.Abilities)
@@ -807,7 +806,7 @@ namespace WarhammerProfessionApp.Controllers
         [HttpDelete(nameof(RemoveAbility))]
         public ActionResult<CharacterChangeResponseDto> RemoveAbility(int id)
         {
-            var userId = GetUserId();
+            var userId = ClaimsReader.GetUserId(Request);
 
             var character = context.Characters
                 .Include(a => a.Abilities).ThenInclude(a => a.Ability)
@@ -857,7 +856,7 @@ namespace WarhammerProfessionApp.Controllers
             if (model == null)
                 return BadRequest();
 
-            var userId = GetUserId();
+            var userId = ClaimsReader.GetUserId(Request);
 
             var character = context.Characters
                 .Include(a => a.Professions)
@@ -920,7 +919,7 @@ namespace WarhammerProfessionApp.Controllers
         [HttpGet(nameof(GetFilteredSkills))]
         public ActionResult<CharacterSkillGetDto> GetFilteredSkills()
         {
-            var userId = GetUserId();
+            var userId = ClaimsReader.GetUserId(Request);
 
             var character = context.Characters
                 .Include(a => a.Skills)
@@ -1011,7 +1010,7 @@ namespace WarhammerProfessionApp.Controllers
         [HttpDelete(nameof(RemoveSkill))]
         public ActionResult<CharacterChangeResponseDto> RemoveSkill(int id)
         {
-            var userId = GetUserId();
+            var userId = ClaimsReader.GetUserId(Request);
 
             var character = context.Characters.Include(a => a.Skills).FirstOrDefault(a => a.UserId == userId);
 
@@ -1044,7 +1043,7 @@ namespace WarhammerProfessionApp.Controllers
         [HttpPost(nameof(AddAdditionalItem))]
         public ActionResult<CharacterAdditionalItemDto> AddAdditionalItem([FromBody] CharacterAdditionalItemDto value)
         {
-            var userId = GetUserId();
+            var userId = ClaimsReader.GetUserId(Request);
 
             var character = context.Characters.Include(a => a.AdditionalValues).FirstOrDefault(a => a.UserId == userId);
 
@@ -1071,7 +1070,7 @@ namespace WarhammerProfessionApp.Controllers
         [HttpPost(nameof(ModifyAdditionalItem))]
         public ActionResult<CharacterChangeResponseDto> ModifyAdditionalItem([FromBody] CharacterAdditionalItemDto value)
         {
-            var userId = GetUserId();
+            var userId = ClaimsReader.GetUserId(Request);
 
             var character = context.Characters.Include(a => a.AdditionalItems).FirstOrDefault(a => a.UserId == userId);
 
@@ -1096,7 +1095,7 @@ namespace WarhammerProfessionApp.Controllers
         [HttpDelete(nameof(RemoveAdditionalItem))]
         public ActionResult<CharacterChangeResponseDto> RemoveAdditionalItem(int id)
         {
-            var userId = GetUserId();
+            var userId = ClaimsReader.GetUserId(Request);
 
             var character = context.Characters
                 .Include(a => a.AdditionalItems)
@@ -1124,7 +1123,7 @@ namespace WarhammerProfessionApp.Controllers
         [HttpPost(nameof(AddAdditionalValue))]
         public ActionResult<CharacterChangeResponseDto> AddAdditionalValue([FromBody] AdditionalCharacterValueDto value)
         {
-            var userId = GetUserId();
+            var userId = ClaimsReader.GetUserId(Request);
 
             var character = context.Characters.Include(a => a.AdditionalValues).FirstOrDefault(a => a.UserId == userId);
 
@@ -1147,7 +1146,7 @@ namespace WarhammerProfessionApp.Controllers
         [HttpPost(nameof(ModifyAdditionalValue))]
         public ActionResult<CharacterChangeResponseDto> ModifyAdditionalValue([FromBody] AdditionalCharacterValueDto value)
         {
-            var userId = GetUserId();
+            var userId = ClaimsReader.GetUserId(Request);
 
             var character = context.Characters.Include(a => a.AdditionalValues).FirstOrDefault(a => a.UserId == userId);
 
@@ -1167,7 +1166,7 @@ namespace WarhammerProfessionApp.Controllers
         [HttpDelete(nameof(RemoveAdditionalValue))]
         public ActionResult<CharacterChangeResponseDto> RemoveAdditionalValue(int id)
         {
-            var userId = GetUserId();
+            var userId = ClaimsReader.GetUserId(Request);
 
             var character = context.Characters.Include(a => a.AdditionalValues).FirstOrDefault(a => a.UserId == userId);
 
@@ -1256,21 +1255,9 @@ namespace WarhammerProfessionApp.Controllers
 
         private Character GetUserCharacter()
         {
-            var userId = GetUserId();
+            var userId = ClaimsReader.GetUserId(Request); ClaimsReader.GetUserId(Request);
 
             return context.Characters.FirstOrDefault(a => a.UserId == userId);
-        }
-
-        private int GetUserId()
-        {
-            var principal = Request.HttpContext.Request.HttpContext.User;
-
-            if (!(principal?.Identity is ClaimsIdentity identity))
-                return 0;
-
-            var claim = identity.Claims.FirstOrDefault(a => a.Type.Equals(ClaimTypes.Name)).Value;
-
-            return int.Parse(claim);
         }
 
         private List<RaceDto> SortAvailableRaces(Character character)

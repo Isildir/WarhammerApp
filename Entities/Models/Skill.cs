@@ -19,12 +19,12 @@ namespace WarhammerProfessionApp.Entities.Models
         [Key]
         public int Id { get; set; }
 
+        public bool IsBasicLevel { get; set; }
+
         [Required, StringLength(50)]
         public string Name { get; set; }
 
         public List<ProfessionSkill> Professions { get; set; }
-
-        public SkillLevel SkillLevel { get; set; }
 
         public StatisticType Trait { get; set; }
 

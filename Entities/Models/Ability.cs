@@ -12,6 +12,10 @@ namespace WarhammerProfessionApp.Entities.Models
 
         public string Description { get; set; }
 
+        public DictionaryDefinition Dictionary { get; set; }
+
+        public int? DictionaryId { get; set; }
+
         public bool HasImpactOnStatictics { get; set; }
 
         [Key]

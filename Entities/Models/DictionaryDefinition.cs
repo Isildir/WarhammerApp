@@ -6,6 +6,8 @@ namespace WarhammerProfessionApp.Entities.Models
 {
     public class DictionaryDefinition
     {
+        public List<Ability> Abilities { get; set; }
+
         public bool CanBeDeleted { get; set; }
 
         [Key]

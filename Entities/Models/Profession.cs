@@ -39,12 +39,12 @@ namespace WarhammerProfessionApp.Entities.Models
 
         public int? ImageId { get; set; }
 
+        public bool IsBasicLevel { get; set; }
+
         [Required, StringLength(50)]
         public string Name { get; set; }
 
         public virtual List<ProfessionProfession> OutputProfessions { get; set; }
-
-        public ProfessionLevel ProfessionLevel { get; set; }
 
         public Race ProfessionRaceAllowed { get; set; }
 
