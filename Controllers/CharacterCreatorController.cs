@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using WarhammerProfessionApp.Dtos;
 using WarhammerProfessionApp.Entities;
 using WarhammerProfessionApp.Entities.Models;
 using WarhammerProfessionApp.Entities.Models.Enums;
@@ -77,6 +78,17 @@ namespace WarhammerProfessionApp.Controllers
             this.context = context;
         }
 
+        [HttpGet(nameof(GetAvailableProfessions))]
+        public ActionResult<ShortProfessionDto> GetAvailableProfessions(Race race)
+        {
+            var filteredProfessions = context.Professions
+                .Where(a => a.IsBasicLevel && a.ProfessionRaceAllowed.HasFlag(race))
+                .AsNoTracking()
+                .Select(a => new ShortProfessionDto { Id = a.Id, Name = a.Name }).ToList();
+
+            return Ok(filteredProfessions);
+        }
+
         [HttpGet(nameof(GetNewCharacterData))]
         public ActionResult<List<CharacterCreationDto>> GetNewCharacterData()
         {
@@ -129,6 +141,17 @@ namespace WarhammerProfessionApp.Controllers
             return Ok(result);
         }
 
+        [HttpGet(nameof(GetProfessionData))]
+        public ActionResult<CharacterCreationProfessionDto> GetProfessionData(int id)
+        {
+            var result = ExtractProfessionData(id);
+
+            if (result == null)
+                return BadRequest();
+
+            return Ok(result);
+        }
+
         [HttpPost(nameof(PostFinishedCharacter))]
         public ActionResult<CharacterInListDto> PostFinishedCharacter([FromBody] CharacterCreationFinishedDto character)
         {
@@ -136,25 +159,21 @@ namespace WarhammerProfessionApp.Controllers
             var optionalAbilities = GetOptionalSkillsSortedByRace(character.Race, null, null);
             var minimumStatistics = GetBaseStatisticsSortedByRace(character.Race);
 
-            var selectedProfession = context.Professions
-                .Include(a => a.Skills).ThenInclude(a => a.Skills).ThenInclude(a => a.Skill)
-                .Include(a => a.Skills).ThenInclude(a => a.Skills).ThenInclude(a => a.AllowedValues)
-                .Include(a => a.Abilities).ThenInclude(a => a.Abilities).ThenInclude(a => a.Ability)
-                .Include(a => a.Abilities).ThenInclude(a => a.Abilities).ThenInclude(a => a.AllowedValues)
-                .FirstOrDefault(a => a.Id == character.ProfessionId && a.IsBasicLevel);
+            var professionData = ExtractProfessionData(character.ProfessionId);
 
-            if (selectedProfession == null)
+            if (professionData == null)
                 return BadRequest();
 
             var conditions = new bool[7];
 
-            conditions.Append(optionalSkills.All(a => a.Values.Any(b => character.RaceSkills.Any(c => c.Id == b.Id))));
-            conditions.Append(optionalAbilities.All(a => a.Values.Any(b => character.RaceAbilities.Any(c => c.Id == b.Id))));
+            conditions.Append(optionalSkills.All(a => a.Values.Any(b => character.RaceSkills.Any(c => c.Id == b.Id && c.DictionaryValueId == b.DictionaryValueId))));
+            conditions.Append(optionalAbilities.All(a => a.Values.Any(b => character.RaceAbilities.Any(c => c.Id == b.Id && c.DictionaryValueId == b.DictionaryValueId))));
             conditions.Append(minimumStatistics.All(a => character.Statistics.Any(b => b.Type == a.Type && b.Value > a.Value)));
             conditions.Append(optionalSkills.Count == character.RaceSkills.Count && optionalAbilities.Count == character.RaceAbilities.Count);
-            conditions.Append(selectedProfession.Skills.All(a => a.Skills.Any(b => character.ProfessionSkills.Any(c => c.Id == b.Id && (!b.Skill.DictionaryId.HasValue || b.AllowedValues.Any(d => d.DictionaryValueId == c.DictionaryValueId))))));
-            conditions.Append(selectedProfession.Abilities.All(a => a.Abilities.Any(b => character.ProfessionAbilities.Any(c => c.Id == b.Id && (!b.Ability.DictionaryId.HasValue || b.AllowedValues.Any(d => d.DictionaryValueId == c.DictionaryValueId))))));
-            conditions.Append(selectedProfession.Skills.Count == character.ProfessionSkills.Count && selectedProfession.Abilities.Count == character.ProfessionAbilities.Count);
+
+            conditions.Append(professionData.SkillsChoice.All(a => a.Values.Any(b => character.ProfessionSkills.Any(c => c.Id == b.Id && c.DictionaryValueId == b.DictionaryValueId))));
+            conditions.Append(professionData.AbilitiesChoice.All(a => a.Values.Any(b => character.ProfessionAbilities.Any(c => c.Id == b.Id && c.DictionaryValueId == b.DictionaryValueId))));
+            conditions.Append(professionData.SkillsChoice.Count == character.ProfessionSkills.Count && professionData.AbilitiesChoice.Count == character.ProfessionAbilities.Count);
 
             if (conditions.Any(a => !a))
                 return BadRequest();
@@ -219,6 +238,183 @@ namespace WarhammerProfessionApp.Controllers
             {
                 return BadRequest();
             }
+        }
+
+        private CharacterCreationProfessionDto ExtractProfessionData(int id)
+        {
+            var selectedProfession = context.Professions
+                .Include(a => a.Skills).ThenInclude(a => a.Skills).ThenInclude(a => a.Skill)
+                .Include(a => a.Skills).ThenInclude(a => a.Skills).ThenInclude(a => a.AllowedValues).ThenInclude(a => a.DictionaryValue)
+                .Include(a => a.Abilities).ThenInclude(a => a.Abilities).ThenInclude(a => a.Ability)
+                .Include(a => a.Abilities).ThenInclude(a => a.Abilities).ThenInclude(a => a.AllowedValues).ThenInclude(a => a.DictionaryValue)
+                .AsNoTracking()
+                .Select(a => new
+                {
+                    a.Id,
+                    a.Name,
+                    a.IsBasicLevel,
+                    Skills = a.Skills.Select(b => new
+                    {
+                        Skills = b.Skills.Select(c => new
+                        {
+                            c.AllowAllValues,
+                            AllowedValues = c.AllowedValues.Select(d => new
+                            {
+                                d.DictionaryValue.Id,
+                                d.DictionaryValue.Value
+                            }),
+                            c.Skill.Id,
+                            c.Skill.Name,
+                            c.Skill.DictionaryId
+                        })
+                    }),
+                    Abilities = a.Abilities.Select(b => new
+                    {
+                        Abilities = b.Abilities.Select(c => new
+                        {
+                            c.AllowAllValues,
+                            AllowedValues = c.AllowedValues.Select(d => new
+                            {
+                                d.DictionaryValue.Id,
+                                d.DictionaryValue.Value
+                            }),
+                            c.Ability.Id,
+                            c.Ability.Name,
+                            c.Ability.DictionaryId
+                        })
+                    })
+                }).FirstOrDefault(a => a.Id == id && a.IsBasicLevel);
+
+            if (selectedProfession == null)
+                return null;
+
+            var result = new CharacterCreationProfessionDto
+            {
+                Id = selectedProfession.Id,
+                Name = selectedProfession.Name
+            };
+
+            foreach (var skill in selectedProfession.Skills)
+            {
+                if (skill.Skills.Count() > 1 || skill.Skills.Any(a => a.AllowAllValues ?? false || (a.AllowedValues.Any() && a.AllowedValues.Count() > 1)))
+                {
+                    var record = new CharacterCreationValueGroupDto { Quantity = 1 };
+
+                    foreach (var value in skill.Skills)
+                    {
+                        if (value.AllowAllValues.HasValue && value.AllowAllValues.Value)
+                        {
+                            var allDictionaryValues = context.DictionaryValues.Where(a => a.DefinitionId == value.DictionaryId.Value).Select(a => new { a.Id, a.Value }).ToList();
+
+                            foreach (var dictionaryValue in allDictionaryValues)
+                                record.Values.Add(new CharacterCreationValueDto
+                                {
+                                    Id = value.Id,
+                                    Name = $"{value.Name} {dictionaryValue.Value}",
+                                    DictionaryValueId = dictionaryValue.Id
+                                });
+                        }
+                        else if (value.AllowedValues.Any())
+                        {
+                            foreach (var dictionaryValue in value.AllowedValues)
+                                record.Values.Add(new CharacterCreationValueDto
+                                {
+                                    Id = value.Id,
+                                    Name = $"{value.Name} {dictionaryValue.Value}",
+                                    DictionaryValueId = dictionaryValue.Id
+                                });
+                        }
+                        else
+                            record.Values.Add(new CharacterCreationValueDto { Id = value.Id, Name = value.Name });
+                    }
+
+                    result.SkillsChoice.Add(record);
+                }
+                else
+                {
+                    var firstSkill = skill.Skills.First();
+
+                    if (firstSkill.AllowedValues.Any())
+                    {
+                        var dictionaryValue = firstSkill.AllowedValues.FirstOrDefault();
+
+                        result.SkillsSet.Add(new CharacterCreationValueDto
+                        {
+                            Id = firstSkill.Id,
+                            Name = dictionaryValue != null ? $"{firstSkill.Name} {dictionaryValue.Value}" : firstSkill.Name,
+                            DictionaryValueId = dictionaryValue?.Id
+                        });
+                    }
+                    else
+                        result.SkillsSet.Add(new CharacterCreationValueDto
+                        {
+                            Id = firstSkill.Id,
+                            Name = firstSkill.Name
+                        });
+                }
+            }
+
+            foreach (var ability in selectedProfession.Abilities)
+            {
+                if (ability.Abilities.Count() > 1 || ability.Abilities.Any(a => a.AllowAllValues ?? false || (a.AllowedValues.Any() && a.AllowedValues.Count() > 1)))
+                {
+                    var record = new CharacterCreationValueGroupDto { Quantity = 1 };
+
+                    foreach (var value in ability.Abilities)
+                    {
+                        if (value.AllowAllValues.HasValue && value.AllowAllValues.Value)
+                        {
+                            var allDictionaryValues = context.DictionaryValues.Where(a => a.DefinitionId == value.DictionaryId.Value).Select(a => new { a.Id, a.Value }).ToList();
+
+                            foreach (var dictionaryValue in allDictionaryValues)
+                                record.Values.Add(new CharacterCreationValueDto
+                                {
+                                    Id = value.Id,
+                                    Name = $"{value.Name} {dictionaryValue.Value}",
+                                    DictionaryValueId = dictionaryValue.Id
+                                });
+                        }
+                        else if (value.AllowedValues.Any())
+                        {
+                            foreach (var dictionaryValue in value.AllowedValues)
+                                record.Values.Add(new CharacterCreationValueDto
+                                {
+                                    Id = value.Id,
+                                    Name = $"{value.Name} {dictionaryValue.Value}",
+                                    DictionaryValueId = dictionaryValue.Id
+                                });
+                        }
+                        else
+                            record.Values.Add(new CharacterCreationValueDto { Id = value.Id, Name = value.Name });
+                    }
+
+                    result.AbilitiesChoice.Add(record);
+                }
+                else
+                {
+                    var firstAbility = ability.Abilities.First();
+
+                    if (firstAbility.AllowedValues.Any())
+                    {
+                        var dictionaryValue = firstAbility.AllowedValues.FirstOrDefault();
+
+                        result.AbilitiesSet.Add(new CharacterCreationValueDto
+                        {
+                            Id = firstAbility.Id,
+                            Name = dictionaryValue != null ? $"{firstAbility.Name} {dictionaryValue.Value}" : firstAbility.Name,
+                            DictionaryValueId = dictionaryValue?.Id
+                        });
+                    }
+                    else
+                        result.AbilitiesSet.Add(new CharacterCreationValueDto
+                        {
+                            Id = firstAbility.Id,
+                            Name = firstAbility.Name
+                        });
+                }
+            }
+
+            return result;
         }
 
         private List<CharacterCreateStatisticDto> GetBaseStatisticsSortedByRace(Race race)
